@@ -1,0 +1,84 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-greglebarbar-news a:link {
+  text-decoration: none !important; }
+
+.wp-block-greglebarbar-news .h5 {
+  font-size: 120%; }
+
+.wp-block-greglebarbar-news .list-group-teaser-thumbnail {
+  float: left;
+  margin-right: 3%; }
+
+.wp-block-greglebarbar-news .img-fluid {
+  width: 180px; }
+
+.wp-block-greglebarbar-news .text-center {
+  margin: auto;
+  width: 30%;
+  text-decoration: underline; }
+
+.wp-block-greglebarbar-news .list-group-teaser-content {
+  font-family: "SuisseIntl", Arial, sans-serif !important;
+  color: #212121;
+  font-size: 18px; }
+
+.wp-block-greglebarbar-news .h5 {
+  font-weight: 700; }
+
+.wp-block-greglebarbar-news .text-muted {
+  color: #707070;
+  font-weight: 400; }
+
+.wp-block-greglebarbar-news a.link-pretty {
+  font-family: "SuisseIntl", Arial, sans-serif !important;
+  color: #212121; }
+
+#epfl-news-themes {
+  width: 100% !important; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-greglebarbar-memento a:link {
+  text-decoration: none !important; }
+
+.wp-block-greglebarbar-memento .list-group-teaser-container {
+  background-color: #e6e6e6;
+  margin: 0;
+  padding: 0; }
+
+.wp-block-greglebarbar-memento .list-group-teaser-thumbnail {
+  float: left;
+  margin-right: 3%; }
+
+.wp-block-greglebarbar-memento .h5 {
+  font-size: 120%;
+  font-weight: 700; }
+
+.wp-block-greglebarbar-memento .img-fluid {
+  width: 180px; }
+
+.wp-block-greglebarbar-memento .text-center {
+  margin: auto;
+  width: 30%;
+  text-decoration: underline; }
+
+.wp-block-greglebarbar-memento .list-group-teaser-content {
+  font-family: "SuisseIntl", Arial, sans-serif !important;
+  color: #212121;
+  font-size: 18px; }
+
+.wp-block-greglebarbar-memento .text-muted {
+  color: #707070;
+  font-weight: 400; }
+
+.wp-block-greglebarbar-memento a.link-pretty {
+  font-family: "SuisseIntl", Arial, sans-serif !important;
+  color: #212121; }
