@@ -15,14 +15,14 @@ export default class PreviewMemento extends Component {
 	getEvents() {
 		const { attributes } = this.props;
 		
-		let URL_EVENTS = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
-		URL_EVENTS += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=5`;
+		let url_events = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
+		url_events += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=5`;
 
 		if (attributes.category !== "0") {
-			URL_NEWS += `&category=${attributes.category}`;
+			url_events += `&category=${attributes.category}`;
 		}
 
-		axios.get(URL_EVENTS)
+		axios.get(url_events)
 			.then( response => response.data.results )
 			.then( eventsList => {
 				this.setState({ eventsList: eventsList }) 

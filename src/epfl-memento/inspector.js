@@ -22,13 +22,25 @@ export default class InspectorControlsMemento extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { mementosList : null }
+        this.state = { 
+            mementos: null,
+            categories: null,
+        }
     }
 
-    componentWillMount() {
-		axios.get('https://memento-test.epfl.ch/api/v1/mementos/?format=json&limit=800')
+    componentDidMount() {
+        let apiRestUrl = 'https://memento-test.epfl.ch/api/v1/';
+
+        let entryPointMementos = `${apiRestUrl}mementos/?format=json&limit=800`;
+		axios.get(entryPointMementos)
 			.then( response => response.data.results )
-			.then( mementosList => this.setState({ mementosList }) )
+			.then( mementos => this.setState({ mementos }) )
+            .catch( err => console.log(err))
+
+        let entryPointCategories = `${apiRestUrl}categories/?format=json&limit=800`;
+        axios.get(entryPointCategories)
+            .then( response => response.data.results )
+            .then( categories => this.setState({ categories }) )
             .catch( err => console.log(err))
 	}
 
@@ -38,11 +50,11 @@ export default class InspectorControlsMemento extends Component {
         
         let content = "";
         
-        if (this.state.mementosList !== null) {
+        if (this.state.mementos !== null) {
             
             let optionsMementosList = [];
 
-            this.state.mementosList.forEach(memento => {
+            this.state.mementos.forEach(memento => {
                 optionsMementosList.push({ label: memento.en_name, value: memento.id });
             });
             
@@ -62,6 +74,14 @@ export default class InspectorControlsMemento extends Component {
                 { value: 'upcoming', label: __('Upcomings events') },
                 { value: 'past', label: __('Past events') },
             ];
+
+            let optionsCategoriesList = [
+                { value: '0', label: __('No filter') },
+            ];
+
+            this.state.categories.forEach(category => {
+                optionsCategoriesList.push({ label: category.en_label, value: category.id });
+            });
 
             content = (
                 <InspectorControls>
@@ -100,6 +120,15 @@ export default class InspectorControlsMemento extends Component {
                             options={ optionsPeriodsList }
                             onChange={ period => setAttributes( { period } ) }
 	                    />
+                    </PanelBody>
+                    <PanelBody title={ __( 'Category' ) }>
+                        <SelectControl 
+                            label={ __("Select your category") }
+                            help={ __("Do you want filter events by category? Please select a category.") }
+                            value={ attributes.categories }
+                            options={ optionsCategoriesList }
+                            onChange={ category => setAttributes( { category } ) }
+                        />
                     </PanelBody>
                     
                 </InspectorControls>

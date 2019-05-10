@@ -79,11 +79,11 @@ export default class InspectorControlsNews extends Component {
             let optionsLanguagesList = [
                 { value: 'fr', label: __('French') },
                 { value: 'en', label: __('English') },
-            ]
+            ];
 
             let optionsCategoriesList = [
                 { value: '0', label: __('No filter') },
-            ]
+            ];
 
             this.state.categories.forEach(category => {
                 optionsCategoriesList.push({ label: category.en_label, value: category.id });
@@ -91,7 +91,7 @@ export default class InspectorControlsNews extends Component {
 
             let optionsThemesList = [
                 { value: '0', label: 'No filter' },
-            ]
+            ];
 
             this.state.themes.forEach(theme => {
                 optionsThemesList.push({ label: theme.en_label, value: theme.id });
