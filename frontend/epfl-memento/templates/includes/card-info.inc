@@ -13,13 +13,13 @@ $markup .= '<p>';
 
 if ($event->speaker !== '') {
     $markup .= esc_html('With', 'epfl');
-    $markup .= '<b>' . strip_tags($event->speaker) . '</b>';
+    $markup .= ': <b>' . strip_tags($event->speaker) . '</b>';
     $markup .= '<br>';
 }
 
  if ($event->place_and_room !== '') {
     $markup .= esc_html('Place and room', 'epfl');
-    $markup .= '<b>' . esc_html($event->place_and_room) . '</b>';
+    $markup .= ': <b>' . esc_html($event->place_and_room) . '</b>';
     $markup .= '<br>';
  }
     

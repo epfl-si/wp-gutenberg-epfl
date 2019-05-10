@@ -11,24 +11,34 @@ const {
 
 const {
     PanelBody,
-    PanelRow,
     SelectControl,
     RadioControl,
-    ToggleControl,
-    RangeControl,
+    TextControl,
 } = wp.components
 
 export default class InspectorControlsMemento extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { mementosList : null }
+        this.state = { 
+            mementos: null,
+            categories: null,
+        }
     }
 
-    componentWillMount() {
-		axios.get('https://memento-test.epfl.ch/api/v1/mementos/?format=json&limit=800')
+    componentDidMount() {
+        let apiRestUrl = 'https://memento-test.epfl.ch/api/v1/';
+
+        let entryPointMementos = `${apiRestUrl}mementos/?format=json&limit=800`;
+		axios.get(entryPointMementos)
 			.then( response => response.data.results )
-			.then( mementosList => this.setState({ mementosList }) )
+			.then( mementos => this.setState({ mementos }) )
+            .catch( err => console.log(err))
+
+        let entryPointCategories = `${apiRestUrl}categories/?format=json&limit=800`;
+        axios.get(entryPointCategories)
+            .then( response => response.data.results )
+            .then( categories => this.setState({ categories }) )
             .catch( err => console.log(err))
 	}
 
@@ -38,11 +48,11 @@ export default class InspectorControlsMemento extends Component {
         
         let content = "";
         
-        if (this.state.mementosList !== null) {
+        if (this.state.mementos !== null) {
             
             let optionsMementosList = [];
 
-            this.state.mementosList.forEach(memento => {
+            this.state.mementos.forEach(memento => {
                 optionsMementosList.push({ label: memento.en_name, value: memento.id });
             });
             
@@ -56,7 +66,20 @@ export default class InspectorControlsMemento extends Component {
             let optionsLanguagesList = [
                 { value: 'fr', label: __('French') },
                 { value: 'en', label: __('English') },
-            ]
+            ];
+
+            let optionsPeriodsList = [
+                { value: 'upcoming', label: __('Upcomings events') },
+                { value: 'past', label: __('Past events') },
+            ];
+
+            let optionsCategoriesList = [
+                { value: '0', label: __('No filter') },
+            ];
+
+            this.state.categories.forEach(category => {
+                optionsCategoriesList.push({ label: category.en_label, value: category.id });
+            });
 
             content = (
                 <InspectorControls>
@@ -64,8 +87,8 @@ export default class InspectorControlsMemento extends Component {
                         <SelectControl 
                             label={ __("Select your memento") }
                             help={ __("The events come from the application memento.epfl.ch. If you don't have a memento, please send a request to 1234@epfl.ch") }
-                            value={ attributes.memento }
-                            options={ optionsMementosList }
+                            value={ attributes.memento }Select your category
+                            options={ optionsMementosList }Select your category
                             onChange={ memento => setAttributes( { memento } ) }
                         />
                     </PanelBody>
@@ -86,6 +109,32 @@ export default class InspectorControlsMemento extends Component {
                             options={ optionsLanguagesList }
                             onChange={ lang => setAttributes( { lang } ) }
 	                    />
+                    </PanelBody>
+                    <PanelBody title={ __( 'Period' ) }>
+                        <RadioControl
+                            label={ __("Select a period") }
+                            help={ __("Do you want upcoming events or past events ?") }
+                            selected={ attributes.period }
+                            options={ optionsPeriodsList }
+                            onChange={ period => setAttributes( { period } ) }
+	                    />
+                    </PanelBody>
+                    <PanelBody title={ __( 'Category' ) }>
+                        <SelectControl 
+                            label={ __("Filter events by category") }
+                            help={ __("Do you want filter events by category? Please select a category.") }
+                            value={ attributes.categories }
+                            options={ optionsCategoriesList }
+                            onChange={ category => setAttributes( { category } ) }
+                        />
+                    </PanelBody>
+                    <PanelBody title={ __( 'Keyword' ) }>
+                        <TextControl 
+                            label={ __("Filter events by keyword") }
+                            help={ __("Do you want filter events by keyword? Please type a keyword.") }
+                            value={ attributes.keyword }
+                            onChange={ keyword => setAttributes( { keyword} )}
+                        />
                     </PanelBody>
                     
                 </InspectorControls>

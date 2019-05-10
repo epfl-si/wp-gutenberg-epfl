@@ -22,13 +22,33 @@ export default class InspectorControlsNews extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { channelsList : null }
+        this.state = { 
+            channels : null, 
+            categories: null,
+            themes: null,
+        }
     }
 
-    componentWillMount() {
-		axios.get('https://actu-test.epfl.ch/api/v1/channels/?format=json&limit=800')
+    componentDidMount() {
+
+        let apiRestUrl = "https://actu-test.epfl.ch/api/v1/";
+        
+        let entryPointChannels = `${apiRestUrl}channels/?format=json&limit=800`;
+		axios.get(entryPointChannels)
 			.then( response => response.data.results )
-			.then( channelsList => this.setState({ channelsList }) )
+			.then( channels => this.setState({ channels }) )
+            .catch( err => console.log(err))
+
+        let entryPointCategories = `${apiRestUrl}categories/?format=json&limit=10`;
+        axios.get(entryPointCategories)
+            .then( response => response.data.results )
+            .then( categories => this.setState({ categories }) )
+            .catch( err => console.log(err))
+        
+        let entryPointsThemes = `${apiRestUrl}themes/?format=json&limit=10`;
+        axios.get(entryPointsThemes)
+            .then( response => response.data.results )
+            .then( themes => this.setState({ themes }) )
             .catch( err => console.log(err))
 	}
 
@@ -39,23 +59,13 @@ export default class InspectorControlsNews extends Component {
         
         let content = "";
         
-        if (this.state.channelsList !== null) {
+        if (this.state.channels !== null) {
             
             let optionsChannelsList = [];
 
-            this.state.channelsList.forEach(channel => {
+            this.state.channels.forEach(channel => {
                 optionsChannelsList.push({ label: channel.name, value: channel.id });
             });
-            /*
-            let optionsTemplatesList = [
-                { value: '1', label: __('Template Listing')},
-                { value: '2', label: __('Template highlighted with 3 news')},
-                { value: '3', label: __('Template highlighted with 1 news')},
-                { value: '4', label: __('Template card with 1 news')},
-                { value: '5', label: __('Template card with 2 news')},
-                { value: '6', label: __('Template card with 3 news')},
-            ];
-            */
             
             let optionsTemplatesList = [
                 { value: 'listing', label: __('Template Listing')},
@@ -69,29 +79,23 @@ export default class InspectorControlsNews extends Component {
             let optionsLanguagesList = [
                 { value: 'fr', label: __('French') },
                 { value: 'en', label: __('English') },
-            ]
+            ];
 
             let optionsCategoriesList = [
                 { value: '0', label: __('No filter') },
-                { value: '1', label: __('Epfl') },
-                { value: '2', label: __('Education') },
-                { value: '3', label: __('Research') },
-                { value: '4', label: __('Innovation') },
-                { value: '5', label: __('Campus Life') },
-            ]
+            ];
+
+            this.state.categories.forEach(category => {
+                optionsCategoriesList.push({ label: category.en_label, value: category.id });
+            });
 
             let optionsThemesList = [
                 { value: '0', label: 'No filter' },
-                { value: '1', label: 'Basic Sciences' },
-                { value: '2', label: 'Health' },
-                { value: '3', label: 'Computer Science' },
-                { value: '4', label: 'Engineering' },
-                { value: '5', label: 'Environment' },
-                { value: '6', label: 'Buildings' },
-                { value: '7', label: 'Culture' },
-                { value: '8', label: 'Economy' },
-                { value: '9', label: 'Energy' },
-            ]
+            ];
+
+            this.state.themes.forEach(theme => {
+                optionsThemesList.push({ label: theme.en_label, value: theme.id });
+            });
 
             content = (
                 <InspectorControls>

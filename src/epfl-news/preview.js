@@ -77,31 +77,31 @@ export default class PreviewNews extends Component {
 		if (attributes.displayLinkAllNews) {
 			let url = `https://actu.epfl.ch/search/${this.state.channelName}`;
 			linkAllNews = (
-				<p class="text-center">
-					<a class="link-pretty" href={ url }>Toutes les actualités</a>
+				<p className="text-center">
+					<a className="link-pretty" href={ url }>Toutes les actualités</a>
 				</p>
 			)
 		}
 					
 		return (
 			<div className={ className }>
-				<div class="list-group">
+				<div className="list-group">
 				
 					{ this.state.newsList.map( news => {
 						return (
 							
-							<a href="#" className="list-group-item list-group-teaser link-trapeze-vertical">
+							<a key={news.id} href="#" className="list-group-item list-group-teaser link-trapeze-vertical">
 								<div className="list-group-teaser-container">
 									<div className="list-group-teaser-thumbnail">
 										<picture>
 											<img src={ news.thumbnail_url } className="img-fluid" alt={ news.visual_description } />
 										</picture>
 									</div>
-									<div className="list-group-teaser-content" itemscope itemtype="http://schema.org/Article">
-										<p className="h5" itemprop="name">{ news.title }</p>
+									<div className="list-group-teaser-content" itemScope itemType="http://schema.org/Article">
+										<p className="h5" itemProp="name">{ news.title }</p>
 										<p>
-											<time datetime={ news.publish_date } itemprop="datePublished">{ moment(news.publish_date).format('L').split('/').join('.') } </time>
-											<span className="text-muted" itemprop="description">— { stripHtml(news.subtitle) }</span>
+											<time dateTime={ news.publish_date } itemProp="datePublished">{ moment(news.publish_date).format('L').split('/').join('.') } </time>
+											<span className="text-muted" itemProp="description">— { stripHtml(news.subtitle) }</span>
 										</p>
 									</div>
 								</div>
