@@ -56,7 +56,12 @@ export default class InspectorControlsMemento extends Component {
             let optionsLanguagesList = [
                 { value: 'fr', label: __('French') },
                 { value: 'en', label: __('English') },
-            ]
+            ];
+
+            let optionsPeriodsList = [
+                { value: 'upcoming', label: __('Upcomings events') },
+                { value: 'past', label: __('Past events') },
+            ];
 
             content = (
                 <InspectorControls>
@@ -85,6 +90,15 @@ export default class InspectorControlsMemento extends Component {
                             selected={ attributes.lang }
                             options={ optionsLanguagesList }
                             onChange={ lang => setAttributes( { lang } ) }
+	                    />
+                    </PanelBody>
+                    <PanelBody title={ __( 'Period' ) }>
+                        <RadioControl
+                            label={ __("Select a period") }
+                            help={ __("Do you want upcoming events or past events ?") }
+                            selected={ attributes.period }
+                            options={ optionsPeriodsList }
+                            onChange={ period => setAttributes( { period } ) }
 	                    />
                     </PanelBody>
                     
