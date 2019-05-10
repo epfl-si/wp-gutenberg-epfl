@@ -39,9 +39,13 @@ registerBlockType(
 				default: null,
 			},
 			period: {
-				period: 'string',
+				type: 'string',
 				default: null,
 			},
+			keyword: {
+				type: 'string',
+				default: "",
+			}
 		},
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

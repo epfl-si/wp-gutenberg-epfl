@@ -11,11 +11,9 @@ const {
 
 const {
     PanelBody,
-    PanelRow,
     SelectControl,
     RadioControl,
-    ToggleControl,
-    RangeControl,
+    TextControl,
 } = wp.components
 
 export default class InspectorControlsMemento extends Component {
@@ -89,8 +87,8 @@ export default class InspectorControlsMemento extends Component {
                         <SelectControl 
                             label={ __("Select your memento") }
                             help={ __("The events come from the application memento.epfl.ch. If you don't have a memento, please send a request to 1234@epfl.ch") }
-                            value={ attributes.memento }
-                            options={ optionsMementosList }
+                            value={ attributes.memento }Select your category
+                            options={ optionsMementosList }Select your category
                             onChange={ memento => setAttributes( { memento } ) }
                         />
                     </PanelBody>
@@ -123,11 +121,19 @@ export default class InspectorControlsMemento extends Component {
                     </PanelBody>
                     <PanelBody title={ __( 'Category' ) }>
                         <SelectControl 
-                            label={ __("Select your category") }
+                            label={ __("Filter events by category") }
                             help={ __("Do you want filter events by category? Please select a category.") }
                             value={ attributes.categories }
                             options={ optionsCategoriesList }
                             onChange={ category => setAttributes( { category } ) }
+                        />
+                    </PanelBody>
+                    <PanelBody title={ __( 'Keyword' ) }>
+                        <TextControl 
+                            label={ __("Filter events by keyword") }
+                            help={ __("Do you want filter events by keyword? Please type a keyword.") }
+                            value={ attributes.keyword }
+                            onChange={ keyword => setAttributes( { keyword} )}
                         />
                     </PanelBody>
                     

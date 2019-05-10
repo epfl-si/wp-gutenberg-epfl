@@ -1,6 +1,4 @@
 import * as axios from 'axios';
-import stripHtml from "string-strip-html"; 
-import moment from 'moment';
 
 const { __ } = wp.i18n
 const { Spinner } = wp.components
@@ -9,7 +7,7 @@ const { Component } = wp.element
 export default class PreviewMemento extends Component {
 
 	state = {
-		eventsList: null,
+		events: null,
 	}
 
 	getEvents() {
@@ -22,10 +20,14 @@ export default class PreviewMemento extends Component {
 			url_events += `&category=${attributes.category}`;
 		}
 
+		if (attributes.keyword !== '') {
+			url_events += `&keywords=${attributes.keyword}`;
+		}
+
 		axios.get(url_events)
 			.then( response => response.data.results )
-			.then( eventsList => {
-				this.setState({ eventsList: eventsList }) 
+			.then( events => {
+				this.setState({ events: events }) 
 			})
 			.catch( err => console.log(err))
 	}
@@ -40,7 +42,7 @@ export default class PreviewMemento extends Component {
 
 	render() {
 
-		if ( ! this.state.eventsList ) {
+		if ( ! this.state.events ) {
 			return (
 				<p>
 					<Spinner />
@@ -49,14 +51,14 @@ export default class PreviewMemento extends Component {
 			)
 		}
 
-		if ( this.state.eventsList.length === 0 ) {
+		if ( this.state.events.length === 0 ) {
 			return (
 				<p>
 					{ __('No events found') }
 				</p>
 			)
 		} else  {
-			//console.log(this.state.eventsList);
+			//console.log(this.state.events);
 		}
 
         const { className, attributes } = this.props
@@ -65,7 +67,7 @@ export default class PreviewMemento extends Component {
             <div className={ className }>
             <div className="list-group">
 
-                { this.state.eventsList.map( event => {
+                { this.state.events.map( event => {
 					return (
 
                         <a key={event.id} href="#" className="list-group-item list-group-item-gray list-group-teaser link-trapeze-vertical" itemScope itemType="http://schema.org/Event">
@@ -99,39 +101,6 @@ export default class PreviewMemento extends Component {
                 }) }
             </div>
             </div>
-        )
-
-        {/* 
-		return (
-			<div className={ className }>
-				<div class="list-group">
-				
-					{ this.state.eventsList.map( event => {
-						return (
-							
-							<a href="#" className="list-group-item list-group-teaser link-trapeze-vertical">
-								<div className="list-group-teaser-container">
-									<div className="list-group-teaser-thumbnail">
-										<picture>
-											<img src={ event.visual_url } className="img-fluid" alt={ event.image_description } />
-										</picture>
-									</div>
-									<div className="list-group-teaser-content" itemscope itemtype="http://schema.org/Article">
-										<p className="h5" itemprop="name">{ event.title }</p>
-										<p>
-											<time datetime={ event.publish_date } itemprop="datePublished">{ moment(event.start_date).format('L').split('/').join('.') } </time>
-											<span className="text-muted" itemprop="description">— { stripHtml(event.description) }</span>
-										</p>
-									</div>
-								</div>
-							</a>
-						
-							)
-					}) }
-					
-				</div>
-			</div>
-        )
-        */}		
+        )		
 	}
 }
