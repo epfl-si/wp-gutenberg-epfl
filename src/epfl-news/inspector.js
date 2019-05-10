@@ -29,7 +29,7 @@ export default class InspectorControlsNews extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
 
         let apiRestUrl = "https://actu-test.epfl.ch/api/v1/";
         
