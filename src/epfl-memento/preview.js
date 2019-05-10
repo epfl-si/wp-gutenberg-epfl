@@ -13,18 +13,18 @@ export default class PreviewMemento extends Component {
 	getEvents() {
 		const { attributes } = this.props;
 		
-		let url_events = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
-		url_events += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=5`;
+		let urlEvents = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
+		urlEvents += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=5`;
 
 		if (attributes.category !== "0") {
-			url_events += `&category=${attributes.category}`;
+			urlEvents += `&category=${attributes.category}`;
 		}
 
 		if (attributes.keyword !== '') {
-			url_events += `&keywords=${attributes.keyword}`;
+			urlEvents += `&keywords=${attributes.keyword}`;
 		}
 
-		axios.get(url_events)
+		axios.get(urlEvents)
 			.then( response => response.data.results )
 			.then( events => {
 				this.setState({ events: events }) 
