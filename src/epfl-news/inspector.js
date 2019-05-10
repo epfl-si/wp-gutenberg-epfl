@@ -23,7 +23,7 @@ export default class InspectorControlsNews extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            channelsList : null, 
+            channels : null, 
             categories: null,
             themes: null,
         }
@@ -33,19 +33,19 @@ export default class InspectorControlsNews extends Component {
 
         let apiRestUrl = "https://actu-test.epfl.ch/api/v1/";
         
-        let entryPointChannels = apiRestUrl + 'channels/?format=json&limit=800';
+        let entryPointChannels = `${apiRestUrl}channels/?format=json&limit=800`;
 		axios.get(entryPointChannels)
 			.then( response => response.data.results )
-			.then( channelsList => this.setState({ channelsList }) )
+			.then( channels => this.setState({ channels }) )
             .catch( err => console.log(err))
 
-        let entryPointCategories = apiRestUrl + 'categories/?format=json&limit=10';
+        let entryPointCategories = `${apiRestUrl}categories/?format=json&limit=10`;
         axios.get(entryPointCategories)
             .then( response => response.data.results )
             .then( categories => this.setState({ categories }) )
             .catch( err => console.log(err))
         
-        let entryPointsThemes = apiRestUrl + 'themes/?format=json&limit=10';
+        let entryPointsThemes = `${apiRestUrl}themes/?format=json&limit=10`;
         axios.get(entryPointsThemes)
             .then( response => response.data.results )
             .then( themes => this.setState({ themes }) )
@@ -59,11 +59,11 @@ export default class InspectorControlsNews extends Component {
         
         let content = "";
         
-        if (this.state.channelsList !== null) {
+        if (this.state.channels !== null) {
             
             let optionsChannelsList = [];
 
-            this.state.channelsList.forEach(channel => {
+            this.state.channels.forEach(channel => {
                 optionsChannelsList.push({ label: channel.name, value: channel.id });
             });
             
