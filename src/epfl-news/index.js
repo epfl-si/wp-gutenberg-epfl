@@ -11,8 +11,8 @@ const { Fragment } = wp.element
 registerBlockType(
 	'greglebarbar/news',
 	{
-		title: __( "EPFL News"),
-		description: __("Display the EPFL news"),
+		title: __( 'EPFL News', 'gutenberg-epfl'),
+		description: __('Display the EPFL news', 'gutenberg-epfl'),
 		icon: 'wordpress-alt',
 		category: 'common',
 		keywords: [

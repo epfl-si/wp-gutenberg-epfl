@@ -11,7 +11,7 @@ const { Fragment } = wp.element
 registerBlockType(
 	'greglebarbar/memento',
 	{
-		title: __( "EPFL Memento"),
+		title: __( 'EPFL Memento', 'epfl'),
 		description: __("Display the EPFL events"),
 		icon: 'wordpress-alt',
 		category: 'common',
