@@ -22,8 +22,6 @@
         $count = 1;
         foreach($results as $event) {
             
-            set_query_var('epfl_event', $event);
-
             // if event hasn't start date and end date then no display event
             if (is_null($event->start_date) and is_null($event->end_date)) {
                 continue;

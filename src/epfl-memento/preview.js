@@ -23,7 +23,7 @@ export default class PreviewMemento extends Component {
 		if (attributes.keyword !== '') {
 			urlEvents += `&keywords=${attributes.keyword}`;
 		}
-
+		console.log(urlEvents);
 		axios.get(urlEvents)
 			.then( response => response.data.results )
 			.then( events => {
@@ -38,6 +38,26 @@ export default class PreviewMemento extends Component {
 
 	componentDidUpdate() {
 		this.getEvents();	
+	}
+	
+	getVisualUrl(event, memento) {
+		let visualUrl = "";
+		if (event.academic_calendar_category == null) {
+			if (event.visual_url) {
+				visual_url = event.visual_url;
+			} else {
+				if (memento == '11') {
+					visualUrl = "https://memento.epfl.ch/static/img/Others.jpg";
+				} else {
+					visualUrl = "https://memento.epfl.ch/static/img/default.jpg";
+				}
+			}
+		} else {
+			visualUrl = "https://memento.epfl.ch/static/img/";
+			visualUrl += event.academic_calendar_category.en_label;
+			visualUrl += ".jpg";
+		}
+		return visualUrl;
 	}
 
 	render() {
@@ -58,23 +78,33 @@ export default class PreviewMemento extends Component {
 				</p>
 			)
 		} else  {
-			//console.log(this.state.events);
+			// console.log(this.state.events);
 		}
 
-        const { className, attributes } = this.props
+		const { className, attributes } = this.props
+		const academicCalendarStyle = { 
+			position: 'absolute', color: '#FFF', padding: '10px 0 0 10px', 'line-height': '1.35em', 'font-size':'1em'
+		}
         
         return (
             <div className={ className }>
             <div className="list-group">
 
                 { this.state.events.map( event => {
+					
+					let visualUrl = this.getVisualUrl(event, attributes.memento);
+					let academicCalendarCategory = event.academic_calendar_category == null ? '' : event.academic_calendar_category.fr_label;
 					return (
 
                         <a key={event.id} href="#" className="list-group-item list-group-item-gray list-group-teaser link-trapeze-vertical" itemScope itemType="http://schema.org/Event">
                             <div className="list-group-teaser-container">
                                 <div className="list-group-teaser-thumbnail">
                                     <picture>
-                                        <img src={ event.visual_url} className="img-fluid" alt={ event.image_description } />
+										<span style={academicCalendarStyle}>
+            								<meta itemProp="eventStatus" content="https://schema.org/EventCancelled" />
+											{ academicCalendarCategory }
+          								</span>
+                                        <img src={ visualUrl} className="img-fluid" alt={ event.image_description } />
                                     </picture>
                                 </div>
                                 <div className="list-group-teaser-content">
