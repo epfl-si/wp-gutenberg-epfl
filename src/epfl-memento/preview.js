@@ -23,7 +23,7 @@ export default class PreviewMemento extends Component {
 		if (attributes.keyword !== '') {
 			urlEvents += `&keywords=${attributes.keyword}`;
 		}
-		console.log(urlEvents);
+
 		axios.get(urlEvents)
 			.then( response => response.data.results )
 			.then( events => {
