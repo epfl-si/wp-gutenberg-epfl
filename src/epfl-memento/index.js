@@ -40,7 +40,7 @@ registerBlockType(
 			},
 			period: {
 				type: 'string',
-				default: null,
+				default: 'upcoming',
 			},
 			keyword: {
 				type: 'string',
