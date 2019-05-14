@@ -41,10 +41,11 @@ export default class PreviewMemento extends Component {
 	}
 	
 	getVisualUrl(event, memento) {
+		
 		let visualUrl = "";
 		if (event.academic_calendar_category == null) {
 			if (event.visual_url) {
-				visual_url = event.visual_url;
+				visualUrl = event.visual_url;
 			} else {
 				if (memento == '11') {
 					visualUrl = "https://memento.epfl.ch/static/img/Others.jpg";
