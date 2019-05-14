@@ -1,6 +1,5 @@
 import * as axios from 'axios';
 import React from 'react';
-import Select from 'react-select';
 
 const { __ } = wp.i18n
 const { Component } = wp.element
