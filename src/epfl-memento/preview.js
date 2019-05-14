@@ -36,9 +36,9 @@ export default class PreviewMemento extends Component {
 		this.getEvents();
 	}
 
-	componentDidUpdate() {
+	/*componentDidUpdate() {
 		this.getEvents();	
-	}
+	}*/
 	
 	getVisualUrl(event, memento) {
 		

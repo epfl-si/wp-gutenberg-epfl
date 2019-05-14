@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: wp-gutenberg-epfl — CGB Gutenberg Block Plugin
+ * Plugin Name: wp-gutenberg-epfl
  * Plugin URI: https://github.com/ahmadawais/create-guten-block/
  * Description: wp-gutenberg-epfl — is a Gutenberg plugin created via create-guten-block.
  * Author: mrahmadawais, maedahbatool
@@ -22,25 +22,36 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
 
-function epfl_gutenberg_load_textdomain() {
-	load_plugin_textdomain( 'epfl', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
+// load .mo file for translation
+function epfl_gutenberg_load_textdomain() {	
+
+	//load_plugin_textdomain( 'epflgutenberg', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'wp-gutenberg-epfl', FALSE, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'epfl_gutenberg_load_textdomain' );
 
-
 function editor_assets() {
-  
+
+	// $path = plugins_url('dist/blocks.build.js', __FILE__);
+	$path = plugins_url('src/epfl-memento/index.js', __FILE__);
+
+	var_dump($path);
+	error_log($path);
+
 	// Déclaration du JS de l'éditeur
 	wp_register_script(
-		'epfl-editor-js',
-		plugins_url('assets/editor.build.js'),
-		[ 'wp-editor', 'wp-blocks', 'wp-element', 'wp-i18n' ]
+		'wp-gutenberg-epfl-editor',
+		$path,
+		array( 'wp-editor', 'wp-blocks', 'wp-element', 'wp-i18n' )
 	);
   
 	// Premier paramètre : le nom du script (handle)
 	// Second paramètre : le textdomain
 	if ( function_exists('wp_set_script_translations') ) {
-		wp_set_script_translations( 'epfl-editor-js', 'epfl' );
+
+		wp_set_script_translations( 'wp-gutenberg-epfl-editor', 'wp-gutenberg-epfl' );
 	}	
   }
+
 add_action( 'enqueue_block_editor_assets' , 'editor_assets' );

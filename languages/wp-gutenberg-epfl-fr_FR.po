@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: epfl\n"
-"POT-Creation-Date: 2019-05-13 09:04+0200\n"
-"PO-Revision-Date: 2019-05-13 09:05+0200\n"
+"Project-Id-Version: epflgutenberg\n"
+"POT-Creation-Date: 2019-05-14 13:03+0200\n"
+"PO-Revision-Date: 2019-05-14 13:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: frontend/epfl-memento/templates/includes/card-info.inc.php:27
 #: frontend/epfl-memento/templates/includes/card-info.inc.php:29
-#: src/epfl-memento/inspector.js:122 src/epfl-news/inspector.js:142
+#: src/epfl-memento/inspector.js:121 src/epfl-news/inspector.js:142
 msgid "Category"
 msgstr "Catégorie"
 
@@ -46,9 +46,9 @@ msgstr "Voir tous les événements"
 #: frontend/epfl-memento/templates/listing_without_the_first_highlighted_event.php:12
 #: frontend/epfl-memento/templates/slider.php:18
 msgid "No scheduled events"
-msgstr ""
+msgstr "Prochains événements"
 
-#: frontend/epfl-memento/templates/slider.php:97
+#: frontend/epfl-memento/templates/slider.php:95
 msgid "Learn more & apply"
 msgstr ""
 
@@ -84,124 +84,124 @@ msgid "EPFL Memento"
 msgstr "Mémento EPFL"
 
 #: src/epfl-memento/index.js:15
-msgid "Display the EPFL events"
-msgstr ""
+msgid "Displays the EPFL events"
+msgstr "Afficher"
 
 #: src/epfl-memento/index.js:19
 msgid "events"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:60
+#: src/epfl-memento/inspector.js:59
 msgid "Template slider with the first highlighted event"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:61
+#: src/epfl-memento/inspector.js:60
 msgid "Template slider without the first highlighted event"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:62
+#: src/epfl-memento/inspector.js:61
 msgid "Template listing with the first highlighted event"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:63
+#: src/epfl-memento/inspector.js:62
 msgid "Template listing without the first highlighted event"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:67 src/epfl-news/inspector.js:80
+#: src/epfl-memento/inspector.js:66 src/epfl-news/inspector.js:80
 msgid "French"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:68 src/epfl-news/inspector.js:81
+#: src/epfl-memento/inspector.js:67 src/epfl-news/inspector.js:81
 msgid "English"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:72
+#: src/epfl-memento/inspector.js:71
 msgid "Upcomings events"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:73
+#: src/epfl-memento/inspector.js:72
 msgid "Past events"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:77 src/epfl-news/inspector.js:85
+#: src/epfl-memento/inspector.js:76 src/epfl-news/inspector.js:85
 msgid "No filter"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:86
+#: src/epfl-memento/inspector.js:85
 msgid "Memento"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:88
+#: src/epfl-memento/inspector.js:87
 msgid "Select your memento"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:89
+#: src/epfl-memento/inspector.js:88
 msgid ""
 "The events come from the application memento.epfl.ch. If you don't have a "
 "memento, please send a request to 1234@epfl.ch"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:95 src/epfl-news/inspector.js:111
+#: src/epfl-memento/inspector.js:94 src/epfl-news/inspector.js:111
 msgid "Template"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:97 src/epfl-news/inspector.js:113
+#: src/epfl-memento/inspector.js:96 src/epfl-news/inspector.js:113
 msgid "Select a template"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:98 src/epfl-news/inspector.js:114
+#: src/epfl-memento/inspector.js:97 src/epfl-news/inspector.js:114
 msgid "Do you need more information about templates? Read this documentation"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:104 src/epfl-news/inspector.js:133
+#: src/epfl-memento/inspector.js:103 src/epfl-news/inspector.js:133
 msgid "Language"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:106 src/epfl-news/inspector.js:135
+#: src/epfl-memento/inspector.js:105 src/epfl-news/inspector.js:135
 msgid "Select a language"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:107 src/epfl-news/inspector.js:136
+#: src/epfl-memento/inspector.js:106 src/epfl-news/inspector.js:136
 msgid "The language used to render news results"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:113
+#: src/epfl-memento/inspector.js:112
 msgid "Period"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:115
+#: src/epfl-memento/inspector.js:114
 msgid "Select a period"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:116
+#: src/epfl-memento/inspector.js:115
 msgid "Do you want upcoming events or past events ?"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:124
+#: src/epfl-memento/inspector.js:123
 msgid "Filter events by category"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:125
+#: src/epfl-memento/inspector.js:124
 msgid "Do you want filter events by category? Please select a category."
 msgstr ""
 
-#: src/epfl-memento/inspector.js:131
+#: src/epfl-memento/inspector.js:130
 msgid "Keyword"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:133
+#: src/epfl-memento/inspector.js:132
 msgid "Filter events by keyword"
 msgstr ""
 
-#: src/epfl-memento/inspector.js:134
+#: src/epfl-memento/inspector.js:133
 msgid "Do you want filter events by keyword? Please type a keyword."
 msgstr ""
 
-#: src/epfl-memento/preview.js:49
+#: src/epfl-memento/preview.js:70
 msgid "Loading events"
 msgstr ""
 
-#: src/epfl-memento/preview.js:57
+#: src/epfl-memento/preview.js:78
 msgid "No events found"
 msgstr ""
 
