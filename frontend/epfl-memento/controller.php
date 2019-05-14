@@ -133,7 +133,7 @@ function epfl_memento_block( $attributes ) {
     // sanitize parameters
     $memento  = sanitize_text_field( $attributes['memento'] ) ?: '1';
     $lang     = sanitize_text_field( $attributes['lang'] ) ?: 'en';
-    $template = sanitize_text_field( $attributes['template'] ) ?: '1';
+    $template = sanitize_text_field( $attributes['template'] ) ?: 'slider_with_the_first_highlighted_event';
     $category = sanitize_text_field( $attributes['category'] );
     $keyword  = sanitize_text_field( $attributes['keyword'] );
     $period   = sanitize_text_field( $attributes['period'] );
