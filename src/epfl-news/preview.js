@@ -56,7 +56,7 @@ export default class PreviewNews extends Component {
 			return (
 				<p>
 					<Spinner />
-					{ __('Chargement des actualités') }
+					{ __('Loading EPFL news') }
 				</p>
 			)
 		}
@@ -64,7 +64,7 @@ export default class PreviewNews extends Component {
 		if ( this.state.newsList.length === 0 ) {
 			return (
 				<p>
-					{ __('Aucune actualité trouvée') }
+					{ __('No news found') }
 				</p>
 			)
 		} else  {

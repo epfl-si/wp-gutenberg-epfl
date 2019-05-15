@@ -15,7 +15,7 @@
 
         if (!(bool) $results) {
             $markup .= '<div><h3>';
-            $markup .= esc_html('No scheduled events', 'epfl');
+            $markup .= __('No scheduled events', 'wp-gutenberg-epfl');
             $markup .= '</h3></div>';
         }
 
@@ -37,13 +37,13 @@
                 $markup .= '<a href="' . esc_url($event->event_url) . '" class="card card-gray link-trapeze-horizontal">';
                 $markup .= '<div class="card-body">';
                 
-                include(dirname(__FILE__) . '/includes/card-img-top.inc');
+                include(dirname(__FILE__) . '/includes/card-img-top.inc.php');
 
                 $markup .= '<h3 class="card-title">' . esc_html($event->title) . '</h3>';
                 $markup .= '<p>' . esc_html(trim_text(strip_tags($event->description), 225)) . '</p>';
                 $markup .= '<div class="card-info">';
                 
-                include(dirname(__FILE__) . '/includes/card-info.inc');
+                include(dirname(__FILE__) . '/includes/card-info.inc.php');
 
                 $markup .= '</div>';
                 $markup .= '</div>';
@@ -57,14 +57,14 @@
                     $markup .= '<a href="' . esc_url($event->event_url) . '" class="card card-gray card-grayscale link-trapeze-horizontal bg-gray-100">';
                     $markup .= '<div class="card-body">';
 
-                    include(dirname(__FILE__) . '/includes/card-img-top.inc');
+                    include(dirname(__FILE__) . '/includes/card-img-top.inc.php');
 
-                    $markup .= '<h3 class="card-title"><span class="badge badge-dark badge-sm">Just finished</span>';
+                    $markup .= '<h3 class="card-title"><span class="badge badge-dark badge-sm">' . __('Just finished', 'wp-gutenberg-epfl') . '</span>';
                     $markup .= esc_html($event->title);
                     $markup .= '</h3>';
                     $markup .= '<div class="card-info">';
                     
-                    include(dirname(__FILE__) . '/includes/card-info.inc');
+                    include(dirname(__FILE__) . '/includes/card-info.inc.php');
                     
                     $markup .= '</div>';
                     $markup .= '</div>';
@@ -78,7 +78,7 @@
                     $markup .= '<div class="card-body">';
                     $markup .= '<a href="' . esc_url($event->event_url) . '" class="card-img-top">';
                     
-                    include(dirname(__FILE__) . '/includes/card-img-top.inc');
+                    include(dirname(__FILE__) . '/includes/card-img-top.inc.php');
                     
                     $markup .= '</a>';
                     $markup .= '<h3 class="card-title">';
@@ -86,13 +86,13 @@
                     $markup .= '</h3>';
                     $markup .= '<div class="card-info">';
                     
-                    include(dirname(__FILE__) . '/includes/card-info.inc');
+                    include(dirname(__FILE__) . '/includes/card-info.inc.php');
                     
                     $markup .= '</div>';
                     $markup .= '</div>';
                     $markup .= '<div class="card-footer mt-auto">';
                     $markup .= '<a href="' . esc_url($event->event_url) . '" class="btn btn-primary btn-sm">';
-                    $markup .= esc_html('Learn more & apply', 'epfl');
+                    $markup .= __('Learn more & apply', 'wp-gutenberg-epfl');
                     $markup .= '</a>';
                     $markup .= '</div>';
                     $markup .= '</div>';
@@ -104,12 +104,12 @@
                     $markup .= '<a href="' . esc_url($event->event_url) . '" class="card card-gray link-trapeze-horizontal">';
                     $markup .= '<div class="card-body">';
                     
-                    include(dirname(__FILE__) . '/includes/card-img-top.inc');
+                    include(dirname(__FILE__) . '/includes/card-img-top.inc.php');
 
                     $markup .= '<h3 class="card-title">' . esc_html($event->title) . '</h3>';
                     $markup .= '<div class="card-info">';
                     
-                    include(dirname(__FILE__) . '/includes/card-info.inc');
+                    include(dirname(__FILE__) . '/includes/card-info.inc.php');
                     
                     $markup .= '</div>';
                     $markup .= '</div>';
@@ -121,7 +121,7 @@
         }
         $markup .= '</div>';
         
-        include(dirname(__FILE__) . '/includes/card-slider-footer.inc');
+        include(dirname(__FILE__) . '/includes/card-slider-footer.inc.php');
         
         $markup .= '</div>';
         $markup .= '</div>';

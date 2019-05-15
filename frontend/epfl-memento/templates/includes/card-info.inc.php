@@ -12,20 +12,20 @@ if ($event->start_date == $event->end_date){
 $markup .= '<p>';
 
 if ($event->speaker !== '') {
-    $markup .= esc_html('With', 'epfl');
+    $markup .= __('With', 'wp-gutenberg-epfl');
     $markup .= ': <b>' . strip_tags($event->speaker) . '</b>';
     $markup .= '<br>';
 }
 
  if ($event->place_and_room !== '') {
-    $markup .= esc_html('Place and room', 'epfl');
+    $markup .= __('Place and room', 'wp-gutenberg-epfl');
     $markup .= ': <b>' . esc_html($event->place_and_room) . '</b>';
     $markup .= '<br>';
  }
     
 if (get_current_language() == 'fr' and $event->category->fr_label !== ''){
-    $markup .= esc_html('Category', 'epfl') . ': <b>' . esc_html($event->category->fr_label) . '</b>';
+    $markup .= __('Category', 'wp-gutenberg-epfl') . ': <b>' . esc_html($event->category->fr_label) . '</b>';
 } elseif ($event->category->en_label !== '') {
-    $markup .= esc_html('Category', 'epfl') . ': <b>' . esc_html($event->category->en_label) . '</b>';
+    $markup .= __('Category', 'wp-gutenberg-epfl') . ': <b>' . esc_html($event->category->en_label) . '</b>';
 }
 
