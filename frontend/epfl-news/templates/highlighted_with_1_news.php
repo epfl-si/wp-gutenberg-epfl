@@ -39,12 +39,12 @@
             $markup .= '<div class="fullwidth-teaser-title">';
             $markup .= '<h3>' . $news->title . '</h3>';
             $markup .= '<ul class="list-inline mt-2">';
-            $markup .= '<li class="list-inline-item">' . esc_html('News', 'epfl') . '</li>';
+            $markup .= '<li class="list-inline-item">' . __('News', 'wp-gutenberg-epfl') . '</li>';
             $markup .= '<li class="list-inline-item">' . esc_html($category) . '</li>';
             $markup .= '</ul>';
             $markup .= '</div>';
             $markup .= '<a href="' . esc_url($news->news_url) . '" aria-label="Link to read more of that page" class="btn btn-primary triangle-outer-top-right d-none d-xl-block">';
-            $markup .= esc_html('Read more', 'epfl');
+            $markup .= __('Read more', 'wp-gutenberg-epfl');
             $markup .= '<span class="sr-only">sur Tech Transfer.</span>';
             $markup .= '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg>';
             $markup .= '</a>';
@@ -53,7 +53,7 @@
             $markup .= '<p>' . esc_html($subtitle) . '</p>';
             $markup .= '</div>';
             $markup .= '<div class="fullwidth-teaser-footer">';
-            $markup .= '<a href="' . esc_url($news->news_url) . '" aria-label="Link to read more of that page" class="btn btn-primary btn-block d-xl-none">' . esc_html('Read more', 'epfl') . '</a>';
+            $markup .= '<a href="' . esc_url($news->news_url) . '" aria-label="Link to read more of that page" class="btn btn-primary btn-block d-xl-none">' . __('Read more', 'wp-gutenberg-epfl') . '</a>';
             $markup .= '</div>';
             $markup .= '</div>';
             $markup .= '</div>';

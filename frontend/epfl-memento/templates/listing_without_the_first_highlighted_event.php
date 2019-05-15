@@ -9,7 +9,7 @@
 
         if (!(bool) $results) {
             $markup .= '<div><h3>';
-            $markup .= esc_html('No scheduled events', 'epfl');
+            $markup .= __('No scheduled events', 'wp-gutenberg-epfl');
             $markup .= '</h3></div>';
         }
 
