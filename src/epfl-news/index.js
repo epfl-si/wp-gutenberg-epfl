@@ -9,7 +9,7 @@ const { registerBlockType } = wp.blocks
 const { Fragment } = wp.element
 
 registerBlockType(
-	'greglebarbar/news',
+	'epfl/news',
 	{
 		title: __( "EPFL News"),
 		description: __("Display the EPFL news"),
@@ -64,7 +64,7 @@ registerBlockType(
 		save: props => {
 			// This block is a dynamic block.
 			// So we save only something like this :
-			// <!-- wp:greglebarbar/news {"channel":"111","template":"4","displayLinkAllNews":true,
+			// <!-- wp:epfl/news {"channel":"111","template":"4","displayLinkAllNews":true,
 			// "nbNews":2,"lang":"fr","category":"1","themes":"[]"} 
 			// /-->
 			// The render of this block for the end user is doing in PHP.
