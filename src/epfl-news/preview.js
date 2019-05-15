@@ -11,33 +11,39 @@ export default class PreviewNews extends Component {
 	state = {
 		newsList: null,
 		channelName: null,
+		newsUrl: null,
 	}
 
-	getNews() {
+	getURL() {
 		const { attributes } = this.props;
 		
-		let URL_NEWS = `https://actu-test.epfl.ch/api/v1/channels/${attributes.channel}/news/`;
-		URL_NEWS += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
+		let newsUrl = `https://actu-test.epfl.ch/api/v1/channels/${attributes.channel}/news/`;
+		newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
 
 		if (attributes.category !== "0") {
-			URL_NEWS += `&category=${attributes.category}`;
+			newsUrl += `&category=${attributes.category}`;
 		}
 		
 		if (attributes.themes !== null) {
 			let themes = JSON.parse(attributes.themes);
 			themes.forEach(theme => {
-				URL_NEWS += `&themes=${theme.value}`;
+				newsUrl += `&themes=${theme.value}`;
 			});
 		}
 
-		axios.get(URL_NEWS)
+		return newsUrl;
+	}
+
+	getNews() {
+		let newsUrl = this.getURL();
+		axios.get(newsUrl)
 			.then( response => response.data.results )
 			.then( newsList => {
 				let channelName = "";
 				if (newsList.length > 0) {
 					channelName = newsList[0].channel.name.toLowerCase();
 				}
-				this.setState({ newsList: newsList, channelName: channelName }) 
+				this.setState({ newsList: newsList, channelName: channelName, newsUrl: newsUrl }) 
 			})
 			.catch( err => console.log(err))
 	}
@@ -47,7 +53,10 @@ export default class PreviewNews extends Component {
 	}
 
 	componentDidUpdate() {
-		this.getNews();	
+		console.log(`${this.state.newsUrl}` == `${this.getURL()}`);
+		if (this.getURL() !== this.state.newsUrl) {
+			this.getNews();	
+		}
 	}
 
 	render() {
