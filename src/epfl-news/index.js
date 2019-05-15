@@ -11,12 +11,12 @@ const { Fragment } = wp.element
 registerBlockType(
 	'epfl/news',
 	{
-		title: __( "EPFL News"),
-		description: __("Display the EPFL news"),
+		title: __( "EPFL News", 'wp-gutenberg-epfl'),
+		description: __("Display the EPFL news", 'wp-gutenberg-epfl'),
 		icon: 'wordpress-alt',
 		category: 'common',
 		keywords: [
-			__( 'news' ),
+			__( 'news' , 'wp-gutenberg-epfl'),
 		],
 		attributes: {
 			channel: {

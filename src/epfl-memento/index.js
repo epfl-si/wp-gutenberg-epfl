@@ -11,12 +11,12 @@ const { Fragment } = wp.element
 registerBlockType(
 	'epfl/memento',
 	{
-		title: __( "EPFL Memento"),
-		description: __("Display the EPFL events"),
+		title: __('EPFL Memento', 'wp-gutenberg-epfl'),
+		description: __('Display the EPFL events', 'wp-gutenberg-epfl'),
 		icon: 'wordpress-alt',
 		category: 'common',
 		keywords: [
-			__( 'events' ),
+			__('events', 'wp-gutenberg-epfl'),
 		],
 		attributes: {
 			memento: {

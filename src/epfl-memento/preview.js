@@ -77,7 +77,7 @@ export default class PreviewMemento extends Component {
 			return (
 				<p>
 					<Spinner />
-					{ __('Loading events') }
+					{ __('Loading events', 'wp-gutenberg-epfl') }
 				</p>
 			)
 		}
@@ -85,7 +85,7 @@ export default class PreviewMemento extends Component {
 		if ( this.state.events.length === 0 ) {
 			return (
 				<p>
-					{ __('No events found') }
+					{ __('No events found', 'wp-gutenberg-epfl') }
 				</p>
 			)
 		} else  {
