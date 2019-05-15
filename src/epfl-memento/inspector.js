@@ -86,8 +86,8 @@ export default class InspectorControlsMemento extends Component {
                         <SelectControl 
                             label={ __("Select your memento") }
                             help={ __("The events come from the application memento.epfl.ch. If you don't have a memento, please send a request to 1234@epfl.ch") }
-                            value={ attributes.memento }Select your category
-                            options={ optionsMementosList }Select your category
+                            value={ attributes.memento }
+                            options={ optionsMementosList }
                             onChange={ memento => setAttributes( { memento } ) }
                         />
                     </PanelBody>

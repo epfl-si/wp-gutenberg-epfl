@@ -84,7 +84,7 @@ export default class PreviewMemento extends Component {
 
 		const { className, attributes } = this.props
 		const academicCalendarStyle = { 
-			position: 'absolute', color: '#FFF', padding: '10px 0 0 10px', 'line-height': '1.35em', 'font-size':'1em'
+			position: 'absolute', color: '#FFF', padding: '10px 0 0 10px', lineHeight: '1.35em', fontSize:'1em'
 		}
         
         return (
