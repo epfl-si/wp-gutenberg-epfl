@@ -50,7 +50,7 @@
             $count++;
         } // end foreach
 
-        if ("true" == $all_news_link and "" != $url_channel) {
+        if ("1" == $all_news_link and "" != $url_channel) {
             $markup .= '<p class="text-center">';
             $markup .= '<a class="link-pretty" href="' . $url_channel . '">' . esc_html("All news", "epfl" ) . '</a>';
             $markup .= '</p>';
