@@ -22,7 +22,7 @@
             
             if ($is_first_event) {
                 $markup .= '<h2 class="mt-5 mb-4">';
-                $markup .= esc_html('The latest news', 'epfl');
+                $markup .= __('The latest news', 'wp-gutenberg-epfl');
                 $markup .= '</h2>';
                 $markup .= '<div class="row">';
             }

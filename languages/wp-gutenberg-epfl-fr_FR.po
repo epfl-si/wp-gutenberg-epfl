@@ -1,0 +1,298 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: epflgutenberg\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-15 14:17+0200\n"
+"PO-Revision-Date: 2019-05-15 14:18+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;esc_html\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+
+#: frontend/epfl-memento/templates/includes/card-info.inc.php:15
+msgid "With"
+msgstr "Avec"
+
+#: frontend/epfl-memento/templates/includes/card-info.inc.php:21
+msgid "Place and room"
+msgstr "Lieu et salle"
+
+#: frontend/epfl-memento/templates/includes/card-info.inc.php:27
+#: frontend/epfl-memento/templates/includes/card-info.inc.php:29
+#: src/epfl-memento/inspector.js:121 src/epfl-news/inspector.js:142
+msgid "Category"
+msgstr "Catégorie"
+
+#: frontend/epfl-memento/templates/includes/card-slider-footer.inc.php:14
+msgid "Complete agenda of events"
+msgstr "Voir l’agenda complet des événements"
+
+#: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:11
+msgid "Next events"
+msgstr "Prochains événements"
+
+#: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:14
+msgid "See all events"
+msgstr "Voir tous les événements"
+
+#: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:21
+#: frontend/epfl-memento/templates/listing_without_the_first_highlighted_event.php:12
+#: frontend/epfl-memento/templates/slider.php:18
+msgid "No scheduled events"
+msgstr "Prochains événements"
+
+#: frontend/epfl-memento/templates/slider.php:62
+msgid "Just finished"
+msgstr ""
+
+#: frontend/epfl-memento/templates/slider.php:95
+msgid "Learn more & apply"
+msgstr "Information & inscription"
+
+#: frontend/epfl-news/templates/card_with_1_news.php:26
+#: frontend/epfl-news/templates/card_with_2_news.php:25
+#: frontend/epfl-news/templates/card_with_3_news.php:26
+msgid "The latest news"
+msgstr "Les dernières actualités"
+
+#: frontend/epfl-news/templates/card_with_2_news.php:55
+#: frontend/epfl-news/templates/card_with_3_news.php:56
+#: frontend/epfl-news/templates/highlighted_with_1_news.php:66
+#: frontend/epfl-news/templates/highlighted_with_3_news.php:94
+#: frontend/epfl-news/templates/listing.php:45
+msgid "All news"
+msgstr "Toutes les actualités"
+
+#: frontend/epfl-news/templates/highlighted_with_1_news.php:42
+#: frontend/epfl-news/templates/highlighted_with_3_news.php:53
+#: frontend/epfl-news/templates/highlighted_with_3_news.php:80
+msgid "News"
+msgstr "Actualités"
+
+#: frontend/epfl-news/templates/highlighted_with_1_news.php:47
+#: frontend/epfl-news/templates/highlighted_with_1_news.php:56
+#: frontend/epfl-news/templates/highlighted_with_3_news.php:58
+#: frontend/epfl-news/templates/highlighted_with_3_news.php:67
+msgid "Read more"
+msgstr "En savoir plus"
+
+#: src/epfl-memento/index.js:14
+msgid "EPFL Memento"
+msgstr "Mémento EPFL"
+
+#: src/epfl-memento/index.js:15
+msgid "Display the EPFL events"
+msgstr "Afficher les événements de l'EPFL"
+
+#: src/epfl-memento/index.js:19
+msgid "events"
+msgstr "événements"
+
+#: src/epfl-memento/inspector.js:59
+msgid "Template slider with the first highlighted event"
+msgstr "Template slider avec le 1er événement mis en valeur"
+
+#: src/epfl-memento/inspector.js:60
+msgid "Template slider without the first highlighted event"
+msgstr "Template slider sans mettre le 1er événement en valeur"
+
+#: src/epfl-memento/inspector.js:61
+msgid "Template listing with the first highlighted event"
+msgstr "Template listing avec le 1er événement mis en valeur"
+
+#: src/epfl-memento/inspector.js:62
+msgid "Template listing without the first highlighted event"
+msgstr "Template listing sans mettre le 1er événement en valeur"
+
+#: src/epfl-memento/inspector.js:66 src/epfl-news/inspector.js:80
+msgid "French"
+msgstr "Français"
+
+#: src/epfl-memento/inspector.js:67 src/epfl-news/inspector.js:81
+msgid "English"
+msgstr "Anglais"
+
+#: src/epfl-memento/inspector.js:71
+msgid "Upcomings events"
+msgstr "Prochains événements"
+
+#: src/epfl-memento/inspector.js:72
+msgid "Past events"
+msgstr "Événements passés"
+
+#: src/epfl-memento/inspector.js:76 src/epfl-news/inspector.js:85
+msgid "No filter"
+msgstr "Pas de filtre"
+
+#: src/epfl-memento/inspector.js:85
+msgid "Memento"
+msgstr "Mémento"
+
+#: src/epfl-memento/inspector.js:87
+msgid "Select your memento"
+msgstr "Sélectionner votre mémento"
+
+#: src/epfl-memento/inspector.js:88
+msgid ""
+"The events come from the application memento.epfl.ch. If you don't have a "
+"memento, please send a request to 1234@epfl.ch"
+msgstr ""
+"Veuillez sélectionner votre memento.%sLes événements proviennent de "
+"l'application %smemento.epfl.ch%s.%sSi vous n'avez pas de mémento, merci "
+"d'envoyer une demande à %s"
+
+#: src/epfl-memento/inspector.js:94 src/epfl-news/inspector.js:111
+msgid "Template"
+msgstr ""
+
+#: src/epfl-memento/inspector.js:96 src/epfl-news/inspector.js:113
+msgid "Select a template"
+msgstr "Sélectionner un template"
+
+#: src/epfl-memento/inspector.js:97 src/epfl-news/inspector.js:114
+msgid "Do you need more information about templates? Read this documentation"
+msgstr ""
+"Avez vous besoin de plus d'information à propos des templates? %sMerci de "
+"lire la documentation%s\""
+
+#: src/epfl-memento/inspector.js:103 src/epfl-news/inspector.js:133
+msgid "Language"
+msgstr "Langue"
+
+#: src/epfl-memento/inspector.js:105 src/epfl-news/inspector.js:135
+msgid "Select a language"
+msgstr "Sélectionner une langue"
+
+#: src/epfl-memento/inspector.js:106 src/epfl-news/inspector.js:136
+msgid "The language used to render news results"
+msgstr "La langue utilisée pour afficher les événements"
+
+#: src/epfl-memento/inspector.js:112
+msgid "Period"
+msgstr "Période"
+
+#: src/epfl-memento/inspector.js:114
+msgid "Select a period"
+msgstr "Sélectionner une période"
+
+#: src/epfl-memento/inspector.js:115
+msgid "Do you want upcoming events or past events ?"
+msgstr "Voulez vous les événements à venir ou les événements passés ?"
+
+#: src/epfl-memento/inspector.js:123
+msgid "Filter events by category"
+msgstr "Filtrer les événements par catégorie"
+
+#: src/epfl-memento/inspector.js:124
+msgid "Do you want filter events by category? Please select a category."
+msgstr ""
+"Voulez vous filtrer les événements par catégorie ? Merci de sélectionner une "
+"catégorie."
+
+#: src/epfl-memento/inspector.js:130
+msgid "Keyword"
+msgstr "Mot de passe"
+
+#: src/epfl-memento/inspector.js:132
+msgid "Filter events by keyword"
+msgstr "Filtrer les événements par mot clé"
+
+#: src/epfl-memento/inspector.js:133
+msgid "Do you want filter events by keyword? Please type a keyword."
+msgstr ""
+"Voulez vous filtrer les événements par mot clé ? Merci de renseigner un mot "
+"clé."
+
+#: src/epfl-memento/preview.js:70
+msgid "Loading events"
+msgstr "Chargement des événements"
+
+#: src/epfl-memento/preview.js:78
+msgid "No events found"
+msgstr "Pas d'événements trouvés"
+
+#: src/epfl-news/index.js:14
+msgid "EPFL News"
+msgstr "Actualités de l'EPFL"
+
+#: src/epfl-news/index.js:15
+msgid "Display the EPFL news"
+msgstr "Afficher les actualités de l'EPFL"
+
+#: src/epfl-news/index.js:19
+msgid "news"
+msgstr "actualités"
+
+#: src/epfl-news/inspector.js:71
+msgid "Template Listing"
+msgstr "Template listing"
+
+#: src/epfl-news/inspector.js:72
+msgid "Template highlighted with 3 news"
+msgstr "Template highlighted avec 3 actualités"
+
+#: src/epfl-news/inspector.js:73
+msgid "Template highlighted with 1 news"
+msgstr "Template highlighted avec 1 actualité"
+
+#: src/epfl-news/inspector.js:74
+msgid "Template card with 1 news"
+msgstr "Template card avec 1 actualités"
+
+#: src/epfl-news/inspector.js:75
+msgid "Template card with 2 news"
+msgstr "Template card avec 2 actualités"
+
+#: src/epfl-news/inspector.js:76
+msgid "Template card with 3 news"
+msgstr "Template card avec 3 actualités"
+
+#: src/epfl-news/inspector.js:102
+msgid "Channel"
+msgstr "Canal"
+
+#: src/epfl-news/inspector.js:104
+msgid "Select your news channel"
+msgstr "Sélectionner votre canal d'actualités"
+
+#: src/epfl-news/inspector.js:105
+msgid ""
+"The news come from the application actu.epfl.ch. If you don't have a news "
+"channel, please send a request to 1234@epfl.ch"
+msgstr ""
+"Les actualités proviennent de l'application %sactu.epfl.ch%s.%sSi vous "
+"n'avez pas de canal, merci d'envoyer une demande à%s"
+
+#: src/epfl-news/inspector.js:120
+msgid "Display the link \"all news\""
+msgstr "Afficher le lien \"Toutes les actualités\""
+
+#: src/epfl-news/inspector.js:144
+msgid "Filter news by category"
+msgstr "Filtrer les actualités par une catégorie"
+
+#: src/epfl-news/inspector.js:145
+msgid "Do you want filter news by category ? Please select a category"
+msgstr ""
+"Voulez vous filtrer les actualités par catégorie? Veuillez sélectionner une "
+"catégorie."
+
+#: src/epfl-news/inspector.js:151
+msgid "Themes"
+msgstr "Thèmes"
+
+#: src/epfl-news/preview.js:59
+msgid "Loading EPFL news"
+msgstr "Chargement des actualités de l'EPFL"
+
+#: src/epfl-news/preview.js:67
+msgid "No news found"
+msgstr "Aucune actualités trouvées"

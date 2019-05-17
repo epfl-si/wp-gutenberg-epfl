@@ -131,12 +131,12 @@ function epfl_memento_check_required_parameters($memento, $lang)
 function epfl_memento_block( $attributes ) {
 
     // sanitize parameters
-    $memento  = sanitize_text_field( $attributes['memento'] ) ?: '1';
-    $lang     = sanitize_text_field( $attributes['lang'] ) ?: 'en';
-    $template = sanitize_text_field( $attributes['template'] ) ?: 'slider_with_the_first_highlighted_event';
-    $category = sanitize_text_field( $attributes['category'] );
-    $keyword  = sanitize_text_field( $attributes['keyword'] );
-    $period   = sanitize_text_field( $attributes['period'] );
+    $memento  = isset($attributes['memento']) ? sanitize_text_field($attributes['memento']) : '1';
+    $lang     = isset($attributes['lang']) ? sanitize_text_field($attributes['lang']) : 'en';
+    $template = isset($attributes['template']) ? sanitize_text_field($attributes['template']) : 'slider_with_the_first_highlighted_event';
+    $category = isset($attributes['category']) ? sanitize_text_field($attributes['category']) : '';
+    $keyword  = isset($attributes['keyword']) ? sanitize_text_field($attributes['keyword']) : '';
+    $period   = isset($attributes['period']) ? sanitize_text_field($attributes['period']) : '';
 
     /*
     var_dump("Memento: " . $memento);

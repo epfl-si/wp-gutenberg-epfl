@@ -1,15 +1,9 @@
 <?php
 /**
- * Plugin Name: wp-gutenberg-epfl — CGB Gutenberg Block Plugin
- * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: wp-gutenberg-epfl — is a Gutenberg plugin created via create-guten-block.
- * Author: mrahmadawais, maedahbatool
- * Author URI: https://AhmadAwais.com/
+ * Plugin Name: wp-gutenberg-epfl
+ * Description: EPFL Gutenberg Blocks
+ * Author: greglebarbar
  * Version: 1.0.0
- * License: GPL2+
- * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
- *
- * @package CGB
  */
 
 // Exit if accessed directly.
@@ -21,3 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Block Initializer.
  */
 require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
+
+// load .mo file for translation
+function epfl_gutenberg_load_textdomain() {	
+
+	//load_plugin_textdomain( 'epflgutenberg', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'wp-gutenberg-epfl', FALSE, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'epfl_gutenberg_load_textdomain' );

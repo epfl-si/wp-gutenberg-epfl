@@ -50,12 +50,12 @@
                 $markup .= '<div class="fullwidth-teaser-title">';
                 $markup .= '<h3>' . esc_html($news->title) . '</h3>';
                 $markup .= '<ul class="list-inline mt-2">';
-                $markup .= '<li class="list-inline-item">' . esc_html('News', 'epfl') . '</li>';
+                $markup .= '<li class="list-inline-item">' . __('News', 'wp-gutenberg-epfl') . '</li>';
                 $markup .= '<li class="list-inline-item">' . esc_html($category) . '</li>';
                 $markup .= '</ul>';
                 $markup .= '</div>';
                 $markup .= '<a href="' . esc_url($news->news_url) . '" aria-label="Link to read more of that page" class="btn btn-primary triangle-outer-top-right d-none d-xl-block">';
-                $markup .= esc_html('Read more', 'epfl');
+                $markup .= __('Read more', 'wp-gutenberg-epfl');
                 $markup .= '<span class="sr-only">sur Tech Transfer.</span>';
                 $markup .= '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg>';
                 $markup .= '</a>';
@@ -64,7 +64,7 @@
                 $markup .= '<p>' . esc_html($subtitle) . '</p>';
                 $markup .= '</div>';
                 $markup .= '<div class="fullwidth-teaser-footer">';
-                $markup .= '<a href="' . esc_url($news->news_url) . '" aria-label="Link to read more of that page" class="btn btn-primary btn-block d-xl-none">' . esc_html('Read more', 'epfl') . '</a>';
+                $markup .= '<a href="' . esc_url($news->news_url) . '" aria-label="Link to read more of that page" class="btn btn-primary btn-block d-xl-none">' . __('Read more', 'wp-gutenberg-epfl') . '</a>';
                 $markup .= '</div>';
                 $markup .= '</div>';
                 $markup .= '</div>';
@@ -77,7 +77,7 @@
                 $markup .= '<span class="card-info-date">';
                 $markup .= '<time datetime="DATETIME HERE">' . esc_html($publish_date) . '</time>';
                 $markup .= '</span>';
-                $markup .= '<span>' . esc_html('News', 'epfl') . '</span>';
+                $markup .= '<span>' . __('News', 'wp-gutenberg-epfl') . '</span>';
                 $markup .= '<span>' . esc_html($category) . '</span>';
                 $markup .= '</div>';
                 $markup .= '<p>' . esc_html($subtitle) . '</p>';
@@ -91,7 +91,7 @@
                 if ("1" == $all_news_link) {
                     $markup .= '<p class="text-center">';
                     $markup .= '<a class="link-pretty" href="' . $url_channel . '">';
-                    $markup .= esc_html('All news', 'epfl' );
+                    $markup .= __('All news', 'wp-gutenberg-epfl' );
                     $markup .= '</a>';
                     $markup .= '</p>';
                 }

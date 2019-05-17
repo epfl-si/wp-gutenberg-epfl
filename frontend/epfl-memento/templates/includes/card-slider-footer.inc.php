@@ -11,5 +11,5 @@ $markup .= '        </button>';
 $markup .= '    </div>';
 $markup .= '</div>';
 $markup .= '<a href="' . esc_url("https://memento.epfl.ch/" . $memento_name . "/?period=30") . '">';
-$markup .= esc_html('Complete agenda of events', 'epfl');
+$markup .= __('Complete agenda of events', 'wp-gutenberg-epfl');
 $markup .= '</a>';

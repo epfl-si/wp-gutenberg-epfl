@@ -8,26 +8,33 @@ export default class PreviewMemento extends Component {
 
 	state = {
 		events: null,
+		eventsUrl: null
 	}
 
-	getEvents() {
+	getEventsUrl() {
+
 		const { attributes } = this.props;
 		
-		let urlEvents = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
-		urlEvents += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=5`;
+		let eventsUrl = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
+		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=5`;
 
 		if (attributes.category !== "0") {
-			urlEvents += `&category=${attributes.category}`;
+			eventsUrl += `&category=${attributes.category}`;
 		}
 
 		if (attributes.keyword !== '') {
-			urlEvents += `&keywords=${attributes.keyword}`;
+			eventsUrl += `&keywords=${attributes.keyword}`;
 		}
 
-		axios.get(urlEvents)
+		return eventsUrl;
+	}
+
+	getEvents() {
+		let eventsUrl = this.getEventsUrl();
+		axios.get(eventsUrl)
 			.then( response => response.data.results )
 			.then( events => {
-				this.setState({ events: events }) 
+				this.setState({ events: events, eventsUrl: eventsUrl }) 
 			})
 			.catch( err => console.log(err))
 	}
@@ -37,7 +44,10 @@ export default class PreviewMemento extends Component {
 	}
 
 	componentDidUpdate() {
-		this.getEvents();	
+		console.log(`${this.state.eventsUrl}` == `${this.getEventsUrl()}`);
+		if (this.getEventsUrl() !== this.state.eventsUrl) {
+			this.getEvents();
+		}
 	}
 	
 	getVisualUrl(event, memento) {
@@ -67,7 +77,7 @@ export default class PreviewMemento extends Component {
 			return (
 				<p>
 					<Spinner />
-					{ __('Loading events') }
+					{ __('Loading events', 'wp-gutenberg-epfl') }
 				</p>
 			)
 		}
@@ -75,7 +85,7 @@ export default class PreviewMemento extends Component {
 		if ( this.state.events.length === 0 ) {
 			return (
 				<p>
-					{ __('No events found') }
+					{ __('No events found', 'wp-gutenberg-epfl') }
 				</p>
 			)
 		} else  {
@@ -84,7 +94,7 @@ export default class PreviewMemento extends Component {
 
 		const { className, attributes } = this.props
 		const academicCalendarStyle = { 
-			position: 'absolute', color: '#FFF', padding: '10px 0 0 10px', 'line-height': '1.35em', 'font-size':'1em'
+			position: 'absolute', color: '#FFF', padding: '10px 0 0 10px', lineHeight: '1.35em', fontSize:'1em'
 		}
         
         return (
