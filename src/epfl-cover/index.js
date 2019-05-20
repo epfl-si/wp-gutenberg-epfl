@@ -43,9 +43,12 @@ registerBlockType( 'epfl/cover', {
 			default: '',
 		}
 	},
+	supports : {
+		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
+	},
 	edit: ( props ) => {
 		
-		const { setAttributes, attributes } = props;
+		const { attributes, className, setAttributes } = props
 
 		function onImageSelect(imageObject) {
 			setAttributes({
@@ -58,33 +61,43 @@ registerBlockType( 'epfl/cover', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<PanelBody title={ __('Image', 'wp-gutenberg-epfl') }>
-					<strong>Select a background image:</strong>
+				<PanelBody title={ __('Select Image', 'wp-gutenberg-epfl') }>
 					<MediaUpload
 						onSelect={onImageSelect}
 						type="image"
 						value={attributes.image}
 						render={({ open }) => (
 							<button onClick={open}>
-								Upload Image!
+								{ __('Upload Image!', 'wp-gutenberg-epfl') }
 							</button>
 						)}
+						help={ __('Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }
 					/>
 				</PanelBody>
 				<PanelBody title={ __('Description', 'wp-gutenberg-epfl') }>
 					<TextareaControl
-						label="Description"
-						help="Enter some text"
+						help={ __('Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }
 						value={ attributes.description }
 						onChange={ description => setAttributes( { description } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div>
+			<div className={ className }>
 				<figure className="cover">
-					<picture>
-						<img src={ url } className="img-fluid" alt="Cover description" />
-					</picture>
+  					<picture>
+    					<img src={ url } className="img-fluid" alt="Cover description" />
+  					</picture>
+  					<figcaption>
+    					<button aria-hidden="true" type="button" className="btn-circle" data-toggle="popover" data-content={ attributes.description }>
+							<svg className="icon" aria-hidden="true">
+								<use href="#icon-info" />
+							</svg>
+							<svg className="icon icon-rotate-90" aria-hidden="true">
+								<use href="#icon-chevron-right" />
+							</svg>
+    					</button>
+						<p className="sr-only">{ attributes.description }</p>
+					</figcaption>
 				</figure>
 			</div>
 		</Fragment>
