@@ -82,3 +82,9 @@
 .wp-block-epfl-memento a.link-pretty {
   font-family: "SuisseIntl", Arial, sans-serif !important;
   color: #212121; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/

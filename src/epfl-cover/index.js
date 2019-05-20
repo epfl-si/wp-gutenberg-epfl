@@ -1,83 +1,118 @@
-const { __, setLocaleData } = wp.i18n;
+import './style.scss'
+
+import coverIcon from './cover-icon'
+
+const { __ } = wp.i18n;
+
 const {
 	registerBlockType,
 } = wp.blocks;
+
 const {
-	RichText,
 	MediaUpload,
+	InspectorControls,
 } = wp.editor;
-const { Button } = wp.components;
+
+const {
+    PanelBody,
+    TextareaControl,
+} = wp.components;
+
+const { Fragment } = wp.element;
+
+function getImageURL(attributes) {
+	let url = "https://via.placeholder.com/1920x1080.jpg";
+	if (attributes.image) {
+		url = attributes.image;
+	}
+	return url;
+}
 
 registerBlockType( 'epfl/cover', {
-	title: __( 'Example: Recipe Card (esnext)', 'gutenberg-examples' ),
-	icon: 'index-card',
-	category: 'layout',
+	title: __( 'EPFL Cover', 'wp-gutenberg-epfl'),
+	description: __('Display a EPFL cover element', 'wp-gutenberg-epfl'),
+	icon: coverIcon,
+	category: 'common',
 	attributes: {
-		
-		mediaID: {
-			type: 'number',
-		},
-		mediaURL: {
+		image: {
 			type: 'string',
-			source: 'attribute',
-			selector: 'img',
-			attribute: 'src',
-		},
-		description: {
+			default: null,
+		}, 
+		description : {
 			type: 'string',
+			default: '',
 		}
-		
 	},
 	edit: ( props ) => {
-		const {
-			className,
-			attributes: {
-				mediaID,
-				mediaURL,
-			},
-			setAttributes,
-		} = props;
 		
+		const { setAttributes, attributes } = props;
 
-		const onSelectImage = ( media ) => {
-			setAttributes( {
-				mediaURL: media.url,
-				mediaID: media.id,
-			} );
-		};
-		
+		function onImageSelect(imageObject) {
+			setAttributes({
+				image: imageObject.sizes.full.url
+			})
+		}
+
+		let url = getImageURL(attributes);
+
 		return (
-			<div className={ className }>	
-				<div className="recipe-image">
+		<Fragment>
+			<InspectorControls>
+				<PanelBody title={ __('Image', 'wp-gutenberg-epfl') }>
+					<strong>Select a background image:</strong>
 					<MediaUpload
-						onSelect={ onSelectImage }
-						allowedTypes="image"
-						value={ mediaID }
-						render={ ( { open } ) => (
-							<Button className={ mediaID ? 'image-button' : 'button button-large' } onClick={ open }>
-								{ ! mediaID ? __( 'Upload Image', 'gutenberg-examples' ) : <img src={ mediaURL } alt={ __( 'Upload Recipe Image', 'gutenberg-examples' ) } /> }
-							</Button>
-						) }
+						onSelect={onImageSelect}
+						type="image"
+						value={attributes.image}
+						render={({ open }) => (
+							<button onClick={open}>
+								Upload Image!
+							</button>
+						)}
 					/>
-				</div>
+				</PanelBody>
+				<PanelBody title={ __('Description', 'wp-gutenberg-epfl') }>
+					<TextareaControl
+						label="Description"
+						help="Enter some text"
+						value={ attributes.description }
+						onChange={ description => setAttributes( { description } ) }
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<div>
+				<figure className="cover">
+					<picture>
+						<img src={ url } className="img-fluid" alt="Cover description" />
+					</picture>
+				</figure>
 			</div>
-		);
+		</Fragment>
+		)
+		
 	},
 	save: ( props ) => {
-		const {
-			className,
-			attributes: {
-				mediaURL,
-			},
-		} = props;
+		const { attributes } = props;
+		let url = getImageURL(attributes);
 		return (
-			<div className={ className }>
-				{
-					mediaURL && (
-						<img className="recipe-image" src={ mediaURL } alt={ __( 'Recipe Image', 'gutenberg-examples' ) } />
-					)
-				}
+			<div class="container my-3">
+				<figure className="cover">
+  					<picture>
+    					<img src={ url } className="img-fluid" alt="Cover description" />
+  					</picture>
+  					<figcaption>
+    					<button aria-hidden="true" type="button" className="btn-circle" data-toggle="popover" data-content={ attributes.description }>
+							<svg className="icon" aria-hidden="true">
+								<use href="#icon-info" />
+							</svg>
+							<svg className="icon icon-rotate-90" aria-hidden="true">
+								<use href="#icon-chevron-right" />
+							</svg>
+    					</button>
+						<p className="sr-only">{ attributes.description }</p>
+					</figcaption>
+				</figure>
 			</div>
-		);
+		)
 	},
 } );
