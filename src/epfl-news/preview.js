@@ -65,7 +65,7 @@ export default class PreviewNews extends Component {
 			return (
 				<p>
 					<Spinner />
-					{ __('Loading EPFL news') }
+					{ __('Loading EPFL news', 'wp-gutenberg-epfl') }
 				</p>
 			)
 		}
@@ -73,7 +73,7 @@ export default class PreviewNews extends Component {
 		if ( this.state.newsList.length === 0 ) {
 			return (
 				<p>
-					{ __('No news found') }
+					{ __('No news found', 'wp-gutenberg-epfl') }
 				</p>
 			)
 		} else  {

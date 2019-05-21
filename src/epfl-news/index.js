@@ -1,6 +1,6 @@
 import './style.scss'
 import './editor.scss'
-
+import newsIcon from './news-icon'
 import PreviewNews from './preview'
 import InspectorControlsNews from './inspector'
 
@@ -13,7 +13,7 @@ registerBlockType(
 	{
 		title: __( "EPFL News", 'wp-gutenberg-epfl'),
 		description: __("Display the EPFL news", 'wp-gutenberg-epfl'),
-		icon: 'wordpress-alt',
+		icon: newsIcon,
 		category: 'common',
 		keywords: [
 			__( 'news' , 'wp-gutenberg-epfl'),

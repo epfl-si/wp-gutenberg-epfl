@@ -1,6 +1,6 @@
 import './style.scss'
 import './editor.scss'
-
+import mementoIcon from './memento-icon'
 import PreviewMemento from './preview'
 import InspectorControlsMemento from './inspector'
 
@@ -13,7 +13,7 @@ registerBlockType(
 	{
 		title: __('EPFL Memento', 'wp-gutenberg-epfl'),
 		description: __('Display the EPFL events', 'wp-gutenberg-epfl'),
-		icon: 'wordpress-alt',
+		icon: mementoIcon,
 		category: 'common',
 		keywords: [
 			__('events', 'wp-gutenberg-epfl'),

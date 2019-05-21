@@ -1,0 +1,85 @@
+.wp-block-epfl-cover {
+
+    .cover {
+        position: relative;
+    }
+
+    figure {
+        margin: 0 0 1rem;
+    }
+
+    .cover figcaption {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        z-index: 1;
+    }
+    
+    figcaption {
+        font-size: .778rem;
+        color: #707070;
+    }
+    figure picture {
+        display: block;
+        margin-bottom: .5rem;
+    }
+    
+    img {
+        vertical-align: middle;
+        border-style: none;
+    }
+
+    .img-fluid {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .btn-circle {
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        background-color: #fff;
+        border: none;
+        box-shadow: 0 0 0 2px rgba(33,33,33,.4);
+        line-height: 1;
+        color: rgba(33,33,33,.4);
+        cursor: pointer;
+    }
+
+    svg:not(:root) {
+        overflow: hidden;
+    }
+
+    .icon, .icon svg {
+        width: 1em;
+        height: 1em;
+    }
+
+    .icon {
+        display: inline-flex;
+        align-self: center;
+        position: relative;
+        top: .11em;
+        color: inherit;
+        fill: currentColor;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        clip-path: inset(50%);
+        border: 0;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+}
