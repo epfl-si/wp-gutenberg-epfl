@@ -28,7 +28,7 @@ registerBlockType(
 			},
 			displayLinkAllNews: {
 				type: 'boolean',
-				default: 'false',
+				default: false,
 			},
 			nbNews: {
 				type: 'integer',

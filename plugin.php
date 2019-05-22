@@ -23,3 +23,19 @@ function epfl_gutenberg_load_textdomain() {
 	load_plugin_textdomain( 'wp-gutenberg-epfl', FALSE, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'epfl_gutenberg_load_textdomain' );
+
+
+function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
+  	return array( 
+          'epfl/news', 
+          'epfl/memento', 
+          'epfl/cover',
+          'epfl/cover-dynamic',
+          'epfl/toggle',
+          'core/paragraph', 
+    );
+    
+    // return True; // if you want all natifs blocks.
+}
+
+add_filter( 'allowed_block_types', 'my_plugin_allowed_block_types', 10, 2 );

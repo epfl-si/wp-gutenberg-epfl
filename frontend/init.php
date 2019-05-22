@@ -10,6 +10,8 @@
 
 require_once 'epfl-news/controller.php';
 require_once 'epfl-memento/controller.php';
+require_once 'epfl-cover/view.php';
+require_once 'epfl-toggle/view.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -49,7 +51,8 @@ function wp_gutenberg_epfl_editor_assets() {
 		'wp-gutenberg-epfl-block-editor',
 		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ),
 		array( 'wp-edit-blocks' )
-	);
+    );
+  
 }
 add_action( 'enqueue_block_editor_assets', 'wp_gutenberg_epfl_editor_assets' );
 
@@ -68,6 +71,14 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/memento', array(
 		'render_callback' => 'epfl_memento_block',
 	));
+
+	register_block_type( 'epfl/cover', array(
+		'render_callback' => 'epfl_cover_block',
+    ));
+    
+    register_block_type( 'epfl/toggle', array(
+		'render_callback' => 'epfl_toggle_block',
+    ));
 	
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

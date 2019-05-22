@@ -12,3 +12,4 @@
 import './epfl-news'
 import './epfl-memento'
 import './epfl-cover'
+import './epfl-toggle'
