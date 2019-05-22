@@ -32,6 +32,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
           'epfl/cover',
           'epfl/cover-dynamic',
           'epfl/toggle',
+          'epfl/quote',
           'core/paragraph', 
     );
     

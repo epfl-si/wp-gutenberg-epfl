@@ -79,6 +79,10 @@ function wp_gutenberg_epfl_register_blocks() {
     register_block_type( 'epfl/toggle', array(
 		'render_callback' => 'epfl_toggle_block',
     ));
+
+    register_block_type( 'epfl/quote', array(
+		'render_callback' => 'epfl_quote_block',
+    ));
 	
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

@@ -1,0 +1,22 @@
+.wp-block-epfl-quote {
+/*
+    .rounded-circle {
+        border-radius: 50%!important;
+    }
+  */ 
+
+    background-color: lightgrey;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 25px;
+
+    h2 {
+        text-align: center;
+    }
+
+    .helper {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+}
