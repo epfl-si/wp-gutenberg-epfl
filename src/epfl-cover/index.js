@@ -90,7 +90,7 @@ registerBlockType( 'epfl/cover', {
 			<div className={ className }>
 				<figure className="cover">
   					<picture>
-    					<img src={ url } className="img-fluid" alt="Cover description" />
+    					<img src={ url } className="img-fluid" alt={ attributes.description} />
   					</picture>
   					<figcaption>
     					<button aria-hidden="true" type="button" className="btn-circle" data-toggle="popover" data-content={ attributes.description }>

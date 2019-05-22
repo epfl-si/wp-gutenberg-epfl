@@ -3,12 +3,10 @@
 function epfl_cover_block( $attributes ) {
 
     $image_id    = sanitize_text_field( $attributes['imageId'] ) ?: '';
-    $image       = sanitize_text_field( $attributes['image'] ) ?: '';
     $description = sanitize_text_field( $attributes['description'] ) ?: '';
 
     /*
     var_dump($image_id);
-    var_dump($image);
     var_dump($description);
     */
 
