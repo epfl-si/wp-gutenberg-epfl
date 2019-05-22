@@ -68,8 +68,10 @@ registerBlockType( 'epfl/toggle', {
 				</PanelBody>
 			</InspectorControls>
 			<div className={ className }>
-                <h2>EPFL TOGGLE</h2>
-                <div class="helper">Merci de renseigner les champs présents dans la colonne de droite</div>
+                <div id="preview-box">
+                    <h2>EPFL TOGGLE</h2>
+                    <div class="helper">Merci de renseigner les champs présents dans la colonne de droite</div>
+                </div>
 			</div>
 		</Fragment>
 		)

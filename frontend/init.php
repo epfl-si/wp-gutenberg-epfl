@@ -12,6 +12,7 @@ require_once 'epfl-news/controller.php';
 require_once 'epfl-memento/controller.php';
 require_once 'epfl-cover/view.php';
 require_once 'epfl-toggle/view.php';
+require_once 'epfl-quote/view.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

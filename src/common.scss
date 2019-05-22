@@ -11,3 +11,20 @@ $white: #f4f4f4;
 $gray: #dedede;
 $green: #bada55;
 $red: orangered;
+
+#preview-box {
+    background-color: lightgrey;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 25px;
+}
+
+#preview-box h2 {
+    text-align: center;
+}
+
+#preview-box .helper {
+    text-align: center;
+    margin-bottom: 25px;
+}

@@ -4,6 +4,20 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+#preview-box {
+  background-color: lightgrey;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 25px; }
+
+#preview-box h2 {
+  text-align: center; }
+
+#preview-box .helper {
+  text-align: center;
+  margin-bottom: 25px; }
+
 .wp-block-epfl-news a:link {
   text-decoration: none !important; }
 
@@ -46,6 +60,20 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+#preview-box {
+  background-color: lightgrey;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 25px; }
+
+#preview-box h2 {
+  text-align: center; }
+
+#preview-box .helper {
+  text-align: center;
+  margin-bottom: 25px; }
+
 .wp-block-epfl-memento a:link {
   text-decoration: none !important; }
 
@@ -88,6 +116,20 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+#preview-box {
+  background-color: lightgrey;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 25px; }
+
+#preview-box h2 {
+  text-align: center; }
+
+#preview-box .helper {
+  text-align: center;
+  margin-bottom: 25px; }
+
 .wp-block-epfl-cover .cover {
   position: relative; }
 
@@ -168,36 +210,42 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
-.wp-block-epfl-toggle {
+#preview-box {
   background-color: lightgrey;
   border-color: black;
   border-style: solid;
   border-width: 1px;
   margin-bottom: 25px; }
-  .wp-block-epfl-toggle h2 {
-    text-align: center; }
-  .wp-block-epfl-toggle .helper {
-    text-align: center;
-    margin-bottom: 25px; }
+
+#preview-box h2 {
+  text-align: center; }
+
+#preview-box .helper {
+  text-align: center;
+  margin-bottom: 25px; }
 /**
  * #.# Common SCSS
  *
  * Can include things like variables and mixins
  * that are used across the project.
 */
-.wp-block-epfl-quote {
-  /*
-    .rounded-circle {
-        border-radius: 50%!important;
-    }
-  */
+#preview-box {
   background-color: lightgrey;
   border-color: black;
   border-style: solid;
   border-width: 1px;
   margin-bottom: 25px; }
-  .wp-block-epfl-quote h2 {
-    text-align: center; }
-  .wp-block-epfl-quote .helper {
-    text-align: center;
-    margin-bottom: 25px; }
+
+#preview-box h2 {
+  text-align: center; }
+
+#preview-box .helper {
+  text-align: center;
+  margin-bottom: 25px; }
+
+.wp-block-epfl-quote {
+  /*
+    .rounded-circle {
+        border-radius: 50%!important;
+    }
+  */ }
