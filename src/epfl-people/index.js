@@ -1,0 +1,56 @@
+import './style.scss'
+import './editor.scss'
+import newsIcon from './people-icon'
+import PreviewPeople from './preview'
+import InspectorControlsPeople from './inspector'
+
+const { __ } = wp.i18n
+const { registerBlockType } = wp.blocks
+const { Fragment } = wp.element
+
+registerBlockType(
+	'epfl/people',
+	{
+		title: __( "EPFL People", 'wp-gutenberg-epfl'),
+		description: __("Display the EPFL people", 'wp-gutenberg-epfl'),
+		icon: newsIcon,
+		category: 'common',
+		keywords: [
+			__( 'people' , 'wp-gutenberg-epfl'),
+		],
+		attributes: {
+			units: {
+				type: 'string',
+			},
+			scipers: {
+				type: 'string',
+			},
+			doctoralProgram: {
+				type: 'string',
+			},
+			fonction: {
+				type: 'string',
+			},
+			columns: {
+				type: 'string',
+			},
+		},
+		supports : {
+			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
+		},
+
+		edit: props => {
+			const { attributes, className, setAttributes } = props
+			return (
+				<Fragment>
+					<InspectorControlsPeople { ...{ attributes, setAttributes } } />
+					<PreviewPeople { ...{ attributes, className } } />
+				</Fragment>
+			)
+		},
+
+		save: props => {
+            return null
+        },
+	}
+)

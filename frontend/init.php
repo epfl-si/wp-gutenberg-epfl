@@ -13,6 +13,7 @@ require_once 'epfl-memento/controller.php';
 require_once 'epfl-cover/view.php';
 require_once 'epfl-toggle/view.php';
 require_once 'epfl-quote/view.php';
+require_once 'epfl-people/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -83,6 +84,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/quote', array(
 		'render_callback' => 'epfl_quote_block',
+    ));
+
+    register_block_type( 'epfl/people', array(
+		'render_callback' => 'epfl_people_block',
     ));
 	
 }
