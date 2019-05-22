@@ -162,3 +162,20 @@
 .wp-block-epfl-cover p {
   margin-top: 0;
   margin-bottom: 1rem; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-epfl-toggle {
+  background-color: lightgrey;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 25px; }
+  .wp-block-epfl-toggle h2 {
+    text-align: center; }
+  .wp-block-epfl-toggle .helper {
+    text-align: center;
+    margin-bottom: 25px; }
