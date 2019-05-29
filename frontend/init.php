@@ -18,6 +18,8 @@ require_once 'epfl-people/controller.php';
 require_once 'epfl-map/view.php';
 require_once 'epfl-introduction/view.php';
 require_once 'epfl-hero/view.php';
+require_once 'epfl-google-forms/controller.php';
+require_once 'epfl-video/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -104,6 +106,14 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/hero', array(
 		'render_callback' => 'epfl_hero_block',
+    ));
+
+    register_block_type( 'epfl/google-forms', array(
+		'render_callback' => 'epfl_google_forms_block',
+    ));
+
+    register_block_type( 'epfl/video', array(
+		'render_callback' => 'epfl_video_block',
     ));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );
