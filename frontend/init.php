@@ -8,11 +8,16 @@
  * @package CGB
  */
 
+require_once 'lib/language.php';
 require_once 'epfl-news/controller.php';
 require_once 'epfl-memento/controller.php';
 require_once 'epfl-cover/view.php';
 require_once 'epfl-toggle/view.php';
 require_once 'epfl-quote/view.php';
+require_once 'epfl-people/controller.php';
+require_once 'epfl-map/view.php';
+require_once 'epfl-introduction/view.php';
+require_once 'epfl-hero/view.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -84,6 +89,21 @@ function wp_gutenberg_epfl_register_blocks() {
     register_block_type( 'epfl/quote', array(
 		'render_callback' => 'epfl_quote_block',
     ));
-	
+
+    register_block_type( 'epfl/people', array(
+		'render_callback' => 'epfl_people_block',
+    ));
+
+    register_block_type( 'epfl/map', array(
+		'render_callback' => 'epfl_map_block',
+    ));
+
+    register_block_type( 'epfl/introduction', array(
+		'render_callback' => 'epfl_introduction_block',
+    ));
+
+    register_block_type( 'epfl/hero', array(
+		'render_callback' => 'epfl_hero_block',
+    ));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

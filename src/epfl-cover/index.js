@@ -35,7 +35,7 @@ registerBlockType( 'epfl/cover', {
 	category: 'common',
 	attributes: {
 		imageId: {
-			type: 'string',
+			type: 'number',
 		},
 		image: {
 			type: 'string',
