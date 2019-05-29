@@ -32,9 +32,9 @@
             $markup .= '<a href="' . esc_url($people_url) . '" class="contact-list-item" itemprop="name">' . esc_attr($person->prenom) . ' ' . esc_attr($person->nom) . '</a>';
             $markup .= '<p class="contact-list-item m-0 text-muted" itemprop="jobTitle">' . esc_html($function) . '</p>';
             $markup .= '<a class="contact-list-item text-muted" href="mailto:"' . esc_attr($person->email) . '" itemprop="email">' . esc_attr($person->email) . "</a>";
-            $markup .= '<a class="contact-list-item text-muted" href="tel:"'. esc_html($phones[0]) . '" itemprop="telephone">';
-
-            if ($phones[0]) { 
+            
+            if (isset($phones[0])) { 
+                $markup .= '<a class="contact-list-item text-muted" href="tel:"'. esc_html($phones[0]) . '" itemprop="telephone">';
                 $markup .= '+41 21 69 <b>' . esc_html($phones[0]) . '</b>';
             }
 

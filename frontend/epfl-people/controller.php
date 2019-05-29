@@ -29,11 +29,11 @@ function epfl_people_sortArrayByArray($data,$orderArray) {
 
 function epfl_people_block( $attributes ) {
 
-    $units    = sanitize_text_field( $attributes['units'] ) ?: '';
-    $scipers  = sanitize_text_field( $attributes['scipers'] ) ?: '';
-    $doctoral_program = sanitize_text_field( $attributes['doctoralProgram'] ) ?: '';
-    $fonction = sanitize_text_field( $attributes['fonction'] ) ?: '';
-    $columns  = sanitize_text_field( $attributes['columns'] ) ?: '';
+    $units            = isset( $attributes['units'] ) ? sanitize_text_field( $attributes['units'] ) : '';
+    $scipers          = isset( $attributes['scipers'] ) ? sanitize_text_field( $attributes['scipers'] ) : '';
+    $doctoral_program = isset( $attributes['doctoralProgram'] ) ? sanitize_text_field( $attributes['doctoralProgram'] ) : '';
+    $function         = isset( $attributes['fonction'] ) ? sanitize_text_field( $attributes['fonction'] ) : '';
+    $columns          = isset( $attributes['columns'] ) ? sanitize_text_field( $attributes['columns'] ) : '';
 
     /*
     var_dump($units);
@@ -75,7 +75,7 @@ function epfl_people_block( $attributes ) {
     }
    
     // the web service we use to retrieve the data
-    $url = "https://people.epfl.ch/cgi-bin/wsgetpeople/";
+    $url = "https://test-people.epfl.ch/cgi-bin/wsgetpeople/";
     $url = add_query_arg($parameter, $url);
     
     // retrieve the data in JSON

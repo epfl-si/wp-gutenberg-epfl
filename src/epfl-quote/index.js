@@ -21,13 +21,7 @@ const {
 
 const { Fragment } = wp.element;
 
-function getImageURL(attributes) {
-	let url = "https://via.placeholder.com/1920x1080.jpg";
-	if (attributes.image) {
-		url = attributes.image;
-	}
-	return url;
-}
+
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'wp-gutenberg-epfl'),
@@ -36,11 +30,8 @@ registerBlockType( 'epfl/quote', {
 	category: 'common',
 	attributes: {
 		imageId: {
-			type: 'string',
+			type: 'number',
 		},
-		image: {
-			type: 'string',
-		}, 
 		quote : {
 			type: 'string',
         },
@@ -61,12 +52,9 @@ registerBlockType( 'epfl/quote', {
 		function onImageSelect(imageObject) {
 			
 			setAttributes({
-				image: imageObject.sizes.full.url,
 				imageId: imageObject.id
 			})
 		}
-
-		let url = getImageURL(attributes);
 
 		return (
 		<Fragment>
@@ -75,7 +63,7 @@ registerBlockType( 'epfl/quote', {
 					<MediaUpload
 						onSelect={onImageSelect}
 						type="image"
-						value={attributes.image}
+						value={attributes.imageId}
 						render={({ open }) => (
                             <div>
 							    <button onClick={open}>
