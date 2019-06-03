@@ -6,14 +6,11 @@ export default class PreviewNews extends Component {
 	render() {
         
         const { className } = this.props
-
-        let helper = __('Merci de renseigner les champs présents dans la colonne de droite');
-
 		return (
 			<div className={ className }>
                 <div id="preview-box">
                     <h2>EPFL PEOPLE</h2>
-                    <div class="helper">{ __(helper) }</div>
+                    <div class="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
                 </div>
 			</div>
 		)
