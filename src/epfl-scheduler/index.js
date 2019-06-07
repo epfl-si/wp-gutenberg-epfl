@@ -10,6 +10,8 @@ const {
 const {
     InspectorControls,
     RichText,
+    BlockControls,
+    Toolbar,
 } = wp.editor;
 
 const {
@@ -28,8 +30,8 @@ registerBlockType( 'epfl/scheduler', {
 	category: 'common',
 	attributes: {
         content: {
-            type: 'array',
-            source: 'children',
+            type: 'string',
+            
             selector: '.content'
         },
         startDate: {
@@ -57,6 +59,9 @@ registerBlockType( 'epfl/scheduler', {
       return (
         <Fragment>
             <InspectorControls>
+                <PanelBody title={ __('Start Date', 'wp-gutenberg-epfl') }>
+                
+                </PanelBody>
                 <PanelBody title={ __('Start Date', 'wp-gutenberg-epfl') }>
                     <DatePicker
                         value={ attributes.startDate }
@@ -88,9 +93,12 @@ registerBlockType( 'epfl/scheduler', {
             </InspectorControls>
             <div className={ className }>
                 {
-                /* le conteneur (tagName) est une div, mais pourrait être un ul */
-                /* chaque nouvelle ligne est un paragraphe, mais on aurait pu choisir un li */
-                }
+                    <div>
+                    {
+                        <BlockControls>
+                       
+                    </BlockControls>
+                    }
                 <RichText
                     tagName="div"
                     multiline="p"
@@ -99,6 +107,11 @@ registerBlockType( 'epfl/scheduler', {
                     className="content"
                     onChange={ content => setAttributes( { content } ) }
                 />
+                </div>
+                /* le conteneur (tagName) est une div, mais pourrait être un ul */
+                /* chaque nouvelle ligne est un paragraphe, mais on aurait pu choisir un li */
+                }
+                
             </div>
         </Fragment>
       )
