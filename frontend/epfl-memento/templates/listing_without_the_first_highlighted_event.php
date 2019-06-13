@@ -5,7 +5,7 @@
         $display_first_event = FALSE;
         $nb_events = count($results);
 
-        $markup = '<div class="list-group">';
+        $markup = '<div class="container list-group" style="padding-left: 16px">';
 
         if (!(bool) $results) {
             $markup .= '<div><h3>';
