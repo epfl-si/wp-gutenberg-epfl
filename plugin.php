@@ -40,6 +40,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
           'epfl/google-forms',
           'epfl/video',
           'epfl/scheduler',
+          'epfl/tableau',
           'core/paragraph', 
     );
     
