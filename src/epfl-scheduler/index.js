@@ -60,16 +60,15 @@ registerBlockType( 'epfl/scheduler', {
         <Fragment>
             <InspectorControls>
                 <PanelBody title={ __('Start Date', 'wp-gutenberg-epfl') }>
-                
-                </PanelBody>
-                <PanelBody title={ __('Start Date', 'wp-gutenberg-epfl') }>
                     <DatePicker
+                        currentDate={ attributes.startDate }
                         value={ attributes.startDate }
                         onChange={ startDate => setAttributes( { startDate } ) }
                     />
                 </PanelBody>
                 <PanelBody title={ __('End Date', 'wp-gutenberg-epfl') }>
                     <DatePicker
+                        currentDate={ attributes.endDate }
 						value={ attributes.endDate }
                         onChange={ endDate => setAttributes( { endDate } ) }
                         help={ __('Please select a end date. Format: mm/dd/yyyy', 'wp-gutenberg-epfl') }
