@@ -4,14 +4,11 @@ require_once(dirname(__FILE__).'/view.php');
 
 function epfl_tableau_block( $attributes ) {
 
-    //var_dump($attributes['content']);
-
     # or get the already set url, width and height
     if (!empty($attributes['content'])) {
         # from a copy-paste of a embed view, parse this information :
         # the view url, the width and the height
         $embed_code = urldecode($attributes['content']);
-        //var_dump($embed_code);
         // first step, check if we have a copy paste in a editor that encode quote
         if (strpos($embed_code, "width=") !== false) {
             $matches = [];
@@ -43,11 +40,8 @@ function epfl_tableau_block( $attributes ) {
     var_dump($url);
     var_dump($width);
     var_dump($height);
-    */
+    */ 
     
     $markup = epfl_tableau_render($url, $width, $height);
-
-    var_dump($markup);
-
     return $markup;
 }
