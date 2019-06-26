@@ -13,6 +13,7 @@ const {
     SelectControl,
     RadioControl,
     TextControl,
+    RangeControl,
 } = wp.components
 
 export default class InspectorControlsMemento extends Component {
@@ -99,6 +100,14 @@ export default class InspectorControlsMemento extends Component {
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
 	                    />
+                        <RangeControl
+                            value={ attributes.nbEvents }
+                            onChange={ nbEvents  => setAttributes( { nbEvents } ) }
+                            min={ 0 }
+                            max={ 10 }
+                            beforeIcon="arrow-down"
+                            afterIcon="arrow-up"
+                        />
                     </PanelBody>
                     <PanelBody title={ __( 'Language', 'wp-gutenberg-epfl' ) }>
                         <RadioControl

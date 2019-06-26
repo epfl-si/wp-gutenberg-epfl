@@ -26,6 +26,10 @@ registerBlockType(
 			},
 			template: {
 				type: 'string',
+            },
+            nbEvents: {
+				type: 'integer',
+				default: 5,
 			},
 			lang: {
 				type: 'string',
