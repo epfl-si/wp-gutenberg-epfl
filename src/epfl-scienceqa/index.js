@@ -1,6 +1,6 @@
 import './style.scss'
 
-import quoteIcon from './quote-icon'
+import scienceqaIcon from './scienceqa-icon'
 
 const { __ } = wp.i18n;
 
@@ -22,11 +22,12 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/scienceqa', {
 	title: __( 'EPFL Science QA', 'wp-gutenberg-epfl'),
 	description: __('Display a EPFL Science QA', 'wp-gutenberg-epfl'),
-	icon: quoteIcon,
+	icon: scienceqaIcon,
 	category: 'common',
 	attributes: {
 		lang: {
-			type: 'string',
+            type: 'string',
+            default: 'en',
 		}
 	},
 	supports : {
