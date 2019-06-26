@@ -21,6 +21,7 @@ require_once 'epfl-hero/view.php';
 require_once 'epfl-google-forms/controller.php';
 require_once 'epfl-video/controller.php';
 require_once 'epfl-tableau/controller.php';
+require_once 'epfl-scienceqa/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -119,6 +120,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/tableau', array(
 		'render_callback' => 'epfl_tableau_block',
+    ));
+
+    register_block_type( 'epfl/scienceqa', array(
+		'render_callback' => 'epfl_scienceqa_block',
     ));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

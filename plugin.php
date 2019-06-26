@@ -26,23 +26,31 @@ add_action( 'plugins_loaded', 'epfl_gutenberg_load_textdomain' );
 
 
 function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
-  	return array( 
-          'epfl/news', 
-          'epfl/memento', 
-          'epfl/cover',
-          'epfl/cover-dynamic',
-          'epfl/toggle',
-          'epfl/quote',
-          'epfl/people',
-          'epfl/map',
-          'epfl/introduction',
-          'epfl/hero',
-          'epfl/google-forms',
-          'epfl/video',
-          'epfl/tableau',
-          'core/paragraph', 
+
+    $blocks = array( 
+        'epfl/news', 
+        'epfl/memento', 
+        'epfl/cover',
+        'epfl/cover-dynamic',
+        'epfl/toggle',
+        'epfl/quote',
+        'epfl/people',
+        'epfl/map',
+        'epfl/introduction',
+        'epfl/hero',
+        'epfl/google-forms',
+        'epfl/video',
+        'epfl/scheduler',
+        'epfl/tableau',
+        'core/paragraph', 
     );
-    
+
+    // Add epfl/scienceqa block for WP instance https://www.epfl.ch only
+    if (get_option('blogname') == 'EPFL') {
+        array_push($blocks, 'epfl/scienceqa');
+    }
+
+  	return $blocks;
     // return True; // if you want all natifs blocks.
 }
 
