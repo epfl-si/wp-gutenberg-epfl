@@ -69,7 +69,7 @@ registerBlockType( 'epfl/scheduler', {
                         <RichText
                             tagName="div"
                             multiline="p"
-                            placeholder={ __( 'Ecrivez votre contenu ici' ) }
+                            placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
                             value={ attributes.content }
                             className="content"
                             onChange={ content => setAttributes( { content } ) }
