@@ -1,5 +1,3 @@
-import './style.scss'
-
 import scienceqaIcon from './scienceqa-icon'
 
 const { __ } = wp.i18n;
