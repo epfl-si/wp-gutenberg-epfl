@@ -5,7 +5,7 @@
  *
  * @param $start_date_time: start date time
  * @param $end_date_time: end date time
- * @return "" if the parameters are populated and in the right format
+ * @return "" if the parameters are populated
  */
 function epfl_scheduler_check_parameters( string $start_date_time, string $end_date_time ): string {
     if ( $start_date_time === '') {
