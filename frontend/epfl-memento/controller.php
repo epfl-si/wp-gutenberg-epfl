@@ -16,29 +16,6 @@ require_once(dirname(__FILE__).'/../utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
 /**
- * Returns the number of events according to the template
- *
- * @param $template: id of template
- * @return the number of events
- */
-function epfl_memento_get_limit($template)
-{
-    switch ($template){
-        case "slider_with_the_first_highlighted_event":
-        case "slider_without_the_first_highlighted_event":
-            $limit = 10;
-            break;
-        case "listing_with_the_first_highlighted_event":
-        case "listing_without_the_first_highlighted_event":
-            $limit = 5;
-            break;
-        default:
-            $limit = 10;
-    }
-    return $limit;
-}
-
-/**
  * Build api URL of events
  *
  * @param $memento: slug of memento
@@ -49,11 +26,8 @@ function epfl_memento_get_limit($template)
  * @param $period: period to filter past event or upcoming events
  * @return the API URL of the memento
  */
-function epfl_memento_build_api_url($memento, $lang, $template, $category, $keyword, $period)
-{
-    // returns the number of events according to the template
-    $limit = epfl_memento_get_limit($template);
-
+function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $category, $keyword, $period)
+{   
     // call REST API to get the number of mementos
     $memento_response = Utils::get_items(MEMENTO_API_URL);
 
@@ -83,7 +57,7 @@ function epfl_memento_build_api_url($memento, $lang, $template, $category, $keyw
     }
 
     // define API URL
-    $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $limit;
+    $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $nb_events;
 
     // filter by category
     if ($category !== '') {
@@ -131,12 +105,13 @@ function epfl_memento_check_required_parameters($memento, $lang)
 function epfl_memento_block( $attributes ) {
 
     // sanitize parameters
-    $memento  = isset($attributes['memento']) ? sanitize_text_field($attributes['memento']) : '1';
-    $lang     = isset($attributes['lang']) ? sanitize_text_field($attributes['lang']) : 'en';
-    $template = isset($attributes['template']) ? sanitize_text_field($attributes['template']) : 'slider_with_the_first_highlighted_event';
-    $category = isset($attributes['category']) ? sanitize_text_field($attributes['category']) : '';
-    $keyword  = isset($attributes['keyword']) ? sanitize_text_field($attributes['keyword']) : '';
-    $period   = isset($attributes['period']) ? sanitize_text_field($attributes['period']) : '';
+    $memento   = isset($attributes['memento']) ? sanitize_text_field($attributes['memento']) : '1';
+    $lang      = isset($attributes['lang']) ? sanitize_text_field($attributes['lang']) : 'en';
+    $template  = isset($attributes['template']) ? sanitize_text_field($attributes['template']) : 'slider_with_the_first_highlighted_event';
+    $nb_events = isset($attributes['nbEvents']) ? sanitize_text_field($attributes['nbEvents']) : 10;
+    $category  = isset($attributes['category']) ? sanitize_text_field($attributes['category']) : '';
+    $keyword   = isset($attributes['keyword']) ? sanitize_text_field($attributes['keyword']) : '';
+    $period    = isset($attributes['period']) ? sanitize_text_field($attributes['period']) : '';
 
     /*
     var_dump("Memento: " . $memento);
@@ -152,6 +127,7 @@ function epfl_memento_block( $attributes ) {
         $memento,
         $lang,
         $template,
+        $nb_events,
         $category,
         $keyword,
         $period

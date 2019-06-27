@@ -24,7 +24,8 @@ registerBlockType(
 				default: '1',
 			},
 			template: {
-				type: 'string',
+                type: 'string',
+                default: 'listing',
 			},
 			displayLinkAllNews: {
 				type: 'boolean',
@@ -32,7 +33,7 @@ registerBlockType(
 			},
 			nbNews: {
 				type: 'integer',
-				default: 5,
+				default: 10,
 			},
 			lang: {
 				type: 'string',

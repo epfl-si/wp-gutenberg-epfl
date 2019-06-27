@@ -16,11 +16,11 @@ require_once(dirname(__FILE__).'/view.php');
  * @param $template: id of template
  * @return the number of news to display
  */
-function epfl_news_get_limit($template)
+function epfl_news_get_limit($template, $nb_news)
 {
     switch ($template){
         case "listing":
-            $limit = 5;
+            $limit = $nb_news;
             break;
         case "highlighted_with_3_news":
         case "card_with_3_news":
@@ -52,10 +52,7 @@ function epfl_news_get_limit($template)
 function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category, $themes, $projects)
 {
     // returns the number of news according to the template
-    $limit = epfl_news_get_limit($template);
-    if ("1" == $template) {
-        $limit = $nb_news;
-    }
+    $limit = epfl_news_get_limit($template, $nb_news);
 
     // define API URL
     $url = NEWS_API_URL . $channel . '/news/?format=json&lang=' . $lang . '&limit=' . $limit;
@@ -111,7 +108,7 @@ function epfl_news_block( $attributes ) {
   $lang          = sanitize_text_field( $attributes['lang'] ) ?: 'fr';
   $template      = sanitize_text_field( $attributes['template'] ) ?: 'listing';
   $all_news_link = sanitize_text_field( $attributes['displayLinkAllNews'] ) ?: FALSE;
-  $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 5;
+  $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 10;
   $category      = sanitize_text_field( $attributes['category'] );
   $themes        = sanitize_text_field( $attributes['themes'] );
   $projects      = sanitize_text_field( $attributes['projects'] );

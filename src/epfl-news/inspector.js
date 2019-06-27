@@ -125,7 +125,7 @@ export default class InspectorControlsNews extends Component {
                             value={ attributes.nbNews }
                             onChange={ nbNews  => setAttributes( { nbNews } ) }
                             min={ 0 }
-                            max={ 10 }
+                            max={ 20 }
                             beforeIcon="arrow-down"
                             afterIcon="arrow-up"
                         />
@@ -139,15 +139,6 @@ export default class InspectorControlsNews extends Component {
                             onChange={ lang => setAttributes( { lang } ) }
 	                    />
                     </PanelBody>
-                    <PanelBody title={ __( 'Category', 'wp-gutenberg-epfl' ) }>
-                        <RadioControl
-                            label={ __("Filter news by category", 'wp-gutenberg-epfl') }
-                            help={ __("Do you want filter news by category ? Please select a category", 'wp-gutenberg-epfl') }
-                            selected={ attributes.category }
-                            options={ optionsCategoriesList }
-                            onChange={ category => setAttributes( { category } ) }
-	                    />
-                    </PanelBody>
                     <PanelBody title={ __( 'Themes', 'wp-gutenberg-epfl') }>
                         <PanelRow>
                             <Select
@@ -159,6 +150,15 @@ export default class InspectorControlsNews extends Component {
                                 isMulti='true'
                             />
                          </PanelRow>
+                    </PanelBody>
+                    <PanelBody title={ __( 'Category', 'wp-gutenberg-epfl' ) }>
+                        <RadioControl
+                            label={ __("Filter news by category", 'wp-gutenberg-epfl') }
+                            help={ __("Do you want filter news by category ? Please select a category", 'wp-gutenberg-epfl') }
+                            selected={ attributes.category }
+                            options={ optionsCategoriesList }
+                            onChange={ category => setAttributes( { category } ) }
+	                    />
                     </PanelBody>
                 </InspectorControls>
             )
