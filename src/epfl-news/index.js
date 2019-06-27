@@ -24,7 +24,8 @@ registerBlockType(
 				default: '1',
 			},
 			template: {
-				type: 'string',
+                type: 'string',
+                default: 'listing',
 			},
 			displayLinkAllNews: {
 				type: 'boolean',

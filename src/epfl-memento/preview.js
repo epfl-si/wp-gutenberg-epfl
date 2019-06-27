@@ -16,7 +16,7 @@ export default class PreviewMemento extends Component {
 		const { attributes } = this.props;
 		
 		let eventsUrl = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
-		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=5`;
+		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=${attributes.nbEvents}`;
 
 		if (attributes.category !== "0") {
 			eventsUrl += `&category=${attributes.category}`;
@@ -44,7 +44,6 @@ export default class PreviewMemento extends Component {
 	}
 
 	componentDidUpdate() {
-		console.log(`${this.state.eventsUrl}` == `${this.getEventsUrl()}`);
 		if (this.getEventsUrl() !== this.state.eventsUrl) {
 			this.getEvents();
 		}
@@ -111,11 +110,11 @@ export default class PreviewMemento extends Component {
                             <div className="list-group-teaser-container">
                                 <div className="list-group-teaser-thumbnail">
                                     <picture>
-										<span style={academicCalendarStyle}>
+										<span style={ academicCalendarStyle }>
             								<meta itemProp="eventStatus" content="https://schema.org/EventCancelled" />
 											{ academicCalendarCategory }
           								</span>
-                                        <img src={ visualUrl} className="img-fluid" alt={ event.image_description } />
+                                        <img src={ visualUrl } className="img-fluid" alt={ event.image_description } />
                                     </picture>
                                 </div>
                                 <div className="list-group-teaser-content">
@@ -141,7 +140,7 @@ export default class PreviewMemento extends Component {
                     )
                 }) }
             </div>
-            </div>
+        </div>
         )		
 	}
 }

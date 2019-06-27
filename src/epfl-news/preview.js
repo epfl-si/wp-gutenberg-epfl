@@ -18,8 +18,8 @@ export default class PreviewNews extends Component {
 		const { attributes } = this.props;
 		
 		let newsUrl = `https://actu-test.epfl.ch/api/v1/channels/${attributes.channel}/news/`;
-		newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
-
+        newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
+        
 		if (attributes.category !== "0") {
 			newsUrl += `&category=${attributes.category}`;
 		}
@@ -30,12 +30,13 @@ export default class PreviewNews extends Component {
 				newsUrl += `&themes=${theme.value}`;
 			});
 		}
-
+       
 		return newsUrl;
 	}
 
 	getNews() {
-		let newsUrl = this.getURL();
+        let newsUrl = this.getURL();
+        
 		axios.get(newsUrl)
 			.then( response => response.data.results )
 			.then( newsList => {
@@ -53,7 +54,6 @@ export default class PreviewNews extends Component {
 	}
 
 	componentDidUpdate() {
-		console.log(`${this.state.newsUrl}` == `${this.getURL()}`);
 		if (this.getURL() !== this.state.newsUrl) {
 			this.getNews();	
 		}

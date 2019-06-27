@@ -25,7 +25,8 @@ registerBlockType(
 				default: '1',
 			},
 			template: {
-				type: 'string',
+                type: 'string',
+                default: 'slider_with_the_first_highlighted_event',
             },
             nbEvents: {
 				type: 'integer',
