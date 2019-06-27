@@ -20,7 +20,7 @@ function epfl_news_get_limit($template)
 {
     switch ($template){
         case "listing":
-            $limit = 5;
+            $limit = 10;
             break;
         case "highlighted_with_3_news":
         case "card_with_3_news":
@@ -111,7 +111,7 @@ function epfl_news_block( $attributes ) {
   $lang          = sanitize_text_field( $attributes['lang'] ) ?: 'fr';
   $template      = sanitize_text_field( $attributes['template'] ) ?: 'listing';
   $all_news_link = sanitize_text_field( $attributes['displayLinkAllNews'] ) ?: FALSE;
-  $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 5;
+  $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 10;
   $category      = sanitize_text_field( $attributes['category'] );
   $themes        = sanitize_text_field( $attributes['themes'] );
   $projects      = sanitize_text_field( $attributes['projects'] );

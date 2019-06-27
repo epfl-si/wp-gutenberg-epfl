@@ -125,7 +125,7 @@ export default class InspectorControlsNews extends Component {
                             value={ attributes.nbNews }
                             onChange={ nbNews  => setAttributes( { nbNews } ) }
                             min={ 0 }
-                            max={ 10 }
+                            max={ 20 }
                             beforeIcon="arrow-down"
                             afterIcon="arrow-up"
                         />

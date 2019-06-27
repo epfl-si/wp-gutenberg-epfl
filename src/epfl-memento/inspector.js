@@ -104,7 +104,7 @@ export default class InspectorControlsMemento extends Component {
                             value={ attributes.nbEvents }
                             onChange={ nbEvents  => setAttributes( { nbEvents } ) }
                             min={ 0 }
-                            max={ 10 }
+                            max={ 20 }
                             beforeIcon="arrow-down"
                             afterIcon="arrow-up"
                         />

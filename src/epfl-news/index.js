@@ -32,7 +32,7 @@ registerBlockType(
 			},
 			nbNews: {
 				type: 'integer',
-				default: 5,
+				default: 10,
 			},
 			lang: {
 				type: 'string',

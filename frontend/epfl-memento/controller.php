@@ -16,29 +16,6 @@ require_once(dirname(__FILE__).'/../utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
 /**
- * Returns the number of events according to the template
- *
- * @param $template: id of template
- * @return the number of events
- */
-function epfl_memento_get_limit($template, $nb_events)
-{
-    switch ($template){
-        case "slider_with_the_first_highlighted_event":
-        case "slider_without_the_first_highlighted_event":
-            $limit = 10;
-            break;
-        case "listing_with_the_first_highlighted_event":
-        case "listing_without_the_first_highlighted_event":
-            $limit = $nb_events;
-            break;
-        default:
-            $limit = 10;
-    }
-    return $limit;
-}
-
-/**
  * Build api URL of events
  *
  * @param $memento: slug of memento
@@ -50,10 +27,7 @@ function epfl_memento_get_limit($template, $nb_events)
  * @return the API URL of the memento
  */
 function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $category, $keyword, $period)
-{
-    // returns the number of events according to the template
-    $limit = epfl_memento_get_limit($template);
-    
+{   
     // call REST API to get the number of mementos
     $memento_response = Utils::get_items(MEMENTO_API_URL);
 
@@ -83,7 +57,7 @@ function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $cat
     }
 
     // define API URL
-    $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $limit;
+    $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $nb_events;
 
     // filter by category
     if ($category !== '') {
