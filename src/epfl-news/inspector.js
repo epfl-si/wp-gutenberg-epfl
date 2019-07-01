@@ -31,7 +31,7 @@ export default class InspectorControlsNews extends Component {
 
     componentDidMount() {
 
-        let apiRestUrl = "https://actu-test.epfl.ch/api/v1/";
+        let apiRestUrl = "https://actu.epfl.ch/api/v1/";
         
         let entryPointChannels = `${apiRestUrl}channels/?format=json&limit=800`;
 		axios.get(entryPointChannels)

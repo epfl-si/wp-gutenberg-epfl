@@ -15,7 +15,7 @@ export default class PreviewMemento extends Component {
 
 		const { attributes } = this.props;
 		
-		let eventsUrl = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
+		let eventsUrl = `https://memento.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
 		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=${attributes.nbEvents}`;
 
 		if (attributes.category !== "0") {
