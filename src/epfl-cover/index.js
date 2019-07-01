@@ -30,7 +30,7 @@ function getImageURL(attributes) {
 
 registerBlockType( 'epfl/cover', {
 	title: __( 'EPFL Cover', 'wp-gutenberg-epfl'),
-	description: __('Display a EPFL cover', 'wp-gutenberg-epfl'),
+	description: 'v1.0.0',
 	icon: coverIcon,
 	category: 'common',
 	attributes: {

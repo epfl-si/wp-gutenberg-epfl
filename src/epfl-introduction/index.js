@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/introduction', {
 	title: __( 'EPFL Introduction', 'wp-gutenberg-epfl'),
-	description: __('Display a EPFL introduction', 'wp-gutenberg-epfl'),
+	description: 'v1.0.0',
 	icon: 'text',
 	category: 'common',
 	attributes: {

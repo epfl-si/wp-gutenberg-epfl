@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'wp-gutenberg-epfl'),
-	description: __('Display a EPFL Hero', 'wp-gutenberg-epfl'),
+	description: 'v1.0.0',
 	icon: 'text',
 	category: 'common',
 	attributes: {

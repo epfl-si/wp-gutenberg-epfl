@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'wp-gutenberg-epfl'),
-	description: __('Display EPFL Scheduler', 'wp-gutenberg-epfl'),
+	description: 'v1.0.0',
 	icon: schedulerIcon,
 	category: 'common',
 	attributes: {
