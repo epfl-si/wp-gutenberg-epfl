@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/scienceqa', {
 	title: __( 'EPFL Science QA', 'wp-gutenberg-epfl'),
-	description: __('Display a EPFL Science QA', 'wp-gutenberg-epfl'),
+	description: 'v1.0.0',
 	icon: scienceqaIcon,
 	category: 'common',
 	attributes: {

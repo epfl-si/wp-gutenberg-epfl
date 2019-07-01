@@ -25,7 +25,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'wp-gutenberg-epfl'),
-	description: __('Display a EPFL quote', 'wp-gutenberg-epfl'),
+	description: 'v1.0.0',
 	icon: quoteIcon,
 	category: 'common',
 	attributes: {

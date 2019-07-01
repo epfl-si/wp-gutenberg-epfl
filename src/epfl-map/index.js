@@ -17,7 +17,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/map', {
 	title: __( 'EPFL Map', 'wp-gutenberg-epfl'),
-	description: __('Display a EPFL map', 'wp-gutenberg-epfl'),
+	description: 'v1.0.0',
 	icon: 'admin-site-alt',
 	category: 'common',
 	attributes: {
