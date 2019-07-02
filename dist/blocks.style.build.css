@@ -268,3 +268,59 @@
 #preview-box .helper {
   text-align: center;
   margin-bottom: 25px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+#preview-box {
+  background-color: lightgrey;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 25px; }
+
+#preview-box h2 {
+  text-align: center; }
+
+#preview-box .helper {
+  text-align: center;
+  margin-bottom: 25px; }
+
+.wp-block-epfl-page-teaser a:link {
+  text-decoration: none !important; }
+
+.wp-block-epfl-page-teaser .h5 {
+  font-size: 120%; }
+
+.wp-block-epfl-page-teaser .list-group-teaser-thumbnail {
+  float: left;
+  margin-right: 3%; }
+
+.wp-block-epfl-page-teaser .img-fluid {
+  width: 180px; }
+
+.wp-block-epfl-page-teaser .text-center {
+  margin: auto;
+  width: 30%;
+  text-decoration: underline; }
+
+.wp-block-epfl-page-teaser .list-group-teaser-content {
+  font-family: "SuisseIntl", Arial, sans-serif !important;
+  color: #212121;
+  font-size: 18px; }
+
+.wp-block-epfl-page-teaser .h5 {
+  font-weight: 700; }
+
+.wp-block-epfl-page-teaser .text-muted {
+  color: #707070;
+  font-weight: 400; }
+
+.wp-block-epfl-page-teaser a.link-pretty {
+  font-family: "SuisseIntl", Arial, sans-serif !important;
+  color: #212121; }
+
+#epfl-news-page-teaser {
+  width: 100% !important; }

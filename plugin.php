@@ -42,6 +42,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/video',
         'epfl/scheduler',
         'epfl/tableau',
+        'epfl/page-teaser',
         'core/paragraph', 
     );
 
