@@ -59,7 +59,7 @@ export default class InspectorControlsNews extends Component {
         
         let content = "";
         
-        if (this.state.channels !== null) {
+        if (this.state.channels !== null && this.state.categories !== null && this.state.themes !== null) {
             
             let optionsChannelsList = [];
 
