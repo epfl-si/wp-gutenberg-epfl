@@ -23,7 +23,8 @@ export default class InspectorControlsPageTeaser extends Component {
     }
 
     componentDidMount() {
-
+        // TODO: Get only 100 pages and NOT all pages.
+        // https://dev.to/jackedwardlyons/how-to-get-all-wordpress-posts-from-the-wp-api-with-javascript-3j48
         let apiRestUrl = "http://localhost/gutenberg/?rest_route=/wp/v2/pages&per_page=100";
         
         let entryPointsPages = apiRestUrl;

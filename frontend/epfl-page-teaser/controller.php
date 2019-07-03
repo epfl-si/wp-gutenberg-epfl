@@ -11,13 +11,9 @@ function epfl_page_teaser_block( $attributes ) {
     $page3 = json_decode($page3, true);
 
     $gray = false;
-/*
-    var_dump($page1);
-    var_dump($page2);
-    var_dump($page3);
-*/
+
     $data = array($page1["value"], $page2["value"], $page3["value"]);
-   //var_dump($data);
+
     $html = '<div class="container-full my-3 ';
     if ($gray) {
         $html .= ' bg-gray-100';
@@ -32,8 +28,6 @@ function epfl_page_teaser_block( $attributes ) {
     foreach($data as $key => $page) {
 
         $page = get_post($page);
-
-        //var_dump($page->post_title);
 
         //if (strpos($key, 'page') !== 0) continue;
 
