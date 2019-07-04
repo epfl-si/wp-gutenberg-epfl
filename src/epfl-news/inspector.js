@@ -59,7 +59,7 @@ export default class InspectorControlsNews extends Component {
         
         let content = "";
         
-        if (this.state.channels !== null) {
+        if (this.state.channels !== null && this.state.categories !== null && this.state.themes !== null) {
             
             let optionsChannelsList = [];
 
@@ -97,6 +97,19 @@ export default class InspectorControlsNews extends Component {
                 optionsThemesList.push({ label: theme.en_label, value: theme.id });
             });
 
+            let nbNewsControl;
+            if (attributes.template == 'listing') {
+                nbNewsControl = <RangeControl
+                            label={ __("Select the number of news", 'wp-gutenberg-epfl') }
+                            value={ attributes.nbNews }
+                            onChange={ nbNews  => setAttributes( { nbNews } ) }
+                            min={ 0 }
+                            max={ 20 }
+                            beforeIcon="arrow-down"
+                            afterIcon="arrow-up"
+                        />;
+            }
+
             content = (
                 <InspectorControls>
                     <PanelBody title={ __( 'Channel', 'wp-gutenberg-epfl') }>
@@ -116,18 +129,11 @@ export default class InspectorControlsNews extends Component {
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
 	                    />
+                        { nbNewsControl }
                         <ToggleControl
                             label={ __('Display the link "all news"', 'wp-gutenberg-epfl') }
                             checked={ attributes.displayLinkAllNews }
                             onChange={ () => setAttributes( { displayLinkAllNews: ! attributes.displayLinkAllNews } ) }
-                        />
-                        <RangeControl
-                            value={ attributes.nbNews }
-                            onChange={ nbNews  => setAttributes( { nbNews } ) }
-                            min={ 0 }
-                            max={ 20 }
-                            beforeIcon="arrow-down"
-                            afterIcon="arrow-up"
                         />
                     </PanelBody>
                     <PanelBody title={ __( 'Language', 'wp-gutenberg-epfl' ) }>
