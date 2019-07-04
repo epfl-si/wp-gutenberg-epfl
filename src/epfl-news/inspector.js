@@ -96,6 +96,19 @@ export default class InspectorControlsNews extends Component {
             this.state.themes.forEach(theme => {
                 optionsThemesList.push({ label: theme.en_label, value: theme.id });
             });
+            
+            let nbNewsControl;
+            if (attributes.template == 'listing') {
+                nbNewsControl = <RangeControl
+                            label={ __("Select the number of news", 'wp-gutenberg-epfl') }
+                            value={ attributes.nbNews }
+                            onChange={ nbNews  => setAttributes( { nbNews } ) }
+                            min={ 0 }
+                            max={ 20 }
+                            beforeIcon="arrow-down"
+                            afterIcon="arrow-up"
+                        />;
+            }
 
             content = (
                 <InspectorControls>
@@ -116,18 +129,11 @@ export default class InspectorControlsNews extends Component {
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
 	                    />
+                        { nbNewsControl }
                         <ToggleControl
                             label={ __('Display the link "all news"', 'wp-gutenberg-epfl') }
                             checked={ attributes.displayLinkAllNews }
                             onChange={ () => setAttributes( { displayLinkAllNews: ! attributes.displayLinkAllNews } ) }
-                        />
-                        <RangeControl
-                            value={ attributes.nbNews }
-                            onChange={ nbNews  => setAttributes( { nbNews } ) }
-                            min={ 0 }
-                            max={ 20 }
-                            beforeIcon="arrow-down"
-                            afterIcon="arrow-up"
                         />
                     </PanelBody>
                     <PanelBody title={ __( 'Language', 'wp-gutenberg-epfl' ) }>

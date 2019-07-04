@@ -101,6 +101,7 @@ export default class InspectorControlsMemento extends Component {
                             onChange={ template => setAttributes( { template } ) }
 	                    />
                         <RangeControl
+                            label={ __("Select the number of events", 'wp-gutenberg-epfl') }
                             value={ attributes.nbEvents }
                             onChange={ nbEvents  => setAttributes( { nbEvents } ) }
                             min={ 0 }

@@ -73,9 +73,9 @@ function epfl_people_block( $attributes ) {
             $parameter['lang'] = $current_language;
         }
     }
-   
+
     // the web service we use to retrieve the data
-    $url = "https://test-people.epfl.ch/cgi-bin/wsgetpeople/";
+    $url = "https://people.epfl.ch/cgi-bin/wsgetpeople/";
     $url = add_query_arg($parameter, $url);
     
     // retrieve the data in JSON
