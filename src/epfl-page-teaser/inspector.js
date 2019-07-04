@@ -64,37 +64,40 @@ export default class InspectorControlsPageTeaser extends Component {
             content = (
                 <InspectorControls>
                     <div style={divStyle}>
-                    <PanelBody title={ __( 'Pages', 'wp-gutenberg-epfl') }>
-                            <div style={selectStyle}>
-                                <Select
-                                    id='epfl-page-teaser-page1'
-                                    name='epfl-page-teaser-page1'
-                                    value={ JSON.parse( attributes.page1 ) }
-                                    onChange={ handlePage1Change }
-                                    options={ optionsPagesList }
-                                    
-                                />
-                            </div>
-                            <div style={selectStyle}>
-                                <Select
-                                    id='epfl-page-teaser-page2'
-                                    name='epfl-page-teaser-page2'
-                                    value={ JSON.parse( attributes.page2 ) }
-                                    onChange={ handlePage2Change }
-                                    options={ optionsPagesList }                                
-                                />      
-                            </div>
-                            <div style={selectStyle}>
-                                <Select
-                                    id='epfl-page-teaser-page3'
-                                    name='epfl-page-teaser-page3'
-                                    value={ JSON.parse( attributes.page3 ) }
-                                    onChange={ handlePage3Change }
-                                    options={ optionsPagesList }
-                                    
-                                />
-                            </div>
-                    </PanelBody> 
+                        <PabelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
+                            
+                        </PabelBody>
+                        <PanelBody title={ __( 'Pages', 'wp-gutenberg-epfl') }>
+                                <div style={selectStyle}>
+                                    <Select
+                                        id='epfl-page-teaser-page1'
+                                        name='epfl-page-teaser-page1'
+                                        value={ JSON.parse( attributes.page1 ) }
+                                        onChange={ handlePage1Change }
+                                        options={ optionsPagesList }
+                                        
+                                    />
+                                </div>
+                                <div style={selectStyle}>
+                                    <Select
+                                        id='epfl-page-teaser-page2'
+                                        name='epfl-page-teaser-page2'
+                                        value={ JSON.parse( attributes.page2 ) }
+                                        onChange={ handlePage2Change }
+                                        options={ optionsPagesList }                                
+                                    />      
+                                </div>
+                                <div style={selectStyle}>
+                                    <Select
+                                        id='epfl-page-teaser-page3'
+                                        name='epfl-page-teaser-page3'
+                                        value={ JSON.parse( attributes.page3 ) }
+                                        onChange={ handlePage3Change }
+                                        options={ optionsPagesList }
+                                        
+                                    />
+                                </div>
+                        </PanelBody> 
                     </div>
                 </InspectorControls>
             )

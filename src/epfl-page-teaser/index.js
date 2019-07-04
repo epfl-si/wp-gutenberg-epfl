@@ -28,7 +28,10 @@ registerBlockType(
             page3: {
 				type: 'string',
 				default: null,
-			},
+            },
+            gray: {
+                type: 'string',
+            }
 		},
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
