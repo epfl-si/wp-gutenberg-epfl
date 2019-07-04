@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
 
 // load .mo file for translation
-function epfl_gutenberg_load_textdomain() {	
+function epfl_gutenberg_load_textdomain() {
 
 	//load_plugin_textdomain( 'epflgutenberg', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	load_plugin_textdomain( 'wp-gutenberg-epfl', FALSE, basename( dirname( __FILE__ ) ) . '/languages' );
@@ -27,9 +27,9 @@ add_action( 'plugins_loaded', 'epfl_gutenberg_load_textdomain' );
 
 function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
 
-    $blocks = array( 
-        'epfl/news', 
-        'epfl/memento', 
+    $blocks = array(
+        'epfl/news',
+        'epfl/memento',
         'epfl/cover',
         'epfl/cover-dynamic',
         'epfl/toggle',
@@ -42,7 +42,8 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/video',
         'epfl/scheduler',
         'epfl/tableau',
-        'core/paragraph', 
+        'epfl/infoscience-search',
+        'core/paragraph',
     );
 
     // Add epfl/scienceqa block for WP instance https://www.epfl.ch only
