@@ -48,7 +48,7 @@ export default class InspectorControlsMemento extends Component {
         
         let content = "";
         
-        if (this.state.mementos !== null) {
+        if (this.state.mementos !== null && this.state.categories !== null) {
             
             let optionsMementosList = [];
 
