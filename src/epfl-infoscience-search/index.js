@@ -16,6 +16,7 @@ const {
 	TextControl,
 	TextareaControl,
 	SelectControl,
+	RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -30,6 +31,9 @@ registerBlockType( 'epfl/infoscience-search', {
 			type: 'string',
 		},
 		pattern: {
+			type: 'string',
+		},
+		format: {
 			type: 'string',
 		},
 	},
@@ -59,7 +63,18 @@ registerBlockType( 'epfl/infoscience-search', {
 					/>
 					<a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a>
 				</PanelBody>
-				<PanelBody title={ __('Field restriction', 'wp-gutenberg-epfl') } >
+				<PanelBody title={ __('Presentation', 'wp-gutenberg-epfl') } >
+					<RadioControl
+						label={ __('Format', 'wp-gutenberg-epfl') }
+						value={ attributes.format }
+						help={ __('Detail level for a publication', 'wp-gutenberg-epfl') }
+						onChange={ format => setAttributes( { format } ) }
+						options={ [
+							{ label: __('Short', 'wp-gutenberg-epfl'), value: 'short' },
+							{ label: __('Detailed', 'wp-gutenberg-epfl'), value: 'detailed' },
+						] }
+
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div className={ className }>
