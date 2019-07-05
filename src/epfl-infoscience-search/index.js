@@ -13,7 +13,9 @@ const {
 
 const {
     PanelBody,
+	TextControl,
 	TextareaControl,
+	SelectControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -24,7 +26,10 @@ registerBlockType( 'epfl/infoscience-search', {
 	icon: infoscienceIcon,
 	category: 'common',
 	attributes: {
-		directUrl: {
+		url: {
+			type: 'string',
+		},
+		pattern: {
 			type: 'string',
 		},
 	},
@@ -38,11 +43,23 @@ registerBlockType( 'epfl/infoscience-search', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<PanelBody title={ __('Direct Infoscience URL', 'wp-gutenberg-epfl') }>
+				<PanelBody title={ __('Search method', 'wp-gutenberg-epfl') }>
 					<TextareaControl
-						value={ attributes.directUrl }
-						onChange={ directUrl => setAttributes( { directUrl } ) }
+						label={ __('A direct infoscience URL', 'wp-gutenberg-epfl') }
+						value={ attributes.url }
+						onChange={ url => setAttributes( { url } ) }
+						placeholder={ __('a https://infoscience.epfl.ch/search?... url:', 'wp-gutenberg-epfl') }
 					/>
+					<b>OR</b>
+					<TextControl
+						label={ __('Search records with a textual pattern', 'wp-gutenberg-epfl') }
+						value={ attributes.pattern }
+						onChange={ pattern => setAttributes( { pattern } ) }
+						placeholder={ __('search for:', 'wp-gutenberg-epfl') }
+					/>
+					<a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a>
+				</PanelBody>
+				<PanelBody title={ __('Field restriction', 'wp-gutenberg-epfl') } >
 				</PanelBody>
 			</InspectorControls>
 			<div className={ className }>
