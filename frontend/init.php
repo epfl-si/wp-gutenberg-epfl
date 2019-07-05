@@ -23,6 +23,7 @@ require_once 'epfl-video/controller.php';
 require_once 'epfl-tableau/controller.php';
 require_once 'epfl-scienceqa/controller.php';
 require_once 'epfl-scheduler/controller.php';
+require_once 'epfl-custom-highlight/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -129,6 +130,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/scheduler', array(
 		'render_callback' => 'epfl_scheduler_block',
+	));
+	
+	register_block_type( 'epfl/custom-highlight', array(
+		'render_callback' => 'epfl_custom_highlight_block',
     ));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );
