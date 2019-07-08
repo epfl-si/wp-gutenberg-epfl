@@ -1,23 +1,12 @@
 import './style.scss'
 import infoscienceIcon from './infoscience-icon'
+import InspectorControlsInfoscience from './inspector'
 
 const { __ } = wp.i18n;
 
 const {
 	registerBlockType,
 } = wp.blocks;
-
-const {
-	InspectorControls,
-} = wp.editor;
-
-const {
-    PanelBody,
-	TextControl,
-	TextareaControl,
-	SelectControl,
-	RadioControl,
-} = wp.components;
 
 const { Fragment } = wp.element;
 
@@ -33,8 +22,23 @@ registerBlockType( 'epfl/infoscience-search', {
 		pattern: {
 			type: 'string',
 		},
+		fieldResriction: {
+			type: 'string',
+		},
 		format: {
 			type: 'string',
+			default: 'short'
+		},
+		limit: {
+			type: 'integer',
+		},
+		summary: {
+			type: 'boolean',
+			default: false,
+		},
+		thumbnail: {
+			type: 'boolean',
+			default: true,
 		},
 	},
 	supports : {
@@ -46,38 +50,8 @@ registerBlockType( 'epfl/infoscience-search', {
 
 		return (
 		<Fragment>
-			<InspectorControls>
-				<PanelBody title={ __('Search method', 'wp-gutenberg-epfl') }>
-					<TextareaControl
-						label={ __('A direct infoscience URL', 'wp-gutenberg-epfl') }
-						value={ attributes.url }
-						onChange={ url => setAttributes( { url } ) }
-						placeholder={ __('a https://infoscience.epfl.ch/search?... url:', 'wp-gutenberg-epfl') }
-					/>
-					<b>OR</b>
-					<TextControl
-						label={ __('Search records with a textual pattern', 'wp-gutenberg-epfl') }
-						value={ attributes.pattern }
-						onChange={ pattern => setAttributes( { pattern } ) }
-						placeholder={ __('search for:', 'wp-gutenberg-epfl') }
-					/>
-					<a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a>
-				</PanelBody>
-				<PanelBody title={ __('Presentation', 'wp-gutenberg-epfl') } >
-					<RadioControl
-						label={ __('Format', 'wp-gutenberg-epfl') }
-						value={ attributes.format }
-						help={ __('Detail level for a publication', 'wp-gutenberg-epfl') }
-						onChange={ format => setAttributes( { format } ) }
-						options={ [
-							{ label: __('Short', 'wp-gutenberg-epfl'), value: 'short' },
-							{ label: __('Detailed', 'wp-gutenberg-epfl'), value: 'detailed' },
-						] }
-
-					/>
-				</PanelBody>
-			</InspectorControls>
 			<div className={ className }>
+				<InspectorControlsInfoscience { ...{ attributes, setAttributes } } />
                 <div id="preview-box">
                     <h2>EPFL Infoscience</h2>
                     <div class="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
