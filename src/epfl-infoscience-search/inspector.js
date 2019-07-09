@@ -13,7 +13,7 @@ const {
 	TextareaControl,
 	SelectControl,
 	RadioControl,
-	CheckboxControl,
+	ToggleControl,
 } = wp.components;
 
 
@@ -40,6 +40,17 @@ export default class InspectorControlsInfoscience extends Component {
             { value: 'abstract', label: __('Abstract', 'wp-gutenberg-epfl') },
             { value: 'keyword', label: __('Keyword', 'wp-gutenberg-epfl') },
             { value: 'doi', label: __('DOI', 'wp-gutenberg-epfl') },
+		]
+
+		let optionsSort = [
+			{ value: 'desc', label: __('Descending', 'wp-gutenberg-epfl') },
+			{ value: 'asc', label: __('Ascending', 'wp-gutenberg-epfl') },
+		]
+
+		let optionsGroupBy = [
+			{ value: null, label: '' },
+			{ value: 'year', label: __('year as title', 'wp-gutenberg-epfl') },
+			{ value: 'doctype', label: __('document type as title', 'wp-gutenberg-epfl') },
 		]
 
         let content = "";
@@ -71,10 +82,10 @@ export default class InspectorControlsInfoscience extends Component {
 						value={ attributes.limit }
 						onChange={ limit => setAttributes( { limit } ) }
 						placeholder={ '100' }
+						help={ __('Without a limit only the first 100 publications are shown', 'wp-gutenberg-epfl') }
 					/>
 					<a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a>
 				</PanelBody>
-
 				<PanelBody title={ __('Presentation', 'wp-gutenberg-epfl') } >
 					<RadioControl
 						label={ __('Format', 'wp-gutenberg-epfl') }
@@ -83,15 +94,35 @@ export default class InspectorControlsInfoscience extends Component {
                         options={ optionsFormat }
 						onChange={ format => setAttributes( { format } ) }
 					/>
-					<CheckboxControl
+					<ToggleControl
 						label={ __('Summaries', 'wp-gutenberg-epfl') }
-                        selected={ attributes.summary }
+						checked={ attributes.summary }
 						onChange={ summary => setAttributes( { summary } ) }
 					/>
-					<CheckboxControl
+					<ToggleControl
 						label={ __('Thumbnails', 'wp-gutenberg-epfl') }
-                        selected={ attributes.thumbnail }
+                        checked={ attributes.thumbnail }
 						onChange={ thumbnail => setAttributes( { thumbnail } ) }
+					/>
+					<RadioControl
+						label={ __('Sort', 'wp-gutenberg-epfl') }
+                        selected={ attributes.sort }
+                        options={ optionsSort }
+						onChange={ sort => setAttributes( { sort } ) }
+					/>
+				</PanelBody>
+				<PanelBody title={ __('Titles', 'wp-gutenberg-epfl') } >
+					<SelectControl
+						label={ __('Group by', 'wp-gutenberg-epfl') + ' (1)' }
+						value={ attributes.group_by }
+						onChange={ group_by => setAttributes( { group_by } ) }
+						options={ optionsGroupBy }
+					/>
+					<SelectControl
+						label={ __('Group by', 'wp-gutenberg-epfl') + ' (2)' }
+						value={ attributes.group_by2 }
+						onChange={ group_by2 => setAttributes( { group_by2 } ) }
+						options={ optionsGroupBy }
 					/>
 				</PanelBody>
 			</InspectorControls>
