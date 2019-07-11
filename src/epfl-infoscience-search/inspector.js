@@ -83,6 +83,12 @@ export default class InspectorControlsInfoscience extends Component {
 			{ value: 'doctype_year', label: __('Document type, then year', 'wp-gutenberg-epfl') },
 		]
 
+		let optionsOperatorFilter = [
+			{ value: 'and', label: __('AND', 'wp-gutenberg-epfl') },
+			{ value: 'or', label: __('OR', 'wp-gutenberg-epfl') },
+			{ value: 'and_not', label: __('AND NOT', 'wp-gutenberg-epfl') },
+		]
+
         let content = "";
 
         content = (
@@ -112,8 +118,13 @@ export default class InspectorControlsInfoscience extends Component {
 					{
 						!!this.state.showAdvancedSearch &&
             		<div>
-						<TextControl
+						<SelectControl
 							label={ <h4> { __('Second search text', 'wp-gutenberg-epfl') } </h4> }
+							value={ attributes.operator2 }
+							onChange={ operator2 => setAttributes( { operator2 } ) }
+							options={ optionsOperatorFilter }
+						/>
+						<TextControl
 							value={ attributes.pattern2 }
 							onChange={ pattern2 => setAttributes( { pattern2 } ) }
 							placeholder={ __('search for:', 'wp-gutenberg-epfl') }
@@ -124,8 +135,13 @@ export default class InspectorControlsInfoscience extends Component {
 							onChange={ field2 => setAttributes( { field2 } ) }
 							options={ optionsFieldFilter }
 						/>
-						<TextControl
+						<SelectControl
 							label={ <h4> { __('Third search text', 'wp-gutenberg-epfl') } </h4> }
+							value={ attributes.operator3 }
+							onChange={ operator3 => setAttributes( { operator3 } ) }
+							options={ optionsOperatorFilter }
+						/>
+						<TextControl
 							value={ attributes.pattern3 }
 							onChange={ pattern3 => setAttributes( { pattern3 } ) }
 							placeholder={ __('search for:', 'wp-gutenberg-epfl') }

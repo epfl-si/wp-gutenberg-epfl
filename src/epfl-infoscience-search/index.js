@@ -25,10 +25,16 @@ registerBlockType( 'epfl/infoscience-search', {
 		field: {
 			type: 'string',
 		},
+		operator2: {
+			type: 'string',
+		},
 		pattern2: {
 			type: 'string',
 		},
 		field2: {
+			type: 'string',
+		},
+		operator3: {
 			type: 'string',
 		},
 		pattern3: {
