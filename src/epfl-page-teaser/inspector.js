@@ -11,6 +11,7 @@ const {
 
 const {
     PanelBody,
+    ToggleControl,
 } = wp.components
 
 export default class InspectorControlsPageTeaser extends Component {
@@ -64,9 +65,13 @@ export default class InspectorControlsPageTeaser extends Component {
             content = (
                 <InspectorControls>
                     <div style={divStyle}>
-                        <PabelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
-                            
-                        </PabelBody>
+                        <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
+                            <ToggleControl
+                                label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
+                                checked={ attributes.gray }
+                                onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
+                            />
+                        </PanelBody>
                         <PanelBody title={ __( 'Pages', 'wp-gutenberg-epfl') }>
                                 <div style={selectStyle}>
                                     <Select

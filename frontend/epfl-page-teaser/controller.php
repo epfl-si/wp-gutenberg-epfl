@@ -5,12 +5,11 @@ function epfl_page_teaser_block( $attributes ) {
     $page1 = sanitize_text_field( $attributes['page1'] ) ?: '';
     $page2 = sanitize_text_field( $attributes['page2'] ) ?: '';
     $page3 = sanitize_text_field( $attributes['page3'] ) ?: '';
+    $gray  = sanitize_text_field( $attributes['gray'] ) ?: false;
 
     $page1 = json_decode($page1, true);
     $page2 = json_decode($page2, true);
     $page3 = json_decode($page3, true);
-
-    $gray = false;
 
     $data = array($page1["value"], $page2["value"], $page3["value"]);
 
