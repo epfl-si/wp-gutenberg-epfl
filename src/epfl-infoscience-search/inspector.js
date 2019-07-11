@@ -20,10 +20,26 @@ const {
 export default class InspectorControlsInfoscience extends Component {
 
 	constructor(props) {
-        super(props);
+		super(props);
+
+		const { attributes, setAttributes } = this.props
+
+		let showAdvancedSearch = false;
+
+		console.log(attributes);
+
+		if (attributes.pattern2 && attributes.pattern2.trim() != "") {
+			showAdvancedSearch = true;
+		}
+
+		if (attributes.pattern3 && attributes.pattern3.trim() != "") {
+			showAdvancedSearch = true;
+		}
+
         this.state = {
-            showAdvancedSearch: false,
+            showAdvancedSearch: showAdvancedSearch,
 		};
+
 		this.toggleBox = this.toggleBox.bind(this);
 	}
 
@@ -92,7 +108,7 @@ export default class InspectorControlsInfoscience extends Component {
 						options={ optionsFieldFilter }
 						help={ <a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a> }
 					/>
-					<h2 onClick={this.toggleBox}>{ __('Additional search keys', 'wp-gutenberg-epfl') } [-]</h2>
+					<h2><a href="#" onClick={this.toggleBox}>{ __('Additional search keys', 'wp-gutenberg-epfl') } { this.state.showAdvancedSearch ? '[-]' : '[+]' }</a></h2>
 					{
 						!!this.state.showAdvancedSearch &&
             		<div>
