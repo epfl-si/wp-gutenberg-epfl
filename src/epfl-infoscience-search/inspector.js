@@ -19,6 +19,18 @@ const {
 
 export default class InspectorControlsInfoscience extends Component {
 
+	constructor(props) {
+        super(props);
+        this.state = {
+            showAdvancedSearch: false,
+		};
+		this.toggleBox = this.toggleBox.bind(this);
+	}
+
+	toggleBox() {
+		this.setState(oldState => ({ showAdvancedSearch: !oldState.showAdvancedSearch }));
+	}
+
     render() {
 
         const { attributes, setAttributes } = this.props
@@ -75,11 +87,41 @@ export default class InspectorControlsInfoscience extends Component {
 					/>
 					<SelectControl
 						label={ __('Field restriction', 'wp-gutenberg-epfl') }
-						value={ attributes.fieldRestriction }
-						onChange={ fieldRestriction => setAttributes( { fieldRestriction } ) }
+						value={ attributes.field }
+						onChange={ field => setAttributes( { field } ) }
 						options={ optionsFieldFilter }
 						help={ <a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a> }
 					/>
+					<h2 onClick={this.toggleBox}>{ __('Additional search keys', 'wp-gutenberg-epfl') } [-]</h2>
+					{
+						!!this.state.showAdvancedSearch &&
+            		<div>
+						<TextControl
+							label={ <h4> { __('Second search text', 'wp-gutenberg-epfl') } </h4> }
+							value={ attributes.pattern2 }
+							onChange={ pattern2 => setAttributes( { pattern2 } ) }
+							placeholder={ __('search for:', 'wp-gutenberg-epfl') }
+						/>
+						<SelectControl
+							label={ __('Field restriction', 'wp-gutenberg-epfl') }
+							value={ attributes.field2 }
+							onChange={ field2 => setAttributes( { field2 } ) }
+							options={ optionsFieldFilter }
+						/>
+						<TextControl
+							label={ <h4> { __('Third search text', 'wp-gutenberg-epfl') } </h4> }
+							value={ attributes.pattern3 }
+							onChange={ pattern3 => setAttributes( { pattern3 } ) }
+							placeholder={ __('search for:', 'wp-gutenberg-epfl') }
+						/>
+						<SelectControl
+							label={ __('Field restriction', 'wp-gutenberg-epfl') }
+							value={ attributes.field3 }
+							onChange={ field3 => setAttributes( { field3 } ) }
+							options={ optionsFieldFilter }
+						/>
+					</div>
+					}
 				</PanelBody>
 				<PanelBody title={ __('Limit', 'wp-gutenberg-epfl') }>
 					<TextControl

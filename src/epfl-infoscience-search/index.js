@@ -22,7 +22,19 @@ registerBlockType( 'epfl/infoscience-search', {
 		pattern: {
 			type: 'string',
 		},
-		fieldRestriction: {
+		field: {
+			type: 'string',
+		},
+		pattern2: {
+			type: 'string',
+		},
+		field2: {
+			type: 'string',
+		},
+		pattern3: {
+			type: 'string',
+		},
+		field3: {
 			type: 'string',
 		},
 		format: {
