@@ -11,7 +11,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/infoscience-search', {
-	title: __( 'EPFL Infoscience', 'wp-gutenberg-epfl'),
+	title: __( 'Infoscience', 'wp-gutenberg-epfl'),
 	description: 'v0.0.1',
 	icon: infoscienceIcon,
 	category: 'common',
@@ -79,7 +79,7 @@ registerBlockType( 'epfl/infoscience-search', {
 			<div className={ className }>
 				<InspectorControlsInfoscience { ...{ attributes, setAttributes } } />
                 <div id="preview-box">
-                    <h2>EPFL Infoscience</h2>
+                    <h2>{ __('Infoscience publications', 'wp-gutenberg-epfl') }</h2>
                     <div class="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
                 </div>
 			</div>

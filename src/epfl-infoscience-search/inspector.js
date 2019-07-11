@@ -97,12 +97,11 @@ export default class InspectorControlsInfoscience extends Component {
 					<TextareaControl
 						value={ attributes.url }
 						onChange={ url => setAttributes( { url } ) }
-						placeholder={ __('a https://infoscience.epfl.ch/search?... url:', 'wp-gutenberg-epfl') }
+						placeholder={ __('a https://infoscience.epfl.ch/search?... url', 'wp-gutenberg-epfl') }
 					/>
 				</PanelBody>
-				<PanelBody title={ __('Or', 'wp-gutenberg-epfl') }>
+				<PanelBody title={ __('Or text patterns', 'wp-gutenberg-epfl') }>
 					<TextControl
-						label={ __('Search records with a textual pattern', 'wp-gutenberg-epfl') }
 						value={ attributes.pattern }
 						onChange={ pattern => setAttributes( { pattern } ) }
 						placeholder={ __('search for:', 'wp-gutenberg-epfl') }
