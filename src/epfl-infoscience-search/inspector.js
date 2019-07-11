@@ -49,22 +49,24 @@ export default class InspectorControlsInfoscience extends Component {
 
 		let optionsGroupBy = [
 			{ value: null, label: '' },
-			{ value: 'year', label: __('year as title', 'wp-gutenberg-epfl') },
-			{ value: 'doctype', label: __('document type as title', 'wp-gutenberg-epfl') },
+			{ value: 'year', label: __('Year', 'wp-gutenberg-epfl') },
+			{ value: 'year_doctype', label: __('Year, then document type', 'wp-gutenberg-epfl') },
+			{ value: 'doctype', label: __('Document type', 'wp-gutenberg-epfl') },
+			{ value: 'doctype_year', label: __('Document type, then year', 'wp-gutenberg-epfl') },
 		]
 
         let content = "";
 
         content = (
             <InspectorControls>
-				<PanelBody title={ __('Source', 'wp-gutenberg-epfl') }>
+				<PanelBody title={ __('A direct infoscience URL', 'wp-gutenberg-epfl') }>
 					<TextareaControl
-						label={ __('A direct infoscience URL', 'wp-gutenberg-epfl') }
 						value={ attributes.url }
 						onChange={ url => setAttributes( { url } ) }
 						placeholder={ __('a https://infoscience.epfl.ch/search?... url:', 'wp-gutenberg-epfl') }
 					/>
-					<b>OR</b>
+				</PanelBody>
+				<PanelBody title={ __('Or', 'wp-gutenberg-epfl') }>
 					<TextControl
 						label={ __('Search records with a textual pattern', 'wp-gutenberg-epfl') }
 						value={ attributes.pattern }
@@ -73,20 +75,34 @@ export default class InspectorControlsInfoscience extends Component {
 					/>
 					<SelectControl
 						label={ __('Field restriction', 'wp-gutenberg-epfl') }
-						value={ attributes.fieldResriction }
-						onChange={ fieldResriction => setAttributes( { fieldResriction } ) }
+						value={ attributes.fieldRestriction }
+						onChange={ fieldRestriction => setAttributes( { fieldRestriction } ) }
 						options={ optionsFieldFilter }
+						help={ <a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a> }
 					/>
+				</PanelBody>
+				<PanelBody title={ __('Limit', 'wp-gutenberg-epfl') }>
 					<TextControl
-						label={ __('Limit', 'wp-gutenberg-epfl') }
 						value={ attributes.limit }
 						onChange={ limit => setAttributes( { limit } ) }
 						placeholder={ '100' }
 						help={ __('Without a limit only the first 100 publications are shown', 'wp-gutenberg-epfl') }
 					/>
-					<a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a>
 				</PanelBody>
-				<PanelBody title={ __('Presentation', 'wp-gutenberg-epfl') } >
+				<PanelBody title={ __('Sort', 'wp-gutenberg-epfl') }>
+					<RadioControl
+                        selected={ attributes.sort }
+                        options={ optionsSort }
+						onChange={ sort => setAttributes( { sort } ) }
+					/>
+				</PanelBody>
+				<PanelBody title={ __('Options', 'wp-gutenberg-epfl') } >
+					<SelectControl
+						label={ __('Group by with titles', 'wp-gutenberg-epfl') }
+						value={ attributes.group_by }
+						onChange={ group_by => setAttributes( { group_by } ) }
+						options={ optionsGroupBy }
+					/>
 					<RadioControl
 						label={ __('Format', 'wp-gutenberg-epfl') }
                         selected={ attributes.format }
@@ -103,26 +119,6 @@ export default class InspectorControlsInfoscience extends Component {
 						label={ __('Thumbnails', 'wp-gutenberg-epfl') }
                         checked={ attributes.thumbnail }
 						onChange={ thumbnail => setAttributes( { thumbnail } ) }
-					/>
-					<RadioControl
-						label={ __('Sort', 'wp-gutenberg-epfl') }
-                        selected={ attributes.sort }
-                        options={ optionsSort }
-						onChange={ sort => setAttributes( { sort } ) }
-					/>
-				</PanelBody>
-				<PanelBody title={ __('Titles', 'wp-gutenberg-epfl') } >
-					<SelectControl
-						label={ __('Group by', 'wp-gutenberg-epfl') + ' (1)' }
-						value={ attributes.group_by }
-						onChange={ group_by => setAttributes( { group_by } ) }
-						options={ optionsGroupBy }
-					/>
-					<SelectControl
-						label={ __('Group by', 'wp-gutenberg-epfl') + ' (2)' }
-						value={ attributes.group_by2 }
-						onChange={ group_by2 => setAttributes( { group_by2 } ) }
-						options={ optionsGroupBy }
 					/>
 				</PanelBody>
 			</InspectorControls>

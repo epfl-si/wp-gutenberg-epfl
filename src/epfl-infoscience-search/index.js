@@ -22,7 +22,7 @@ registerBlockType( 'epfl/infoscience-search', {
 		pattern: {
 			type: 'string',
 		},
-		fieldResriction: {
+		fieldRestriction: {
 			type: 'string',
 		},
 		format: {
@@ -45,10 +45,6 @@ registerBlockType( 'epfl/infoscience-search', {
 			default: 'desc'
 		},
 		group_by: {
-			type: 'string',
-			default: null,
-		},
-		group_by2: {
 			type: 'string',
 			default: null,
 		},
