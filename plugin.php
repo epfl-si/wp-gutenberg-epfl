@@ -43,6 +43,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/scheduler',
         'epfl/tableau',
         'epfl/page-teaser',
+        'epfl/custom-highlight',
         'core/paragraph', 
     );
 
