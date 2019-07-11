@@ -27,7 +27,7 @@ registerBlockType( 'epfl/custom-highlight', {
 	category: 'common',
 	attributes: {
 		title: {
-			type: 'string',
+            type: 'string',
         },
         description: {
 			type: 'string',
@@ -43,6 +43,7 @@ registerBlockType( 'epfl/custom-highlight', {
 		},
 		layout: {
             type: 'string',
+            default: 'right',
 		},
 		
 	},
