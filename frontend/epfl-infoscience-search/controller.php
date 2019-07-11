@@ -32,8 +32,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # field 'content' to attribute 'url'
     $content = null;
 
-    var_dump($provided_attributes);
-
     #TODO: set this css to editor too
     # deliver the css
     wp_enqueue_style('epfl-infoscience-search-shortcode-style.css');
@@ -66,11 +64,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
-    var_dump($attributes);
-    var_dump("--------------");
     $unmanaged_attributes = array_diff_key($atts, $attributes);
 
-    var_dump("unmanaged : " . var_export($unmanaged_attributes, true));
     # Sanitize parameters
     foreach ($unmanaged_attributes as $key => $value) {
         $unmanaged_attributes[$key] = sanitize_text_field($value);
@@ -213,8 +208,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     $cache_key = md5(serialize($cache_define_by));
 
-    var_dump(var_export($cache_key,true));
-
     # check if we are here for some cache invalidation
     if (is_admin() && current_user_can( 'edit_pages' )) {
         # invalidate the cache if we are editing the page
@@ -293,7 +286,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         // To tell we're using the cache
         do_action('epfl_stats_webservice_call_duration', $url, 0, true);
         // Use cache
-        var_dump('useing cache');
         return $page;
     }
 
