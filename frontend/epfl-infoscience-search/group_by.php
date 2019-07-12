@@ -160,7 +160,7 @@ Class InfoscienceGroupBy {
 
     public static function sanitize_group_by($group_by_value) {
         if ($group_by_value) {
-            $group_by_value = in_array(strtolower($group_by_value), ['year', 'year_doctype', 'doctype', 'doctype_year']) ? strtolower($group_by_value) : null;
+            $group_by_value = in_array(strtolower($group_by_value), ['year', 'doctype']) ? strtolower($group_by_value) : null;
             return $group_by_value;
         } else {
             return;

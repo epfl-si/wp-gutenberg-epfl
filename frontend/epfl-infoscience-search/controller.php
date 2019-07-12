@@ -40,8 +40,20 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # try [epfl_infoscience_search pattern="001:'255565'" summary="true" /] for a nice example
     wp_enqueue_script('epfl-infoscience-search-shortcode-math-main.js', $in_footer=true);
 
-    // // normalize attribute keys, lowercase
+    # normalize attribute keys, lowercase
     $atts = array_change_key_case((array)$provided_attributes, CASE_LOWER);
+
+    # convert group_by interface to functionnal values
+    if (array_key_exists('group_by', $atts)) {
+        var_dump($atts['group_by']);
+        if ($atts['group_by'] == 'year_doctype') {
+            $atts['group_by'] = 'year';
+            $atts['group_by2'] = 'doctype';
+        } elseif ($atts['group_by'] == 'doctype_year') {
+            $atts['group_by'] = 'doctype';
+            $atts['group_by2'] = 'year';
+        }
+    }
 
     $infoscience_search_managed_attributes = array(
         # Content 1
@@ -93,6 +105,10 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     $group_by = $attributes['group_by'];
     unset($attributes['group_by']);
+
+    $group_by2 = $attributes['group_by2'];
+    unset($attributes['group_by2']);
+
 
     if ( $attributes['debug']) {
         $debug_data = $attributes['debug'];  # alias
