@@ -14,6 +14,8 @@ const {
     ToggleControl,
 } = wp.components
 
+const { withSelect } = wp.data
+
 export default class InspectorControlsPageTeaser extends Component {
 
     constructor(props) {
@@ -23,16 +25,47 @@ export default class InspectorControlsPageTeaser extends Component {
         }
     }
 
+    getHomeURL = () => {
+        let href = window.location.href;
+        let index = href.indexOf('/wp-admin');
+        let homeUrl = href.substring(0, index);
+        return homeUrl;
+    }
+
     componentDidMount() {
-        // TODO: Get only 100 pages and NOT all pages.
-        // https://dev.to/jackedwardlyons/how-to-get-all-wordpress-posts-from-the-wp-api-with-javascript-3j48
-        let apiRestUrl = "http://localhost/gutenberg/?rest_route=/wp/v2/pages&per_page=100";
-        
-        let entryPointsPages = apiRestUrl;
-        axios.get(entryPointsPages)
-            .then( response => response.data )
-            .then( pages => this.setState({ pages }) )
-            .catch( err => console.log(err))
+
+        let homeUrl = this.getHomeURL();
+            
+        let apiRestUrl = `${homeUrl}/?rest_route=/wp/v2/pages&per_page=100`;
+
+        axios.get(apiRestUrl).then(
+            response => {
+                // Total number of pages on the WP site
+                let nbTotalPages = response.headers["x-wp-total"];
+
+                // Total number of pages (in the pagination sense)
+                let nbPages = response.headers["x-wp-totalpages"];
+                
+                // We build a table containing all the pages of the site
+                const pages = [];
+
+                for (let page = 1; page <= nbPages; page += 1) {
+
+                    axios.get(`${apiRestUrl}&page=${page}`).then(
+
+                        pagesByPagination => { 
+
+                            pages.push(pagesByPagination.data);
+
+                            if (pages.flat().length == nbTotalPages) {
+                                this.setState({ pages: pages.flat() })            
+                            }
+
+                        }
+                    );
+                }
+            }
+        ).catch( err => console.log(err))
 	}
 
     render() {
@@ -61,7 +94,7 @@ export default class InspectorControlsPageTeaser extends Component {
             const selectStyle = {
                 marginBottom: '20px'
             }
-
+            
             content = (
                 <InspectorControls>
                     <div style={divStyle}>
