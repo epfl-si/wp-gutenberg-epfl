@@ -45,7 +45,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     # convert group_by interface to functionnal values
     if (array_key_exists('group_by', $atts)) {
-        var_dump($atts['group_by']);
         if ($atts['group_by'] == 'year_doctype') {
             $atts['group_by'] = 'year';
             $atts['group_by2'] = 'doctype';
@@ -65,14 +64,14 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'sort' => 'desc',  # "asc", "desc"
         # Presentation
         'format' => 'short',  # "short", "detailed"
-        'summary' => 'false',
-        'thumbnail' => "false",  # "true", "false"
+        'summary' => false,
+        'thumbnail' => true,
         'group_by' => '', # "", "year", "doctype"
         'group_by2' => '', # "", "year", "doctype"
         # Dev
-        'debug' => 'false',
-        'debug_data' => 'false',
-        'debug_template' => 'false',
+        'debug' => false,
+        'debug_data' => false,
+        'debug_template' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
@@ -83,13 +82,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $unmanaged_attributes[$key] = sanitize_text_field($value);
     }
 
-    $attributes['summary'] = $attributes['summary'] === 'true' ? true : false;
-    $attributes['thumbnail'] = $attributes['thumbnail'] === 'true' ? true : false;
     $attributes['format'] = in_array(strtolower($attributes['format']), ['short', 'detailed']) ? strtolower($attributes['format']) : 'short';
     $attributes['group_by'] = InfoscienceGroupBy::sanitize_group_by($attributes['group_by']);
-    $attributes['debug'] = strtolower($attributes['debug']) === 'true' ? true : false;
-    $attributes['debug_data'] = strtolower($attributes['debug_data']) === 'true' ? true : false;
-    $attributes['debug_template'] = strtolower($attributes['debug_template']) === 'true' ? true : false;
 
     # Unset element unused in url, with backup first
     $before_unset_attributes = $attributes;
