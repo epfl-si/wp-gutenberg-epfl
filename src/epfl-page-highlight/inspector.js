@@ -11,10 +11,10 @@ const {
 
 const {
     PanelBody,
-    ToggleControl,
+    RadioControl,
 } = wp.components
 
-export default class InspectorControlsPageTeaser extends Component {
+export default class InspectorControlsPageHighlight extends Component {
 
     constructor(props) {
         super(props);
@@ -69,62 +69,53 @@ export default class InspectorControlsPageTeaser extends Component {
     render() {
 
         const { attributes, setAttributes } = this.props
-        const handlePage1Change = ( page1 ) => setAttributes( { page1: JSON.stringify( page1 ) } );
-        const handlePage2Change = ( page2 ) => setAttributes( { page2: JSON.stringify( page2 ) } );
-        const handlePage3Change = ( page3 ) => setAttributes( { page3: JSON.stringify( page3 ) } );
+        const handlePageChange = ( page ) => setAttributes( { page: JSON.stringify( page ) } );
 
         let content = "";
+
+        let optionsLayoutList = [
+            { value: 'right', label: __('Right', 'wp-gutenberg-epfl')},
+            { value: 'bottom', label: __('Bottom', 'wp-gutenberg-epfl')},
+            { value: 'left', label: __('Left', 'wp-gutenberg-epfl')},
+        ];
         
         if (this.state.pages !== null) {
+            
             let optionsPagesList = [
-                
+               
             ];
+
             this.state.pages.forEach(page => {
                 optionsPagesList.push({ label: page.title.rendered, value: page.id });
             });
+
             const divStyle = {
                 height: '600px',
             };
+
             const selectStyle = {
                 marginBottom: '20px'
             }
+            
             content = (
                 <InspectorControls>
                     <div style={divStyle}>
-                        <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
-                            <ToggleControl
-                                label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
-                                checked={ attributes.gray }
-                                onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
+                        <PanelBody title={ __( 'Layout', 'wp-gutenberg-epfl' ) }>
+                            <RadioControl
+                                label={ __("Select a layout", 'wp-gutenberg-epfl') }
+                                selected={ attributes.layout }
+                                options={ optionsLayoutList }
+                                onChange={ layout => setAttributes( { layout } ) }
+                                help={ __('Decides where the text will be aligned, to allow the subject of the picture to be visible', 'wp-gutenberg-epfl')}
                             />
                         </PanelBody>
-                        <PanelBody title={ __( 'Pages', 'wp-gutenberg-epfl') }>
+                        <PanelBody title={ __( 'Page', 'wp-gutenberg-epfl') }>
                                 <div style={selectStyle}>
                                     <Select
-                                        id='epfl-page-teaser-page1'
-                                        name='epfl-page-teaser-page1'
-                                        value={ JSON.parse( attributes.page1 ) }
-                                        onChange={ handlePage1Change }
-                                        options={ optionsPagesList }
-                                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-page2'
-                                        name='epfl-page-teaser-page2'
-                                        value={ JSON.parse( attributes.page2 ) }
-                                        onChange={ handlePage2Change }
-                                        options={ optionsPagesList }   
-                                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }                             
-                                    />      
-                                </div>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-page3'
-                                        name='epfl-page-teaser-page3'
-                                        value={ JSON.parse( attributes.page3 ) }
-                                        onChange={ handlePage3Change }
+                                        id='epfl-page-highlight-page'
+                                        name='epfl-page-highlight-page'
+                                        value={ JSON.parse( attributes.page ) }
+                                        onChange={ handlePageChange }
                                         options={ optionsPagesList }
                                         placeholder={ __('Select page', 'wp-gutenberg-epfl') }
                                     />
