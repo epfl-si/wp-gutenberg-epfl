@@ -28,8 +28,6 @@ function epfl_page_teaser_block( $attributes ) {
 
         $page = get_post($page);
 
-        //if (strpos($key, 'page') !== 0) continue;
-
         $html .= '<div class="card">';
         $page_url = get_permalink($page);
 
