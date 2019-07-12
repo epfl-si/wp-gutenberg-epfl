@@ -1,5 +1,3 @@
-import './style.scss'
-
 import InspectorControlsPageTeaser from './inspector'
 
 const { __ } = wp.i18n
