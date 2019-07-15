@@ -1,5 +1,6 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 /*
  Group by operations
 */
@@ -82,13 +83,13 @@ Class InfoscienceGroupBy {
     {
         $compute_key = function($key) {
             $compute_year = function($value) {
-                $d = DateTime::createFromFormat("Y-m-d", $value);
+                $d = \DateTime::createFromFormat("Y-m-d", $value);
                 # is this a full date ?
                 if ($d) {
                     return $d->format("Y");
                 } else {
                     # a year only ?
-                    $d = DateTime::createFromFormat("Y", $value);
+                    $d = \DateTime::createFromFormat("Y", $value);
                     if ($d) {
                         return date_format($d, "Y");
                     } else {
@@ -174,15 +175,15 @@ Class InfoscienceGroupBy {
             $grouped_by_year = InfoscienceGroupBy::array_group_by($publications, 'publication_date');
 
             if ($sort_order === 'asc') {
-                usort($grouped_by_year, 'epfl_infoscience_search_sort_group_by_year_asc');
+                usort($grouped_by_year, __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_year_asc');
             } else {
-                usort($grouped_by_year, 'epfl_infoscience_search_sort_group_by_year_desc');
+                usort($grouped_by_year, __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_year_desc');
             }
 
             foreach($grouped_by_year as $index => $by_year) {
                 $doctype_grouped = InfoscienceGroupBy::array_group_by($by_year['values'], 'doctype');
                 # order is fixed for second group by
-                usort($doctype_grouped, 'epfl_infoscience_search_sort_group_by_doctype_desc');
+                usort($doctype_grouped, __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_doctype_desc');
 
                 $grouped_publications['group_by'][] = [
                     'label' => $by_year['label'],
@@ -194,15 +195,15 @@ Class InfoscienceGroupBy {
             $grouped_by_doctype = InfoscienceGroupBy::array_group_by($publications, 'doctype');
 
             if ($sort_order === 'asc') {
-                usort($grouped_by_doctype, 'epfl_infoscience_search_sort_group_by_doctype_asc');
+                usort($grouped_by_doctype, __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_doctype_asc');
             } else {
-                usort($grouped_by_doctype , 'epfl_infoscience_search_sort_group_by_doctype_desc');
+                usort($grouped_by_doctype , __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_doctype_desc');
             }
 
             foreach($grouped_by_doctype as $index => $by_doctype) {
                 $year_grouped = InfoscienceGroupBy::array_group_by($by_doctype['values'], 'publication_date');
                 # order is fixed for second group by
-                usort($year_grouped, 'epfl_infoscience_search_sort_group_by_year_desc');
+                usort($year_grouped, __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_year_desc');
 
                 $grouped_publications['group_by'][] = [
                     'label' => $by_doctype['label'],
@@ -218,18 +219,18 @@ Class InfoscienceGroupBy {
             ];
 
             if ($sort_order === 'asc') {
-                usort($grouped_publications['group_by'], 'epfl_infoscience_search_sort_group_by_year_asc');
+                usort($grouped_publications['group_by'], __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_year_asc');
             } else {
-                usort($grouped_publications['group_by'], 'epfl_infoscience_search_sort_group_by_year_desc');
+                usort($grouped_publications['group_by'], __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_year_desc');
             }
 
         } elseif ($group_by === 'doctype') {
             $doctype_grouped = InfoscienceGroupBy::array_group_by($publications, 'doctype');
 
             if ($sort_order === 'asc') {
-                usort($doctype_grouped, 'epfl_infoscience_search_sort_group_by_doctype_asc');
+                usort($doctype_grouped, __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_doctype_asc');
             } else {
-                usort($doctype_grouped, 'epfl_infoscience_search_sort_group_by_doctype_desc');
+                usort($doctype_grouped, __NAMESPACE__. '\epfl_infoscience_search_sort_group_by_doctype_desc');
             }
 
             $grouped_publications['group_by'] = [
