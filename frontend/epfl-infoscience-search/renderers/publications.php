@@ -24,9 +24,9 @@ define(__NAMESPACE__ . '\DOCTYPE_TO_CLASS_NAME_MAPPING', [
 function get_render_class_for_publication_2018($publication, $format) {
     # by default, use one of this
     if ($format === "detailed") {
-        $record_renderer_class_base = __NAMESPACE__ . '\DetailedInfosciencePublication2018Render';
+        $record_renderer_class_base = 'DetailedInfosciencePublication2018Render';
     } else {
-        $record_renderer_class_base = __NAMESPACE__ . '\ShortInfosciencePublication2018Render';
+        $record_renderer_class_base = 'ShortInfosciencePublication2018Render';
     }
 
     if (InfoscienceField2018Render::field_exists($publication['doctype'])) {
@@ -35,7 +35,7 @@ function get_render_class_for_publication_2018($publication, $format) {
 
         if (array_key_exists($doctype_to_find, DOCTYPE_TO_CLASS_NAME_MAPPING)) {
 
-            $record_renderer_class = DOCTYPE_TO_CLASS_NAME_MAPPING[$doctype_to_find] . $record_renderer_class_base;
+            $record_renderer_class = __NAMESPACE__ . "\\" .DOCTYPE_TO_CLASS_NAME_MAPPING[$doctype_to_find] . $record_renderer_class_base;
 
             if (class_exists($record_renderer_class)) {
                 return $record_renderer_class;
