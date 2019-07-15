@@ -87,7 +87,7 @@ export default class InspectorControlsPageTeaser extends Component {
                                 </div>
                                 <div style={selectStyle}>
                                     <Select
-                                        id='epfl-page-teaser-pagit push --set-upstream origin epfl-page-highlightge3'
+                                        id='epfl-page-teaser-page3'
                                         name='epfl-page-teaser-page3'
                                         value={ JSON.parse( attributes.page3 ) }
                                         onChange={ handlePage3Change }

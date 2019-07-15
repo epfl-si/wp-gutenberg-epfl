@@ -27,6 +27,8 @@ import './epfl-scienceqa'
 import './epfl-page-teaser'
 import './epfl-custom-highlight'
 import './epfl-page-highlight'
+import './epfl-post-teaser'
+import './epfl-post-highlight'
 
 const getHomeURL = () => {
     let href = window.location.href;
@@ -40,7 +42,7 @@ export const getAllPagesOrPosts = (type) => {
     return new Promise((resolve, reject) => {
 
         let homeUrl = getHomeURL();
-        if (type !== 'pages' || type !== 'posts') {
+        if (type !== 'pages' && type !== 'posts') {
             type = 'pages';
         }
         let apiRestUrl = `${homeUrl}/?rest_route=/wp/v2/${type}&per_page=100`;

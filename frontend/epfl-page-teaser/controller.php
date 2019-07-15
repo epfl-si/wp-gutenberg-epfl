@@ -6,12 +6,25 @@ function epfl_page_teaser_block( $attributes ) {
     $page2 = sanitize_text_field( $attributes['page2'] ) ?: '';
     $page3 = sanitize_text_field( $attributes['page3'] ) ?: '';
     $gray  = sanitize_text_field( $attributes['gray'] ) ?: false;
+    
+    $data  = [];
 
-    $page1 = json_decode($page1, true);
-    $page2 = json_decode($page2, true);
-    $page3 = json_decode($page3, true);
+    if ($page1 !== '') {
+        $page1 = json_decode($page1, true);
+        array_push($data, $page1["value"]);
+    }
 
-    $data = array($page1["value"], $page2["value"], $page3["value"]);
+    if ($page2 !== '') {
+        $page2 = json_decode($page2, true);
+        array_push($data, $page2["value"]);
+    }
+
+    if ($page3 !== '') {
+        $page3 = json_decode($page3, true);
+        array_push($data, $page3["value"]);
+    }
+
+    $pagesCount = count($data);
 
     $html = '<div class="container-full my-3 ';
     if ($gray) {
