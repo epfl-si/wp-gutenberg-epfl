@@ -45,6 +45,8 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/page-teaser',
         'epfl/custom-highlight',
         'epfl/page-highlight',
+        'epfl/post-teaser',
+        'epfl/post-highlight',
         'core/paragraph', 
     );
 

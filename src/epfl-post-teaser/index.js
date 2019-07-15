@@ -5,9 +5,9 @@ const { registerBlockType } = wp.blocks
 const { Fragment } = wp.element
 
 registerBlockType(
-	'epfl/page-teaser',
+	'epfl/post-teaser',
 	{
-		title: __( "EPFL Page Teaser", 'wp-gutenberg-epfl'),
+		title: __( "EPFL Post Teaser", 'wp-gutenberg-epfl'),
 		description: 'v1.0.0',
 		category: 'common',
 		keywords: [
@@ -15,15 +15,15 @@ registerBlockType(
             __( 'teaser' , 'wp-gutenberg-epfl'),
 		],
 		attributes: {
-			page1: {
+			post1: {
 				type: 'string',
 				default: null,
             },
-            page2: {
+            post2: {
 				type: 'string',
 				default: null,
             },
-            page3: {
+            post3: {
 				type: 'string',
 				default: null,
             },
@@ -42,7 +42,7 @@ registerBlockType(
 					<InspectorControlsPostTeaser { ...{ attributes, setAttributes } } />
 					<div className={ className }>
                         <div id="preview-box">
-                            <h2>EPFL PAGE TEASER</h2>
+                            <h2>EPFL POST TEASER</h2>
                             <div class="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
                         </div>
                     </div>
