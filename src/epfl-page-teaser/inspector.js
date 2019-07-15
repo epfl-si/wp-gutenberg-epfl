@@ -1,6 +1,6 @@
-import * as axios from 'axios';
 import React from 'react';
 import Select from 'react-select';
+import { getAllPagesOrPosts } from '../blocks';
 
 const { __ } = wp.i18n
 const { Component } = wp.element
@@ -23,48 +23,11 @@ export default class InspectorControlsPageTeaser extends Component {
         }
     }
 
-    getHomeURL = () => {
-        let href = window.location.href;
-        let index = href.indexOf('/wp-admin');
-        let homeUrl = href.substring(0, index);
-        return homeUrl;
-    }
-
     componentDidMount() {
-
-        let homeUrl = this.getHomeURL();
-            
-        let apiRestUrl = `${homeUrl}/?rest_route=/wp/v2/pages&per_page=100`;
-
-        axios.get(apiRestUrl).then(
-            response => {
-                // Total number of pages on the WP site
-                let nbTotalPages = response.headers["x-wp-total"];
-
-                // Total number of pages (in the pagination sense)
-                let nbPages = response.headers["x-wp-totalpages"];
-                
-                // We build a table containing all the pages of the site
-                const pages = [];
-
-                for (let page = 1; page <= nbPages; page += 1) {
-
-                    axios.get(`${apiRestUrl}&page=${page}`).then(
-
-                        pagesByPagination => { 
-
-                            pages.push(pagesByPagination.data);
-
-                            if (pages.flat().length == nbTotalPages) {
-                                this.setState({ pages: pages.flat() })            
-                            }
-
-                        }
-                    );
-                }
-            }
-        ).catch( err => console.log(err))
-	}
+        getAllPagesOrPosts('pages').then( (allPages) => {
+            this.setState({ pages: allPages });
+        });
+    }
 
     render() {
 
@@ -76,18 +39,21 @@ export default class InspectorControlsPageTeaser extends Component {
         let content = "";
         
         if (this.state.pages !== null) {
-            let optionsPagesList = [
-                
-            ];
+
+            let optionsPagesList = [];
+
             this.state.pages.forEach(page => {
                 optionsPagesList.push({ label: page.title.rendered, value: page.id });
             });
+
             const divStyle = {
                 height: '600px',
             };
+
             const selectStyle = {
                 marginBottom: '20px'
             }
+
             content = (
                 <InspectorControls>
                     <div style={divStyle}>
@@ -121,7 +87,7 @@ export default class InspectorControlsPageTeaser extends Component {
                                 </div>
                                 <div style={selectStyle}>
                                     <Select
-                                        id='epfl-page-teaser-page3'
+                                        id='epfl-page-teaser-pagit push --set-upstream origin epfl-page-highlightge3'
                                         name='epfl-page-teaser-page3'
                                         value={ JSON.parse( attributes.page3 ) }
                                         onChange={ handlePage3Change }
