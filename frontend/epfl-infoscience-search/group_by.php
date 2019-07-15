@@ -1,4 +1,5 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
 /*
  Group by operations

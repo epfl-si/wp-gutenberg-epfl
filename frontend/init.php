@@ -133,7 +133,7 @@ function wp_gutenberg_epfl_register_blocks() {
 		));
 
 		register_block_type( 'epfl/infoscience-search', array(
-			'render_callback' => 'epfl_infoscience_search_block',
+			'render_callback' => 'EPFL\Plugins\Gutenberg\InfoscienceSearch\epfl_infoscience_search_block',
 		));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

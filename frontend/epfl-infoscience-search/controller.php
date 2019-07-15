@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
+
 /**
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
@@ -13,14 +15,14 @@
 
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname( __FILE__) . '/lib');
 
-require_once 'utils.php';
-require_once 'render.php';
-require_once 'marc_converter.php';
-require_once 'group_by.php';
-require_once 'mathjax-config.php';
-
+require_once('utils.php');
+require_once('marc_converter.php');
+require_once('group_by.php');
+require_once('mathjax-config.php');
+require_once('render.php');
 
 define("INFOSCIENCE_SEARCH_URL", "https://infoscience.epfl.ch/search?");
+
 
 /**
  *
@@ -260,23 +262,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 return $page;
             }
 
-            # try to load render from 2018 theme if available
-            if (has_filter("epfl_infoscience_search_action")) {
-                $page = apply_filters("epfl_infoscience_search_action", $grouped_by_publications,
-                                                            $url,
-                                                            $format,
-                                                            $summary,
-                                                            $thumbnail,
-                                                            $debug_template);
-            } else {
-                # use the self renderer
-                $page = ClassesInfoscienceRender::render($grouped_by_publications,
-                                                            $url,
-                                                            $format,
-                                                            $summary,
-                                                            $thumbnail,
-                                                            $debug_template);
-            }
+            $page = ClassesInfoscience2018Render::render($grouped_by_publications,
+                                                    $url,
+                                                    $format,
+                                                    $summary,
+                                                    $thumbnail,
+                                                    $debug_template);
 
             // wrap the page, and add config as html comment
             $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export($before_unset_attributes, true) .  ' //-->';
@@ -298,8 +289,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         // Use cache
         return $page;
     }
-
-    #return "";#epfl_infoscience_search_process_shortcode($attributes, $content);
 }
 
 
@@ -421,12 +410,13 @@ function epfl_infoscience_search_generate_url_from_attrs($attrs) {
 }
 
 // Load .mo file for translation
+/*
 function epfl_infoscience_search_load_plugin_textdomain() {
     load_plugin_textdomain( 'epfl-infoscience-search', FALSE, basename( plugin_dir_path( __FILE__ )) . '/languages/');
 }
 
 add_action( 'plugins_loaded', 'epfl_infoscience_search_load_plugin_textdomain' );
-
+*/
 add_action( 'init', function() {
 
     add_shortcode( 'epfl_infoscience_search', 'epfl_infoscience_search_block' );

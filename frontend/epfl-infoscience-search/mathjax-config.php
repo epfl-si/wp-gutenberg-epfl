@@ -1,4 +1,6 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
+
 function epfl_infoscience_search_get_mathjax_config() {
     $to_return = '';
     $to_return .= '<script type="text/x-mathjax-config">';

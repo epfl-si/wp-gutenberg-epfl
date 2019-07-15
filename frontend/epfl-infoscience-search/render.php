@@ -1,6 +1,7 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
-require_once 'renderers/publications.php';
+require_once('renderers/publications.php');
 
 /*
  * Generic Render
@@ -14,18 +15,19 @@ require_once 'renderers/publications.php';
                                         ],
                                         ];
  */
-Class InfoscienceRender {
+
+Class Infoscience2018Render {
     protected static function render_url($url) {
         return '<div style="border:2px solid black;padding:8px;word-wrap: break-word;">' . $url . '</div>' ;
-     }
-    
-    protected static function pre_render() {
-       return '<div class="infoscience_export">';
     }
 
-    public static function render($publications, $url='', $format="short", $summary=false, $thumbnail=false, $debug=false) {
+    protected static function pre_render() {
+        return '<div class="list-group my-3">';
+    }
+
+    public static function render($publications, $url='', $format="", $summary=false, $thumbnail=false, $debug=false) {
         $html_rendered = self::pre_render();
-        
+
         $html_rendered .= "";
 
         $html_rendered .= self::post_render();
@@ -34,20 +36,21 @@ Class InfoscienceRender {
     }
 
     protected static function post_render() {
-        return '</div>';
+        return "</div>";
     }
 }
 
-Class ClassesInfoscienceRender extends InfoscienceRender {
+Class ClassesInfoscience2018Render extends Infoscience2018Render {
     protected static function render_header_1($value) {
         $translated_value = esc_html__($value, 'epfl-infoscience-search');
-        return '<h1 class="infoscience_header1">'. $translated_value . '</h1>';
+        return '<h1 class="h2 mt-3">'. $translated_value . '</h1>';
     }
 
     protected static function render_header_2($value) {
         $translated_value = esc_html__($value, 'epfl-infoscience-search');
-        return '<h2 class="infoscience_header2">'. $translated_value . '</h2>';
+        return '<h2 class="h3 mt-1 mb-2">'. $translated_value . '</h2>';
     }
+
 
     public static function render($publications, $url='', $format="short", $summary=false, $thumbnail=false, $debug=false) {
         $html_rendered = "";
@@ -68,15 +71,15 @@ Class ClassesInfoscienceRender extends InfoscienceRender {
                 } else {
                     $html_rendered .= self::render_header_2($grouped_by2_publications['label']);
                 }
-                
+
                 foreach($grouped_by2_publications['values'] as $index3 => $publication) {
-                    $record_renderer_class = epfl_infoscience_search_get_render_class_for_publication($publication, $format);
+                    $record_renderer_class = get_render_class_for_publication_2018($publication, $format);
 
                     if ($debug) {
-                        $html_rendered .= '<h3>'. $record_renderer_class .'</h3>';
+                        $html_rendered .= '<h3>'. $record_renderer_class .' - ' . $publication['doctype'][0] . '</h3>';
                     }
 
-                    $html_rendered .= $record_renderer_class::render($publication, $summary, $thumbnail);
+                    $html_rendered .= $record_renderer_class::render_publication($publication, $format, $summary, $thumbnail);
                 }
             }
         }
@@ -85,32 +88,5 @@ Class ClassesInfoscienceRender extends InfoscienceRender {
 
         return $html_rendered;
     }
-}
-
-Class RawInfoscienceRender extends InfoscienceRender {
-    public static function pretty_print($arr){
-        $retStr = '<ul>';
-        if (is_array($arr)){
-            foreach ($arr as $key=>$val){
-                if (is_array($val)){
-                    $retStr .= '<li>' . $key . ' => ' . RawInfoscienceRender::pretty_print($val) . '</li>';
-                }else{
-                    $retStr .= '<li>' . $key . ' => ' . $val . '</li>';
-                }
-            }
-        }
-        $retStr .= '</ul>';
-        return $retStr;
-    }
-
-    /**
-     * Render for debugging
-     *
-     * @param $publications: array of data converted from Infoscience
-     * @return
-     */
-    public static function render($publications, $url='', $format="short", $summary=false, $thumbnail=false, $debug=false) {
-        return self::render_url($url) . RawInfoscienceRender::pretty_print($publications);
-    }    
 }
 ?>

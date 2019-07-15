@@ -1,6 +1,7 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
-require_once 'File/MARCXML.php';
+require_once('File/MARCXML.php');
 
 Class InfoscienceMarcConverter
 {
@@ -32,7 +33,11 @@ Class InfoscienceMarcConverter
 
         foreach($file_urls as $url_and_type) {
             $url = $url_and_type[0];
-            $type = $url_and_type[1];
+            $type = null;
+
+            if (count($url_and_type) > 1) {
+                $type = $url_and_type[1];
+            }
 
             $url = preg_replace("(^https?://)", "//", $url);
 
@@ -307,7 +312,7 @@ Class InfoscienceMarcConverter
     public static function convert_marc_to_array($marc_xml) {
         $publications = [];
 
-        $marc_source = new File_MARCXML($marc_xml, File_MARC::SOURCE_STRING);
+        $marc_source = new \File_MARCXML($marc_xml, \File_MARC::SOURCE_STRING);
 
         while ($marc_record = $marc_source->next()) {
             array_push($publications, InfoscienceMarcConverter::parse_record($marc_record, false));
