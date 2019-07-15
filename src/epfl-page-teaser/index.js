@@ -1,4 +1,4 @@
-import InspectorControlsPostTeaser from './inspector'
+import InspectorControlsPageTeaser from './inspector'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -39,7 +39,7 @@ registerBlockType(
 			const { attributes, className, setAttributes } = props
 			return (
 				<Fragment>
-					<InspectorControlsPostTeaser { ...{ attributes, setAttributes } } />
+					<InspectorControlsPageTeaser { ...{ attributes, setAttributes } } />
 					<div className={ className }>
                         <div id="preview-box">
                             <h2>EPFL PAGE TEASER</h2>

@@ -40,9 +40,6 @@ function epfl_post_teaser_block( $attributes ) {
 
     foreach($data as $key => $post) {
         $post = get_post($post);
-        //var_dump($post);
-        //if ($key === 'gray') continue;
-        
         $post_url = get_permalink($post);
 
         $html .= '<a href="' . $post_url . '" class="card link-trapeze-horizontal">';
