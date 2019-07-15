@@ -25,6 +25,7 @@ require_once 'epfl-scienceqa/controller.php';
 require_once 'epfl-scheduler/controller.php';
 require_once 'epfl-page-teaser/controller.php';
 require_once 'epfl-custom-highlight/controller.php';
+require_once 'epfl-page-highlight/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -139,6 +140,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/page-teaser', array(
 		'render_callback' => 'epfl_page_teaser_block',
+    ));
+
+    register_block_type( 'epfl/page-highlight', array(
+		'render_callback' => 'epfl_page_highlight_block',
     ));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );
