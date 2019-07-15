@@ -1,4 +1,5 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 /*
