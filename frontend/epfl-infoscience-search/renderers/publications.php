@@ -469,7 +469,7 @@ Class ThesesShortInfosciencePublication2018Render extends ShortInfosciencePublic
         }
 
         $html_rendered .= '<span class="text-muted small mb-0 infoscience_host">';
-        $books_chapters_rendered = BooksChaptersPublicationLocationInsitutionDateInfoscienceField2018Render::render($publication, self::$format);
+        $books_chapters_rendered = BooksChaptersPublicationLocationInsitutionDateInfoscienceField2018Render::render($publication, self::$format, false, ', ');
 
         if ($books_chapters_rendered) {
             $html_rendered .= $books_chapters_rendered . '&nbsp;';
