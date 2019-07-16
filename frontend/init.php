@@ -28,6 +28,7 @@ require_once 'epfl-custom-highlight/controller.php';
 require_once 'epfl-page-highlight/controller.php';
 require_once 'epfl-post-teaser/controller.php';
 require_once 'epfl-post-highlight/controller.php';
+require_once 'epfl-infoscience-search/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -68,7 +69,7 @@ function wp_gutenberg_epfl_editor_assets() {
 		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ),
 		array( 'wp-edit-blocks' )
     );
-  
+
 }
 add_action( 'enqueue_block_editor_assets', 'wp_gutenberg_epfl_editor_assets' );
 
@@ -79,7 +80,7 @@ function wp_gutenberg_epfl_register_blocks() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
-	
+
 	register_block_type( 'epfl/news', array(
 		'render_callback' => 'epfl_news_block',
 	));
@@ -91,7 +92,7 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/cover', array(
 		'render_callback' => 'epfl_cover_block',
     ));
-    
+
     register_block_type( 'epfl/toggle', array(
 		'render_callback' => 'epfl_toggle_block',
     ));
@@ -135,7 +136,7 @@ function wp_gutenberg_epfl_register_blocks() {
     register_block_type( 'epfl/scheduler', array(
 		'render_callback' => 'epfl_scheduler_block',
 	));
-	
+
 	register_block_type( 'epfl/custom-highlight', array(
 		'render_callback' => 'epfl_custom_highlight_block',
     ));
@@ -155,5 +156,9 @@ function wp_gutenberg_epfl_register_blocks() {
     register_block_type( 'epfl/post-highlight', array(
 		'render_callback' => 'epfl_post_highlight_block',
     ));
+
+		register_block_type( 'epfl/infoscience-search', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\InfoscienceSearch\epfl_infoscience_search_block',
+		));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

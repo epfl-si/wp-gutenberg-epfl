@@ -23,6 +23,7 @@ import './epfl-google-forms'
 import './epfl-video'
 import './epfl-scheduler'
 import './epfl-tableau'
+import './epfl-infoscience-search'
 import './epfl-scienceqa'
 import './epfl-page-teaser'
 import './epfl-custom-highlight'
@@ -37,8 +38,8 @@ const getHomeURL = () => {
     return homeUrl;
 }
 
-export const getAllPagesOrPosts = (type) => { 
-    
+export const getAllPagesOrPosts = (type) => {
+
     return new Promise((resolve, reject) => {
 
         let homeUrl = getHomeURL();
@@ -55,7 +56,7 @@ export const getAllPagesOrPosts = (type) => {
 
                 // Total number of pages (in the pagination sense)
                 let nbPages = response.headers["x-wp-totalpages"];
-                
+
                 // We build a array containing all pages of WP site
                 const pages = [];
 
@@ -63,7 +64,7 @@ export const getAllPagesOrPosts = (type) => {
 
                     axios.get(`${apiRestUrl}&page=${page}`).then(
 
-                        pagesByPagination => { 
+                        pagesByPagination => {
 
                             pages.push(pagesByPagination.data);
 
