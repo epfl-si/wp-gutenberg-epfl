@@ -26,8 +26,6 @@ export default class InspectorControlsInfoscience extends Component {
 
 		let showAdvancedSearch = false;
 
-		console.log(attributes);
-
 		if (attributes.pattern2 && attributes.pattern2.trim() != "") {
 			showAdvancedSearch = true;
 		}
