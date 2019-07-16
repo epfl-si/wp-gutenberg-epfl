@@ -63,7 +63,7 @@ abstract Class InfosciencePublication2018Render {
             $html_rendered .= SummaryInfoscienceField2018Render::render($publication, self::$format, false);
         }
 
-        $html_rendered .= static::get_content($publication, $format, $summary);
+        $html_rendered .= '<span class="text-muted small mb-0">' . static::get_content($publication, $format, $summary). '</span>';
         return $html_rendered;
     }
 
@@ -149,7 +149,8 @@ Class ShortInfosciencePublication2018Render extends InfosciencePublication2018Re
 
 Class BookChaptersDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function render($publication, $format, $summary) {
-        $html_rendered = '<span class="text-muted small mb-0 infoscience_host">';
+        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered .= '<span class="infoscience_host">';
 
         $html_rendered .= AuthorInfoscienceField2018Render::render($publication, $format, NULL, 'author');
 
@@ -173,6 +174,7 @@ Class BookChaptersDetailedInfosciencePublication2018Render extends DetailedInfos
         $html_rendered .= '</span>';
         $html_rendered .= ISBNInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }
@@ -201,11 +203,13 @@ Class BookChaptersShortInfosciencePublication2018Render extends ShortInfoscience
 
 Class BooksDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function get_content($publication, $format, $summary) {
-        $html_rendered = '<span class="text-muted small mb-0 infoscience_host">';
+        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered .= '<span class="infoscience_host">';
         $html_rendered .= BooksPublicationLocationInsitutionDateInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
         $html_rendered .= ISBNInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }
@@ -225,7 +229,8 @@ Class BooksShortInfosciencePublication2018Render extends ShortInfosciencePublica
 
 Class ConferencePapersDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function get_content($publication, $format, $summary) {
-        $html_rendered = '<span class="text-muted small mb-0 infoscience_host">';
+        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered .= '<span class="infoscience_host">';
 
         $html_rendered .= JournalPublisherInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
@@ -236,6 +241,7 @@ Class ConferencePapersDetailedInfosciencePublication2018Render extends DetailedI
 
         $html_rendered .= '</span>';
         $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }
@@ -258,7 +264,7 @@ Class ConferencePapersShortInfosciencePublication2018Render extends ShortInfosci
 
 Class ConferenceProceedingsDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function render($publication, $format, $summary) {
-        $html_rendered = '';
+        $html_rendered = '<span class="text-muted small mb-0">';
 
         if (InfoscienceField2018Render::field_exists($publication['author_1'])) {
             $html_rendered .= AuthorInfoscienceField2018Render::render($publication, $format, NULL, 'author_1');
@@ -273,8 +279,9 @@ Class ConferenceProceedingsDetailedInfosciencePublication2018Render extends Deta
 
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
 
-        $html_rendered .= '<span class="text-muted small mb-0 infoscience_host">';
+        $html_rendered .= '<span class="infoscience_host">';
         $html_rendered .= ConferenceDataInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
         $html_rendered .= '</span>';
 
         return $html_rendered;
@@ -309,12 +316,14 @@ Class ConferenceProceedingsShortInfosciencePublication2018Render extends ShortIn
 
 Class JournalArticlesDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function get_content($publication, $format, $summary) {
-        $html_rendered = '<span class="text-muted small mb-0 infoscience_host">';
+        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered .= '<span class="infoscience_host">';
         $html_rendered .= JournalPublisherInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= JournalDetailsInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
         $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }
@@ -362,9 +371,11 @@ Class PatentsShortInfosciencePublication2018Render extends ShortInfosciencePubli
 
 Class PostersDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function get_content($publication, $format, $summary) {
-        $html_rendered = '<p class="text-muted small mb-0 infoscience_host">';
+        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered .= '<p class="infoscience_host">';
         $html_rendered .= ConferenceDataInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</p>';
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }
@@ -380,13 +391,14 @@ Class PostersShortInfosciencePublication2018Render extends ShortInfosciencePubli
 
 Class ReportsDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function get_content($publication, $format, $summary) {
-        $html_rendered = '<span class="text-muted small mb-0 infoscience_host">';
+        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered = '<span class="infoscience_host">';
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
 
         $html_rendered .= ReportUrlInfoscienceField2018Render::render($publication, self::$format);
-
+        $html_rendered .= '</span>';
         return $html_rendered;
     }
 }
@@ -403,8 +415,10 @@ Class ReportsShortInfosciencePublication2018Render extends ShortInfosciencePubli
 
 Class StudentProjectsDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function get_content($publication, $format, $summary) {
-        $html_rendered = '<span class="text-muted small mb-0 infoscience_host">';
+        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered .= '<span class="infoscience_host">';
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
         $html_rendered .= '</span>';
 
         return $html_rendered;
@@ -434,7 +448,7 @@ Class TalksShortInfosciencePublication2018Render extends ShortInfosciencePublica
 
 Class ThesesDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function render($publication, $format, $summary) {
-        $html_rendered = '';
+        $html_rendered = '<span class="text-muted small mb-0">';
         $html_rendered .= DirectorAuthorInfoscienceField2018Render::render($publication, self::$format, NULL, NULL);
 
         if ($summary) {
@@ -448,12 +462,13 @@ Class ThesesDetailedInfosciencePublication2018Render extends DetailedInfoscience
         # $host_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
 
         if ($host_rendered && !empty($host_rendered)) {
-            $html_rendered .= '<span class="text-muted small mb-0 infoscience_host">';
+            $html_rendered .= '<span class="infoscience_host">';
             $html_rendered .= $host_rendered;
             $html_rendered .= '</span>';
         }
 
         $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }

@@ -138,18 +138,18 @@ Class BooksChaptersPublicationLocationInsitutionDateInfoscienceField2018Render e
         if ($format === 'detailed')
         {
             if (self::field_exists($publication['publication_location'])) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_location">' . $publication['publication_location'][0] . '</span>';
+                $html_rendered .= '<span class="infoscience_publication_location">' . $publication['publication_location'][0] . '</span>';
                 if (self::field_exists($publication['publication_institution'])) {
                     $html_rendered .= $institution_separator;
                 }
             }
 
             if ($publication['publication_institution']) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_institution">' . $publication['publication_institution'][0] . "</span>";
+                $html_rendered .= '<span class="infoscience_publication_institution">' . $publication['publication_institution'][0] . "</span>";
             }
         } else {
             if (self::field_exists($publication['publication_location'])) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_location">' . $publication['publication_location'][0] . '</span>';
+                $html_rendered .= '<span class="infoscience_publication_location">' . $publication['publication_location'][0] . '</span>';
                 if (self::field_exists($publication['publication_institution'])) {
                     $html_rendered .= $institution_separator;
                 } elseif (self::field_exists($publication['publication_date'])) {
@@ -160,7 +160,7 @@ Class BooksChaptersPublicationLocationInsitutionDateInfoscienceField2018Render e
             }
 
             if ($publication['publication_institution']) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_institution">' . $publication['publication_institution'][0] . "</span>";
+                $html_rendered .= '<span class="infoscience_publication_institution">' . $publication['publication_institution'][0] . "</span>";
                 if (self::field_exists($publication['publication_date'])) {
                     $html_rendered .= ', ';
                 } else {
@@ -182,7 +182,7 @@ Class BooksPublicationLocationInsitutionDateInfoscienceField2018Render extends I
             $has_isbn = self::field_exists($publication['isbn']);
 
             if (self::field_exists($publication['publication_location'])) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_location">' . $publication['publication_location'][0] .'</span>';
+                $html_rendered .= '<span class="infoscience_publication_location">' . $publication['publication_location'][0] .'</span>';
                 if (self::field_exists($publication['publication_institution']) ||
                     self::field_exists($publication['publication_date'])) {
                     $html_rendered .= ': ';
@@ -192,7 +192,7 @@ Class BooksPublicationLocationInsitutionDateInfoscienceField2018Render extends I
             }
 
             if ($publication['publication_institution']) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_institution">' . $publication['publication_institution'][0] .'</span>';
+                $html_rendered .= '<span class="infoscience_publication_institution">' . $publication['publication_institution'][0] .'</span>';
                 if (self::field_exists($publication['publication_date'])) {
                     $html_rendered .= ', ';
                 } else {
@@ -201,12 +201,12 @@ Class BooksPublicationLocationInsitutionDateInfoscienceField2018Render extends I
             }
 
             if (self::field_exists($publication['publication_date'])) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_date">' . $publication['publication_date'][0] . '</span>';
+                $html_rendered .= '<span class="infoscience_publication_date">' . $publication['publication_date'][0] . '</span>';
                 $html_rendered .= '. ';
             }
         } else {
             if (self::field_exists($publication['publication_location'])) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_location">' . $publication['publication_location'][0] . '</span>';
+                $html_rendered .= '<span class="infoscience_publication_location">' . $publication['publication_location'][0] . '</span>';
                 if (self::field_exists($publication['publication_institution']) ||
                     self::field_exists($publication['publication_date'])) {
                     $html_rendered .= ': ';
@@ -216,7 +216,7 @@ Class BooksPublicationLocationInsitutionDateInfoscienceField2018Render extends I
             }
 
             if ($publication['publication_institution']) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_publication_institution">' . $publication['publication_institution'][0] . '</span>';
+                $html_rendered .= '<span class="infoscience_publication_institution">' . $publication['publication_institution'][0] . '</span>';
                 if (self::field_exists($publication['publication_date'])) {
                     $html_rendered .= ', ';
                 } else {
@@ -237,25 +237,9 @@ Class PublicationDateInfoscienceField2018Render extends InfoscienceField2018Rend
 
         if (self::field_exists($publication['publication_date'])) {
             if ($format === 'detailed') {
-                $html_rendered .= '<p class="text-muted small mb-0 infoscience_publication_date">' . $publication['publication_date'][0] . '</p>';
+                $html_rendered .= '<p class="mb-0 infoscience_publication_date">' . $publication['publication_date'][0] . '</p>';
             } else {
-                $html_rendered .= '<span class="text-muted small infoscience_publication_date">' . $publication['publication_date'][0] . '.</span>';
-            }
-        }
-
-        return $html_rendered;
-    }
-}
-
-Class PublicationDateAsPInfoscienceField2018Render extends InfoscienceField2018Render {
-    public static function render($publication, $format, $has_next=false) {
-        $html_rendered = "";
-
-        if (self::field_exists($publication['publication_date'])) {
-            if ($format === 'detailed') {
-                $html_rendered .= "<p>" . $publication['publication_date'][0] . ". </p>";
-            } else {
-                $html_rendered .= parent::render($publication, $format, $has_next);
+                $html_rendered .= '<span class="infoscience_publication_date">' . $publication['publication_date'][0] . '.</span>';
             }
         }
 
@@ -268,9 +252,9 @@ Class DOIInfoscienceField2018Render extends InfoscienceField2018Render {
         $html_rendered = "";
         if (self::field_exists($publication['doi'])) {
             if ($format === 'detailed') {
-                $html_rendered .= '<p class="text-muted small mb-0 infoscience_doi">DOI : ' . $publication['doi'][0] . '</p>';
+                $html_rendered .= '<p class="mb-1 mt-1 infoscience_doi">DOI : ' . $publication['doi'][0] . '</p>';
             } else {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_doi">DOI : ' . $publication['doi'][0] . '.</span>';
+                $html_rendered .= '<span class="infoscience_doi">DOI : ' . $publication['doi'][0] . '.</span>';
             }
         }
         return $html_rendered;
@@ -282,7 +266,7 @@ Class ISBNInfoscienceField2018Render extends InfoscienceField2018Render {
         $html_rendered = "";
         if (self::field_exists($publication['isbn'])) {
             if ($format === 'detailed') {
-                $html_rendered .= '<p class="text-muted small mb-0 infoscience_isbn">ISBN : ' . $publication['isbn'][0] . '</p>';
+                $html_rendered .= '<p class="mb-1 mt-1 infoscience_isbn">ISBN : ' . $publication['isbn'][0] . '</p>';
             } else {
                 $html_rendered .= '<span class="infoscience_isbn">ISBN : ' . $publication['isbn'][0] . ". </span>";
             }
@@ -308,12 +292,12 @@ Class JournalPublisherInfoscienceField2018Render extends InfoscienceField2018Ren
 
         if (self::field_exists($publication['journal'], 'publisher')) {
             if ($format === 'detailed') {
-                $html_rendered .= '<p class="text-muted small mb-0 infoscience_journal_publisher"><i>' . $publication['journal'][0]['publisher'] . "</i>";
+                $html_rendered .= '<p class="mb-0 infoscience_journal_publisher"><i>' . $publication['journal'][0]['publisher'] . "</i>";
                 if ($has_next) {
                     $html_rendered .= "; ";
                 }
             } else {
-                $html_rendered .= ' <span class="text-muted small mb-0 infoscience_journal_publisher"><i>' . $publication['journal'][0]['publisher'] . '</i>';
+                $html_rendered .= ' <span class="infoscience_journal_publisher"><i>' . $publication['journal'][0]['publisher'] . '</i>';
                 if ($has_next) {
                     $html_rendered .= "; ";
                 } else {
@@ -338,9 +322,9 @@ Class JournalPageInfoscienceField2018Render extends InfoscienceField2018Render {
 
         if (self::field_exists($publication['journal'], 'page')) {
             if ($format === 'detailed') {
-                $html_rendered .= '<p class="text-muted small mb-0 infoscience_journal_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['page'] .'</p>';
+                $html_rendered .= '<p class="mb-0 infoscience_journal_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['page'] .'</p>';
             } else {
-                $html_rendered .= ' <span class="text-muted small mb-0 infoscience_journal_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['page'] .'. </span>';
+                $html_rendered .= ' <span class="mb-0 infoscience_journal_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['page'] .'. </span>';
             }
         }
 
@@ -355,7 +339,7 @@ Class JournalDetailsInfoscienceField2018Render extends InfoscienceField2018Rende
 
         if ($format === 'detailed') {
             if (self::field_exists($publication['journal'], 'volume')) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_journal_volume">' . __('Vol.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['volume'] .' ';
+                $html_rendered .= '<span class="infoscience_journal_volume">' . __('Vol.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['volume'] .' ';
 
                 if (self::field_exists($publication['journal'], 'number') ||
                     self::field_exists($publication['journal'], 'page')) {
@@ -366,7 +350,7 @@ Class JournalDetailsInfoscienceField2018Render extends InfoscienceField2018Rende
             }
 
             if (self::field_exists($publication['journal'], 'number')) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_journal_number">' . __('num.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['number'] .'';
+                $html_rendered .= '<span class="infoscience_journal_number">' . __('num.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['number'] .'';
                 if (self::field_exists($publication['journal'], 'page')) {
                     $html_rendered .= '</span>, ';
                 } else {
@@ -377,22 +361,22 @@ Class JournalDetailsInfoscienceField2018Render extends InfoscienceField2018Rende
             $html_rendered .= JournalPageInfoscienceField2018Render::render($publication, 'short', $has_next);
         } else {
             if (self::field_exists($publication['journal'], 'volume')) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_journal_volume">' . __('Vol.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['volume'];
+                $html_rendered .= '<span class="infoscience_journal_volume">' . __('Vol.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['volume'];
 
                 if (self::field_exists($publication['journal'], 'number') ||
                     self::field_exists($publication['journal'], 'page')) {
-                    $html_rendered .= '</span><span class="text-muted small mb-0">, </span>';
+                    $html_rendered .= '</span>, ';
                 } else {
-                    $html_rendered .= '</span><span class="text-muted small mb-0">. </span>';
+                    $html_rendered .= '</span>. ';
                 }
             }
 
             if (self::field_exists($publication['journal'], 'number')) {
                 $html_rendered .= '<span class="text-muted small mb-0 infoscience_journal_number">' . __('num.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['number'];
                 if (self::field_exists($publication['journal'], 'page')) {
-                    $html_rendered .= '</span><span class="text-muted small mb-0">, </span>';
+                    $html_rendered .= '</span>, ';
                 } else {
-                    $html_rendered .= '</span><span class="text-muted small mb-0">. </span>';
+                    $html_rendered .= '</span>. ';
                 }
             }
 
@@ -407,7 +391,7 @@ Class ConferenceDataInfoscienceField2018Render extends InfoscienceField2018Rende
         $html_rendered = "";
 
         if (self::field_exists($publication['conference'], 'name')) {
-            $html_rendered .= '<span class="text-muted small mb-0 infoscience_conference_name">' . $publication['conference'][0]['name'];
+            $html_rendered .= '<span class="infoscience_conference_name">' . $publication['conference'][0]['name'];
 
             if (self::field_exists($publication['conference'], 'location') ||
                 self::field_exists($publication['conference'], 'date')) {
@@ -418,7 +402,7 @@ Class ConferenceDataInfoscienceField2018Render extends InfoscienceField2018Rende
         }
 
         if (self::field_exists($publication['conference'], 'location')) {
-            $html_rendered .= '<span class="text-muted small mb-0 infoscience_conference_location">' . $publication['conference'][0]['location'];
+            $html_rendered .= '<span class="infoscience_conference_location">' . $publication['conference'][0]['location'];
 
             if (self::field_exists($publication['conference'], 'location')) {
                 $html_rendered .= ", </span>";
@@ -428,7 +412,7 @@ Class ConferenceDataInfoscienceField2018Render extends InfoscienceField2018Rende
         }
 
         if (self::field_exists($publication['conference'], 'date')) {
-            $html_rendered .= '<span class="text-muted small mb-0 infoscience_conference_date">' . $publication['conference'][0]['date'] . ". </span>";
+            $html_rendered .= '<span class="infoscience_conference_date">' . $publication['conference'][0]['date'] . ". </span>";
         }
 
         return $html_rendered;
@@ -443,7 +427,7 @@ Class ConferenceProceedingsDataInfoscienceField2018Render extends InfoscienceFie
             ConferenceDataInfoscienceField2018Render::render($publication, $format, $has_next);
         } else {
             if (self::field_exists($publication['conference'], 'name')) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_conference_name">' . $publication['conference'][0]['name'];
+                $html_rendered .= '<span class="infoscience_conference_name">' . $publication['conference'][0]['name'];
                 $html_rendered .= ". </span>";
             }
         }
@@ -499,9 +483,9 @@ Class PatentsInfoscienceField2018Render extends InfoscienceField2018Render {
 
         if (self::field_exists($publication['patent'])) {
             if ($format === 'detailed') {
-                $html_rendered .= '<p class="text-muted small mt-2 mb-2 infoscience_patents_number">';
+                $html_rendered .= '<p class="text-muted small mt-0 mb-2 infoscience_patents_number">';
                 $html_rendered .= __('Patent number(s)', 'epfl-infoscience-search') . " :<br />";
-                $html_rendered .= '<ul class="text-muted small mt-2 mb-2 infoscience_patents_number_list">';
+                $html_rendered .= '<ul class="text-muted small mt-1 mb-3 infoscience_patents_number_list">';
 
                 foreach ($publication['patent'] as $patent) {
                     $html_rendered .= '<li class="infoscience_patents_number"><span class="">' . $patent['number'] . "</span> ";
@@ -546,7 +530,7 @@ Class PublicationPageInfoscienceField2018Render extends InfoscienceField2018Rend
         $html_rendered = "";
 
         if (self::field_exists($publication['publication_page'])) {
-            $html_rendered .= '<span class="text-muted small mt-2 mb-2 infoscience_publication_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['publication_page'][0] .'.</span> ';
+            $html_rendered .= '<span class="mt-2 mb-2 infoscience_publication_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['publication_page'][0] .'.</span> ';
         }
         return $html_rendered;
     }
