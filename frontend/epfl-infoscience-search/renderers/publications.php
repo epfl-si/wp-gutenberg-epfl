@@ -364,7 +364,7 @@ Class PatentsShortInfosciencePublication2018Render extends ShortInfosciencePubli
         $html_rendered .= PatentsInfoscienceField2018Render::render($publication, self::$format);
 
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
-        $html_rendered .= AuthorInfoscienceField2018Render::render($publication, self::$format, NULL, 'author');
+        #$html_rendered .= AuthorInfoscienceField2018Render::render($publication, self::$format, NULL, 'author');
         return $html_rendered;
     }
 }
@@ -476,7 +476,7 @@ Class ThesesDetailedInfosciencePublication2018Render extends DetailedInfoscience
 
 Class ThesesShortInfosciencePublication2018Render extends ShortInfosciencePublication2018Render {
     public static function render($publication, $format, $summary) {
-        $html_rendered = '';
+        $html_rendered = '<span class="text-muted small mb-0">';
         $html_rendered .= DirectorAuthorInfoscienceField2018Render::render($publication, self::$format, NULL, NULL);
 
         if ($summary) {
@@ -495,6 +495,7 @@ Class ThesesShortInfosciencePublication2018Render extends ShortInfosciencePublic
         $html_rendered .= '</span>';
 
         $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }
