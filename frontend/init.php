@@ -29,6 +29,7 @@ require_once 'epfl-page-highlight/controller.php';
 require_once 'epfl-post-teaser/controller.php';
 require_once 'epfl-post-highlight/controller.php';
 require_once 'epfl-infoscience-search/controller.php';
+require_once 'epfl-social-feed/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -159,6 +160,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
 		register_block_type( 'epfl/infoscience-search', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\InfoscienceSearch\epfl_infoscience_search_block',
+		));
+
+		register_block_type( 'epfl/infoscience-search', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\SocialFeed\epfl_social_feed_block',
 		));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

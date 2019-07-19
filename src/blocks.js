@@ -30,6 +30,7 @@ import './epfl-custom-highlight'
 import './epfl-page-highlight'
 import './epfl-post-teaser'
 import './epfl-post-highlight'
+import './epfl-social-feed'
 
 const getHomeURL = () => {
     let href = window.location.href;
@@ -78,3 +79,5 @@ export const getAllPagesOrPosts = (type) => {
         ).catch( err => reject(err))
     });
 };
+
+(InserterMenu).props.maxSuggestedItems = 0;
