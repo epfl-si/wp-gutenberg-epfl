@@ -2,13 +2,13 @@
 
 namespace EPFL\Plugins\Gutenberg\SocialFeed;
 
-require_once(dirname(__FILE__).'/view.php');
+require_once 'view.php';
 
 define('EPFL\Plugins\Gutenberg\SocialFeed\DEFAULT_HEIGHT', 450);
 define('EPFL\Plugins\Gutenberg\SocialFeed\DEFAULT_WIDTH', 374);
 
 
-function setQueryVars($args, $named_arg, $default='') {
+function setQueryVars($args, $named_arg) {
     if (array_key_exists($named_arg, $args) && !empty($args[$named_arg])) {
       set_query_var('epfl_social_feed_'.$named_arg, $args[$named_arg]);
     }
@@ -29,13 +29,11 @@ function epfl_social_feed_block( $atts ) {
     $atts['width'] = empty($atts['width']) ? DEFAULT_WIDTH : $atts['width'];
     $atts['twitter_limit'] = intval($atts['twitter_limit']) == 0 ? '' : $atts['twitter_limit'];
 
-    setQueryVars($atts['twitter_url'], 'twitter_url');
-    setQueryVars($atts['twitter_limit'], 'twitter_limit');
-    setQueryVars($atts['instagram_url'], 'instagram_url');
-    setQueryVars($atts['facebook_url'], 'facebook_url');
-    setQueryVars($atts['height'], 'height');
-    setQueryVars($atts['width'], 'width');
-
-    load_template(dirname(__FILE__).'/view.php');
-
+    return epfl_social_feed_view($atts['twitter_url'],
+                                $atts['twitter_limit'],
+                                $atts['instagram_url'],
+                                $atts['facebook_url'],
+                                $atts['height'],
+                                $atts['width']
+                                );
 }

@@ -1,5 +1,4 @@
-
-import socialFeedIcon from './tableau-icon'
+import socialFeedIcon from './social-feed-icon'
 
 const { __ } = wp.i18n;
 
@@ -18,7 +17,7 @@ const {
 
 const { Fragment } = wp.element;
 
-registerBlockType( 'epfl/socialFeed', {
+registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'wp-gutenberg-epfl'),
 	description: 'v1.0.0',
 	icon: socialFeedIcon,
@@ -105,7 +104,7 @@ registerBlockType( 'epfl/socialFeed', {
                 </InspectorControls>
                 <div className={ className }>
                     <div id="preview-box">
-                        <h2>EPFL TABLEAU</h2>
+                        <h2>EPFL Social Feed</h2>
                         <div class="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
                     </div>
                 </div>

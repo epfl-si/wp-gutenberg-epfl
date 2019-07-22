@@ -22,4 +22,4 @@ const socialFeedIcon = <svg xmlns='http://www.w3.org/2000/svg' id='assets' viewB
     </g>
 </svg>
 
-export default tableauIcon
+export default socialFeedIcon

@@ -1,10 +1,3 @@
-<?php
-    $twitter_url = get_query_var('epfl_social_feed_twitter_url');
-    $twitter_limit = get_query_var('epfl_social_feed_twitter_limit');
-    $height = get_query_var('epfl_social_feed_height');
-    $width = get_query_var('epfl_social_feed_width');
-?>
-
 <div class="social-feed">
   <span class="social-icon social-icon-twitter social-icon-round"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter"></use></svg></span>
   <div class="social-feed-content">
@@ -25,4 +18,3 @@
     </div>
   </div>
 </div>
-

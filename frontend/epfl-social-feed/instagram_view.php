@@ -1,13 +1,10 @@
 <?php
     global $wp_embed;
 
-    $instagram_url = (get_query_var('epfl_social_feed_instagram_url'));
-
     # height is useless for instagram, as it is fixed
     # $height = get_query_var('epfl_social_feed_height');
 
     $instagram_shortcode = '[embed]' . esc_url($instagram_url) . '[/embed]';
-    $width = get_query_var('epfl_social_feed_width');
 ?>
 
 <div class="social-feed">

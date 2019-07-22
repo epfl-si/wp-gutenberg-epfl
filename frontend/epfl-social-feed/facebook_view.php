@@ -1,9 +1,3 @@
-<?php
-    $facebook_url = get_query_var('epfl_social_feed_facebook_url');
-    $height = get_query_var('epfl_social_feed_height') + 11; # add 11px to match the twitter height
-    $width = get_query_var('epfl_social_feed_width');
-?>
-
 <div class="social-feed">
   <span class="social-icon social-icon-facebook social-icon-round">
     <svg class="icon" aria-hidden="true"><use xlink:href="#icon-facebook"></use></svg>

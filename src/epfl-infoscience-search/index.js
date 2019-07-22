@@ -11,7 +11,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/infoscience-search', {
-	title: __( 'Infoscience', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Infoscience', 'wp-gutenberg-epfl'),
 	description: 'v0.0.1',
 	icon: infoscienceIcon,
 	category: 'common',
