@@ -8,12 +8,6 @@ define('EPFL\Plugins\Gutenberg\SocialFeed\DEFAULT_HEIGHT', 450);
 define('EPFL\Plugins\Gutenberg\SocialFeed\DEFAULT_WIDTH', 374);
 
 
-function setQueryVars($args, $named_arg) {
-    if (array_key_exists($named_arg, $args) && !empty($args[$named_arg])) {
-      set_query_var('epfl_social_feed_'.$named_arg, $args[$named_arg]);
-    }
-}
-
 function epfl_social_feed_block( $atts ) {
     // extract shortcode parameters
     $atts = shortcode_atts(array(
