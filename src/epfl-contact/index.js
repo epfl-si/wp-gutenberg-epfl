@@ -81,7 +81,7 @@ registerBlockType( 'epfl/contact', {
                             help={ __('(optional)', 'wp-gutenberg-epfl') }
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Timetable' ) }>
+                    <PanelBody title={ __( 'Timetable', 'wp-gutenberg-epfl' ) }>
                         <TextControl
                             value={ attributes.timetable1 }
                             onChange={ timetable1 => setAttributes( { timetable1 } ) }
@@ -100,7 +100,7 @@ registerBlockType( 'epfl/contact', {
                             onChange={ timetable4 => setAttributes( { timetable4 } ) }
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Information' ) }>
+                    <PanelBody title={ __( 'Information', 'wp-gutenberg-epfl' ) }>
                         <TextareaControl
                             value={ attributes.information1 }
                             onChange={ information1 => setAttributes( { information1 } ) }
@@ -114,9 +114,9 @@ registerBlockType( 'epfl/contact', {
                             onChange={ information3 => setAttributes( { information3 } ) }
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Map' ) }>
+                    <PanelBody title={ __( 'Map', 'wp-gutenberg-epfl' ) }>
                         <TextControl
-                            label={ __('A room/place to get more information') }
+                            label={ __('A room/place to get more information', 'wp-gutenberg-epfl') }
                             value={ attributes.map_query }
                             onChange={ map_query => setAttributes( { map_query } ) }
                             help={ __('A room for example. See plan.epfl.ch for the right text of your room.', 'wp-gutenberg-epfl') }
