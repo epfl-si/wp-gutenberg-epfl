@@ -48,6 +48,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/post-teaser',
         'epfl/post-highlight',
         'epfl/infoscience-search',
+        'epfl/social-feed',
         'epfl/contact',
         'core/paragraph',
     );

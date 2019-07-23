@@ -30,6 +30,7 @@ import './epfl-custom-highlight'
 import './epfl-page-highlight'
 import './epfl-post-teaser'
 import './epfl-post-highlight'
+import './epfl-social-feed'
 import './epfl-contact'
 
 const getHomeURL = () => {
@@ -79,3 +80,5 @@ export const getAllPagesOrPosts = (type) => {
         ).catch( err => reject(err))
     });
 };
+
+(InserterMenu).props.maxSuggestedItems = 0;
