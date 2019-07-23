@@ -165,7 +165,8 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/social-feed', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\SocialFeed\epfl_social_feed_block',
-		
+		));
+
     register_block_type( 'epfl/contact', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Contact\epfl_contact_block',
 		));
