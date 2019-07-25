@@ -56,7 +56,7 @@ registerBlockType( 'epfl/scienceqa', {
             <div className={ className }>
                 <div id="preview-box">
                     <h2>EPFL SCIENCE QA</h2>
-                    <div class="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
+                    <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
                 </div>
 			</div>
 		</Fragment>
