@@ -50,7 +50,11 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/infoscience-search',
         'epfl/social-feed',
         'epfl/contact',
+        'epfl/cards',
         'core/paragraph',
+        #'core/columns',
+        #'core/column',
+        #'core/image',
     );
 
     // Add epfl/scienceqa block for WP instance https://www.epfl.ch only
