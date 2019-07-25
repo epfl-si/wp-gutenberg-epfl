@@ -80,5 +80,3 @@ export const getAllPagesOrPosts = (type) => {
         ).catch( err => reject(err))
     });
 };
-
-(InserterMenu).props.maxSuggestedItems = 0;
