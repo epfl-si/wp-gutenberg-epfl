@@ -37,11 +37,9 @@ export default class InspectorControlsInfoscience extends Component {
         this.state = {
             showAdvancedSearch: showAdvancedSearch,
 		};
-
-		this.toggleBox = this.toggleBox.bind(this);
 	}
 
-	toggleBox() {
+	toggleBox = () => {
 		this.setState(oldState => ({ showAdvancedSearch: !oldState.showAdvancedSearch }));
 	}
 
