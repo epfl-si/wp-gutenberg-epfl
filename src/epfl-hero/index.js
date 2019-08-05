@@ -29,6 +29,9 @@ registerBlockType( 'epfl/hero', {
         text: {
 			type: 'string',
         },
+        imageUrl: {
+            type: 'string',
+        },
         imageId: {
             type: 'number',
         },
@@ -40,8 +43,9 @@ registerBlockType( 'epfl/hero', {
         const { attributes, className, setAttributes } = props
         
         function onImageSelect(imageObject) {
-			setAttributes({
-				imageId: imageObject.id
+            setAttributes({
+                imageId: imageObject.id,
+                imageUrl: imageObject.url
 			})
 		}
         
@@ -67,6 +71,7 @@ registerBlockType( 'epfl/hero', {
                             value={attributes.imageId}
                             render={({ open }) => (
                                 <div>
+                                    <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
                                     <button onClick={open}>
                                     { __('Upload Image!', 'wp-gutenberg-epfl') }
                                     </button>
