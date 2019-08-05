@@ -32,7 +32,7 @@ import './epfl-post-teaser'
 import './epfl-post-highlight'
 import './epfl-social-feed'
 import './epfl-contact'
-import './epfl-cards'
+import './epfl-card'
 
 const getHomeURL = () => {
     let href = window.location.href;
