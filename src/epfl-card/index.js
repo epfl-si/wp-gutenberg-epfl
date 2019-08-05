@@ -26,8 +26,8 @@ const { Fragment } = wp.element;
 
 const ALLOWED_BLOCKS = [];
 
-registerBlockType( 'epfl/cards', {
-	title: __( 'EPFL Cards', 'wp-gutenberg-epfl'),
+registerBlockType( 'epfl/card', {
+	title: __( 'EPFL Card', 'wp-gutenberg-epfl'),
 	description: 'v1.0.0',
 	icon: cardIcon,
 	category: 'common',
