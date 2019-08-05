@@ -1,6 +1,5 @@
 import cardIcon from './card-icon'
-import { TEMPLATE_OPTIONS, TEMPLATE_ONE_ENTRIES, TEMPLATE_TWO_ENTRIES, TEMPLATE  } from './templates'
-import { useState } from '@wordpress/element'
+import CardPanel from './card-panel';
 
 const { __ } = wp.i18n;
 
@@ -10,21 +9,16 @@ const {
 
 const {
     InspectorControls,
-    RichText,
-    AlignmentToolbar,
-    BlockControls,
-    InnerBlocks,
+    MediaUpload,
 } = wp.editor;
 
 const {
     PanelBody,
-    TextControl,
     ToggleControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
 
-const ALLOWED_BLOCKS = [];
 
 registerBlockType( 'epfl/card', {
 	title: __( 'EPFL Card', 'wp-gutenberg-epfl'),
@@ -42,20 +36,72 @@ registerBlockType( 'epfl/card', {
         link1: {
             type: 'text',
         },
+        imageId1: {
+            type: 'number',
+        },
         image1: {
             type: 'text',
             default: null,
         },
         content1: {
             type: 'text',
-        }
+        },
+        title2: {
+            type: 'text',
+        },
+        link2: {
+            type: 'text',
+        },
+        imageId2: {
+            type: 'number',
+        },
+        image2: {
+            type: 'text',
+            default: null,
+        },
+        content2: {
+            type: 'text',
+        },
+        title3: {
+            type: 'text',
+        },
+        link3: {
+            type: 'text',
+        },
+        imageId3: {
+            type: 'number',
+        },
+        image3: {
+            type: 'text',
+            default: null,
+        },
+        content3: {
+            type: 'text',
+        },
+        title4: {
+            type: 'text',
+        },
+        link4: {
+            type: 'text',
+        },
+        imageId4: {
+            type: 'number',
+        },
+        image4: {
+            type: 'text',
+            default: null,
+        },
+        content4: {
+            type: 'text',
+        },
     },
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
-        const [ template, setTemplate ] = useState( null );
+
+
 
         return (
             <Fragment>
@@ -67,15 +113,13 @@ registerBlockType( 'epfl/card', {
                                 onChange={ gray_wrapper => setAttributes( { gray_wrapper } ) }
                             />
                     </PanelBody>
+                    <CardPanel { ...{ attributes, setAttributes, index:1 } }  />
                 </InspectorControls>
-                <div>
-                    <InnerBlocks
-                        allowedBlocks={ ALLOWED_BLOCKS }
-                        template={ TEMPLATE_TWO_ENTRIES }
-                        templateLock={ 'all' }
-                        // SEE for a sample
-                        // https://github.com/WordPress/gutenberg/blob/master/packages/block-library/src/columns/edit.js
-                    />
+                <div className={ className }>
+                    <div id="preview-box">
+                        <h2>EPFL Card</h2>
+                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
+                    </div>
                 </div>
             </Fragment>
 		)
