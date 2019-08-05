@@ -63,7 +63,7 @@ registerBlockType( 'epfl/toggle', {
 						label={ __('Define toggle state', 'wp-gutenberg-epfl') }
 						checked={ attributes.state }
 						onChange={ () => setAttributes( { state: ! attributes.state } ) }
-						helper={ __('Do you want display the toggle open or close by default ?', 'wp-gutenberg-epfl') }
+						help={ __('Do you want display the toggle open or close by default ?', 'wp-gutenberg-epfl') }
 					/>
 				</PanelBody>
 			</InspectorControls>
