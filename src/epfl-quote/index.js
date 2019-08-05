@@ -51,8 +51,6 @@ registerBlockType( 'epfl/quote', {
 		const { attributes, className, setAttributes } = props
 
 		function onImageSelect(imageObject) {
-
-            console.log(imageObject);
 			setAttributes({
                 imageId: imageObject.id,
                 imageUrl: imageObject.url
