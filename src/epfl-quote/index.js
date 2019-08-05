@@ -21,8 +21,6 @@ const {
 
 const { Fragment } = wp.element;
 
-
-
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'wp-gutenberg-epfl'),
 	description: 'v1.0.0',
@@ -31,7 +29,10 @@ registerBlockType( 'epfl/quote', {
 	attributes: {
 		imageId: {
 			type: 'number',
-		},
+        },
+        imageUrl: {
+            type: 'string',
+        },
 		quote : {
 			type: 'string',
         },
@@ -50,30 +51,33 @@ registerBlockType( 'epfl/quote', {
 		const { attributes, className, setAttributes } = props
 
 		function onImageSelect(imageObject) {
-			
-			setAttributes({
-				imageId: imageObject.id
-			})
-		}
 
+            console.log(imageObject);
+			setAttributes({
+                imageId: imageObject.id,
+                imageUrl: imageObject.url
+			})
+        }
+        
 		return (
 		<Fragment>
 			<InspectorControls>
-				<PanelBody title={ __('Select Image', 'wp-gutenberg-epfl') }>
-					<MediaUpload
-						onSelect={onImageSelect}
-						type="image"
-						value={attributes.imageId}
-						render={({ open }) => (
+                <PanelBody title={ __('Select Image', 'wp-gutenberg-epfl') }>
+                    <MediaUpload
+                        onSelect={onImageSelect}
+                        type="image"
+                        value={attributes.imageId}
+                        render={({ open }) => (
                             <div>
-							    <button onClick={open}>
-								{ __('Upload Image!', 'wp-gutenberg-epfl') }
-							    </button>
+                                <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
+                                <button onClick={open}>
+                                    { __('Upload Image', 'wp-gutenberg-epfl') }
+                                </button>
                                 <div style={ {marginTop: '5px'} }>{ __('Please, select a square image', 'wp-gutenberg-epfl') }</div>
                             </div>
-						)}
-					/>
-				</PanelBody>
+                        )}
+                    />
+                </PanelBody>
 				<PanelBody title={ __('Quote', 'wp-gutenberg-epfl') }>
 					<TextareaControl
 						value={ attributes.quote }
