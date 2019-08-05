@@ -70,9 +70,9 @@ registerBlockType( 'epfl/scheduler', {
                             tagName="div"
                             multiline="p"
                             placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
-                            value={ attributes.content1 }
+                            value={ attributes.content }
                             className="content"
-                            onChange={ content1 => setAttributes( { content1 } ) }
+                            onChange={ content1 => setAttributes( { content } ) }
                         />
                     </div>
                 }
