@@ -41,7 +41,7 @@ registerBlockType( 'epfl/video', {
                         <TextControl
                             value={ attributes.url }
                             onChange={ url => setAttributes( { url } ) }
-                            help={ __('You can copy/paste a YouTube or SWITCHTube URL', 'wp-gutenberg-epfl') }
+                            help={ __('You can copy/paste a YouTube, Vimeo or SWITCHTube URL', 'wp-gutenberg-epfl') }
                         />
                     </PanelBody>
                 </InspectorControls>
