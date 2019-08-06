@@ -32,7 +32,8 @@ registerBlockType(
 				type: 'string',
 			},
 			columns: {
-				type: 'string',
+                type: 'string',
+                default: '3',
 			},
 		},
 		supports : {
