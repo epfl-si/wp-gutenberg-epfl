@@ -4,7 +4,8 @@ import toggleIcon from './toggle-icon'
 const { __ } = wp.i18n;
 
 const {
-	registerBlockType,
+    registerBlockType,
+    RichText,
 } = wp.blocks;
 
 const {
@@ -30,8 +31,10 @@ registerBlockType( 'epfl/toggle', {
 			type: 'string',
 		},
 		content: {
-			type: 'string',
-		}, 
+            type: 'array',
+            source: 'children',
+            selector: 'p',
+        },
 		state: {
 			type: 'boolean',
 		}
@@ -41,7 +44,11 @@ registerBlockType( 'epfl/toggle', {
 	},
 	edit: ( props ) => {
 		
-		const { attributes, className, setAttributes } = props
+        const { attributes, className, setAttributes } = props
+        
+        const onChangeContent = ( newContent ) => {
+            props.setAttributes( { content: newContent } );
+        };
 
 		return (
 		<Fragment>
@@ -53,10 +60,19 @@ registerBlockType( 'epfl/toggle', {
 					/>
 				</PanelBody>
 				<PanelBody title={ __('Content', 'wp-gutenberg-epfl') }>
-					<TextareaControl
+					{/* 
+                    <TextareaControl
 						value={ attributes.content }
 						onChange={ content => setAttributes( { content } ) }
 					/>
+*/}
+                    <RichText
+                    className={ className }
+                    
+                    tagName="p"
+                    onChange={ content => setAttributes( { content } ) }
+                    value={ attributes.content  }
+                />
 				</PanelBody>
 				<PanelBody>
 					<ToggleControl
