@@ -51,6 +51,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/social-feed',
         'epfl/contact',
         'core/paragraph',
+        'core/heading',
     );
 
     // Add epfl/scienceqa block for WP instance https://www.epfl.ch only
