@@ -82,13 +82,13 @@ registerBlockType( 'epfl/quote', {
 						onChange={ quote => setAttributes( { quote } ) }
 					/>
 				</PanelBody>
-                <PanelBody title={ __('Source or Reference', 'wp-gutenberg-epfl') }>
+                <PanelBody title={ __('Author', 'wp-gutenberg-epfl') }>
 					<TextControl
 						value={ attributes.cite }
 						onChange={ cite => setAttributes( { cite } ) }
 					/>
 				</PanelBody>
-                <PanelBody title={ __('Footer', 'wp-gutenberg-epfl') }>
+                <PanelBody title={ __('Position', 'wp-gutenberg-epfl') }>
 					<TextControl
 						value={ attributes.footer }
 						onChange={ footer => setAttributes( { footer } ) }
