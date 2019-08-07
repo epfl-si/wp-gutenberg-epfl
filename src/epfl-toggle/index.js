@@ -45,10 +45,6 @@ registerBlockType( 'epfl/toggle', {
 	edit: ( props ) => {
 		
         const { attributes, className, setAttributes } = props
-        
-        const onChangeContent = ( newContent ) => {
-            props.setAttributes( { content: newContent } );
-        };
 
 		return (
 		<Fragment>
@@ -56,7 +52,7 @@ registerBlockType( 'epfl/toggle', {
 				<PanelBody title={ __('Title', 'wp-gutenberg-epfl') }>
 					<TextControl
 						value={ attributes.title }
-                        RichText	onChange={ title => setAttributes( { title } ) }
+                        onChange={ title => setAttributes( { title } ) }
 					/>
 				</PanelBody>
 				<PanelBody>
