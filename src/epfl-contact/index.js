@@ -7,7 +7,8 @@ const {
 } = wp.blocks;
 
 const {
-	InspectorControls,
+    InspectorControls,
+    RichText,
 } = wp.editor;
 
 const {
@@ -45,13 +46,16 @@ registerBlockType( 'epfl/contact', {
 			type: 'text',
         },
         information1: {
-			type: 'text',
+            type: 'text',
+            selector: '.information1'
         },
         information2: {
             type: 'text',
+            selector: '.information2'
         },
         information3: {
             type: 'text',
+            selector: '.information3'
         },
         map_query: {
             type: 'text',
@@ -124,10 +128,37 @@ registerBlockType( 'epfl/contact', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <div id="preview-box">
-                        <h2>EPFL Contact</h2>
-                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
+                    <label><strong>Information1</strong></label>
+                    <hr />
+                    <RichText
+                        tagName="div"
+                        multiline="p"
+                        placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
+                        value={ attributes.information1 }
+                        className="information1"
+                        onChange={ information1 => setAttributes( { information1 } ) }
+                    />
+                    
+                    <label><strong>Information2</strong></label>
+                    <hr />
+                    <RichText
+                        tagName="div"
+                        multiline="p"
+                        placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
+                        value={ attributes.information2 }
+                        className="information2"
+                        onChange={ information2 => setAttributes( { information2 } ) }
+                    />
+                    <label><strong>Information3</strong></label>
+                    <hr />
+                    <RichText
+                        tagName="div"
+                        multiline="p"
+                        placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
+                        value={ attributes.information3 }
+                        className="information3"
+                        onChange={ information3 => setAttributes( { information3 } ) }
+                    />
                 </div>
             </Fragment>
 		)
