@@ -3,7 +3,7 @@
 function epfl_toggle_block( $attributes ) {
 
     $title     = sanitize_text_field( $attributes['title'] ) ?: '';
-    $content   = sanitize_text_field( $attributes['content'] ) ?: '';
+    $content   = $attributes['content'] ?: '';
     $state     = sanitize_text_field( $attributes['state'] ) ?: '0';
     $toggle_id = md5($content . rand());
 
