@@ -4,11 +4,13 @@ import toggleIcon from './toggle-icon'
 const { __ } = wp.i18n;
 
 const {
-	registerBlockType,
+    registerBlockType,
+    
 } = wp.blocks;
 
 const {
-	InspectorControls,
+    InspectorControls,
+    RichText,
 } = wp.editor;
 
 const {
@@ -30,8 +32,9 @@ registerBlockType( 'epfl/toggle', {
 			type: 'string',
 		},
 		content: {
-			type: 'string',
-		}, 
+            type: 'string',
+            selector: '.content'
+        },
 		state: {
 			type: 'boolean',
 		}
@@ -41,7 +44,7 @@ registerBlockType( 'epfl/toggle', {
 	},
 	edit: ( props ) => {
 		
-		const { attributes, className, setAttributes } = props
+        const { attributes, className, setAttributes } = props
 
 		return (
 		<Fragment>
@@ -49,13 +52,7 @@ registerBlockType( 'epfl/toggle', {
 				<PanelBody title={ __('Title', 'wp-gutenberg-epfl') }>
 					<TextControl
 						value={ attributes.title }
-						onChange={ title => setAttributes( { title } ) }
-					/>
-				</PanelBody>
-				<PanelBody title={ __('Content', 'wp-gutenberg-epfl') }>
-					<TextareaControl
-						value={ attributes.content }
-						onChange={ content => setAttributes( { content } ) }
+                        onChange={ title => setAttributes( { title } ) }
 					/>
 				</PanelBody>
 				<PanelBody>
@@ -68,10 +65,14 @@ registerBlockType( 'epfl/toggle', {
 				</PanelBody>
 			</InspectorControls>
 			<div className={ className }>
-                <div id="preview-box">
-                    <h2>EPFL TOGGLE</h2>
-                    <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                </div>
+                <RichText
+                    tagName="div"
+                    multiline="p"
+                    placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
+                    value={ attributes.content }
+                    className="content"
+                    onChange={ content => setAttributes( { content } ) }
+                />
 			</div>
 		</Fragment>
 		)
