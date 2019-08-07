@@ -30,7 +30,7 @@ function epfl_toggle_block( $attributes ) {
     $markup .= '</button>';
     $markup .= '<div ';
     $markup .= 'class="collapse collapse-item collapse-item-desktop '; 
-    if ($state === "1") {
+    if ($state === 'open') {
         $markup .= 'show';
     }
     $markup .= '"';

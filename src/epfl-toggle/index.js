@@ -15,9 +15,8 @@ const {
 
 const {
     PanelBody,
-	TextareaControl,
 	TextControl,
-	ToggleControl,
+	RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -36,7 +35,8 @@ registerBlockType( 'epfl/toggle', {
             selector: '.content'
         },
 		state: {
-			type: 'boolean',
+            type: 'string',
+            default: 'close'
         },
         blockName: {
             type: 'string',
@@ -60,11 +60,15 @@ registerBlockType( 'epfl/toggle', {
 					/>
 				</PanelBody>
 				<PanelBody>
-					<ToggleControl
-						label={ __('Define toggle state', 'wp-gutenberg-epfl') }
-						checked={ attributes.state }
-						onChange={ () => setAttributes( { state: ! attributes.state } ) }
-						help={ __('Do you want display the toggle open or close by default ?', 'wp-gutenberg-epfl') }
+					<RadioControl
+                        label={ __('Define toggle state', 'wp-gutenberg-epfl') }
+                        help={ __('Do you want display the toggle open or close by default ?', 'wp-gutenberg-epfl') }
+                        selected={ attributes.state }
+                        options={ [
+                            { label: 'Closed', value: 'close' },
+                            { label: 'Open', value: 'open' },
+                        ] }
+                        onChange={ state => setAttributes( { state } ) }
 					/>
 				</PanelBody>
                 <PanelBody title={ __('Block name', 'wp-gutenberg-epfl')}>
