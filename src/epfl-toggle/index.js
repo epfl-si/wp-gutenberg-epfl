@@ -37,7 +37,11 @@ registerBlockType( 'epfl/toggle', {
         },
 		state: {
 			type: 'boolean',
-		}
+        },
+        blockName: {
+            type: 'string',
+            default: 'You can specify a block name in the right column'
+        }
 	},
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
@@ -63,8 +67,16 @@ registerBlockType( 'epfl/toggle', {
 						help={ __('Do you want display the toggle open or close by default ?', 'wp-gutenberg-epfl') }
 					/>
 				</PanelBody>
+                <PanelBody title={ __('Block name', 'wp-gutenberg-epfl')}>
+                    <TextControl
+						value={ attributes.blockName }
+                        onChange={ blockName => setAttributes( { blockName } ) }
+					/>
+                </PanelBody>
 			</InspectorControls>
 			<div className={ className }>
+                <label><strong>{ attributes.blockName }</strong></label>
+                <hr />
                 <RichText
                     tagName="div"
                     multiline="p"
