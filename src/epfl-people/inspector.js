@@ -44,18 +44,18 @@ export default class InspectorControlsPeople extends Component {
 						onChange={ scipers => setAttributes( { scipers } ) }
 					/>
                     <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
-                    <strong>{__( 'Function', 'wp-gutenberg-epfl')}</strong>
-                    <TextControl
-                        value={ attributes.fonction }
-                        help={ __('You can enter a function to filter persons. The keyword must be in french. Example: professeur or enseignement') }
-						onChange={ fonction => setAttributes( { fonction } ) }
-					/>
-                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
                     <strong>{__( 'Doctoral programs', 'wp-gutenberg-epfl')}</strong>
                     <TextControl
                         value={ attributes.doctoralProgram }
                         help={ __('Example: EDAM') }
 						onChange={ doctoralProgram => setAttributes( { doctoralProgram } ) }
+					/>
+                </PanelBody>
+                <PanelBody title={ __( 'Function', 'wp-gutenberg-epfl' ) }>
+                    <TextControl
+                        value={ attributes.fonction }
+                        help={ __('You can enter a function to filter persons. The keyword must be in french. Example: professeur or enseignement') }
+						onChange={ fonction => setAttributes( { fonction } ) }
 					/>
                 </PanelBody>
                 <PanelBody title={ __( 'Columns', 'wp-gutenberg-epfl' ) }>
