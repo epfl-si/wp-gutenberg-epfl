@@ -40,7 +40,7 @@ registerBlockType( 'epfl/toggle', {
         },
         blockName: {
             type: 'string',
-            default: 'You can specify a block name in the right column'
+            default: 'You must specify a block name in the right column'
         }
 	},
 	supports : {
