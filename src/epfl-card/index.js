@@ -101,8 +101,6 @@ registerBlockType( 'epfl/card', {
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
 
-
-
         return (
             <Fragment>
                 <InspectorControls>
@@ -113,7 +111,9 @@ registerBlockType( 'epfl/card', {
                                 onChange={ gray_wrapper => setAttributes( { gray_wrapper } ) }
                             />
                     </PanelBody>
-                    <CardPanel { ...{ attributes, setAttributes, index:1 } }  />
+                    {[...Array(4)].map((x, i) =>
+                        <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
+                    )}
                 </InspectorControls>
                 <div className={ className }>
                     <div id="preview-box">

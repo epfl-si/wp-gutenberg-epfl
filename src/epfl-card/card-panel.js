@@ -1,7 +1,3 @@
-import React from 'react';
-
-import { PanelBody } from '@wordpress/components'
-import { Component } from '@wordpress/element'
 
 const { __ } = wp.i18n
 
@@ -10,49 +6,45 @@ const {
 } = wp.editor;
 
 const {
+    PanelBody,
     TextControl,
     TextareaControl,
 } = wp.components;
 
-export default class CardPanel extends PanelBody {
-	constructor( props ) {
-        super( props );
-        const { attributes, setAttributes, index } = this.props
-    }
 
-    getImageURL(attributes) {
-        let url = "https://via.placeholder.com/1920x1080.jpg";
-        if (attributes.image1) {
-            url = attributes.image1;
-        }
-        return url;
-    }
+function CardPanel ( props ) {
+    const { attributes, setAttributes, index } = props;
 
-    onImageSelect(imageObject) {
+    const setIndexedAttributes = (field_name, value) => {
+        setAttributes({[`${field_name}${index}`]: value});
+     };
+
+    const onImageSelect = (imageObject) => {
         setAttributes({
-            image1: imageObject.sizes.full.url,
-            imageId1: imageObject.id
+            [`image${index}`]: imageObject.sizes.full.url,
+            [`imageId${index}`]: imageObject.id
         })
-    }
+    };
 
-    render() {
-        const { attributes, setAttributes, index } = this.props;
+    // set a value or an empty string for each Control, or face :
+    // https://stackoverflow.com/questions/37427508/react-changing-an-uncontrolled-input
 
-        <PanelBody title='Card { index }' >
+    return (
+        <PanelBody title={`Card ${index}`} >
             <TextControl
                 label={ __('Title', 'wp-gutenberg-epfl') }
-                value={ attributes.title1 }
-                onChange={ title1 => setAttributes( { title1 } ) }
+                value={ attributes['title' + index] || ''}
+                onChange={ value => setIndexedAttributes('title', value) }
             />
             <TextControl
                 label={ __('Link', 'wp-gutenberg-epfl') }
-                value={ attributes.link1 }
-                onChange={ link1 => setAttributes( { link1 } ) }
+                value={ attributes['link' + index]  || '' }
+                onChange={ value => setIndexedAttributes('link', value) }
             />
             <MediaUpload
                 onSelect={ onImageSelect }
                 type="image"
-                value={ attributes.image1 }
+                value={ attributes['image' + index]  || '' }
                 render={({ open }) => (
                     <div>
                         <button onClick={ open }>
@@ -62,11 +54,14 @@ export default class CardPanel extends PanelBody {
                     </div>
                 )}
             />
-            <TextareaControl
+             <TextareaControl
                 label={ __('Text', 'wp-gutenberg-epfl') }
-                value={ attributes.content1 }
-                onChange={ content1 => setAttributes( { content1 } ) }
+                value={ attributes['content' + index]  || ''}
+                onChange={ value => setIndexedAttributes('content', value) }
             />
         </PanelBody>
-    }
+    );
 }
+
+export default CardPanel;
+
