@@ -3,15 +3,39 @@
 namespace EPFL\Plugins\Gutenberg\Card;
 
 function epfl_card_block($data) {
-  $gray_wrapper = $data['gray_wrapper'];
-
   if (!$data) return true;
+
+    // sanitize parameters
+  foreach($data as $key => $value) {
+      if (strpos($key, 'content') !== false)
+      {
+          $atts[$key] = wp_kses_post($value);
+      } else {
+          $atts[$key] = sanitize_text_field($value);
+      }
+  }
+
+  if (in_array('gray_wrapper', $data)) {
+    $gray_wrapper = $data['gray_wrapper'];
+  } else {
+    $gray_wrapper = false;
+  }
 
   $elementCount = 0;
   for($i = 1; $i < 4; $i++){
-    if (strlen(esc_html($data['title'.$i])) > 0) {
-      $elementCount++;
+    # sanitize and count titles first
+    if (array_key_exists('title'.$i, $data)){
+      if (strlen(esc_html($data['title'.$i])) > 0) {
+        $data['title'.$i] = esc_html($data['title'.$i]);
+        $elementCount++;
+      } else {
+        unset($data['title'.$i]);
+      }
     }
+  }
+
+  if ($elementCount == 0) {
+    return;
   }
 
   ob_start();
@@ -21,13 +45,32 @@ function epfl_card_block($data) {
   <div class="card-deck <?php echo ($elementCount < 3) && ($elementCount > 1) ? ' card-deck-line' : '' ?>">
     <?php
     for($i = 1; $i < 4; $i++):
+      if (!(array_key_exists('title'.$i, $data))) {
+        # show the card only if the title is set
+        continue;
+      }
+
       $title = esc_html($data['title'.$i]);
 
-      if (strlen($title) > 0) :  # show the card only if the title is set
-        $image_id = $data['image'.$i];
+      if (array_key_exists('imageId'.$i, $data)) {
+        $image_id = $data['imageId'.$i];
         $image_post = get_post($image_id);
+      } else {
+        $image_id = '';
+        $image_post = null;
+      }
+
+      if (array_key_exists('link'.$i, $data)) {
         $url = esc_url($data['link'.$i]);
+      } else {
+        $url = null;
+      }
+
+      if (array_key_exists('content'.$i, $data)) {
         $content = urldecode($data['content'.$i]);
+      } else {
+        $content = null;
+      }
     ?>
     <div class="card">
       <?php if ($image_id): ?>
@@ -63,7 +106,6 @@ function epfl_card_block($data) {
         </div>
       </div>
     <?php
-      endif;
       endfor;
     ?>
   </div>

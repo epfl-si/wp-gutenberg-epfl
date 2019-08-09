@@ -31,6 +31,7 @@ require_once 'epfl-post-highlight/controller.php';
 require_once 'epfl-infoscience-search/controller.php';
 require_once 'epfl-social-feed/controller.php';
 require_once 'epfl-contact/controller.php';
+require_once 'epfl-card/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -172,7 +173,7 @@ function wp_gutenberg_epfl_register_blocks() {
 		));
 
     register_block_type( 'epfl/card', array(
-			'render_callback' => 'EPFL\Plugins\Gutenberg\Contact\epfl_card_block',
+			'render_callback' => 'EPFL\Plugins\Gutenberg\Card\epfl_card_block',
 		));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );

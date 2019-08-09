@@ -41,7 +41,6 @@ registerBlockType( 'epfl/card', {
         },
         image1: {
             type: 'string',
-            default: null,
         },
         content1: {
             type: 'string',
@@ -111,7 +110,7 @@ registerBlockType( 'epfl/card', {
                                 onChange={ gray_wrapper => setAttributes( { gray_wrapper } ) }
                             />
                     </PanelBody>
-                    {[...Array(4)].map((x, i) =>
+                    {[...Array(3)].map((x, i) =>
                         <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}
                 </InspectorControls>

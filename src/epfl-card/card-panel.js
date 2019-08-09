@@ -32,7 +32,7 @@ function CardPanel ( props ) {
     return (
         <PanelBody title={`Card ${index}`} >
             <TextControl
-                label={ __('Title', 'wp-gutenberg-epfl') }
+                label={ __('Title (mandatory)', 'wp-gutenberg-epfl') }
                 value={ attributes['title' + index] || ''}
                 onChange={ value => setIndexedAttributes('title', value) }
             />
@@ -64,4 +64,3 @@ function CardPanel ( props ) {
 }
 
 export default CardPanel;
-
