@@ -31,68 +31,68 @@ registerBlockType( 'epfl/card', {
             default: false,
         },
         title1: {
-            type: 'text',
+            type: 'string',
         },
         link1: {
-            type: 'text',
+            type: 'string',
         },
         imageId1: {
             type: 'number',
         },
         image1: {
-            type: 'text',
+            type: 'string',
             default: null,
         },
         content1: {
-            type: 'text',
+            type: 'string',
         },
         title2: {
-            type: 'text',
+            type: 'string',
         },
         link2: {
-            type: 'text',
+            type: 'string',
         },
         imageId2: {
             type: 'number',
         },
         image2: {
-            type: 'text',
+            type: 'string',
             default: null,
         },
         content2: {
-            type: 'text',
+            type: 'string',
         },
         title3: {
-            type: 'text',
+            type: 'string',
         },
         link3: {
-            type: 'text',
+            type: 'string',
         },
         imageId3: {
             type: 'number',
         },
         image3: {
-            type: 'text',
+            type: 'string',
             default: null,
         },
         content3: {
-            type: 'text',
+            type: 'string',
         },
         title4: {
-            type: 'text',
+            type: 'string',
         },
         link4: {
-            type: 'text',
+            type: 'string',
         },
         imageId4: {
             type: 'number',
         },
         image4: {
-            type: 'text',
+            type: 'string',
             default: null,
         },
         content4: {
-            type: 'text',
+            type: 'string',
         },
     },
 	supports : {
