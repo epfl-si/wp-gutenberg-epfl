@@ -19,81 +19,39 @@ const {
 
 const { Fragment } = wp.element;
 
+const maxCards = 3;
+
+const getAttributes = () => {
+    let atts = {};
+
+    for (var i = 1; i <= maxCards; i++) {
+        atts['title'+i] = {
+			type: 'string',
+        };
+        atts['link'+i] = {
+			type: 'string',
+        };
+        atts['imageId'+i] = {
+			type: 'number',
+        };
+        atts['image'+i] = {
+            type: 'string',
+            default: null
+        };
+        atts['content'+i] = {
+			type: 'string',
+        };
+    }
+
+    return atts;
+}
 
 registerBlockType( 'epfl/card', {
 	title: __( 'EPFL Card', 'wp-gutenberg-epfl'),
 	description: 'v1.0.0',
 	icon: cardIcon,
 	category: 'common',
-	attributes: {
-        gray_wrapper: {
-            type: 'boolean',
-            default: false,
-        },
-        title1: {
-            type: 'string',
-        },
-        link1: {
-            type: 'string',
-        },
-        imageId1: {
-            type: 'number',
-        },
-        image1: {
-            type: 'string',
-        },
-        content1: {
-            type: 'string',
-        },
-        title2: {
-            type: 'string',
-        },
-        link2: {
-            type: 'string',
-        },
-        imageId2: {
-            type: 'number',
-        },
-        image2: {
-            type: 'string',
-            default: null,
-        },
-        content2: {
-            type: 'string',
-        },
-        title3: {
-            type: 'string',
-        },
-        link3: {
-            type: 'string',
-        },
-        imageId3: {
-            type: 'number',
-        },
-        image3: {
-            type: 'string',
-            default: null,
-        },
-        content3: {
-            type: 'string',
-        },
-        title4: {
-            type: 'string',
-        },
-        link4: {
-            type: 'string',
-        },
-        imageId4: {
-            type: 'number',
-        },
-        image4: {
-            type: 'string',
-            default: null,
-        },
-        content4: {
-            type: 'string',
-        },
-    },
+	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
@@ -110,7 +68,7 @@ registerBlockType( 'epfl/card', {
                                 onChange={ gray_wrapper => setAttributes( { gray_wrapper } ) }
                             />
                     </PanelBody>
-                    {[...Array(3)].map((x, i) =>
+                    {[...Array(maxCards)].map((x, i) =>
                         <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}
                 </InspectorControls>
