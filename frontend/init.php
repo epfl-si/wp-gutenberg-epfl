@@ -31,6 +31,7 @@ require_once 'epfl-post-highlight/controller.php';
 require_once 'epfl-infoscience-search/controller.php';
 require_once 'epfl-social-feed/controller.php';
 require_once 'epfl-contact/controller.php';
+require_once 'epfl-schools/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
