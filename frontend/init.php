@@ -170,5 +170,9 @@ function wp_gutenberg_epfl_register_blocks() {
     register_block_type( 'epfl/contact', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Contact\epfl_contact_block',
 		));
+
+		register_block_type( 'epfl/schools', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\Contact\epfl_schools_block',
+		));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );
