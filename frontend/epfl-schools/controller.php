@@ -2,7 +2,6 @@
 
 namespace EPFL\Plugins\Gutenberg\Schools;
 
-
 function epfl_schools_block( $data ) {
     if (!$data) return true;
 
@@ -12,8 +11,8 @@ function epfl_schools_block( $data ) {
             $data['subtitle'.$i] = isset( $data['subtitle'.$i] ) ? sanitize_text_field( $data['subtitle'.$i] ) : '';
             $data['link'.$i]     = isset( $data['link'.$i] ) ? sanitize_text_field( $data['link'.$i] ) : '';
 
-            if (!array_key_exists('image'.$i, $data)) {
-                $data['image'.$i] = '';
+            if (!array_key_exists('imageId'.$i, $data)) {
+                $data['imageId'.$i] = '';
             }
         }
     }
@@ -27,11 +26,11 @@ function epfl_schools_block( $data ) {
             <?php if (!empty($data['title'.$i])) : ?>
                 <div class="col-sm-6 col-xl-4">
                 <a href="<?php echo $data['link'.$i]; ?>" class="card card-overlay link-trapeze-horizontal">
-                    <?php if (!empty($data['image'.$i])):
-                        $image = get_post($data['image'.$i]);
+                    <?php if (!empty($data['imageId'.$i])):
+                        $image = get_post($data['imageId'.$i]);
                     ?>
                     <picture class="card-img">
-                    <?php echo wp_get_attachment_image($data['image'.$i], 'thumbnail_16_9_large_40p', '', ['class' => 'img-fluid']) ?>
+                    <?php echo wp_get_attachment_image($data['imageId'.$i], 'thumbnail_16_9_large_40p', '', ['class' => 'img-fluid']) ?>
                     </picture>
                     <?php endif; ?>
                     <div class="card-img-overlay">

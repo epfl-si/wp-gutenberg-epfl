@@ -32,6 +32,7 @@ import './epfl-post-teaser'
 import './epfl-post-highlight'
 import './epfl-social-feed'
 import './epfl-contact'
+import './epfl-schools'
 
 const getHomeURL = () => {
     let href = window.location.href;
