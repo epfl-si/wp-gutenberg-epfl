@@ -166,7 +166,7 @@ registerBlockType( 'epfl/contact', {
                         value={ attributes.map_query }
                         onChange={ map_query => setAttributes( { map_query } ) }
                         placeholder={ 'CM 0 361.2' }
-                        help={ <a target="_blank" href="plan.epfl.ch">{ __('See plan.epfl.ch for the right name of your room.', 'wp-gutenberg-epfl') }</a> }
+                        help={ <a target="_blank" href="//plan.epfl.ch">{ __('See plan.epfl.ch for the right name of your room.', 'wp-gutenberg-epfl') }</a> }
                     />
                 </div>
             </Fragment>
@@ -176,4 +176,3 @@ registerBlockType( 'epfl/contact', {
         return null;
     },
 } );
-
