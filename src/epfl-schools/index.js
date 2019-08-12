@@ -81,8 +81,8 @@ function SchoolPanel ( props ) {
                 type="image"
                 value={ attributes['image' + index]  || '' }
                 render={({ open }) => (
-                    <div>
-                        <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } />
+                    <div class="components-base-control">
+                        <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } /><br />
                         <button onClick={ open }>
                         { __('Upload Image', 'wp-gutenberg-epfl') }
                         </button>
