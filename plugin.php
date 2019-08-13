@@ -26,7 +26,7 @@ add_action( 'plugins_loaded', 'epfl_gutenberg_load_textdomain' );
 
 
 function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
-
+    // see ./src/blocks.js for the right list
     $blocks = array(
         'epfl/news',
         'epfl/memento',
