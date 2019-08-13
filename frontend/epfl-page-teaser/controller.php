@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function epfl_page_teaser_block( $attributes ) {
 
@@ -6,7 +6,7 @@ function epfl_page_teaser_block( $attributes ) {
     $page2 = sanitize_text_field( $attributes['page2'] ) ?: '';
     $page3 = sanitize_text_field( $attributes['page3'] ) ?: '';
     $gray  = sanitize_text_field( $attributes['gray'] ) ?: false;
-    
+
     $data  = [];
 
     if ($page1 !== '') {
@@ -43,19 +43,20 @@ function epfl_page_teaser_block( $attributes ) {
 
         $html .= '<div class="card">';
         $page_url = get_permalink($page);
-
+        ob_start();
         card_img_top(
             get_the_post_thumbnail($page, 'thumbnail_16_9_large', ['class' => 'img-fluid']),
             $page_url
         );
-        
+        $html .= ob_get_contents;
+        ob_end_clean();
         $html .= '<div class="card-body">';
         $html .= '<div class="card-title">';
         $html .= '<a href="' . $page_url . '" class="h3">' . $page->post_title . '</a>';
         $html .= '</div>';
-        
+
         $excerpt = epfl_excerpt($page);
-        if (!empty($excerpt)) {   
+        if (!empty($excerpt)) {
             $html .= '<p>' . $excerpt . '</p>';
         }
         $html .= '</div>';

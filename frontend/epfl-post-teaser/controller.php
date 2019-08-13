@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 function epfl_post_teaser_block( $attributes ) {
 
@@ -6,7 +6,7 @@ function epfl_post_teaser_block( $attributes ) {
     $post2 = sanitize_text_field( $attributes['post2'] ) ?: '';
     $post3 = sanitize_text_field( $attributes['post3'] ) ?: '';
     $gray  = sanitize_text_field( $attributes['gray'] ) ?: false;
-    
+
     $data  = [];
 
     if ($post1 !== '') {
@@ -43,11 +43,14 @@ function epfl_post_teaser_block( $attributes ) {
         $post_url = get_permalink($post);
 
         $html .= '<a href="' . $post_url . '" class="card link-trapeze-horizontal">';
-        $html .= card_img_top(
+        ob_start();
+        card_img_top(
                     get_the_post_thumbnail($post, 'thumbnail_16_9_large', ['class' => 'img-fluid']),
                     $post_url,
                     false
                 );
+        $html .= ob_get_contents;
+        ob_end_clean();
         $html .= '<div class="card-body">';
         $html .= '<h3 class="card-title">';
         $html .= $post->post_title;
