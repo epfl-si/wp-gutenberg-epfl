@@ -77,7 +77,7 @@ wp.domReady( function() {
 
 } );
 
-export const getAllPagesOrPosts = (type) => {
+export const getAllPagesOrPosts = (type, lang) => {
 
     return new Promise((resolve, reject) => {
 
@@ -86,6 +86,10 @@ export const getAllPagesOrPosts = (type) => {
             type = 'pages';
         }
         let apiRestUrl = `${homeUrl}/?rest_route=/wp/v2/${type}&per_page=100`;
+
+        if (lang) {
+            apiRestUrl += '&lang=' + lang;
+        }
 
         axios.get(apiRestUrl).then(
             response => {
