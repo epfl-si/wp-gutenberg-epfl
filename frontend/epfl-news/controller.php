@@ -34,7 +34,7 @@ function epfl_news_get_limit($template, $nb_news)
             $limit = 2;
             break;
         default:
-            $limit = 4;
+            $limit = 3;
     }
     return $limit;
 }
@@ -108,7 +108,7 @@ function epfl_news_block( $attributes ) {
   $lang          = sanitize_text_field( $attributes['lang'] ) ?: 'fr';
   $template      = sanitize_text_field( $attributes['template'] ) ?: 'listing';
   $all_news_link = sanitize_text_field( $attributes['displayLinkAllNews'] ) ?: FALSE;
-  $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 10;
+  $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 3;
   $category      = sanitize_text_field( $attributes['category'] );
   $themes        = sanitize_text_field( $attributes['themes'] );
   $projects      = sanitize_text_field( $attributes['projects'] );

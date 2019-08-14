@@ -4,18 +4,19 @@ import toggleIcon from './toggle-icon'
 const { __ } = wp.i18n;
 
 const {
-	registerBlockType,
+    registerBlockType,
+    
 } = wp.blocks;
 
 const {
-	InspectorControls,
+    InspectorControls,
+    RichText,
 } = wp.editor;
 
 const {
     PanelBody,
-	TextareaControl,
 	TextControl,
-	ToggleControl,
+	RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -30,18 +31,24 @@ registerBlockType( 'epfl/toggle', {
 			type: 'string',
 		},
 		content: {
-			type: 'string',
-		}, 
+            type: 'string',
+            selector: '.content'
+        },
 		state: {
-			type: 'boolean',
-		}
+            type: 'string',
+            default: 'close'
+        },
+        blockName: {
+            type: 'string',
+            default: 'You must specify a block name in the right column'
+        }
 	},
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
 		
-		const { attributes, className, setAttributes } = props
+        const { attributes, className, setAttributes } = props
 
 		return (
 		<Fragment>
@@ -49,29 +56,39 @@ registerBlockType( 'epfl/toggle', {
 				<PanelBody title={ __('Title', 'wp-gutenberg-epfl') }>
 					<TextControl
 						value={ attributes.title }
-						onChange={ title => setAttributes( { title } ) }
-					/>
-				</PanelBody>
-				<PanelBody title={ __('Content', 'wp-gutenberg-epfl') }>
-					<TextareaControl
-						value={ attributes.content }
-						onChange={ content => setAttributes( { content } ) }
+                        onChange={ title => setAttributes( { title } ) }
 					/>
 				</PanelBody>
 				<PanelBody>
-					<ToggleControl
-						label={ __('Define toggle state', 'wp-gutenberg-epfl') }
-						checked={ attributes.state }
-						onChange={ () => setAttributes( { state: ! attributes.state } ) }
-						helper={ __('Do you want display the toggle open or close by default ?', 'wp-gutenberg-epfl') }
+					<RadioControl
+                        label={ __('Define toggle state', 'wp-gutenberg-epfl') }
+                        help={ __('Do you want display the toggle open or close by default ?', 'wp-gutenberg-epfl') }
+                        selected={ attributes.state }
+                        options={ [
+                            { label: 'Closed', value: 'close' },
+                            { label: 'Open', value: 'open' },
+                        ] }
+                        onChange={ state => setAttributes( { state } ) }
 					/>
 				</PanelBody>
+                <PanelBody title={ __('Block name', 'wp-gutenberg-epfl')}>
+                    <TextControl
+						value={ attributes.blockName }
+                        onChange={ blockName => setAttributes( { blockName } ) }
+					/>
+                </PanelBody>
 			</InspectorControls>
 			<div className={ className }>
-                <div id="preview-box">
-                    <h2>EPFL TOGGLE</h2>
-                    <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                </div>
+                <label><strong>{ attributes.blockName }</strong></label>
+                <hr />
+                <RichText
+                    tagName="div"
+                    multiline="p"
+                    placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
+                    value={ attributes.content }
+                    className="content"
+                    onChange={ content => setAttributes( { content } ) }
+                />
 			</div>
 		</Fragment>
 		)

@@ -29,18 +29,26 @@ export default class InspectorControlsPeople extends Component {
         
         content = (
             <InspectorControls>
-                <PanelBody title={ __( 'Units', 'wp-gutenberg-epfl') }>
+                <PanelBody title={ __( 'Select by', 'wp-gutenberg-epfl') }>
+                    <strong>{__( 'Units', 'wp-gutenberg-epfl')}</strong>
                     <TextControl
                         value={ attributes.units }
                         help={ __('You can enter many units separated by a comma', 'wp-gutenberg-epfl') }
 						onChange={ units => setAttributes( { units } ) }
 					/>
-                </PanelBody>
-                <PanelBody title={ __( 'Scipers', 'wp-gutenberg-epfl' ) }>
+                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
+                    <strong>{__( 'Scipers', 'wp-gutenberg-epfl')}</strong>
                     <TextControl
                         value={ attributes.scipers }
                         help={ __('You can enter many scipers separated by a comma', 'wp-gutenberg-epfl') }
 						onChange={ scipers => setAttributes( { scipers } ) }
+					/>
+                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
+                    <strong>{__( 'Doctoral programs', 'wp-gutenberg-epfl')}</strong>
+                    <TextControl
+                        value={ attributes.doctoralProgram }
+                        help={ __('Example: EDAM') }
+						onChange={ doctoralProgram => setAttributes( { doctoralProgram } ) }
 					/>
                 </PanelBody>
                 <PanelBody title={ __( 'Function', 'wp-gutenberg-epfl' ) }>
@@ -48,13 +56,6 @@ export default class InspectorControlsPeople extends Component {
                         value={ attributes.fonction }
                         help={ __('You can enter a function to filter persons. The keyword must be in french. Example: professeur or enseignement') }
 						onChange={ fonction => setAttributes( { fonction } ) }
-					/>
-                </PanelBody>
-                <PanelBody title={ __( 'Doctoral programs', 'wp-gutenberg-epfl' ) }>
-                    <TextControl
-                        value={ attributes.doctoralProgram }
-                        help={ __('Example: EDAM') }
-						onChange={ doctoralProgram => setAttributes( { doctoralProgram } ) }
 					/>
                 </PanelBody>
                 <PanelBody title={ __( 'Columns', 'wp-gutenberg-epfl' ) }>

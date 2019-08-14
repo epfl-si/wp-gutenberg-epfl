@@ -37,11 +37,9 @@ export default class InspectorControlsInfoscience extends Component {
         this.state = {
             showAdvancedSearch: showAdvancedSearch,
 		};
-
-		this.toggleBox = this.toggleBox.bind(this);
 	}
 
-	toggleBox() {
+	toggleBox = () => {
 		this.setState(oldState => ({ showAdvancedSearch: !oldState.showAdvancedSearch }));
 	}
 
@@ -170,8 +168,8 @@ export default class InspectorControlsInfoscience extends Component {
 				<PanelBody title={ __('Options', 'wp-gutenberg-epfl') } >
 					<SelectControl
 						label={ __('Group by with titles', 'wp-gutenberg-epfl') }
-						value={ attributes.group_by }
-						onChange={ group_by => setAttributes( { group_by } ) }
+						value={ attributes.groupBy }
+						onChange={ groupBy => setAttributes( { groupBy } ) }
 						options={ optionsGroupBy }
 					/>
 					<RadioControl

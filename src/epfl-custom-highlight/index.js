@@ -40,7 +40,10 @@ registerBlockType( 'epfl/custom-highlight', {
         },
         imageId: {
             type: 'number',
-		},
+        },
+        imageUrl: {
+            type: 'string',
+        },
 		layout: {
             type: 'string',
             default: 'right',
@@ -55,7 +58,8 @@ registerBlockType( 'epfl/custom-highlight', {
         
         function onImageSelect(imageObject) {
 			setAttributes({
-				imageId: imageObject.id
+                imageId: imageObject.id,
+                imageUrl: imageObject.url
 			})
 		}
 
@@ -99,6 +103,7 @@ registerBlockType( 'epfl/custom-highlight', {
                             value={attributes.imageId}
                             render={({ open }) => (
                                 <div>
+                                    <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
                                     <button onClick={open}>
                                     { __('Upload Image!', 'wp-gutenberg-epfl') }
                                     </button>
