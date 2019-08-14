@@ -48,7 +48,7 @@ function epfl_page_teaser_block( $attributes ) {
             get_the_post_thumbnail($page, 'thumbnail_16_9_large', ['class' => 'img-fluid']),
             $page_url
         );
-        $html .= ob_get_contents;
+        $html .= ob_get_contents();
         ob_end_clean();
         $html .= '<div class="card-body">';
         $html .= '<div class="card-title">';

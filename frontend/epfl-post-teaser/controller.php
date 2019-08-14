@@ -49,7 +49,7 @@ function epfl_post_teaser_block( $attributes ) {
                     $post_url,
                     false
                 );
-        $html .= ob_get_contents;
+        $html .= ob_get_contents();
         ob_end_clean();
         $html .= '<div class="card-body">';
         $html .= '<h3 class="card-title">';
