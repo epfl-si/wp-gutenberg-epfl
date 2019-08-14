@@ -51,6 +51,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/social-feed',
         'epfl/contact',
         'epfl/schools',
+        'epfl/card',
         'core/paragraph',
         'core/heading',
     );
