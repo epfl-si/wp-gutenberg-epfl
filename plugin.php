@@ -50,6 +50,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/infoscience-search',
         'epfl/social-feed',
         'epfl/contact',
+        'epfl/card',
         'core/paragraph',
         'core/heading',
     );
