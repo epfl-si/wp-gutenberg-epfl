@@ -15,7 +15,6 @@ const {
 const {
     PanelBody,
     TextControl,
-    TextareaControl,
     ToggleControl,
 } = wp.components;
 
@@ -30,7 +29,7 @@ registerBlockType( 'epfl/contact', {
         introduction: {
             type: 'text',
         },
-        gray_wrapper: {
+        grayWrapper: {
             type: 'boolean',
             default: false,
         },
@@ -58,7 +57,7 @@ registerBlockType( 'epfl/contact', {
             type: 'text',
             selector: '.information3'
         },
-        map_query: {
+        mapQuery: {
             type: 'text',
         }
     },
@@ -74,8 +73,8 @@ registerBlockType( 'epfl/contact', {
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }
-                            checked={ attributes.gray_wrapper }
-                            onChange={ gray_wrapper => setAttributes( { gray_wrapper } ) }
+                            checked={ attributes.grayWrapper }
+                            onChange={ grayWrapper => setAttributes( { grayWrapper } ) }
                         />
                     </PanelBody>
                 </InspectorControls>
@@ -163,8 +162,8 @@ registerBlockType( 'epfl/contact', {
                     <label><strong>{ __( 'Map', 'wp-gutenberg-epfl' ) }</strong></label>
                     <TextControl
                         label={ __('A room/place shown in the interactive map:', 'wp-gutenberg-epfl') }
-                        value={ attributes.map_query }
-                        onChange={ map_query => setAttributes( { map_query } ) }
+                        value={ attributes.mapQuery }
+                        onChange={ mapQuery => setAttributes( { mapQuery } ) }
                         placeholder={ 'CM 0 361.2' }
                         help={ <a target="_blank" href="//plan.epfl.ch">{ __('See plan.epfl.ch for the right name of your room.', 'wp-gutenberg-epfl') }</a> }
                     />
