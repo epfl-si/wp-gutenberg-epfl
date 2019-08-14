@@ -62,7 +62,7 @@ registerBlockType( 'epfl/infoscience-search', {
 			type: 'string',
 			default: 'desc'
 		},
-		group_by: {
+		groupBy: {
 			type: 'string',
 			default: null,
 		},

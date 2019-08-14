@@ -45,12 +45,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # normalize attribute keys, lowercase
     $atts = array_change_key_case((array)$provided_attributes, CASE_LOWER);
 
-    # convert group_by interface to functionnal values
-    if (array_key_exists('group_by', $atts)) {
-        if ($atts['group_by'] == 'year_doctype') {
+    # convert group_by data coming from the UI to values for the next functions
+    if (array_key_exists('groupBy', $atts)) {
+        if ($atts['groupBy'] == 'year_doctype') {
             $atts['group_by'] = 'year';
             $atts['group_by2'] = 'doctype';
-        } elseif ($atts['group_by'] == 'doctype_year') {
+        } elseif ($atts['groupBy'] == 'doctype_year') {
             $atts['group_by'] = 'doctype';
             $atts['group_by2'] = 'year';
         }
@@ -86,6 +86,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     $attributes['format'] = in_array(strtolower($attributes['format']), ['short', 'detailed']) ? strtolower($attributes['format']) : 'short';
     $attributes['group_by'] = InfoscienceGroupBy::sanitize_group_by($attributes['group_by']);
+    $attributes['group_by2'] = InfoscienceGroupBy::sanitize_group_by($attributes['group_by2']);
 
     # Unset element unused in url, with backup first
     $before_unset_attributes = $attributes;
