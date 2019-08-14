@@ -64,18 +64,14 @@ registerBlockType( 'epfl/scheduler', {
 				</PanelBody>
             </InspectorControls>
             <div className={ className }>
-                {
-                    <div>
-                        <RichText
-                            tagName="div"
-                            multiline="p"
-                            placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
-                            value={ attributes.content }
-                            className="content"
-                            onChange={ content1 => setAttributes( { content } ) }
-                        />
-                    </div>
-                }
+                <RichText
+                    tagName="div"
+                    multiline="p"
+                    placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
+                    value={ attributes.content }
+                    className="content"
+                    onChange={ content => setAttributes( { content } ) }
+                />
             </div>
         </Fragment>
       )
