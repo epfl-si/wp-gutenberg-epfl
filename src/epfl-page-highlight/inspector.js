@@ -19,13 +19,14 @@ export default class InspectorControlsPageHighlight extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             pages: null,
         }
     }
 
     componentDidMount() {
-        getAllPagesOrPosts('pages').then( (allPages) => {
+        const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
+        getAllPagesOrPosts('pages', current_lang_code).then( (allPages) => {
             this.setState({ pages: allPages });
         });
 	}
@@ -42,14 +43,17 @@ export default class InspectorControlsPageHighlight extends Component {
             { value: 'bottom', label: __('Bottom', 'wp-gutenberg-epfl')},
             { value: 'left', label: __('Left', 'wp-gutenberg-epfl')},
         ];
-        
+
         if (this.state.pages !== null) {
-            
+
             let optionsPagesList = [];
 
             this.state.pages.forEach(page => {
                 optionsPagesList.push({ label: page.title.rendered, value: page.id });
             });
+
+            // add empty value at first, in case for an unselect
+            optionsPagesList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
 
             const divStyle = {
                 height: '600px',
@@ -58,7 +62,7 @@ export default class InspectorControlsPageHighlight extends Component {
             const selectStyle = {
                 marginBottom: '20px'
             }
-            
+
             content = (
                 <InspectorControls>
                     <div style={divStyle}>
@@ -82,7 +86,7 @@ export default class InspectorControlsPageHighlight extends Component {
                                         placeholder={ __('Select page', 'wp-gutenberg-epfl') }
                                     />
                                 </div>
-                        </PanelBody> 
+                        </PanelBody>
                     </div>
                 </InspectorControls>
             )

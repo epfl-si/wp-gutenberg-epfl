@@ -18,13 +18,14 @@ export default class InspectorControlsPostTeaser extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             posts: null,
         }
     }
 
     componentDidMount() {
-        getAllPagesOrPosts('posts').then( (allPosts) => {
+        const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
+        getAllPagesOrPosts('posts', current_lang_code).then( (allPosts) => {
             this.setState({ posts: allPosts });
         });
     }
@@ -37,7 +38,7 @@ export default class InspectorControlsPostTeaser extends Component {
         const handlePost3Change = ( post3 ) => setAttributes( { post3: JSON.stringify( post3 ) } );
 
         let content = "";
-        
+
         if (this.state.posts !== null) {
 
             let optionsPostsList = [];
@@ -45,6 +46,9 @@ export default class InspectorControlsPostTeaser extends Component {
             this.state.posts.forEach(post => {
                 optionsPostsList.push({ label: post.title.rendered, value: post.id });
             });
+
+            // add empty value at first, in case for an unselect
+            optionsPostsList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
 
             const divStyle = {
                 height: '600px',
@@ -81,9 +85,9 @@ export default class InspectorControlsPostTeaser extends Component {
                                         name='epfl-page-teaser-post2'
                                         value={ JSON.parse( attributes.post2 ) }
                                         onChange={ handlePost2Change }
-                                        options={ optionsPostsList }   
-                                        placeholder={ __('Select post', 'wp-gutenberg-epfl') }                             
-                                    />      
+                                        options={ optionsPostsList }
+                                        placeholder={ __('Select post', 'wp-gutenberg-epfl') }
+                                    />
                                 </div>
                                 <div style={selectStyle}>
                                     <Select
@@ -95,7 +99,7 @@ export default class InspectorControlsPostTeaser extends Component {
                                         placeholder={ __('Select post', 'wp-gutenberg-epfl') }
                                     />
                                 </div>
-                        </PanelBody> 
+                        </PanelBody>
                     </div>
                 </InspectorControls>
             )

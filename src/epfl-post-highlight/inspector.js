@@ -19,13 +19,14 @@ export default class InspectorControlsPostHighlight extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             posts: null,
         }
     }
 
     componentDidMount() {
-        getAllPagesOrPosts('posts').then( (allPosts) => {
+        const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
+        getAllPagesOrPosts('posts', current_lang_code).then( (allPosts) => {
             this.setState({ posts: allPosts });
         });
 	}
@@ -42,14 +43,17 @@ export default class InspectorControlsPostHighlight extends Component {
             { value: 'bottom', label: __('Bottom', 'wp-gutenberg-epfl')},
             { value: 'left', label: __('Left', 'wp-gutenberg-epfl')},
         ];
-        
+
         if (this.state.posts !== null) {
-            
+
             let optionsPostsList = [];
 
             this.state.posts.forEach(post => {
                 optionsPostsList.push({ label: post.title.rendered, value: post.id });
             });
+
+            // add empty value at first, in case for an unselect
+            optionsPostsList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
 
             const divStyle = {
                 height: '600px',
@@ -58,7 +62,7 @@ export default class InspectorControlsPostHighlight extends Component {
             const selectStyle = {
                 marginBottom: '20px'
             }
-            
+
             content = (
                 <InspectorControls>
                     <div style={divStyle}>
@@ -82,7 +86,7 @@ export default class InspectorControlsPostHighlight extends Component {
                                         placeholder={ __('Select post', 'wp-gutenberg-epfl') }
                                     />
                                 </div>
-                        </PanelBody> 
+                        </PanelBody>
                     </div>
                 </InspectorControls>
             )
