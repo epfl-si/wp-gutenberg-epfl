@@ -27,38 +27,38 @@ registerBlockType( 'epfl/contact', {
     category: 'common',
     attributes: {
         introduction: {
-            type: 'text',
+            type: 'string',
         },
         grayWrapper: {
             type: 'boolean',
             default: false,
         },
         timetable1: {
-            type: 'text',
+            type: 'string',
         },
         timetable2: {
-            type: 'text',
+            type: 'string',
         },
         timetable3: {
-            type: 'text',
+            type: 'string',
         },
         timetable4: {
-            type: 'text',
+            type: 'string',
         },
         information1: {
-            type: 'text',
+            type: 'string',
             selector: '.information1'
         },
         information2: {
-            type: 'text',
+            type: 'string',
             selector: '.information2'
         },
         information3: {
-            type: 'text',
+            type: 'string',
             selector: '.information3'
         },
         mapQuery: {
-            type: 'text',
+            type: 'string',
         }
     },
     supports : {
