@@ -31,7 +31,7 @@ require_once 'epfl-post-highlight/controller.php';
 require_once 'epfl-infoscience-search/controller.php';
 require_once 'epfl-social-feed/controller.php';
 require_once 'epfl-contact/controller.php';
-require_once 'epfl-schools/controller.php';
+require_once 'epfl-caption-cards/controller.php';
 require_once 'epfl-card/controller.php';
 require_once 'epfl-definition-list/controller.php';
 
@@ -174,8 +174,8 @@ function wp_gutenberg_epfl_register_blocks() {
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Contact\epfl_contact_block',
 		));
 
-		register_block_type( 'epfl/schools', array(
-			'render_callback' => 'EPFL\Plugins\Gutenberg\Schools\epfl_schools_block',
+		register_block_type( 'epfl/caption-cards', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\CaptionCards\epfl_caption_cards_block',
 		));
 
     register_block_type( 'epfl/card', array(

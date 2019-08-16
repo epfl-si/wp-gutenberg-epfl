@@ -17,12 +17,12 @@ const {
 
 const { Fragment } = wp.element;
 
-const numberSchools = 10;
+const maxCaptionCards = 10;
 
 const getAttributes = () => {
     let atts = {};
 
-    for (var i = 1; i <= numberSchools; i++) {
+    for (var i = 1; i <= maxCaptionCards; i++) {
         atts['title'+i] = {
 			type: 'string',
         };
@@ -44,7 +44,7 @@ const getAttributes = () => {
     return atts;
 }
 
-function SchoolPanel ( props ) {
+function CaptionCardPanel ( props ) {
     const { attributes, setAttributes, index } = props;
 
     const setIndexedAttributes = (field_name, value) => {
@@ -60,7 +60,7 @@ function SchoolPanel ( props ) {
 
     return (
         <div>
-           <h3>{`School ${index}`} </h3>
+           <h3>{`Card ${index}`} </h3>
            <TextControl
                 label={ __('Titre', 'wp-gutenberg-epfl') }
                 value={ attributes['title' + index] || ''}
@@ -96,8 +96,8 @@ function SchoolPanel ( props ) {
 }
 
 
-registerBlockType( 'epfl/schools', {
-	title: __( 'EPFL Schools', 'wp-gutenberg-epfl'),
+registerBlockType( 'epfl/caption-cards', {
+	title: __( 'EPFL Caption Cards', 'wp-gutenberg-epfl'),
 	description: 'v1.0.0',
 	icon: 'screenoptions',
 	category: 'common',
@@ -113,8 +113,8 @@ registerBlockType( 'epfl/schools', {
                 <InspectorControls>
                 </InspectorControls>
                 <div className={ className }>
-                    {[...Array(numberSchools)].map((x, i) =>
-                        <SchoolPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
+                    {[...Array(maxCaptionCards)].map((x, i) =>
+                        <CaptionCardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}
                 </div>
             </Fragment>

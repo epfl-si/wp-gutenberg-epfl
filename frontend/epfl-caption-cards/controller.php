@@ -1,8 +1,8 @@
 <?php
 
-namespace EPFL\Plugins\Gutenberg\Schools;
+namespace EPFL\Plugins\Gutenberg\CaptionCards;
 
-function epfl_schools_block( $data ) {
+function epfl_caption_cards_block( $data ) {
     if (!$data) return true;
 
     for ($i = 1; $i <= 10; $i++) {
