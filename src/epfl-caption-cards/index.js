@@ -60,7 +60,7 @@ function CaptionCardPanel ( props ) {
 
     return (
         <div>
-           <h3>{`Card ${index}`} </h3>
+           <h3>{`Caption card ${index}`} </h3>
            <TextControl
                 label={ __('Titre', 'wp-gutenberg-epfl') }
                 value={ attributes['title' + index] || ''}
