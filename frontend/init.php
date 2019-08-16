@@ -33,6 +33,7 @@ require_once 'epfl-social-feed/controller.php';
 require_once 'epfl-contact/controller.php';
 require_once 'epfl-schools/controller.php';
 require_once 'epfl-card/controller.php';
+require_once 'epfl-definition-list/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -179,6 +180,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/card', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Card\epfl_card_block',
+		));
+
+		register_block_type( 'epfl/definition-list', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\DefinitionList\epfl_definition_list_block',
 		));
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );
