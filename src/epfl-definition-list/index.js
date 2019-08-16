@@ -12,7 +12,8 @@ const {
 const {
     PanelBody,
     ToggleControl,
-    TextControl
+    TextControl,
+    TextareaControl
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -57,7 +58,7 @@ function DefinitionListPanel ( props ) {
                 placeholder={ __('Term', 'wp-gutenberg-epfl') }
                 help={ __('Term to define', 'wp-gutenberg-epfl') }
             />
-           <TextControl
+           <TextareaControl
                 placeholder={ __('Definition', 'wp-gutenberg-epfl') }
                 value={ attributes['desc' + index] || ''}
                 onChange={ value => setIndexedAttributes('desc', value) }
