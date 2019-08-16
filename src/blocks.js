@@ -32,6 +32,7 @@ import './epfl-post-teaser'
 import './epfl-post-highlight'
 import './epfl-social-feed'
 import './epfl-contact'
+import './epfl-caption-cards'
 import './epfl-card'
 import './epfl-definition-list'
 
@@ -67,7 +68,7 @@ wp.domReady( function() {
         'epfl/infoscience-search',
         'epfl/social-feed',
         'epfl/contact',
-        'epfl/schools',
+        'epfl/caption-cards',
         'epfl/card',
         'epfl/definition-list',
         'core/paragraph',
