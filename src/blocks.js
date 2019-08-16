@@ -33,6 +33,7 @@ import './epfl-post-highlight'
 import './epfl-social-feed'
 import './epfl-contact'
 import './epfl-card'
+import './epfl-definition-list'
 
 const getHomeURL = () => {
     let href = window.location.href;
@@ -68,6 +69,7 @@ wp.domReady( function() {
         'epfl/contact',
         'epfl/schools',
         'epfl/card',
+        'epfl/definition-list',
         'core/paragraph',
         'core/heading',
     ];
