@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'wp-gutenberg-epfl'),
 	description: 'v1.0.0',
-	icon: 'text',
+	icon: 'id',
 	category: 'common',
 	attributes: {
 		title: {
@@ -41,14 +41,14 @@ registerBlockType( 'epfl/hero', {
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
-        
+
         function onImageSelect(imageObject) {
             setAttributes({
                 imageId: imageObject.id,
                 imageUrl: imageObject.url
 			})
 		}
-        
+
         return (
             <Fragment>
                 <InspectorControls>
@@ -88,7 +88,7 @@ registerBlockType( 'epfl/hero', {
                     </div>
                 </div>
             </Fragment>
-		)		
+		)
 	},
 	save: ( props ) => {
 		return null;
