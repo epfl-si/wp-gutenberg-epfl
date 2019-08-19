@@ -33,7 +33,7 @@ registerBlockType( 'epfl/google-forms', {
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
-        
+
         return (
             <Fragment>
                 <InspectorControls>
@@ -41,7 +41,7 @@ registerBlockType( 'epfl/google-forms', {
                         <TextareaControl
                             value={ attributes.content }
                             onChange={ content => setAttributes( { content } ) }
-                            help={ __('You can copy/paste the given HTML code containing <iframe>', 'wp-gutenberg-epfl') }
+                            help={ __('You can paste the given HTML code containing <iframe>', 'wp-gutenberg-epfl') }
                         />
                     </PanelBody>
                 </InspectorControls>
@@ -52,7 +52,7 @@ registerBlockType( 'epfl/google-forms', {
                     </div>
                 </div>
             </Fragment>
-		)		
+		)
 	},
 	save: ( props ) => {
 		return null;
