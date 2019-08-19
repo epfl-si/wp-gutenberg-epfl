@@ -24,7 +24,11 @@ function epfl_page_teaser_block( $attributes ) {
         array_push($data, $page3["value"]);
     }
 
-    $pagesCount = count($data);
+    foreach($data as $key => $page) {
+        if(!empty($page)) {
+            $pagesCount++;
+        }
+    }
 
     $html = '<div class="container-full my-3 ';
     if ($gray) {
@@ -38,6 +42,9 @@ function epfl_page_teaser_block( $attributes ) {
     }
     $html .= ' ">';
     foreach($data as $key => $page) {
+        if (empty($page)) {
+            continue;
+        }
 
         $page = get_post($page);
 
