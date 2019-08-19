@@ -62,7 +62,7 @@ function CaptionCardPanel ( props ) {
         <div>
            <h3>{`Caption card ${index}`} </h3>
            <TextControl
-                label={ __('Titre', 'wp-gutenberg-epfl') }
+                label={ __('Title', 'wp-gutenberg-epfl') }
                 value={ attributes['title' + index] || ''}
                 onChange={ value => setIndexedAttributes('title', value) }
             />
