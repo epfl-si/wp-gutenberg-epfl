@@ -26,6 +26,7 @@ import './epfl-tableau'
 import './epfl-infoscience-search'
 import './epfl-scienceqa'
 import './epfl-page-teaser'
+import './epfl-custom-teaser'
 import './epfl-custom-highlight'
 import './epfl-page-highlight'
 import './epfl-post-teaser'
@@ -61,6 +62,7 @@ wp.domReady( function() {
         'epfl/scheduler',
         'epfl/tableau',
         'epfl/page-teaser',
+        'epfl/custom-teaser',
         'epfl/custom-highlight',
         'epfl/page-highlight',
         'epfl/post-teaser',
