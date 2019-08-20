@@ -79,7 +79,7 @@ registerBlockType( 'epfl/contact', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h3>Contact</h3>
+                    <h2>EPFL Contact</h2>
                     <label><strong>Introduction</strong></label>
                     <hr />
                     <RichText

@@ -38,8 +38,8 @@ registerBlockType( 'epfl/cover', {
 			type: 'number',
 		},
 		image: {
-			type: 'string',
-		}, 
+			type: 'string', 
+		},
 		description : {
 			type: 'string',
 		}
@@ -48,11 +48,11 @@ registerBlockType( 'epfl/cover', {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
-		
+
 		const { attributes, className, setAttributes } = props
 
 		function onImageSelect(imageObject) {
-			
+
 			setAttributes({
 				image: imageObject.sizes.full.url,
 				imageId: imageObject.id
@@ -107,7 +107,7 @@ registerBlockType( 'epfl/cover', {
 			</div>
 		</Fragment>
 		)
-		
+
 	},
 	save: ( props ) => {
 		return null;

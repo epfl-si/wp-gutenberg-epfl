@@ -51,21 +51,22 @@ registerBlockType( 'epfl/hero', {
 
         return (
             <Fragment>
-                <InspectorControls>
-                    <PanelBody title={ __('Title', 'wp-gutenberg-epfl') }>
-                        <TextControl
+
+                <div className={ className }>
+                        <h2>EPFL Hero</h2>
+												<TextControl
+														label={ __('Title','wp-gutenberg-epfl')}
                             value={ attributes.title }
                             onChange={ title => setAttributes( { title } ) }
                         />
-                    </PanelBody>
-                    <PanelBody title={ __('Text', 'wp-gutenberg-epfl') }>
-                        <TextareaControl
+												<hr/>
+												<TextareaControl
+														label={ __('Text', 'wp-gutenberg-epfl')}
                             value={ attributes.text }
                             onChange={ text => setAttributes( { text } ) }
                         />
-                    </PanelBody>
-                    <PanelBody title={ __('Select Image', 'wp-gutenberg-epfl') }>
-                        <MediaUpload
+												<hr/>
+												<MediaUpload
                             onSelect={onImageSelect}
                             type="image"
                             value={attributes.imageId}
@@ -79,13 +80,8 @@ registerBlockType( 'epfl/hero', {
                                 </div>
                             )}
                         />
-				    </PanelBody>
-                </InspectorControls>
-                <div className={ className }>
-                    <div id="preview-box">
-                        <h2>EPFL HERO</h2>
-                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
+
+
                 </div>
             </Fragment>
 		)
