@@ -77,7 +77,7 @@ function CustomTeaserPanel ( props ) {
 
     return (
         <div>
-            <h3>{`Custom teaser ${index}`}</h3>
+            <h4>{`Custom teaser ${index}`}</h4>
             <TextControl
                 label={ __('Title', 'wp-gutenberg-epfl') }
                 value={ attributes['title' + index] || ''}
@@ -141,8 +141,8 @@ registerBlockType( 'epfl/custom-teaser', {
                 </InspectorControls>
                 <div className={ className }>
                     <h2>EPFL Custom Teaser</h2>
-                    <h3>{ __('Section title', 'wp-gutenberg-epfl') }</h3>
                     <TextControl
+                        label={ __('Section title', 'wp-gutenberg-epfl') }
                         value={ attributes.titleSection }
                         onChange={ titleSection => setAttributes( { titleSection } ) }
                     />
