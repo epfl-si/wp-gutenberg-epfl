@@ -24,7 +24,17 @@ function epfl_post_teaser_block( $attributes ) {
         array_push($data, $post3["value"]);
     }
 
-    $postCount = count($data);
+    foreach($data as $key => $page) {
+        if(!empty($page)) {
+            $pagesCount++;
+        }
+    }
+
+    foreach($data as $key => $post) {
+        if(!empty($post)) {
+            $postCount++;
+        }
+    }
 
     $html = '<div class="container-full my-3 ';
     if ($gray) {
@@ -39,6 +49,10 @@ function epfl_post_teaser_block( $attributes ) {
     $html .= ' ">';
 
     foreach($data as $key => $post) {
+        if (empty($post)) {
+            continue;
+        }
+
         $post = get_post($post);
         $post_url = get_permalink($post);
 

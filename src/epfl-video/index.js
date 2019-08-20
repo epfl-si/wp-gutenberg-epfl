@@ -33,7 +33,7 @@ registerBlockType( 'epfl/video', {
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
-        
+
         return (
             <Fragment>
                 <InspectorControls>
@@ -41,7 +41,7 @@ registerBlockType( 'epfl/video', {
                         <TextControl
                             value={ attributes.url }
                             onChange={ url => setAttributes( { url } ) }
-                            help={ __('You can copy/paste a YouTube, Vimeo or SWITCHTube URL', 'wp-gutenberg-epfl') }
+                            help={ __('You can paste a YouTube, Vimeo or SWITCHTube URL', 'wp-gutenberg-epfl') }
                         />
                     </PanelBody>
                 </InspectorControls>
@@ -52,7 +52,7 @@ registerBlockType( 'epfl/video', {
                     </div>
                 </div>
             </Fragment>
-		)		
+		)
 	},
 	save: ( props ) => {
 		return null;

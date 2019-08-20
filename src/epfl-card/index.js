@@ -9,7 +9,6 @@ const {
 
 const {
     InspectorControls,
-    MediaUpload,
 } = wp.editor;
 
 const {

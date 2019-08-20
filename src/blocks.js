@@ -26,6 +26,7 @@ import './epfl-tableau'
 import './epfl-infoscience-search'
 import './epfl-scienceqa'
 import './epfl-page-teaser'
+import './epfl-custom-teaser'
 import './epfl-custom-highlight'
 import './epfl-page-highlight'
 import './epfl-post-teaser'
@@ -35,6 +36,7 @@ import './epfl-contact'
 import './epfl-caption-cards'
 import './epfl-card'
 import './epfl-definition-list'
+import './epfl-links-group'
 
 const getHomeURL = () => {
     let href = window.location.href;
@@ -61,6 +63,7 @@ wp.domReady( function() {
         'epfl/scheduler',
         'epfl/tableau',
         'epfl/page-teaser',
+        'epfl/custom-teaser',
         'epfl/custom-highlight',
         'epfl/page-highlight',
         'epfl/post-teaser',
@@ -71,6 +74,7 @@ wp.domReady( function() {
         'epfl/caption-cards',
         'epfl/card',
         'epfl/definition-list',
+        'epfl/links-group',
         'core/paragraph',
         'core/heading',
     ];
