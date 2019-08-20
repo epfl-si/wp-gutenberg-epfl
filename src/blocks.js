@@ -36,6 +36,7 @@ import './epfl-contact'
 import './epfl-caption-cards'
 import './epfl-card'
 import './epfl-definition-list'
+import './epfl-links-group'
 
 const getHomeURL = () => {
     let href = window.location.href;
@@ -73,6 +74,7 @@ wp.domReady( function() {
         'epfl/caption-cards',
         'epfl/card',
         'epfl/definition-list',
+        'epfl/links-group',
         'core/paragraph',
         'core/heading',
     ];

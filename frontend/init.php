@@ -35,6 +35,7 @@ require_once 'epfl-contact/controller.php';
 require_once 'epfl-caption-cards/controller.php';
 require_once 'epfl-card/controller.php';
 require_once 'epfl-definition-list/controller.php';
+require_once 'epfl-links-group/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -190,5 +191,10 @@ function wp_gutenberg_epfl_register_blocks() {
 		register_block_type( 'epfl/definition-list', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\DefinitionList\epfl_definition_list_block',
 		));
+
+		register_block_type( 'epfl/links-group', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\LinksGroup\epfl_links_group_block',
+		));
+
 }
 add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );
