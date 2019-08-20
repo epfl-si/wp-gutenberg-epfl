@@ -54,6 +54,7 @@ function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
         'epfl/caption-cards',
         'epfl/card',
         'epfl/definition-list',
+        'epfl/links-group',
         'core/paragraph',
         'core/heading',
     );
