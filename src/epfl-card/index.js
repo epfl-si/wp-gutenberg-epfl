@@ -59,23 +59,11 @@ registerBlockType( 'epfl/card', {
 
         return (
             <Fragment>
-                <InspectorControls>
-                    <PanelBody title='Format'>
-                            <ToggleControl
-                                label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }
-                                checked={ attributes.gray_wrapper }
-                                onChange={ gray_wrapper => setAttributes( { gray_wrapper } ) }
-                            />
-                    </PanelBody>
-                    {[...Array(maxCards)].map((x, i) =>
-                        <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
-                    )}
-                </InspectorControls>
                 <div className={ className }>
-                    <div id="preview-box">
                         <h2>EPFL Card</h2>
-                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
+                        {[...Array(maxCards)].map((x, i) =>
+                            <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
+                        )}
                 </div>
             </Fragment>
 		)
