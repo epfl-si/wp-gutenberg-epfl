@@ -3,7 +3,7 @@
 namespace EPFL\Plugins\Gutenberg\DefinitionList;
 
 function epfl_definition_list_block($data) {
-  if (!$data) return true;
+  if (!$data) return;
 
   // sanitize parameters
   if (in_array('tableDisplay', $data)) {
