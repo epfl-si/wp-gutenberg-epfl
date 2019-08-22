@@ -3,7 +3,7 @@
 namespace EPFL\Plugins\Gutenberg\Card;
 
 function epfl_card_block($data) {
-  if (!$data) return true;
+  if (!$data) return;
 
     // sanitize parameters
   foreach($data as $key => $value) {
