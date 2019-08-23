@@ -24,52 +24,6 @@ function epfl_gutenberg_load_textdomain() {
 }
 add_action( 'plugins_loaded', 'epfl_gutenberg_load_textdomain' );
 
-
-function my_plugin_allowed_block_types( $allowed_block_types, $post ) {
-    // see ./src/blocks.js for the right list
-    $blocks = array(
-        'epfl/news',
-        'epfl/memento',
-        'epfl/cover',
-        'epfl/cover-dynamic',
-        'epfl/toggle',
-        'epfl/quote',
-        'epfl/people',
-        'epfl/map',
-        'epfl/introduction',
-        'epfl/hero',
-        'epfl/google-forms',
-        'epfl/video',
-        'epfl/scheduler',
-        'epfl/tableau',
-        'epfl/page-teaser',
-        'epfl/custom-teaser',
-        'epfl/custom-highlight',
-        'epfl/page-highlight',
-        'epfl/post-teaser',
-        'epfl/post-highlight',
-        'epfl/infoscience-search',
-        'epfl/social-feed',
-        'epfl/contact',
-        'epfl/caption-cards',
-        'epfl/card',
-        'epfl/definition-list',
-        'epfl/links-group',
-        'core/paragraph',
-        'core/heading',
-    );
-
-    // Add epfl/scienceqa block for WP instance https://www.epfl.ch only
-    if (get_option('blogname') == 'EPFL') {
-        array_push($blocks, 'epfl/scienceqa');
-    }
-
-  	return $blocks;
-    // return True; // if you want all natifs blocks.
-}
-
-add_filter( 'allowed_block_types', 'my_plugin_allowed_block_types', 10, 2 );
-
 # allow to fetch rest api with the lang parameter
 function polylang_json_api_init(){
     global $polylang;

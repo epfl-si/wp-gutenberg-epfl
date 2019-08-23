@@ -45,47 +45,6 @@ const getHomeURL = () => {
     return homeUrl;
 }
 
-wp.domReady( function() {
-    // see ./plugin.php for the right list
-    let allowedBlocks = [
-        'epfl/news',
-        'epfl/memento',
-        'epfl/cover',
-        'epfl/cover-dynamic',
-        'epfl/toggle',
-        'epfl/quote',
-        'epfl/people',
-        'epfl/map',
-        'epfl/introduction',
-        'epfl/hero',
-        'epfl/google-forms',
-        'epfl/video',
-        'epfl/scheduler',
-        'epfl/tableau',
-        'epfl/page-teaser',
-        'epfl/custom-teaser',
-        'epfl/custom-highlight',
-        'epfl/page-highlight',
-        'epfl/post-teaser',
-        'epfl/post-highlight',
-        'epfl/infoscience-search',
-        'epfl/social-feed',
-        'epfl/contact',
-        'epfl/caption-cards',
-        'epfl/card',
-        'epfl/definition-list',
-        'epfl/links-group',
-        'core/paragraph',
-        'core/heading',
-    ];
-    wp.blocks.getBlockTypes().forEach( function( blockType ) {
-        if ( allowedBlocks.indexOf( blockType.name ) === -1 ) {
-            wp.blocks.unregisterBlockType( blockType.name );
-        }
-    } );
-
-} );
-
 export const getAllPagesOrPosts = (type, lang) => {
 
     return new Promise((resolve, reject) => {
