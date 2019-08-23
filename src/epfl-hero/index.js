@@ -54,19 +54,19 @@ registerBlockType( 'epfl/hero', {
 
                 <div className={ className }>
                         <h2>EPFL Hero</h2>
-												<TextControl
-														label={ __('Title','wp-gutenberg-epfl')}
+                        <TextControl
+                            label={ __('Title','wp-gutenberg-epfl')}
                             value={ attributes.title }
                             onChange={ title => setAttributes( { title } ) }
                         />
-												<hr/>
-												<TextareaControl
-														label={ __('Text', 'wp-gutenberg-epfl')}
+                        <hr/>
+                        <TextareaControl
+                            label={ __('Text', 'wp-gutenberg-epfl')}
                             value={ attributes.text }
                             onChange={ text => setAttributes( { text } ) }
                         />
-												<hr/>
-												<MediaUpload
+                        <hr/>
+                        <MediaUpload
                             onSelect={onImageSelect}
                             type="image"
                             value={attributes.imageId}
@@ -80,8 +80,6 @@ registerBlockType( 'epfl/hero', {
                                 </div>
                             )}
                         />
-
-
                 </div>
             </Fragment>
 		)
