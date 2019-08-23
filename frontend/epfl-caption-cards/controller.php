@@ -3,7 +3,7 @@
 namespace EPFL\Plugins\Gutenberg\CaptionCards;
 
 function epfl_caption_cards_block( $data ) {
-    if (!$data) return true;
+    if (!$data) return;
 
     for ($i = 1; $i <= 10; $i++) {
         if (array_key_exists('title'.$i, $data)) {
