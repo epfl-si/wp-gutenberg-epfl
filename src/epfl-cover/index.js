@@ -10,23 +10,13 @@ const {
 
 const {
 	MediaUpload,
-	InspectorControls,
 } = wp.editor;
 
 const {
-    PanelBody,
-    TextareaControl,
+	TextareaControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
-
-function getImageURL(attributes) {
-	let url = "https://via.placeholder.com/1920x1080.jpg";
-	if (attributes.image) {
-		url = attributes.image;
-	}
-	return url;
-}
 
 registerBlockType( 'epfl/cover', {
 	title: __( 'EPFL Cover', 'wp-gutenberg-epfl'),
@@ -38,7 +28,7 @@ registerBlockType( 'epfl/cover', {
 			type: 'number',
 		},
 		image: {
-			type: 'string', 
+			type: 'string',
 		},
 		description : {
 			type: 'string',
@@ -52,58 +42,37 @@ registerBlockType( 'epfl/cover', {
 		const { attributes, className, setAttributes } = props
 
 		function onImageSelect(imageObject) {
-
-			setAttributes({
-				image: imageObject.sizes.full.url,
+            setAttributes({
+				image: imageObject.url,
 				imageId: imageObject.id
 			})
 		}
 
-		let url = getImageURL(attributes);
-
 		return (
 		<Fragment>
-			<InspectorControls>
-				<PanelBody title={ __('Select Image', 'wp-gutenberg-epfl') }>
-					<MediaUpload
-						onSelect={onImageSelect}
-						type="image"
-						value={attributes.image}
-						render={({ open }) => (
-                            <div>
-							    <button onClick={open}>
-								{ __('Upload Image!', 'wp-gutenberg-epfl') }
-							    </button>
-                                <div style={ {marginTop: '5px'} }>{ __('Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }</div>
-                            </div>
-						)}
-					/>
-				</PanelBody>
-				<PanelBody title={ __('Description', 'wp-gutenberg-epfl') }>
-					<TextareaControl
-						help={ __('This description appears when the user clicks on the information icon', 'wp-gutenberg-epfl') }
-						value={ attributes.description }
-						onChange={ description => setAttributes( { description } ) }
-					/>
-				</PanelBody>
-			</InspectorControls>
 			<div className={ className }>
-				<figure className="cover">
-  					<picture>
-    					<img src={ url } className="img-fluid" alt={ attributes.description} />
-  					</picture>
-  					<figcaption>
-    					<button aria-hidden="true" type="button" className="btn-circle" data-toggle="popover" data-content={ attributes.description }>
-							<svg className="icon" aria-hidden="true">
-								<use href="#icon-info" />
-							</svg>
-							<svg className="icon icon-rotate-90" aria-hidden="true">
-								<use href="#icon-chevron-right" />
-							</svg>
-    					</button>
-						<p className="sr-only">{ attributes.description }</p>
-					</figcaption>
-				</figure>
+				<h2>EPFL Cover</h2>
+				<MediaUpload
+					onSelect={onImageSelect}
+					type="image"
+					value={attributes.imageId}
+					render={({ open }) => (
+						<div>
+							<img style={ {maxHeight: '200px'} } src={ attributes.image } />
+							<button onClick={open}>
+							{ __('Upload Image', 'wp-gutenberg-epfl') }
+							</button>
+							<div style={ {marginTop: '5px'} }>{ __('Please, select a image. Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }</div>
+						</div>
+					)}
+				/>
+				<hr/>
+				<TextareaControl
+					label={ __('Description', 'wp-gutenberg-epfl')}
+					value={ attributes.description }
+					onChange={ description => setAttributes( { description } ) }
+					help={ __('This description appears when the user clicks on the information icon', 'wp-gutenberg-epfl') }
+				/>
 			</div>
 		</Fragment>
 		)
