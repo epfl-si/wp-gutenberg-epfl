@@ -28,3 +28,10 @@ $red: orangered;
     text-align: center;
     margin-bottom: 25px;
 }
+
+.block-editor-block-list__block .block-editor-block-list__block-edit {
+    margin-left: -28px;
+    margin-right: -28px;
+    border: 1px #e2e4e7 solid;
+    padding: 0px 16px 4px 16px;
+}
