@@ -1,4 +1,6 @@
 <?php
+    namespace EPFL\Plugins\Gutenberg\People;
+
     require_once(dirname(__FILE__) . '/utils.php');
     require_once(dirname(__FILE__) . '/templates/list.php');
     require_once(dirname(__FILE__) . '/templates/card.php');

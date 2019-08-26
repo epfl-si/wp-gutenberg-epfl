@@ -1,4 +1,5 @@
-<?php 
+<?php
+namespace EPFL\Plugins\Gutenberg\Video;
 
 function epfl_video_render($url) {
     $markup = '<div class="container my-3">';

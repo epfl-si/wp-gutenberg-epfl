@@ -4,7 +4,7 @@
  * Homemade HTML forms and AJAX in the wp-admin area, with XSRF protection.
  */
 
-namespace EPFL\AdminAPI;
+namespace EPFL\Plugins\Gutenberg\Lib\AdminAPI;
 
 if ( ! defined( 'ABSPATH' ) ) {
     die( 'Access denied.' );
@@ -144,7 +144,7 @@ class Endpoint
                 function ajax (method_stem, opts) {
                     var $ = window.jQuery;
                     return $.ajax($.extend({
-                            url: ajaxUrl + '?_ajax_nonce=' + nonce + 
+                            url: ajaxUrl + '?_ajax_nonce=' + nonce +
                                  '&action=' + action_name(method_stem),
                         }, (opts || {})));
                 }
@@ -217,7 +217,7 @@ class Endpoint
      * addition to the ones set up automatically, see below)
      *
      * In both cases, the appropriate piping is performed transparently:
-     * the `action` POST field is set up to match the 
+     * the `action` POST field is set up to match the
      * @link wp_ajax_(action) or @link admin_post_(action) in the
      * Wordpress API, and a nonce field (_wpnonce for the
      * asWPAdminPostForm case; _ajax_nonce for the ajax / post case)

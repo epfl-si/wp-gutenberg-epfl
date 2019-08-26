@@ -1,6 +1,7 @@
 <?php
 
-namespace EPFL\I18N;
+namespace EPFL\Plugins\Gutenberg\Lib\I18N;
+
 
 if (! defined( 'ABSPATH' )) {
     die( 'Access denied.' );

@@ -1,10 +1,12 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\Toggle;
+
 function epfl_toggle_block( $attributes ) {
 
-    $title     = sanitize_text_field( $attributes['title'] ) ?: '';
-    $content   = $attributes['content'] ?: '';
-    $state     = sanitize_text_field( $attributes['state'] ) ?: '0';
+    $title     = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
+    $content   = isset( $attributes['content'] ) ? $attributes['content'] : '';
+    $state     = isset( $attributes['state'] ) ? sanitize_text_field( $attributes['state'] ) : '0';
     $toggle_id = md5($content . rand());
 
     /*
@@ -15,10 +17,10 @@ function epfl_toggle_block( $attributes ) {
     */
 
     $markup = '<button';
-    $markup .= ' class="collapse-title collapse-title-desktop '; 
+    $markup .= ' class="collapse-title collapse-title-desktop ';
     if ($state === 'close') {
-        $markup .= 'collapsed'; 
-    } 
+        $markup .= 'collapsed';
+    }
     $markup .= '"';
     $markup .= ' type="button"';
     $markup .= ' data-toggle="collapse"';
@@ -29,7 +31,7 @@ function epfl_toggle_block( $attributes ) {
     $markup .= esc_html($title);
     $markup .= '</button>';
     $markup .= '<div ';
-    $markup .= 'class="collapse collapse-item collapse-item-desktop '; 
+    $markup .= 'class="collapse collapse-item collapse-item-desktop ';
     if ($state === 'open') {
         $markup .= 'show';
     }

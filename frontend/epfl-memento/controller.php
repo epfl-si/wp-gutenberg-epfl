@@ -10,9 +10,13 @@
  * Domain Path: /languages
  */
 
-define("MEMENTO_API_URL", "https://memento.epfl.ch/api/v1/mementos/");
-define("MEMENTO_API_URL_IFRAME", "https://memento.epfl.ch/webservice/?frame=1");
-require_once(dirname(__FILE__).'/../utils.php');
+namespace EPFL\Plugins\Gutenberg\Memento;
+
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+define(__NAMESPACE__ . "\MEMENTO_API_URL", "https://memento.epfl.ch/api/v1/mementos/");
+define(__NAMESPACE__ . "\MEMENTO_API_URL_IFRAME", "https://memento.epfl.ch/webservice/?frame=1");
+require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
 /**
@@ -27,7 +31,7 @@ require_once(dirname(__FILE__).'/view.php');
  * @return the API URL of the memento
  */
 function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $category, $keyword, $period)
-{   
+{
     // call REST API to get the number of mementos
     $memento_response = Utils::get_items(MEMENTO_API_URL);
 
@@ -133,7 +137,7 @@ function epfl_memento_block( $attributes ) {
         $period
     );
     $events = Utils::get_items($url);
-    
+
     // $memento => memento_name
     $markup = epfl_memento_render($events->results, $template, $memento);
     return $markup;

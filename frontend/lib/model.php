@@ -4,7 +4,8 @@
  * A set of abstract base classes targeted at model code
  */
 
-namespace EPFL\Model;
+namespace EPFL\Plugins\Gutenberg\Lib\Model;
+
 
 if (! defined('ABSPATH')) {
     die('Access denied.');
@@ -256,7 +257,7 @@ abstract class Post
             $in_the_loop->leave();
         }
     }
-    
+
     function __toString () {
         return sprintf('<%s(%d)>', get_called_class(), $this->ID);
     }

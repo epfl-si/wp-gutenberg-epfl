@@ -4,7 +4,7 @@
  * Encapsulate and simplify a few plugin-related pieces of the WordPress API
  */
 
-namespace EPFL\ThisPlugin;
+namespace EPFL\Plugins\Gutenberg\Lib\ThisPlugin;
 
 if (! defined( 'ABSPATH' )) {
     die( 'Access denied.' );

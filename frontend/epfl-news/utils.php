@@ -1,8 +1,9 @@
-<?php 
+<?php
+namespace EPFL\Plugins\Gutenberg\News;
 
 /**
  * Get url channel
- * 
+ *
  * $data: all data from back-end
  */
 function epfl_news_get_url_channel($data) {
@@ -21,7 +22,7 @@ function epfl_news_get_url_channel($data) {
 
 /**
  * Get image description
- * 
+ *
  * $news: news to display
  */
 function epfl_news_get_image_description($news) {
@@ -35,7 +36,7 @@ function epfl_news_get_image_description($news) {
 
 /**
  * Get label category
- * 
+ *
  * $news: news to display
  */
 function epfl_news_get_label_category($news) {
@@ -49,18 +50,18 @@ function epfl_news_get_label_category($news) {
 
 /**
  * Get publish date
- * 
+ *
  * $news: news to display
  */
 function epfl_news_get_publish_date($news) {
-    $publish_date = new DateTime($news->publish_date);
+    $publish_date = new \DateTime($news->publish_date);
     $publish_date = $publish_date->format('d.m.y');
     return $publish_date;
 }
 
 /**
  * Get subtitle
- * 
+ *
  * $news: news to display
  */
 function epfl_news_get_subtitle($news) {
@@ -69,7 +70,7 @@ function epfl_news_get_subtitle($news) {
 
 /**
  * Get visual url
- * 
+ *
  * $news: news to display
  */
 function epfl_news_get_visual_url($news) {
@@ -80,7 +81,7 @@ function epfl_news_get_visual_url($news) {
  * Get attachment url by slug
  */
 function get_attachment_url_by_slug( $slug ) {
-    
+
     $args = array(
       'post_type'      => 'attachment',
       'name'           => sanitize_title($slug),

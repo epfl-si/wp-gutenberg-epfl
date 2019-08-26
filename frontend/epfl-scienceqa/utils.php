@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\ScienceQA;
+
 Class ScienceQAUtils
 {
   /**
@@ -16,14 +18,13 @@ Class ScienceQAUtils
     // Logging webservice call
     do_action('epfl_stats_webservice_call_duration', $url, $end-$start);
 
-    
     if (is_wp_error($response))
     {
       return $response->get_error_message();
     }
     else
-    { 
-      return json_decode($response['body']);     
+    {
+      return json_decode($response['body']);
     }
   }
 }

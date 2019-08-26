@@ -1,15 +1,18 @@
-<?php 
+<?php
+
+namespace EPFL\Plugins\Gutenberg\PageHighlight;
 
 function epfl_page_highlight_block( $attributes ) {
 
-    $layout = sanitize_text_field( $attributes['layout'] ) ?: '';
-    $page   = sanitize_text_field( $attributes['page'] ) ?: '';
+    $layout = isset( $attributes['layout'] ) ? sanitize_text_field( $attributes['layout'] ) : '';
+    $page   = isset( $attributes['page'] ) ? sanitize_text_field( $attributes['page'] ) : '';
     $page   = json_decode($page, true);
 
     $page  = get_post($page["value"]);
 
     // get excerpt
-    $content = reset(explode('<!--more-->', $page->post_content));
+    $parts = explode('<!--more-->', $page->post_content);
+    $content = reset($parts);
 
     // manage layout
     $classes = '';
@@ -18,7 +21,7 @@ function epfl_page_highlight_block( $attributes ) {
 
     $html = '<div class="container-full my-3">';
     $html .= '<div class="fullwidth-teaser ' . $classes . '">';
-    
+
     if (has_post_thumbnail( $page )) {
         $html .= '<picture>';
         $html .= '<source';

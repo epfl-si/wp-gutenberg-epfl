@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\PostTeaser;
+
 function epfl_post_teaser_block( $attributes ) {
 
     $post1 = sanitize_text_field( $attributes['post1'] ) ?: '';

@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+namespace EPFL\Plugins\Gutenberg\People;
 
 /**
  * Get person photo
@@ -27,7 +29,7 @@ function epfl_people_get_phones($person) {
  */
 function epfl_people_get_function($person, $from) {
     $function = '';
-    $nb_units = count((array)$person->unites);    
+    $nb_units = count((array)$person->unites);
     foreach($person->unites as $current_unit) {
         if ($from == 'units' || $from == 'doctoral_program' || ($from == 'scipers' && $current_unit->ordre  == 1)) {
             $language = get_current_language();
@@ -45,7 +47,7 @@ function epfl_people_get_function($person, $from) {
  * Get person room
  */
 function epfl_people_get_room($person, $from) {
-    
+
     $room = '';
     foreach($person->unites as $current_unit) {
         if ($from == 'units' || $from == 'doctoral_program' || ($from == 'scipers' && $current_unit->ordre  == 1)) {
@@ -59,7 +61,7 @@ function epfl_people_get_room($person, $from) {
  * Get URL room
  */
 function epfl_people_get_room_url($room) {
-    return "https://plan.epfl.ch/?room=" . $room; 
+    return "https://plan.epfl.ch/?room=" . $room;
 }
 
 /**

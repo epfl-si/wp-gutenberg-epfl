@@ -1,11 +1,13 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\Quote;
+
 function epfl_quote_block( $attributes ) {
 
-    $image_id = sanitize_text_field( $attributes['imageId'] ) ?: '';
-    $quote    = sanitize_text_field( $attributes['quote'] ) ?: '';
-    $cite     = sanitize_text_field( $attributes['cite'] ) ?: '';
-    $footer   = sanitize_text_field( $attributes['footer'] ) ?: '';
+    $image_id = isset( $attributes['imageId'] ) ? sanitize_text_field( $attributes['imageId'] ) : '';
+    $quote    = isset( $attributes['quote'] ) ? sanitize_text_field( $attributes['quote'] ) : '';
+    $cite     = isset( $attributes['cite'] ) ? sanitize_text_field( $attributes['cite'] ) : '';
+    $footer   = isset( $attributes['footer'] ) ? sanitize_text_field( $attributes['footer'] ) : '';
 
     $attachment = wp_get_attachment_image(
         $image_id,

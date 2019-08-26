@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+namespace EPFL\Plugins\Gutenberg\PostHighlight;
 
 function epfl_post_highlight_block( $attributes ) {
 
@@ -18,7 +20,7 @@ function epfl_post_highlight_block( $attributes ) {
 
     $html = '<div class="container-full my-3">';
     $html .= '<div class="fullwidth-teaser ' . $classes . '">';
-    
+
     if (has_post_thumbnail( $post )) {
         $html .= '<picture>';
         $html .= '<source';

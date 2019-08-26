@@ -1,4 +1,5 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\Memento;
 
 $markup .= '<div class="card-slider-footer">';
 $markup .= '    <div>';

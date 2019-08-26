@@ -1,11 +1,13 @@
 <?php
+    namespace EPFL\Plugins\Gutenberg\News;
+
     // template = 2
     function epfl_news_highlighted_with_3_news($results, $all_news_link) {
 
         $count = 1;
         $header = false;
         $last = count($results);
-        
+
         $url_channel = epfl_news_get_url_channel($results);
 
         $markup = "";
@@ -22,7 +24,7 @@
             $visual_url        = epfl_news_get_visual_url($news);
             $video_name        = "teaser_" . str_replace("https://actu.epfl.ch/news/", "", $news->news_url);
             $media_url         = get_attachment_url_by_slug($video_name);
-            
+
             if (1 != $count and false == $header) {
                 $header = true;
                 $markup .= '<div class="container pb-5 offset-xl-top pt-5 pt-xl-0">';
@@ -85,7 +87,7 @@
                 $markup .= '</a>';
                 $markup .= '</div>';
             }
-            
+
             if ($last == $count) {
                 $markup .= '</div>';
                 if ("1" == $all_news_link) {

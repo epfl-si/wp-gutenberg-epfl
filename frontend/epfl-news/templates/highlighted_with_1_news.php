@@ -1,4 +1,6 @@
 <?php
+    namespace EPFL\Plugins\Gutenberg\News;
+
     // template = 3
     function epfl_news_highlighted_with_1_news($results, $all_news_link) {
         $count = 1;
@@ -20,7 +22,7 @@
             $visual_url        = epfl_news_get_visual_url($news);
             $video_name        = "teaser_" . str_replace("https://actu.epfl.ch/news/", "", $news->news_url);
             $media_url         = get_attachment_url_by_slug($video_name);
-            
+
             $markup .= '<div class="fullwidth-teaser fullwidth-teaser-horizontal">';
             if ($media_url) {
                 $markup .= '<div class="embed-responsive embed-responsive-16by9">';
@@ -57,7 +59,7 @@
             $markup .= '</div>';
             $markup .= '</div>';
             $markup .= '</div>';
-            
+
             $count++;
         } // end foreach
 

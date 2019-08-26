@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\CustomTeaser;
+
 function epfl_custom_teaser_block( $attributes ) {
     $elementCount = 0;
 

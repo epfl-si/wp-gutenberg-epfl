@@ -1,5 +1,9 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\GoogleForms;
+
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
 require_once(dirname(__FILE__).'/view.php');
 
 /*
@@ -22,14 +26,14 @@ function epfl_google_forms_block( $attributes ) {
     data contains thing like (encoded):
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLZkqncWIvRbQvnn3K8yKUEn0Of8s-JTFZ3l94TWAIHnovJA/viewform?embedded=true" width="640" height="663" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
     */
-    
+
     $data = isset( $attributes['content'] ) ? $attributes['content'] : '';
-    
+
     /* Extracting needed attributes */
     $src = epfl_google_forms_get_attribute('src', $data);
     $width = epfl_google_forms_get_attribute('width', $data);
     $height = epfl_google_forms_get_attribute('height', $data);
-    
+
     /*
     var_dump($src);
     var_dump($width);
@@ -41,19 +45,18 @@ function epfl_google_forms_block( $attributes ) {
     {
         return Utils::render_user_msg(__("Error extracting parameters", "epfl"));
     }
-    
+
     /* Check that iframe has a Google Forms URL as source */
     if(strpos($src, 'https://docs.google.com/forms') > 0)
     {
         return Utils::render_user_msg(__("Incorrect URL found", "epfl"));
     }
-    
+
     if(!is_numeric($width) || !is_numeric($height))
     {
         return Utils::render_user_msg(__("Incorrect dimensions found", "epfl"));
     }
-    
+
     $markup = epfl_google_forms_render($src, $width, $height);
     return $markup;
-    
 }

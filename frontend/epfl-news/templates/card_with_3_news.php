@@ -1,4 +1,6 @@
 <?php
+    namespace EPFL\Plugins\Gutenberg\News;
+
     // template = 6
     function epfl_news_card_with_3_news($results, $all_news_link) {
 
@@ -20,14 +22,14 @@
             $visual_url        = epfl_news_get_visual_url($news);
             $video_name        = "teaser_" . str_replace("https://actu.epfl.ch/news/", "", $news->news_url);
             $media_url         = get_attachment_url_by_slug($video_name);
-            
+
             if ($is_first_event) {
                 $markup .= '<h2 class="mt-5 mb-4">';
                 $markup .= __('The latest news', 'wp-gutenberg-epfl');
                 $markup .= '</h2>';
                 $markup .= '<div class="row">';
             }
-    
+
             $markup .= '<div class="col-md-4">';
             $markup .= '<a href="' . esc_url($news->news_url) . '" class="card link-trapeze-horizontal" itemscope itemtype="https://schema.org/NewsArticle">';
             $markup .= '<picture class="card-img-top">';
@@ -43,7 +45,7 @@
             $markup .= '</div>';
             $markup .= '</a>';
             $markup .= '</div>';
-            
+
             if ($last == $count) {
                 $markup .= '</div>';
             }

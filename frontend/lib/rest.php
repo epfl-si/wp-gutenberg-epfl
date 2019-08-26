@@ -6,7 +6,7 @@
  * Utilities for REST APIs in the EPFL plugin
  */
 
-namespace EPFL\REST;
+namespace EPFL\Plugins\Gutenberg\Lib\REST;
 
 if (! defined( 'ABSPATH' )) {
     die( 'Access denied.' );

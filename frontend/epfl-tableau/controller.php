@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\Tableau;
+
 require_once(dirname(__FILE__).'/view.php');
 
 function epfl_tableau_block( $attributes ) {
@@ -27,7 +29,7 @@ function epfl_tableau_block( $attributes ) {
     if (!empty($attributes['width'])) {
         $width = $attributes['width'];
     }
-    
+
     if (!empty($attributes['height'])) {
         $height = $attributes['height'];
     }
@@ -40,8 +42,8 @@ function epfl_tableau_block( $attributes ) {
     var_dump($url);
     var_dump($width);
     var_dump($height);
-    */ 
-    
+    */
+
     $markup = epfl_tableau_render($url, $width, $height);
     return $markup;
 }

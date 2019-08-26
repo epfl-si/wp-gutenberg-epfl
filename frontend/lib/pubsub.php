@@ -14,7 +14,7 @@
  * SSL/TLS) and (still TODO) Prometheus-style monitoring.
  */
 
-namespace EPFL\Pubsub;
+namespace EPFL\Plugins\Gutenberg\Lib\Pubsub;
 
 if (! defined('ABSPATH')) {
     die('Access denied.');
@@ -58,7 +58,7 @@ class SubscribeController
      */
     private function __construct ($slug) {
         $this->slug = $slug;
-    
+
         $this->listeners = [];
     }
 
@@ -218,7 +218,7 @@ class _Subscription extends WPDBModel
     static function drop_tables () {
         static::query("DROP TABLE IF EXISTS %T");
     }
-    
+
     protected function __construct ($slug, $nonce, $confirmed = TRUE) {
         $this->slug = $slug;
         $this->nonce = $nonce;
@@ -232,7 +232,7 @@ class _Subscription extends WPDBModel
     static function get_by_nonce ($nonce, $confirmed = TRUE) {
         $confirmed_sql = $confirmed ? "TRUE" : "FALSE";
         $results = static::get_results(
-            "SELECT slug FROM %T WHERE nonce = %s 
+            "SELECT slug FROM %T WHERE nonce = %s
              AND confirmed = $confirmed_sql",
             $nonce);
         if (! count($results)) return null;

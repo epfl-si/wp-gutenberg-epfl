@@ -2,6 +2,8 @@
 
 namespace EPFL\Plugins\Gutenberg\Contact;
 
+use function EPFL\Plugins\Gutenberg\Map\epfl_map_block;
+
 function epfl_contact_block($atts) {
     // sanitize parameters
     foreach($atts as $key => $value) {
@@ -17,7 +19,7 @@ function epfl_contact_block($atts) {
         }
     }
 
-    $gray_wrapper = $atts['grayWrapper'];
+    $gray_wrapper  = isset( $attributes['grayWrapper'] ) ? sanitize_text_field( $attributes['grayWrapper'] ) : false;
     ob_start();
 ?>
 
@@ -26,10 +28,12 @@ function epfl_contact_block($atts) {
       <div class="row">
         <div class="col-md-6">
           <h3>Contact</h3>
+          <?php if (isset($atts['introduction'])): ?>
           <p><?php esc_html_e($atts['introduction']) ?></p>
+          <?php endif; ?>
 
           <?php for ($i=1; $i < 5; $i++): ?>
-            <?php if ($atts['timetable'.$i]): ?>
+            <?php if (isset($atts['timetable'.$i])): ?>
           <div class="card card-body card-sm mb-2 flex-row flex-wrap justify-content-between justify-content-sm-start">
             <div class="mr-3 w-sm-50"><?php echo $atts['timetable'.$i] ?></div>
           </div>
@@ -38,11 +42,9 @@ function epfl_contact_block($atts) {
           endfor;
           ?>
           <?php for ($i=1; $i < 4; $i++): ?>
-            <?php if ($atts['information'.$i]): ?>
+          <?php if (isset($atts['information'.$i])): ?>
           <p><?php echo urldecode($atts['information'.$i]) ?: '' ?></p>
-          <?php if ($atts['information'.($i+1)]): ?>
           <hr>
-          <?php endif; ?>
           <?php
           endif;
           endfor;
@@ -52,7 +54,7 @@ function epfl_contact_block($atts) {
         # bad quickfix that disallow INN011 as a place
         # because INN011 was a value in shortcake and not a placeholder
         # meaning some contact shortcode have this value but don't want to show a map
-        if ($atts['mapQuery'] && $atts['mapQuery'] != 'INN011'):
+        if (isset($atts['mapQuery']) && $atts['mapQuery'] != 'INN011'):
         ?>
         <div class="col-md-6 d-flex flex-column">
           <?php echo

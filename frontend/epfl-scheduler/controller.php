@@ -1,5 +1,9 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\Scheduler;
+
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
 /**
  * Check parameters
  *
@@ -20,10 +24,10 @@ function epfl_scheduler_check_parameters( string $start_date_time, string $end_d
 function epfl_scheduler_block( $attributes ) {
 
     // sanitize parameters
-    $content         = $attributes['content'];
-    $start_date_time = sanitize_text_field( $attributes['startDateTime'] );
-    $end_date_time   = sanitize_text_field( $attributes['endDateTime'] );
-    
+    $content         = isset($attributes['content']) ? $attributes['content'] : '';
+    $start_date_time = isset($attributes['startDateTime']) ? sanitize_text_field( $attributes['startDateTime']) : '';
+    $end_date_time   = isset($attributes['endDateTime']) ? sanitize_text_field( $attributes['endDateTime']) : '';
+
     /*
     var_dump($content);
     var_dump($start_date_time);
