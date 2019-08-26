@@ -4,11 +4,12 @@ namespace EPFL\Plugins\Gutenberg\PostTeaser;
 
 function epfl_post_teaser_block( $attributes ) {
 
-    $post1 = sanitize_text_field( $attributes['post1'] ) ?: '';
-    $post2 = sanitize_text_field( $attributes['post2'] ) ?: '';
-    $post3 = sanitize_text_field( $attributes['post3'] ) ?: '';
-    $gray  = sanitize_text_field( $attributes['gray'] ) ?: false;
+    $post1 = isset( $attributes['post1'] ) ?  sanitize_text_field( $attributes['post1'] ) : '';
+    $post2 = isset( $attributes['post2'] ) ? sanitize_text_field( $attributes['post2'] ) : '';
+    $post3 = isset( $attributes['post3'] ) ? sanitize_text_field( $attributes['post3'] ) : '';
+    $gray  = isset( $attributes['gray'] ) ? sanitize_text_field( $attributes['gray'] ) : false;
 
+    $postsCount = 0;
     $data  = [];
 
     if ($post1 !== '') {
@@ -26,15 +27,9 @@ function epfl_post_teaser_block( $attributes ) {
         array_push($data, $post3["value"]);
     }
 
-    foreach($data as $key => $page) {
-        if(!empty($page)) {
-            $pagesCount++;
-        }
-    }
-
     foreach($data as $key => $post) {
         if(!empty($post)) {
-            $postCount++;
+            $postsCount++;
         }
     }
 
@@ -45,7 +40,7 @@ function epfl_post_teaser_block( $attributes ) {
     $html .= '">';
     $html .= '<div class="container">';
     $html .= '  <div class="card-deck';
-    if ($postCount < 3) {
+    if ($postsCount < 3) {
         $html .= ' card-deck-line';
     }
     $html .= ' ">';
