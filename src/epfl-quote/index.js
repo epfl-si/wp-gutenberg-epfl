@@ -47,7 +47,7 @@ registerBlockType( 'epfl/quote', {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
-		
+
 		const { attributes, className, setAttributes } = props
 
 		function onImageSelect(imageObject) {
@@ -56,7 +56,7 @@ registerBlockType( 'epfl/quote', {
                 imageUrl: imageObject.url
 			})
         }
-        
+
 		return (
 		<Fragment>
 			<InspectorControls>
@@ -69,9 +69,9 @@ registerBlockType( 'epfl/quote', {
                             <div>
                                 <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
                                 <button onClick={open}>
-                                    { __('Upload Image', 'wp-gutenberg-epfl') }
+                                    { __('Select Image', 'wp-gutenberg-epfl') }
                                 </button>
-                                <div style={ {marginTop: '5px'} }>{ __('Please, select a square image', 'wp-gutenberg-epfl') }</div>
+                                <div style={ {marginTop: '5px'} }>{ __('Please select a square image', 'wp-gutenberg-epfl') }</div>
                             </div>
                         )}
                     />
@@ -118,7 +118,7 @@ registerBlockType( 'epfl/quote', {
 			</div>
 		</Fragment>
 		)
-		
+
 	},
 	save: ( props ) => {
 		return null;

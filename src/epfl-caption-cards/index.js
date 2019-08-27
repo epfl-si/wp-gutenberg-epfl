@@ -84,9 +84,9 @@ function CaptionCardPanel ( props ) {
                     <div class="components-base-control">
                         <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } /><br />
                         <button onClick={ open }>
-                        { __('Upload Image', 'wp-gutenberg-epfl') }
+                        { __('Select Image', 'wp-gutenberg-epfl') }
                         </button>
-                        <div style={ { marginTop: '5px' } }>{ __('Please, select a image. Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }</div>
+                        <div style={ { marginTop: '5px' } }>{ __('Please select an image. Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }</div>
                     </div>
                 )}
             />
