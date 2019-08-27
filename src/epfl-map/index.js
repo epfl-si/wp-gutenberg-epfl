@@ -32,23 +32,16 @@ registerBlockType( 'epfl/map', {
 		const { attributes, className, setAttributes } = props
 	    return (
             <Fragment>
-                <InspectorControls>
-                    <PanelBody title={ __('What information do you want to display?', 'wp-gutenberg-epfl') }>
-                        <TextControl
-                            value={ attributes.query }
-                            onChange={ query => setAttributes( { query } ) }
-                            help={ __('A room for example: INN011', 'wp-gutenberg-epfl') }
-                        />
-                    </PanelBody>
-                </InspectorControls>
                 <div className={ className }>
-                    <div id="preview-box">
-                        <h2>EPFL MAP</h2>
-                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
+                    <h2>EPFL MAP</h2>
+                    <TextControl
+                        value={ attributes.query }
+                        onChange={ query => setAttributes( { query } ) }
+                        help={ __('A room for example: INN011', 'wp-gutenberg-epfl') }
+                    />
                 </div>
             </Fragment>
-		)		
+		)
 	},
 	save: ( props ) => {
 		return null;
