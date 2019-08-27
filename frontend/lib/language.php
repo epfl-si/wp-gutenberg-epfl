@@ -3,13 +3,14 @@
  * Utilities about languages, using Polylang if installed
 */
 
-namespace EPFL\Language;
+namespace EPFL\Plugins\Gutenberg\Lib\Language;
+
 
 function get_current_or_default_language() {
     $default_lang = 'en';
     $allowed_langs = array('en', 'fr');
     $language = $default_lang;
-    
+
     /* If Polylang installed */
     if(function_exists('pll_current_language'))
     {

@@ -5,7 +5,7 @@
  * wp-admin area.
  */
 
-namespace EPFL\AdminController;
+namespace EPFL\Plugins\Gutenberg\Lib\AdminController;
 
 
 if (! defined('ABSPATH')) {
@@ -82,7 +82,7 @@ class TransientError
         } else {
             add_action(
                 'admin_notices',
-                array(get_called_class(), 
+                array(get_called_class(),
                       function() use ($thisclass, $slug, $render_callback) {
                           $thisclass::_do_fetch_and_render(
                               $slug, $render_callback);

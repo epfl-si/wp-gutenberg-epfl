@@ -6,7 +6,7 @@
  * Provide mixins to work on result lists.
  */
 
-namespace EPFL\Results;
+namespace EPFL\Plugins\Gutenberg\Lib\Results;
 
 /**
  * "use" this trait in your class to get a find() method implemented

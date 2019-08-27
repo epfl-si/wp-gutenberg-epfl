@@ -1,6 +1,9 @@
 <?php
 
-require_once(dirname(__FILE__).'/../utils.php');
+namespace EPFL\Plugins\Gutenberg\People;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
 /**
@@ -51,7 +54,7 @@ function epfl_people_block( $attributes ) {
         return Utils::render_user_msg("People shortcode: Please check required parameters");
     }
 
-    if ("" !== $units) { 
+    if ("" !== $units) {
         $parameter['units'] = $units;
         $from = 'units';
     } else if ("" !== $scipers) {
@@ -62,7 +65,7 @@ function epfl_people_block( $attributes ) {
         $from = 'doctoral_program';
     }
 
-    if ("" !== $function) { 
+    if ("" !== $function) {
         $function = str_replace(",", "+or+", $function);
         $parameter['position'] = $function;
     }
@@ -73,11 +76,11 @@ function epfl_people_block( $attributes ) {
             $parameter['lang'] = $current_language;
         }
     }
-   
+
     // the web service we use to retrieve the data
     $url = "https://people.epfl.ch/cgi-bin/wsgetpeople/";
     $url = add_query_arg($parameter, $url);
-    
+
     // retrieve the data in JSON
     $items = Utils::get_items($url);
     if (false === $items) {
@@ -95,7 +98,7 @@ function epfl_people_block( $attributes ) {
     foreach ($items as $item) {
         $persons[] = $item;
     }
-    
+
     if ("" !== $units || "" !== $doctoral_program) {
         // Sort persons list alphabetically when units
         usort($persons, 'epfl_people_person_compare');

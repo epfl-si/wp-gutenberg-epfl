@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\Hero;
+
 function epfl_hero_block( $attributes ) {
 
     $title    = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';

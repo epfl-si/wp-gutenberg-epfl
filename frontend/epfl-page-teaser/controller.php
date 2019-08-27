@@ -1,11 +1,13 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\PageTeaser;
 
 function epfl_page_teaser_block( $attributes ) {
 
-    $page1 = sanitize_text_field( $attributes['page1'] ) ?: '';
-    $page2 = sanitize_text_field( $attributes['page2'] ) ?: '';
-    $page3 = sanitize_text_field( $attributes['page3'] ) ?: '';
-    $gray  = sanitize_text_field( $attributes['gray'] ) ?: false;
+    $page1 = isset( $attributes['page1'] ) ? sanitize_text_field( $attributes['page1'] ) : '';
+    $page2 = isset( $attributes['page2'] ) ? sanitize_text_field( $attributes['page2'] ) : '';
+    $page3 = isset( $attributes['page3'] ) ? sanitize_text_field( $attributes['page3'] ) : '';
+    $gray  = isset( $attributes['gray'] ) ? sanitize_text_field( $attributes['gray'] ) : false;
+    $pagesCount = 0;
 
     $data  = [];
 

@@ -1,4 +1,5 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\Memento;
 
 $markup .= '<span class="card-info-date">' . esc_html($event->start_date) . '</span>';
 
@@ -22,10 +23,9 @@ if ($event->speaker !== '') {
     $markup .= ': <b>' . esc_html($event->place_and_room) . '</b>';
     $markup .= '<br>';
  }
-    
+
 if (get_current_language() == 'fr' and $event->category->fr_label !== ''){
     $markup .= __('Category', 'wp-gutenberg-epfl') . ': <b>' . esc_html($event->category->fr_label) . '</b>';
 } elseif ($event->category->en_label !== '') {
     $markup .= __('Category', 'wp-gutenberg-epfl') . ': <b>' . esc_html($event->category->en_label) . '</b>';
 }
-

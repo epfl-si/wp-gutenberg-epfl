@@ -1,4 +1,6 @@
 <?php
+    namespace EPFL\Plugins\Gutenberg\Memento;
+
     function epfl_memento_listing_with_the_first_highlighted_event($results, $memento_name) {
 
         $memento_url = "https://memento.epfl.ch/" . $memento_name;
@@ -24,7 +26,7 @@
 
         $count = 1;
         foreach($results as $event) {
-            
+
             $is_first_event = ($count == 1);
             $visual_url = get_visual_url($event, $memento_name);
 
@@ -84,7 +86,7 @@
             }
             $count++;
         }
-  
+
         $markup .= '</div>';
         $markup .= '</div>';
 

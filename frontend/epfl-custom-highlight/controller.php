@@ -1,7 +1,9 @@
-<?php 
+<?php
+
+namespace EPFL\Plugins\Gutenberg\CustomHighlight;
 
 function epfl_custom_highlight_block( $attributes ) {
-    
+
     $title          = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
     $description    = isset( $attributes['description'] ) ? sanitize_text_field( $attributes['description'] ) : '';
     $image_id       = isset( $attributes['imageId'] ) ? sanitize_text_field( $attributes['imageId'] ) : '';

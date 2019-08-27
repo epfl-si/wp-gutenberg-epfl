@@ -8,7 +8,8 @@
  * @package CGB
  */
 
-require_once 'lib/language.php';
+namespace EPFL\Plugins\Gutenberg;
+
 require_once 'epfl-news/controller.php';
 require_once 'epfl-memento/controller.php';
 require_once 'epfl-cover/view.php';
@@ -51,8 +52,7 @@ function wp_gutenberg_epfl_bases_block_assets() {
 		array( 'wp-editor' )
 	);
 }
-add_action( 'enqueue_block_assets', 'wp_gutenberg_epfl_bases_block_assets' );
-
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_bases_block_assets' );
 
 function wp_gutenberg_epfl_editor_assets() {
 
@@ -78,7 +78,7 @@ function wp_gutenberg_epfl_editor_assets() {
     );
 
 }
-add_action( 'enqueue_block_editor_assets', 'wp_gutenberg_epfl_editor_assets' );
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_editor_assets' );
 
 // Déclarer les blocs qui ont un rendu côté PHP
 function wp_gutenberg_epfl_register_blocks() {
@@ -89,83 +89,83 @@ function wp_gutenberg_epfl_register_blocks() {
 	}
 
 	register_block_type( 'epfl/news', array(
-		'render_callback' => 'epfl_news_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\News\epfl_news_block',
 	));
 
 	register_block_type( 'epfl/memento', array(
-		'render_callback' => 'epfl_memento_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Memento\epfl_memento_block',
 	));
 
 	register_block_type( 'epfl/cover', array(
-		'render_callback' => 'epfl_cover_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Cover\epfl_cover_block',
     ));
 
     register_block_type( 'epfl/toggle', array(
-		'render_callback' => 'epfl_toggle_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Toggle\epfl_toggle_block',
     ));
 
     register_block_type( 'epfl/quote', array(
-		'render_callback' => 'epfl_quote_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Quote\epfl_quote_block',
     ));
 
     register_block_type( 'epfl/people', array(
-		'render_callback' => 'epfl_people_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\People\epfl_people_block',
     ));
 
     register_block_type( 'epfl/map', array(
-		'render_callback' => 'epfl_map_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Map\epfl_map_block',
     ));
 
     register_block_type( 'epfl/introduction', array(
-		'render_callback' => 'epfl_introduction_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Introduction\epfl_introduction_block',
     ));
 
     register_block_type( 'epfl/hero', array(
-		'render_callback' => 'epfl_hero_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Hero\epfl_hero_block',
     ));
 
     register_block_type( 'epfl/google-forms', array(
-		'render_callback' => 'epfl_google_forms_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\GoogleForms\epfl_google_forms_block',
     ));
 
     register_block_type( 'epfl/video', array(
-		'render_callback' => 'epfl_video_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Video\epfl_video_block',
     ));
 
     register_block_type( 'epfl/tableau', array(
-		'render_callback' => 'epfl_tableau_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Tableau\epfl_tableau_block',
     ));
 
     register_block_type( 'epfl/scienceqa', array(
-		'render_callback' => 'epfl_scienceqa_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\ScienceQA\epfl_scienceqa_block',
     ));
 
     register_block_type( 'epfl/scheduler', array(
-		'render_callback' => 'epfl_scheduler_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Scheduler\epfl_scheduler_block',
 	));
 
 	register_block_type( 'epfl/custom-highlight', array(
-		'render_callback' => 'epfl_custom_highlight_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\CustomHighlight\epfl_custom_highlight_block',
 		));
 
 	register_block_type( 'epfl/custom-teaser', array(
-		'render_callback' => 'epfl_custom_teaser_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\CustomTeaser\epfl_custom_teaser_block',
 		));
 
     register_block_type( 'epfl/page-teaser', array(
-		'render_callback' => 'epfl_page_teaser_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\PageTeaser\epfl_page_teaser_block',
     ));
 
     register_block_type( 'epfl/page-highlight', array(
-		'render_callback' => 'epfl_page_highlight_block',
+		'render_callback' => 'EPFL\Plugins\Gutenberg\PageHighlight\epfl_page_highlight_block',
     ));
 
     register_block_type( 'epfl/post-teaser', array(
-		'render_callback' => 'epfl_post_teaser_block',
+		  'render_callback' => 'EPFL\Plugins\Gutenberg\PostTeaser\epfl_post_teaser_block',
     ));
 
     register_block_type( 'epfl/post-highlight', array(
-		'render_callback' => 'epfl_post_highlight_block',
+		  'render_callback' => 'EPFL\Plugins\Gutenberg\PostHighlight\epfl_post_highlight_block',
     ));
 
 		register_block_type( 'epfl/infoscience-search', array(
@@ -195,6 +195,6 @@ function wp_gutenberg_epfl_register_blocks() {
 		register_block_type( 'epfl/links-group', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\LinksGroup\epfl_links_group_block',
 		));
-
 }
-add_action( 'init', 'wp_gutenberg_epfl_register_blocks' );
+
+add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_epfl_register_blocks' );

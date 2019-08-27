@@ -1,4 +1,5 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\Memento;
 
 $visual_url = get_visual_url($event, $memento_name);
 

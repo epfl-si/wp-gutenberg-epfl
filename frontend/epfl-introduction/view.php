@@ -1,7 +1,9 @@
-<?php 
+<?php
+
+namespace EPFL\Plugins\Gutenberg\Introduction;
 
 function epfl_introduction_block( $attributes ) {
-    
+
     $title = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
     $content = isset( $attributes['content'] ) ? sanitize_text_field( $attributes['content'] ) : '';
     $gray = isset( $attributes['gray'] ) ? sanitize_text_field( $attributes['gray'] ) : false;
@@ -10,7 +12,7 @@ function epfl_introduction_block( $attributes ) {
     $markup .= '<div class="introduction';
     if ($gray) {
         $markup .= ' bg-gray-100';
-    } 
+    }
     $markup .= '">';
     $markup .= '<div class="container">';
     $markup .= '<div class="row">';

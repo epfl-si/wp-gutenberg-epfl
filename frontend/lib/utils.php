@@ -1,6 +1,6 @@
 <?php
 
-
+namespace EPFL\Plugins\Gutenberg\Lib;
 
 Class Utils
 {
@@ -45,7 +45,9 @@ Class Utils
      * @return decoded JSON data
      */
     public static function get_items(string $url, $cache_time_sec=300) {
-
+        /* Generating unique transient ID. We cannot directly use URL (and replace some characters) because we are
+        limited to 172 characters for transient identifiers (https://codex.wordpress.org/Transients_API) */
+        $transient_id = 'epfl_'.md5($url);
 
         /* Caching mechanism is only used when :
          - No user is logged in
@@ -54,10 +56,6 @@ Class Utils
          */
         if((!is_user_logged_in() || (is_user_logged_in() && is_admin())) && $cache_time_sec > 0)
         {
-            /* Generating unique transient ID. We cannot directly use URL (and replace some characters) because we are
-            limited to 172 characters for transient identifiers (https://codex.wordpress.org/Transients_API) */
-            $transient_id = 'epfl_'.md5($url);
-
             /* If we have an URL call result in DB, */
             if ( false !== ( $data = get_transient($transient_id) ) )
             {

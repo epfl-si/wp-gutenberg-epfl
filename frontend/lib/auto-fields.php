@@ -9,7 +9,8 @@
  * the bottom of the edit menu. A replacement meta box is provided to
  * display the blacklisted meta fields in a read-only table.
  */
-namespace EPFL\AutoFields;
+
+namespace EPFL\Plugins\Gutenberg\Lib\AutoFields;
 
 if (! defined( 'ABSPATH' )) {
     die( 'Access denied.' );

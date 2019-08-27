@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\ScienceQA;
+
 Class ScienceQARender
 {
 	/**

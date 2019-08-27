@@ -1,5 +1,7 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\Cover;
+
 function epfl_cover_block( $attributes ) {
 
     $image_id    = sanitize_text_field( $attributes['imageId'] ) ?: '';
@@ -21,14 +23,14 @@ function epfl_cover_block( $attributes ) {
     );
 
     $content = '<div class="container my-3">';
-    
+
     $content .= '<figure class="cover">';
     $content .= '<picture>';
     $content .= $attachement;
     $content .= '</picture>';
-    
+
     if (!empty($description)) {
-       
+
         $content .= '<figcaption>';
         $content .= '<button';
         $content .= ' aria-hidden="true"';
@@ -45,6 +47,6 @@ function epfl_cover_block( $attributes ) {
     }
     $content .= '</figure>';
     $content .= '</div>';
-    
+
     return $content;
 }

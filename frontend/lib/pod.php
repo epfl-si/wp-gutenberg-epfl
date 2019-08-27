@@ -2,7 +2,7 @@
 /* Copyright © 2018 École Polytechnique Fédérale de Lausanne, Switzerland */
 /* All Rights Reserved, except as stated in the LICENSE file. */
 
-namespace EPFL\Pod;
+namespace EPFL\Plugins\Gutenberg\Lib\Pod;
 
 if (! defined( 'ABSPATH' )) {
     die( 'Access denied.' );

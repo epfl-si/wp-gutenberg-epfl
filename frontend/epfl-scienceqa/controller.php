@@ -9,10 +9,11 @@
  * Copyright:      Copyright (c) 2018 Loïc Cattani
  */
 
-
 declare(strict_types=1);
 
-define('SCIENCEQA_API_URL', 'https://qi.epfl.ch/');
+namespace EPFL\Plugins\Gutenberg\ScienceQA;
+
+define(__NAMESPACE__ . '\SCIENCEQA_API_URL', 'https://qi.epfl.ch/');
 
 require_once 'view.php';
 require_once 'utils.php';
@@ -42,7 +43,7 @@ function epfl_scienceqa_build_api_url( string $lang, string $qid ): string
  * @return True if the required parameters are right.
  */
 function epfl_scienceqa_required_parameters( string $lang ): bool {
-  
+
 	// check lang
 	if ( $lang !==  'fr' && $lang !== 'en' ) {
 		return FALSE;
@@ -57,7 +58,7 @@ function epfl_scienceqa_required_parameters( string $lang ): bool {
  * @return True if the required parameters are right.
  */
 function epfl_scienceqa_check_response_data( $scienceqa ): bool {
-  
+
 	if ( $scienceqa === NULL ) {
 		return FALSE;
 	}
@@ -88,11 +89,11 @@ function epfl_scienceqa_check_response_data( $scienceqa ): bool {
 }
 
 function epfl_scienceqa_block( $attributes ) {
-  
+
 	// sanitize parameters
     $lang = sanitize_text_field( $attributes['lang'] ) ?: 'en';
     $qid  = sanitize_text_field( $attributes['qid'] );
-    
+
 	if (epfl_scienceqa_required_parameters( $lang ) == FALSE) {
 		return '';
 	}

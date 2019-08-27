@@ -1,4 +1,5 @@
 <?php
+    namespace EPFL\Plugins\Gutenberg\GoogleForms;
 
     function epfl_google_forms_render($src, $width, $height) {
 
@@ -7,6 +8,6 @@
         $markup .= __("Loading...", "epfl");
         $markup .= '</iframe>';
         $markup .= '</div>';
-        
+
         return $markup;
     }

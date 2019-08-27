@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+namespace EPFL\Plugins\Gutenberg\Video;
+
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/view.php');
 
