@@ -40,34 +40,30 @@ registerBlockType( 'epfl/introduction', {
 	edit: ( props ) => {
 		const { attributes, className, setAttributes } = props
 	    return (
+
             <Fragment>
-                <InspectorControls>
-                    <PanelBody title={ __('Title', 'wp-gutenberg-epfl') }>
-                        <TextControl
-                            value={ attributes.title }
-                            onChange={ title => setAttributes( { title } ) }
-                        />
-                    </PanelBody>
-                    <PanelBody title={ __('Content', 'wp-gutenberg-epfl') }>
-                        <TextareaControl
-                            value={ attributes.content }
-                            onChange={ content => setAttributes( { content } ) }
-                        />
-                        <ToggleControl
-                            label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
-                            checked={ attributes.gray }
-                            onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
-                        />
-                    </PanelBody>
-                </InspectorControls>
-                <div className={ className }>
-                    <div id="preview-box">
-                        <h2>EPFL INTRODUCTION</h2>
-                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
+			<InspectorControls><hr/>
+				<ToggleControl
+					label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
+					checked={ attributes.gray }
+					onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
+				/>
+			</InspectorControls>
+	            <div className={ className }>
+	                <h2>EPFL INTRODUCTION</h2>
+                    <TextControl
+						label={ __('Title', 'wp-gutenberg-epfl') }
+                        value={ attributes.title }
+                        onChange={ title => setAttributes( { title } ) }
+                    />
+                    <TextareaControl
+						label={ __('Content', 'wp-gutenberg-epfl') }
+						value={ attributes.content }
+                        onChange={ content => setAttributes( { content } ) }
+                    />
                 </div>
             </Fragment>
-		)		
+		)
 	},
 	save: ( props ) => {
 		return null;
