@@ -36,20 +36,14 @@ registerBlockType( 'epfl/google-forms', {
 
         return (
             <Fragment>
-                <InspectorControls>
-                    <PanelBody title={ __('Google Forms <iframe> HTML code', 'wp-gutenberg-epfl') }>
+                <div className={ className }>
+                    <h2>EPFL GOOGLE FORMS</h2>
                         <TextareaControl
+							label={ __('Google Forms <iframe> HTML code', 'wp-gutenberg-epfl')}
                             value={ attributes.content }
                             onChange={ content => setAttributes( { content } ) }
                             help={ __('You can paste the given HTML code containing <iframe>', 'wp-gutenberg-epfl') }
                         />
-                    </PanelBody>
-                </InspectorControls>
-                <div className={ className }>
-                    <div id="preview-box">
-                        <h2>EPFL GOOGLE FORMS</h2>
-                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
                 </div>
             </Fragment>
 		)
