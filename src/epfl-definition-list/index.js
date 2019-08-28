@@ -1,5 +1,3 @@
-import './style.scss'
-
 const { __ } = wp.i18n;
 
 const {
@@ -100,7 +98,7 @@ registerBlockType( 'epfl/definition-list', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className }>
+                <div className={ className + ' wp-block-scroll' }>
                     {[...Array(maxDefintionList)].map((x, i) =>
                         <DefinitionListPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}

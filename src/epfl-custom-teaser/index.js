@@ -1,5 +1,3 @@
-import './style.scss'
-
 const { __ } = wp.i18n;
 
 const {
@@ -139,7 +137,7 @@ registerBlockType( 'epfl/custom-teaser', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className }>
+                <div className={ className + ' wp-block-scroll' }>
                     <h2>EPFL Custom Teaser</h2>
                     <TextControl
                         label={ __('Section title', 'wp-gutenberg-epfl') }

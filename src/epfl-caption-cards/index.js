@@ -1,5 +1,3 @@
-import './style.scss'
-
 const { __ } = wp.i18n;
 
 const {
@@ -112,7 +110,7 @@ registerBlockType( 'epfl/caption-cards', {
             <Fragment>
                 <InspectorControls>
                 </InspectorControls>
-                <div className={ className }>
+                <div className={ className + ' wp-block-scroll' }>
                     {[...Array(maxCaptionCards)].map((x, i) =>
                         <CaptionCardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}

@@ -1,5 +1,3 @@
-import './style.scss'
-
 const { __ } = wp.i18n;
 
 const {
@@ -79,7 +77,7 @@ registerBlockType( 'epfl/links-group', {
 
         return (
             <Fragment>
-                <div className={ className }>
+                <div className={ className + ' wp-block-scroll' }>
                     <h2>EPFL Links group</h2>
                     <TextControl
                         label={ __('Title', 'wp-gutenberg-epfl') }

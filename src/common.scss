@@ -35,3 +35,12 @@ $red: orangered;
     border: 1px #e2e4e7 solid;
     padding: 0px 16px 4px 16px;
 }
+
+.wp-block-scroll {
+    max-height: 398px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 12px;
+    margin-right: -16px;
+    margin-bottom: -4px;
+}

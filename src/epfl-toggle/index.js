@@ -1,4 +1,3 @@
-import './style.scss'
 import toggleIcon from './toggle-icon'
 
 const { __ } = wp.i18n;
