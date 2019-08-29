@@ -59,10 +59,7 @@ registerBlockType( 'epfl/quote', {
 
 		return (
 		<Fragment>
-			<InspectorControls>
-
-			</InspectorControls>
-            {/*
+			{/*
 			<div className={ className }>
                 <div className="row my-3">
                     <div className="col-6 offset-3 col-sm-4 offset-sm-4 col-md-2 offset-md-0 text-center text-md-right">
