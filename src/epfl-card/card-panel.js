@@ -6,7 +6,6 @@ const {
 } = wp.editor;
 
 const {
-    PanelBody,
     TextControl,
     TextareaControl,
 } = wp.components;
@@ -30,7 +29,8 @@ function CardPanel ( props ) {
     // https://stackoverflow.com/questions/37427508/react-changing-an-uncontrolled-input
 
     return (
-        <PanelBody title={`Card ${index}`} >
+        <div>
+            <h4>{`Card ${index}`}</h4>
             <TextControl
                 label={ __('Title (mandatory)', 'wp-gutenberg-epfl') }
                 value={ attributes['title' + index] || ''}
@@ -55,12 +55,12 @@ function CardPanel ( props ) {
                     </div>
                 )}
             />
-             <TextareaControl
+                <TextareaControl
                 label={ __('Text', 'wp-gutenberg-epfl') }
                 value={ attributes['content' + index]  || ''}
                 onChange={ value => setIndexedAttributes('content', value) }
             />
-        </PanelBody>
+        </div>
     );
 }
 

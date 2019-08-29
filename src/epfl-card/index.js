@@ -59,7 +59,7 @@ registerBlockType( 'epfl/card', {
 
         return (
             <Fragment>
-                <div className={ className }>
+                <div className={ className + ' wp-block-scroll' }>
                         <h2>EPFL Card</h2>
                         {[...Array(maxCards)].map((x, i) =>
                             <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />

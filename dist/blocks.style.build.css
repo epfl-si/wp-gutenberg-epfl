@@ -9,7 +9,7 @@
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 25px; }
+  margin: 2px 4px; }
 
 #preview-box h2 {
   text-align: center; }
@@ -17,6 +17,20 @@
 #preview-box .helper {
   text-align: center;
   margin-bottom: 25px; }
+
+.block-editor-block-list__block .block-editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+  border: 1px #e2e4e7 solid;
+  padding: 16px; }
+
+.wp-block-scroll {
+  max-height: 398px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 12px;
+  margin-right: -16px;
+  margin-bottom: -4px; }
 
 .wp-block-epfl-news a:link {
   text-decoration: none !important; }
@@ -65,7 +79,7 @@
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 25px; }
+  margin: 2px 4px; }
 
 #preview-box h2 {
   text-align: center; }
@@ -73,6 +87,20 @@
 #preview-box .helper {
   text-align: center;
   margin-bottom: 25px; }
+
+.block-editor-block-list__block .block-editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+  border: 1px #e2e4e7 solid;
+  padding: 16px; }
+
+.wp-block-scroll {
+  max-height: 398px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 12px;
+  margin-right: -16px;
+  margin-bottom: -4px; }
 
 .wp-block-epfl-memento a:link {
   text-decoration: none !important; }
@@ -121,7 +149,7 @@
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 25px; }
+  margin: 2px 4px; }
 
 #preview-box h2 {
   text-align: center; }
@@ -129,6 +157,20 @@
 #preview-box .helper {
   text-align: center;
   margin-bottom: 25px; }
+
+.block-editor-block-list__block .block-editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+  border: 1px #e2e4e7 solid;
+  padding: 16px; }
+
+.wp-block-scroll {
+  max-height: 398px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 12px;
+  margin-right: -16px;
+  margin-bottom: -4px; }
 
 .wp-block-epfl-cover .cover {
   position: relative; }
@@ -215,7 +257,7 @@
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 25px; }
+  margin: 2px 4px; }
 
 #preview-box h2 {
   text-align: center; }
@@ -223,25 +265,20 @@
 #preview-box .helper {
   text-align: center;
   margin-bottom: 25px; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-#preview-box {
-  background-color: lightgrey;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  margin-bottom: 25px; }
 
-#preview-box h2 {
-  text-align: center; }
+.block-editor-block-list__block .block-editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+  border: 1px #e2e4e7 solid;
+  padding: 16px; }
 
-#preview-box .helper {
-  text-align: center;
-  margin-bottom: 25px; }
+.wp-block-scroll {
+  max-height: 398px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-right: 12px;
+  margin-right: -16px;
+  margin-bottom: -4px; }
 
 .wp-block-epfl-quote {
   /*
@@ -260,45 +297,7 @@
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 25px; }
-
-#preview-box h2 {
-  text-align: center; }
-
-#preview-box .helper {
-  text-align: center;
-  margin-bottom: 25px; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-#preview-box {
-  background-color: lightgrey;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  margin-bottom: 25px; }
-
-#preview-box h2 {
-  text-align: center; }
-
-#preview-box .helper {
-  text-align: center;
-  margin-bottom: 25px; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-#preview-box {
-  background-color: lightgrey;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  margin-bottom: 25px; }
+  margin: 2px 4px; }
 
 #preview-box h2 {
   text-align: center; }
@@ -307,58 +306,19 @@
   text-align: center;
   margin-bottom: 25px; }
 
-.wp-block-epfl-custom-teaser {
-  max-height: 380px;
-  overflow-y: scroll;
-  overflow-x: hidden; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-#preview-box {
-  background-color: lightgrey;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  margin-bottom: 25px; }
+.block-editor-block-list__block .block-editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+  border: 1px #e2e4e7 solid;
+  padding: 16px; }
 
-#preview-box h2 {
-  text-align: center; }
-
-#preview-box .helper {
-  text-align: center;
-  margin-bottom: 25px; }
-
-.wp-block-epfl-caption-cards {
-  max-height: 380px;
-  overflow-y: scroll;
-  overflow-x: hidden; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-#preview-box {
-  background-color: lightgrey;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
-  margin-bottom: 25px; }
-
-#preview-box h2 {
-  text-align: center; }
-
-#preview-box .helper {
-  text-align: center;
-  margin-bottom: 25px; }
-
-.wp-block-epfl-definition-list {
+.wp-block-scroll {
   max-height: 398px;
   overflow-y: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  padding-right: 12px;
+  margin-right: -16px;
+  margin-bottom: -4px; }
 /**
  * #.# Common SCSS
  *
@@ -370,7 +330,7 @@
   border-color: black;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 25px; }
+  margin: 2px 4px; }
 
 #preview-box h2 {
   text-align: center; }
@@ -379,7 +339,16 @@
   text-align: center;
   margin-bottom: 25px; }
 
-.wp-block-epfl-links-group {
-  max-height: 380px;
+.block-editor-block-list__block .block-editor-block-list__block-edit {
+  margin-left: -28px;
+  margin-right: -28px;
+  border: 1px #e2e4e7 solid;
+  padding: 16px; }
+
+.wp-block-scroll {
+  max-height: 398px;
   overflow-y: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  padding-right: 12px;
+  margin-right: -16px;
+  margin-bottom: -4px; }
