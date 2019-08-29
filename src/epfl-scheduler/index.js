@@ -63,7 +63,11 @@ registerBlockType( 'epfl/scheduler', {
 					/>
 				</PanelBody>
             </InspectorControls>
+
             <div className={ className }>
+				<h2>EPFL Scheduler</h2>
+				<i>From {attributes.startDateTime.substring(0,10)}, {attributes.startDateTime.substring(11,20)} to {attributes.endDateTime.substring(0,10)}, {attributes.endDateTime.substring(11,20)}</i>
+				<h4>{ __('Content','wp-gutenberg-epfl')}</h4>
                 <RichText
                     tagName="div"
                     multiline="p"
