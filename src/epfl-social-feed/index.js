@@ -51,41 +51,6 @@ registerBlockType( 'epfl/social-feed', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title='Twitter'>
-                        <label>URL</label>
-                        <TextControl
-                            value={ attributes.twitter_url }
-                            onChange={ twitter_url => setAttributes( { twitter_url } ) }
-                            help={ __('Url to your Twitter account (optional) (eg. https://twitter.com/EPFL)', 'wp-gutenberg-epfl') }
-                        />
-                        <label>{ __('Limit', 'wp-gutenberg-epfl') }</label>
-                        <TextControl
-                            value={ attributes.twitter_limit }
-                            onChange={ twitter_limit => setAttributes( { twitter_limit } ) }
-                            help={ __('0 for unlimited', 'wp-gutenberg-epfl') }
-                            placeholder= { 0 }
-                            min={ 0 }
-                        />
-                    </PanelBody>
-
-                    <PanelBody title='Instagram'>
-                        <label>URL</label>
-                        <TextControl
-                            value={ attributes.instagram_url }
-                            onChange={ instagram_url => setAttributes( { instagram_url } ) }
-                            help={ __('Url of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)', 'wp-gutenberg-epfl') }
-                        />
-                    </PanelBody>
-
-                    <PanelBody title='Facebook'>
-                        <label>URL</label>
-                        <TextControl
-                            value={ attributes.facebook_url }
-                            onChange={ facebook_url => setAttributes( { facebook_url } ) }
-                            help={ __('Url of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)', 'wp-gutenberg-epfl') }
-                        />
-                    </PanelBody>
-
                     <PanelBody title={ __('Size', 'wp-gutenberg-epfl') }>
                         <label>{ __('Height', 'wp-gutenberg-epfl') }</label>
                         <TextControl
@@ -103,10 +68,41 @@ registerBlockType( 'epfl/social-feed', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <div id="preview-box">
-                        <h2>EPFL Social Feed</h2>
-                        <div class="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
+                    <h2>EPFL Social Feed</h2>
+					<PanelBody title='Twitter' initialOpen={false}>
+                        <TextControl
+							label={ __('URL','wp-gutenberg-epfl')}
+                            value={ attributes.twitter_url }
+                            onChange={ twitter_url => setAttributes( { twitter_url } ) }
+                            help={ __('Url to your Twitter account (optional) (eg. https://twitter.com/EPFL)', 'wp-gutenberg-epfl') }
+                        />
+                        <label>{ __('Limit', 'wp-gutenberg-epfl') }</label>
+                        <TextControl
+                            value={ attributes.twitter_limit }
+                            onChange={ twitter_limit => setAttributes( { twitter_limit } ) }
+                            help={ __('0 for unlimited', 'wp-gutenberg-epfl') }
+                            placeholder= { 0 }
+                            min={ 0 }
+                        />
+                    </PanelBody>
+
+                    <PanelBody title='Instagram' initialOpen={false}>
+                        <TextControl
+							label={ __('URL','wp-gutenberg-epfl')}
+                            value={ attributes.instagram_url }
+                            onChange={ instagram_url => setAttributes( { instagram_url } ) }
+                            help={ __('Url of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)', 'wp-gutenberg-epfl') }
+                        />
+                    </PanelBody>
+
+                    <PanelBody title='Facebook' initialOpen={false}>
+                        <TextControl
+							label={ __('URL','wp-gutenberg-epfl')}
+                            value={ attributes.facebook_url }
+                            onChange={ facebook_url => setAttributes( { facebook_url } ) }
+                            help={ __('Url of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)', 'wp-gutenberg-epfl') }
+                        />
+                    </PanelBody>
                 </div>
             </Fragment>
 		)
