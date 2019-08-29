@@ -60,40 +60,7 @@ registerBlockType( 'epfl/quote', {
 		return (
 		<Fragment>
 			<InspectorControls>
-                <PanelBody title={ __('Select Image', 'wp-gutenberg-epfl') }>
-                    <MediaUpload
-                        onSelect={onImageSelect}
-                        type="image"
-                        value={attributes.imageId}
-                        render={({ open }) => (
-                            <div>
-                                <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
-                                <button onClick={open}>
-                                    { __('Select Image', 'wp-gutenberg-epfl') }
-                                </button>
-                                <div style={ {marginTop: '5px'} }>{ __('Please select a square image', 'wp-gutenberg-epfl') }</div>
-                            </div>
-                        )}
-                    />
-                </PanelBody>
-				<PanelBody title={ __('Quote', 'wp-gutenberg-epfl') }>
-					<TextareaControl
-						value={ attributes.quote }
-						onChange={ quote => setAttributes( { quote } ) }
-					/>
-				</PanelBody>
-                <PanelBody title={ __('Author', 'wp-gutenberg-epfl') }>
-					<TextControl
-						value={ attributes.cite }
-						onChange={ cite => setAttributes( { cite } ) }
-					/>
-				</PanelBody>
-                <PanelBody title={ __('Position', 'wp-gutenberg-epfl') }>
-					<TextControl
-						value={ attributes.footer }
-						onChange={ footer => setAttributes( { footer } ) }
-					/>
-				</PanelBody>
+
 			</InspectorControls>
             {/*
 			<div className={ className }>
@@ -111,10 +78,37 @@ registerBlockType( 'epfl/quote', {
             </div>
             */}
             <div className={ className }>
-                <div id="preview-box">
-                    <h2>EPFL QUOTE</h2>
-                    <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                </div>
+                <h2>EPFL QUOTE</h2>
+                    <MediaUpload
+						label={ __('Select Image', 'wp-gutenberg-epfl') }
+                        onSelect={onImageSelect}
+                        type="image"
+                        value={attributes.imageId}
+                        render={({ open }) => (
+                            <div>
+                                <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
+                                <button onClick={open}>
+                                    { __('Select Image', 'wp-gutenberg-epfl') }
+                                </button>
+                                <div style={ {marginTop: '5px'} }>{ __('Please select a square image', 'wp-gutenberg-epfl') }</div>
+                            </div>
+                        )}
+                    />
+					<TextareaControl
+						label={ __('Quote', 'wp-gutenberg-epfl') }
+						value={ attributes.quote }
+						onChange={ quote => setAttributes( { quote } ) }
+					/>
+					<TextControl
+						label={ __('Author', 'wp-gutenberg-epfl') }
+						value={ attributes.cite }
+						onChange={ cite => setAttributes( { cite } ) }
+					/>
+					<TextControl
+						label={ __('Position', 'wp-gutenberg-epfl') }
+						value={ attributes.footer }
+						onChange={ footer => setAttributes( { footer } ) }
+					/>
 			</div>
 		</Fragment>
 		)
