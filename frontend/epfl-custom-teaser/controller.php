@@ -34,10 +34,12 @@ function epfl_custom_teaser_block( $attributes ) {
 
 <div class="container-full p-lg-5 <?php echo $greyClasses ?>">
   <div class="container">
-    <h3 class="h6 mb-3<?php echo ($elementCount < 3) ? ' text-center' : '' ?>"><?php echo $attributes['titleSection'] ?: __('Section title', 'epfl'); ?></h3>
+    <?php if ($attributes['titleSection']): ?>
+    <h3 class="h6 mb-3<?php echo ($elementCount < 3) ? ' text-center' : '' ?>"><?php echo $attributes['titleSection'] ?></h3>
+    <?php endif; ?>
     <div class="card-deck<?php echo ($elementCount < 3) ? ' card-deck-line' : '' ?>">
       <?php
-      for($i = 1; $i < 3; $i++):
+      for($i = 1; $i <= 3; $i++):
         if ($attributes['title'.$i]) :
         $image = get_post($attributes['imageId'.$i]);
       ?>
