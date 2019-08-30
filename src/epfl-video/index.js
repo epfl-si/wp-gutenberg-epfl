@@ -36,21 +36,15 @@ registerBlockType( 'epfl/video', {
 
         return (
             <Fragment>
-                <InspectorControls>
-                    <PanelBody title={ __('URL of the video', 'wp-gutenberg-epfl') }>
-                        <TextControl
-                            value={ attributes.url }
-                            onChange={ url => setAttributes( { url } ) }
-                            help={ __('You can paste a YouTube, Vimeo or SWITCHTube URL', 'wp-gutenberg-epfl') }
-                        />
-                    </PanelBody>
-                </InspectorControls>
                 <div className={ className }>
-                    <div id="preview-box">
-                        <h2>EPFL VIDEO</h2>
-                        <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                    </div>
-                </div>
+                    <h2>EPFL VIDEO</h2>
+					<TextControl
+						label={ __('URL of the video', 'wp-gutenberg-epfl') }
+                        value={ attributes.url }
+                        onChange={ url => setAttributes( { url } ) }
+                        help={ __('You can paste a YouTube, Vimeo or SWITCHTube URL', 'wp-gutenberg-epfl') }
+                    />
+					</div>
             </Fragment>
 		)
 	},
