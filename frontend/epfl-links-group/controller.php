@@ -3,7 +3,7 @@ namespace EPFL\Plugins\Gutenberg\LinksGroup;
 
 function epfl_links_group_block( $attributes ) {
   $main_url = isset( $attributes['mainUrl'] ) ? sanitize_text_field( $attributes['mainUrl'] ) : '';
-  $title = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['mainUrl'] ) : '';
+  $title = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
   unset($attributes['mainUrl']);
   unset($attributes['title']);
 
