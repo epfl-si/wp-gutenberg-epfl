@@ -18,7 +18,7 @@ const getAttributes = () => {
             type: 'string',
         },
         'mainUrl': {
-            type: 'boolean',
+            type: 'string',
 		},
 	};
 
