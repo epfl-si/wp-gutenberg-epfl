@@ -51,7 +51,7 @@ function DefinitionListPanel ( props ) {
 
     return (
         <div>
-           <h3>{`Definition ${index}`} </h3>
+           <h4>{`Definition ${index}`} </h4>
            <TextControl
                 value={ attributes['label' + index] || ''}
                 onChange={ value => setIndexedAttributes('label', value) }
@@ -69,7 +69,7 @@ function DefinitionListPanel ( props ) {
 }
 
 registerBlockType( 'epfl/definition-list', {
-	title: __( 'Definition list', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Definition List', 'wp-gutenberg-epfl'),
 	description: 'v1.0.0',
 	icon: 'editor-alignleft',
 	category: 'common',
@@ -98,6 +98,7 @@ registerBlockType( 'epfl/definition-list', {
                         />
                     </PanelBody>
                 </InspectorControls>
+                <h2>EPFL Definition List</h2>
                 <div className={ className + ' wp-block-scroll' }>
                     {[...Array(maxDefintionList)].map((x, i) =>
                         <DefinitionListPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
