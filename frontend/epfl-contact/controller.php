@@ -19,7 +19,7 @@ function epfl_contact_block($atts) {
         }
     }
 
-    $gray_wrapper  = isset( $attributes['grayWrapper'] ) ? sanitize_text_field( $attributes['grayWrapper'] ) : false;
+    $gray_wrapper  = isset( $atts['grayWrapper'] ) ? sanitize_text_field( $atts['grayWrapper'] ) : false;
     ob_start();
 ?>
 
