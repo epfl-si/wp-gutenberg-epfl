@@ -37,6 +37,7 @@ $red: orangered;
 }
 
 .wp-block-scroll {
+    -webkit-appearance: none;  // for MacOS trackpad users
     max-height: 398px;
     overflow-y: scroll;
     overflow-x: hidden;
