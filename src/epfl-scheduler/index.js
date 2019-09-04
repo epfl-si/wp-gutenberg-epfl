@@ -1,4 +1,3 @@
-
 import schedulerIcon from './scheduler-icon'
 
 const { __ } = wp.i18n;
@@ -19,6 +18,14 @@ const {
 } = wp.components;
 
 const { Fragment } = wp.element;
+
+function testTime(attributes) {
+	if (!attributes.startDateTime || !attributes.endDateTime) {
+		return (<i>Choose a time in the sidebar</i>)
+	} else {
+		return(<i>From {attributes.startDateTime.substring(0,10)}, {attributes.startDateTime.substring(11,20)} to {attributes.endDateTime.substring(0,10)}, {attributes.endDateTime.substring(11,20)}</i> )
+	}
+};
 
 registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'wp-gutenberg-epfl'),
@@ -66,7 +73,7 @@ registerBlockType( 'epfl/scheduler', {
 
             <div className={ className }>
 				<h2>EPFL Scheduler</h2>
-				<i>From {attributes.startDateTime.substring(0,10)}, {attributes.startDateTime.substring(11,20)} to {attributes.endDateTime.substring(0,10)}, {attributes.endDateTime.substring(11,20)}</i>
+				{testTime(attributes)}
 				<h4>{ __('Content','wp-gutenberg-epfl')}</h4>
                 <RichText
                     tagName="div"
