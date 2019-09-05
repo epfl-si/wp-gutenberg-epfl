@@ -25,6 +25,7 @@
   padding: 16px; }
 
 .wp-block-scroll {
+  -webkit-appearance: none;
   max-height: 398px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -95,6 +96,7 @@
   padding: 16px; }
 
 .wp-block-scroll {
+  -webkit-appearance: none;
   max-height: 398px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -165,6 +167,7 @@
   padding: 16px; }
 
 .wp-block-scroll {
+  -webkit-appearance: none;
   max-height: 398px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -273,6 +276,7 @@
   padding: 16px; }
 
 .wp-block-scroll {
+  -webkit-appearance: none;
   max-height: 398px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -313,6 +317,7 @@
   padding: 16px; }
 
 .wp-block-scroll {
+  -webkit-appearance: none;
   max-height: 398px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -346,6 +351,7 @@
   padding: 16px; }
 
 .wp-block-scroll {
+  -webkit-appearance: none;
   max-height: 398px;
   overflow-y: scroll;
   overflow-x: hidden;
