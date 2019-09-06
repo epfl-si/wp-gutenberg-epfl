@@ -2,6 +2,8 @@
 
 namespace EPFL\Plugins\Gutenberg\CaptionCards;
 
+require_once(dirname(__FILE__).'/../lib/utils.php');
+
 function epfl_caption_cards_block( $attributes ) {
     if (!$attributes) return;
 

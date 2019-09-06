@@ -2,6 +2,8 @@
 
 namespace EPFL\Plugins\Gutenberg\Card;
 
+require_once(dirname(__FILE__).'/../lib/utils.php');
+
 function epfl_card_block($data) {
   if (!$data) return;
 
