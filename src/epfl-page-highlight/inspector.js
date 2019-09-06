@@ -55,17 +55,17 @@ export default class InspectorControlsPageHighlight extends Component {
             // add empty value at first, in case for an unselect
             optionsPagesList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
 
-            const divStyle = {
+            {/*const divStyle = {
                 height: '600px',
-            };
+            };*/}
 
             const selectStyle = {
                 marginBottom: '20px'
             }
 
             content = (
+				<div>
                 <InspectorControls>
-                    <div style={divStyle}>
                         <PanelBody title={ __( 'Layout', 'wp-gutenberg-epfl' ) }>
                             <RadioControl
                                 label={ __("Select a layout", 'wp-gutenberg-epfl') }
@@ -75,20 +75,18 @@ export default class InspectorControlsPageHighlight extends Component {
                                 help={ __('Decides where the text will be aligned, to allow the subject of the picture to be visible', 'wp-gutenberg-epfl')}
                             />
                         </PanelBody>
-                        <PanelBody title={ __( 'Page', 'wp-gutenberg-epfl') }>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-highlight-page'
-                                        name='epfl-page-highlight-page'
-                                        value={ JSON.parse( attributes.page ) }
-                                        onChange={ handlePageChange }
-                                        options={ optionsPagesList }
-                                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                        </PanelBody>
+	                </InspectorControls>
+                        <div >
+                            <Select
+                                id='epfl-page-highlight-page'
+                                name='epfl-page-highlight-page'
+                                value={ JSON.parse( attributes.page ) }
+                                onChange={ handlePageChange }
+                                options={ optionsPagesList }
+                                placeholder={ __('Select page', 'wp-gutenberg-epfl') }
+                            />
+                        </div>
                     </div>
-                </InspectorControls>
             )
         }
         return content;
