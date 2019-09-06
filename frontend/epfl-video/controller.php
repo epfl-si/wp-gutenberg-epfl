@@ -59,7 +59,7 @@ function epfl_video_get_error($error)
 
 function epfl_video_block( $attributes ) {
 
-  $url = isset( $attributes['url'] ) ? $attributes['url'] : '';
+  $url = Utils::get_sanitized_attribute( $attributes, 'url' );
 
 
   /* To handle video URL redirection

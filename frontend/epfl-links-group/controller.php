@@ -1,9 +1,12 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\LinksGroup;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_links_group_block( $attributes ) {
-  $main_url = isset( $attributes['mainUrl'] ) ? sanitize_text_field( $attributes['mainUrl'] ) : '';
-  $title = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
+  $main_url = Utils::get_sanitized_attribute( $attributes, 'mainUrl' );
+  $title    = Utils::get_sanitized_attribute( $attributes, 'title' );
   unset($attributes['mainUrl']);
   unset($attributes['title']);
 

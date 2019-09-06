@@ -1,27 +1,30 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\DefinitionList;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
-function epfl_definition_list_block($data) {
-  if (!$data) return;
+require_once(dirname(__FILE__).'/../lib/utils.php');
+
+function epfl_definition_list_block($attributes) {
+  if (!$attributes) return;
 
   // sanitize parameters
-  if (in_array('tableDisplay', $data)) {
-    $tabledisplay = $data['tableDisplay'];
+  if (in_array('tableDisplay', $attributes)) {
+    $tabledisplay = $attributes['tableDisplay'];
   } else {
     $tabledisplay = false;
   }
 
-  if (in_array('largeDisplay', $data)) {
-    $largedisplay = $data['largeDisplay'];
+  if (in_array('largeDisplay', $attributes)) {
+    $largedisplay = $attributes['largeDisplay'];
   } else {
     $largedisplay = false;
   }
 
   for($i = 1; $i <= 10; $i++){
     # sanitize and count titles first
-    $attributes['label'.$i] = isset( $attributes['label'.$i] ) ? sanitize_text_field( $attributes['label'.$i] ) : '';
-    $attributes['desc'.$i] = isset( $attributes['desc'.$i] ) ? sanitize_text_field( $attributes['desc'.$i] ) : '';
+    $attributes['label'.$i] = Utils::get_sanitized_attribute( $attributes, 'label'.$i );
+    $attributes['desc'.$i]  = Utils::get_sanitized_attribute( $attributes, 'desc'.$i );
   }
 
   ob_start();
@@ -32,7 +35,7 @@ function epfl_definition_list_block($data) {
 
 <dl class="definition-list<?php echo $tabledisplay ? ' definition-list-grid' : ''?>">
 
-  <?php foreach ($data as $key => $value) {
+  <?php foreach ($attributes as $key => $value) {
     // if definition is empty, skip this entry
     if ($skipNext) {
       $skipNext = false;

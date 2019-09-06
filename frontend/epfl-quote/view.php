@@ -1,13 +1,16 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\Quote;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_quote_block( $attributes ) {
 
-    $image_id = isset( $attributes['imageId'] ) ? sanitize_text_field( $attributes['imageId'] ) : '';
-    $quote    = isset( $attributes['quote'] ) ? sanitize_text_field( $attributes['quote'] ) : '';
-    $cite     = isset( $attributes['cite'] ) ? sanitize_text_field( $attributes['cite'] ) : '';
-    $footer   = isset( $attributes['footer'] ) ? sanitize_text_field( $attributes['footer'] ) : '';
+    $image_id = Utils::get_sanitized_attribute( $attributes, 'imageId' );
+    $quote    = Utils::get_sanitized_attribute( $attributes, 'quote' );
+    $cite     = Utils::get_sanitized_attribute( $attributes, 'cite' );
+    $footer   = Utils::get_sanitized_attribute( $attributes, 'footer' );
 
     $attachment = wp_get_attachment_image(
         $image_id,

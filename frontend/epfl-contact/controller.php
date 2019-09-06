@@ -1,25 +1,28 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\Contact;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 use function EPFL\Plugins\Gutenberg\Map\epfl_map_block;
 
-function epfl_contact_block($atts) {
+require_once(dirname(__FILE__).'/../lib/utils.php');
+
+function epfl_contact_block($attributes) {
     // sanitize parameters
-    foreach($atts as $key => $value) {
+    foreach($attributes as $key => $value) {
         if (strpos($key, 'information') !== false ||
         strpos($key, 'timetable') !== false) {
-            $atts[$key] = wp_kses_post($value);
+            $attributes[$key] = wp_kses_post($value);
         }
         elseif ($key == 'introduction')
         {
-            $atts[$key] = sanitize_textarea_field($value);
+            $attributes[$key] = sanitize_textarea_field($value);
         } else {
-            $atts[$key] = sanitize_text_field($value);
+            $attributes[$key] = sanitize_text_field($value);
         }
     }
 
-    $gray_wrapper  = isset( $atts['grayWrapper'] ) ? sanitize_text_field( $atts['grayWrapper'] ) : false;
+    $gray_wrapper  = Utils::get_sanitized_attribute($attributes, 'grayWrapper', false);
     ob_start();
 ?>
 
@@ -28,22 +31,22 @@ function epfl_contact_block($atts) {
       <div class="row">
         <div class="col-md-6">
           <h3>Contact</h3>
-          <?php if (isset($atts['introduction'])): ?>
-          <p><?php esc_html_e($atts['introduction']) ?></p>
+          <?php if (isset($attributes['introduction'])): ?>
+          <p><?php esc_html_e($attributes['introduction']) ?></p>
           <?php endif; ?>
 
           <?php for ($i=1; $i < 5; $i++): ?>
-            <?php if (isset($atts['timetable'.$i])): ?>
+            <?php if (isset($attributes['timetable'.$i])): ?>
           <div class="card card-body card-sm mb-2 flex-row flex-wrap justify-content-between justify-content-sm-start">
-            <div class="mr-3 w-sm-50"><?php echo $atts['timetable'.$i] ?></div>
+            <div class="mr-3 w-sm-50"><?php echo $attributes['timetable'.$i] ?></div>
           </div>
           <?php
           endif;
           endfor;
           ?>
           <?php for ($i=1; $i < 4; $i++): ?>
-          <?php if (isset($atts['information'.$i])): ?>
-          <p><?php echo urldecode($atts['information'.$i]) ?: '' ?></p>
+          <?php if (isset($attributes['information'.$i])): ?>
+          <p><?php echo urldecode($attributes['information'.$i]) ?: '' ?></p>
           <hr>
           <?php
           endif;
@@ -54,11 +57,11 @@ function epfl_contact_block($atts) {
         # bad quickfix that disallow INN011 as a place
         # because INN011 was a value in shortcake and not a placeholder
         # meaning some contact shortcode have this value but don't want to show a map
-        if (isset($atts['mapQuery']) && $atts['mapQuery'] != 'INN011'):
+        if (isset($attributes['mapQuery']) && $attributes['mapQuery'] != 'INN011'):
         ?>
         <div class="col-md-6 d-flex flex-column">
           <?php echo
-           epfl_map_block(['query' => $atts['mapQuery'], 'lang' => pll_current_language()]); ?>
+           epfl_map_block(['query' => $attributes['mapQuery'], 'lang' => pll_current_language()]); ?>
         </div>
         <?php endif; ?>
       </div>

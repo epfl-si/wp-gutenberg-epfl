@@ -9,14 +9,12 @@ function epfl_caption_cards_block( $attributes ) {
     if (!$attributes) return;
 
     for ($i = 1; $i <= 10; $i++) {
+        
         if (array_key_exists('title'.$i, $attributes)) {
-            $attributes['title'.$i]    = sanitize_text_field($attributes['title'.$i]);
-            $attributes['subtitle'.$i] = isset( $attributes['subtitle'.$i] ) ? sanitize_text_field( $attributes['subtitle'.$i] ) : '';
-            $attributes['link'.$i]     = isset( $attributes['link'.$i] ) ? sanitize_text_field( $attributes['link'.$i] ) : '';
-
-            if (!array_key_exists('imageId'.$i, $attributes)) {
-                $attributes['imageId'.$i] = '';
-            }
+            $attributes['title'.$i]    = Utils::get_sanitized_attribute( $attributes, 'title'.$i );
+            $attributes['subtitle'.$i] = Utils::get_sanitized_attribute( $attributes, 'subtitle'.$i );
+            $attributes['link'.$i]     = Utils::get_sanitized_attribute( $attributes, 'link'.$i);
+            $attributes['imageId'.$i]  = Utils::get_sanitized_attribute( $attributes, 'imageId'.$i);
         }
     }
 

@@ -1,11 +1,14 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\PageHighlight;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_page_highlight_block( $attributes ) {
 
-    $layout = isset( $attributes['layout'] ) ? sanitize_text_field( $attributes['layout'] ) : '';
-    $page   = isset( $attributes['page'] ) ? sanitize_text_field( $attributes['page'] ) : '';
+    $layout = Utils::get_sanitized_attribute( $attributes, 'layout' );
+    $page   = Utils::get_sanitized_attribute( $attributes, 'page' );
     $page   = json_decode($page, true);
 
     $page  = get_post($page["value"]);
