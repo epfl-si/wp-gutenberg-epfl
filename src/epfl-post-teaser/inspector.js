@@ -50,17 +50,17 @@ export default class InspectorControlsPostTeaser extends Component {
             // add empty value at first, in case for an unselect
             optionsPostsList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
 
-            const divStyle = {
+			{/*const divStyle = {
                 height: '600px',
-            };
+            };*/}
 
             const selectStyle = {
-                marginBottom: '20px'
+                marginBottom: '10px'
             }
 
             content = (
-                <InspectorControls>
-                    <div style={divStyle}>
+				<div>
+                	<InspectorControls>
                         <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
                             <ToggleControl
                                 label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
@@ -68,40 +68,37 @@ export default class InspectorControlsPostTeaser extends Component {
                                 onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
                             />
                         </PanelBody>
-                        <PanelBody title={ __( 'Posts', 'wp-gutenberg-epfl') }>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-post1'
-                                        name='epfl-page-teaser-post1'
-                                        value={ JSON.parse( attributes.post1 ) }
-                                        onChange={ handlePost1Change }
-                                        options={ optionsPostsList }
-                                        placeholder={ __('Select post', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-post2'
-                                        name='epfl-page-teaser-post2'
-                                        value={ JSON.parse( attributes.post2 ) }
-                                        onChange={ handlePost2Change }
-                                        options={ optionsPostsList }
-                                        placeholder={ __('Select post', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-post3'
-                                        name='epfl-post-teaser-post3'
-                                        value={ JSON.parse( attributes.post3 ) }
-                                        onChange={ handlePost3Change }
-                                        options={ optionsPostsList }
-                                        placeholder={ __('Select post', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                        </PanelBody>
+					</InspectorControls>
+                    <h4>{ __( 'Posts', 'wp-gutenberg-epfl') }</h4>
+                    <div style={selectStyle}>
+                        <Select
+                            id='epfl-page-teaser-post1'
+                            name='epfl-page-teaser-post1'
+                            value={ JSON.parse( attributes.post1 ) }
+                            onChange={ handlePost1Change }
+                            options={ optionsPostsList }
+                            placeholder={ __('Select post', 'wp-gutenberg-epfl') }
+                        />
                     </div>
-                </InspectorControls>
+                    <div style={selectStyle}>
+                        <Select
+                            id='epfl-page-teaser-post2'
+                            name='epfl-page-teaser-post2'
+                            value={ JSON.parse( attributes.post2 ) }
+                            onChange={ handlePost2Change }
+                            options={ optionsPostsList }
+                            placeholder={ __('Select post', 'wp-gutenberg-epfl') }
+                        />
+                    </div>
+                        <Select
+                            id='epfl-page-teaser-post3'
+                            name='epfl-post-teaser-post3'
+                            value={ JSON.parse( attributes.post3 ) }
+                            onChange={ handlePost3Change }
+                            options={ optionsPostsList }
+                            placeholder={ __('Select post', 'wp-gutenberg-epfl') }
+						/>
+				</div>
             )
         }
         return content;

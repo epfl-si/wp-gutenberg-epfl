@@ -39,13 +39,8 @@ registerBlockType(
 			const { attributes, className, setAttributes } = props
 			return (
 				<Fragment>
+					<h2>EPFL Post Teaser</h2>
 					<InspectorControlsPostTeaser { ...{ attributes, setAttributes } } />
-					<div className={ className }>
-                        <div id="preview-box">
-                            <h2>EPFL POST TEASER</h2>
-                            <div className="helper">{ __('Please fill the fields in the right-hand column', 'wp-gutenberg-epfl') }</div>
-                        </div>
-                    </div>
 				</Fragment>
 			)
 		},
