@@ -49,58 +49,57 @@ export default class InspectorControlsPageTeaser extends Component {
             // add empty value at first, in case for an unselect
             optionsPagesList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
 
-            const divStyle = {
+            {/*const divStyle = {
                 height: '600px',
-            };
+            };*/}
 
             const selectStyle = {
-                marginBottom: '20px'
+                marginBottom: '10px'
             }
 
             content = (
-                <InspectorControls>
-                    <div style={divStyle}>
-                        <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
-                            <ToggleControl
-                                label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
-                                checked={ attributes.gray }
-                                onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
-                            />
-                        </PanelBody>
-                        <PanelBody title={ __( 'Pages', 'wp-gutenberg-epfl') }>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-page1'
-                                        name='epfl-page-teaser-page1'
-                                        value={ JSON.parse( attributes.page1 ) }
-                                        onChange={ handlePage1Change }
-                                        options={ optionsPagesList }
-                                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-page2'
-                                        name='epfl-page-teaser-page2'
-                                        value={ JSON.parse( attributes.page2 ) }
-                                        onChange={ handlePage2Change }
-                                        options={ optionsPagesList }
-                                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                                <div style={selectStyle}>
-                                    <Select
-                                        id='epfl-page-teaser-page3'
-                                        name='epfl-page-teaser-page3'
-                                        value={ JSON.parse( attributes.page3 ) }
-                                        onChange={ handlePage3Change }
-                                        options={ optionsPagesList }
-                                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
-                                    />
-                                </div>
-                        </PanelBody>
-                    </div>
-                </InspectorControls>
+                <div >
+	                <InspectorControls>
+                    <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
+                        <ToggleControl
+                            label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
+                            checked={ attributes.gray }
+                            onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
+                        />
+                    </PanelBody>
+                	</InspectorControls>
+
+                    <h4>{ __( 'Pages', 'wp-gutenberg-epfl') }</h4>
+
+					<div style={selectStyle}>
+                    <Select
+                        id='epfl-page-teaser-page1'
+                        name='epfl-page-teaser-page1'
+                        value={ JSON.parse( attributes.page1 ) }
+                        onChange={ handlePage1Change }
+                        options={ optionsPagesList }
+                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
+                    />
+					</div>
+					<div style={selectStyle}>
+                    <Select
+                        id='epfl-page-teaser-page2'
+                        name='epfl-page-teaser-page2'
+                        value={ JSON.parse( attributes.page2 ) }
+                        onChange={ handlePage2Change }
+                        options={ optionsPagesList }
+                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
+                    />
+					</div>
+                    <Select
+                        id='epfl-page-teaser-page3'
+                        name='epfl-page-teaser-page3'
+                        value={ JSON.parse( attributes.page3 ) }
+                        onChange={ handlePage3Change }
+                        options={ optionsPagesList }
+                        placeholder={ __('Select page', 'wp-gutenberg-epfl') }
+                    />
+                </div>
             )
         }
         return content;
