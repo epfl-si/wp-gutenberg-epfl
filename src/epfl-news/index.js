@@ -40,8 +40,8 @@ registerBlockType(
 				default: 'en',
 			},
 			category: {
-				type: 'string',
-				default: '0',
+				type: 'integer',
+				default: 0,
 			},
 			themes: {
 				type: 'string',
