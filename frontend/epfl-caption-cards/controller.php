@@ -1,6 +1,7 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\CaptionCards;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
