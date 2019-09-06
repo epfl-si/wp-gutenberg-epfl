@@ -107,14 +107,14 @@ function epfl_news_check_required_parameters($channel, $lang) {
 
 function epfl_news_block( $attributes ) {
 
-  $channel       = sanitize_text_field( $attributes['channel'] ) ?: 1;
+  $channel       = Utils::get_sanitized_attribute($attributes, 'channel', 1);
   $lang          = sanitize_text_field( $attributes['lang'] ) ?: 'fr';
-  $template      = sanitize_text_field( $attributes['template'] ) ?: 'listing';
+  $template      = Utils::get_sanitized_attribute( $attributes ,'template', 'listing');
   $all_news_link = sanitize_text_field( $attributes['displayLinkAllNews'] ) ?: FALSE;
   $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 3;
   $category      = sanitize_text_field( $attributes['category'] );
   $themes        = sanitize_text_field( $attributes['themes'] );
-  $projects      = sanitize_text_field( $attributes['projects'] );
+  $projects      = Utils::get_sanitized_attribute( $attributes, 'projects');
 
   /*
   var_dump("Channel: " . $channel);
