@@ -15,11 +15,8 @@ function epfl_card_block($data) {
       }
   }
 
-  if (in_array('gray_wrapper', $data)) {
-    $gray_wrapper = $data['gray_wrapper'];
-  } else {
-    $gray_wrapper = false;
-  }
+  $gray_wrapper = Utils::get_sanitized_attribute($data, 'grayWrapper', false);
+
 
   $elementCount = 0;
   for($i = 1; $i < 4; $i++){
