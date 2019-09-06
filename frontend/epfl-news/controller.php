@@ -107,7 +107,7 @@ function epfl_news_check_required_parameters($channel, $lang) {
 
 function epfl_news_block( $attributes ) {
 
-  $channel       = sanitize_text_field( $attributes['channel'] ) ?: '1';
+  $channel       = sanitize_text_field( $attributes['channel'] ) ?: 1;
   $lang          = sanitize_text_field( $attributes['lang'] ) ?: 'fr';
   $template      = sanitize_text_field( $attributes['template'] ) ?: 'listing';
   $all_news_link = sanitize_text_field( $attributes['displayLinkAllNews'] ) ?: FALSE;
