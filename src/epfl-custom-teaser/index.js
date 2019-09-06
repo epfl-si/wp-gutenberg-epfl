@@ -43,7 +43,7 @@ const getAttributes = () => {
 			type: 'string',
         };
         atts['imageId'+i] = {
-			type: 'string',
+			type: 'integer',
         };
         atts['imageId'+i] = {
 			type: 'number',
