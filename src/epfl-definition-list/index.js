@@ -51,19 +51,20 @@ function DefinitionListPanel ( props ) {
 
     return (
         <div>
-           <h4>{`Definition ${index}`} </h4>
-           <TextControl
-                value={ attributes['label' + index] || ''}
-                onChange={ value => setIndexedAttributes('label', value) }
-                placeholder={ __('Term', 'wp-gutenberg-epfl') }
-                help={ __('Term to define', 'wp-gutenberg-epfl') }
-            />
-           <TextareaControl
-                placeholder={ __('Definition', 'wp-gutenberg-epfl') }
-                value={ attributes['desc' + index] || ''}
-                onChange={ value => setIndexedAttributes('desc', value) }
-                help={ __('Definition of the term', 'wp-gutenberg-epfl') }
-            />
+            <PanelBody title={`Definition ${index}`} initialOpen={false}>
+            <TextControl
+                    value={ attributes['label' + index] || ''}
+                    onChange={ value => setIndexedAttributes('label', value) }
+                    placeholder={ __('Term', 'wp-gutenberg-epfl') }
+                    help={ __('Term to define', 'wp-gutenberg-epfl') }
+                />
+            <TextareaControl
+                    placeholder={ __('Definition', 'wp-gutenberg-epfl') }
+                    value={ attributes['desc' + index] || ''}
+                    onChange={ value => setIndexedAttributes('desc', value) }
+                    help={ __('Definition of the term', 'wp-gutenberg-epfl') }
+                />
+            </PanelBody>
         </div>
     );
 }
@@ -99,7 +100,7 @@ registerBlockType( 'epfl/definition-list', {
                     </PanelBody>
                 </InspectorControls>
                 <h2>EPFL Definition List</h2>
-                <div className={ className + ' wp-block-scroll' }>
+                <div>
                     {[...Array(maxDefintionList)].map((x, i) =>
                         <DefinitionListPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}

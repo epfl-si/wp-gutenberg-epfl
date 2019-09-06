@@ -71,7 +71,7 @@ registerBlockType( 'epfl/hero', {
                             type="image"
                             value={attributes.imageId}
                             render={({ open }) => (
-                                <div>
+                                <div class="components-base-control">
                                     <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
                                     <button onClick={open}>
                                     { __('Select Image', 'wp-gutenberg-epfl') }
