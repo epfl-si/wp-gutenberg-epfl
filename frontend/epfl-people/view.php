@@ -7,10 +7,16 @@
 
     function epfl_people_render($persons, $from, $columns) {
 
-        //error_log("epfl_people_render persons: ".$persons);
-        //error_log("epfl_people_render from: ".$from);
-        //error_log("epfl_people_render columns: ".$columns);
+        //var_dump($persons);
+        //var_dump($from);
+        //var_dump($columns);
 
+        /* You may wonder why we don't directly call "epfl_people_card" function with all
+        3 parameters? Because it doesn't work... only the first 2 paramters are given to
+        the function. I don't know why... there's probably a reason but I'm lazy and don't 
+        want to go through documentation. But, I thought it was important to put a comment
+        here to avoid others persons to want to simplify this code by directly calling 
+        "epfl_people_card" and not understand why it's not working... */
         $function_to_be_called = __NAMESPACE__.'\epfl_people_'.$columns;
         $markup = $function_to_be_called($persons, $from);
         return $markup;
