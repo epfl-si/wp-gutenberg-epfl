@@ -49,7 +49,7 @@ function epfl_news_get_limit($template, $nb_news)
  * @param $template: id of template
  * @param $lang: lang of news
  * @param $category: id of news category
- * @param $themes: The list of news themes id. For example: 1,2,5
+ * @param $themes: string representing a list  of associative arrays. Ex: '[{"value":4,"label":"Engineering"}]'
  * @return the api URL of news
  */
 function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category, $themes, $projects)
@@ -66,11 +66,9 @@ function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category
     }
 
     // filter by themes
-    if ($themes !== '' && $themes != '[]') {
-        $themes = explode(',', $themes);
-        foreach ($themes as $theme) {
-            $url .= '&themes=' . $theme;
-        }
+    $themes = json_decode($themes, true);
+    foreach ($themes as $theme) {
+        $url .= '&themes=' . $theme['value'];
     }
 
     // filter by projects
