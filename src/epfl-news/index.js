@@ -20,8 +20,8 @@ registerBlockType(
 		],
 		attributes: {
 			channel: {
-				type: 'string',
-				default: '1',
+				type: 'integer',
+				default: 1,
 			},
 			template: {
                 type: 'string',
@@ -40,8 +40,8 @@ registerBlockType(
 				default: 'en',
 			},
 			category: {
-				type: 'string',
-				default: '0',
+				type: 'integer',
+				default: 0,
 			},
 			themes: {
 				type: 'string',

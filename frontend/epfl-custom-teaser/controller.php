@@ -1,31 +1,33 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\CustomTeaser;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_custom_teaser_block( $attributes ) {
     $elementCount = 0;
 
     for($i = 1; $i <= 3; $i++){
         # sanitize and count titles first
-        if (isset($attributes['title'.$i])) {
-          $attributes['title'.$i] = sanitize_text_field( $attributes['title'.$i]);
+        $attributes['title'.$i]       = Utils::get_sanitized_attribute( $attributes, 'title'.$i );
 
-          if ($attributes['title'.$i] !== '') {
-            $elementCount++;
-          }
-        } else {
-          $attributes['title'.$i] = '';
+        if ($attributes['title'.$i] !== '') {
+          $elementCount++;
         }
 
-        $attributes['imageId'.$i] = isset( $attributes['imageId'.$i] ) ? sanitize_text_field( $attributes['imageId'.$i] ) : '';
-        $attributes['url'.$i] = isset( $attributes['url'.$i] ) ? sanitize_text_field( $attributes['url'.$i] ) : '';
-        $attributes['excerpt'.$i] = isset( $attributes['excerpt'.$i] ) ? sanitize_text_field( $attributes['excerpt'.$i] ) : '';
-        $attributes['buttonLabel'.$i] = isset( $attributes['buttonLabel'.$i] ) ? sanitize_text_field( $attributes['buttonLabel'.$i] ) : '';
-        $attributes['titleSection'.$i] = isset( $attributes['titleSection'.$i] ) ? sanitize_text_field( $attributes['titleSection'.$i] ) : '';
+
+        $attributes['imageId'.$i]       = Utils::get_sanitized_attribute( $attributes, 'imageId'.$i );
+        $attributes['url'.$i]           = Utils::get_sanitized_attribute( $attributes, 'url'.$i );
+        $attributes['excerpt'.$i]       = Utils::get_sanitized_attribute( $attributes, 'excerpt'.$i );
+        $attributes['buttonLabel'.$i]   = Utils::get_sanitized_attribute( $attributes, 'buttonLabel'.$i );
+        $attributes['titleSection'.$i]  = Utils::get_sanitized_attribute( $attributes, 'titleSection'.$i );
+        
     }
 
+    $attributes['grayBackground'] = Utils::get_sanitized_attribute( $attributes, 'grayBackground', False);
     $greyClasses = '';
-    if (isset($attributes['grayBackground']) && $attributes['grayBackground'] === true) {
+    if ($attributes['grayBackground']) {
       $greyClasses = 'bg-gray-100 py-4 mt-4';
     }
 

@@ -1,12 +1,16 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\Hero;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_hero_block( $attributes ) {
 
-    $title    = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
-    $text     = isset( $attributes['text'] ) ? sanitize_text_field( $attributes['text'] ) : '';
-    $image_id = isset( $attributes['imageId'] ) ? sanitize_text_field( $attributes['imageId'] ) : '';
+
+    $title    = Utils::get_sanitized_attribute( $attributes, 'title' );
+    $text     = Utils::get_sanitized_attribute( $attributes, 'text' );
+    $image_id = Utils::get_sanitized_attribute( $attributes, 'imageId' );
 
     $image = wp_get_attachment_image(
         $image_id,

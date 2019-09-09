@@ -1,12 +1,15 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\Toggle;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_toggle_block( $attributes ) {
 
-    $title     = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
+    $title     = Utils::get_sanitized_attribute( $attributes, 'title' );
     $content   = isset( $attributes['content'] ) ? $attributes['content'] : '';
-    $state     = isset( $attributes['state'] ) ? sanitize_text_field( $attributes['state'] ) : '0';
+    $state     = Utils::get_sanitized_attribute( $attributes, 'state', 'close' );
     $toggle_id = md5($content . rand());
 
     /*

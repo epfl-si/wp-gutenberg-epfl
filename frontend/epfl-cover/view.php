@@ -1,11 +1,14 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\Cover;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_cover_block( $attributes ) {
 
-    $image_id    = sanitize_text_field( $attributes['imageId'] ) ?: '';
-    $description = sanitize_text_field( $attributes['description'] ) ?: '';
+    $image_id    = Utils::get_sanitized_attribute( $attributes, 'imageId' );
+    $description = Utils::get_sanitized_attribute( $attributes, 'description' );
 
     /*
     var_dump($image_id);

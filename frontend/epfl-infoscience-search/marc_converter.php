@@ -315,7 +315,7 @@ Class InfoscienceMarcConverter
         $marc_source = new \File_MARCXML($marc_xml, \File_MARC::SOURCE_STRING);
 
         while ($marc_record = $marc_source->next()) {
-            array_push($publications, InfoscienceMarcConverter::parse_record($marc_record, false));
+            $publications[] = InfoscienceMarcConverter::parse_record($marc_record, false);
         }
         return $publications;
     }

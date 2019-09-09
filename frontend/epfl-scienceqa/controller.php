@@ -12,6 +12,9 @@
 declare(strict_types=1);
 
 namespace EPFL\Plugins\Gutenberg\ScienceQA;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 define(__NAMESPACE__ . '\SCIENCEQA_API_URL', 'https://qi.epfl.ch/');
 
@@ -91,8 +94,8 @@ function epfl_scienceqa_check_response_data( $scienceqa ): bool {
 function epfl_scienceqa_block( $attributes ) {
 
 	// sanitize parameters
-    $lang = sanitize_text_field( $attributes['lang'] ) ?: 'en';
-    $qid  = sanitize_text_field( $attributes['qid'] );
+    $lang = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
+    $qid  = Utils::get_sanitized_attribute( $attributes, 'qid' );
 
 	if (epfl_scienceqa_required_parameters( $lang ) == FALSE) {
 		return '';

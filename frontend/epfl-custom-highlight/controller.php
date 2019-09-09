@@ -1,15 +1,18 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\CustomHighlight;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_custom_highlight_block( $attributes ) {
 
-    $title          = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
-    $description    = isset( $attributes['description'] ) ? sanitize_text_field( $attributes['description'] ) : '';
-    $image_id       = isset( $attributes['imageId'] ) ? sanitize_text_field( $attributes['imageId'] ) : '';
-    $link           = isset( $attributes['link'] ) ? sanitize_text_field( $attributes['link'] ) : '';
-    $button_label   = isset( $attributes['buttonLabel'] ) ? sanitize_text_field( $attributes['buttonLabel'] ) : '';
-    $layout         = isset( $attributes['layout'] ) ? sanitize_text_field( $attributes['layout'] ) : '';
+    $title          = Utils::get_sanitized_attribute( $attributes, 'title' );
+    $description    = Utils::get_sanitized_attribute( $attributes, 'description' );
+    $image_id       = Utils::get_sanitized_attribute( $attributes, 'imageId' );
+    $link           = Utils::get_sanitized_attribute( $attributes, 'link' );
+    $button_label   = Utils::get_sanitized_attribute( $attributes, 'buttonLabel' );
+    $layout         = Utils::get_sanitized_attribute( $attributes, 'layout' );
 
     $image = wp_get_attachment_image(
         $image_id,

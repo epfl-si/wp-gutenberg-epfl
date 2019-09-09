@@ -1,11 +1,14 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\PostHighlight;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_post_highlight_block( $attributes ) {
 
-    $layout = sanitize_text_field( $attributes['layout'] ) ?: '';
-    $post   = sanitize_text_field( $attributes['post'] ) ?: '';
+    $layout = Utils::get_sanitized_attribute( $attributes, 'layout' );
+    $post   = Utils::get_sanitized_attribute( $attributes, 'post' );
     $post   = json_decode($post, true);
 
     $post   = get_post($post["value"]);

@@ -66,7 +66,7 @@ class AutoFields
         }
         foreach ($fields as $field) {
             if (false === array_search($field, $protected)) {
-                array_push($protected, $field);
+                $protected[] = $field;
                 $changed = true;
             }
         }
