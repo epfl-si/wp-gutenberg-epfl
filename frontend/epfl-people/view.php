@@ -11,7 +11,7 @@
         //var_dump($from);
         //var_dump($columns);
 
-        $function_to_be_called = "EPFL\Plugins\Gutenberg\People\epfl_people_" . $columns;
+        $function_to_be_called = 'EPFL\Plugins\Gutenberg\People\epfl_people_' . $columns;
         $markup = $function_to_be_called($persons, $from);
         return $markup;
     }
