@@ -21,10 +21,10 @@ function epfl_definition_list_block($attributes) {
     $largedisplay = false;
   }
 
+  # We will put all definitions in an array
   $definitions = array();
 
   for($i = 1; $i <= 10; $i++){
-    # sanitize and count titles first
     $definitions[] = array('label' => Utils::get_sanitized_attribute( $attributes, 'label'.$i ),
                            'desc'  => Utils::get_sanitized_attribute( $attributes, 'desc'.$i ));
   }
