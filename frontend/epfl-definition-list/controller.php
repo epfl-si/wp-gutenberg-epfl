@@ -21,10 +21,12 @@ function epfl_definition_list_block($attributes) {
     $largedisplay = false;
   }
 
+  $definitions = array();
+
   for($i = 1; $i <= 10; $i++){
     # sanitize and count titles first
-    $attributes['label'.$i] = Utils::get_sanitized_attribute( $attributes, 'label'.$i );
-    $attributes['desc'.$i]  = Utils::get_sanitized_attribute( $attributes, 'desc'.$i );
+    $definitions[] = array('label' => Utils::get_sanitized_attribute( $attributes, 'label'.$i ),
+                           'desc'  => Utils::get_sanitized_attribute( $attributes, 'desc'.$i ));
   }
 
   ob_start();
@@ -35,24 +37,14 @@ function epfl_definition_list_block($attributes) {
 
 <dl class="definition-list<?php echo $tabledisplay ? ' definition-list-grid' : ''?>">
 
-  <?php foreach ($attributes as $key => $value) {
-    // if definition is empty, skip this entry
-    if ($skipNext) {
-      $skipNext = false;
-      continue;
-    }
+  <?php
+  foreach ($definitions as $definition) {
+    
+    if($definition['label'] == "" || $definition['desc'] == "") continue;
 
-    if (strlen($value) === 0) {
-      $skipNext = true;
-      continue;
-    }
-
-    if (strpos($key, 'label') === 0) {
-      echo '<dt>' . $value . '</dt>';
-    }
-    else if (strpos($key, 'desc') === 0) {
-      echo '<dd>' . $value . '</dd>';
-    }
+    echo '<dt>' . $definition['label'] . '</dt>';
+    echo '<dd>' . $definition['desc'] . '</dd>';
+    
 
   } //foreach
   ?>
