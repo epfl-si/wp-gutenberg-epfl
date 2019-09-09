@@ -1,4 +1,6 @@
 <?php
+namespace EPFL\Plugins\Gutenberg\People;
+
     // colums = 1 and 3
     function epfl_people_card($persons, $from, $columns) {
 
