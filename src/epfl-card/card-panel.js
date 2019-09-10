@@ -20,7 +20,7 @@ function CardPanel ( props ) {
 
     const onImageSelect = (imageObject) => {
         setAttributes({
-            [`image${index}`]: imageObject.sizes.full.url,
+            [`imageUrl${index}`]: imageObject.sizes.full.url,
             [`imageId${index}`]: imageObject.id
         })
     };
@@ -44,10 +44,10 @@ function CardPanel ( props ) {
             <MediaUpload
                 onSelect={ onImageSelect }
                 type="image"
-                value={ attributes['image' + index]  || '' }
+                value={ attributes['imageUrl' + index]  || '' }
                 render={({ open }) => (
                     <div>
-                        <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } />
+                        <img style={ {maxHeight: '200px'} } src={ attributes['imageUrl' + index] } />
                         <button onClick={ open }>
                         { __('Select Image', 'wp-gutenberg-epfl') }
                         </button>

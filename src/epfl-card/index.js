@@ -38,7 +38,7 @@ const getAttributes = () => {
         atts['imageId'+i] = {
 			type: 'integer',
         };
-        atts['image'+i] = {
+        atts['imageUrl'+i] = {
             type: 'string',
             default: null
         };
