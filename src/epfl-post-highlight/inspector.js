@@ -36,7 +36,11 @@ export default class InspectorControlsPostHighlight extends Component {
         const { attributes, setAttributes } = this.props
         const handlePostChange = ( post ) => setAttributes( { post: JSON.stringify( post ) } );
 
-        let content = "";
+        let content = (
+            <div>
+                {__( 'No post found', 'wp-gutenberg-epfl') }
+            </div>
+        )
 
         let optionsLayoutList = [
             { value: 'right', label: __('Right', 'wp-gutenberg-epfl')},
