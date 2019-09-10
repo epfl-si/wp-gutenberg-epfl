@@ -37,7 +37,11 @@ export default class InspectorControlsPostTeaser extends Component {
         const handlePost2Change = ( post2 ) => setAttributes( { post2: JSON.stringify( post2 ) } );
         const handlePost3Change = ( post3 ) => setAttributes( { post3: JSON.stringify( post3 ) } );
 
-        let content = "";
+        let content = (
+            <div>
+                {__( 'No post found', 'wp-gutenberg-epfl') }
+            </div>
+        )
 
         if (this.state.posts !== null) {
 
