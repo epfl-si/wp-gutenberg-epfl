@@ -45,10 +45,7 @@ const getAttributes = () => {
         atts['imageId'+i] = {
 			type: 'integer',
         };
-        atts['imageId'+i] = {
-			type: 'number',
-        };
-        atts['image'+i] = {
+        atts['imageUrl'+i] = {
             type: 'string',
         };
     }
@@ -65,7 +62,7 @@ function CustomTeaserPanel ( props ) {
 
     const onImageSelect = (imageObject) => {
         setAttributes({
-            [`image${index}`]: imageObject.sizes.full.url,
+            [`imageUrl${index}`]: imageObject.sizes.full.url,
             [`imageId${index}`]: imageObject.id
         })
     };
@@ -99,10 +96,10 @@ function CustomTeaserPanel ( props ) {
             <MediaUpload
                 onSelect={ onImageSelect }
                 type="image"
-                value={ attributes['image' + index]  || '' }
+                value={ attributes['imageUrl' + index]  || '' }
                 render={({ open }) => (
                     <div>
-                        <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } />
+                        <img style={ {maxHeight: '200px'} } src={ attributes['imageUrl' + index] } />
                         <button onClick={ open }>
                         { __('Select Image', 'wp-gutenberg-epfl') }
                         </button>
@@ -116,7 +113,7 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),

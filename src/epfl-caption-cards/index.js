@@ -33,7 +33,7 @@ const getAttributes = () => {
         atts['imageId'+i] = {
 			type: 'integer',
         };
-        atts['image'+i] = {
+        atts['imageUrl'+i] = {
             type: 'string',
             default: null
         };
@@ -51,7 +51,7 @@ function CaptionCardPanel ( props ) {
 
     const onImageSelect = (imageObject) => {
         setAttributes({
-            [`image${index}`]: imageObject.sizes.full.url,
+            [`imageUrl${index}`]: imageObject.sizes.full.url,
             [`imageId${index}`]: imageObject.id
         })
     };
@@ -77,10 +77,10 @@ function CaptionCardPanel ( props ) {
             <MediaUpload
                 onSelect={ onImageSelect }
                 type="image"
-                value={ attributes['image' + index]  || '' }
+                value={ attributes['imageUrl' + index]  || '' }
                 render={({ open }) => (
                     <div class="components-base-control">
-                        <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } /><br />
+                        <img style={ {maxHeight: '200px'} } src={ attributes['imageUrl' + index] } /><br />
                         <button onClick={ open }>
                         { __('Select Image', 'wp-gutenberg-epfl') }
                         </button>
@@ -96,7 +96,7 @@ function CaptionCardPanel ( props ) {
 
 registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: 'screenoptions',
 	category: 'common',
 	attributes: getAttributes(),
