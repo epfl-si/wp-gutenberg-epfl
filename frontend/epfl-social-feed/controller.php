@@ -13,18 +13,18 @@ define('DEFAULT_WIDTH', 374);
 
 function epfl_social_feed_block( $attributes ) {
 
-    $attributes['height']        = Utils::get_sanitized_attribute( $attributes, 'height', DEFAULT_HEIGHT );
-    $attributes['width']         = Utils::get_sanitized_attribute( $attributes, 'width', DEFAULT_WIDTH );
-    $attributes['twitter_limit'] = Utils::get_sanitized_attribute( $attributes, 'twitter_limit' );
-    if(intval($attributes['twitter_limit']) == 0)$attributes['twitter_limit'] = '';
-    $attributes['twitter_url']   = Utils::get_sanitized_attribute( $attributes, 'twitter_url' );
-    $attributes['instagram_url'] = Utils::get_sanitized_attribute( $attributes, 'instagram_url' );
-    $attributes['facebook_url']  = Utils::get_sanitized_attribute( $attributes, 'facebook_url' );
+    $attributes['height']       = Utils::get_sanitized_attribute( $attributes, 'height', DEFAULT_HEIGHT );
+    $attributes['width']        = Utils::get_sanitized_attribute( $attributes, 'width', DEFAULT_WIDTH );
+    $attributes['twitterLimit'] = Utils::get_sanitized_attribute( $attributes, 'twitterLimit' );
+    if(intval($attributes['twitterLimit']) == 0)$attributes['twitterLimit'] = '';
+    $attributes['twitterUrl']   = Utils::get_sanitized_attribute( $attributes, 'twitterUrl' );
+    $attributes['instagramUrl'] = Utils::get_sanitized_attribute( $attributes, 'instagramUrl' );
+    $attributes['facebookUrl']  = Utils::get_sanitized_attribute( $attributes, 'facebookUrl' );
 
-    return epfl_social_feed_view($attributes['twitter_url'],
-                                $attributes['twitter_limit'],
-                                $attributes['instagram_url'],
-                                $attributes['facebook_url'],
+    return epfl_social_feed_view($attributes['twitterUrl'],
+                                $attributes['twitterLimit'],
+                                $attributes['instagramUrl'],
+                                $attributes['facebookUrl'],
                                 $attributes['height'],
                                 $attributes['width']
                                 );
