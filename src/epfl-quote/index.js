@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: quoteIcon,
 	category: 'common',
 	attributes: {
@@ -36,10 +36,10 @@ registerBlockType( 'epfl/quote', {
 		quote : {
 			type: 'string',
         },
-        cite : {
+        author : {
 			type: 'string',
         },
-        footer : {
+        position : {
 			type: 'string',
 		}
 	},
@@ -69,7 +69,7 @@ registerBlockType( 'epfl/quote', {
                     </div>
                     <blockquote className="blockquote mt-3 col-md-10 border-0">
                         <p class="mb-0">{ attributes.quote }</p>
-                        <footer class="blockquote-footer"><cite title={ attributes.cite }>{ attributes.cite }</cite>, { attributes.footer } </footer>
+                        <footer class="blockquote-footer"><cite title={ attributes.author }>{ attributes.author }</cite>, { attributes.position } </footer>
                     </blockquote>
                 </div>
             </div>
@@ -98,13 +98,13 @@ registerBlockType( 'epfl/quote', {
 					/>
 					<TextControl
 						label={ __('Author', 'wp-gutenberg-epfl') }
-						value={ attributes.cite }
-						onChange={ cite => setAttributes( { cite } ) }
+						value={ attributes.author }
+						onChange={ author => setAttributes( { author } ) }
 					/>
 					<TextControl
 						label={ __('Position', 'wp-gutenberg-epfl') }
-						value={ attributes.footer }
-						onChange={ footer => setAttributes( { footer } ) }
+						value={ attributes.position }
+						onChange={ position => setAttributes( { position } ) }
 					/>
 			</div>
 		</Fragment>
