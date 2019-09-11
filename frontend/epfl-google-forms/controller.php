@@ -27,7 +27,7 @@ function epfl_google_forms_block( $attributes ) {
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLZkqncWIvRbQvnn3K8yKUEn0Of8s-JTFZ3l94TWAIHnovJA/viewform?embedded=true" width="640" height="663" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
     */
 
-    $data = isset( $attributes['content'] ) ? $attributes['content'] : '';
+    $data = isset( $attributes['data'] ) ? urldecode($attributes['data']) : '';
 
     /* Extracting needed attributes */
     $src = epfl_google_forms_get_attribute('src', $data);
