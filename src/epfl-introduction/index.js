@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/introduction', {
 	title: __( 'EPFL Introduction', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: 'text',
 	category: 'common',
 	attributes: {
@@ -29,7 +29,7 @@ registerBlockType( 'epfl/introduction', {
         content: {
 			type: 'string',
         },
-        gray: {
+        grayBackground: {
             type: 'boolean',
             default: false,
         },
@@ -45,8 +45,8 @@ registerBlockType( 'epfl/introduction', {
 			<InspectorControls><hr/>
 				<ToggleControl
 					label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
-					checked={ attributes.gray }
-					onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
+					checked={ attributes.grayBackground }
+					onChange={ () => setAttributes( { grayBackground: ! attributes.grayBackground } ) }
 				/>
 			</InspectorControls>
 	            <div className={ className }>
