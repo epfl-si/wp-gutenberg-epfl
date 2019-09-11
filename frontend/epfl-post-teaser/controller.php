@@ -8,10 +8,10 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_post_teaser_block( $attributes ) {
 
-    $post1 = Utils::get_sanitized_attribute( $attributes, 'post1' );
-    $post2 = Utils::get_sanitized_attribute( $attributes, 'post2' );
-    $post3 = Utils::get_sanitized_attribute( $attributes, 'post3' );
-    $gray  = Utils::get_sanitized_attribute( $attributes, 'gray', false );
+    $post1           = Utils::get_sanitized_attribute( $attributes, 'post1' );
+    $post2           = Utils::get_sanitized_attribute( $attributes, 'post2' );
+    $post3           = Utils::get_sanitized_attribute( $attributes, 'post3' );
+    $grayBackground  = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
 
     $postsCount = 0;
     $data  = [];
@@ -38,7 +38,7 @@ function epfl_post_teaser_block( $attributes ) {
     }
 
     $html = '<div class="container-full my-3 ';
-    if ($gray) {
+    if ($grayBackground) {
         $html .= ' bg-gray-100';
     }
     $html .= '">';

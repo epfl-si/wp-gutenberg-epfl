@@ -27,8 +27,8 @@ registerBlockType(
 				type: 'string',
 				default: null,
             },
-            gray: {
-                type: 'string',
+            grayBackground: {
+                type: 'boolean',
             }
 		},
 		supports : {
