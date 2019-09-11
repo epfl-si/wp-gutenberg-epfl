@@ -6,10 +6,10 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_page_teaser_block( $attributes ) {
 
-    $page1 = Utils::get_sanitized_attribute( $attributes, 'page1' );
-    $page2 = Utils::get_sanitized_attribute( $attributes, 'page2' );
-    $page3 = Utils::get_sanitized_attribute( $attributes, 'page3' );
-    $gray  = Utils::get_sanitized_attribute( $attributes, 'gray', false );
+    $page1           = Utils::get_sanitized_attribute( $attributes, 'page1' );
+    $page2           = Utils::get_sanitized_attribute( $attributes, 'page2' );
+    $page3           = Utils::get_sanitized_attribute( $attributes, 'page3' );
+    $grayBackground  = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
     $pagesCount = 0;
 
     $data  = [];
@@ -36,7 +36,7 @@ function epfl_page_teaser_block( $attributes ) {
     }
 
     $html = '<div class="container-full my-3 ';
-    if ($gray) {
+    if ($grayBackground) {
         $html .= ' bg-gray-100';
     }
     $html .= '">';

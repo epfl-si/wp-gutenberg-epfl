@@ -63,8 +63,8 @@ export default class InspectorControlsPageTeaser extends Component {
                     <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
                         <ToggleControl
                             label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
-                            checked={ attributes.gray }
-                            onChange={ () => setAttributes( { gray: ! attributes.gray } ) }
+                            checked={ attributes.grayBackground }
+                            onChange={ () => setAttributes( { grayBackground: ! attributes.grayBackground } ) }
                         />
                     </PanelBody>
                 	</InspectorControls>
