@@ -21,21 +21,21 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/tableau', {
 	title: __( 'EPFL Tableau', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: tableauIcon,
 	category: 'common',
 	attributes: {
-        content: {
+        embedCode: {
             type: 'string',
         },
-        url: {
-			type: 'url',
-        },
-        width: {
+        tableauName: {
 			type: 'string',
         },
+        width: {
+			type: 'integer',
+        },
         height: {
-            type: 'string',
+            type: 'integer',
         }
 	},
 	supports : {
@@ -48,7 +48,7 @@ registerBlockType( 'epfl/tableau', {
             <Fragment>
                 <InspectorControls>
 					<hr/>
-						<h4>For an URL</h4>
+						<h4>Tableau dimensions</h4>
                         <TextControl
 							label={ __('Width', 'wp-gutenberg-epfl') }
                             value={ attributes.width }
@@ -64,16 +64,16 @@ registerBlockType( 'epfl/tableau', {
                     <h2>EPFL TABLEAU</h2>
                         <TextareaControl
 							label={ __('EPFL Tableau content', 'wp-gutenberg-epfl') }
-                            value={ attributes.content }
-                            onChange={ content => setAttributes( { content } ) }
+                            value={ decodeURIComponent(attributes.embedCode) }
+                            onChange={ embedCode => setAttributes( { embedCode } ) }
                             help={ __('Paste here the content of the Embed Code when you press the "Share" button on an EPFL tableau view', 'wp-gutenberg-epfl') }
                         />
                     <h4>OR</h4>
                         <TextControl
-							label={ __('URL', 'wp-gutenberg-epfl') }
-                            value={ attributes.url }
-                            onChange={ url => setAttributes( { url } ) }
-                            help={ __('Url of the view (eg. "EPFLofficialstatistics/StatistiquesOfficielles")', 'wp-gutenberg-epfl') }
+							label={ __('Tablean Name', 'wp-gutenberg-epfl') }
+                            value={ attributes.tableauName }
+                            onChange={ tableauName => setAttributes( { tableauName } ) }
+                            help={ __('Name of the Tableau view (eg. "EPFLofficialstatistics/StatistiquesOfficielles")', 'wp-gutenberg-epfl') }
                         />
                 </div>
             </Fragment>
