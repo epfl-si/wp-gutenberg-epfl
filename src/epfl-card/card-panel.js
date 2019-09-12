@@ -3,6 +3,7 @@ const { __ } = wp.i18n
 
 const {
     MediaUpload,
+    RichText,
 } = wp.editor;
 
 const {
@@ -55,11 +56,17 @@ function CardPanel ( props ) {
                     </div>
                 )}
             />
-                <TextareaControl
-                label={ __('Text', 'wp-gutenberg-epfl') }
-                value={ attributes['content' + index]  || ''}
-                onChange={ value => setIndexedAttributes('content', value) }
+            <label><small>Text</small></label>
+            <RichText
+                    value={ attributes['content' + index]  || ''}
+                    onChange={ value => setIndexedAttributes('content', value) }
+                    tagName="div"
+                    multiline="p"
+                    placeholder={ __('Write your text here','wp-gutenberg-epfl')}
+                    keepPlaceholderOnFocus = { true }
+                    allowedFormats={[]}
             />
+            <hr/>
         </div>
     );
 }
