@@ -52,7 +52,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/card', {
 	title: __( 'EPFL Card', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.1',
 	icon: cardIcon,
 	category: 'common',
 	attributes: getAttributes(),
