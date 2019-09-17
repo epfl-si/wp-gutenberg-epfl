@@ -64,7 +64,7 @@ function CardPanel ( props ) {
                     multiline="p"
                     placeholder={ __('Write your text here','wp-gutenberg-epfl')}
                     keepPlaceholderOnFocus = { true }
-                    
+                    allowedFormats={[]} 
             />
             <hr/>
         </div>
