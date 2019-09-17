@@ -6,6 +6,7 @@ const {
 
 const {
     TextControl,
+    PanelBody,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -46,19 +47,20 @@ function LinkGroupPanel ( props ) {
 
     return (
         <div>
-            <TextControl
-                label={ __('Label', 'wp-gutenberg-epfl') }
-                value={ attributes['label' + index] || ''}
-                onChange={ value => setIndexedAttributes('label', value) }
-                help= { __('Link label', 'wp-gutenberg-epfl') }
-            />
-            <TextControl
-                label={ __('URL', 'wp-gutenberg-epfl') }
-                value={ attributes['url' + index]  || '' }
-                onChange={ value => setIndexedAttributes('url', value) }
-                help= { __('Link URL', 'wp-gutenberg-epfl') }
-            />
-            <hr />
+            <PanelBody title={`Link ${index}`} initialOpen={false}>
+                <TextControl
+                    label={ __('Label', 'wp-gutenberg-epfl') }
+                    value={ attributes['label' + index] || ''}
+                    onChange={ value => setIndexedAttributes('label', value) }
+                    help= { __('Link label', 'wp-gutenberg-epfl') }
+                />
+                <TextControl
+                    label={ __('URL', 'wp-gutenberg-epfl') }
+                    value={ attributes['url' + index]  || '' }
+                    onChange={ value => setIndexedAttributes('url', value) }
+                    help= { __('Link URL', 'wp-gutenberg-epfl') }
+                />
+            </PanelBody>
         </div>
     );
 }
@@ -77,7 +79,7 @@ registerBlockType( 'epfl/links-group', {
 
         return (
             <Fragment>
-                <div className={ className + ' wp-block-scroll' }>
+                <div>
                     <h2>EPFL Links group</h2>
                     <TextControl
                         label={ __('Title', 'wp-gutenberg-epfl') }
