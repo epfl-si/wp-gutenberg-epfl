@@ -64,7 +64,7 @@ registerBlockType( 'epfl/tableau', {
                     <h2>EPFL TABLEAU</h2>
                         <TextareaControl
 							label={ __('EPFL Tableau content', 'wp-gutenberg-epfl') }
-                            value={ decodeURIComponent(attributes.embedCode) }
+                            value={ attributes.embedCode }
                             onChange={ embedCode => setAttributes( { embedCode } ) }
                             help={ __('Paste here the content of the Embed Code when you press the "Share" button on an EPFL tableau view', 'wp-gutenberg-epfl') }
                         />

@@ -40,7 +40,7 @@ registerBlockType( 'epfl/google-forms', {
                     <h2>EPFL GOOGLE FORMS</h2>
                         <TextareaControl
 							label={ __('Google Forms <iframe> HTML code', 'wp-gutenberg-epfl')}
-                            value={ decodeURIComponent(attributes.data) }
+                            value={ attributes.data }
                             onChange={ data => setAttributes( { data } ) }
                             help={ __('You can paste the given HTML code containing <iframe>', 'wp-gutenberg-epfl') }
                         />
