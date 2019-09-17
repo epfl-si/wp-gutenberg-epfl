@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/google-forms', {
 	title: __( 'Google Forms', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: googleFormsIcon,
 	category: 'common',
 	attributes: {
@@ -40,7 +40,7 @@ registerBlockType( 'epfl/google-forms', {
                     <h2>EPFL GOOGLE FORMS</h2>
                         <TextareaControl
 							label={ __('Google Forms <iframe> HTML code', 'wp-gutenberg-epfl')}
-                            value={ decodeURIComponent(attributes.data) }
+                            value={ attributes.data }
                             onChange={ data => setAttributes( { data } ) }
                             help={ __('You can paste the given HTML code containing <iframe>', 'wp-gutenberg-epfl') }
                         />
