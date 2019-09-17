@@ -32,9 +32,9 @@ const getAttributes = () => {
 			type: 'string',
         };
         atts['imageId'+i] = {
-			type: 'number',
+			type: 'integer',
         };
-        atts['image'+i] = {
+        atts['imageUrl'+i] = {
             type: 'string',
             default: null
         };
@@ -52,7 +52,7 @@ function CaptionCardPanel ( props ) {
 
     const onImageSelect = (imageObject) => {
         setAttributes({
-            [`image${index}`]: imageObject.sizes.full.url,
+            [`imageUrl${index}`]: imageObject.sizes.full.url,
             [`imageId${index}`]: imageObject.id
         })
     };
@@ -60,28 +60,28 @@ function CaptionCardPanel ( props ) {
     return (
         <div>
             <PanelBody title={`Caption card ${index}`} initialOpen={false}>
-                <TextControl
-                        label={ __('Title', 'wp-gutenberg-epfl') }
-                        value={ attributes['title' + index] || ''}
-                        onChange={ value => setIndexedAttributes('title', value) }
-                    />
-                <TextControl
-                        label={ __('Subtitle', 'wp-gutenberg-epfl') }
-                        value={ attributes['subtitle' + index] || ''}
-                        onChange={ value => setIndexedAttributes('subtitle', value) }
-                    />
-                <TextControl
-                        label={ __('Link', 'wp-gutenberg-epfl') }
-                        value={ attributes['link' + index] || ''}
-                        onChange={ value => setIndexedAttributes('link', value) }
-                    />
+            <TextControl
+                    label={ __('Title', 'wp-gutenberg-epfl') }
+                    value={ attributes['title' + index] || ''}
+                    onChange={ value => setIndexedAttributes('title', value) }
+                />
+            <TextControl
+                    label={ __('Subtitle', 'wp-gutenberg-epfl') }
+                    value={ attributes['subtitle' + index] || ''}
+                    onChange={ value => setIndexedAttributes('subtitle', value) }
+                />
+            <TextControl
+                    label={ __('Link', 'wp-gutenberg-epfl') }
+                    value={ attributes['link' + index] || ''}
+                    onChange={ value => setIndexedAttributes('link', value) }
+                />
                 <MediaUpload
                     onSelect={ onImageSelect }
                     type="image"
-                    value={ attributes['image' + index]  || '' }
+                    value={ attributes['imageUrl' + index]  || '' }
                     render={({ open }) => (
                         <div class="components-base-control">
-                            <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } /><br />
+                            <img style={ {maxHeight: '200px'} } src={ attributes['imageUrl' + index] } /><br />
                             <button onClick={ open }>
                             { __('Select Image', 'wp-gutenberg-epfl') }
                             </button>
@@ -98,7 +98,7 @@ function CaptionCardPanel ( props ) {
 
 registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: 'screenoptions',
 	category: 'common',
 	attributes: getAttributes(),

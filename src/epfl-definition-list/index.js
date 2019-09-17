@@ -71,7 +71,7 @@ function DefinitionListPanel ( props ) {
 
 registerBlockType( 'epfl/definition-list', {
 	title: __( 'EPFL Definition List', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: 'editor-alignleft',
 	category: 'common',
 	attributes: getAttributes(),

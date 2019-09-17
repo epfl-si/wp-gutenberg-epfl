@@ -2,29 +2,33 @@
 
 namespace EPFL\Plugins\Gutenberg\PostTeaser;
 
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
+
 function epfl_post_teaser_block( $attributes ) {
 
-    $post1 = isset( $attributes['post1'] ) ?  sanitize_text_field( $attributes['post1'] ) : '';
-    $post2 = isset( $attributes['post2'] ) ? sanitize_text_field( $attributes['post2'] ) : '';
-    $post3 = isset( $attributes['post3'] ) ? sanitize_text_field( $attributes['post3'] ) : '';
-    $gray  = isset( $attributes['gray'] ) ? sanitize_text_field( $attributes['gray'] ) : false;
+    $post1           = Utils::get_sanitized_attribute( $attributes, 'post1' );
+    $post2           = Utils::get_sanitized_attribute( $attributes, 'post2' );
+    $post3           = Utils::get_sanitized_attribute( $attributes, 'post3' );
+    $grayBackground  = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
 
     $postsCount = 0;
     $data  = [];
 
     if ($post1 !== '') {
         $post1 = json_decode($post1, true);
-        array_push($data, $post1["value"]);
+        $data[] = $post1["value"];
     }
 
     if ($post2 !== '') {
         $post2 = json_decode($post2, true);
-        array_push($data, $post2["value"]);
+        $data[] = $post2["value"];
     }
 
     if ($post3 !== '') {
         $post3 = json_decode($post3, true);
-        array_push($data, $post3["value"]);
+        $data[] = $post3["value"];
     }
 
     foreach($data as $key => $post) {
@@ -34,7 +38,7 @@ function epfl_post_teaser_block( $attributes ) {
     }
 
     $html = '<div class="container-full my-3 ';
-    if ($gray) {
+    if ($grayBackground) {
         $html .= ' bg-gray-100';
     }
     $html .= '">';

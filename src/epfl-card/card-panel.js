@@ -3,6 +3,7 @@ const { __ } = wp.i18n
 
 const {
     MediaUpload,
+    RichText,
 } = wp.editor;
 
 const {
@@ -21,7 +22,7 @@ function CardPanel ( props ) {
 
     const onImageSelect = (imageObject) => {
         setAttributes({
-            [`image${index}`]: imageObject.sizes.full.url,
+            [`imageUrl${index}`]: imageObject.sizes.full.url,
             [`imageId${index}`]: imageObject.id
         })
     };
@@ -45,10 +46,10 @@ function CardPanel ( props ) {
                 <MediaUpload
                     onSelect={ onImageSelect }
                     type="image"
-                    value={ attributes['image' + index]  || '' }
+                    value={ attributes['imageUrl' + index]  || '' }
                     render={({ open }) => (
                         <div class="components-base-control">
-                            <img style={ {maxHeight: '200px'} } src={ attributes['image' + index] } />
+                            <img style={ {maxHeight: '200px'} } src={ attributes['imageUrl' + index] } />
                             <button onClick={ open }>
                             { __('Select Image', 'wp-gutenberg-epfl') }
                             </button>
@@ -56,10 +57,15 @@ function CardPanel ( props ) {
                         </div>
                     )}
                 />
-                    <TextareaControl
-                    label={ __('Text', 'wp-gutenberg-epfl') }
-                    value={ attributes['content' + index]  || ''}
-                    onChange={ value => setIndexedAttributes('content', value) }
+                <label><small>Text</small></label>
+                <RichText
+                        value={ attributes['content' + index]  || ''}
+                        onChange={ value => setIndexedAttributes('content', value) }
+                        tagName="div"
+                        multiline="p"
+                        placeholder={ __('Write your text here','wp-gutenberg-epfl')}
+                        keepPlaceholderOnFocus = { true }
+                        allowedFormats={[]}
                 />
             </PanelBody>
         </div>

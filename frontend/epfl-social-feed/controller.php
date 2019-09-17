@@ -1,33 +1,31 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\SocialFeed;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 require_once 'view.php';
 
-define('EPFL\Plugins\Gutenberg\SocialFeed\DEFAULT_HEIGHT', 450);
-define('EPFL\Plugins\Gutenberg\SocialFeed\DEFAULT_WIDTH', 374);
+define('DEFAULT_HEIGHT', 450);
+define('DEFAULT_WIDTH', 374);
 
 
-function epfl_social_feed_block( $atts ) {
-    // extract shortcode parameters
-    $atts = shortcode_atts(array(
-        'twitter_url'  => '',
-        'twitter_limit' => 0,
-        'instagram_url'  => '',
-        'facebook_url'  => '',
-        'height' => DEFAULT_HEIGHT,
-        'width' => DEFAULT_WIDTH,
-    ), $atts);
+function epfl_social_feed_block( $attributes ) {
 
-    $atts['height'] = empty($atts['height']) ? DEFAULT_HEIGHT : $atts['height'];
-    $atts['width'] = empty($atts['width']) ? DEFAULT_WIDTH : $atts['width'];
-    $atts['twitter_limit'] = intval($atts['twitter_limit']) == 0 ? '' : $atts['twitter_limit'];
+    $attributes['height']       = Utils::get_sanitized_attribute( $attributes, 'height', DEFAULT_HEIGHT );
+    $attributes['width']        = Utils::get_sanitized_attribute( $attributes, 'width', DEFAULT_WIDTH );
+    $attributes['twitterLimit'] = Utils::get_sanitized_attribute( $attributes, 'twitterLimit' );
+    if(intval($attributes['twitterLimit']) == 0)$attributes['twitterLimit'] = '';
+    $attributes['twitterUrl']   = Utils::get_sanitized_attribute( $attributes, 'twitterUrl' );
+    $attributes['instagramUrl'] = Utils::get_sanitized_attribute( $attributes, 'instagramUrl' );
+    $attributes['facebookUrl']  = Utils::get_sanitized_attribute( $attributes, 'facebookUrl' );
 
-    return epfl_social_feed_view($atts['twitter_url'],
-                                $atts['twitter_limit'],
-                                $atts['instagram_url'],
-                                $atts['facebook_url'],
-                                $atts['height'],
-                                $atts['width']
+    return epfl_social_feed_view($attributes['twitterUrl'],
+                                $attributes['twitterLimit'],
+                                $attributes['instagramUrl'],
+                                $attributes['facebookUrl'],
+                                $attributes['height'],
+                                $attributes['width']
                                 );
 }

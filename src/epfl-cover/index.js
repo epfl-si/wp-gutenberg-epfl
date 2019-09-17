@@ -20,14 +20,14 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/cover', {
 	title: __( 'EPFL Cover', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: coverIcon,
 	category: 'common',
 	attributes: {
 		imageId: {
 			type: 'number',
 		},
-		image: {
+		imageUrl: {
 			type: 'string',
 		},
 		description : {
@@ -43,7 +43,7 @@ registerBlockType( 'epfl/cover', {
 
 		function onImageSelect(imageObject) {
             setAttributes({
-				image: imageObject.url,
+				imageUrl: imageObject.url,
 				imageId: imageObject.id
 			})
 		}
@@ -58,7 +58,7 @@ registerBlockType( 'epfl/cover', {
 					value={attributes.imageId}
 					render={({ open }) => (
 						<div class="components-base-control">
-							<img style={ {maxHeight: '200px'} } src={ attributes.image } />
+							<img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
 							<button onClick={open}>
 							{ __('Select Image', 'wp-gutenberg-epfl') }
 							</button>

@@ -49,7 +49,7 @@ function epfl_news_get_limit($template, $nb_news)
  * @param $template: id of template
  * @param $lang: lang of news
  * @param $category: id of news category
- * @param $themes: The list of news themes id. For example: 1,2,5
+ * @param $themes: string representing a list  of associative arrays. Ex: '[{"value":4,"label":"Engineering"}]'
  * @return the api URL of news
  */
 function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category, $themes, $projects)
@@ -66,11 +66,9 @@ function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category
     }
 
     // filter by themes
-    if ($themes !== '' && $themes != '[]') {
-        $themes = explode(',', $themes);
-        foreach ($themes as $theme) {
-            $url .= '&themes=' . $theme;
-        }
+    $themes = json_decode($themes, true);
+    foreach ($themes as $theme) {
+        $url .= '&themes=' . $theme['value'];
     }
 
     // filter by projects
@@ -107,14 +105,14 @@ function epfl_news_check_required_parameters($channel, $lang) {
 
 function epfl_news_block( $attributes ) {
 
-  $channel       = sanitize_text_field( $attributes['channel'] ) ?: '1';
-  $lang          = sanitize_text_field( $attributes['lang'] ) ?: 'fr';
-  $template      = sanitize_text_field( $attributes['template'] ) ?: 'listing';
-  $all_news_link = sanitize_text_field( $attributes['displayLinkAllNews'] ) ?: FALSE;
-  $nb_news       = sanitize_text_field( $attributes['nbNews'] ) ?: 3;
-  $category      = sanitize_text_field( $attributes['category'] );
-  $themes        = sanitize_text_field( $attributes['themes'] );
-  $projects      = sanitize_text_field( $attributes['projects'] );
+  $channel       = Utils::get_sanitized_attribute( $attributes, 'channel', 1 );
+  $lang          = Utils::get_sanitized_attribute( $attributes, 'lang', 'fr' );
+  $template      = Utils::get_sanitized_attribute( $attributes,'template', 'listing' );
+  $all_news_link = Utils::get_sanitized_attribute( $attributes, 'displayLinkAllNews', FALSE );
+  $nb_news       = Utils::get_sanitized_attribute( $attributes, 'nbNews', 3 );
+  $category      = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
+  $themes        = Utils::get_sanitized_attribute( $attributes, 'themes' );
+  $projects      = Utils::get_sanitized_attribute( $attributes, 'projects');
 
   /*
   var_dump("Channel: " . $channel);

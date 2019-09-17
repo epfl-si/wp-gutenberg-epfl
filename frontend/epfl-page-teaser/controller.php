@@ -1,29 +1,32 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\PageTeaser;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_page_teaser_block( $attributes ) {
 
-    $page1 = isset( $attributes['page1'] ) ? sanitize_text_field( $attributes['page1'] ) : '';
-    $page2 = isset( $attributes['page2'] ) ? sanitize_text_field( $attributes['page2'] ) : '';
-    $page3 = isset( $attributes['page3'] ) ? sanitize_text_field( $attributes['page3'] ) : '';
-    $gray  = isset( $attributes['gray'] ) ? sanitize_text_field( $attributes['gray'] ) : false;
+    $page1           = Utils::get_sanitized_attribute( $attributes, 'page1' );
+    $page2           = Utils::get_sanitized_attribute( $attributes, 'page2' );
+    $page3           = Utils::get_sanitized_attribute( $attributes, 'page3' );
+    $grayBackground  = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
     $pagesCount = 0;
 
     $data  = [];
 
     if ($page1 !== '') {
         $page1 = json_decode($page1, true);
-        array_push($data, $page1["value"]);
+        $data[] = $page1["value"];
     }
 
     if ($page2 !== '') {
         $page2 = json_decode($page2, true);
-        array_push($data, $page2["value"]);
+        $data[] = $page2["value"];
     }
 
     if ($page3 !== '') {
         $page3 = json_decode($page3, true);
-        array_push($data, $page3["value"]);
+        $data[] = $page3["value"];
     }
 
     foreach($data as $key => $page) {
@@ -33,7 +36,7 @@ function epfl_page_teaser_block( $attributes ) {
     }
 
     $html = '<div class="container-full my-3 ';
-    if ($gray) {
+    if ($grayBackground) {
         $html .= ' bg-gray-100';
     }
     $html .= '">';

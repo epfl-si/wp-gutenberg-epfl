@@ -12,7 +12,7 @@ registerBlockType(
 	'epfl/news',
 	{
 		title: __( "EPFL News", 'wp-gutenberg-epfl'),
-		description: 'v1.0.0',
+		description: 'v1.0.1',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
@@ -20,8 +20,8 @@ registerBlockType(
 		],
 		attributes: {
 			channel: {
-				type: 'string',
-				default: '1',
+				type: 'integer',
+				default: 1,
 			},
 			template: {
                 type: 'string',
@@ -40,8 +40,8 @@ registerBlockType(
 				default: 'en',
 			},
 			category: {
-				type: 'string',
-				default: '0',
+				type: 'integer',
+				default: 0,
 			},
 			themes: {
 				type: 'string',

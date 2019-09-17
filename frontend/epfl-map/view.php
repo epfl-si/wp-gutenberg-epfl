@@ -1,12 +1,14 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\Map;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/language.php');
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 use function EPFL\Plugins\Gutenberg\Lib\Language\get_current_or_default_language;
 
 function epfl_map_block( $attributes ) {
-    $query   = isset( $attributes['query'] ) ? sanitize_text_field( $attributes['query'] ) : '';
+    $query   = Utils::get_sanitized_attribute( $attributes, 'query' );
     $lang    = get_current_or_default_language();
     $map_url = 'https://plan.epfl.ch/iframe/?q=' . $query . '&amp;lang=' . $lang . '&amp;map_zoom=10';
 

@@ -109,13 +109,13 @@ function epfl_memento_check_required_parameters($memento, $lang)
 function epfl_memento_block( $attributes ) {
 
     // sanitize parameters
-    $memento   = isset($attributes['memento']) ? sanitize_text_field($attributes['memento']) : '1';
-    $lang      = isset($attributes['lang']) ? sanitize_text_field($attributes['lang']) : 'en';
-    $template  = isset($attributes['template']) ? sanitize_text_field($attributes['template']) : 'slider_with_the_first_highlighted_event';
-    $nb_events = isset($attributes['nbEvents']) ? sanitize_text_field($attributes['nbEvents']) : 10;
-    $category  = isset($attributes['category']) ? sanitize_text_field($attributes['category']) : '';
-    $keyword   = isset($attributes['keyword']) ? sanitize_text_field($attributes['keyword']) : '';
-    $period    = isset($attributes['period']) ? sanitize_text_field($attributes['period']) : '';
+    $memento   = Utils::get_sanitized_attribute( $attributes, 'memento', 1 );
+    $lang      = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
+    $template  = Utils::get_sanitized_attribute( $attributes, 'template', 'slider_with_the_first_highlighted_event' );
+    $nb_events = Utils::get_sanitized_attribute( $attributes, 'nbEvents', 10 );
+    $category  = Utils::get_sanitized_attribute( $attributes, 'category', 2 );
+    $keyword   = Utils::get_sanitized_attribute( $attributes, 'keyword' );
+    $period    = Utils::get_sanitized_attribute( $attributes, 'period' );
 
     /*
     var_dump("Memento: " . $memento);

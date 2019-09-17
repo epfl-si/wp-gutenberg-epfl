@@ -21,7 +21,7 @@ const { Fragment } = wp.element;
 
 function testTime(attributes) {
 	if (!attributes.startDateTime || !attributes.endDateTime) {
-		return (<i>Choose a time in the sidebar</i>)
+		return (<p><b>Warning</b> <i>Please choose a time in the sidebar</i></p>)
 	} else {
 		return(<i>From {attributes.startDateTime.substring(0,10)}, {attributes.startDateTime.substring(11,20)} to {attributes.endDateTime.substring(0,10)}, {attributes.endDateTime.substring(11,20)}</i> )
 	}

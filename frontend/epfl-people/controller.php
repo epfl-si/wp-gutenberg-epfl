@@ -32,11 +32,11 @@ function epfl_people_sortArrayByArray($data,$orderArray) {
 
 function epfl_people_block( $attributes ) {
 
-    $units            = isset( $attributes['units'] ) ? sanitize_text_field( $attributes['units'] ) : '';
-    $scipers          = isset( $attributes['scipers'] ) ? sanitize_text_field( $attributes['scipers'] ) : '';
-    $doctoral_program = isset( $attributes['doctoralProgram'] ) ? sanitize_text_field( $attributes['doctoralProgram'] ) : '';
-    $function         = isset( $attributes['fonction'] ) ? sanitize_text_field( $attributes['fonction'] ) : '';
-    $columns          = isset( $attributes['columns'] ) ? sanitize_text_field( $attributes['columns'] ) : '';
+    $units            = Utils::get_sanitized_attribute( $attributes, 'units' );
+    $scipers          = Utils::get_sanitized_attribute( $attributes, 'scipers' );
+    $doctoral_program = Utils::get_sanitized_attribute( $attributes, 'doctoralProgram' );
+    $function         = Utils::get_sanitized_attribute( $attributes, 'fonction' );
+    $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
 
     /*
     var_dump($units);
@@ -101,7 +101,7 @@ function epfl_people_block( $attributes ) {
 
     if ("" !== $units || "" !== $doctoral_program) {
         // Sort persons list alphabetically when units
-        usort($persons, 'epfl_people_person_compare');
+        usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     } else {
         // Respect given order when sciper
         $scipers =  array_map('intval', explode(',', $parameter['scipers']));

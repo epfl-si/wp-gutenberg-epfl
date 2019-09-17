@@ -1,16 +1,19 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\Introduction;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_introduction_block( $attributes ) {
 
-    $title = isset( $attributes['title'] ) ? sanitize_text_field( $attributes['title'] ) : '';
-    $content = isset( $attributes['content'] ) ? sanitize_text_field( $attributes['content'] ) : '';
-    $gray = isset( $attributes['gray'] ) ? sanitize_text_field( $attributes['gray'] ) : false;
+    $title          = Utils::get_sanitized_attribute( $attributes, 'title' );
+    $content        = Utils::get_sanitized_attribute( $attributes, 'content' );
+    $grayBackground = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
 
     $markup = '<div class="container-full my-3">';
     $markup .= '<div class="introduction';
-    if ($gray) {
+    if ($grayBackground) {
         $markup .= ' bg-gray-100';
     }
     $markup .= '">';

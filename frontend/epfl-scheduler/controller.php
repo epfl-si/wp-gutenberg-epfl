@@ -25,8 +25,8 @@ function epfl_scheduler_block( $attributes ) {
 
     // sanitize parameters
     $content         = isset($attributes['content']) ? $attributes['content'] : '';
-    $start_date_time = isset($attributes['startDateTime']) ? sanitize_text_field( $attributes['startDateTime']) : '';
-    $end_date_time   = isset($attributes['endDateTime']) ? sanitize_text_field( $attributes['endDateTime']) : '';
+    $start_date_time = Utils::get_sanitized_attribute( $attributes, 'startDateTime' );
+    $end_date_time   = Utils::get_sanitized_attribute( $attributes, 'endDateTime' );
 
     /*
     var_dump($content);

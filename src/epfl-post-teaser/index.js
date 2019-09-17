@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/post-teaser',
 	{
 		title: __( "EPFL Post Teaser", 'wp-gutenberg-epfl'),
-		description: 'v1.0.0',
+		description: 'v1.0.1',
 		category: 'common',
 		keywords: [
             __( 'page' , 'wp-gutenberg-epfl'),
@@ -27,8 +27,8 @@ registerBlockType(
 				type: 'string',
 				default: null,
             },
-            gray: {
-                type: 'string',
+            grayBackground: {
+                type: 'boolean',
             }
 		},
 		supports : {

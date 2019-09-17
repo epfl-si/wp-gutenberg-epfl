@@ -21,8 +21,8 @@ registerBlockType(
 		],
 		attributes: {
 			memento: {
-				type: 'string',
-				default: '1',
+				type: 'integer',
+				default: 1,
 			},
 			template: {
                 type: 'string',
@@ -37,8 +37,8 @@ registerBlockType(
 				default: 'en',
 			},
 			category: {
-				type: 'string',
-				default: '0',
+				type: 'integer',
+				default: 0,
 			},
 			keyword: {
 				type: 'string',

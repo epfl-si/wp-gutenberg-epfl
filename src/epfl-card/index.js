@@ -21,7 +21,12 @@ const { Fragment } = wp.element;
 const maxCards = 3;
 
 const getAttributes = () => {
-    let atts = {};
+    let atts = {
+        grayWrapper: {
+            type: 'boolean',
+            default: false,
+        },
+    };
 
     for (var i = 1; i <= maxCards; i++) {
         atts['title'+i] = {
@@ -31,9 +36,9 @@ const getAttributes = () => {
 			type: 'string',
         };
         atts['imageId'+i] = {
-			type: 'number',
+			type: 'integer',
         };
-        atts['image'+i] = {
+        atts['imageUrl'+i] = {
             type: 'string',
             default: null
         };
@@ -47,7 +52,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/card', {
 	title: __( 'EPFL Card', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: cardIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -59,6 +64,15 @@ registerBlockType( 'epfl/card', {
 
         return (
             <Fragment>
+                <InspectorControls>
+                    <PanelBody title='Format'>
+                        <ToggleControl
+                            label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }
+                            checked={ attributes.grayWrapper }
+                            onChange={ grayWrapper => setAttributes( { grayWrapper } ) }
+                        />
+                    </PanelBody>
+                </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                         <h2>EPFL Card</h2>
                         {[...Array(maxCards)].map((x, i) =>
