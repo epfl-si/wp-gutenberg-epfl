@@ -1,15 +1,18 @@
+$iconSize: 20px;
+
 .wp-block-help-icon {
   position:relative;
+  margin: 10px 0px 0px 4px;
 }
 
 .wp-block-help-icon svg {
   position:absolute;
-  bottom:-2px;
-  height:20px;
-  width:20px;  
+  bottom:-4px;
+  height: $iconSize;
+  width: $iconSize;  
 }
 
 .wp-block-help-icon a {
-  margin-left: 20px;
+  margin-left: $iconSize+2;
 }
 
