@@ -82,7 +82,7 @@ export default class InspectorControlsNews extends Component {
             ];
 
             let optionsCategoriesList = [
-                { value: '0', label: __('No filter', 'wp-gutenberg-epfl') },
+                { value: 0, label: __('No filter', 'wp-gutenberg-epfl') },
             ];
 
             this.state.categories.forEach(category => {

@@ -20,7 +20,7 @@ export default class PreviewNews extends Component {
 		let newsUrl = `https://actu.epfl.ch/api/v1/channels/${attributes.channel}/news/`;
         newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
         
-		if (attributes.category !== "0") {
+		if (attributes.category !== 0) {
 			newsUrl += `&category=${attributes.category}`;
 		}
 		

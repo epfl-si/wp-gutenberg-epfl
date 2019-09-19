@@ -61,7 +61,7 @@ function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category
     $url = NEWS_API_URL . $channel . '/news/?format=json&lang=' . $lang . '&limit=' . $limit;
 
     // filter by category
-    if ($category !== '') {
+    if ($category !== '' && $category !== "0") {
         $url .= '&category=' . $category;
     }
 
