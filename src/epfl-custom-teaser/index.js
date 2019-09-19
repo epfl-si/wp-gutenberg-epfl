@@ -126,6 +126,7 @@ registerBlockType( 'epfl/custom-teaser', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-teaser-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }
