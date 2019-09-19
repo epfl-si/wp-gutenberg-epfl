@@ -54,6 +54,7 @@ registerBlockType( 'epfl/scheduler', {
       return (
         <Fragment>
             <InspectorControls>
+                <a class="wp-block-help" href="{ __('https://www.epfl.ch/campus/services/scheduler-en/', 'wp-gutenberg-epfl') }" target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a>
                 <PanelBody title={ __('Start Date & Time', 'wp-gutenberg-epfl') }>
                     <DateTimePicker
                         currentDate={ attributes.startDateTime }
