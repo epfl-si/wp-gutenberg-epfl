@@ -83,6 +83,7 @@ export default class InspectorControlsMemento extends Component {
 
             content = (
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/memento-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title={ __('Memento', 'capitainewp-gutenberg-blocks', 'wp-gutenberg-epfl') }>
                         <SelectControl 
                             label={ __("Select your memento", 'wp-gutenberg-epfl') }
