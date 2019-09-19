@@ -1,4 +1,4 @@
-
+import './style.scss'
 import tableauIcon from './tableau-icon'
 
 const { __ } = wp.i18n;
@@ -47,6 +47,9 @@ registerBlockType( 'epfl/tableau', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <hr/>
+                        <h4>Help</h4>
+                        <div class="wp-block-help-icon"><span>{ tableauIcon }</span><a href="https://www.epfl.ch/campus/services/en/it-services/tableau-en/">Online help</a></div>
 					<hr/>
 						<h4>Tableau dimensions</h4>
                         <TextControl
