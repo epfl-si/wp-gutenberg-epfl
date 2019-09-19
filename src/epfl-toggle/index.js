@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/toggle', {
 	title: __( 'EPFL Toggle', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: toggleIcon,
 	category: 'common',
 	attributes: {

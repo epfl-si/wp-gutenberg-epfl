@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/custom-highlight', {
 	title: __( 'EPFL Custom Highlight', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: customHighlightIcon,
 	category: 'common',
 	attributes: {

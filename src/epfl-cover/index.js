@@ -21,7 +21,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/cover', {
 	title: __( 'EPFL Cover', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: coverIcon,
 	category: 'common',
 	attributes: {

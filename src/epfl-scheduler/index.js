@@ -29,7 +29,7 @@ function testTime(attributes) {
 
 registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: schedulerIcon,
 	category: 'common',
 	attributes: {

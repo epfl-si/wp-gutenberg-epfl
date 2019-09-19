@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: socialFeedIcon,
 	category: 'common',
 	attributes: {

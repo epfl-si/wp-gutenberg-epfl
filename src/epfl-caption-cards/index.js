@@ -96,7 +96,7 @@ function CaptionCardPanel ( props ) {
 
 registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: 'screenoptions',
 	category: 'common',
 	attributes: getAttributes(),

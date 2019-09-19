@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/post-highlight',
 	{
 		title: __( "EPFL Post Highlight", 'wp-gutenberg-epfl'),
-		description: 'v1.0.1',
+		description: 'v1.0.3',
 		category: 'common',
 		keywords: [
             __( 'post' , 'wp-gutenberg-epfl'),

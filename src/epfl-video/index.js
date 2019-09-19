@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: videoIcon,
 	category: 'common',
 	attributes: {

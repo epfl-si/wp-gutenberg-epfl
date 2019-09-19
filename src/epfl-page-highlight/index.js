@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/page-highlight',
 	{
 		title: __( "EPFL Page Highlight", 'wp-gutenberg-epfl'),
-		description: 'v1.0.0',
+		description: 'v1.0.1',
 		category: 'common',
 		keywords: [
             __( 'page' , 'wp-gutenberg-epfl'),

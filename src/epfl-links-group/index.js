@@ -65,7 +65,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
