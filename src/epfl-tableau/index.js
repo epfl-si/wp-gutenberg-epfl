@@ -49,7 +49,7 @@ registerBlockType( 'epfl/tableau', {
                 <InspectorControls>
                     <hr/>
                         <h4>Help</h4>
-                        <div class="wp-block-help-icon"><span>{ tableauIcon }</span><a href="https://www.epfl.ch/campus/services/en/it-services/tableau-en/">Online help</a></div>
+                        <span class="wp-block-help-icon">{ tableauIcon }<a href="https://www.epfl.ch/campus/services/en/it-services/tableau-en/">Online help</a></span>
 					<hr/>
 						<h4>Tableau dimensions</h4>
                         <TextControl
