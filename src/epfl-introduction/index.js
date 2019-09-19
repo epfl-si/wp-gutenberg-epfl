@@ -42,7 +42,9 @@ registerBlockType( 'epfl/introduction', {
 	    return (
 
             <Fragment>
-			<InspectorControls><hr/>
+			<InspectorControls>
+				<p><a class="wp-block-help" href="{ __('https://www.epfl.ch/campus/services/introduction-en/', 'wp-gutenberg-epfl') }" target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<hr/>
 				<ToggleControl
 					label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
 					checked={ attributes.grayBackground }
