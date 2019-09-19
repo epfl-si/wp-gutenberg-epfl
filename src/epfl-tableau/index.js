@@ -48,7 +48,7 @@ registerBlockType( 'epfl/tableau', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a class="wp-block-help" href="{ __('https://www.epfl.ch/campus/services/tableau-en/', 'wp-gutenberg-epfl') }" target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/tableau-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 					<hr/>
 						<h4>Tableau dimensions</h4>
                         <TextControl
