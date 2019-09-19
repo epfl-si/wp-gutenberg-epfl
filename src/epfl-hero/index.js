@@ -51,7 +51,9 @@ registerBlockType( 'epfl/hero', {
 
         return (
             <Fragment>
-
+                <InspectorControls>
+                    <p><a class="wp-block-help" href="{ __('https://www.epfl.ch/campus/services/hero-en/', 'wp-gutenberg-epfl') }" target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                </InspectorControls>
                 <div className={ className }>
                         <h2>EPFL Hero</h2>
                         <TextControl
