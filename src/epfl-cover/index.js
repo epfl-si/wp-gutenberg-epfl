@@ -10,6 +10,7 @@ const {
 
 const {
 	MediaUpload,
+	InspectorControls,
 } = wp.editor;
 
 const {
@@ -50,6 +51,9 @@ registerBlockType( 'epfl/cover', {
 
 		return (
 		<Fragment>
+			<InspectorControls>
+				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/cover-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+			</InspectorControls>
 			<div className={ className }>
 				<h2>EPFL Cover</h2>
 				<MediaUpload
