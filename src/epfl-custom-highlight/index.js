@@ -72,6 +72,7 @@ registerBlockType( 'epfl/custom-highlight', {
 		return (
 		<Fragment>
 			<InspectorControls>
+				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-highlight-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 				<hr/>
 				<RadioControl
 					label={ __("Select a layout", 'wp-gutenberg-epfl') }
