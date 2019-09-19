@@ -64,7 +64,7 @@ function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $cat
     $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $nb_events;
 
     // filter by category
-    if ($category !== '') {
+    if ($category !== '' && $category !== "0") {
         $url .= '&category=' . $category;
     }
 
