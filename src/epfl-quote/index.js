@@ -59,6 +59,9 @@ registerBlockType( 'epfl/quote', {
 
 		return (
 		<Fragment>
+			<InspectorControls>
+				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+			</InspectorControls>
 			{/*
 			<div className={ className }>
                 <div className="row my-3">
