@@ -113,7 +113,7 @@ function epfl_memento_block( $attributes ) {
     $lang      = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
     $template  = Utils::get_sanitized_attribute( $attributes, 'template', 'slider_with_the_first_highlighted_event' );
     $nb_events = Utils::get_sanitized_attribute( $attributes, 'nbEvents', 10 );
-    $category  = Utils::get_sanitized_attribute( $attributes, 'category', 2 );
+    $category  = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
     $keyword   = Utils::get_sanitized_attribute( $attributes, 'keyword' );
     $period    = Utils::get_sanitized_attribute( $attributes, 'period' );
 
