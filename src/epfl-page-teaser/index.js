@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/page-teaser',
 	{
 		title: __( "EPFL Page Teaser", 'wp-gutenberg-epfl'),
-		description: 'v1.0.1',
+		description: 'v1.0.2',
 		category: 'common',
 		keywords: [
             __( 'page' , 'wp-gutenberg-epfl'),

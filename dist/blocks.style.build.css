@@ -33,6 +33,9 @@
   margin-right: -16px;
   margin-bottom: -4px; }
 
+.wp-block-help {
+  margin-left: 44px; }
+
 .wp-block-epfl-news a:link {
   text-decoration: none !important; }
 
@@ -104,6 +107,9 @@
   margin-right: -16px;
   margin-bottom: -4px; }
 
+.wp-block-help {
+  margin-left: 44px; }
+
 .wp-block-epfl-memento a:link {
   text-decoration: none !important; }
 
@@ -174,6 +180,9 @@
   padding-right: 12px;
   margin-right: -16px;
   margin-bottom: -4px; }
+
+.wp-block-help {
+  margin-left: 44px; }
 
 .wp-block-epfl-cover .cover {
   position: relative; }
@@ -284,6 +293,9 @@
   margin-right: -16px;
   margin-bottom: -4px; }
 
+.wp-block-help {
+  margin-left: 44px; }
+
 .wp-block-epfl-quote {
   /*
     .rounded-circle {
@@ -324,6 +336,9 @@
   padding-right: 12px;
   margin-right: -16px;
   margin-bottom: -4px; }
+
+.wp-block-help {
+  margin-left: 44px; }
 /**
  * #.# Common SCSS
  *
@@ -358,3 +373,6 @@
   padding-right: 12px;
   margin-right: -16px;
   margin-bottom: -4px; }
+
+.wp-block-help {
+  margin-left: 44px; }

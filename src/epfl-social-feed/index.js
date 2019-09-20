@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: socialFeedIcon,
 	category: 'common',
 	attributes: {
@@ -51,6 +51,7 @@ registerBlockType( 'epfl/social-feed', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/social-feed-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title={ __('Size', 'wp-gutenberg-epfl') }>
                         <label>{ __('Height', 'wp-gutenberg-epfl') }</label>
                         <TextControl

@@ -60,6 +60,7 @@ export default class InspectorControlsPageTeaser extends Component {
             content = (
                 <div >
 	                <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/page-teaser-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
                         <ToggleControl
                             label={ __('Change the background to gray', 'wp-gutenberg-epfl') }

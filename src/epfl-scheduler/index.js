@@ -29,7 +29,7 @@ function testTime(attributes) {
 
 registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: schedulerIcon,
 	category: 'common',
 	attributes: {
@@ -54,6 +54,7 @@ registerBlockType( 'epfl/scheduler', {
       return (
         <Fragment>
             <InspectorControls>
+                <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/scheduler-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                 <PanelBody title={ __('Start Date & Time', 'wp-gutenberg-epfl') }>
                     <DateTimePicker
                         currentDate={ attributes.startDateTime }

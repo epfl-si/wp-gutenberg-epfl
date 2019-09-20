@@ -1,6 +1,7 @@
 
 import tableauIcon from './tableau-icon'
 
+
 const { __ } = wp.i18n;
 
 const {
@@ -21,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/tableau', {
 	title: __( 'EPFL Tableau', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: tableauIcon,
 	category: 'common',
 	attributes: {
@@ -47,6 +48,7 @@ registerBlockType( 'epfl/tableau', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/tableau-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 					<hr/>
 						<h4>Tableau dimensions</h4>
                         <TextControl

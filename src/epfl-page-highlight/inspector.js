@@ -66,6 +66,7 @@ export default class InspectorControlsPageHighlight extends Component {
             content = (
 				<div>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/page-highlight-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                         <PanelBody title={ __( 'Layout', 'wp-gutenberg-epfl' ) }>
                             <RadioControl
                                 label={ __("Select a layout", 'wp-gutenberg-epfl') }
