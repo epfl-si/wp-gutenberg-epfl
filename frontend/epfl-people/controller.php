@@ -46,6 +46,11 @@ function epfl_people_block( $attributes ) {
     var_dump($columns);
     */
 
+    // Delete all whitespace (including tabs and line ends)
+    $units = preg_replace('/\s+/','',$units);
+    $scipers = preg_replace('/\s+/','',$scipers);
+    $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
+    
     if ($columns !== 'list') {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
     }
