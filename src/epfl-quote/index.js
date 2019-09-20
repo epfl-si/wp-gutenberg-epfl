@@ -1,4 +1,5 @@
 import './style.scss'
+import './editor.scss'
 
 import quoteIcon from './quote-icon'
 
@@ -14,6 +15,8 @@ const {
 } = wp.editor;
 
 const {
+    Placeholder,
+    IconButton,
     PanelBody,
     TextareaControl,
     TextControl,
@@ -57,6 +60,13 @@ registerBlockType( 'epfl/quote', {
 			})
         }
 
+        function onRemoveImage() {
+            props.setAttributes({
+              imageId: null,
+              imageUrl: null,
+            })
+        }
+
 		return (
 		<Fragment>
 			<InspectorControls>
@@ -79,6 +89,7 @@ registerBlockType( 'epfl/quote', {
             */}
             <div className={ className }>
                 <h2>EPFL QUOTE</h2>
+                {/*
                     <MediaUpload
 						label={ __('Select Image', 'wp-gutenberg-epfl') }
                         onSelect={onImageSelect}
@@ -94,21 +105,63 @@ registerBlockType( 'epfl/quote', {
                             </div>
                         )}
                     />
-					<TextareaControl
-						label={ __('Quote', 'wp-gutenberg-epfl') }
-						value={ attributes.quote }
-						onChange={ quote => setAttributes( { quote } ) }
-					/>
-					<TextControl
-						label={ __('Author', 'wp-gutenberg-epfl') }
-						value={ attributes.author }
-						onChange={ author => setAttributes( { author } ) }
-					/>
-					<TextControl
-						label={ __('Position', 'wp-gutenberg-epfl') }
-						value={ attributes.position }
-						onChange={ position => setAttributes( { position } ) }
-					/>
+                */}
+                { ! attributes.imageId ? (
+                    <MediaUpload
+                        onSelect={ onImageSelect }
+                        type="image"
+                        value={ attributes.imageId }
+                        render={ ( { open } ) => (
+                            <Placeholder
+                                icon="images-alt"
+                                label={ __("Image", 'wp-gutenberg-epfl') }
+                                instructions={ __('Select Image', 'wp-gutenberg-epfl') }
+                            >
+                                <IconButton
+                                    className="components-icon-button wp-block-image__upload-button button button-large"
+                                    onClick={ open }
+                                    icon="upload"
+                                >
+                                    { __('Import') }
+                                </IconButton>
+                            </Placeholder>
+                        )}
+                        />
+                       ) : (
+                        <p className="epfl-quote-image-wrapper">
+                        <img
+                          src={ attributes.imageUrl }
+                          alt={ attributes.imageUrl }
+                        />
+          
+                        { props.isSelected && (
+          
+                        <IconButton
+                            className="epfl-quote-remove-image"
+                            onClick={ onRemoveImage }
+                            icon="dismiss"
+                        >
+                            { __('Remove image', 'wp-gutenberg-epfl') }
+                        </IconButton>
+
+                        ) }
+                      </p>
+                )}
+                <TextareaControl
+                    label={ __('Quote', 'wp-gutenberg-epfl') }
+                    value={ attributes.quote }
+                    onChange={ quote => setAttributes( { quote } ) }
+                />
+                <TextControl
+                    label={ __('Author', 'wp-gutenberg-epfl') }
+                    value={ attributes.author }
+                    onChange={ author => setAttributes( { author } ) }
+                />
+                <TextControl
+                    label={ __('Position', 'wp-gutenberg-epfl') }
+                    value={ attributes.position }
+                    onChange={ position => setAttributes( { position } ) }
+                />
 			</div>
 		</Fragment>
 		)
