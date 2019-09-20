@@ -72,7 +72,7 @@ registerBlockType( 'epfl/tableau', {
                         />
                     <h4>OR</h4>
                         <TextControl
-							label={ __('Tablean Name', 'wp-gutenberg-epfl') }
+							label={ __('Tableau Name', 'wp-gutenberg-epfl') }
                             value={ attributes.tableauName }
                             onChange={ tableauName => setAttributes( { tableauName } ) }
                             help={ __('Name of the Tableau view (eg. "EPFLofficialstatistics/StatistiquesOfficielles")', 'wp-gutenberg-epfl') }
