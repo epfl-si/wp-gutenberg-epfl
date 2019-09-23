@@ -66,6 +66,18 @@ registerBlockType( 'epfl/infoscience-search', {
 			type: 'string',
 			default: null,
 		},
+		debug: {
+			type: 'boolean',
+			default: null,
+		},
+		debug_data: {
+			type: 'boolean',
+			default: null,
+		},
+		debug_template: {
+			type: 'boolean',
+			default: null,
+		}
 	},
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
