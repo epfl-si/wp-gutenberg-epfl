@@ -72,8 +72,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'group_by2' => '', # "", "year", "doctype"
         # Dev
         'debug' => false,
-        'debugData' => false,
-        'debugTemplate' => false,
+        'debugdata' => false,
+        'debugtemplate' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
@@ -111,12 +111,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $debug_data = $attributes['debug'];  # alias
         unset($attributes['debug']);
     } else {
-        $debug_data = $attributes['debugData'];
-        unset($attributes['debugData']);
+        $debug_data = $attributes['debugdata'];
+        unset($attributes['debugdata']);
     }
 
-    $debug_template = $attributes['debugTemplate'];
-    unset($attributes['debugTemplate']);
+    $debug_template = $attributes['debugtemplate'];
+    unset($attributes['debugtemplate']);
 
     # Url priority :
     # 1. direct url -> $attributes['url']
