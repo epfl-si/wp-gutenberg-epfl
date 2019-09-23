@@ -430,16 +430,7 @@ function epfl_infoscience_search_generate_url_from_attrs($attrs) {
     return INFOSCIENCE_SEARCH_URL . http_build_query($parameters);
 }
 
-// Load .mo file for translation
-
-function epfl_infoscience_search_load_plugin_textdomain() {
-    load_plugin_textdomain( 'epfl-infoscience-search', FALSE, basename( plugin_dir_path( __FILE__ )) . '/languages/');
-}
-
-add_action( 'plugins_loaded', __NAMESPACE__ . '\epfl_infoscience_search_load_plugin_textdomain' );
-
 add_action( 'init', function() {
-
     add_shortcode( 'epfl_infoscience_search', 'epfl_infoscience_search_block' );
     wp_register_style('epfl-infoscience-search-shortcode-style.css', plugins_url('css/epfl-infoscience-search-shortcode-style.css', __FILE__));
 
