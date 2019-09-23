@@ -89,4 +89,31 @@ Class ClassesInfoscience2018Render extends Infoscience2018Render {
         return $html_rendered;
     }
 }
+
+Class RawInfoscienceRender extends Infoscience2018Render {
+    public static function pretty_print($arr){
+        $retStr = '<ul>';
+        if (is_array($arr)){
+            foreach ($arr as $key=>$val){
+                if (is_array($val)){
+                    $retStr .= '<li>' . $key . ' => ' . RawInfoscienceRender::pretty_print($val) . '</li>';
+                }else{
+                    $retStr .= '<li>' . $key . ' => ' . $val . '</li>';
+                }
+            }
+        }
+        $retStr .= '</ul>';
+        return $retStr;
+    }
+
+    /**
+     * Render for debugging
+     *
+     * @param $publications: array of data converted from Infoscience
+     * @return
+     */
+    public static function render($publications, $url='', $format="short", $summary=false, $thumbnail=false, $debug=false) {
+        return self::render_url($url) . RawInfoscienceRender::pretty_print($publications);
+    }
+}
 ?>

@@ -6,7 +6,7 @@ namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
  * Description: provides a gutenberg block to search and dispay results from Infoscience
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
@@ -378,6 +378,7 @@ function epfl_infoscience_search_convert_keys_values($array_to_convert) {
 function epfl_infoscience_search_generate_url_from_attrs($attrs) {
     $url = INFOSCIENCE_SEARCH_URL;
 
+    # default parameters may change afterward
     $default_parameters = array(
         'as' => '1',  # advanced search
         'ln' => 'en',  #TODO: dynamic language
@@ -403,6 +404,25 @@ function epfl_infoscience_search_generate_url_from_attrs($attrs) {
     }
 
     $parameters = array_filter($parameters);
+
+    # if we have only one operator set (meaning p1 is set and non p2 or p3)
+    # and field resctriction is "any"
+    # transform it to a non-advanced-search, as it has a better
+    # search engine (mainly the date1->date2 operator)
+    if (!empty($parameters['p1']) &&
+        empty($parameters['p2']) &&
+        empty($parameters['p3'])) {
+
+        // yes there is a tricky tranformation to check (fieldrestriction -> to f1)
+        if (array_key_exists('fieldrestriction', $parameters) &&
+            $parameters['fieldrestriction'] === 'any' &&
+            empty($parameters['f1']) ) {
+            unset($parameters['as1']);
+            unset($parameters['op1']);
+            $parameters['p'] = $parameters['p1'];
+            unset($parameters['p1']);
+        }
+    }
 
     # sort before build, for the caching system
     ksort($parameters);
