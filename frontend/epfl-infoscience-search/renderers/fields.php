@@ -111,8 +111,14 @@ Class DirectorAuthorInfoscienceField2018Render extends AuthorInfoscienceField201
         }
 
         if (self::field_exists($publication['director'])) {
-            $html_rendered .= self::render_authors($publication['director']);
-            $html_rendered .= " (" . __('Dir.', 'epfl-infoscience-search') . ") ";
+            if ($format === 'detailed')
+            {
+                $html_rendered .= " " . __('Director(s)', 'epfl-infoscience-search') . " : ";
+                $html_rendered .= self::render_authors($publication['director']);
+            } else {
+                $html_rendered .= self::render_authors($publication['director']);
+                $html_rendered .= " (" . __('Dir.', 'epfl-infoscience-search') . ") ";
+            }
         }
 
         $html_rendered .= self::post_render();

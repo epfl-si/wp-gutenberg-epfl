@@ -458,8 +458,7 @@ Class ThesesDetailedInfosciencePublication2018Render extends DetailedInfoscience
         $host_rendered = '';
         $host_rendered .= BooksChaptersPublicationLocationInsitutionDateInfoscienceField2018Render::render($publication, self::$format);
 
-        # not sure about the need of this one
-        # $host_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
+        $host_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
 
         if ($host_rendered && !empty($host_rendered)) {
             $html_rendered .= '<span class="infoscience_host">';
@@ -490,11 +489,7 @@ Class ThesesShortInfosciencePublication2018Render extends ShortInfosciencePublic
             $html_rendered .= $books_chapters_rendered . '&nbsp;';
         }
 
-        # not sure about the need of this one
-        # $html_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
-
-        $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
 
         return $html_rendered;
