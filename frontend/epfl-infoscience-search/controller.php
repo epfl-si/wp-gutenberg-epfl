@@ -46,11 +46,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     $atts = array_change_key_case((array)$provided_attributes, CASE_LOWER);
 
     # convert group_by data coming from the UI to values for the next functions
-    if (array_key_exists('groupBy', $atts)) {
-        if ($atts['groupBy'] == 'year_doctype') {
+    if (array_key_exists('groupby', $atts)) {
+        if ($atts['groupby'] == 'year_doctype') {
             $atts['group_by'] = 'year';
             $atts['group_by2'] = 'doctype';
-        } elseif ($atts['groupBy'] == 'doctype_year') {
+        } elseif ($atts['groupby'] == 'doctype_year') {
             $atts['group_by'] = 'doctype';
             $atts['group_by2'] = 'year';
         }
@@ -72,8 +72,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'group_by2' => '', # "", "year", "doctype"
         # Dev
         'debug' => false,
-        'debug_data' => false,
-        'debug_template' => false,
+        'debugData' => false,
+        'debugTemplate' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
@@ -111,12 +111,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $debug_data = $attributes['debug'];  # alias
         unset($attributes['debug']);
     } else {
-        $debug_data = $attributes['debug_data'];
-        unset($attributes['debug_data']);
+        $debug_data = $attributes['debugData'];
+        unset($attributes['debugData']);
     }
 
-    $debug_template = $attributes['debug_template'];
-    unset($attributes['debug_template']);
+    $debug_template = $attributes['debugTemplate'];
+    unset($attributes['debugTemplate']);
 
     # Url priority :
     # 1. direct url -> $attributes['url']

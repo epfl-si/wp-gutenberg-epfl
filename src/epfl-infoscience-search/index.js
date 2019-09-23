@@ -70,11 +70,11 @@ registerBlockType( 'epfl/infoscience-search', {
 			type: 'boolean',
 			default: null,
 		},
-		debug_data: {
+		debugData: {
 			type: 'boolean',
 			default: null,
 		},
-		debug_template: {
+		debugTemplate: {
 			type: 'boolean',
 			default: null,
 		}
