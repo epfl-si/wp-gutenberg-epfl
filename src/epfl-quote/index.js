@@ -89,7 +89,7 @@ registerBlockType( 'epfl/quote', {
                                     onClick={ open }
                                     icon="upload"
                                 >
-                                    { __('Import') }
+                                    { __('Import', 'wp-gutenberg-epfl') }
                                 </IconButton>
                             </Placeholder>
                         )}
