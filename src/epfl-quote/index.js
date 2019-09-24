@@ -1,4 +1,3 @@
-import './style.scss'
 import './editor.scss'
 
 import quoteIcon from './quote-icon'
