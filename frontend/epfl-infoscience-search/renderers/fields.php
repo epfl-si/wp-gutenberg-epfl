@@ -111,8 +111,14 @@ Class DirectorAuthorInfoscienceField2018Render extends AuthorInfoscienceField201
         }
 
         if (self::field_exists($publication['director'])) {
-            $html_rendered .= self::render_authors($publication['director']);
-            $html_rendered .= " (" . __('Dir.', 'epfl-infoscience-search') . ") ";
+            if ($format === 'detailed')
+            {
+                $html_rendered .= " " . __('Director(s)', 'wp-gutenberg-epfl') . " : ";
+                $html_rendered .= self::render_authors($publication['director']);
+            } else {
+                $html_rendered .= self::render_authors($publication['director']);
+                $html_rendered .= " (" . __('Dir.', 'wp-gutenberg-epfl') . ") ";
+            }
         }
 
         $html_rendered .= self::post_render();
@@ -322,9 +328,9 @@ Class JournalPageInfoscienceField2018Render extends InfoscienceField2018Render {
 
         if (self::field_exists($publication['journal'], 'page')) {
             if ($format === 'detailed') {
-                $html_rendered .= '<p class="mb-0 infoscience_journal_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['page'] .'</p>';
+                $html_rendered .= '<p class="mb-0 infoscience_journal_page">' . __('p.', 'wp-gutenberg-epfl') . ' ' . $publication['journal'][0]['page'] .'</p>';
             } else {
-                $html_rendered .= ' <span class="mb-0 infoscience_journal_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['page'] .'. </span>';
+                $html_rendered .= ' <span class="mb-0 infoscience_journal_page">' . __('p.', 'wp-gutenberg-epfl') . ' ' . $publication['journal'][0]['page'] .'. </span>';
             }
         }
 
@@ -339,7 +345,7 @@ Class JournalDetailsInfoscienceField2018Render extends InfoscienceField2018Rende
 
         if ($format === 'detailed') {
             if (self::field_exists($publication['journal'], 'volume')) {
-                $html_rendered .= '<span class="infoscience_journal_volume">' . __('Vol.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['volume'] .' ';
+                $html_rendered .= '<span class="infoscience_journal_volume">' . __('Vol.', 'wp-gutenberg-epfl') . ' ' . $publication['journal'][0]['volume'] .' ';
 
                 if (self::field_exists($publication['journal'], 'number') ||
                     self::field_exists($publication['journal'], 'page')) {
@@ -350,7 +356,7 @@ Class JournalDetailsInfoscienceField2018Render extends InfoscienceField2018Rende
             }
 
             if (self::field_exists($publication['journal'], 'number')) {
-                $html_rendered .= '<span class="infoscience_journal_number">' . __('num.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['number'] .'';
+                $html_rendered .= '<span class="infoscience_journal_number">' . __('num.', 'wp-gutenberg-epfl') . ' ' . $publication['journal'][0]['number'] .'';
                 if (self::field_exists($publication['journal'], 'page')) {
                     $html_rendered .= '</span>, ';
                 } else {
@@ -361,7 +367,7 @@ Class JournalDetailsInfoscienceField2018Render extends InfoscienceField2018Rende
             $html_rendered .= JournalPageInfoscienceField2018Render::render($publication, 'short', $has_next);
         } else {
             if (self::field_exists($publication['journal'], 'volume')) {
-                $html_rendered .= '<span class="infoscience_journal_volume">' . __('Vol.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['volume'];
+                $html_rendered .= '<span class="infoscience_journal_volume">' . __('Vol.', 'wp-gutenberg-epfl') . ' ' . $publication['journal'][0]['volume'];
 
                 if (self::field_exists($publication['journal'], 'number') ||
                     self::field_exists($publication['journal'], 'page')) {
@@ -372,7 +378,7 @@ Class JournalDetailsInfoscienceField2018Render extends InfoscienceField2018Rende
             }
 
             if (self::field_exists($publication['journal'], 'number')) {
-                $html_rendered .= '<span class="text-muted small mb-0 infoscience_journal_number">' . __('num.', 'epfl-infoscience-search') . ' ' . $publication['journal'][0]['number'];
+                $html_rendered .= '<span class="text-muted small mb-0 infoscience_journal_number">' . __('num.', 'wp-gutenberg-epfl') . ' ' . $publication['journal'][0]['number'];
                 if (self::field_exists($publication['journal'], 'page')) {
                     $html_rendered .= '</span>, ';
                 } else {
@@ -484,7 +490,7 @@ Class PatentsInfoscienceField2018Render extends InfoscienceField2018Render {
         if (self::field_exists($publication['patent'])) {
             if ($format === 'detailed') {
                 $html_rendered .= '<p class="text-muted small mt-0 mb-2 infoscience_patents_number">';
-                $html_rendered .= __('Patent number(s)', 'epfl-infoscience-search') . " :<br />";
+                $html_rendered .= __('Patent number(s)', 'wp-gutenberg-epfl') . " :<br />";
                 $html_rendered .= '<ul class="text-muted small mt-1 mb-3 infoscience_patents_number_list">';
 
                 foreach ($publication['patent'] as $patent) {
@@ -530,7 +536,7 @@ Class PublicationPageInfoscienceField2018Render extends InfoscienceField2018Rend
         $html_rendered = "";
 
         if (self::field_exists($publication['publication_page'])) {
-            $html_rendered .= '<span class="mt-2 mb-2 infoscience_publication_page">' . __('p.', 'epfl-infoscience-search') . ' ' . $publication['publication_page'][0] .'.</span> ';
+            $html_rendered .= '<span class="mt-2 mb-2 infoscience_publication_page">' . __('p.', 'wp-gutenberg-epfl') . ' ' . $publication['publication_page'][0] .'.</span> ';
         }
         return $html_rendered;
     }

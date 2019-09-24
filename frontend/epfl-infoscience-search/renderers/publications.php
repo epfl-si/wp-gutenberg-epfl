@@ -99,7 +99,7 @@ abstract Class InfosciencePublication2018Render {
     protected static function render_links($publication) {
         $links_html = '<div class="col-md-2 text-right mt-4 mt-md-0">';
         $links_html .= '  <p>';
-        $links_html .= '    <a href="//infoscience.epfl.ch/record/' . $publication['record_id'][0] . '" class="btn btn-secondary btn-sm" target="_blank">' . esc_html__('Detailed record', 'epfl') . '</a>';
+        $links_html .= '    <a href="//infoscience.epfl.ch/record/' . $publication['record_id'][0] . '" class="btn btn-secondary btn-sm" target="_blank">' . esc_html__('Detailed record', 'wp-gutenberg-epfl') . '</a>';
         $links_html .= '  </p>';
 
         $fulltext = '';
@@ -116,7 +116,7 @@ abstract Class InfosciencePublication2018Render {
             $links_html .= '  <p class="text-muted small mb-0">';
 
             if ($fulltext) {
-                $links_html .= '<a class="text-muted" href="' . $fulltext . '" target="_blank">' .  esc_html__('Full text', 'epfl') . '</a>';
+                $links_html .= '<a class="text-muted" href="' . $fulltext . '" target="_blank">' .  esc_html__('Full text', 'wp-gutenberg-epfl') . '</a>';
 
                 if ($doi) {
                     $links_html .= ' - ';
@@ -124,7 +124,7 @@ abstract Class InfosciencePublication2018Render {
             }
 
             if ($doi) {
-                $links_html .= '<a class="text-muted" href="https://dx.doi.org/' . $doi[0] . '" target="_blank">' .  esc_html__('View at publisher', 'epfl') . '</a>';
+                $links_html .= '<a class="text-muted" href="https://dx.doi.org/' . $doi[0] . '" target="_blank">' .  esc_html__('View at publisher', 'wp-gutenberg-epfl') . '</a>';
             }
 
             $links_html .= '  </p>';
@@ -458,8 +458,7 @@ Class ThesesDetailedInfosciencePublication2018Render extends DetailedInfoscience
         $host_rendered = '';
         $host_rendered .= BooksChaptersPublicationLocationInsitutionDateInfoscienceField2018Render::render($publication, self::$format);
 
-        # not sure about the need of this one
-        # $host_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
+        $host_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
 
         if ($host_rendered && !empty($host_rendered)) {
             $html_rendered .= '<span class="infoscience_host">';
@@ -490,11 +489,7 @@ Class ThesesShortInfosciencePublication2018Render extends ShortInfosciencePublic
             $html_rendered .= $books_chapters_rendered . '&nbsp;';
         }
 
-        # not sure about the need of this one
-        # $html_rendered .= PublicationPageInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
-
-        $html_rendered .= DOIInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
 
         return $html_rendered;

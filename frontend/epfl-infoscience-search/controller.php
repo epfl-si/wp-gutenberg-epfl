@@ -72,8 +72,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'group_by2' => '', # "", "year", "doctype"
         # Dev
         'debug' => false,
-        'debugData' => false,
-        'debugTemplate' => false,
+        'debugdata' => false,
+        'debugtemplate' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
@@ -111,12 +111,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $debug_data = $attributes['debug'];  # alias
         unset($attributes['debug']);
     } else {
-        $debug_data = $attributes['debugData'];
-        unset($attributes['debugData']);
+        $debug_data = $attributes['debugdata'];
+        unset($attributes['debugdata']);
     }
 
-    $debug_template = $attributes['debugTemplate'];
-    unset($attributes['debugTemplate']);
+    $debug_template = $attributes['debugtemplate'];
+    unset($attributes['debugtemplate']);
 
     # Url priority :
     # 1. direct url -> $attributes['url']
@@ -430,16 +430,7 @@ function epfl_infoscience_search_generate_url_from_attrs($attrs) {
     return INFOSCIENCE_SEARCH_URL . http_build_query($parameters);
 }
 
-// Load .mo file for translation
-
-function epfl_infoscience_search_load_plugin_textdomain() {
-    load_plugin_textdomain( 'epfl-infoscience-search', FALSE, basename( plugin_dir_path( __FILE__ )) . '/languages/');
-}
-
-add_action( 'plugins_loaded', __NAMESPACE__ . '\epfl_infoscience_search_load_plugin_textdomain' );
-
 add_action( 'init', function() {
-
     add_shortcode( 'epfl_infoscience_search', 'epfl_infoscience_search_block' );
     wp_register_style('epfl-infoscience-search-shortcode-style.css', plugins_url('css/epfl-infoscience-search-shortcode-style.css', __FILE__));
 
