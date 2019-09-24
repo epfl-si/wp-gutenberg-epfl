@@ -33,6 +33,17 @@ function epfl_tableau_block( $attributes ) {
     if (!empty($attributes['height'])) {
         $height = $attributes['height'];
     }
+
+    // If we still don't have any value for size
+    if($width == "")
+    {
+        $width = 1000;
+    }
+    if($height == "")
+    {
+        $height = 650;
+    }
+
     // sanitize what we get
     $tableau_name = sanitize_text_field($tableau_name);
     $width = sanitize_text_field($width);

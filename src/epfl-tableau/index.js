@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/tableau', {
 	title: __( 'EPFL Tableau', 'wp-gutenberg-epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.4',
 	icon: tableauIcon,
 	category: 'common',
 	attributes: {
@@ -54,11 +54,13 @@ registerBlockType( 'epfl/tableau', {
                         <TextControl
 							label={ __('Width', 'wp-gutenberg-epfl') }
                             value={ attributes.width }
+                            placeholder = "1000"
                             onChange={ width => setAttributes( { width } ) }
                         />
                         <TextControl
 							label={ __('Height', 'wp-gutenberg-epfl') }
                             value={ attributes.height }
+                            placeholder = "650"
                             onChange={ height => setAttributes( { height } ) }
                         />
                 </InspectorControls>

@@ -37,6 +37,7 @@ function epfl_hero_block( $attributes ) {
     $markup .= '</picture>';
     $markup .= '</div>';
     $markup .= '</div>';
+    $markup .= '</div>';
 
     return $markup;
 }
