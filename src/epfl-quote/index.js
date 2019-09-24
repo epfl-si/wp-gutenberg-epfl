@@ -17,7 +17,6 @@ const {
 const {
     Placeholder,
     IconButton,
-    PanelBody,
     TextareaControl,
     TextControl,
 } = wp.components;
@@ -26,7 +25,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: quoteIcon,
 	category: 'common',
 	attributes: {
@@ -72,40 +71,8 @@ registerBlockType( 'epfl/quote', {
 			<InspectorControls>
 				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 			</InspectorControls>
-			{/*
-			<div className={ className }>
-                <div className="row my-3">
-                    <div className="col-6 offset-3 col-sm-4 offset-sm-4 col-md-2 offset-md-0 text-center text-md-right">
-                        <picture>
-                            <img width="300" height="300" className="img-fluid rounded-circle" src={ url } className="img-fluid" alt={ attributes.quote } />
-                        </picture>
-                    </div>
-                    <blockquote className="blockquote mt-3 col-md-10 border-0">
-                        <p class="mb-0">{ attributes.quote }</p>
-                        <footer class="blockquote-footer"><cite title={ attributes.author }>{ attributes.author }</cite>, { attributes.position } </footer>
-                    </blockquote>
-                </div>
-            </div>
-            */}
             <div className={ className }>
                 <h2>EPFL QUOTE</h2>
-                {/*
-                    <MediaUpload
-						label={ __('Select Image', 'wp-gutenberg-epfl') }
-                        onSelect={onImageSelect}
-                        type="image"
-                        value={attributes.imageId}
-                        render={({ open }) => (
-                            <div>
-                                <img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
-                                <button onClick={open}>
-                                    { __('Select Image', 'wp-gutenberg-epfl') }
-                                </button>
-                                <div style={ {marginTop: '5px'} }>{ __('Please select a square image', 'wp-gutenberg-epfl') }</div>
-                            </div>
-                        )}
-                    />
-                */}
                 { ! attributes.imageId ? (
                     <MediaUpload
                         onSelect={ onImageSelect }
@@ -115,7 +82,7 @@ registerBlockType( 'epfl/quote', {
                             <Placeholder
                                 icon="images-alt"
                                 label={ __("Image", 'wp-gutenberg-epfl') }
-                                instructions={ __('Select Image', 'wp-gutenberg-epfl') }
+                                instructions={ __('Please, select a square image', 'wp-gutenberg-epfl') }
                             >
                                 <IconButton
                                     className="components-icon-button wp-block-image__upload-button button button-large"
@@ -132,6 +99,7 @@ registerBlockType( 'epfl/quote', {
                         <img
                           src={ attributes.imageUrl }
                           alt={ attributes.imageUrl }
+                          class="epfl-quote-img"
                         />
           
                         { props.isSelected && (
