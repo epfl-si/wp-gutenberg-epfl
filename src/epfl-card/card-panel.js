@@ -34,6 +34,8 @@ function CardPanel ( props ) {
         })
     }
 
+    let isSelected = ! attributes['imageId' + index] || ! attributes['imageUrl' + index];
+
     // set a value or an empty string for each Control, or face :
     // https://stackoverflow.com/questions/37427508/react-changing-an-uncontrolled-input
     
@@ -50,7 +52,7 @@ function CardPanel ( props ) {
                 value={ attributes['link' + index]  || '' }
                 onChange={ value => setIndexedAttributes('link', value) }
             />
-            { ! attributes['imageId' + index] ? (
+            { isSelected ? (
                 <MediaUpload
                     onSelect={ onImageSelect }
                     type="image"
@@ -59,7 +61,7 @@ function CardPanel ( props ) {
                         <Placeholder
                             icon="images-alt"
                             label={ __("Image", 'wp-gutenberg-epfl') }
-                            instructions={ __('Please, select a image', 'wp-gutenberg-epfl') }
+                            instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
                         >
                             <IconButton
                                 className="components-icon-button wp-block-image__upload-button button button-large"

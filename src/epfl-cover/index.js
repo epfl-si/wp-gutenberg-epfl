@@ -74,7 +74,7 @@ registerBlockType( 'epfl/cover', {
                             <Placeholder
                                 icon="images-alt"
                                 label={ __("Image", 'wp-gutenberg-epfl') }
-                                instructions={ __('Please, select a image', 'wp-gutenberg-epfl') }
+                                instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
                             >
                                 <IconButton
                                     className="components-icon-button wp-block-image__upload-button button button-large"

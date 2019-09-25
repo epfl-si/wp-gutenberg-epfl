@@ -65,6 +65,8 @@ function CaptionCardPanel ( props ) {
         })
     }
 
+    let isSelected = ! attributes['imageId' + index] || ! attributes['imageUrl' + index];
+
     return (
         <div>
            <h3>{`Caption card ${index}`} </h3>
@@ -83,7 +85,7 @@ function CaptionCardPanel ( props ) {
                 value={ attributes['link' + index] || ''}
                 onChange={ value => setIndexedAttributes('link', value) }
             />
-            { ! attributes['imageId' + index] ? (
+            { isSelected ? (
                 <MediaUpload
                     onSelect={ onImageSelect }
                     type="image"
@@ -92,7 +94,7 @@ function CaptionCardPanel ( props ) {
                         <Placeholder
                             icon="images-alt"
                             label={ __("Image", 'wp-gutenberg-epfl') }
-                            instructions={ __('Please, select a image', 'wp-gutenberg-epfl') }
+                            instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
                         >
                             <IconButton
                                 className="components-icon-button wp-block-image__upload-button button button-large"
