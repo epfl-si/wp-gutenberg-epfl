@@ -12,7 +12,8 @@ const {
 } = wp.editor;
 
 const {
-	PanelBody,
+    Placeholder,
+    IconButton,
 	TextControl,
 	TextareaControl,
 	RadioControl,
@@ -61,7 +62,14 @@ registerBlockType( 'epfl/custom-highlight', {
 				imageId: imageObject.id,
 				imageUrl: imageObject.url
 			})
-		}
+        }
+        
+        function onRemoveImage() {
+            props.setAttributes({
+              imageId: null,
+              imageUrl: null,
+            })
+        }
 
 		let optionsLayoutList = [
 		{ value: 'right', label: __('Right', 'wp-gutenberg-epfl')},
@@ -103,21 +111,48 @@ registerBlockType( 'epfl/custom-highlight', {
 					value={ attributes.buttonLabel }
 					onChange={ buttonLabel => setAttributes( { buttonLabel } ) }
 				/>
-				<MediaUpload
-					label={ __('Select Image', 'wp-gutenberg-epfl') }
-					onSelect={onImageSelect}
-					type="image"
-					value={attributes.imageId}
-					render={({ open }) => (
-				<div>
-					<img style={ {maxHeight: '200px'} } src={ attributes.imageUrl } />
-					<button onClick={open}>
-						{ __('Select Image', 'wp-gutenberg-epfl') }
-					</button>
-					<div style={ {marginTop: '5px'} }>{ __('Please select an image. Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }</div>
-				</div>
-				)}
-				/>
+				{ ! attributes.imageId ? (
+                    <MediaUpload
+                        onSelect={ onImageSelect }
+                        type="image"
+                        value={ attributes.imageId }
+                        render={ ( { open } ) => (
+                            <Placeholder
+                                icon="images-alt"
+                                label={ __("Image", 'wp-gutenberg-epfl') }
+                                instructions={ __('Please, select a image', 'wp-gutenberg-epfl') }
+                            >
+                                <IconButton
+                                    className="components-icon-button wp-block-image__upload-button button button-large"
+                                    onClick={ open }
+                                    icon="upload"
+                                >
+                                    { __('Import', 'wp-gutenberg-epfl') }
+                                </IconButton>
+                            </Placeholder>
+                        )}
+                        />
+                       ) : (
+                        <p className="epfl-uploader-image-wrapper">
+                        <img
+                          src={ attributes.imageUrl }
+                          alt={ attributes.imageUrl }
+                          class="epfl-uploader-img"
+                        />
+          
+                        { props.isSelected && (
+          
+                        <IconButton
+                            className="epfl-uploader-remove-image"
+                            onClick={ onRemoveImage }
+                            icon="dismiss"
+                        >
+                            { __('Remove image', 'wp-gutenberg-epfl') }
+                        </IconButton>
+
+                        ) }
+                      </p>
+                )}
 			</div>
 		</Fragment>
 		)
