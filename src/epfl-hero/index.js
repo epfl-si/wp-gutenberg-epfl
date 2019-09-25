@@ -86,14 +86,14 @@ registerBlockType( 'epfl/hero', {
                             <Placeholder
                                 icon="images-alt"
                                 label={ __("Image", 'wp-gutenberg-epfl') }
-                                instructions={ __('Please, select a image', 'wp-gutenberg-epfl') }
+                                instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
                             >
                                 <IconButton
                                     className="components-icon-button wp-block-image__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
-                                    { __('Import', 'wp-gutenberg-epfl') }
+                                    { __('Upload', 'wp-gutenberg-epfl') }
                                 </IconButton>
                             </Placeholder>
                         )}
