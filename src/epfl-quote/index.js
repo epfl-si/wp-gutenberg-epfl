@@ -1,5 +1,3 @@
-import './editor.scss'
-
 import quoteIcon from './quote-icon'
 
 const { __ } = wp.i18n;
@@ -94,17 +92,17 @@ registerBlockType( 'epfl/quote', {
                         )}
                         />
                        ) : (
-                        <p className="epfl-quote-image-wrapper">
+                        <p className="epfl-uploader-image-wrapper">
                         <img
                           src={ attributes.imageUrl }
                           alt={ attributes.imageUrl }
-                          class="epfl-quote-img"
+                          class="epfl-uploader-img"
                         />
           
                         { props.isSelected && (
           
                         <IconButton
-                            className="epfl-quote-remove-image"
+                            className="epfl-uploader-remove-image"
                             onClick={ onRemoveImage }
                             icon="dismiss"
                         >
