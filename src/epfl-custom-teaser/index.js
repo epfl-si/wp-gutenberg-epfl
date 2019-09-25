@@ -13,6 +13,8 @@ const {
     PanelBody,
     ToggleControl,
     TextControl,
+    Placeholder,
+    IconButton,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -67,6 +69,13 @@ function CustomTeaserPanel ( props ) {
         })
     };
 
+    const onRemoveImage = () => {
+        setAttributes({
+            [`imageUrl${index}`]: null,
+            [`imageId${index}`]: null,
+        })
+    };
+
     // set a value or an empty string for each Control, or face :
     // https://stackoverflow.com/questions/37427508/react-changing-an-uncontrolled-input
 
@@ -93,20 +102,48 @@ function CustomTeaserPanel ( props ) {
                 value={ attributes['buttonLabel' + index]  || '' }
                 onChange={ value => setIndexedAttributes('buttonLabel', value) }
             />
-            <MediaUpload
-                onSelect={ onImageSelect }
-                type="image"
-                value={ attributes['imageUrl' + index]  || '' }
-                render={({ open }) => (
-                    <div>
-                        <img style={ {maxHeight: '200px'} } src={ attributes['imageUrl' + index] } />
-                        <button onClick={ open }>
-                        { __('Select Image', 'wp-gutenberg-epfl') }
-                        </button>
-                        <div style={ { marginTop: '5px' } }>{ __('Please select an image. Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }</div>
-                    </div>
+            { ! attributes['imageId' + index] ? (
+                <MediaUpload
+                    onSelect={ onImageSelect }
+                    type="image"
+                    value={ attributes['imageId' + index] }
+                    render={ ( { open } ) => (
+                        <Placeholder
+                            icon="images-alt"
+                            label={ __("Image", 'wp-gutenberg-epfl') }
+                            instructions={ __('Please, select a image', 'wp-gutenberg-epfl') }
+                        >
+                            <IconButton
+                                className="components-icon-button wp-block-image__upload-button button button-large"
+                                onClick={ open }
+                                icon="upload"
+                            >
+                                { __('Upload', 'wp-gutenberg-epfl') }
+                            </IconButton>
+                        </Placeholder>
+                    )}
+                />
+                ) : (
+                    <p className="epfl-uploader-image-wrapper">
+                    <img
+                        src={ attributes['imageUrl' + index] }
+                        alt={ attributes['imageUrl' + index] }
+                        class="epfl-uploader-img"
+                    />
+
+                    { props.attributes['imageUrl' + index] && (
+        
+                    <IconButton
+                        className={'epfl-uploader-remove-image'}
+                        onClick={ onRemoveImage }
+                        icon="dismiss"
+                    >
+                        { __('Remove image', 'wp-gutenberg-epfl') }
+                    </IconButton>
+
+                    ) }
+                    </p>
                 )}
-            />
         </div>
     );
 }

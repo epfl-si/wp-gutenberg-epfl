@@ -10,7 +10,9 @@ const {
 } = wp.editor;
 
 const {
-    TextControl
+    TextControl,
+    Placeholder,
+    IconButton,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -56,6 +58,13 @@ function CaptionCardPanel ( props ) {
         })
     };
 
+    const onRemoveImage = () => {
+        setAttributes({
+            [`imageUrl${index}`]: null,
+            [`imageId${index}`]: null,
+        })
+    }
+
     return (
         <div>
            <h3>{`Caption card ${index}`} </h3>
@@ -74,20 +83,48 @@ function CaptionCardPanel ( props ) {
                 value={ attributes['link' + index] || ''}
                 onChange={ value => setIndexedAttributes('link', value) }
             />
-            <MediaUpload
-                onSelect={ onImageSelect }
-                type="image"
-                value={ attributes['imageUrl' + index]  || '' }
-                render={({ open }) => (
-                    <div class="components-base-control">
-                        <img style={ {maxHeight: '200px'} } src={ attributes['imageUrl' + index] } /><br />
-                        <button onClick={ open }>
-                        { __('Select Image', 'wp-gutenberg-epfl') }
-                        </button>
-                        <div style={ { marginTop: '5px' } }>{ __('Please select an image. Recommended image size: 1920x1080', 'wp-gutenberg-epfl') }</div>
-                    </div>
+            { ! attributes['imageId' + index] ? (
+                <MediaUpload
+                    onSelect={ onImageSelect }
+                    type="image"
+                    value={ attributes['imageId' + index] }
+                    render={ ( { open } ) => (
+                        <Placeholder
+                            icon="images-alt"
+                            label={ __("Image", 'wp-gutenberg-epfl') }
+                            instructions={ __('Please, select a image', 'wp-gutenberg-epfl') }
+                        >
+                            <IconButton
+                                className="components-icon-button wp-block-image__upload-button button button-large"
+                                onClick={ open }
+                                icon="upload"
+                            >
+                                { __('Upload', 'wp-gutenberg-epfl') }
+                            </IconButton>
+                        </Placeholder>
+                    )}
+                />
+                ) : (
+                    <p className="epfl-uploader-image-wrapper">
+                    <img
+                        src={ attributes['imageUrl' + index] }
+                        alt={ attributes['imageUrl' + index] }
+                        class="epfl-uploader-img"
+                    />
+
+                    { props.attributes['imageUrl' + index] && (
+        
+                    <IconButton
+                        className={'epfl-uploader-remove-image'}
+                        onClick={ onRemoveImage }
+                        icon="dismiss"
+                    >
+                        { __('Remove image', 'wp-gutenberg-epfl') }
+                    </IconButton>
+
+                    ) }
+                    </p>
                 )}
-            />
         </div>
     );
 

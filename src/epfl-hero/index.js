@@ -93,7 +93,7 @@ registerBlockType( 'epfl/hero', {
                                     onClick={ open }
                                     icon="upload"
                                 >
-                                    { __('Import', 'wp-gutenberg-epfl') }
+                                    { __('Upload', 'wp-gutenberg-epfl') }
                                 </IconButton>
                             </Placeholder>
                         )}

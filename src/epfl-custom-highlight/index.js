@@ -127,7 +127,7 @@ registerBlockType( 'epfl/custom-highlight', {
                                     onClick={ open }
                                     icon="upload"
                                 >
-                                    { __('Import', 'wp-gutenberg-epfl') }
+                                    { __('Upload', 'wp-gutenberg-epfl') }
                                 </IconButton>
                             </Placeholder>
                         )}
