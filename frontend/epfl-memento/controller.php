@@ -64,7 +64,7 @@ function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $cat
     $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $nb_events;
 
     // filter by category
-    if ($category !== '') {
+    if ($category !== '' && $category !== "0") {
         $url .= '&category=' . $category;
     }
 
@@ -113,7 +113,7 @@ function epfl_memento_block( $attributes ) {
     $lang      = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
     $template  = Utils::get_sanitized_attribute( $attributes, 'template', 'slider_with_the_first_highlighted_event' );
     $nb_events = Utils::get_sanitized_attribute( $attributes, 'nbEvents', 10 );
-    $category  = Utils::get_sanitized_attribute( $attributes, 'category', 2 );
+    $category  = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
     $keyword   = Utils::get_sanitized_attribute( $attributes, 'keyword' );
     $period    = Utils::get_sanitized_attribute( $attributes, 'period' );
 

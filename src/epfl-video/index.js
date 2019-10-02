@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: videoIcon,
 	category: 'common',
 	attributes: {
@@ -36,6 +36,9 @@ registerBlockType( 'epfl/video', {
 
         return (
             <Fragment>
+				<InspectorControls>
+					<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/video-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				</InspectorControls>
                 <div className={ className }>
                     <h2>EPFL VIDEO</h2>
 					<TextControl

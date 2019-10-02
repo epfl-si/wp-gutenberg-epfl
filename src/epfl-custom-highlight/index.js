@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/custom-highlight', {
 	title: __( 'EPFL Custom Highlight', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: customHighlightIcon,
 	category: 'common',
 	attributes: {
@@ -72,6 +72,7 @@ registerBlockType( 'epfl/custom-highlight', {
 		return (
 		<Fragment>
 			<InspectorControls>
+				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-highlight-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 				<hr/>
 				<RadioControl
 					label={ __("Select a layout", 'wp-gutenberg-epfl') }

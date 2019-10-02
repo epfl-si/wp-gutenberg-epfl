@@ -12,7 +12,7 @@ registerBlockType(
 	'epfl/people',
 	{
 		title: __( "EPFL People", 'wp-gutenberg-epfl'),
-		description: 'v1.0.1',
+		description: 'v1.0.2',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [

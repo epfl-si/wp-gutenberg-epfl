@@ -98,7 +98,7 @@ function CaptionCardPanel ( props ) {
 
 registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: 'screenoptions',
 	category: 'common',
 	attributes: getAttributes(),
@@ -111,6 +111,7 @@ registerBlockType( 'epfl/caption-cards', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/caption-cards-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                 </InspectorControls>
                 <div>
                     {[...Array(maxCaptionCards)].map((x, i) =>

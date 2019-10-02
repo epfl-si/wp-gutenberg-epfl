@@ -114,7 +114,7 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -127,6 +127,7 @@ registerBlockType( 'epfl/custom-teaser', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-teaser-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }

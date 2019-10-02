@@ -67,7 +67,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -79,7 +79,10 @@ registerBlockType( 'epfl/links-group', {
 
         return (
             <Fragment>
-                <div>
+                <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/links-group-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                </InspectorControls>
+                <div className={ className + ' wp-block-scroll' }>
                     <h2>EPFL Links group</h2>
                     <TextControl
                         label={ __('Title', 'wp-gutenberg-epfl') }

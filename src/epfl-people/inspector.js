@@ -29,6 +29,7 @@ export default class InspectorControlsPeople extends Component {
         
         content = (
             <InspectorControls>
+                <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                 <PanelBody title={ __( 'Select by', 'wp-gutenberg-epfl') }>
                     <strong>{__( 'Units', 'wp-gutenberg-epfl')}</strong>
                     <TextControl

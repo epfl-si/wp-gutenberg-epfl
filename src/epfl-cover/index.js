@@ -10,6 +10,7 @@ const {
 
 const {
 	MediaUpload,
+	InspectorControls,
 } = wp.editor;
 
 const {
@@ -20,7 +21,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/cover', {
 	title: __( 'EPFL Cover', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: coverIcon,
 	category: 'common',
 	attributes: {
@@ -50,6 +51,9 @@ registerBlockType( 'epfl/cover', {
 
 		return (
 		<Fragment>
+			<InspectorControls>
+				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/cover-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+			</InspectorControls>
 			<div className={ className }>
 				<h2>EPFL Cover</h2>
 				<MediaUpload

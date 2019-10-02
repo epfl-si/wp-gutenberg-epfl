@@ -1,6 +1,7 @@
 
 import tableauIcon from './tableau-icon'
 
+
 const { __ } = wp.i18n;
 
 const {
@@ -21,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/tableau', {
 	title: __( 'EPFL Tableau', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.4',
 	icon: tableauIcon,
 	category: 'common',
 	attributes: {
@@ -47,16 +48,19 @@ registerBlockType( 'epfl/tableau', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/tableau-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 					<hr/>
 						<h4>Tableau dimensions</h4>
                         <TextControl
 							label={ __('Width', 'wp-gutenberg-epfl') }
                             value={ attributes.width }
+                            placeholder = "1000"
                             onChange={ width => setAttributes( { width } ) }
                         />
                         <TextControl
 							label={ __('Height', 'wp-gutenberg-epfl') }
                             value={ attributes.height }
+                            placeholder = "650"
                             onChange={ height => setAttributes( { height } ) }
                         />
                 </InspectorControls>
@@ -70,7 +74,7 @@ registerBlockType( 'epfl/tableau', {
                         />
                     <h4>OR</h4>
                         <TextControl
-							label={ __('Tablean Name', 'wp-gutenberg-epfl') }
+							label={ __('Tableau Name', 'wp-gutenberg-epfl') }
                             value={ attributes.tableauName }
                             onChange={ tableauName => setAttributes( { tableauName } ) }
                             help={ __('Name of the Tableau view (eg. "EPFLofficialstatistics/StatistiquesOfficielles")', 'wp-gutenberg-epfl') }

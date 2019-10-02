@@ -82,7 +82,7 @@ export default class InspectorControlsNews extends Component {
             ];
 
             let optionsCategoriesList = [
-                { value: '0', label: __('No filter', 'wp-gutenberg-epfl') },
+                { value: 0, label: __('No filter', 'wp-gutenberg-epfl') },
             ];
 
             this.state.categories.forEach(category => {
@@ -112,6 +112,7 @@ export default class InspectorControlsNews extends Component {
 
             content = (
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/news-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title={ __( 'Channel', 'wp-gutenberg-epfl') }>
                         <SelectControl 
                             label={ __("Select your news channel", 'wp-gutenberg-epfl') }

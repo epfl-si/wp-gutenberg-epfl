@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/contact', {
     title: __( 'EPFL Contact', 'wp-gutenberg-epfl'),
-    description: 'v1.0.0',
+    description: 'v1.0.1',
     icon: contactIcon,
     category: 'common',
     attributes: {
@@ -70,6 +70,7 @@ registerBlockType( 'epfl/contact', {
         return (
             <Fragment>
                 <InspectorControls>
+                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/contact-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }

@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: quoteIcon,
 	category: 'common',
 	attributes: {
@@ -59,6 +59,9 @@ registerBlockType( 'epfl/quote', {
 
 		return (
 		<Fragment>
+			<InspectorControls>
+				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+			</InspectorControls>
 			{/*
 			<div className={ className }>
                 <div className="row my-3">
