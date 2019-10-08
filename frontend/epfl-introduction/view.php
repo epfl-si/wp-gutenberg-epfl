@@ -21,7 +21,7 @@ function epfl_introduction_block( $attributes ) {
     $markup .= '<div class="row">';
     $markup .= '<div class="col-md-8 offset-md-2">';
     $markup .= '<h2>';
-    $markup .= esc_html($title);
+    $markup .= esc_html(trim($title));
     $markup .= '</h2>';
     $markup .= '<p>';
     $markup .= esc_html($content);
