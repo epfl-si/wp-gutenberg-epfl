@@ -152,7 +152,7 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
