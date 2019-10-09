@@ -6,6 +6,7 @@ const {
 
 const {
 	InspectorControls,
+	RichText,
 } = wp.editor;
 
 const {
@@ -19,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/introduction', {
 	title: __( 'EPFL Introduction', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: 'text',
 	category: 'common',
 	attributes: {
@@ -58,10 +59,14 @@ registerBlockType( 'epfl/introduction', {
                         value={ attributes.title }
                         onChange={ title => setAttributes( { title } ) }
                     />
-                    <TextareaControl
-						label={ __('Content', 'wp-gutenberg-epfl') }
+					<label><small>{ __('Content', 'wp-gutenberg-epfl') }</small></label>
+                    <RichText
 						value={ attributes.content }
-                        onChange={ content => setAttributes( { content } ) }
+						multiline="p"
+						onChange={ content => setAttributes( { content } ) }
+						placeholder={ __('Write your text here','wp-gutenberg-epfl')}
+						keepPlaceholderOnFocus = { true }
+						allowedFormats={[]}
                     />
                 </div>
             </Fragment>
