@@ -106,7 +106,7 @@ function epfl_news_check_required_parameters($channel, $lang) {
 function epfl_news_block( $attributes ) {
 
   $channel       = Utils::get_sanitized_attribute( $attributes, 'channel', 1 );
-  $lang          = Utils::get_sanitized_attribute( $attributes, 'lang', 'fr' );
+  $lang          = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
   $template      = Utils::get_sanitized_attribute( $attributes,'template', 'listing' );
   $all_news_link = Utils::get_sanitized_attribute( $attributes, 'displayLinkAllNews', FALSE );
   $nb_news       = Utils::get_sanitized_attribute( $attributes, 'nbNews', 3 );
