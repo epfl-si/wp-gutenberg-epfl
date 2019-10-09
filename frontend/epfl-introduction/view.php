@@ -8,7 +8,7 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 function epfl_introduction_block( $attributes ) {
 
     $title          = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $content        = Utils::get_sanitized_attribute( $attributes, 'content' );
+    $content        = $attributes['content'];
     $grayBackground = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
 
     $markup = '<div class="container-full my-3">';
@@ -24,7 +24,7 @@ function epfl_introduction_block( $attributes ) {
     $markup .= esc_html(trim($title));
     $markup .= '</h2>';
     $markup .= '<p>';
-    $markup .= esc_html($content);
+    $markup .= $content;
     $markup .= '</p>';
     $markup .= '</div>';
     $markup .= '</div>';
