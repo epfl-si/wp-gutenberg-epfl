@@ -138,10 +138,8 @@ function epfl_memento_block( $attributes ) {
         $period
     );
     $events = Utils::get_items($url);
-
-    $memento_name = get_memento_slug($memento_id);
-    // $memento => memento_name
-    $markup = epfl_memento_render($events->results, $template, $memento_name);
+    $memento_slug = get_memento_slug($memento_id);
+    $markup = epfl_memento_render($events->results, $template, $memento_slug);
     return $markup;
 }
 
