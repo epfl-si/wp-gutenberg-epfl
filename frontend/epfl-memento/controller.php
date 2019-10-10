@@ -24,7 +24,7 @@ require_once(dirname(__FILE__).'/view.php');
  */
 function get_memento_slug($memento_id) {
 
-  $url = MEMENTO_API_URL . $memento_id;
+  $url = MEMENTO_API_URL . $memento_id . '/?format=json';
   $memento = Utils::get_items($url);
 
   return $memento->slug;
