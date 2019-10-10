@@ -12,7 +12,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/infoscience-search', {
 	title: __( 'EPFL Infoscience', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: infoscienceIcon,
 	category: 'common',
 	attributes: {
