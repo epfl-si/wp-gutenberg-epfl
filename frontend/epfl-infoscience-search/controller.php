@@ -53,6 +53,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         } elseif ($atts['groupby'] == 'doctype_year') {
             $atts['group_by'] = 'doctype';
             $atts['group_by2'] = 'year';
+        } else {
+            $atts['group_by'] = $atts['groupby'];
         }
     }
 
