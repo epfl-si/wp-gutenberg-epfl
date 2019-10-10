@@ -21,6 +21,9 @@ require_once(dirname(__FILE__).'/view.php');
 
 /**
  * Call memento REST api to get the memento slug
+ * 
+ * @param $memento_id: ID of memento
+ * @return the slug of memento
  */
 function get_memento_slug($memento_id) {
 
