@@ -25,10 +25,10 @@ registerBlockType(
 				default: 1,
 			},
 			template: {
-                type: 'string',
-                default: 'slider_with_the_first_highlighted_event',
-            },
-            nbEvents: {
+        type: 'string',
+        default: 'slider_with_the_first_highlighted_event',
+      },
+      nbEvents: {
 				type: 'integer',
 				default: 10,
 			},
@@ -39,10 +39,6 @@ registerBlockType(
 			category: {
 				type: 'integer',
 				default: 0,
-			},
-			keyword: {
-				type: 'string',
-				default: null,
 			},
 			period: {
 				type: 'string',

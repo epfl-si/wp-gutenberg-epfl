@@ -20,6 +20,17 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
 /**
+ * Call memento REST api to get the memento slug
+ */
+function get_memento_slug($memento_id) {
+
+  $url = MEMENTO_API_URL . $memento_id;
+  $memento = Utils::get_items($url);
+
+  return $memento->slug;
+}
+
+/**
  * Build api URL of events
  *
  * @param $memento: slug of memento
@@ -30,7 +41,7 @@ require_once(dirname(__FILE__).'/view.php');
  * @param $period: period to filter past event or upcoming events
  * @return the API URL of the memento
  */
-function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $category, $keyword, $period)
+function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $category, $keyword, $period)
 {
     // call REST API to get the number of mementos
     $memento_response = Utils::get_items(MEMENTO_API_URL);
@@ -38,19 +49,6 @@ function epfl_memento_build_api_url($memento, $lang, $template, $nb_events, $cat
     // build URL with all mementos
     $url = MEMENTO_API_URL . '?limit=' . $memento_response->count;
     $mementos = Utils::get_items($url);
-
-    // FIXME: we must improve REST API MEMENTO to be able to filter by memento_slug
-    $memento_id = $memento;
-    /*
-    if(property_exists($mementos, 'results'))
-    {
-        foreach($mementos->results as $current_memento) {
-            if ($current_memento->slug === $memento) {
-                $memento_id = $current_memento->id;
-                break;
-            }
-        }
-    }*/
 
     // return events in FR if events exist in this language.
     // otherwise return events in EN (if events exist in this language).
@@ -109,26 +107,26 @@ function epfl_memento_check_required_parameters($memento, $lang)
 function epfl_memento_block( $attributes ) {
 
     // sanitize parameters
-    $memento   = Utils::get_sanitized_attribute( $attributes, 'memento', 1 );
-    $lang      = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
-    $template  = Utils::get_sanitized_attribute( $attributes, 'template', 'slider_with_the_first_highlighted_event' );
-    $nb_events = Utils::get_sanitized_attribute( $attributes, 'nbEvents', 10 );
-    $category  = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
-    $keyword   = Utils::get_sanitized_attribute( $attributes, 'keyword' );
-    $period    = Utils::get_sanitized_attribute( $attributes, 'period' );
+    $memento_id = Utils::get_sanitized_attribute( $attributes, 'memento', 1 );
+    $lang       = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
+    $template   = Utils::get_sanitized_attribute( $attributes, 'template', 'slider_with_the_first_highlighted_event' );
+    $nb_events  = Utils::get_sanitized_attribute( $attributes, 'nbEvents', 10 );
+    $category   = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
+    $keyword    = Utils::get_sanitized_attribute( $attributes, 'keyword' );
+    $period     = Utils::get_sanitized_attribute( $attributes, 'period' );
 
     /*
-    var_dump("Memento: " . $memento);
+    var_dump("Memento Id: " . $memento_id);
     var_dump("Lang: " . $lang);
     var_dump("Template: " . $template);
     */
 
-    if (epfl_memento_check_required_parameters($memento, $lang) == FALSE) {
+    if (epfl_memento_check_required_parameters($memento_id, $lang) == FALSE) {
         return Utils::render_user_msg("Memento shortcode: Please check required parameters");
     }
 
     $url = epfl_memento_build_api_url(
-        $memento,
+        $memento_id,
         $lang,
         $template,
         $nb_events,
@@ -138,8 +136,9 @@ function epfl_memento_block( $attributes ) {
     );
     $events = Utils::get_items($url);
 
+    $memento_name = get_memento_slug($memento_id);
     // $memento => memento_name
-    $markup = epfl_memento_render($events->results, $template, $memento);
+    $markup = epfl_memento_render($events->results, $template, $memento_name);
     return $markup;
 }
 
