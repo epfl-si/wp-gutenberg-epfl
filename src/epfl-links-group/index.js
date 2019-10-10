@@ -8,6 +8,10 @@ const {
     TextControl,
 } = wp.components;
 
+const {
+	InspectorControls,
+} = wp.editor
+
 const { Fragment } = wp.element;
 
 const maxLinksGroup = 10;
@@ -65,7 +69,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
