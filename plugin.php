@@ -3,7 +3,7 @@
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
  * Author: greglebarbar
- * Version: 1.0.7
+ * Version: 1.0.8
  */
 
 namespace EPFL\Plugins\Gutenberg;
@@ -49,3 +49,14 @@ function polylang_json_api_languages() {
 
 // fix polylang language segmentation
 add_action( 'rest_api_init' , __NAMESPACE__ . '\polylang_json_api_init' );
+
+/**
+ * Shortcodes
+ */
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-faq/epfl-faq.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-labs-search/epfl-labs-search.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-magistrale/epfl-magistrale.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-polylex-search/epfl-polylex-search.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-servicenow-search/epfl-servicenow-search.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-share/epfl-share.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-study-plan/epfl-study-plan.php';
