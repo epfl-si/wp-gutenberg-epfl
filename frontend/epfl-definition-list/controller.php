@@ -25,8 +25,8 @@ function epfl_definition_list_block($attributes) {
   $definitions = array();
 
   for($i = 1; $i <= 10; $i++){
-    $definitions[] = array('label' => Utils::get_sanitized_attribute( $attributes, 'label'.$i ),
-                           'desc'  => Utils::get_sanitized_attribute( $attributes, 'desc'.$i ));
+    $definitions[] = array('label' => wp_kses_post($attributes['label' . $i]),
+                           'desc'  => wp_kses_post($attributes['desc'. $i]));
   }
 
   ob_start();
