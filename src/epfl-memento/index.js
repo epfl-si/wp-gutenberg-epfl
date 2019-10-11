@@ -13,7 +13,7 @@ registerBlockType(
 	'epfl/memento',
 	{
 		title: __('EPFL Memento', 'wp-gutenberg-epfl'),
-		description: 'v1.0.1',
+		description: 'v1.0.3',
 		icon: mementoIcon,
 		category: 'common',
 		keywords: [
@@ -21,14 +21,14 @@ registerBlockType(
 		],
 		attributes: {
 			memento: {
-				type: 'integer',
-				default: 1,
+				type: 'string',
+				default: '1',
 			},
 			template: {
-                type: 'string',
-                default: 'slider_with_the_first_highlighted_event',
-            },
-            nbEvents: {
+        type: 'string',
+        default: 'slider_with_the_first_highlighted_event',
+      },
+      nbEvents: {
 				type: 'integer',
 				default: 10,
 			},
@@ -39,10 +39,6 @@ registerBlockType(
 			category: {
 				type: 'integer',
 				default: 0,
-			},
-			keyword: {
-				type: 'string',
-				default: null,
 			},
 			period: {
 				type: 'string',
