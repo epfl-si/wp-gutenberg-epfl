@@ -53,7 +53,7 @@ export default class InspectorControlsMemento extends Component {
             let optionsMementosList = [];
 
             this.state.mementos.forEach(memento => {
-                optionsMementosList.push({ label: memento.en_name, value: Number(memento.id) });
+                optionsMementosList.push({ label: memento.en_name, value: memento.id });
             });
             
             let optionsTemplatesList = [
@@ -90,7 +90,10 @@ export default class InspectorControlsMemento extends Component {
                             help={ __("The events come from the application memento.epfl.ch. If you don't have a memento, please send a request to 1234@epfl.ch", 'wp-gutenberg-epfl') }
                             value={ attributes.memento }
                             options={ optionsMementosList }
-                            onChange={ memento => setAttributes( { memento } ) }
+                            onChange={ memento => {
+                              memento = Number(memento);
+                              setAttributes( { memento } ); 
+                            }}
                         />
                     </PanelBody>
                     <PanelBody title={ __( 'Template', 'wp-gutenberg-epfl' ) }>

@@ -64,7 +64,7 @@ export default class InspectorControlsNews extends Component {
             let optionsChannelsList = [];
 
             this.state.channels.forEach(channel => {
-                optionsChannelsList.push({ label: channel.name, value: Number(channel.id) });
+                optionsChannelsList.push({ label: channel.name, value: channel.id });
             });
             
             let optionsTemplatesList = [
@@ -119,7 +119,10 @@ export default class InspectorControlsNews extends Component {
                             help={ __("The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch", 'wp-gutenberg-epfl') }
                             value={ attributes.channel }
                             options={ optionsChannelsList }
-                            onChange={ channel => setAttributes( { channel } ) }
+                            onChange={ channel => {
+                              channel = Number(channel);
+                              setAttributes( { channel } ); 
+                            }}
                         />
                     </PanelBody>
                     <PanelBody title={ __( 'Template', 'wp-gutenberg-epfl' ) }>
