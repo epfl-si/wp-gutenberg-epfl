@@ -53,7 +53,7 @@ export default class InspectorControlsMemento extends Component {
             let optionsMementosList = [];
 
             this.state.mementos.forEach(memento => {
-                optionsMementosList.push({ label: memento.en_name, value: memento.id });
+                optionsMementosList.push({ label: memento.en_name, value: Number(memento.id) });
             });
             
             let optionsTemplatesList = [
