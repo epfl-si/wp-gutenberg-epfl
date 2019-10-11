@@ -20,12 +20,12 @@ registerBlockType(
 		],
 		attributes: {
 			channel: {
-				type: 'integer',
-				default: 1,
+        type: 'string',
+        default: '1',
 			},
 			template: {
-                type: 'string',
-                default: 'listing',
+        type: 'string',
+        default: 'listing',
 			},
 			displayLinkAllNews: {
 				type: 'boolean',

@@ -3,7 +3,7 @@
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
  * Author: greglebarbar
- * Version: 1.0.6
+ * Version: 1.0.7
  */
 
 namespace EPFL\Plugins\Gutenberg;
