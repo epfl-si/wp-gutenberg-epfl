@@ -38,7 +38,7 @@ function CardPanel ( props ) {
 
     // set a value or an empty string for each Control, or face :
     // https://stackoverflow.com/questions/37427508/react-changing-an-uncontrolled-input
-    
+
     return (
         <div>
             <h4>{`Card ${index}`}</h4>
@@ -78,11 +78,11 @@ function CardPanel ( props ) {
                     <img
                         src={ attributes['imageUrl' + index] }
                         alt={ attributes['imageUrl' + index] }
-                        class="epfl-uploader-img"
+                        className="epfl-uploader-img"
                     />
 
                     { props.attributes['imageUrl' + index] && (
-        
+
                     <IconButton
                         className={'epfl-uploader-remove-image'}
                         onClick={ onRemoveImage }

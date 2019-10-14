@@ -50,7 +50,7 @@ registerBlockType( 'epfl/hero', {
                 imageUrl: imageObject.url
 			})
         }
-        
+
         function onRemoveImage() {
             props.setAttributes({
               imageId: null,
@@ -61,7 +61,7 @@ registerBlockType( 'epfl/hero', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/hero-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/hero-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className }>
                         <h2>EPFL Hero</h2>
@@ -103,11 +103,11 @@ registerBlockType( 'epfl/hero', {
                         <img
                           src={ attributes.imageUrl }
                           alt={ attributes.imageUrl }
-                          class="epfl-uploader-img"
+                          className="epfl-uploader-img"
                         />
-          
+
                         { props.isSelected && (
-          
+
                         <IconButton
                             className="epfl-uploader-remove-image"
                             onClick={ onRemoveImage }

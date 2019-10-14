@@ -63,7 +63,7 @@ registerBlockType( 'epfl/custom-highlight', {
 				imageUrl: imageObject.url
 			})
         }
-        
+
         function onRemoveImage() {
             props.setAttributes({
               imageId: null,
@@ -80,7 +80,7 @@ registerBlockType( 'epfl/custom-highlight', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-highlight-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-highlight-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 				<hr/>
 				<RadioControl
 					label={ __("Select a layout", 'wp-gutenberg-epfl') }
@@ -137,11 +137,11 @@ registerBlockType( 'epfl/custom-highlight', {
                         <img
                           src={ attributes.imageUrl }
                           alt={ attributes.imageUrl }
-                          class="epfl-uploader-img"
+                          className="epfl-uploader-img"
                         />
-          
+
                         { props.isSelected && (
-          
+
                         <IconButton
                             className="epfl-uploader-remove-image"
                             onClick={ onRemoveImage }

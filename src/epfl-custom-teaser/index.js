@@ -130,11 +130,11 @@ function CustomTeaserPanel ( props ) {
                     <img
                         src={ attributes['imageUrl' + index] }
                         alt={ attributes['imageUrl' + index] }
-                        class="epfl-uploader-img"
+                        className="epfl-uploader-img"
                     />
 
                     { props.attributes['imageUrl' + index] && (
-        
+
                     <IconButton
                         className={'epfl-uploader-remove-image'}
                         onClick={ onRemoveImage }
@@ -165,7 +165,7 @@ registerBlockType( 'epfl/custom-teaser', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-teaser-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-teaser-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }

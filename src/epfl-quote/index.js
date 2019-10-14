@@ -66,7 +66,7 @@ registerBlockType( 'epfl/quote', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 			</InspectorControls>
             <div className={ className }>
                 <h2>EPFL QUOTE</h2>
@@ -96,11 +96,11 @@ registerBlockType( 'epfl/quote', {
                         <img
                           src={ attributes.imageUrl }
                           alt={ attributes.imageUrl }
-                          class="epfl-uploader-img"
+                          className="epfl-uploader-img"
                         />
-          
+
                         { props.isSelected && (
-          
+
                         <IconButton
                             className="epfl-uploader-remove-image"
                             onClick={ onRemoveImage }

@@ -44,7 +44,7 @@ registerBlockType( 'epfl/introduction', {
 
             <Fragment>
 			<InspectorControls>
-				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/introduction-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/introduction-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 				<hr/>
 				<ToggleControl
 					label={ __('Change the background to gray', 'wp-gutenberg-epfl') }

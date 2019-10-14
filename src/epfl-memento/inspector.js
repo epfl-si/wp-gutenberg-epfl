@@ -20,7 +20,7 @@ export default class InspectorControlsMemento extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             mementos: null,
             categories: null,
         }
@@ -45,17 +45,17 @@ export default class InspectorControlsMemento extends Component {
     render() {
 
         const { attributes, setAttributes } = this.props
-        
+
         let content = "";
-        
+
         if (this.state.mementos !== null && this.state.categories !== null) {
-            
+
             let optionsMementosList = [];
 
             this.state.mementos.forEach(memento => {
                 optionsMementosList.push({ label: memento.en_name, value: memento.id });
             });
-            
+
             let optionsTemplatesList = [
                 { value: 'slider_with_the_first_highlighted_event', label: __('Template slider with the first highlighted event', 'wp-gutenberg-epfl')},
                 { value: 'slider_without_the_first_highlighted_event', label: __('Template slider without the first highlighted event', 'wp-gutenberg-epfl')},
@@ -83,16 +83,16 @@ export default class InspectorControlsMemento extends Component {
 
             content = (
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/memento-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/memento-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title={ __('Memento', 'capitainewp-gutenberg-blocks', 'wp-gutenberg-epfl') }>
-                        <SelectControl 
+                        <SelectControl
                             label={ __("Select your memento", 'wp-gutenberg-epfl') }
                             help={ __("The events come from the application memento.epfl.ch. If you don't have a memento, please send a request to 1234@epfl.ch", 'wp-gutenberg-epfl') }
                             value={ attributes.memento }
                             options={ optionsMementosList }
                             onChange={ memento => {
                               memento = Number(memento);
-                              setAttributes( { memento } ); 
+                              setAttributes( { memento } );
                             }}
                         />
                     </PanelBody>
@@ -133,7 +133,7 @@ export default class InspectorControlsMemento extends Component {
 	                    />
                     </PanelBody>
                     <PanelBody title={ __( 'Category', 'wp-gutenberg-epfl' ) }>
-                        <SelectControl 
+                        <SelectControl
                             label={ __("Filter events by category", 'wp-gutenberg-epfl') }
                             help={ __("Do you want filter events by category? Please select a category.", 'wp-gutenberg-epfl') }
                             value={ attributes.categories }
@@ -142,14 +142,14 @@ export default class InspectorControlsMemento extends Component {
                         />
                     </PanelBody>
                     <PanelBody title={ __( 'Keyword', 'wp-gutenberg-epfl' ) }>
-                        <TextControl 
+                        <TextControl
                             label={ __("Filter events by keyword", 'wp-gutenberg-epfl') }
                             help={ __("Do you want filter events by keyword? Please type a keyword.", 'wp-gutenberg-epfl') }
                             value={ attributes.keyword }
                             onChange={ keyword => setAttributes( { keyword} )}
                         />
                     </PanelBody>
-                    
+
                 </InspectorControls>
             )
         }
