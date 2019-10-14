@@ -7,7 +7,7 @@ namespace EPFL\Plugins\Gutenberg\People;
  */
 function epfl_people_get_photo($person) {
     $photo_url = "";
-    if ("1" == $person->people->photo_show) {
+    if( property_exists($person, 'people') && "1" == $person->people->photo_show) {
         $photo_url = "https://people.epfl.ch/private/common/photos/links/" . $person->sciper.".jpg";
     }
     return $photo_url;
