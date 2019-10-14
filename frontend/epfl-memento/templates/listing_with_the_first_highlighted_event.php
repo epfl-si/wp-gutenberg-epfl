@@ -48,7 +48,7 @@
                 $markup .= '<h3 class="card-title" itemprop="name">' . esc_html($event->title) . '</h3>';
                 $markup .= '<p>' . esc_html(trim_text(strip_tags($event->description), 225)) . '</p>';
                 $markup .= '<div class="card-info">';
-                $markup .= include(dirname(__FILE__) . '/includes/card-info.inc.php');
+                include(dirname(__FILE__) . '/includes/card-info.inc.php');
                 $markup .= '</div>';
                 $markup .= '</div>';
                 $markup .= '</a>';
@@ -74,7 +74,7 @@
                 $markup .= '<div class="list-group-teaser-content">';
                 $markup .= '<p class="h5 card-title" itemprop="name">' . esc_html($event->title) . '</p>';
                 $markup .= '<div class="card-info mt-0">';
-                $markup .= include(dirname(__FILE__) . '/includes/card-info.inc.php');
+                include(dirname(__FILE__) . '/includes/card-info.inc.php');
                 $markup .= '</div>';
                 $markup .= '</div>';
                 $markup .= '</div>';

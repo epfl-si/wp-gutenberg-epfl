@@ -37,7 +37,7 @@
             $markup .= '<div class="list-group-teaser-content">';
             $markup .= '<p class="h5 card-title" itemprop="name">' . esc_html($event->title) . '</p>';
             $markup .= '<div class="card-info mt-0">';
-            $markup .= include(dirname(__FILE__) . '/includes/card-info.inc.php');
+            include(dirname(__FILE__) . '/includes/card-info.inc.php');
             $markup .= '</div>';
             $markup .= '</div>';
             $markup .= '</div>';
