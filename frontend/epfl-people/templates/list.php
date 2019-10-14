@@ -36,7 +36,7 @@ namespace EPFL\Plugins\Gutenberg\People;
             
             if (isset($phones[0])) { 
                 $markup .= '<a class="contact-list-item text-muted" href="tel:"'. esc_html($phones[0]) . '" itemprop="telephone">';
-                $markup .= '+41 21 69 <b>' . esc_html($phones[0]) . '</b>';
+                $markup .= '<b>' . esc_html($phones[0]) . '</b>';
             }
 
             $markup .= '</a>';
