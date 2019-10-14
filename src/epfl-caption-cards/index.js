@@ -111,11 +111,11 @@ function CaptionCardPanel ( props ) {
                     <img
                         src={ attributes['imageUrl' + index] }
                         alt={ attributes['imageUrl' + index] }
-                        class="epfl-uploader-img"
+                        className="epfl-uploader-img"
                     />
 
                     { props.attributes['imageUrl' + index] && (
-        
+
                     <IconButton
                         className={'epfl-uploader-remove-image'}
                         onClick={ onRemoveImage }
@@ -148,7 +148,7 @@ registerBlockType( 'epfl/caption-cards', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/caption-cards-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/caption-cards-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                     {[...Array(maxCaptionCards)].map((x, i) =>

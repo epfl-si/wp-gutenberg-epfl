@@ -22,8 +22,8 @@ export default class InspectorControlsNews extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { 
-            channels : null, 
+        this.state = {
+            channels : null,
             categories: null,
             themes: null,
         }
@@ -32,7 +32,7 @@ export default class InspectorControlsNews extends Component {
     componentDidMount() {
 
         let apiRestUrl = "https://actu.epfl.ch/api/v1/";
-        
+
         let entryPointChannels = `${apiRestUrl}channels/?format=json&limit=800`;
 		axios.get(entryPointChannels)
 			.then( response => response.data.results )
@@ -44,7 +44,7 @@ export default class InspectorControlsNews extends Component {
             .then( response => response.data.results )
             .then( categories => this.setState({ categories }) )
             .catch( err => console.log(err))
-        
+
         let entryPointsThemes = `${apiRestUrl}themes/?format=json&limit=10`;
         axios.get(entryPointsThemes)
             .then( response => response.data.results )
@@ -56,17 +56,17 @@ export default class InspectorControlsNews extends Component {
 
         const { attributes, setAttributes } = this.props
         const handleThemesChange = ( themes ) => setAttributes( { themes: JSON.stringify( themes ) } );
-        
+
         let content = "";
-        
+
         if (this.state.channels !== null && this.state.categories !== null && this.state.themes !== null) {
-            
+
             let optionsChannelsList = [];
 
             this.state.channels.forEach(channel => {
                 optionsChannelsList.push({ label: channel.name, value: channel.id });
             });
-            
+
             let optionsTemplatesList = [
                 { value: 'listing', label: __('Template Listing', 'wp-gutenberg-epfl')},
                 { value: 'highlighted_with_3_news', label: __('Template highlighted with 3 news', 'wp-gutenberg-epfl')},
@@ -112,16 +112,16 @@ export default class InspectorControlsNews extends Component {
 
             content = (
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/news-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/news-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title={ __( 'Channel', 'wp-gutenberg-epfl') }>
-                        <SelectControl 
+                        <SelectControl
                             label={ __("Select your news channel", 'wp-gutenberg-epfl') }
                             help={ __("The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch", 'wp-gutenberg-epfl') }
                             value={ attributes.channel }
                             options={ optionsChannelsList }
                             onChange={ channel => {
                               channel = Number(channel);
-                              setAttributes( { channel } ); 
+                              setAttributes( { channel } );
                             }}
                         />
                     </PanelBody>

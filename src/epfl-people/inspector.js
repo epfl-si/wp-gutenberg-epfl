@@ -24,12 +24,12 @@ export default class InspectorControlsPeople extends Component {
             { value: '1', label: __('As card, one column', 'wp-gutenberg-epfl')},
             { value: '3', label: __('As card, multiple columns', 'wp-gutenberg-epfl')},
         ];
-        
+
         let content = "";
-        
+
         content = (
             <InspectorControls>
-                <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                 <PanelBody title={ __( 'Select by', 'wp-gutenberg-epfl') }>
                     <strong>{__( 'Units', 'wp-gutenberg-epfl')}</strong>
                     <TextControl
@@ -69,7 +69,7 @@ export default class InspectorControlsPeople extends Component {
                 </PanelBody>
             </InspectorControls>
         )
-        
+
         return content;
     }
 }

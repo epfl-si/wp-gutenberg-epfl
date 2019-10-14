@@ -32,7 +32,7 @@ registerBlockType( 'epfl/social-feed', {
         instagramUrl: {
 			type: 'url',
         },
-        facebookUrl: { 
+        facebookUrl: {
             type: 'url',
         },
         height: {
@@ -51,7 +51,7 @@ registerBlockType( 'epfl/social-feed', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/social-feed-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/social-feed-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title={ __('Size', 'wp-gutenberg-epfl') }>
                         <label>{ __('Height', 'wp-gutenberg-epfl') }</label>
                         <TextControl

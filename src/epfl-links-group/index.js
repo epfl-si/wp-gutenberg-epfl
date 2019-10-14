@@ -82,7 +82,7 @@ registerBlockType( 'epfl/links-group', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/links-group-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/links-group-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                     <h2>EPFL Links group</h2>

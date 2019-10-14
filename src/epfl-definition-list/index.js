@@ -83,7 +83,7 @@ registerBlockType( 'epfl/definition-list', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/definition-list-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/definition-list-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Display as a table', 'wp-gutenberg-epfl') }

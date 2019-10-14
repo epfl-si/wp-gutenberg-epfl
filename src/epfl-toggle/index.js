@@ -48,7 +48,7 @@ registerBlockType( 'epfl/toggle', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a class="wp-block-help" href={ __('https://www.epfl.ch/campus/services/toggle-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/toggle-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
 				<PanelBody>
 					<RadioControl
                         label={ __('Initial state', 'wp-gutenberg-epfl') }
