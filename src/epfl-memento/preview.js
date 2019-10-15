@@ -149,7 +149,6 @@ export default class PreviewMemento extends Component {
                   <div className="list-group-teaser-thumbnail">
                     <picture>
                       <span style={ academicCalendarStyle }>
-                        <meta itemProp="eventStatus" content="https://schema.org/EventCancelled" />
                         { academicCalendarCategory }
                       </span>
                       <img src={ visualUrl } className="img-fluid" alt={ event.image_description } />
@@ -161,11 +160,10 @@ export default class PreviewMemento extends Component {
                           { startDate } - { endDate } <br />
                           { startTime } > { endTime }
                           <p>
-                            <span itemProp="performer" itemScope itemType="http://schema.org/performer">
+                            <span>
                             { eventSpeakerContent }
                             </span>            
-                            <span itemProp="location" itemScope itemType="http://schema.org/Place">
-                            
+                            <span>
                                 { placeAndRoom }
                                 <br /> 
                                 { category }<br />
