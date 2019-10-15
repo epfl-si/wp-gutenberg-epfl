@@ -121,7 +121,7 @@ export default class PreviewMemento extends Component {
 
           let startDate;
           if (!!event.start_date) {
-            startDate = <span className="card-info-date" itemProp="startDate" content="2018-01-10T12:00">{event.start_date}</span>
+            startDate = <span className="card-info-date" itemProp="startDate">{event.start_date}</span>
           }
 
           let startTime;
@@ -135,7 +135,7 @@ export default class PreviewMemento extends Component {
 
           let endDate;
           if (!!event.end_date) {
-            endDate = <span className="card-info-date" itemProp="endDate" content="2018-01-10T12:00">{event.end_date}</span>
+            endDate = <span className="card-info-date" itemProp="endDate">{event.end_date}</span>
           }
 
           let category;
