@@ -46,5 +46,30 @@
         font-family: "SuisseIntl", Arial, sans-serif !important;
         color: rgb(33, 33, 33);
     }
+
+    .list-group-teaser-thumbnail {
+      width: 100%;
+    }
+
+    .list-group-teaser-thumbnail img {
+        
+        width: 80%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 10%;
+    }
+
+    .card-title {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    .card-info {
+        margin-top: 5%;
+        padding-bottom: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color: #e6e6e6;
+    }
 }
 

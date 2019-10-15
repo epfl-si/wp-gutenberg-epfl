@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import renderHTML from 'react-render-html';
 
 const { __ } = wp.i18n
 const { Spinner } = wp.components
@@ -96,47 +97,82 @@ export default class PreviewMemento extends Component {
 			position: 'absolute', color: '#FFF', padding: '10px 0 0 10px', lineHeight: '1.35em', fontSize:'1em'
 		}
         
-        return (
-            <div className={ className }>
-            <div className="list-group">
-
-                { this.state.events.map( event => {
+    return (
+      <div className={ className }>
+        <div className="list-group">
+          { this.state.events.map( event => {
 					
-					let visualUrl = this.getVisualUrl(event, attributes.memento);
-					let academicCalendarCategory = event.academic_calendar_category == null ? '' : event.academic_calendar_category.fr_label;
-					return (
+          let visualUrl = this.getVisualUrl(event, attributes.memento);
+          
+          let placeAndRoom;
+          if (!!event.place_and_room) {
+            placeAndRoom = <span><br/>Place and room : <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
+          }
+          
+          let eventSpeakerContent;
+          if (!!event.speaker) {
+            eventSpeakerContent = <span>With <b>{renderHTML(event.speaker)}</b></span>;
+          }
+          
+          let academicCalendarCategory;
+          if (!!event.academic_calendar_category) {
+            academicCalendarCategory = event.academic_calendar_category.fr_label;
+          }
 
-                        <a key={event.id} href="#" className="list-group-item list-group-item-gray list-group-teaser link-trapeze-vertical" itemScope itemType="http://schema.org/Event">
-                            <div className="list-group-teaser-container">
-                                <div className="list-group-teaser-thumbnail">
-                                    <picture>
-										<span style={ academicCalendarStyle }>
-            								<meta itemProp="eventStatus" content="https://schema.org/EventCancelled" />
-											{ academicCalendarCategory }
-          								</span>
-                                        <img src={ visualUrl } className="img-fluid" alt={ event.image_description } />
-                                    </picture>
-                                </div>
-                                <div className="list-group-teaser-content">
-                                    <p className="h5 card-title" itemProp="name">{ event.title }</p>
-                                    <div className="card-info mt-0">
-                                        <span className="card-info-date" itemProp="startDate" content="2018-01-10T12:00">10.01.2018</span>
-                                        <span className="event-time">13:00</span>
-                                        <span className="event-time">17:30</span>
-                                        <p>
-                                            <span itemProp="performer" itemScope itemType="http://schema.org/performer">
-                                                Avec <b>Prof. Dr. Aditya Mueller</b>
-                                            </span>            
-                                            <span itemProp="location" itemScope itemType="http://schema.org/Place">
-                                                <br />
-                                                Lieu : <b><span itemProp="name">ArtLab EPFL</span></b>
-                                                <br /> Catégorie : <b>Événements culturel</b><br />
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+          let startDate;
+          if (!!event.start_date) {
+            startDate = <span className="card-info-date" itemProp="startDate">{event.start_date}</span>
+          }
+
+          let startTime;
+          if (!!event.start_time) {
+            startTime = <span className="event-time">{ event.start_time }</span>
+          }
+          let endTime;
+          if (!!event.end_time) {
+            endTime = <span className="event-time">{ event.end_time }</span>
+          }
+
+          let endDate;
+          if (!!event.end_date) {
+            endDate = <span className="card-info-date" itemProp="endDate">{event.end_date}</span>
+          }
+
+          let category;
+          if (!!event.category.en_label) {
+            category = <span>Category : <b>{ event.category.en_label }</b></span>
+          }
+
+					return (
+            <a key={event.id} href="#" className="list-group-item list-group-item-gray list-group-teaser link-trapeze-vertical" itemScope itemType="http://schema.org/Event">
+              <div className="list-group-teaser-container">
+                  <div className="list-group-teaser-thumbnail">
+                    <picture>
+                      <span style={ academicCalendarStyle }>
+                        { academicCalendarCategory }
+                      </span>
+                      <img src={ visualUrl } className="img-fluid" alt={ event.image_description } />
+                    </picture>
+                    </div>
+                    <div className="list-group-teaser-content">
+                      <p className="h5 card-title" itemProp="name">{ event.title }</p>
+                        <div className="card-info mt-0">
+                          { startDate } - { endDate } <br />
+                          { startTime } > { endTime }
+                          <p>
+                            <span>
+                            { eventSpeakerContent }
+                            </span>            
+                            <span>
+                                { placeAndRoom }
+                                <br /> 
+                                { category }<br />
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
                     )
                 }) }
             </div>
