@@ -180,6 +180,26 @@
 .wp-block-epfl-memento a.link-pretty {
   font-family: "SuisseIntl", Arial, sans-serif !important;
   color: #212121; }
+
+.wp-block-epfl-memento .list-group-teaser-thumbnail {
+  width: 100%; }
+
+.wp-block-epfl-memento .list-group-teaser-thumbnail img {
+  width: 80%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 10%; }
+
+.wp-block-epfl-memento .card-title {
+  margin-left: 50px;
+  margin-right: 50px; }
+
+.wp-block-epfl-memento .card-info {
+  margin-top: 5%;
+  padding-bottom: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #e6e6e6; }
 /**
  * #.# Common SCSS
  *
