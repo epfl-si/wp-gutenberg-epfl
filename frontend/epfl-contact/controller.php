@@ -57,7 +57,7 @@ function epfl_contact_block($attributes) {
         # bad quickfix that disallow INN011 as a place
         # because INN011 was a value in shortcake and not a placeholder
         # meaning some contact shortcode have this value but don't want to show a map
-        if (isset($attributes['mapQuery']) && $attributes['mapQuery'] != 'INN011'):
+        if (isset($attributes['mapQuery']) && !empty(trim($attributes['mapQuery'])) && $attributes['mapQuery'] != 'INN011'):
         ?>
         <div class="col-md-6 d-flex flex-column">
           <?php echo
