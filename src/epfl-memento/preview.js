@@ -16,7 +16,7 @@ export default class PreviewMemento extends Component {
 
 		const { attributes } = this.props;
 		
-		let eventsUrl = `https://memento-test.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
+		let eventsUrl = `https://memento.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
 		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=${attributes.nbEvents}`;
 
 		if (attributes.category !== 0) {
@@ -58,13 +58,13 @@ export default class PreviewMemento extends Component {
 				visualUrl = event.visual_url;
 			} else {
 				if (memento == '11') {
-					visualUrl = "https://memento-test.epfl.ch/static/img/Others.jpg";
+					visualUrl = "https://memento.epfl.ch/static/img/Others.jpg";
 				} else {
-					visualUrl = "https://memento-test.epfl.ch/static/img/default.jpg";
+					visualUrl = "https://memento.epfl.ch/static/img/default.jpg";
 				}
 			}
 		} else {
-			visualUrl = "https://memento-test.epfl.ch/static/img/";
+			visualUrl = "https://memento.epfl.ch/static/img/";
 			visualUrl += event.academic_calendar_category.en_label;
 			visualUrl += ".jpg";
 		}
