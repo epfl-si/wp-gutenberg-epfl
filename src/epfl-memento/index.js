@@ -13,7 +13,7 @@ registerBlockType(
 	'epfl/memento',
 	{
 		title: __('EPFL Memento', 'wp-gutenberg-epfl'),
-		description: 'v1.0.4',
+		description: 'v1.0.5',
 		icon: mementoIcon,
 		category: 'common',
 		keywords: [
