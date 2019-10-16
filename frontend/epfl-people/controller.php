@@ -37,6 +37,7 @@ function epfl_people_block( $attributes ) {
     $doctoral_program = Utils::get_sanitized_attribute( $attributes, 'doctoralProgram' );
     $function         = Utils::get_sanitized_attribute( $attributes, 'fonction' );
     $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
+    $order            = Utils::get_sanitized_attribute( $attributes, 'order', 'alphabetical' );
 
     /*
     var_dump($units);
@@ -44,6 +45,7 @@ function epfl_people_block( $attributes ) {
     var_dump($doctoral_program);
     var_dump($fonction);
     var_dump($columns);
+    var_dump($order);
     */
 
     // Delete all whitespace (including tabs and line ends)
@@ -75,6 +77,10 @@ function epfl_people_block( $attributes ) {
         $parameter['position'] = $function;
     }
 
+    if ("hierarchical" === $order && "" !== $units) {
+      $parameter['struct'] = '1';
+    }
+
     if (function_exists('pll_current_language')) {
         $current_language = pll_current_language();
         if ($current_language != false) {
@@ -83,7 +89,7 @@ function epfl_people_block( $attributes ) {
     }
 
     // the web service we use to retrieve the data
-    $url = "https://people.epfl.ch/cgi-bin/wsgetpeople/";
+    $url = "https://test-people.epfl.ch/cgi-bin/wsgetpeople/";
     $url = add_query_arg($parameter, $url);
 
     // retrieve the data in JSON
@@ -104,7 +110,7 @@ function epfl_people_block( $attributes ) {
         $persons[] = $item;
     }
 
-    if ("" !== $units || "" !== $doctoral_program) {
+    if ('alphabetical' === $order || ("hierarchical" === $order && "" !== $units)) {
         // Sort persons list alphabetically when units
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     } else {
