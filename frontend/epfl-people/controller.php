@@ -119,7 +119,7 @@ function epfl_people_block( $attributes ) {
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
     }
 
-    $markup = epfl_people_render($persons, $from, $columns);
+    $markup = epfl_people_render($persons, $from, $columns, $order);
     return $markup;
 
 }
