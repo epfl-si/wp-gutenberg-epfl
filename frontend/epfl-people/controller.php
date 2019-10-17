@@ -110,16 +110,16 @@ function epfl_people_block( $attributes ) {
         $persons[] = $item;
     }
 
-    if ('alphabetical' === $order || ("hierarchical" === $order && "" !== $units)) {
-        // Sort persons list alphabetically when units
-        usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
-    } else {
+    // Sort by scipers
+    if ("" !== $scipers) {
         // Respect given order when sciper
         $scipers =  array_map('intval', explode(',', $parameter['scipers']));
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
-    }
+    } else if ('alphabetical' === $order) {
+        // Sort persons list alphabetically when units
+        usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
+  }
 
     $markup = epfl_people_render($persons, $from, $columns, $order);
     return $markup;
-
 }
