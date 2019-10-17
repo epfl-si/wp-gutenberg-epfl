@@ -61,7 +61,7 @@ function get_email($person, $order) {
 function epfl_people_get_photo($person, $order) {
     $photo_url = "";
     if( "1" == get_photo_slug($person, $order) ) {
-        $photo_url = "https://test-people.epfl.ch/private/common/photos/links/" . get_sciper($person, $order) . ".jpg";
+        $photo_url = "https://people.epfl.ch/private/common/photos/links/" . get_sciper($person, $order) . ".jpg";
     }
     return $photo_url;
 }
