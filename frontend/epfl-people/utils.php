@@ -2,6 +2,9 @@
 
 namespace EPFL\Plugins\Gutenberg\People;
 
+define(__NAMESPACE__ . "\HIERARCHICAL_ORDER", "hierarchical");
+define(__NAMESPACE__ . "\ALPHABETICAL_ORDER", "alphabetical");
+
 /**
  * Get person photo
  */
@@ -16,12 +19,15 @@ function epfl_people_get_photo($person) {
 /**
  * Get person phones number
  */
-function epfl_people_get_phones($person) {
+function epfl_people_get_phones($person, $order) {
     $phones = [];
-    foreach($person->unites as $current_unit) {
-        $phones = array_merge($phones, array_filter($current_unit->phones));
+    if (HIERARCHICAL_ORDER == $order) {
+      $phones = array_filter($person->phones);
+    } else if (ALPHABETICAL_ORDER == $order) {
+        foreach($person->unites as $current_unit) {
+            $phones = array_merge($phones, array_filter($current_unit->phones));
+        }
     }
-
     /* Looping through phone numbers to reformat them to have same format as the one on https://www.local.ch,
     EX: +41 21 693 22 24 */
     foreach($phones as $key => $phone){
@@ -48,16 +54,25 @@ function epfl_people_get_phones($person) {
 /**
  * Get person function
  */
-function epfl_people_get_function($person, $from) {
+function epfl_people_get_function($person, $from, $order) {
     $function = '';
-    $nb_units = count((array)$person->unites);
-    foreach($person->unites as $current_unit) {
-        if ($from == 'units' || $from == 'doctoral_program' || ($from == 'scipers' && $current_unit->ordre  == 1)) {
-            $language = get_current_language();
-            if ($language === 'fr') {
-                $function = $current_unit->fonction_fr;
-            } else {
-                $function = $current_unit->fonction_en;
+    if (HIERARCHICAL_ORDER == $order) {
+        $language = get_current_language();
+        if ($language === 'fr') {
+            $function = $person->fonction_fr;
+        } else {
+            $function = $person->fonction_en;
+        }
+    } else if (ALPHABETICAL_ORDER == $order) {
+        $nb_units = count((array)$person->unites);
+        foreach($person->unites as $current_unit) {
+            if ($from == 'units' || $from == 'doctoral_program' || ($from == 'scipers' && $current_unit->ordre  == 1)) {
+                $language = get_current_language();
+                if ($language === 'fr') {
+                    $function = $current_unit->fonction_fr;
+                } else {
+                    $function = $current_unit->fonction_en;
+                }
             }
         }
     }
@@ -67,12 +82,16 @@ function epfl_people_get_function($person, $from) {
 /**
  * Get person room
  */
-function epfl_people_get_room($person, $from) {
+function epfl_people_get_room($person, $from, $order) {
 
     $room = '';
-    foreach($person->unites as $current_unit) {
-        if ($from == 'units' || $from == 'doctoral_program' || ($from == 'scipers' && $current_unit->ordre  == 1)) {
-            $room = $current_unit->rooms;
+    if (HIERARCHICAL_ORDER == $order) {
+        $room = $person->rooms;
+    } else if (ALPHABETICAL_ORDER == $order) {
+        foreach($person->unites as $current_unit) {
+            if ($from == 'units' || $from == 'doctoral_program' || ($from == 'scipers' && $current_unit->ordre  == 1)) {
+                $room = $current_unit->rooms;
+            }
         }
     }
     return $room;

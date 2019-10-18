@@ -14,9 +14,9 @@ namespace EPFL\Plugins\Gutenberg\People;
         foreach($persons as $index => $person){
         
             $photo_url  = epfl_people_get_photo($person);
-            $phones     = epfl_people_get_phones($person);
-            $function   = epfl_people_get_function($person, $from);
-            $room       = epfl_people_get_room($person, $from);
+            $phones     = epfl_people_get_phones($person, ALPHABETICAL_ORDER);
+            $function   = epfl_people_get_function($person, $from, ALPHABETICAL_ORDER);
+            $room       = epfl_people_get_room($person, $from, ALPHABETICAL_ORDER);
             $room_url   = epfl_people_get_room_url($room);
             $people_url = epfl_people_get_people_url($person);
 

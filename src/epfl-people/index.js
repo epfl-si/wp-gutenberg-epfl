@@ -32,9 +32,13 @@ registerBlockType(
 				type: 'string',
 			},
 			columns: {
-                type: 'string',
-                default: '3',
-			},
+        type: 'string',
+        default: '3',
+      },
+      order: {
+        type: 'string',
+        default: 'alphabetical',
+      },
 		},
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
