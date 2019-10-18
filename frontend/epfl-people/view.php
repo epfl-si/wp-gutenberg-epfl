@@ -25,10 +25,6 @@
             $markup = $function_to_be_called($persons, $from);
         } else if ( HIERARCHICAL_ORDER === $order ) {
             $function_to_be_called = __NAMESPACE__ . '\epfl_people_hierarchical_' . $columns;
-            
-            // epfl_people_hierarchical_3
-            // epfl_people_hierarchical_1
-            // epfl_people_hierarchical_list
             $markup = $function_to_be_called($persons, $from);
         }
 
