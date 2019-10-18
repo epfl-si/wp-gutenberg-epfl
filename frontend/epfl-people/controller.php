@@ -37,7 +37,7 @@ function epfl_people_block( $attributes ) {
     $doctoral_program = Utils::get_sanitized_attribute( $attributes, 'doctoralProgram' );
     $function         = Utils::get_sanitized_attribute( $attributes, 'fonction' );
     $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
-    $order            = Utils::get_sanitized_attribute( $attributes, 'order', 'alphabetical' );
+    $order            = Utils::get_sanitized_attribute( $attributes, 'order', ALPHABETICAL_ORDER );
 
     /*
     var_dump($units);
@@ -80,7 +80,8 @@ function epfl_people_block( $attributes ) {
         $parameter['position'] = $function;
     }
 
-    if ("hierarchical" === $order && "" !== $units) {
+    if (HIERARCHICAL_ORDER === $order && "" !== $units) {
+      // People API: &struct=1 parameter corresponds to the hierarchical order
       $parameter['struct'] = '1';
     }
 
@@ -119,7 +120,7 @@ function epfl_people_block( $attributes ) {
         $scipers =  array_map('intval', explode(',', $parameter['scipers']));
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
     } else if ("" !== $units || "" !== $doctoral_program) {
-        // Sort persons list alphabetically when units
+        // Sort persons list alphabetically when units or doctoral program
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     } 
 

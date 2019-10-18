@@ -4,7 +4,7 @@
     $markup .= '<div class="card-body">';
     $markup .= '<div class="my-3 align-items-center">';
     // this inline style can be removed next time we apply a new Styleguide version 
-    $markup .= '<img style="height:8rem;" class="img-fluid rounded-circle mb-2 person-card-avatar" src="' . $photo_url . '" alt="' . esc_attr($person->prenom) . ' ' . esc_attr($person->nom) . '">';
+    $markup .= '<img style="height:8rem;" class="img-fluid rounded-circle mb-2 person-card-avatar" src="' . esc_url($photo_url) . '" alt="' . esc_attr($person->prenom) . ' ' . esc_attr($person->nom) . '">';
     $markup .= '</div>';
     $markup .= '<h3><a class="link-pretty" href="' . esc_url($people_url) . '">' . esc_html($person->prenom) . ' ' . esc_html($person->nom) . '</a></h3>';
     $markup .= '<dl class="definition-list definition-list-grid mb-0">';      
