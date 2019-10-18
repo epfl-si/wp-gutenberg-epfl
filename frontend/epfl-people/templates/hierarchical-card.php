@@ -16,9 +16,7 @@ namespace EPFL\Plugins\Gutenberg\People;
 
                 $photo_url = epfl_people_get_photo($person);
                 
-                if ($photo_url) {
-                    $photo_url = $photo_url;
-                } else {     
+                if (!$photo_url) {  
                     $photo_url = get_template_directory_uri() . '/assets/images/defaults/person-avatar-default-small.png';    
                 }
                 
