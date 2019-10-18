@@ -57,6 +57,7 @@ function epfl_people_block( $attributes ) {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
     }
 
+    // The user must fill in one of the 3 fields 
     if (("" === $units && "" === $scipers && "" === $doctoral_program) ||
       ("" !== $units && "" !== $scipers && "" !== $doctoral_program) || 
       ("" !== $units && "" !== $scipers) || ("" !== $scipers && "" !== $doctoral_program) || 
