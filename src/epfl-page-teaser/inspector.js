@@ -12,6 +12,7 @@ const {
 const {
     PanelBody,
     ToggleControl,
+    Spinner,
 } = wp.components
 
 export default class InspectorControlsPageTeaser extends Component {
@@ -30,6 +31,14 @@ export default class InspectorControlsPageTeaser extends Component {
     }
 
     render() {
+		if ( ! this.state.pages ) {
+			return (
+				<p>
+					<Spinner />
+					{ __('Loading pages', 'wp-gutenberg-epfl') }
+				</p>
+			)
+		}
 
         const { attributes, setAttributes } = this.props
         const handlePage1Change = ( page1 ) => setAttributes( { page1: JSON.stringify( page1 ) } );
