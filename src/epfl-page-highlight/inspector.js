@@ -13,6 +13,7 @@ const {
 const {
     PanelBody,
     RadioControl,
+    Spinner,
 } = wp.components
 
 export default class InspectorControlsPageHighlight extends Component {
@@ -32,6 +33,14 @@ export default class InspectorControlsPageHighlight extends Component {
 	}
 
     render() {
+		if ( ! this.state.pages ) {
+			return (
+				<p>
+					<Spinner />
+					{ __('Loading pages', 'wp-gutenberg-epfl') }
+				</p>
+			)
+        }
 
         const { attributes, setAttributes } = this.props
         const handlePageChange = ( page ) => setAttributes( { page: JSON.stringify( page ) } );

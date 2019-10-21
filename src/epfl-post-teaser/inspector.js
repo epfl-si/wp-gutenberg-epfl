@@ -12,6 +12,7 @@ const {
 const {
     PanelBody,
     ToggleControl,
+    Spinner,
 } = wp.components
 
 export default class InspectorControlsPostTeaser extends Component {
@@ -31,6 +32,14 @@ export default class InspectorControlsPostTeaser extends Component {
     }
 
     render() {
+		if ( ! this.state.posts ) {
+			return (
+				<p>
+					<Spinner />
+					{ __('Loading posts', 'wp-gutenberg-epfl') }
+				</p>
+			)
+        }
 
         const { attributes, setAttributes } = this.props
         const handlePost1Change = ( post1 ) => setAttributes( { post1: JSON.stringify( post1 ) } );
