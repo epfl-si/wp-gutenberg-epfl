@@ -25,6 +25,22 @@ export default class InspectorControlsPeople extends Component {
             { value: '3', label: __('As card, multiple columns', 'wp-gutenberg-epfl')},
         ];
 
+        let optionsOrderList = [
+          { value: 'alphabetical', label: __('Alphabetical order', 'wp-gutenberg-epfl')},
+          { value: 'hierarchical', label: __('Hierarchical order', 'wp-gutenberg-epfl')},
+        ]
+
+        let sortingPanelBody;
+        if (!attributes.scipers) {
+            sortingPanelBody = <PanelBody title={ __( 'Sorting', 'wp-gutenberg-epfl' ) }>
+                    <RadioControl
+                        selected={ attributes.order }
+                        options={ optionsOrderList }
+                        onChange={ order => setAttributes( { order } ) }
+                    />
+                </PanelBody>
+        }
+
         let content = "";
 
         content = (
@@ -52,6 +68,7 @@ export default class InspectorControlsPeople extends Component {
 						onChange={ doctoralProgram => setAttributes( { doctoralProgram } ) }
 					/>
                 </PanelBody>
+                { sortingPanelBody }
                 <PanelBody title={ __( 'Function', 'wp-gutenberg-epfl' ) }>
                     <TextControl
                         value={ attributes.fonction }

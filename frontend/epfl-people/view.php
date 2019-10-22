@@ -3,9 +3,11 @@
 
     require_once(dirname(__FILE__) . '/utils.php');
     require_once(dirname(__FILE__) . '/templates/list.php');
+    require_once(dirname(__FILE__) . '/templates/hierarchical-list.php');
     require_once(dirname(__FILE__) . '/templates/card.php');
+    require_once(dirname(__FILE__) . '/templates/hierarchical-card.php');
 
-    function epfl_people_render($persons, $from, $columns) {
+    function epfl_people_render($persons, $from, $columns, $order) {
 
         //var_dump($persons);
         //var_dump($from);
@@ -17,15 +19,30 @@
         want to go through documentation. But, I thought it was important to put a comment
         here to avoid others persons to want to simplify this code by directly calling 
         "epfl_people_card" and not understand why it's not working... */
-        $function_to_be_called = __NAMESPACE__.'\epfl_people_'.$columns;
-        $markup = $function_to_be_called($persons, $from);
+      
+        if ( ALPHABETICAL_ORDER === $order ) {
+            $function_to_be_called = __NAMESPACE__ . '\epfl_people_' . $columns;
+            $markup = $function_to_be_called($persons, $from);
+        } else if ( HIERARCHICAL_ORDER === $order ) {
+            $function_to_be_called = __NAMESPACE__ . '\epfl_people_hierarchical_' . $columns;
+            $markup = $function_to_be_called($persons, $from);
+        }
+
         return $markup;
     }
 
     function epfl_people_1($persons, $from) {
         return epfl_people_card($persons, $from, '1');
     }
+
     function epfl_people_3($persons, $from) {
         return epfl_people_card($persons, $from, '3');
     }
 
+    function epfl_people_hierarchical_1($persons, $from) {
+      return epfl_people_hierarchical_card($persons, $from, '1');
+    }
+
+    function epfl_people_hierarchical_3($persons, $from) {
+        return epfl_people_hierarchical_card($persons, $from, '3');
+    }
