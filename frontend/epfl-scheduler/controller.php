@@ -21,10 +21,10 @@ function epfl_scheduler_check_parameters( string $start_date_time, string $end_d
     return "";
 }
 
-function epfl_scheduler_block( $attributes ) {
+function epfl_scheduler_block( $attributes, $inner_content ) {
 
     // sanitize parameters
-    $content         = isset($attributes['content']) ? $attributes['content'] : '';
+    
     $start_date_time = Utils::get_sanitized_attribute( $attributes, 'startDateTime' );
     $end_date_time   = Utils::get_sanitized_attribute( $attributes, 'endDateTime' );
 
@@ -49,6 +49,6 @@ function epfl_scheduler_block( $attributes ) {
 
     // check if we can  display content
     if ( $now >= $start_date && $now <= $end_date ) {
-        return $content;
+        return $inner_content;
     }
 }
