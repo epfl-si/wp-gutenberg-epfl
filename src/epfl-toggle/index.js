@@ -11,6 +11,7 @@ const {
     InspectorControls,
 	RichText,
 	PlainText,
+	InnerBlocks,
 } = wp.editor;
 
 const {
@@ -30,9 +31,6 @@ registerBlockType( 'epfl/toggle', {
 		title: {
 			type: 'string',
 		},
-		content: {
-            type: 'string',
-        },
 		state: {
             type: 'string',
             default: 'close'
@@ -70,19 +68,17 @@ registerBlockType( 'epfl/toggle', {
 					onChange={ title => setAttributes( { title } ) }
 				/>
 				<hr />
-                <RichText
-					placeholder={ __('Content to toggle', 'wp-gutenberg-epfl') }
-                    tagName="div"
-                    multiline="p"
-                    value={ attributes.content }
-                    onChange={ content => setAttributes( { content } ) }
-                />
+                <InnerBlocks />
 			</div>
 		</Fragment>
 		)
 
 	},
 	save: props => {
-		return null
+		return (
+			<div>
+				<InnerBlocks.Content />
+			</div>
+		);
 	},
 } );
