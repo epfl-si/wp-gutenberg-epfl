@@ -66,13 +66,15 @@ function epfl_people_get_function($person, $from, $order) {
     } else if (ALPHABETICAL_ORDER == $order) {
         $nb_units = count((array)$person->unites);
         foreach($person->unites as $current_unit) {
-            if ($from == 'units' || $from == 'doctoral_program' || ($from == 'scipers' && $current_unit->ordre  == 1)) {
-                $language = get_current_language();
-                if ($language === 'fr') {
-                    $function = $current_unit->fonction_fr;
-                } else {
-                    $function = $current_unit->fonction_en;
-                }
+            if ($from == 'units' || 
+              ($from == 'doctoral_program' && $current_unit->ordre  == 1) || 
+              ($from == 'scipers' && $current_unit->ordre  == 1)) {
+              $language = get_current_language();
+              if ($language === 'fr') {
+                  $function = $current_unit->fonction_fr;
+              } else {
+                  $function = $current_unit->fonction_en;
+              }
             }
         }
     }
