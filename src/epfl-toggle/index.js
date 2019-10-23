@@ -24,16 +24,13 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/toggle', {
 	title: __( 'EPFL Toggle', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: toggleIcon,
 	category: 'common',
 	attributes: {
 		title: {
 			type: 'string',
 		},
-		content: {
-            type: 'string',
-        },
 		state: {
             type: 'string',
             default: 'close'
