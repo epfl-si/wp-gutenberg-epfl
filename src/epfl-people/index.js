@@ -12,7 +12,7 @@ registerBlockType(
 	'epfl/people',
 	{
 		title: __( "EPFL People", 'wp-gutenberg-epfl'),
-		description: 'v1.0.2',
+		description: 'v1.0.3',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
@@ -21,7 +21,10 @@ registerBlockType(
 		attributes: {
 			units: {
 				type: 'string',
-			},
+      },
+      groups: {
+        type: 'string',
+      },
 			scipers: {
 				type: 'string',
 			},

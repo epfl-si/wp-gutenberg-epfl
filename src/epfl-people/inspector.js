@@ -31,7 +31,7 @@ export default class InspectorControlsPeople extends Component {
         ]
 
         let sortingPanelBody;
-        if (!attributes.scipers) {
+        if (!attributes.scipers && !attributes.groups) {
             sortingPanelBody = <PanelBody title={ __( 'Sorting', 'wp-gutenberg-epfl' ) }>
                     <RadioControl
                         selected={ attributes.order }
@@ -52,6 +52,13 @@ export default class InspectorControlsPeople extends Component {
                         value={ attributes.units }
                         help={ __('You can enter many units separated by a comma', 'wp-gutenberg-epfl') }
 						onChange={ units => setAttributes( { units } ) }
+					/>
+                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
+                    <strong>{__( 'Groups', 'wp-gutenberg-epfl')}</strong>
+                    <TextControl
+                        value={ attributes.groups }
+                        help={ __('You can enter many groups separated by a comma', 'wp-gutenberg-epfl') }
+						onChange={ groups => setAttributes( { groups } ) }
 					/>
                     <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
                     <strong>{__( 'Scipers', 'wp-gutenberg-epfl')}</strong>
