@@ -25,6 +25,9 @@ function epfl_google_forms_block( $attributes ) {
     /*
     data contains thing like (encoded):
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeLZkqncWIvRbQvnn3K8yKUEn0Of8s-JTFZ3l94TWAIHnovJA/viewform?embedded=true" width="640" height="663" frameborder="0" marginheight="0" marginwidth="0">Chargement en cours...</iframe>
+
+    NOTE:
+    This block also allow to use others subdomains of Google (.google.com) like maps, calendar, etc...
     */
 
     $data = isset( $attributes['data'] ) ? urldecode($attributes['data']) : '';
@@ -45,9 +48,11 @@ function epfl_google_forms_block( $attributes ) {
     {
         return Utils::render_user_msg(__("Error extracting parameters", "epfl"));
     }
-
-    /* Check that iframe has a Google Forms URL as source */
-    if(strpos($src, 'https://docs.google.com/forms') > 0)
+    /* Extract host name to check it */
+    $url_host = parse_url($src, PHP_URL_HOST);
+    
+    /* Check that iframe has a Google host as source */
+    if(preg_match('/\.google\.com$/', $url_host) !== 1)
     {
         return Utils::render_user_msg(__("Incorrect URL found", "epfl"));
     }
