@@ -31,7 +31,7 @@ export default class InspectorControlsPeople extends Component {
         ]
 
         let sortingPanelBody;
-        if (!attributes.scipers && !attributes.groups) {
+        if (!!attributes.units) {
             sortingPanelBody = <PanelBody title={ __( 'Sorting', 'wp-gutenberg-epfl' ) }>
                     <RadioControl
                         selected={ attributes.order }
