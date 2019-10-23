@@ -87,6 +87,8 @@ function epfl_people_block( $attributes ) {
     if (HIERARCHICAL_ORDER === $order && "" !== $units) {
       // People API: &struct=1 parameter corresponds to the hierarchical order
       $parameter['struct'] = '1';
+    } else {
+      $order = ALPHABETICAL_ORDER;
     }
 
     if (function_exists('pll_current_language')) {
