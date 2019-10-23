@@ -10,6 +10,7 @@ const {
 const {
     InspectorControls,
     RichText,
+    InnerBlocks,
 } = wp.editor;
 
 const {
@@ -22,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/contact', {
     title: __( 'EPFL Contact', 'wp-gutenberg-epfl'),
-    description: 'v1.0.2',
+    description: 'v1.0.3',
     icon: contactIcon,
     category: 'common',
     attributes: {
@@ -83,16 +84,7 @@ registerBlockType( 'epfl/contact', {
                     <h2>EPFL Contact</h2>
                     <label><strong>Introduction</strong></label>
                     <hr />
-                    <RichText
-                            label={ __('Text introducing the contact informations', 'wp-gutenberg-epfl') }
-                            value={ attributes.introduction }
-                            onChange={ introduction => setAttributes( { introduction } ) }
-                            tagName="div"
-                            multiline="p"
-                            placeholder={ __('Our information desk is the central point of contact for any information.', 'wp-gutenberg-epfl') }
-                            keepPlaceholderOnFocus = { true }
-                            allowedFormats={[]}
-                    />
+                    <InnerBlocks />
                     <label><strong>{ __( 'Timetable', 'wp-gutenberg-epfl' ) }</strong></label>
                     <hr />
                     <RichText
@@ -173,6 +165,10 @@ registerBlockType( 'epfl/contact', {
         )
     },
     save: ( props ) => {
-        return null;
+        return (
+            <div>
+                <InnerBlocks.Content />
+            </div>
+        );
     },
 } );
