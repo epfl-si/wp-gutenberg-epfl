@@ -123,8 +123,8 @@ function epfl_people_block( $attributes ) {
         // Respect given order when sciper
         $scipers =  array_map('intval', explode(',', $parameter['scipers']));
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
-    } else if ("" !== $units || "" !== $doctoral_program) {
-        // Sort persons list alphabetically when units or doctoral program
+    } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
+        // Sort persons list alphabetically when units, doctoral program or groups
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     } 
 

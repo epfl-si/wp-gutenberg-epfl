@@ -1,7 +1,7 @@
 const { __ } = wp.i18n
 const { Component } = wp.element
 
-export default class PreviewNews extends Component {
+export default class PreviewPeople extends Component {
     render() {
         const { className } = this.props
         return (
