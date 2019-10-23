@@ -33,6 +33,7 @@ function epfl_people_sortArrayByArray($data,$orderArray) {
 function epfl_people_block( $attributes ) {
 
     $units            = Utils::get_sanitized_attribute( $attributes, 'units' );
+    $groups           = Utils::get_sanitized_attribute( $attributes, 'groups' );
     $scipers          = Utils::get_sanitized_attribute( $attributes, 'scipers' );
     $doctoral_program = Utils::get_sanitized_attribute( $attributes, 'doctoralProgram' );
     $function         = Utils::get_sanitized_attribute( $attributes, 'fonction' );
@@ -41,6 +42,7 @@ function epfl_people_block( $attributes ) {
 
     /*
     var_dump($units);
+    var_dump($groups);
     var_dump($scipers);
     var_dump($doctoral_program);
     var_dump($fonction);
@@ -50,6 +52,7 @@ function epfl_people_block( $attributes ) {
 
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
+    $groups = preg_replace('/\s+/','',$groups);
     $scipers = preg_replace('/\s+/','',$scipers);
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
     
@@ -57,17 +60,17 @@ function epfl_people_block( $attributes ) {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
     }
 
-    // The user must fill in one of the 3 fields 
-    if (("" === $units && "" === $scipers && "" === $doctoral_program) ||
-      ("" !== $units && "" !== $scipers && "" !== $doctoral_program) || 
-      ("" !== $units && "" !== $scipers) || ("" !== $scipers && "" !== $doctoral_program) || 
-      ("" !== $units && "" !== $doctoral_program)) {
+    // The user must fill in one of the 4 fields 
+    if ("" === $units && "" === $scipers && "" === $doctoral_program && "" === $groups) {
         return Utils::render_user_msg("People shortcode: Please check required parameters");
     }
 
     if ("" !== $units) {
         $parameter['units'] = $units;
         $from = 'units';
+    } else if ("" !== $groups) {
+        $parameter['groups'] = $groups;
+        $from = 'groups';
     } else if ("" !== $scipers) {
         $parameter['scipers'] = $scipers;
         $from = 'scipers';
