@@ -75,7 +75,8 @@ export const getAllPagesOrPosts = async (type='pages', lang=null, fields=['id', 
             fields.forEach((field) => {apiRestUrl += `&_fields[]=${field}`;});
         }
 
-        axios.get(apiRestUrl).then(async (response) => {
+        axios.get(apiRestUrl).then(
+            response => {
                 // Total number of pages on the WP site
                 let nbTotalPages = response.headers["x-wp-total"];
 
