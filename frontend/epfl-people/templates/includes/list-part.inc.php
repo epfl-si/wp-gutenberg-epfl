@@ -1,7 +1,6 @@
 <?php
 
 $markup .= '<div class="contact-list-row" itemscope itemtype="http://schema.org/Person">';
-
 $markup .= '<div class="contact-list-avatar" itemprop="image">';
 
 if ($photo_url) {
