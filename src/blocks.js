@@ -76,6 +76,9 @@ export const getAllPagesOrPosts = async (type='pages', lang=null, fields=['id', 
         }
 
         axios.get(apiRestUrl).then(async (response) => {
+                // Total number of pages on the WP site
+                let nbTotalPages = response.headers["x-wp-total"];
+
                 // Total number of pages (in the pagination sense)
                 let nbPages = response.headers["x-wp-totalpages"];
 
@@ -85,13 +88,26 @@ export const getAllPagesOrPosts = async (type='pages', lang=null, fields=['id', 
                 // get first iteration
                 pages.push(response.data);
 
-                for (let page = 2; page <= nbPages; page += 1) {
-                    let pagesByPagination = await axios.get(`${apiRestUrl}&page=${page}`).catch((err) => { reject(err); });
-                    pages.push(pagesByPagination.data);
+                // is first iteration enough ?
+                if (pages.flat().length == nbTotalPages) {
+                    // all fine ! return what we got
+                    resolve(pages.flat());
                 }
 
-                // all fine ! return what we got
-                resolve(pages.flat());
+                for (let page = 2; page <= nbPages; page += 1) {
+
+                    axios.get(`${apiRestUrl}&page=${page}`).then(
+
+                        pagesByPagination => {
+
+                            pages.push(pagesByPagination.data);
+
+                            if (pages.flat().length == nbTotalPages) {
+                                resolve(pages.flat());
+                            }
+                        }
+                    ).catch( err => reject(err));
+                }
             }
         ).catch( err => reject(err));
     });
