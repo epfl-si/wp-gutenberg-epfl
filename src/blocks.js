@@ -56,7 +56,7 @@ const getHomeURL = () => {
  *                                  Warning, getting content make a render of the post
  * @return a Promise of a list of pages or posts
  */
-export const getAllPagesOrPosts = (type='pages', lang=null, fields=['id', 'title']) => {
+export const getAllPagesOrPosts = async (type='pages', lang=null, fields=['id', 'title']) => {
     return new Promise((resolve, reject) => {
 
         let homeUrl = getHomeURL();
@@ -75,12 +75,7 @@ export const getAllPagesOrPosts = (type='pages', lang=null, fields=['id', 'title
             fields.forEach((field) => {apiRestUrl += `&_fields[]=${field}`;});
         }
 
-        axios.get(apiRestUrl).then(
-            response => {
-
-                // Total number of pages on the WP site
-                let nbTotalPages = response.headers["x-wp-total"];
-
+        axios.get(apiRestUrl).then(async (response) => {
                 // Total number of pages (in the pagination sense)
                 let nbPages = response.headers["x-wp-totalpages"];
 
@@ -91,13 +86,8 @@ export const getAllPagesOrPosts = (type='pages', lang=null, fields=['id', 'title
                 pages.push(response.data);
 
                 for (let page = 2; page <= nbPages; page += 1) {
-
-                    axios.get(`${apiRestUrl}&page=${page}`).then(
-
-                        pagesByPagination => {
-                            pages.push(pagesByPagination.data);
-                        }
-                    );
+                    let pagesByPagination = await axios.get(`${apiRestUrl}&page=${page}`).catch((err) => { reject(err); });
+                    pages.push(pagesByPagination.data);
                 }
 
                 // all fine ! return what we got
