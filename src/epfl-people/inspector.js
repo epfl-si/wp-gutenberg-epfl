@@ -28,6 +28,7 @@ export default class InspectorControlsPeople extends Component {
         let optionsOrderList = [
           { value: 'alphabetical', label: __('Alphabetical order', 'wp-gutenberg-epfl')},
           { value: 'hierarchical', label: __('Hierarchical order', 'wp-gutenberg-epfl')},
+          { value: 'hierarchical-with-title', label: __('Hierarchical order with title', 'wp-gutenberg-epfl')},
         ]
 
         let sortingPanelBody;
