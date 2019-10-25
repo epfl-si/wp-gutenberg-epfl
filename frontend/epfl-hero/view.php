@@ -13,7 +13,7 @@ function epfl_hero_block( $attributes ) {
 
     $text = "";
     if (array_key_exists('text', $attributes)) {
-      $text     = wp_kses_post($attributes['text']);
+      $text = wp_kses_post($attributes['text']);
     }
 
     $image = wp_get_attachment_image(
