@@ -6,14 +6,14 @@ const {
 
 const {
     MediaUpload,
-	InspectorControls,
+    InspectorControls,
+    RichText,
 } = wp.editor;
 
 const {
     PanelBody,
     ToggleControl,
     TextControl,
-    TextareaControl
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -55,14 +55,16 @@ function DefinitionListPanel ( props ) {
            <TextControl
                 value={ attributes['label' + index] || ''}
                 onChange={ value => setIndexedAttributes('label', value) }
-                placeholder={ __('Term', 'wp-gutenberg-epfl') }
-                help={ __('Term to define', 'wp-gutenberg-epfl') }
+                placeholder={ __('Term to define', 'wp-gutenberg-epfl') }
             />
-           <TextareaControl
-                placeholder={ __('Definition', 'wp-gutenberg-epfl') }
+           <RichText
                 value={ attributes['desc' + index] || ''}
                 onChange={ value => setIndexedAttributes('desc', value) }
-                help={ __('Definition of the term', 'wp-gutenberg-epfl') }
+                placeholder={ __('Definition of the term', 'wp-gutenberg-epfl') }
+                // has we transited this component from a TextAreaControl
+                // setting multiline to something will make the old content unreadable
+                // false -> use <br>
+                multiline={ false }
             />
         </div>
     );
@@ -70,7 +72,7 @@ function DefinitionListPanel ( props ) {
 
 registerBlockType( 'epfl/definition-list', {
 	title: __( 'EPFL Definition List', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.1.0',
 	icon: 'editor-alignleft',
 	category: 'common',
 	attributes: getAttributes(),

@@ -9,7 +9,7 @@ function epfl_hero_block( $attributes ) {
 
 
     $title    = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $text     = Utils::get_sanitized_attribute( $attributes, 'text' );
+    $text     = wp_kses_post($attributes['text']);
     $image_id = Utils::get_sanitized_attribute( $attributes, 'imageId' );
 
     $image = wp_get_attachment_image(
