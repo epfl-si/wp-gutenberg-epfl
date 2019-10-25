@@ -2,8 +2,8 @@
 /**
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
- * Author: greglebarbar
- * Version: 1.0.16
+ * Author: WordPress EPFL Team
+ * Version: 1.1.0
  */
 
 namespace EPFL\Plugins\Gutenberg;
