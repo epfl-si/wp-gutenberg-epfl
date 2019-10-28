@@ -11,6 +11,7 @@ const {
     InspectorControls,
 	RichText,
 	PlainText,
+	InnerBlocks,
 } = wp.editor;
 
 const {
@@ -23,7 +24,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/toggle', {
 	title: __( 'EPFL Toggle', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: toggleIcon,
 	category: 'common',
 	attributes: {
@@ -70,19 +71,17 @@ registerBlockType( 'epfl/toggle', {
 					onChange={ title => setAttributes( { title } ) }
 				/>
 				<hr />
-                <RichText
-					placeholder={ __('Content to toggle', 'wp-gutenberg-epfl') }
-                    tagName="div"
-                    multiline="p"
-                    value={ attributes.content }
-                    onChange={ content => setAttributes( { content } ) }
-                />
+                <InnerBlocks />
 			</div>
 		</Fragment>
 		)
 
 	},
 	save: props => {
-		return null
+		return (
+			<div>
+				<InnerBlocks.Content />
+			</div>
+		);
 	},
 } );

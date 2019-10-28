@@ -12,7 +12,7 @@ registerBlockType(
 	'epfl/people',
 	{
 		title: __( "EPFL People", 'wp-gutenberg-epfl'),
-		description: 'v1.0.2',
+		description: 'v1.0.3',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
@@ -21,7 +21,10 @@ registerBlockType(
 		attributes: {
 			units: {
 				type: 'string',
-			},
+      },
+      groups: {
+        type: 'string',
+      },
 			scipers: {
 				type: 'string',
 			},
@@ -32,9 +35,13 @@ registerBlockType(
 				type: 'string',
 			},
 			columns: {
-                type: 'string',
-                default: '3',
-			},
+        type: 'string',
+        default: '3',
+      },
+      order: {
+        type: 'string',
+        default: 'alphabetical',
+      },
 		},
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

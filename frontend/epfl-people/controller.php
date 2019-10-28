@@ -33,21 +33,26 @@ function epfl_people_sortArrayByArray($data,$orderArray) {
 function epfl_people_block( $attributes ) {
 
     $units            = Utils::get_sanitized_attribute( $attributes, 'units' );
+    $groups           = Utils::get_sanitized_attribute( $attributes, 'groups' );
     $scipers          = Utils::get_sanitized_attribute( $attributes, 'scipers' );
     $doctoral_program = Utils::get_sanitized_attribute( $attributes, 'doctoralProgram' );
     $function         = Utils::get_sanitized_attribute( $attributes, 'fonction' );
     $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
+    $order            = Utils::get_sanitized_attribute( $attributes, 'order', ALPHABETICAL_ORDER );
 
     /*
     var_dump($units);
+    var_dump($groups);
     var_dump($scipers);
     var_dump($doctoral_program);
     var_dump($fonction);
     var_dump($columns);
+    var_dump($order);
     */
 
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
+    $groups = preg_replace('/\s+/','',$groups);
     $scipers = preg_replace('/\s+/','',$scipers);
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
     
@@ -55,13 +60,17 @@ function epfl_people_block( $attributes ) {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
     }
 
-    if ("" === $units && "" === $scipers && "" === $doctoral_program) {
+    // The user must fill in one of the 4 fields 
+    if ("" === $units && "" === $scipers && "" === $doctoral_program && "" === $groups) {
         return Utils::render_user_msg("People shortcode: Please check required parameters");
     }
 
     if ("" !== $units) {
         $parameter['units'] = $units;
         $from = 'units';
+    } else if ("" !== $groups) {
+        $parameter['groups'] = $groups;
+        $from = 'groups';
     } else if ("" !== $scipers) {
         $parameter['scipers'] = $scipers;
         $from = 'scipers';
@@ -73,6 +82,13 @@ function epfl_people_block( $attributes ) {
     if ("" !== $function) {
         $function = str_replace(",", "+or+", $function);
         $parameter['position'] = $function;
+    }
+
+    if (HIERARCHICAL_ORDER === $order && "" !== $units) {
+      // People API: &struct=1 parameter corresponds to the hierarchical order
+      $parameter['struct'] = '1';
+    } else {
+      $order = ALPHABETICAL_ORDER;
     }
 
     if (function_exists('pll_current_language')) {
@@ -104,16 +120,17 @@ function epfl_people_block( $attributes ) {
         $persons[] = $item;
     }
 
-    if ("" !== $units || "" !== $doctoral_program) {
-        // Sort persons list alphabetically when units
-        usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
-    } else {
+    // Sort by scipers
+    if ("" !== $scipers) {
         // Respect given order when sciper
         $scipers =  array_map('intval', explode(',', $parameter['scipers']));
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
-    }
+    } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
+        // Sort persons list alphabetically when units, doctoral program or groups
+        usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
+    } 
 
-    $markup = epfl_people_render($persons, $from, $columns);
+    $markup = epfl_people_render($persons, $from, $columns, $order);
     return $markup;
 
 }

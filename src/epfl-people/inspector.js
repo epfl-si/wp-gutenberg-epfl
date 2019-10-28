@@ -25,6 +25,22 @@ export default class InspectorControlsPeople extends Component {
             { value: '3', label: __('As card, multiple columns', 'wp-gutenberg-epfl')},
         ];
 
+        let optionsOrderList = [
+          { value: 'alphabetical', label: __('Alphabetical order', 'wp-gutenberg-epfl')},
+          { value: 'hierarchical', label: __('Hierarchical order', 'wp-gutenberg-epfl')},
+        ]
+
+        let sortingPanelBody;
+        if (!!attributes.units) {
+            sortingPanelBody = <PanelBody title={ __( 'Sorting', 'wp-gutenberg-epfl' ) }>
+                    <RadioControl
+                        selected={ attributes.order }
+                        options={ optionsOrderList }
+                        onChange={ order => setAttributes( { order } ) }
+                    />
+                </PanelBody>
+        }
+
         let content = "";
 
         content = (
@@ -36,6 +52,13 @@ export default class InspectorControlsPeople extends Component {
                         value={ attributes.units }
                         help={ __('You can enter many units separated by a comma', 'wp-gutenberg-epfl') }
 						onChange={ units => setAttributes( { units } ) }
+					/>
+                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
+                    <strong>{__( 'Groups', 'wp-gutenberg-epfl')}</strong>
+                    <TextControl
+                        value={ attributes.groups }
+                        help={ __('You can enter many groups separated by a comma', 'wp-gutenberg-epfl') }
+						onChange={ groups => setAttributes( { groups } ) }
 					/>
                     <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
                     <strong>{__( 'Scipers', 'wp-gutenberg-epfl')}</strong>
@@ -52,6 +75,7 @@ export default class InspectorControlsPeople extends Component {
 						onChange={ doctoralProgram => setAttributes( { doctoralProgram } ) }
 					/>
                 </PanelBody>
+                { sortingPanelBody }
                 <PanelBody title={ __( 'Function', 'wp-gutenberg-epfl' ) }>
                     <TextControl
                         value={ attributes.fonction }

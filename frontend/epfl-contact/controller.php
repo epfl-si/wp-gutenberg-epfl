@@ -7,17 +7,14 @@ use function EPFL\Plugins\Gutenberg\Map\epfl_map_block;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
-function epfl_contact_block($attributes) {
+function epfl_contact_block($attributes, $inner_content) {
     // sanitize parameters
     foreach($attributes as $key => $value) {
         if (strpos($key, 'information') !== false ||
         strpos($key, 'timetable') !== false) {
             $attributes[$key] = wp_kses_post($value);
         }
-        elseif ($key == 'introduction')
-        {
-            $attributes[$key] = sanitize_textarea_field($value);
-        } else {
+        else {
             $attributes[$key] = sanitize_text_field($value);
         }
     }
@@ -31,9 +28,9 @@ function epfl_contact_block($attributes) {
       <div class="row">
         <div class="col-md-6">
           <h3>Contact</h3>
-          <?php if (isset($attributes['introduction'])): ?>
-          <p><?php esc_html_e($attributes['introduction']) ?></p>
-          <?php endif; ?>
+          <?php if (trim($inner_content) != ""): 
+            echo $inner_content;
+          endif; ?>
 
           <?php for ($i=1; $i < 5; $i++): ?>
             <?php if (isset($attributes['timetable'.$i])): ?>

@@ -9,6 +9,7 @@ const {
 const {
     InspectorControls,
     RichText,
+    InnerBlocks,
 } = wp.editor;
 
 const {
@@ -29,7 +30,7 @@ function testTime(attributes) {
 
 registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'wp-gutenberg-epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: schedulerIcon,
 	category: 'common',
 	attributes: {
@@ -75,20 +76,16 @@ registerBlockType( 'epfl/scheduler', {
             <div className={ className }>
 				<h2>EPFL Scheduler</h2>
 				{testTime(attributes)}
-				<h4>{ __('Content','wp-gutenberg-epfl')}</h4>
-                <RichText
-                    tagName="div"
-                    multiline="p"
-                    placeholder={ __( 'Write your content here', 'wp-gutenberg-epfl' ) }
-                    value={ attributes.content }
-                    className="content"
-                    onChange={ content => setAttributes( { content } ) }
-                />
+                <InnerBlocks />
             </div>
         </Fragment>
       )
     },
 	save: ( props ) => {
-		return null;
+		return (
+            <div>
+                <InnerBlocks.Content />
+            </div>
+        );
 	},
 } );

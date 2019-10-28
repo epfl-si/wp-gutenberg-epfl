@@ -38,6 +38,7 @@ import './epfl-card'
 import './epfl-definition-list'
 import './epfl-links-group'
 
+
 const getHomeURL = () => {
     let href = window.location.href;
     let index = href.indexOf('/wp-admin');
@@ -45,23 +46,37 @@ const getHomeURL = () => {
     return homeUrl;
 }
 
-export const getAllPagesOrPosts = (type, lang) => {
 
+/**
+ * Fetch all pages or post from the site
+ * @param {string} type: 'pages' or 'posts'
+ * @param {string} lang: optionnal, set it to limit the list to a specific language
+ * @param {array of string} fields: optionnal, list of fields we want the data for the post.
+ *                                  By default we mainly need the id and the title, ...
+ *                                  Warning, getting content make a render of the post
+ * @return a Promise of a list of pages or posts
+ */
+export const getAllPagesOrPosts = async (type='pages', lang=null, fields=['id', 'title']) => {
     return new Promise((resolve, reject) => {
 
         let homeUrl = getHomeURL();
+
         if (type !== 'pages' && type !== 'posts') {
-            type = 'pages';
+            throw new Error("Please set the type parameter to 'pages' or 'posts'");
         }
+
         let apiRestUrl = `${homeUrl}/?rest_route=/wp/v2/${type}&per_page=100`;
 
         if (lang) {
             apiRestUrl += '&lang=' + lang;
         }
 
+        if (fields) {
+            fields.forEach((field) => {apiRestUrl += `&_fields[]=${field}`;});
+        }
+
         axios.get(apiRestUrl).then(
             response => {
-
                 // Total number of pages on the WP site
                 let nbTotalPages = response.headers["x-wp-total"];
 
@@ -71,7 +86,16 @@ export const getAllPagesOrPosts = (type, lang) => {
                 // We build a array containing all pages of WP site
                 const pages = [];
 
-                for (let page = 1; page <= nbPages; page += 1) {
+                // get first iteration
+                pages.push(response.data);
+
+                // is first iteration enough ?
+                if (pages.flat().length == nbTotalPages) {
+                    // all fine ! return what we got
+                    resolve(pages.flat());
+                }
+
+                for (let page = 2; page <= nbPages; page += 1) {
 
                     axios.get(`${apiRestUrl}&page=${page}`).then(
 
@@ -83,9 +107,9 @@ export const getAllPagesOrPosts = (type, lang) => {
                                 resolve(pages.flat());
                             }
                         }
-                    );
+                    ).catch( err => reject(err));
                 }
             }
-        ).catch( err => reject(err))
+        ).catch( err => reject(err));
     });
 };

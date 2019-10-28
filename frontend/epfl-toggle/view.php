@@ -5,12 +5,11 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
-function epfl_toggle_block( $attributes ) {
+function epfl_toggle_block( $attributes, $inner_content ) {
 
     $title     = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $content   = isset( $attributes['content'] ) ? $attributes['content'] : '';
     $state     = Utils::get_sanitized_attribute( $attributes, 'state', 'close' );
-    $toggle_id = md5($content . rand());
+    $toggle_id = md5($inner_content . rand());
 
     /*
     var_dump($title);
@@ -40,9 +39,7 @@ function epfl_toggle_block( $attributes ) {
     }
     $markup .= '"';
     $markup .= ' id="' . esc_attr('collapse-' . $toggle_id) . '"';
-    $markup .= '>';
-    $markup .= '<p>' . wp_kses_post(do_shortcode( $content )) . '</p>';
-    $markup .= '</div>';
+    $markup .= '>' . $inner_content . '</div>';
 
     return $markup;
 }

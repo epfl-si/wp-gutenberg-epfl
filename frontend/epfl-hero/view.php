@@ -9,8 +9,12 @@ function epfl_hero_block( $attributes ) {
 
 
     $title    = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $text     = Utils::get_sanitized_attribute( $attributes, 'text' );
     $image_id = Utils::get_sanitized_attribute( $attributes, 'imageId' );
+
+    $text = "";
+    if (array_key_exists('text', $attributes)) {
+      $text = wp_kses_post($attributes['text']);
+    }
 
     $image = wp_get_attachment_image(
         $image_id,
