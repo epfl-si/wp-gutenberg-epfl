@@ -6,6 +6,9 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
 
+/**
+ * Render a Card panel block
+ */
 function epfl_card_panel_block($attributes, $inner_content)
 {
     $title      = Utils::get_sanitized_attribute( $attributes, 'title' );
@@ -63,18 +66,23 @@ function epfl_card_panel_block($attributes, $inner_content)
 
 }
 
-
+/**
+ * Render a Card Block
+ */
 function epfl_card_block($data, $inner_content) {
 
-
   $gray_wrapper = Utils::get_sanitized_attribute($data, 'grayWrapper', false);
+
+  /* $inner_content already contains HTML with "card" representation. So we can count the number of
+  card with content and then adapt "deck-line" as needed */
+  preg_match_all('/\<div class=\"card\"\>/', $inner_content, $matches);
 
   ob_start();
 ?>
 
 <div class="container-full py-3<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
-  <div class="card-deck card-deck-line">
-    <?php
+  <div class="card-deck <?php echo (sizeof($matches[0]) == 2) ? ' card-deck-line' : '' ?>">
+    <?php 
     echo $inner_content;
     ?>
   </div>
