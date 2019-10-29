@@ -108,6 +108,17 @@ Class Utils
         return  sanitize_text_field((array_key_exists($name, $attributes))? $attributes[$name]: $default);
     }
 
+
+    /**
+     * Tells if an attribute associated with a Richtext field contains somethings.
+     * We use "strip_tags" function because if a value has been set and remove by user, Gutenberg let 
+     * an empty paragraph (<p></p>) 
+     */
+    public static function richtext_content_exists($attributes, $name)
+    {
+        return array_key_exists($name, $attributes) && strip_tags($attributes[$name]) != "";
+    }
+
 }
 
 ?>
