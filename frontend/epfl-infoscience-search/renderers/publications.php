@@ -29,21 +29,20 @@ function get_render_class_for_publication_2018($publication, $format) {
         $record_renderer_class_base = 'ShortInfosciencePublication2018Render';
     }
 
+    $full_record_renderer_class = __NAMESPACE__ . "\\" . $record_renderer_class_base;
+
     if (InfoscienceField2018Render::field_exists($publication['doctype'])) {
         # doctype determine the render, find it in the map
         $doctype_to_find = strtoupper($publication['doctype'][0]);
 
         if (array_key_exists($doctype_to_find, DOCTYPE_TO_CLASS_NAME_MAPPING)) {
-
-            $record_renderer_class = __NAMESPACE__ . "\\" .DOCTYPE_TO_CLASS_NAME_MAPPING[$doctype_to_find] . $record_renderer_class_base;
-
-            if (class_exists($record_renderer_class)) {
-                return $record_renderer_class;
-            }
+            return __NAMESPACE__ . "\\" . DOCTYPE_TO_CLASS_NAME_MAPPING[$doctype_to_find] . $record_renderer_class_base;
+        }  else {
+            return $full_record_renderer_class;
         }
+    } else {
+        return $full_record_renderer_class;
     }
-
-    return $record_renderer_class_base;
 }
 
 /*
