@@ -169,7 +169,7 @@ function wp_gutenberg_epfl_register_blocks() {
 		  'render_callback' => 'EPFL\Plugins\Gutenberg\PostHighlight\epfl_post_highlight_block',
     ));
 
-		register_block_type( 'epfl/infoscience-search', array(
+	register_block_type( 'epfl/infoscience-search', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\InfoscienceSearch\epfl_infoscience_search_block',
 		));
 
@@ -181,23 +181,27 @@ function wp_gutenberg_epfl_register_blocks() {
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Contact\epfl_contact_block',
 		));
 
-		register_block_type( 'epfl/caption-cards', array(
+	register_block_type( 'epfl/caption-cards', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\CaptionCards\epfl_caption_cards_block',
 		));
 
     register_block_type( 'epfl/card', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Card\epfl_card_block',
 		));
+	
+	register_block_type( 'epfl/card-panel', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\Card\epfl_card_panel_block',
+		));
 
-		register_block_type( 'epfl/definition-list', array(
+	register_block_type( 'epfl/definition-list', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\DefinitionList\epfl_definition_list_block',
 		));
 
-		register_block_type( 'epfl/links-group', array(
+	register_block_type( 'epfl/links-group', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\LinksGroup\epfl_links_group_block',
 		));
 
-		register_block_type( 'core/gallery', array(
+	register_block_type( 'core/gallery', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Gallery\epfl_gallery_block',
 		));
 }

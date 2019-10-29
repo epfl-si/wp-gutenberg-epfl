@@ -1,5 +1,5 @@
 import cardIcon from './card-icon'
-import CardPanel from './card-panel';
+import './card-panel'
 
 const { __ } = wp.i18n;
 
@@ -9,6 +9,7 @@ const {
 
 const {
     InspectorControls,
+    InnerBlocks,
 } = wp.editor;
 
 const {
@@ -18,7 +19,11 @@ const {
 
 const { Fragment } = wp.element;
 
-const maxCards = 3;
+const TEMPLATE = [
+	['epfl/card-panel', {}, []],
+    ['epfl/card-panel', {}, []],
+    ['epfl/card-panel', {}, []],
+]
 
 const getAttributes = () => {
     let atts = {
@@ -28,31 +33,12 @@ const getAttributes = () => {
         },
     };
 
-    for (var i = 1; i <= maxCards; i++) {
-        atts['title'+i] = {
-			type: 'string',
-        };
-        atts['link'+i] = {
-			type: 'string',
-        };
-        atts['imageId'+i] = {
-			type: 'integer',
-        };
-        atts['imageUrl'+i] = {
-            type: 'string',
-            default: null
-        };
-        atts['content'+i] = {
-			type: 'string',
-        };
-    }
-
     return atts;
 }
 
 registerBlockType( 'epfl/card', {
-	title: __( 'EPFL Card', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	title: __( 'EPFL Card Deck', 'wp-gutenberg-epfl'),
+	description: 'v1.0.3',
 	icon: cardIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -76,14 +62,18 @@ registerBlockType( 'epfl/card', {
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                         <h2>EPFL Card</h2>
-                        {[...Array(maxCards)].map((x, i) =>
-                            <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
-                        )}
+                        <InnerBlocks 
+                            template={ TEMPLATE }
+                            templateLock="all" />
                 </div>
             </Fragment>
 		)
 	},
 	save: ( props ) => {
-		return null;
+		return (
+            
+                <InnerBlocks.Content />
+            
+        );
 	},
 } );
