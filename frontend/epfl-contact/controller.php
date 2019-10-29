@@ -33,7 +33,7 @@ function epfl_contact_block($attributes, $inner_content) {
           endif; ?>
 
           <?php for ($i=1; $i < 5; $i++): ?>
-            <?php if (isset($attributes['timetable'.$i])): ?>
+            <?php if (isset($attributes['timetable'.$i]) && strip_tags($attributes['timetable'.$i])!=""): ?>
           <div class="card card-body card-sm mb-2 flex-row flex-wrap justify-content-between justify-content-sm-start">
             <div class="mr-3 w-sm-50"><?php echo $attributes['timetable'.$i] ?></div>
           </div>
@@ -42,7 +42,7 @@ function epfl_contact_block($attributes, $inner_content) {
           endfor;
           ?>
           <?php for ($i=1; $i < 4; $i++): ?>
-          <?php if (isset($attributes['information'.$i])): ?>
+          <?php if (isset($attributes['information'.$i]) && strip_tags($attributes['information'.$i])!=""): ?>
           <p><?php echo urldecode($attributes['information'.$i]) ?: '' ?></p>
           <hr>
           <?php
