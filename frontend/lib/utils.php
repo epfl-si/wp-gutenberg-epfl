@@ -116,7 +116,7 @@ Class Utils
      */
     public static function richtext_content_exists($attributes, $name)
     {
-        return array_key_exists($name, $attributes) && strip_tags($attributes[$name]) != "";
+        return isset($attributes[$name]) && strip_tags($attributes[$name]) != "";
     }
 
 }
