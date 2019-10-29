@@ -8,7 +8,7 @@ const {
 
 const {
     MediaUpload,
-    RichText,
+    InnerBlocks,
 } = wp.editor;
 
 const {
@@ -72,7 +72,7 @@ registerBlockType( 'epfl/card-panel', {
 
         return (
             <Fragment>
-                <div>
+                <div className={ className }>
                     <h4>{ __('Card', 'wp-gutenberg-epfl') }</h4>
                     <TextControl
                         label={ __('Title (mandatory)', 'wp-gutenberg-epfl') }
@@ -127,21 +127,13 @@ registerBlockType( 'epfl/card-panel', {
                             </p>
                         )}
                     <label><small>Text</small></label>
-                    <RichText
-                            value={ attributes.content }
-                            onChange={ content => setAttributes( { content } ) }
-                            tagName="div"
-                            multiline="p"
-                            placeholder={ __('Write your text here','wp-gutenberg-epfl')}
-                            keepPlaceholderOnFocus = { true }
-                            allowedFormats={[]}
-                    />
-                    <hr/>
+                    <InnerBlocks templateLock= { false } /> 
+                    
                 </div>
             </Fragment>
 		)
 	},
 	save: ( props ) => {
-		return null;
+		return ( <InnerBlocks.Content /> );
 	},
 } );

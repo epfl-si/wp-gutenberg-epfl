@@ -20,9 +20,9 @@ const {
 const { Fragment } = wp.element;
 
 const TEMPLATE = [
-	['epfl/card-panel', {}, []],
-    ['epfl/card-panel', {}, []],
-    ['epfl/card-panel', {}, []],
+	['epfl/card-panel', {}, [] ],
+    ['epfl/card-panel', {}, [] ],
+    ['epfl/card-panel', {}, [] ],
 ]
 
 const getAttributes = () => {
@@ -61,7 +61,7 @@ registerBlockType( 'epfl/card', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
-                        <h2>EPFL Card</h2>
+                        <h2>EPFL Card Deck</h2>
                         <InnerBlocks 
                             template={ TEMPLATE }
                             templateLock="all" />

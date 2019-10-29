@@ -12,7 +12,6 @@ function epfl_card_panel_block($attributes, $inner_content)
     $link       = Utils::get_sanitized_attribute( $attributes, 'link' );
     $image_id   = Utils::get_sanitized_attribute( $attributes, 'imageId' );
     $image_url  = Utils::get_sanitized_attribute( $attributes, 'imageUrl' );
-    $content    = array_key_exists('content', $attributes)? wp_kses_post($attributes['content']) : '';
 
     if(empty(trim($title))) return "";
 
@@ -52,7 +51,7 @@ function epfl_card_panel_block($attributes, $inner_content)
         <?php else: ?>
         <div class="card-title"><div class="h3"><?php echo $title ?></div></div>
         <?php endif; ?>
-        <p><?php echo $content ?></p>
+        <?php echo $inner_content ?>
       </div>
     </div>
 
