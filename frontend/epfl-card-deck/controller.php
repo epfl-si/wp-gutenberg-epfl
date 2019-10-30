@@ -1,6 +1,6 @@
 <?php
 
-namespace EPFL\Plugins\Gutenberg\Card;
+namespace EPFL\Plugins\Gutenberg\CardDeck;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
@@ -69,7 +69,7 @@ function epfl_card_panel_block($attributes, $inner_content)
 /**
  * Render a Card Block
  */
-function epfl_card_block($data, $inner_content) {
+function epfl_card_deck_block($data, $inner_content) {
 
   $gray_wrapper = Utils::get_sanitized_attribute($data, 'grayWrapper', false);
 

@@ -36,7 +36,7 @@ const getAttributes = () => {
     return atts;
 }
 
-registerBlockType( 'epfl/card', {
+registerBlockType( 'epfl/card-deck', {
 	title: __( 'EPFL Card Deck', 'wp-gutenberg-epfl'),
 	description: 'v1.0.3',
 	icon: cardIcon,

@@ -34,7 +34,7 @@ require_once 'epfl-infoscience-search/controller.php';
 require_once 'epfl-social-feed/controller.php';
 require_once 'epfl-contact/controller.php';
 require_once 'epfl-caption-cards/controller.php';
-require_once 'epfl-card/controller.php';
+require_once 'epfl-card-deck/controller.php';
 require_once 'epfl-definition-list/controller.php';
 require_once 'epfl-links-group/controller.php';
 require_once 'epfl-gallery/view.php';
@@ -185,12 +185,12 @@ function wp_gutenberg_epfl_register_blocks() {
 			'render_callback' => 'EPFL\Plugins\Gutenberg\CaptionCards\epfl_caption_cards_block',
 		));
 
-    register_block_type( 'epfl/card', array(
-			'render_callback' => 'EPFL\Plugins\Gutenberg\Card\epfl_card_block',
+    register_block_type( 'epfl/card-deck', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\CardDeck\epfl_card_deck_block',
 		));
 	
 	register_block_type( 'epfl/card-panel', array(
-			'render_callback' => 'EPFL\Plugins\Gutenberg\Card\epfl_card_panel_block',
+			'render_callback' => 'EPFL\Plugins\Gutenberg\CardDeck\epfl_card_panel_block',
 		));
 
 	register_block_type( 'epfl/definition-list', array(
