@@ -127,13 +127,14 @@ registerBlockType( 'epfl/card-panel', {
                             </p>
                         )}
                     <label><small>Text</small></label>
-                    <InnerBlocks templateLock= { false } /> 
+                    <InnerBlocks /> 
                     
                 </div>
             </Fragment>
 		)
 	},
 	save: ( props ) => {
-		return ( <InnerBlocks.Content /> );
+        
+		return (<InnerBlocks.Content /> );
 	},
 } );
