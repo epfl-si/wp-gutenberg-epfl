@@ -44,7 +44,7 @@ Class Utils
      * @param cache_time_sec : Nb of sec during which we have to cache information in transient
      * @return decoded JSON data
      */
-    public static function get_items(string $url, $cache_time_sec=300) {
+    public static function get_items(string $url, $cache_time_sec=300, $timeout=5) {
         /* Generating unique transient ID. We cannot directly use URL (and replace some characters) because we are
         limited to 172 characters for transient identifiers (https://codex.wordpress.org/Transients_API) */
         $transient_id = 'epfl_'.md5($url);
@@ -67,7 +67,7 @@ Class Utils
         }
 
         $start = microtime(true);
-        $response = wp_remote_get($url);
+        $response = wp_remote_get($url, array( 'timeout' => $timeout ));
         $end = microtime(true);
 
         // Logging call
@@ -111,8 +111,8 @@ Class Utils
 
     /**
      * Tells if an attribute associated with a Richtext field contains somethings.
-     * We use "strip_tags" function because if a value has been set and remove by user, Gutenberg let 
-     * an empty paragraph (<p></p>) 
+     * We use "strip_tags" function because if a value has been set and remove by user, Gutenberg let
+     * an empty paragraph (<p></p>)
      */
     public static function richtext_content_exists($attributes, $name)
     {
