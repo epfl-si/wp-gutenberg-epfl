@@ -103,7 +103,7 @@ function epfl_people_block( $attributes ) {
     $url = add_query_arg($parameter, $url);
 
     // retrieve the data in JSON
-    $items = Utils::get_items($url, $cache_time_sec=300, $timeout=15);
+    $items = Utils::get_items($url, 300, 15);
     if (false === $items) {
         return Utils::render_user_msg("People shortcode: Error retrieving items");
     }
