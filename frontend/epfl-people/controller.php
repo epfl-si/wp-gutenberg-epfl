@@ -55,12 +55,12 @@ function epfl_people_block( $attributes ) {
     $groups = preg_replace('/\s+/','',$groups);
     $scipers = preg_replace('/\s+/','',$scipers);
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
-    
+
     if ($columns !== 'list') {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
     }
 
-    // The user must fill in one of the 4 fields 
+    // The user must fill in one of the 4 fields
     if ("" === $units && "" === $scipers && "" === $doctoral_program && "" === $groups) {
         return Utils::render_user_msg("People shortcode: Please check required parameters");
     }
@@ -103,7 +103,7 @@ function epfl_people_block( $attributes ) {
     $url = add_query_arg($parameter, $url);
 
     // retrieve the data in JSON
-    $items = Utils::get_items($url);
+    $items = Utils::get_items($url, $cache_time_sec=300, $timeout=15);
     if (false === $items) {
         return Utils::render_user_msg("People shortcode: Error retrieving items");
     }
@@ -128,7 +128,7 @@ function epfl_people_block( $attributes ) {
     } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
         // Sort persons list alphabetically when units, doctoral program or groups
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
-    } 
+    }
 
     $markup = epfl_people_render($persons, $from, $columns, $order);
     return $markup;
