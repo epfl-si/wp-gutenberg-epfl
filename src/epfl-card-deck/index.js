@@ -33,12 +33,33 @@ const getAttributes = () => {
         },
     };
 
+    /* We keep this only for a small amount of time, just by security for data migration.
+    This will be removed in a near future. */
+    for (var i = 1; i <= 3; i++) {
+        atts['title'+i] = {
+			type: 'string',
+        };
+        atts['link'+i] = {
+			type: 'string',
+        };
+        atts['imageId'+i] = {
+			type: 'integer',
+        };
+        atts['imageUrl'+i] = {
+            type: 'string',
+            default: null
+        };
+        atts['content'+i] = {
+			type: 'string',
+        };
+    }
+
     return atts;
 }
 
 registerBlockType( 'epfl/card-deck', {
 	title: __( 'EPFL Card Deck', 'wp-gutenberg-epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.0',
 	icon: cardIcon,
 	category: 'common',
 	attributes: getAttributes(),
