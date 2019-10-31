@@ -4,7 +4,7 @@ namespace EPFL\Plugins\Gutenberg\PostTeaser;
 
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
-require_once(dirname(__FILE__).'/../lib/utils.php');
+require_once(dirname(__FILE__).'/../lib/templates.php');
 
 function epfl_post_teaser_block( $attributes ) {
 
@@ -62,7 +62,7 @@ function epfl_post_teaser_block( $attributes ) {
         card_img_top(
                     get_the_post_thumbnail($post, 'thumbnail_16_9_large', ['class' => 'img-fluid']),
                     $post_url,
-                    false
+                    false0
                 );
         $html .= ob_get_contents();
         ob_end_clean();
