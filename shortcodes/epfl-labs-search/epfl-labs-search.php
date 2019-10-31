@@ -1,9 +1,14 @@
 <?php
-
+/**
+* Plugin Name: EPFL labs
+* Description: Provide a way to search information about labs and their tags
+* @version: 1.0
+* @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
+*/
 
 namespace EPFL\Plugins\Shortcodes\EPFLLabSearch;
 
-define("LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
+define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
 
 function process_shortcode($atts) {
 
@@ -24,7 +29,7 @@ function process_shortcode($atts) {
 
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
-    $sites = \Utils::get_items($url);    
+    $sites = \Utils::get_items($url);
 
     ob_start();
     try {

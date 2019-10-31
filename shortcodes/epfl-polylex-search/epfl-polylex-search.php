@@ -1,8 +1,15 @@
 <?php
 
+/**
+* Plugin Name: EPFL polylex
+* Description: Provide a way to search information about EPFL lexes
+* @version: 1.0
+* @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
+*/
+
 namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
 
-define("LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
+define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
 
 
 function process_shortcode($atts) {
