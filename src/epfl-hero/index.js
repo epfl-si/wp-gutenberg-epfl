@@ -6,7 +6,8 @@ const {
 
 const {
     MediaUpload,
-	InspectorControls,
+    InspectorControls,
+    RichText,
 } = wp.editor;
 
 const {
@@ -14,14 +15,13 @@ const {
     IconButton,
     PanelBody,
     TextControl,
-    TextareaControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.1.0',
 	icon: 'id',
 	category: 'common',
 	attributes: {
@@ -71,10 +71,15 @@ registerBlockType( 'epfl/hero', {
                             onChange={ title => setAttributes( { title } ) }
                         />
                         <hr/>
-                        <TextareaControl
+                        <RichText
                             label={ __('Text', 'wp-gutenberg-epfl')}
                             value={ attributes.text }
                             onChange={ text => setAttributes( { text } ) }
+                            placeholder={ __('Write your text here','wp-gutenberg-epfl')}
+                            // has we transited this component from a TextAreaControl
+                            // setting multiline to something will make the old content unreadable
+                            // false -> use <br>
+                            multiline={ false }
                         />
                         <hr/>
                         { ! attributes.imageId ? (

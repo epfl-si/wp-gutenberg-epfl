@@ -29,21 +29,20 @@ function get_render_class_for_publication_2018($publication, $format) {
         $record_renderer_class_base = 'ShortInfosciencePublication2018Render';
     }
 
+    $full_record_renderer_class = __NAMESPACE__ . "\\" . $record_renderer_class_base;
+
     if (InfoscienceField2018Render::field_exists($publication['doctype'])) {
         # doctype determine the render, find it in the map
         $doctype_to_find = strtoupper($publication['doctype'][0]);
 
         if (array_key_exists($doctype_to_find, DOCTYPE_TO_CLASS_NAME_MAPPING)) {
-
-            $record_renderer_class = __NAMESPACE__ . "\\" .DOCTYPE_TO_CLASS_NAME_MAPPING[$doctype_to_find] . $record_renderer_class_base;
-
-            if (class_exists($record_renderer_class)) {
-                return $record_renderer_class;
-            }
+            return __NAMESPACE__ . "\\" . DOCTYPE_TO_CLASS_NAME_MAPPING[$doctype_to_find] . $record_renderer_class_base;
+        }  else {
+            return $full_record_renderer_class;
         }
+    } else {
+        return $full_record_renderer_class;
     }
-
-    return $record_renderer_class_base;
 }
 
 /*
@@ -99,7 +98,7 @@ abstract Class InfosciencePublication2018Render {
     protected static function render_links($publication) {
         $links_html = '<div class="col-md-2 text-right mt-4 mt-md-0">';
         $links_html .= '  <p class="infoscience_detailed_record_link">';
-        $links_html .= '    <a href="//infoscience.epfl.ch/record/' . $publication['record_id'][0] . '" class="btn btn-secondary btn-sm" target="_blank">' . esc_html__('Detailed record', 'wp-gutenberg-epfl') . '</a>';
+        $links_html .= '    <a href="//infoscience.epfl.ch/record/' . esc_html($publication['record_id'][0]) . '" class="btn btn-secondary btn-sm" target="_blank">' . esc_html__('Detailed record', 'wp-gutenberg-epfl') . '</a>';
         $links_html .= '  </p>';
 
         $fulltext = '';
@@ -116,7 +115,7 @@ abstract Class InfosciencePublication2018Render {
             $links_html .= '  <p class="text-muted small mb-0">';
 
             if ($fulltext) {
-                $links_html .= '<a class="text-muted" href="' . $fulltext . '" target="_blank">' .  esc_html__('Full text', 'wp-gutenberg-epfl') . '</a>';
+                $links_html .= '<a class="text-muted" href="' . esc_attr($fulltext) . '" target="_blank">' .  esc_html__('Full text', 'wp-gutenberg-epfl') . '</a>';
 
                 if ($doi) {
                     $links_html .= ' - ';
@@ -124,7 +123,7 @@ abstract Class InfosciencePublication2018Render {
             }
 
             if ($doi) {
-                $links_html .= '<a class="text-muted" href="https://dx.doi.org/' . $doi[0] . '" target="_blank">' .  esc_html__('View at publisher', 'wp-gutenberg-epfl') . '</a>';
+                $links_html .= '<a class="text-muted" href="https://dx.doi.org/' . esc_attr($doi[0]) . '" target="_blank">' .  esc_html__('View at publisher', 'wp-gutenberg-epfl') . '</a>';
             }
 
             $links_html .= '  </p>';
