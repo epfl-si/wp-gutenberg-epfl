@@ -44,7 +44,6 @@ registerBlockType(
       },
       structure: {
         type: 'string',
-        default: '1',
       }
 		},
 		supports : {
