@@ -29,7 +29,6 @@ function epfl_scheduler_block( $attributes, $inner_content ) {
     $end_date_time   = Utils::get_sanitized_attribute( $attributes, 'endDateTime' );
 
     /*
-    var_dump($content);
     var_dump($start_date_time);
     var_dump($end_date_time);
     */
