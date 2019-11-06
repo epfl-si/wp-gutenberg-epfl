@@ -34,7 +34,6 @@ require_once 'epfl-infoscience-search/controller.php';
 require_once 'epfl-social-feed/controller.php';
 require_once 'epfl-contact/controller.php';
 require_once 'epfl-caption-cards/controller.php';
-require_once 'epfl-card/controller.php';
 require_once 'epfl-card-deck/controller.php';
 require_once 'epfl-definition-list/controller.php';
 require_once 'epfl-links-group/controller.php';
