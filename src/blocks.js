@@ -35,6 +35,7 @@ import './epfl-social-feed'
 import './epfl-contact'
 import './epfl-caption-cards'
 import './epfl-card'
+import './epfl-card-deck'
 import './epfl-definition-list'
 import './epfl-links-group'
 
