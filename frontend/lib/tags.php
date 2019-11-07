@@ -61,7 +61,7 @@ add_filter( 'get_site_tags', function ($value) {
             # all goods, we have data !
 
             # order it
-            usort($tags, epfl_fetch_site_tags_order_cmp);
+            usort($tags, 'EPFL\Plugins\Gutenberg\Lib\Tags\epfl_fetch_site_tags_order_cmp');
 
             set_transient( 'epfl_custom_tags', $tags, $cache_timeout);
             # persist into options too, as a fallback if wp_veritas is no more online
