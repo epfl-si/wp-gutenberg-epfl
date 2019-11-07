@@ -8,6 +8,7 @@
 */
 
 namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
 
@@ -17,7 +18,7 @@ function process_shortcode($atts) {
     // if supported delegate the rendering to the theme
     if (!has_action("epfl_polylex_search_action"))
     {
-        \Utils::render_user_msg('You must activate the epfl theme');
+        Utils::render_user_msg('You must activate the epfl theme');
     }
 
     $atts = shortcode_atts( array(

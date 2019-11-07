@@ -7,6 +7,8 @@
 */
 
 namespace EPFL\Plugins\Shortcodes\EPFLLabSearch;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
 
 define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
 
@@ -15,7 +17,7 @@ function process_shortcode($atts) {
     // if supported delegate the rendering to the theme
     if (!has_action("epfl_labs_search_action"))
     {
-        \Utils::render_user_msg('You must activate the epfl theme');
+        Utils::render_user_msg('You must activate the epfl theme');
     }
 
     $atts = shortcode_atts( array(
@@ -29,7 +31,7 @@ function process_shortcode($atts) {
 
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
-    $sites = \Utils::get_items($url);
+    $sites = Utils::get_items($url);
 
     ob_start();
     try {
