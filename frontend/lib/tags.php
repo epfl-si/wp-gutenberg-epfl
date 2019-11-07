@@ -1,5 +1,8 @@
 <?php
 
+namespace EPFL\Plugins\Gutenberg\Lib\Tags;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
 function epfl_fetch_site_tags_order_cmp($a, $b) {
   $order = ['faculty', 'institute', 'field-of-research'];
 
@@ -20,7 +23,7 @@ function epfl_fetch_site_tags_order_cmp($a, $b) {
  * @return list of tags
  *
  */
-add_filter( 'get_site_tags', function () {
+add_filter( 'get_site_tags', function ($value) {
     $site_url = get_site_url();
     $tags = NULL;
     $cache_timeout = 4 * HOUR_IN_SECONDS;

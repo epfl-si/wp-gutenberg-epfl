@@ -38,6 +38,7 @@ require_once 'epfl-card/controller.php';
 require_once 'epfl-definition-list/controller.php';
 require_once 'epfl-links-group/controller.php';
 require_once 'epfl-gallery/view.php';
+require_once 'lib/tags.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
