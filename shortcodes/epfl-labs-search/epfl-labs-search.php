@@ -9,6 +9,7 @@
 namespace EPFL\Plugins\Shortcodes\EPFLLabSearch;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
+require_once(dirname(__FILE__).'/controller.php');
 
 define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
 
@@ -35,7 +36,7 @@ function process_shortcode($atts) {
 
     ob_start();
     try {
-       do_action("epfl_labs_search_action", $sites, $faculty, $institute);
+        renderLabsSearch($sites, $faculty, $institute);
        return ob_get_contents();
     } finally {
         ob_end_clean();

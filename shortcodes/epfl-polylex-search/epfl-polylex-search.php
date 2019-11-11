@@ -10,6 +10,8 @@
 namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
+require_once(dirname(__FILE__).'/controller.php');
+
 define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
 
 
@@ -47,14 +49,14 @@ function process_shortcode($atts) {
     $subcategory = sanitize_text_field($atts["subcategory"]);
     $search = sanitize_text_field($atts["search"]);
 
-
     $url = LEX_INFO_PROVIDER_URL;
-    $lexes = \Utils::get_items($url);
+    $lexes = Utils::get_items($url);
 
     ob_start();
+
     try {
-       do_action("epfl_lexes_search_action", $lexes, $category, $subcategory, $search);
-       return ob_get_contents();
+        renderLexSearch($lexes, $category, $subcategory, $search);
+        return ob_get_contents();
     } finally {
         ob_end_clean();
     }
