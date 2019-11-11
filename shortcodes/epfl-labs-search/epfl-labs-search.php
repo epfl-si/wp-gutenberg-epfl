@@ -37,7 +37,7 @@ function process_shortcode($atts) {
     ob_start();
     try {
         renderLabsSearch($sites, $faculty, $institute);
-       return ob_get_contents();
+        return ob_get_contents();
     } finally {
         ob_end_clean();
     }
