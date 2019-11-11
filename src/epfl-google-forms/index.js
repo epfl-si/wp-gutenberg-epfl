@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/google-forms', {
 	title: __( 'Google Forms', 'wp-gutenberg-epfl'),
-	description: 'v1.0.5',
+	description: 'v1.0.6',
 	icon: googleFormsIcon,
 	category: 'common',
 	attributes: {
