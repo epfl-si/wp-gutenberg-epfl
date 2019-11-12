@@ -11,12 +11,12 @@ const { Fragment } = wp.element
 registerBlockType(
 	'epfl/news',
 	{
-		title: __( "EPFL News", 'wp-gutenberg-epfl'),
+		title: __( "EPFL News", 'epfl'),
 		description: 'v1.0.3',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
-			__( 'news' , 'wp-gutenberg-epfl'),
+			__( 'news' , 'epfl'),
 		],
 		attributes: {
 			channel: {
@@ -66,7 +66,7 @@ registerBlockType(
 			// This block is a dynamic block.
 			// So we save only something like this :
 			// <!-- wp:epfl/news {"channel":"111","template":"4","displayLinkAllNews":true,
-			// "nbNews":2,"lang":"fr","category":"1","themes":"[]"} 
+			// "nbNews":2,"lang":"fr","category":"1","themes":"[]"}
 			// /-->
 			// The render of this block for the end user is doing in PHP.
       return null

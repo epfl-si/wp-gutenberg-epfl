@@ -29,7 +29,7 @@ function testTime(attributes) {
 };
 
 registerBlockType( 'epfl/scheduler', {
-	title: __( 'EPFL Scheduler', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Scheduler', 'epfl'),
 	description: 'v1.0.2',
 	icon: schedulerIcon,
 	category: 'common',
@@ -55,20 +55,20 @@ registerBlockType( 'epfl/scheduler', {
       return (
         <Fragment>
             <InspectorControls>
-                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/scheduler-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
-                <PanelBody title={ __('Start Date & Time', 'wp-gutenberg-epfl') }>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/scheduler-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <PanelBody title={ __('Start Date & Time', 'epfl') }>
                     <DateTimePicker
                         currentDate={ attributes.startDateTime }
                         value={ attributes.startDateTime }
                         onChange={ startDateTime => setAttributes( { startDateTime } ) }
                     />
                 </PanelBody>
-                <PanelBody title={ __('End Date & Time', 'wp-gutenberg-epfl') }>
+                <PanelBody title={ __('End Date & Time', 'epfl') }>
                     <DateTimePicker
                         currentDate={ attributes.endDateTime }
 						value={ attributes.endDateTime }
                         onChange={ endDateTime => setAttributes( { endDateTime } ) }
-                        help={ __('Please select a end date. Format: mm/dd/yyyy', 'wp-gutenberg-epfl') }
+                        help={ __('Please select a end date. Format: mm/dd/yyyy', 'epfl') }
 					/>
 				</PanelBody>
             </InspectorControls>

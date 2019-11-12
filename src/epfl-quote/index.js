@@ -21,7 +21,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
-	title: __( 'EPFL Quote', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Quote', 'epfl'),
 	description: 'v1.0.3',
 	icon: quoteIcon,
 	category: 'common',
@@ -66,7 +66,7 @@ registerBlockType( 'epfl/quote', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
             <div className={ className }>
                 <h2>EPFL QUOTE</h2>
@@ -78,15 +78,15 @@ registerBlockType( 'epfl/quote', {
                         render={ ( { open } ) => (
                             <Placeholder
                                 icon="images-alt"
-                                label={ __("Image", 'wp-gutenberg-epfl') }
-                                instructions={ __('Please, select a square image', 'wp-gutenberg-epfl') }
+                                label={ __("Image", 'epfl') }
+                                instructions={ __('Please, select a square image', 'epfl') }
                             >
                                 <IconButton
                                     className="components-icon-button wp-block-image__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
-                                    { __('Upload', 'wp-gutenberg-epfl') }
+                                    { __('Upload', 'epfl') }
                                 </IconButton>
                             </Placeholder>
                         )}
@@ -106,24 +106,24 @@ registerBlockType( 'epfl/quote', {
                             onClick={ onRemoveImage }
                             icon="dismiss"
                         >
-                            { __('Remove image', 'wp-gutenberg-epfl') }
+                            { __('Remove image', 'epfl') }
                         </IconButton>
 
                         ) }
                       </p>
                 )}
                 <TextareaControl
-                    label={ __('Quote', 'wp-gutenberg-epfl') }
+                    label={ __('Quote', 'epfl') }
                     value={ attributes.quote }
                     onChange={ quote => setAttributes( { quote } ) }
                 />
                 <TextControl
-                    label={ __('Author', 'wp-gutenberg-epfl') }
+                    label={ __('Author', 'epfl') }
                     value={ attributes.author }
                     onChange={ author => setAttributes( { author } ) }
                 />
                 <TextControl
-                    label={ __('Position', 'wp-gutenberg-epfl') }
+                    label={ __('Position', 'epfl') }
                     value={ attributes.position }
                     onChange={ position => setAttributes( { position } ) }
                 />

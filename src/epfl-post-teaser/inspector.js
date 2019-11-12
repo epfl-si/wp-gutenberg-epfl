@@ -36,7 +36,7 @@ export default class InspectorControlsPostTeaser extends Component {
 			return (
 				<p>
 					<Spinner />
-					{ __('Loading posts', 'wp-gutenberg-epfl') }
+					{ __('Loading posts', 'epfl') }
 				</p>
 			)
         }
@@ -48,7 +48,7 @@ export default class InspectorControlsPostTeaser extends Component {
 
         let content = (
             <div>
-                {__( 'No post found', 'wp-gutenberg-epfl') }
+                {__( 'No post found', 'epfl') }
             </div>
         )
 
@@ -61,7 +61,7 @@ export default class InspectorControlsPostTeaser extends Component {
             });
 
             // add empty value at first, in case for an unselect
-            optionsPostsList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
+            optionsPostsList.unshift({ value: null, label: __('None', 'epfl') });
 
 			{/*const divStyle = {
                 height: '600px',
@@ -74,16 +74,16 @@ export default class InspectorControlsPostTeaser extends Component {
             content = (
 				<div>
                 	<InspectorControls>
-                        <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/post-teaser-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                        <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/post-teaser-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                         <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
                             <ToggleControl
-                                label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
+                                label={ __('Change the background to gray', 'epfl') }
                                 checked={ attributes.grayBackground }
                                 onChange={ () => setAttributes( { grayBackground: ! attributes.grayBackground } ) }
                             />
                         </PanelBody>
 					</InspectorControls>
-                    <h4>{ __( 'Posts', 'wp-gutenberg-epfl') }</h4>
+                    <h4>{ __( 'Posts', 'epfl') }</h4>
                     <div style={selectStyle}>
                         <Select
                             id='epfl-page-teaser-post1'
@@ -91,7 +91,7 @@ export default class InspectorControlsPostTeaser extends Component {
                             value={ JSON.parse( attributes.post1 ) }
                             onChange={ handlePost1Change }
                             options={ optionsPostsList }
-                            placeholder={ __('Select post', 'wp-gutenberg-epfl') }
+                            placeholder={ __('Select post', 'epfl') }
                         />
                     </div>
                     <div style={selectStyle}>
@@ -101,7 +101,7 @@ export default class InspectorControlsPostTeaser extends Component {
                             value={ JSON.parse( attributes.post2 ) }
                             onChange={ handlePost2Change }
                             options={ optionsPostsList }
-                            placeholder={ __('Select post', 'wp-gutenberg-epfl') }
+                            placeholder={ __('Select post', 'epfl') }
                         />
                     </div>
                         <Select
@@ -110,7 +110,7 @@ export default class InspectorControlsPostTeaser extends Component {
                             value={ JSON.parse( attributes.post3 ) }
                             onChange={ handlePost3Change }
                             options={ optionsPostsList }
-                            placeholder={ __('Select post', 'wp-gutenberg-epfl') }
+                            placeholder={ __('Select post', 'epfl') }
 						/>
 				</div>
             )

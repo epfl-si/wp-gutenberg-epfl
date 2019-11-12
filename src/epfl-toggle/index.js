@@ -23,7 +23,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/toggle', {
-	title: __( 'EPFL Toggle', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Toggle', 'epfl'),
 	description: 'v1.0.2',
 	icon: toggleIcon,
 	category: 'common',
@@ -49,11 +49,11 @@ registerBlockType( 'epfl/toggle', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/toggle-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/toggle-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<PanelBody>
 					<RadioControl
-                        label={ __('Initial state', 'wp-gutenberg-epfl') }
-                        help={ __('Do you want display the toggle open or close initially ?', 'wp-gutenberg-epfl') }
+                        label={ __('Initial state', 'epfl') }
+                        help={ __('Do you want display the toggle open or close initially ?', 'epfl') }
                         selected={ attributes.state }
                         options={ [
                             { label: 'Closed', value: 'close' },
@@ -66,7 +66,7 @@ registerBlockType( 'epfl/toggle', {
 			<div className={ className }>
 				<h2>EPFL Toggle</h2>
 				<PlainText
-					placeholder={ __('Title', 'wp-gutenberg-epfl') }
+					placeholder={ __('Title', 'epfl') }
 					value={ attributes.title }
 					onChange={ title => setAttributes( { title } ) }
 				/>

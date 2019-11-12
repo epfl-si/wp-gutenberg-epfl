@@ -51,7 +51,7 @@ const getAttributes = () => {
 }
 
 registerBlockType( 'epfl/card', {
-	title: __( 'EPFL Card', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Card', 'epfl'),
 	description: 'v1.0.2',
 	icon: cardIcon,
 	category: 'common',
@@ -65,10 +65,10 @@ registerBlockType( 'epfl/card', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/card-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/card-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
-                            label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }
+                            label={ __('Wrap with a gray border', 'epfl') }
                             checked={ attributes.grayWrapper }
                             onChange={ grayWrapper => setAttributes( { grayWrapper } ) }
                         />

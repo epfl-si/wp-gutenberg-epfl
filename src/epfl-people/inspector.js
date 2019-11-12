@@ -20,14 +20,14 @@ export default class InspectorControlsPeople extends Component {
         const { attributes, setAttributes } = this.props
 
         let optionsColumnsList = [
-            { value: 'list', label: __('As list', 'wp-gutenberg-epfl')},
-            { value: '1', label: __('As card, one column', 'wp-gutenberg-epfl')},
-            { value: '3', label: __('As card, multiple columns', 'wp-gutenberg-epfl')},
+            { value: 'list', label: __('As list', 'epfl')},
+            { value: '1', label: __('As card, one column', 'epfl')},
+            { value: '3', label: __('As card, multiple columns', 'epfl')},
         ];
 
         let optionsOrderList = [
-          { value: 'alphabetical', label: __('Alphabetical order', 'wp-gutenberg-epfl')},
-          { value: 'hierarchical', label: __('Hierarchical order', 'wp-gutenberg-epfl')},
+          { value: 'alphabetical', label: __('Alphabetical order', 'epfl')},
+          { value: 'hierarchical', label: __('Hierarchical order', 'epfl')},
         ]
 
         let sortingPanelBody;
@@ -45,30 +45,30 @@ export default class InspectorControlsPeople extends Component {
 
         content = (
             <InspectorControls>
-                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
-                <PanelBody title={ __( 'Select by', 'wp-gutenberg-epfl') }>
-                    <strong>{__( 'Units', 'wp-gutenberg-epfl')}</strong>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <PanelBody title={ __( 'Select by', 'epfl') }>
+                    <strong>{__( 'Units', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.units }
-                        help={ __('You can enter many units separated by a comma', 'wp-gutenberg-epfl') }
+                        help={ __('You can enter many units separated by a comma', 'epfl') }
 						onChange={ units => setAttributes( { units } ) }
 					/>
-                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
-                    <strong>{__( 'Groups', 'wp-gutenberg-epfl')}</strong>
+                    <h2>{__( 'OR', 'epfl')}</h2>
+                    <strong>{__( 'Groups', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.groups }
-                        help={ __('You can enter many groups separated by a comma', 'wp-gutenberg-epfl') }
+                        help={ __('You can enter many groups separated by a comma', 'epfl') }
 						onChange={ groups => setAttributes( { groups } ) }
 					/>
-                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
-                    <strong>{__( 'Scipers', 'wp-gutenberg-epfl')}</strong>
+                    <h2>{__( 'OR', 'epfl')}</h2>
+                    <strong>{__( 'Scipers', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.scipers }
-                        help={ __('You can enter many scipers separated by a comma', 'wp-gutenberg-epfl') }
+                        help={ __('You can enter many scipers separated by a comma', 'epfl') }
 						onChange={ scipers => setAttributes( { scipers } ) }
 					/>
-                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
-                    <strong>{__( 'Doctoral programs', 'wp-gutenberg-epfl')}</strong>
+                    <h2>{__( 'OR', 'epfl')}</h2>
+                    <strong>{__( 'Doctoral programs', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.doctoralProgram }
                         help={ __('Example: EDAM') }
@@ -85,7 +85,7 @@ export default class InspectorControlsPeople extends Component {
                 </PanelBody>
                 <PanelBody title={ __( 'Columns', 'wp-gutenberg-epfl' ) }>
                     <RadioControl
-                        label={ __("Select a template", 'wp-gutenberg-epfl') }
+                        label={ __("Select a template", 'epfl') }
                         selected={ attributes.columns }
                         options={ optionsColumnsList }
                         onChange={ columns => setAttributes( { columns } ) }

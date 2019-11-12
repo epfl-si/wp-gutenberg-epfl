@@ -43,12 +43,12 @@ function CardPanel ( props ) {
         <div>
             <h4>{`Card ${index}`}</h4>
             <TextControl
-                label={ __('Title (mandatory)', 'wp-gutenberg-epfl') }
+                label={ __('Title (mandatory)', 'epfl') }
                 value={ attributes['title' + index] || ''}
                 onChange={ value => setIndexedAttributes('title', value) }
             />
             <TextControl
-                label={ __('Link', 'wp-gutenberg-epfl') }
+                label={ __('Link', 'epfl') }
                 value={ attributes['link' + index]  || '' }
                 onChange={ value => setIndexedAttributes('link', value) }
             />
@@ -60,15 +60,15 @@ function CardPanel ( props ) {
                     render={ ( { open } ) => (
                         <Placeholder
                             icon="images-alt"
-                            label={ __("Image", 'wp-gutenberg-epfl') }
-                            instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
+                            label={ __("Image", 'epfl') }
+                            instructions={ __('Please, select an image', 'epfl') }
                         >
                             <IconButton
                                 className="components-icon-button wp-block-image__upload-button button button-large"
                                 onClick={ open }
                                 icon="upload"
                             >
-                                { __('Upload', 'wp-gutenberg-epfl') }
+                                { __('Upload', 'epfl') }
                             </IconButton>
                         </Placeholder>
                     )}
@@ -88,7 +88,7 @@ function CardPanel ( props ) {
                         onClick={ onRemoveImage }
                         icon="dismiss"
                     >
-                        { __('Remove image', 'wp-gutenberg-epfl') }
+                        { __('Remove image', 'epfl') }
                     </IconButton>
 
                     ) }
@@ -100,7 +100,7 @@ function CardPanel ( props ) {
                     onChange={ value => setIndexedAttributes('content', value) }
                     tagName="div"
                     multiline="p"
-                    placeholder={ __('Write your text here','wp-gutenberg-epfl')}
+                    placeholder={ __('Write your text here','epfl')}
                     keepPlaceholderOnFocus = { true }
                     allowedFormats={[]}
             />

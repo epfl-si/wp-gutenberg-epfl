@@ -48,73 +48,73 @@ export default class InspectorControlsInfoscience extends Component {
         const { attributes, setAttributes } = this.props
 
         let optionsFormat = [
-            { value: 'short', label: __('Short', 'wp-gutenberg-epfl') },
-            { value: 'detailed', label: __('Detailed', 'wp-gutenberg-epfl') },
+            { value: 'short', label: __('Short', 'epfl') },
+            { value: 'detailed', label: __('Detailed', 'epfl') },
 		];
 
 		let optionsFieldFilter = [
-            { value: 'any', label: __('Any field', 'wp-gutenberg-epfl') },
-            { value: 'author', label: __('Author', 'wp-gutenberg-epfl') },
-            { value: 'title', label: __('Title', 'wp-gutenberg-epfl') },
-            { value: 'year', label: __('Year', 'wp-gutenberg-epfl') },
-            { value: 'unit', label: __('Unit', 'wp-gutenberg-epfl') },
-            { value: 'collection', label: __('Collection', 'wp-gutenberg-epfl') },
-            { value: 'journal', label: __('Journal', 'wp-gutenberg-epfl') },
-            { value: 'publisher', label: __('Publisher', 'wp-gutenberg-epfl') },
-            { value: 'abstract', label: __('Abstract', 'wp-gutenberg-epfl') },
-            { value: 'keyword', label: __('Keyword', 'wp-gutenberg-epfl') },
-            { value: 'doi', label: __('DOI', 'wp-gutenberg-epfl') },
+            { value: 'any', label: __('Any field', 'epfl') },
+            { value: 'author', label: __('Author', 'epfl') },
+            { value: 'title', label: __('Title', 'epfl') },
+            { value: 'year', label: __('Year', 'epfl') },
+            { value: 'unit', label: __('Unit', 'epfl') },
+            { value: 'collection', label: __('Collection', 'epfl') },
+            { value: 'journal', label: __('Journal', 'epfl') },
+            { value: 'publisher', label: __('Publisher', 'epfl') },
+            { value: 'abstract', label: __('Abstract', 'epfl') },
+            { value: 'keyword', label: __('Keyword', 'epfl') },
+            { value: 'doi', label: __('DOI', 'epfl') },
 		]
 
 		let optionsSort = [
-			{ value: 'desc', label: __('Descending', 'wp-gutenberg-epfl') },
-			{ value: 'asc', label: __('Ascending', 'wp-gutenberg-epfl') },
+			{ value: 'desc', label: __('Descending', 'epfl') },
+			{ value: 'asc', label: __('Ascending', 'epfl') },
 		]
 
 		let optionsGroupBy = [
 			{ value: null, label: '' },
-			{ value: 'year', label: __('Year', 'wp-gutenberg-epfl') },
-			{ value: 'year_doctype', label: __('Year, then document type', 'wp-gutenberg-epfl') },
-			{ value: 'doctype', label: __('Document type', 'wp-gutenberg-epfl') },
-			{ value: 'doctype_year', label: __('Document type, then year', 'wp-gutenberg-epfl') },
+			{ value: 'year', label: __('Year', 'epfl') },
+			{ value: 'year_doctype', label: __('Year, then document type', 'epfl') },
+			{ value: 'doctype', label: __('Document type', 'epfl') },
+			{ value: 'doctype_year', label: __('Document type, then year', 'epfl') },
 		]
 
 		let optionsOperatorFilter = [
-			{ value: 'and', label: __('AND', 'wp-gutenberg-epfl') },
-			{ value: 'or', label: __('OR', 'wp-gutenberg-epfl') },
-			{ value: 'and_not', label: __('AND NOT', 'wp-gutenberg-epfl') },
+			{ value: 'and', label: __('AND', 'epfl') },
+			{ value: 'or', label: __('OR', 'epfl') },
+			{ value: 'and_not', label: __('AND NOT', 'epfl') },
 		]
 
         let content = "";
 
         content = (
             <InspectorControls>
-				<PanelBody title={ __('A direct infoscience URL', 'wp-gutenberg-epfl') }>
+				<PanelBody title={ __('A direct infoscience URL', 'epfl') }>
 					<TextareaControl
 						value={ attributes.url }
 						onChange={ url => setAttributes( { url } ) }
-						placeholder={ __('a https://infoscience.epfl.ch/search?... url', 'wp-gutenberg-epfl') }
+						placeholder={ __('a https://infoscience.epfl.ch/search?... url', 'epfl') }
 					/>
 				</PanelBody>
-				<PanelBody title={ __('Or text patterns', 'wp-gutenberg-epfl') }>
+				<PanelBody title={ __('Or text patterns', 'epfl') }>
 					<TextControl
 						value={ attributes.pattern }
 						onChange={ pattern => setAttributes( { pattern } ) }
-						placeholder={ __('search for:', 'wp-gutenberg-epfl') }
+						placeholder={ __('search for:', 'epfl') }
 					/>
 					<SelectControl
-						label={ __('Field restriction', 'wp-gutenberg-epfl') }
+						label={ __('Field restriction', 'epfl') }
 						value={ attributes.field }
 						onChange={ field => setAttributes( { field } ) }
 						options={ optionsFieldFilter }
-						help={ <a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'wp-gutenberg-epfl') }</a> }
+						help={ <a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'epfl') }</a> }
 					/>
-					<h2><a href="#" onClick={this.toggleBox}>{ __('Additional search keys', 'wp-gutenberg-epfl') } { this.state.showAdvancedSearch ? '[-]' : '[+]' }</a></h2>
+					<h2><a href="#" onClick={this.toggleBox}>{ __('Additional search keys', 'epfl') } { this.state.showAdvancedSearch ? '[-]' : '[+]' }</a></h2>
 					{
 						!!this.state.showAdvancedSearch &&
             		<div>
 						<SelectControl
-							label={ <h4> { __('Second search text', 'wp-gutenberg-epfl') } </h4> }
+							label={ <h4> { __('Second search text', 'epfl') } </h4> }
 							value={ attributes.operator2 }
 							onChange={ operator2 => setAttributes( { operator2 } ) }
 							options={ optionsOperatorFilter }
@@ -122,16 +122,16 @@ export default class InspectorControlsInfoscience extends Component {
 						<TextControl
 							value={ attributes.pattern2 }
 							onChange={ pattern2 => setAttributes( { pattern2 } ) }
-							placeholder={ __('search for:', 'wp-gutenberg-epfl') }
+							placeholder={ __('search for:', 'epfl') }
 						/>
 						<SelectControl
-							label={ __('Field restriction', 'wp-gutenberg-epfl') }
+							label={ __('Field restriction', 'epfl') }
 							value={ attributes.field2 }
 							onChange={ field2 => setAttributes( { field2 } ) }
 							options={ optionsFieldFilter }
 						/>
 						<SelectControl
-							label={ <h4> { __('Third search text', 'wp-gutenberg-epfl') } </h4> }
+							label={ <h4> { __('Third search text', 'epfl') } </h4> }
 							value={ attributes.operator3 }
 							onChange={ operator3 => setAttributes( { operator3 } ) }
 							options={ optionsOperatorFilter }
@@ -139,10 +139,10 @@ export default class InspectorControlsInfoscience extends Component {
 						<TextControl
 							value={ attributes.pattern3 }
 							onChange={ pattern3 => setAttributes( { pattern3 } ) }
-							placeholder={ __('search for:', 'wp-gutenberg-epfl') }
+							placeholder={ __('search for:', 'epfl') }
 						/>
 						<SelectControl
-							label={ __('Field restriction', 'wp-gutenberg-epfl') }
+							label={ __('Field restriction', 'epfl') }
 							value={ attributes.field3 }
 							onChange={ field3 => setAttributes( { field3 } ) }
 							options={ optionsFieldFilter }
@@ -150,42 +150,42 @@ export default class InspectorControlsInfoscience extends Component {
 					</div>
 					}
 				</PanelBody>
-				<PanelBody title={ __('Limit', 'wp-gutenberg-epfl') }>
+				<PanelBody title={ __('Limit', 'epfl') }>
 					<TextControl
 						value={ attributes.limit }
 						onChange={ limit => setAttributes( { limit } ) }
 						placeholder={ '100' }
-						help={ __('Without a limit only the first 100 publications are shown', 'wp-gutenberg-epfl') }
+						help={ __('Without a limit only the first 100 publications are shown', 'epfl') }
 					/>
 				</PanelBody>
-				<PanelBody title={ __('Sort', 'wp-gutenberg-epfl') }>
+				<PanelBody title={ __('Sort', 'epfl') }>
 					<RadioControl
                         selected={ attributes.sort }
                         options={ optionsSort }
 						onChange={ sort => setAttributes( { sort } ) }
 					/>
 				</PanelBody>
-				<PanelBody title={ __('Options', 'wp-gutenberg-epfl') } >
+				<PanelBody title={ __('Options', 'epfl') } >
 					<SelectControl
-						label={ __('Group by with titles', 'wp-gutenberg-epfl') }
+						label={ __('Group by with titles', 'epfl') }
 						value={ attributes.groupBy }
 						onChange={ groupBy => setAttributes( { groupBy } ) }
 						options={ optionsGroupBy }
 					/>
 					<RadioControl
-						label={ __('Format', 'wp-gutenberg-epfl') }
+						label={ __('Format', 'epfl') }
                         selected={ attributes.format }
-                        help={ __('Detail level for a publication', 'wp-gutenberg-epfl') }
+                        help={ __('Detail level for a publication', 'epfl') }
                         options={ optionsFormat }
 						onChange={ format => setAttributes( { format } ) }
 					/>
 					<ToggleControl
-						label={ __('Summaries', 'wp-gutenberg-epfl') }
+						label={ __('Summaries', 'epfl') }
 						checked={ attributes.summary }
 						onChange={ summary => setAttributes( { summary } ) }
 					/>
 					<ToggleControl
-						label={ __('Thumbnails', 'wp-gutenberg-epfl') }
+						label={ __('Thumbnails', 'epfl') }
                         checked={ attributes.thumbnail }
 						onChange={ thumbnail => setAttributes( { thumbnail } ) }
 					/>

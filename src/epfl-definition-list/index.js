@@ -55,12 +55,12 @@ function DefinitionListPanel ( props ) {
            <TextControl
                 value={ attributes['label' + index] || ''}
                 onChange={ value => setIndexedAttributes('label', value) }
-                placeholder={ __('Term to define', 'wp-gutenberg-epfl') }
+                placeholder={ __('Term to define', 'epfl') }
             />
            <RichText
                 value={ attributes['desc' + index] || ''}
                 onChange={ value => setIndexedAttributes('desc', value) }
-                placeholder={ __('Definition of the term', 'wp-gutenberg-epfl') }
+                placeholder={ __('Definition of the term', 'epfl') }
                 // has we transited this component from a TextAreaControl
                 // setting multiline to something will make the old content unreadable
                 // false -> use <br>
@@ -71,7 +71,7 @@ function DefinitionListPanel ( props ) {
 }
 
 registerBlockType( 'epfl/definition-list', {
-	title: __( 'EPFL Definition List', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Definition List', 'epfl'),
 	description: 'v1.1.0',
 	icon: 'editor-alignleft',
 	category: 'common',
@@ -85,19 +85,19 @@ registerBlockType( 'epfl/definition-list', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/definition-list-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/definition-list-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
-                            label={ __('Display as a table', 'wp-gutenberg-epfl') }
+                            label={ __('Display as a table', 'epfl') }
                             checked={ attributes.tableDisplay }
                             onChange={ tableDisplay => setAttributes( { tableDisplay } ) }
-                            help={ __('Display the definition list as a table-like component', 'wp-gutenberg-epfl') }
+                            help={ __('Display the definition list as a table-like component', 'epfl') }
                         />
                         <ToggleControl
-                            label={ __('Large display', 'wp-gutenberg-epfl') }
+                            label={ __('Large display', 'epfl') }
                             checked={ attributes.largeDisplay }
                             onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
-                            help={ __('Makes the definition list design wider', 'wp-gutenberg-epfl') }
+                            help={ __('Makes the definition list design wider', 'epfl') }
                         />
                     </PanelBody>
                 </InspectorControls>

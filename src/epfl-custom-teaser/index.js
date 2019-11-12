@@ -85,22 +85,22 @@ function CustomTeaserPanel ( props ) {
         <div>
             <h4>{`Custom teaser ${index}`}</h4>
             <TextControl
-                label={ __('Title', 'wp-gutenberg-epfl') }
+                label={ __('Title', 'epfl') }
                 value={ attributes['title' + index] || ''}
                 onChange={ value => setIndexedAttributes('title', value) }
             />
             <TextControl
-                label={ __('Excerpt', 'wp-gutenberg-epfl') }
+                label={ __('Excerpt', 'epfl') }
                 value={ attributes['excerpt' + index]  || '' }
                 onChange={ value => setIndexedAttributes('excerpt', value) }
             />
             <TextControl
-                label={ __('Url', 'wp-gutenberg-epfl') }
+                label={ __('Url', 'epfl') }
                 value={ attributes['url' + index]  || '' }
                 onChange={ value => setIndexedAttributes('url', value) }
             />
             <TextControl
-                label={ __('Button label', 'wp-gutenberg-epfl') }
+                label={ __('Button label', 'epfl') }
                 value={ attributes['buttonLabel' + index]  || '' }
                 onChange={ value => setIndexedAttributes('buttonLabel', value) }
             />
@@ -112,15 +112,15 @@ function CustomTeaserPanel ( props ) {
                     render={ ( { open } ) => (
                         <Placeholder
                             icon="images-alt"
-                            label={ __("Image", 'wp-gutenberg-epfl') }
-                            instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
+                            label={ __("Image", 'epfl') }
+                            instructions={ __('Please, select an image', 'epfl') }
                         >
                             <IconButton
                                 className="components-icon-button wp-block-image__upload-button button button-large"
                                 onClick={ open }
                                 icon="upload"
                             >
-                                { __('Upload', 'wp-gutenberg-epfl') }
+                                { __('Upload', 'epfl') }
                             </IconButton>
                         </Placeholder>
                     )}
@@ -140,7 +140,7 @@ function CustomTeaserPanel ( props ) {
                         onClick={ onRemoveImage }
                         icon="dismiss"
                     >
-                        { __('Remove image', 'wp-gutenberg-epfl') }
+                        { __('Remove image', 'epfl') }
                     </IconButton>
 
                     ) }
@@ -151,7 +151,7 @@ function CustomTeaserPanel ( props ) {
 }
 
 registerBlockType( 'epfl/custom-teaser', {
-	title: __( 'EPFL Custom Teaser', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Custom Teaser', 'epfl'),
 	description: 'v1.0.3',
 	icon: 'editor-kitchensink',
 	category: 'common',
@@ -165,10 +165,10 @@ registerBlockType( 'epfl/custom-teaser', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-teaser-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-teaser-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
-                            label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }
+                            label={ __('Wrap with a gray border', 'epfl') }
                             checked={ attributes.grayBackground }
                             onChange={ grayBackground => setAttributes( { grayBackground } ) }
                         />
@@ -177,7 +177,7 @@ registerBlockType( 'epfl/custom-teaser', {
                 <div className={ className + ' wp-block-scroll' }>
                     <h2>EPFL Custom Teaser</h2>
                     <TextControl
-                        label={ __('Section title', 'wp-gutenberg-epfl') }
+                        label={ __('Section title', 'epfl') }
                         value={ attributes.titleSection }
                         onChange={ titleSection => setAttributes( { titleSection } ) }
                     />

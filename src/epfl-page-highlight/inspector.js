@@ -37,7 +37,7 @@ export default class InspectorControlsPageHighlight extends Component {
 			return (
 				<p>
 					<Spinner />
-					{ __('Loading pages', 'wp-gutenberg-epfl') }
+					{ __('Loading pages', 'epfl') }
 				</p>
 			)
         }
@@ -48,9 +48,9 @@ export default class InspectorControlsPageHighlight extends Component {
         let content = "";
 
         let optionsLayoutList = [
-            { value: 'right', label: __('Right', 'wp-gutenberg-epfl')},
-            { value: 'bottom', label: __('Bottom', 'wp-gutenberg-epfl')},
-            { value: 'left', label: __('Left', 'wp-gutenberg-epfl')},
+            { value: 'right', label: __('Right', 'epfl')},
+            { value: 'bottom', label: __('Bottom', 'epfl')},
+            { value: 'left', label: __('Left', 'epfl')},
         ];
 
         if (this.state.pages !== null) {
@@ -62,7 +62,7 @@ export default class InspectorControlsPageHighlight extends Component {
             });
 
             // add empty value at first, in case for an unselect
-            optionsPagesList.unshift({ value: null, label: __('None', 'wp-gutenberg-epfl') });
+            optionsPagesList.unshift({ value: null, label: __('None', 'epfl') });
 
             {/*const divStyle = {
                 height: '600px',
@@ -75,14 +75,14 @@ export default class InspectorControlsPageHighlight extends Component {
             content = (
 				<div>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/page-highlight-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/page-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                         <PanelBody title={ __( 'Layout', 'wp-gutenberg-epfl' ) }>
                             <RadioControl
-                                label={ __("Select a layout", 'wp-gutenberg-epfl') }
+                                label={ __("Select a layout", 'epfl') }
                                 selected={ attributes.layout }
                                 options={ optionsLayoutList }
                                 onChange={ layout => setAttributes( { layout } ) }
-                                help={ __('Decides where the text will be aligned, to allow the subject of the picture to be visible', 'wp-gutenberg-epfl')}
+                                help={ __('Decides where the text will be aligned, to allow the subject of the picture to be visible', 'epfl')}
                             />
                         </PanelBody>
 	                </InspectorControls>
@@ -93,7 +93,7 @@ export default class InspectorControlsPageHighlight extends Component {
                                 value={ JSON.parse( attributes.page ) }
                                 onChange={ handlePageChange }
                                 options={ optionsPagesList }
-                                placeholder={ __('Select page', 'wp-gutenberg-epfl') }
+                                placeholder={ __('Select page', 'epfl') }
                             />
                         </div>
                     </div>
