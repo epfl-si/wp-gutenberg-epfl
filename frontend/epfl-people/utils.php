@@ -3,6 +3,7 @@
 namespace EPFL\Plugins\Gutenberg\People;
 
 define(__NAMESPACE__ . "\HIERARCHICAL_ORDER", "hierarchical");
+define(__NAMESPACE__ . "\HIERARCHICAL_ORDER_WITH_TITLE", "hierarchical-with-title");
 define(__NAMESPACE__ . "\ALPHABETICAL_ORDER", "alphabetical");
 
 /**
