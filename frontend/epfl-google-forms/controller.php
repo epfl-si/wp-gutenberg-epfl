@@ -55,7 +55,7 @@ function epfl_google_forms_block( $attributes ) {
         return Utils::render_user_msg(__("Incorrect URL found", "epfl"));
     }
 
-    if(!is_numeric($width) || !is_numeric($height))
+    if(!is_numeric($height))
     {
         return Utils::render_user_msg(__("Incorrect dimensions found", "epfl"));
     }
