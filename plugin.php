@@ -56,5 +56,5 @@ require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-labs-search/epfl-labs-
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-magistrale/epfl-magistrale.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-polylex-search/epfl-polylex-search.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-servicenow-search/epfl-servicenow-search.php';
-require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl_share/epfl-share.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-share/epfl-share.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-study-plan/epfl-study-plan.php';

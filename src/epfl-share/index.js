@@ -9,7 +9,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/share', {
 	title: __( 'EPFL Share', 'epfl'),
 	description: 'v1.0.0',
-	icon: 'text',
+	icon: 'share',
 	category: 'common',
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
@@ -22,7 +22,7 @@ registerBlockType( 'epfl/share', {
 				<div className={ className }>
 					<div id="preview-box">
 						<h2>{ __('EPFL Share', 'epfl') }</h2>
-						<div className="helper">{ __('Share this page', 'epfl') }</div>
+						<div className="helper">{ __('Share this page on social media', 'epfl') }</div>
 					</div>
 				</div>
 			</Fragment>
