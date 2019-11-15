@@ -201,6 +201,11 @@ function wp_gutenberg_epfl_register_blocks() {
 		register_block_type( 'core/gallery', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Gallery\epfl_gallery_block',
 		));
+
+		register_block_type( 'epfl/share', array(
+			'render_callback' => 'EPFL\Plugins\Shortcodes\EPFLShare\epfl_share_process_shortcode',
+		));
+
 }
 
 add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_epfl_register_blocks' );
