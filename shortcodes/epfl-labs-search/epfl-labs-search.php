@@ -14,13 +14,6 @@ require_once(dirname(__FILE__).'/controller.php');
 define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
 
 function process_shortcode($atts) {
-
-    // if supported delegate the rendering to the theme
-    if (!has_action("epfl_labs_search_action"))
-    {
-        Utils::render_user_msg('You must activate the epfl theme');
-    }
-
     $atts = shortcode_atts( array(
         'faculty' => '',
         'institute' => ''
