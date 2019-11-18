@@ -30,14 +30,10 @@ function testTime(attributes) {
 
 registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'wp-gutenberg-epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: schedulerIcon,
 	category: 'common',
 	attributes: {
-        content: {
-            type: 'string',
-            selector: '.content'
-        },
         startDateTime: {
             type: 'string',
         },

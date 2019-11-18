@@ -13,7 +13,6 @@ function epfl_toggle_block( $attributes, $inner_content ) {
 
     /*
     var_dump($title);
-    var_dump($content);
     var_dump($state);
     var_dump($toggle_id);
     */
