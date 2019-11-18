@@ -10,6 +10,7 @@ namespace EPFL\Plugins\Shortcodes\EPFLLabSearch;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/controller.php');
+require_once(dirname(__FILE__).'/../lib/utils.php');
 
 define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
 
