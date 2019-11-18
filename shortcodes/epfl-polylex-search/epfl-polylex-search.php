@@ -11,7 +11,7 @@ namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/controller.php');
-require_once(dirname(__FILE__).'/../lib/utils.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
 
 define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
 
