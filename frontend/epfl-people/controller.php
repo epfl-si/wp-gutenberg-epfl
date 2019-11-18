@@ -39,6 +39,7 @@ function epfl_people_block( $attributes ) {
     $function         = Utils::get_sanitized_attribute( $attributes, 'fonction' );
     $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
     $order            = Utils::get_sanitized_attribute( $attributes, 'order', ALPHABETICAL_ORDER );
+    $structure        = Utils::get_sanitized_attribute( $attributes, 'structure', '1' );
 
     /*
     var_dump($units);
@@ -48,7 +49,8 @@ function epfl_people_block( $attributes ) {
     var_dump($fonction);
     var_dump($columns);
     var_dump($order);
-    */
+    var_dump($structure);
+    */    
 
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
@@ -84,9 +86,9 @@ function epfl_people_block( $attributes ) {
         $parameter['position'] = $function;
     }
 
-    if (HIERARCHICAL_ORDER === $order && "" !== $units) {
+    if ((HIERARCHICAL_ORDER === $order || HIERARCHICAL_ORDER_WITH_TITLE === $order) && "" !== $units) {
       // People API: &struct=1 parameter corresponds to the hierarchical order
-      $parameter['struct'] = '1';
+      $parameter['struct'] = $structure;
     } else {
       $order = ALPHABETICAL_ORDER;
     }
