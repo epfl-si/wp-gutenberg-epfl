@@ -10,10 +10,10 @@
         $markup = '<div class="container my-3">';
         $markup .= '<div class="row align-items-center">';
         $markup .= '<div class="col-md-6">';
-        $markup .= '<h2>' . __('Next events', 'wp-gutenberg-epfl') . '</h2>';
+        $markup .= '<h2>' . __('Next events', 'epfl') . '</h2>';
         $markup .= '</div>';
         $markup .= '<div class="col-md-6 text-right">';
-        $markup .= '<a href="' . esc_url($memento_url) . '">' . __('See all events', 'wp-gutenberg-epfl') . '</a>';
+        $markup .= '<a href="' . esc_url($memento_url) . '">' . __('See all events', 'epfl') . '</a>';
         $markup .= '</div>';
         $markup .= '</div>';
         $markup .= '<div class="row mt-2">';

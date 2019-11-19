@@ -75,7 +75,7 @@ export default class InspectorControlsPostTeaser extends Component {
 				<div>
                 	<InspectorControls>
                         <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/post-teaser-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-                        <PanelBody title={ __( 'Gray', 'wp-gutenberg-epfl' ) }>
+                        <PanelBody title={ __( 'Gray', 'epfl' ) }>
                             <ToggleControl
                                 label={ __('Change the background to gray', 'epfl') }
                                 checked={ attributes.grayBackground }

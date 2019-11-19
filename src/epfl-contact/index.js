@@ -82,7 +82,7 @@ registerBlockType( 'epfl/contact', {
                     <label><strong>Introduction</strong></label>
                     <hr />
                     <InnerBlocks />
-                    <label><strong>{ __( 'Timetable', 'wp-gutenberg-epfl' ) }</strong></label>
+                    <label><strong>{ __( 'Timetable', 'epfl' ) }</strong></label>
                     <hr />
                     <RichText
                         tagName="div"
@@ -122,7 +122,7 @@ registerBlockType( 'epfl/contact', {
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'An email ?', 'wp-gutenberg-epfl' ) }
+                        placeholder={ __( 'An email ?', 'epfl' ) }
                         keepPlaceholderOnFocus = { true }
                         value={ attributes.information1 }
                         className="information1"
@@ -132,7 +132,7 @@ registerBlockType( 'epfl/contact', {
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'A phone number ?', 'wp-gutenberg-epfl' ) }
+                        placeholder={ __( 'A phone number ?', 'epfl' ) }
                         keepPlaceholderOnFocus = { true }
                         value={ attributes.information2 }
                         className="information2"
@@ -142,14 +142,14 @@ registerBlockType( 'epfl/contact', {
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'An address ?', 'wp-gutenberg-epfl' ) }
+                        placeholder={ __( 'An address ?', 'epfl' ) }
                         keepPlaceholderOnFocus = { true }
                         value={ attributes.information3 }
                         className="information3"
                         onChange={ information3 => setAttributes( { information3 } ) }
                     />
                     <hr />
-                    <label><strong>{ __( 'Map', 'wp-gutenberg-epfl' ) }</strong></label>
+                    <label><strong>{ __( 'Map', 'epfl' ) }</strong></label>
                     <TextControl
                         label={ __('A room/place shown in the interactive map:', 'epfl') }
                         value={ attributes.mapQuery }

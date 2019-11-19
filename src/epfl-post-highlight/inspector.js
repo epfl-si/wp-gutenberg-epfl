@@ -81,7 +81,7 @@ export default class InspectorControlsPostHighlight extends Component {
                 <div>
                 	<InspectorControls>
                         <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/post-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-                        <PanelBody title={ __( 'Layout', 'wp-gutenberg-epfl' ) }>
+                        <PanelBody title={ __( 'Layout', 'epfl' ) }>
                             <RadioControl
                                 label={ __("Select a layout", 'epfl') }
                                 selected={ attributes.layout }

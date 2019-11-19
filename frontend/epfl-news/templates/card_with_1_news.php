@@ -1,6 +1,6 @@
 <?php
     namespace EPFL\Plugins\Gutenberg\News;
-    
+
     // template = 4
     function epfl_news_card_with_1_news($results, $all_news_link) {
 
@@ -25,7 +25,7 @@
 
             if ($is_first_event) {
                 $markup .= '<h2 class="mt-5 mb-4">';
-                $markup .= __('The latest news', 'wp-gutenberg-epfl');
+                $markup .= __('The latest news', 'epfl');
                 $markup .= '</h2>';
                 $markup .= '<div class="row">';
             }
