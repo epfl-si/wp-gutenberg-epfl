@@ -1,5 +1,5 @@
 import cardIcon from './card-icon'
-import CardPanel from './card-panel';
+import './card-panel'
 
 const { __ } = wp.i18n;
 
@@ -9,6 +9,7 @@ const {
 
 const {
     InspectorControls,
+    InnerBlocks,
 } = wp.editor;
 
 const {
@@ -18,7 +19,11 @@ const {
 
 const { Fragment } = wp.element;
 
-const maxCards = 3;
+const TEMPLATE = [
+	['epfl/card-panel', {}, [] ],
+    ['epfl/card-panel', {}, [] ],
+    ['epfl/card-panel', {}, [] ],
+]
 
 const getAttributes = () => {
     let atts = {
@@ -28,31 +33,12 @@ const getAttributes = () => {
         },
     };
 
-    for (var i = 1; i <= maxCards; i++) {
-        atts['title'+i] = {
-			type: 'string',
-        };
-        atts['link'+i] = {
-			type: 'string',
-        };
-        atts['imageId'+i] = {
-			type: 'integer',
-        };
-        atts['imageUrl'+i] = {
-            type: 'string',
-            default: null
-        };
-        atts['content'+i] = {
-			type: 'string',
-        };
-    }
-
     return atts;
 }
 
-registerBlockType( 'epfl/card', {
-	title: __( 'EPFL Card', 'epfl'),
-	description: 'v1.0.2',
+registerBlockType( 'epfl/card-deck', {
+	title: __( 'EPFL Card Deck', 'epfl'),
+	description: 'v1.0.1',
 	icon: cardIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -75,15 +61,22 @@ registerBlockType( 'epfl/card', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
-                        <h2>EPFL Card</h2>
-                        {[...Array(maxCards)].map((x, i) =>
-                            <CardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
-                        )}
+                        <h2>EPFL Card Deck</h2>
+                        <InnerBlocks
+                            template={ TEMPLATE }
+                            /* We could lock template to deny adding new blocks but even if we remove the locking inside epfl/card-panel, there's a bug and the system removes the block inside epfl/card-panl block.
+                             So, as workaround, we don't lock but limit new blocks to 'epfl/card-panel'. And because this block is not present in the white list in MU-Plugin EPFL_custom_editor_menu.php, we won't
+                             be able to add new blocks inside and epfl/card-deck block */
+                            allowedBlocks={['epfl/card-panel']}
+                           />
                 </div>
             </Fragment>
 		)
 	},
 	save: ( props ) => {
-		return null;
+		return (
+                <InnerBlocks.Content />
+
+        );
 	},
 } );

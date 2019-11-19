@@ -4,8 +4,10 @@
     require_once(dirname(__FILE__) . '/utils.php');
     require_once(dirname(__FILE__) . '/templates/list.php');
     require_once(dirname(__FILE__) . '/templates/hierarchical-list.php');
+    require_once(dirname(__FILE__) . '/templates/hierarchical-with-title-list.php');
     require_once(dirname(__FILE__) . '/templates/card.php');
     require_once(dirname(__FILE__) . '/templates/hierarchical-card.php');
+    require_once(dirname(__FILE__) . '/templates/hierarchical-with-title-card.php');
 
     function epfl_people_render($persons, $from, $columns, $order) {
 
@@ -26,6 +28,9 @@
         } else if ( HIERARCHICAL_ORDER === $order ) {
             $function_to_be_called = __NAMESPACE__ . '\epfl_people_hierarchical_' . $columns;
             $markup = $function_to_be_called($persons, $from);
+        } else if ( HIERARCHICAL_ORDER_WITH_TITLE === $order ) {
+          $function_to_be_called = __NAMESPACE__ . '\epfl_people_hierarchical_with_title_' . $columns;
+          $markup = $function_to_be_called($persons, $from);
         }
 
         return $markup;
@@ -40,9 +45,17 @@
     }
 
     function epfl_people_hierarchical_1($persons, $from) {
-      return epfl_people_hierarchical_card($persons, $from, '1');
+        return epfl_people_hierarchical_card($persons, $from, '1');
     }
 
     function epfl_people_hierarchical_3($persons, $from) {
         return epfl_people_hierarchical_card($persons, $from, '3');
     }
+
+    function epfl_people_hierarchical_with_title_1($persons, $from) {
+        return epfl_people_hierarchical_with_title_card($persons, $from, '1');
+    }
+
+    function epfl_people_hierarchical_with_title_3($persons, $from) {
+        return epfl_people_hierarchical_with_title_card($persons, $from, '3');
+  }

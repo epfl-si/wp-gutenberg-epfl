@@ -39,6 +39,7 @@ function epfl_people_block( $attributes ) {
     $function         = Utils::get_sanitized_attribute( $attributes, 'fonction' );
     $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
     $order            = Utils::get_sanitized_attribute( $attributes, 'order', ALPHABETICAL_ORDER );
+    $structure        = Utils::get_sanitized_attribute( $attributes, 'structure', '1' );
 
     /*
     var_dump($units);
@@ -48,19 +49,20 @@ function epfl_people_block( $attributes ) {
     var_dump($fonction);
     var_dump($columns);
     var_dump($order);
-    */
+    var_dump($structure);
+    */    
 
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
     $groups = preg_replace('/\s+/','',$groups);
     $scipers = preg_replace('/\s+/','',$scipers);
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
-    
+
     if ($columns !== 'list') {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
     }
 
-    // The user must fill in one of the 4 fields 
+    // The user must fill in one of the 4 fields
     if ("" === $units && "" === $scipers && "" === $doctoral_program && "" === $groups) {
         return Utils::render_user_msg("People shortcode: Please check required parameters");
     }
@@ -84,9 +86,9 @@ function epfl_people_block( $attributes ) {
         $parameter['position'] = $function;
     }
 
-    if (HIERARCHICAL_ORDER === $order && "" !== $units) {
+    if ((HIERARCHICAL_ORDER === $order || HIERARCHICAL_ORDER_WITH_TITLE === $order) && "" !== $units) {
       // People API: &struct=1 parameter corresponds to the hierarchical order
-      $parameter['struct'] = '1';
+      $parameter['struct'] = $structure;
     } else {
       $order = ALPHABETICAL_ORDER;
     }
@@ -103,7 +105,7 @@ function epfl_people_block( $attributes ) {
     $url = add_query_arg($parameter, $url);
 
     // retrieve the data in JSON
-    $items = Utils::get_items($url);
+    $items = Utils::get_items($url, 300, 15);
     if (false === $items) {
         return Utils::render_user_msg("People shortcode: Error retrieving items");
     }
@@ -128,7 +130,7 @@ function epfl_people_block( $attributes ) {
     } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
         // Sort persons list alphabetically when units, doctoral program or groups
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
-    } 
+    }
 
     $markup = epfl_people_render($persons, $from, $columns, $order);
     return $markup;

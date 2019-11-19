@@ -27,9 +27,6 @@ registerBlockType( 'epfl/contact', {
     icon: contactIcon,
     category: 'common',
     attributes: {
-        introduction: {
-            type: 'string',
-        },
         grayWrapper: {
             type: 'boolean',
             default: false,

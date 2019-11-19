@@ -34,9 +34,23 @@ import './epfl-quote'
 import './epfl-scheduler'
 import './epfl-scienceqa'
 import './epfl-social-feed'
+<<<<<<< HEAD
 import './epfl-tableau'
 import './epfl-toggle'
 import './epfl-video'
+||||||| merged common ancestors
+import './epfl-contact'
+import './epfl-caption-cards'
+import './epfl-card'
+import './epfl-definition-list'
+import './epfl-links-group'
+=======
+import './epfl-contact'
+import './epfl-caption-cards'
+import './epfl-card-deck'
+import './epfl-definition-list'
+import './epfl-links-group'
+>>>>>>> master
 
 
 const getHomeURL = () => {

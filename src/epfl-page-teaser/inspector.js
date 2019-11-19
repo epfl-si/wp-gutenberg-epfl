@@ -25,7 +25,8 @@ export default class InspectorControlsPageTeaser extends Component {
     }
 
     componentDidMount() {
-        getAllPagesOrPosts('pages').then( (allPages) => {
+        const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
+        getAllPagesOrPosts('pages', current_lang_code).then( (allPages) => {
             this.setState({ pages: allPages });
         });
     }

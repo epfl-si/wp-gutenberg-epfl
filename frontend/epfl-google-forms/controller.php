@@ -34,17 +34,15 @@ function epfl_google_forms_block( $attributes ) {
 
     /* Extracting needed attributes */
     $src = epfl_google_forms_get_attribute('src', $data);
-    $width = epfl_google_forms_get_attribute('width', $data);
     $height = epfl_google_forms_get_attribute('height', $data);
 
     /*
     var_dump($src);
-    var_dump($width);
     var_dump($height);
     */
 
     /* Checking if all attributes are present */
-    if($src===null || $height===null || $width===null)
+    if($src===null || $height===null)
     {
         return Utils::render_user_msg(__("Error extracting parameters", "epfl"));
     }
@@ -57,11 +55,11 @@ function epfl_google_forms_block( $attributes ) {
         return Utils::render_user_msg(__("Incorrect URL found", "epfl"));
     }
 
-    if(!is_numeric($width) || !is_numeric($height))
+    if(!is_numeric($height))
     {
         return Utils::render_user_msg(__("Incorrect dimensions found", "epfl"));
     }
 
-    $markup = epfl_google_forms_render($src, $width, $height);
+    $markup = epfl_google_forms_render($src, $height);
     return $markup;
 }
