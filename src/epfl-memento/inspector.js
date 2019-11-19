@@ -96,7 +96,7 @@ export default class InspectorControlsMemento extends Component {
                             }}
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Template', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Template', 'epfl' ) }>
                         <RadioControl
                             label={ __("Select a template", 'epfl') }
                             help={ __("Do you need more information about templates? Read this documentation", 'epfl') }
@@ -114,7 +114,7 @@ export default class InspectorControlsMemento extends Component {
                             afterIcon="arrow-up"
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Language', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Language', 'epfl' ) }>
                         <RadioControl
                             label={ __("Select a language", 'epfl') }
                             help={ __("The language used to render news results", 'epfl') }
@@ -132,7 +132,7 @@ export default class InspectorControlsMemento extends Component {
                             onChange={ period => setAttributes( { period } ) }
 	                    />
                     </PanelBody>
-                    <PanelBody title={ __( 'Category', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Category', 'epfl' ) }>
                         <SelectControl
                             label={ __("Filter events by category", 'epfl') }
                             help={ __("Do you want filter events by category? Please select a category.", 'epfl') }
@@ -141,7 +141,7 @@ export default class InspectorControlsMemento extends Component {
                             onChange={ category => setAttributes( { category } ) }
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Keyword', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Keyword', 'epfl' ) }>
                         <TextControl
                             label={ __("Filter events by keyword", 'epfl') }
                             help={ __("Do you want filter events by keyword? Please type a keyword.", 'epfl') }

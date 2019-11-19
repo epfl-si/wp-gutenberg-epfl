@@ -69,7 +69,7 @@ function wp_gutenberg_epfl_editor_assets() {
 	// Premier paramètre : le nom du script (handle)
 	// Second paramètre : le textdomain
 	if ( function_exists('wp_set_script_translations') ) {
-		wp_set_script_translations( 'wp-gutenberg-epfl-block', 'wp-gutenberg-epfl' );
+		wp_set_script_translations( 'wp-gutenberg-epfl-block', 'epfl' );
 	}
 
 	// Styles.
@@ -193,7 +193,7 @@ function wp_gutenberg_epfl_register_blocks() {
     register_block_type( 'epfl/card-deck', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\CardDeck\epfl_card_deck_block',
 		));
-	
+
 	register_block_type( 'epfl/card-panel', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\CardDeck\epfl_card_panel_block',
 		));

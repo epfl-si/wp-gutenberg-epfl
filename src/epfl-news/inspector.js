@@ -125,7 +125,7 @@ export default class InspectorControlsNews extends Component {
                             }}
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Template', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Template', 'epfl' ) }>
                         <RadioControl
                             label={ __("Select a template", 'epfl') }
                             help={ __("Do you need more information about templates? Read this documentation", 'epfl') }
@@ -140,7 +140,7 @@ export default class InspectorControlsNews extends Component {
                             onChange={ () => setAttributes( { displayLinkAllNews: ! attributes.displayLinkAllNews } ) }
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Language', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Language', 'epfl' ) }>
                         <RadioControl
                             label={ __("Select a language", 'epfl') }
                             help={ __("The language used to render news results", 'epfl') }
@@ -161,7 +161,7 @@ export default class InspectorControlsNews extends Component {
                             />
                          </PanelRow>
                     </PanelBody>
-                    <PanelBody title={ __( 'Category', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Category', 'epfl' ) }>
                         <RadioControl
                             label={ __("Filter news by category", 'epfl') }
                             help={ __("Do you want filter news by category ? Please select a category", 'epfl') }

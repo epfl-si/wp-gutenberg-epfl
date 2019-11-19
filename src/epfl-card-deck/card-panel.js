@@ -42,7 +42,7 @@ const getAttributes = () => {
 }
 
 registerBlockType( 'epfl/card-panel', {
-	title: __( 'EPFL Card Panel', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Card Panel', 'epfl'),
 	description: 'v1.0.0',
 	icon: cardIcon,
     category: 'common',
@@ -73,14 +73,14 @@ registerBlockType( 'epfl/card-panel', {
         return (
             <Fragment>
                 <div className={ className }>
-                    <h4>{ __('Card', 'wp-gutenberg-epfl') }</h4>
+                    <h4>{ __('Card', 'epfl') }</h4>
                     <TextControl
-                        label={ __('Title (mandatory)', 'wp-gutenberg-epfl') }
+                        label={ __('Title (mandatory)', 'epfl') }
                         value={ attributes.title }
                         onChange={ title => setAttributes( { title } ) }
                     />
                     <TextControl
-                        label={ __('Link', 'wp-gutenberg-epfl') }
+                        label={ __('Link', 'epfl') }
                         value={ attributes.link }
                         onChange={ link => setAttributes( { link } ) }
                     />
@@ -92,15 +92,15 @@ registerBlockType( 'epfl/card-panel', {
                             render={ ( { open } ) => (
                                 <Placeholder
                                     icon="images-alt"
-                                    label={ __("Image", 'wp-gutenberg-epfl') }
-                                    instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
+                                    label={ __("Image", 'epfl') }
+                                    instructions={ __('Please, select an image', 'epfl') }
                                 >
                                     <IconButton
                                         className="components-icon-button wp-block-image__upload-button button button-large"
                                         onClick={ open }
                                         icon="upload"
                                     >
-                                        { __('Upload', 'wp-gutenberg-epfl') }
+                                        { __('Upload', 'epfl') }
                                     </IconButton>
                                 </Placeholder>
                             )}
@@ -120,21 +120,21 @@ registerBlockType( 'epfl/card-panel', {
                                 onClick={ onRemoveImage }
                                 icon="dismiss"
                             >
-                                { __('Remove image', 'wp-gutenberg-epfl') }
+                                { __('Remove image', 'epfl') }
                             </IconButton>
 
                             ) }
                             </p>
                         )}
                     <label><small>Text</small></label>
-                    <InnerBlocks /> 
-                    
+                    <InnerBlocks />
+
                 </div>
             </Fragment>
 		)
 	},
 	save: ( props ) => {
-        
+
 		return (<InnerBlocks.Content /> );
 	},
 } );

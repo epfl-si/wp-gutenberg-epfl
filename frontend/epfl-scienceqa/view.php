@@ -14,7 +14,7 @@ Class ScienceQARender
 	public static function epfl_scienceqa_build_html( $scienceqa, $lang ): string
 	{
 		$html = '<div>';
-		$html .= '  <h3>' . esc_html__('Science Q&A', 'wp-gutenberg-epfl') . '</h3>';
+		$html .= '  <h3>' . esc_html__('Science Q&A', 'epfl') . '</h3>';
 		$html .= '  <div class="scienceqa-image">';
 		$html .= '    <img src="' . esc_url( $scienceqa->image ) . '">';
 		$html .= '  </div>';
@@ -26,7 +26,7 @@ Class ScienceQARender
 			$html .= '    <label type="radio" for="choice' .esc_attr( $answerId ) . '">' . sanitize_text_field( $answer ) . '</label>';
 			$html .= '  </div>';
 		}
-		$html .= '    <button type="submit">' . esc_html__('Vote', 'wp-gutenberg-epfl') . '</button>';
+		$html .= '    <button type="submit">' . esc_html__('Vote', 'epfl') . '</button>';
 		$html .= '  </form>';
 		$html .= '</div>';
 
