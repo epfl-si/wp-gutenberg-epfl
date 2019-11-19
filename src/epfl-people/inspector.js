@@ -1,7 +1,10 @@
 import React from 'react';
 
 const { __ } = wp.i18n
-const { Component } = wp.element
+const {
+  Component,
+  Fragment,
+} = wp.element
 
 const {
 	InspectorControls,
@@ -28,7 +31,26 @@ export default class InspectorControlsPeople extends Component {
         let optionsOrderList = [
           { value: 'alphabetical', label: __('Alphabetical order', 'epfl')},
           { value: 'hierarchical', label: __('Hierarchical order', 'epfl')},
+          { value: 'alphabetical', label: __('Alphabetical order', 'wp-gutenberg-epfl')},
+          { value: 'hierarchical', label: __('Hierarchical order', 'wp-gutenberg-epfl')},
+          { value: 'alphabetical', label: __('Alphabetical order', 'epfl')},
+          { value: 'hierarchical', label: __('Hierarchical order', 'epfl')},
+          { value: 'hierarchical-with-title', label: __('Hierarchical order with title', 'epfl')},
         ]
+
+        let structure;
+        if (!!attributes.order && attributes.order.startsWith('hierarchical')) {
+          structure = <Fragment>
+            <strong>{__( 'Structure', 'wp-gutenberg-epfl')}</strong>
+            <TextControl
+                value={ attributes.structure }
+                className="field-with-no-margin-bottom"
+                onChange={ structure => setAttributes( { structure } ) }
+            />
+            <p>You can enter the name of a custom structure. <a target="_blank" href="https://www.epfl.ch/campus/services/ressources-informatiques/publier-sur-le-web-epfl/people/page-106273-fr-html/">More information</a>. <a target="_blank" href="https://people.epfl.ch/cgi-bin/upldtmpl">List of existing structures</a></p>
+
+          </Fragment>
+        }
 
         let sortingPanelBody;
         if (!!attributes.units) {
@@ -38,6 +60,7 @@ export default class InspectorControlsPeople extends Component {
                         options={ optionsOrderList }
                         onChange={ order => setAttributes( { order } ) }
                     />
+                    {structure}
                 </PanelBody>
         }
 

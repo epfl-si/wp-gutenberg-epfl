@@ -11,7 +11,7 @@
 import * as axios from 'axios';
 
 import './epfl-caption-cards'
-import './epfl-card'
+import './epfl-card-deck'
 import './epfl-contact'
 import './epfl-cover'
 import './epfl-custom-highlight'

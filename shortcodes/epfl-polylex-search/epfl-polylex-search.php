@@ -11,18 +11,12 @@ namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/controller.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
 
 define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
 
 
 function process_shortcode($atts) {
-
-    // if supported delegate the rendering to the theme
-    if (!has_action("epfl_polylex_search_action"))
-    {
-        Utils::render_user_msg('You must activate the epfl theme');
-    }
-
     $atts = shortcode_atts( array(
         'category' => '',
         'subcategory' => '',

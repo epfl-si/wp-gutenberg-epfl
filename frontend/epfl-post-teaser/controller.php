@@ -4,6 +4,7 @@ namespace EPFL\Plugins\Gutenberg\PostTeaser;
 
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
+require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/../lib/templates.php');
 
 function epfl_post_teaser_block( $attributes ) {
