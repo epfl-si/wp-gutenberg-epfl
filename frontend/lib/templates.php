@@ -1,6 +1,7 @@
 <?php
 
-use \EPFL\Plugins\Gutenberg\Lib\Utils;
+namespace EPFL\Plugins\Gutenberg\Lib\Templates;
+
 
 function card_img_top($img, $url, $islink = true){
 

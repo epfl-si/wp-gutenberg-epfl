@@ -1,5 +1,6 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\PageTeaser;
+use function EPFL\Plugins\Gutenberg\Lib\Templates\card_img_top;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/templates.php');

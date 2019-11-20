@@ -2,6 +2,7 @@
 
 namespace EPFL\Plugins\Gutenberg\PostTeaser;
 
+use function EPFL\Plugins\Gutenberg\Lib\Templates\card_img_top;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
