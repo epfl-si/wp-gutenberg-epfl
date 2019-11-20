@@ -2,11 +2,14 @@
 
 namespace EPFL\Plugins\Gutenberg\PostTeaser;
 
-use function EPFL\Plugins\Gutenberg\Lib\Templates\card_img_top;
-use \EPFL\Plugins\Gutenberg\Lib\Utils;
-
 require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/../lib/templates.php');
+
+use function EPFL\Plugins\Gutenberg\Lib\Templates\card_img_top;
+use function EPFL\Plugins\Gutenberg\Lib\Templates\epfl_excerpt;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+
 
 function epfl_post_teaser_block( $attributes ) {
 

@@ -1,9 +1,13 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\PageHighlight;
-use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
+require_once(dirname(__FILE__).'/../lib/templates.php');
+
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+use function EPFL\Plugins\Gutenberg\Lib\Templates\epfl_excerpt;
+
 
 function epfl_page_highlight_block( $attributes ) {
 
