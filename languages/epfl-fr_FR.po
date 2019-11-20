@@ -1508,15 +1508,6 @@ msgstr ""
 msgid "Vote"
 msgstr "Voter"
 
-#: shortcodes/epfl_share/view.php:12
-msgid "Share on"
-msgstr "Partager sur"
-
-#: shortcodes/epfl_share/view.php:16 shortcodes/epfl_share/view.php:20
-#: shortcodes/epfl_share/view.php:42 shortcodes/epfl_share/view.php:46
-msgid "Follow us on"
-msgstr "Nous rejoindre sur Twitter"
-
 #: shortcodes/epfl_social_feed/facebook_view.php:34
 msgid "Like our page on Facebook"
 msgstr "Likez notre page Facebook"
