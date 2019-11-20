@@ -40,7 +40,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     # add the MathJS for nice render
     # try [epfl_infoscience_search pattern="001:'255565'" summary="true" /] for a nice example
-    wp_enqueue_script('epfl-infoscience-search-shortcode-math-main.js', $in_footer=true);
+    wp_enqueue_script('epfl-infoscience-search-shortcode-math-main.js', true);
 
     # normalize attribute keys, lowercase
     $atts = array_change_key_case((array)$provided_attributes, CASE_LOWER);
