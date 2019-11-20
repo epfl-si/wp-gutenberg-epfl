@@ -22,7 +22,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/contact', {
-    title: __( 'EPFL Contact', 'wp-gutenberg-epfl'),
+    title: __( 'EPFL Contact', 'epfl'),
     description: 'v1.0.4',
     icon: contactIcon,
     category: 'common',
@@ -68,10 +68,10 @@ registerBlockType( 'epfl/contact', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/contact-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/contact-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
-                            label={ __('Wrap with a gray border', 'wp-gutenberg-epfl') }
+                            label={ __('Wrap with a gray border', 'epfl') }
                             checked={ attributes.grayWrapper }
                             onChange={ grayWrapper => setAttributes( { grayWrapper } ) }
                         />
@@ -82,14 +82,14 @@ registerBlockType( 'epfl/contact', {
                     <label><strong>Introduction</strong></label>
                     <hr />
                     <InnerBlocks />
-                    <label><strong>{ __( 'Timetable', 'wp-gutenberg-epfl' ) }</strong></label>
+                    <label><strong>{ __( 'Timetable', 'epfl' ) }</strong></label>
                     <hr />
                     <RichText
                         tagName="div"
                         multiline={ false }
                         value={ attributes.timetable1 }
                         onChange={ timetable1 => setAttributes( { timetable1 } ) }
-                        placeholder={ __('Monday to thursday 09:00 am > 18:00 pm', 'wp-gutenberg-epfl') }
+                        placeholder={ __('Monday to thursday 09:00 am > 18:00 pm', 'epfl') }
                         keepPlaceholderOnFocus = { true }
                         className="timetable1"
                     />
@@ -122,7 +122,7 @@ registerBlockType( 'epfl/contact', {
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'An email ?', 'wp-gutenberg-epfl' ) }
+                        placeholder={ __( 'An email ?', 'epfl' ) }
                         keepPlaceholderOnFocus = { true }
                         value={ attributes.information1 }
                         className="information1"
@@ -132,7 +132,7 @@ registerBlockType( 'epfl/contact', {
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'A phone number ?', 'wp-gutenberg-epfl' ) }
+                        placeholder={ __( 'A phone number ?', 'epfl' ) }
                         keepPlaceholderOnFocus = { true }
                         value={ attributes.information2 }
                         className="information2"
@@ -142,20 +142,20 @@ registerBlockType( 'epfl/contact', {
                     <RichText
                         tagName="div"
                         multiline="p"
-                        placeholder={ __( 'An address ?', 'wp-gutenberg-epfl' ) }
+                        placeholder={ __( 'An address ?', 'epfl' ) }
                         keepPlaceholderOnFocus = { true }
                         value={ attributes.information3 }
                         className="information3"
                         onChange={ information3 => setAttributes( { information3 } ) }
                     />
                     <hr />
-                    <label><strong>{ __( 'Map', 'wp-gutenberg-epfl' ) }</strong></label>
+                    <label><strong>{ __( 'Map', 'epfl' ) }</strong></label>
                     <TextControl
-                        label={ __('A room/place shown in the interactive map:', 'wp-gutenberg-epfl') }
+                        label={ __('A room/place shown in the interactive map:', 'epfl') }
                         value={ attributes.mapQuery }
                         onChange={ mapQuery => setAttributes( { mapQuery } ) }
                         placeholder={ 'CM 0 361.2' }
-                        help={ <a target="_blank" href="//plan.epfl.ch">{ __('See plan.epfl.ch for the right name of your room.', 'wp-gutenberg-epfl') }</a> }
+                        help={ <a target="_blank" href="//plan.epfl.ch">{ __('See plan.epfl.ch for the right name of your room.', 'epfl') }</a> }
                     />
                 </div>
             </Fragment>

@@ -11,7 +11,7 @@
 
         if (!(bool) $results) {
             $markup .= '<div><h3>';
-            $markup .= __('No scheduled events', 'wp-gutenberg-epfl');
+            $markup .= __('No scheduled events', 'epfl');
             $markup .= '</h3></div>';
         }
 

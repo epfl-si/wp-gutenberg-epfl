@@ -19,7 +19,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/introduction', {
-	title: __( 'EPFL Introduction', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Introduction', 'epfl'),
 	description: 'v1.0.3',
 	icon: 'text',
 	category: 'common',
@@ -44,10 +44,10 @@ registerBlockType( 'epfl/introduction', {
 
             <Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/introduction-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/introduction-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<hr/>
 				<ToggleControl
-					label={ __('Change the background to gray', 'wp-gutenberg-epfl') }
+					label={ __('Change the background to gray', 'epfl') }
 					checked={ attributes.grayBackground }
 					onChange={ () => setAttributes( { grayBackground: ! attributes.grayBackground } ) }
 				/>
@@ -55,16 +55,16 @@ registerBlockType( 'epfl/introduction', {
 	            <div className={ className }>
 	                <h2>EPFL INTRODUCTION</h2>
                     <TextControl
-						label={ __('Title', 'wp-gutenberg-epfl') }
+						label={ __('Title', 'epfl') }
                         value={ attributes.title }
                         onChange={ title => setAttributes( { title } ) }
                     />
-					<label><small>{ __('Content', 'wp-gutenberg-epfl') }</small></label>
+					<label><small>{ __('Content', 'epfl') }</small></label>
                     <RichText
 						value={ attributes.content }
 						multiline="p"
 						onChange={ content => setAttributes( { content } ) }
-						placeholder={ __('Write your text here','wp-gutenberg-epfl')}
+						placeholder={ __('Write your text here','epfl')}
 						keepPlaceholderOnFocus = { true }
 						allowedFormats={[]}
                     />

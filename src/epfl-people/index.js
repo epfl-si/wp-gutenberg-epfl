@@ -11,12 +11,12 @@ const { Fragment } = wp.element
 registerBlockType(
 	'epfl/people',
 	{
-		title: __( "EPFL People", 'wp-gutenberg-epfl'),
+		title: __( "EPFL People", 'epfl'),
 		description: 'v1.0.5',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
-			__( 'people' , 'wp-gutenberg-epfl'),
+			__( 'people' , 'epfl'),
 		],
 		attributes: {
 			units: {

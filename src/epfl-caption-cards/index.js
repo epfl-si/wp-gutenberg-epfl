@@ -71,17 +71,17 @@ function CaptionCardPanel ( props ) {
         <div>
            <h3>{`Caption card ${index}`} </h3>
            <TextControl
-                label={ __('Title', 'wp-gutenberg-epfl') }
+                label={ __('Title', 'epfl') }
                 value={ attributes['title' + index] || ''}
                 onChange={ value => setIndexedAttributes('title', value) }
             />
            <TextControl
-                label={ __('Subtitle', 'wp-gutenberg-epfl') }
+                label={ __('Subtitle', 'epfl') }
                 value={ attributes['subtitle' + index] || ''}
                 onChange={ value => setIndexedAttributes('subtitle', value) }
             />
            <TextControl
-                label={ __('Link', 'wp-gutenberg-epfl') }
+                label={ __('Link', 'epfl') }
                 value={ attributes['link' + index] || ''}
                 onChange={ value => setIndexedAttributes('link', value) }
             />
@@ -93,15 +93,15 @@ function CaptionCardPanel ( props ) {
                     render={ ( { open } ) => (
                         <Placeholder
                             icon="images-alt"
-                            label={ __("Image", 'wp-gutenberg-epfl') }
-                            instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
+                            label={ __("Image", 'epfl') }
+                            instructions={ __('Please, select an image', 'epfl') }
                         >
                             <IconButton
                                 className="components-icon-button wp-block-image__upload-button button button-large"
                                 onClick={ open }
                                 icon="upload"
                             >
-                                { __('Upload', 'wp-gutenberg-epfl') }
+                                { __('Upload', 'epfl') }
                             </IconButton>
                         </Placeholder>
                     )}
@@ -121,7 +121,7 @@ function CaptionCardPanel ( props ) {
                         onClick={ onRemoveImage }
                         icon="dismiss"
                     >
-                        { __('Remove image', 'wp-gutenberg-epfl') }
+                        { __('Remove image', 'epfl') }
                     </IconButton>
 
                     ) }
@@ -134,7 +134,7 @@ function CaptionCardPanel ( props ) {
 
 
 registerBlockType( 'epfl/caption-cards', {
-	title: __( 'EPFL Caption Cards', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Caption Cards', 'epfl'),
 	description: 'v1.0.2',
 	icon: 'screenoptions',
 	category: 'common',
@@ -148,7 +148,7 @@ registerBlockType( 'epfl/caption-cards', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/caption-cards-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/caption-cards-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                     {[...Array(maxCaptionCards)].map((x, i) =>

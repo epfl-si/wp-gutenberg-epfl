@@ -68,21 +68,21 @@ export default class InspectorControlsNews extends Component {
             });
 
             let optionsTemplatesList = [
-                { value: 'listing', label: __('Template Listing', 'wp-gutenberg-epfl')},
-                { value: 'highlighted_with_3_news', label: __('Template highlighted with 3 news', 'wp-gutenberg-epfl')},
-                { value: 'highlighted_with_1_news', label: __('Template highlighted with 1 news', 'wp-gutenberg-epfl')},
-                { value: 'card_with_1_news', label: __('Template card with 1 news', 'wp-gutenberg-epfl')},
-                { value: 'card_with_2_news', label: __('Template card with 2 news', 'wp-gutenberg-epfl')},
-                { value: 'card_with_3_news', label: __('Template card with 3 news', 'wp-gutenberg-epfl')},
+                { value: 'listing', label: __('Template Listing', 'epfl')},
+                { value: 'highlighted_with_3_news', label: __('Template highlighted with 3 news', 'epfl')},
+                { value: 'highlighted_with_1_news', label: __('Template highlighted with 1 news', 'epfl')},
+                { value: 'card_with_1_news', label: __('Template card with 1 news', 'epfl')},
+                { value: 'card_with_2_news', label: __('Template card with 2 news', 'epfl')},
+                { value: 'card_with_3_news', label: __('Template card with 3 news', 'epfl')},
             ];
 
             let optionsLanguagesList = [
-                { value: 'fr', label: __('French', 'wp-gutenberg-epfl') },
-                { value: 'en', label: __('English', 'wp-gutenberg-epfl') },
+                { value: 'fr', label: __('French', 'epfl') },
+                { value: 'en', label: __('English', 'epfl') },
             ];
 
             let optionsCategoriesList = [
-                { value: 0, label: __('No filter', 'wp-gutenberg-epfl') },
+                { value: 0, label: __('No filter', 'epfl') },
             ];
 
             this.state.categories.forEach(category => {
@@ -90,7 +90,7 @@ export default class InspectorControlsNews extends Component {
             });
 
             let optionsThemesList = [
-                { value: '0', label: __('No filter', 'wp-gutenberg-epfl') },
+                { value: '0', label: __('No filter', 'epfl') },
             ];
 
             this.state.themes.forEach(theme => {
@@ -100,7 +100,7 @@ export default class InspectorControlsNews extends Component {
             let nbNewsControl;
             if (attributes.template == 'listing') {
                 nbNewsControl = <RangeControl
-                            label={ __("Select the number of news", 'wp-gutenberg-epfl') }
+                            label={ __("Select the number of news", 'epfl') }
                             value={ attributes.nbNews }
                             onChange={ nbNews  => setAttributes( { nbNews } ) }
                             min={ 0 }
@@ -112,11 +112,11 @@ export default class InspectorControlsNews extends Component {
 
             content = (
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/news-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
-                    <PanelBody title={ __( 'Channel', 'wp-gutenberg-epfl') }>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/news-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <PanelBody title={ __( 'Channel', 'epfl') }>
                         <SelectControl
-                            label={ __("Select your news channel", 'wp-gutenberg-epfl') }
-                            help={ __("The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch", 'wp-gutenberg-epfl') }
+                            label={ __("Select your news channel", 'epfl') }
+                            help={ __("The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch", 'epfl') }
                             value={ attributes.channel }
                             options={ optionsChannelsList }
                             onChange={ channel => {
@@ -125,31 +125,31 @@ export default class InspectorControlsNews extends Component {
                             }}
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Template', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Template', 'epfl' ) }>
                         <RadioControl
-                            label={ __("Select a template", 'wp-gutenberg-epfl') }
-                            help={ __("Do you need more information about templates? Read this documentation", 'wp-gutenberg-epfl') }
+                            label={ __("Select a template", 'epfl') }
+                            help={ __("Do you need more information about templates? Read this documentation", 'epfl') }
                             selected={ attributes.template }
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
 	                    />
                         { nbNewsControl }
                         <ToggleControl
-                            label={ __('Display the link "all news"', 'wp-gutenberg-epfl') }
+                            label={ __('Display the link "all news"', 'epfl') }
                             checked={ attributes.displayLinkAllNews }
                             onChange={ () => setAttributes( { displayLinkAllNews: ! attributes.displayLinkAllNews } ) }
                         />
                     </PanelBody>
-                    <PanelBody title={ __( 'Language', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Language', 'epfl' ) }>
                         <RadioControl
-                            label={ __("Select a language", 'wp-gutenberg-epfl') }
-                            help={ __("The language used to render news results", 'wp-gutenberg-epfl') }
+                            label={ __("Select a language", 'epfl') }
+                            help={ __("The language used to render news results", 'epfl') }
                             selected={ attributes.lang }
                             options={ optionsLanguagesList }
                             onChange={ lang => setAttributes( { lang } ) }
 	                    />
                     </PanelBody>
-                    <PanelBody title={ __( 'Themes', 'wp-gutenberg-epfl') }>
+                    <PanelBody title={ __( 'Themes', 'epfl') }>
                         <PanelRow>
                             <Select
                                 id='epfl-news-themes'
@@ -161,10 +161,10 @@ export default class InspectorControlsNews extends Component {
                             />
                          </PanelRow>
                     </PanelBody>
-                    <PanelBody title={ __( 'Category', 'wp-gutenberg-epfl' ) }>
+                    <PanelBody title={ __( 'Category', 'epfl' ) }>
                         <RadioControl
-                            label={ __("Filter news by category", 'wp-gutenberg-epfl') }
-                            help={ __("Do you want filter news by category ? Please select a category", 'wp-gutenberg-epfl') }
+                            label={ __("Filter news by category", 'epfl') }
+                            help={ __("Do you want filter news by category ? Please select a category", 'epfl') }
                             selected={ attributes.category }
                             options={ optionsCategoriesList }
                             onChange={ category => setAttributes( { category } ) }

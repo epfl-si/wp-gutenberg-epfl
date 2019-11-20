@@ -22,7 +22,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/custom-highlight', {
-	title: __( 'EPFL Custom Highlight', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Custom Highlight', 'epfl'),
 	description: 'v1.0.1',
 	icon: customHighlightIcon,
 	category: 'common',
@@ -72,18 +72,18 @@ registerBlockType( 'epfl/custom-highlight', {
         }
 
 		let optionsLayoutList = [
-		{ value: 'right', label: __('Right', 'wp-gutenberg-epfl')},
-		{ value: 'bottom', label: __('Bottom', 'wp-gutenberg-epfl')},
-		{ value: 'left', label: __('Left', 'wp-gutenberg-epfl')},
+		{ value: 'right', label: __('Right', 'epfl')},
+		{ value: 'bottom', label: __('Bottom', 'epfl')},
+		{ value: 'left', label: __('Left', 'epfl')},
 		];
 
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-highlight-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<hr/>
 				<RadioControl
-					label={ __("Select a layout", 'wp-gutenberg-epfl') }
+					label={ __("Select a layout", 'epfl') }
 					selected={ attributes.layout }
 					options={ optionsLayoutList }
 					onChange={ layout => setAttributes( { layout } ) }
@@ -92,22 +92,22 @@ registerBlockType( 'epfl/custom-highlight', {
 			<div className={ className }>
 				<h2>EPFL Custom Highlight</h2>
 				<TextControl
-					label={ __('Title', 'wp-gutenberg-epfl')}
+					label={ __('Title', 'epfl')}
 					value={ attributes.title }
 					onChange={ title => setAttributes( { title } ) }
 				/>
 				<TextareaControl
-					label={ __('Description', 'wp-gutenberg-epfl')}
+					label={ __('Description', 'epfl')}
 					value={ attributes.description }
 					onChange={ description => setAttributes( { description } ) }
 				/>
 				<TextControl
-					label={ __('Link', 'wp-gutenberg-epfl') }
+					label={ __('Link', 'epfl') }
 					value={ attributes.link }
 					onChange={ link => setAttributes( { link } ) }
 				/>
 				<TextControl
-					label={ __('Button label', 'wp-gutenberg-epfl') }
+					label={ __('Button label', 'epfl') }
 					value={ attributes.buttonLabel }
 					onChange={ buttonLabel => setAttributes( { buttonLabel } ) }
 				/>
@@ -119,15 +119,15 @@ registerBlockType( 'epfl/custom-highlight', {
                         render={ ( { open } ) => (
                             <Placeholder
                                 icon="images-alt"
-                                label={ __("Image", 'wp-gutenberg-epfl') }
-                                instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
+                                label={ __("Image", 'epfl') }
+                                instructions={ __('Please, select an image', 'epfl') }
                             >
                                 <IconButton
                                     className="components-icon-button wp-block-image__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
-                                    { __('Upload', 'wp-gutenberg-epfl') }
+                                    { __('Upload', 'epfl') }
                                 </IconButton>
                             </Placeholder>
                         )}
@@ -147,7 +147,7 @@ registerBlockType( 'epfl/custom-highlight', {
                             onClick={ onRemoveImage }
                             icon="dismiss"
                         >
-                            { __('Remove image', 'wp-gutenberg-epfl') }
+                            { __('Remove image', 'epfl') }
                         </IconButton>
 
                         ) }
