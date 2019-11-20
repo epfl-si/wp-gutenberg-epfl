@@ -50,7 +50,7 @@ let optionsHeader = [
 
 registerBlockType( 'epfl/table-filter', {
 	title: __( 'EPFL Table Filter', 'wp-gutenberg-epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: tableFilterIcon,
 	category: 'common',
 	attributes: getAttributes(),
