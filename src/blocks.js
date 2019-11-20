@@ -37,6 +37,7 @@ import './epfl-caption-cards'
 import './epfl-card-deck'
 import './epfl-definition-list'
 import './epfl-links-group'
+import './epfl-table-filter'
 
 
 const getHomeURL = () => {
