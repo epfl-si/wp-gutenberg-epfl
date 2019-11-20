@@ -38,6 +38,7 @@ require_once 'epfl-card-deck/controller.php';
 require_once 'epfl-definition-list/controller.php';
 require_once 'epfl-links-group/controller.php';
 require_once 'epfl-gallery/view.php';
+require_once 'epfl-table-filter/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -207,6 +208,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
 	register_block_type( 'core/gallery', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Gallery\epfl_gallery_block',
+		));
+
+	register_block_type( 'epfl/table-filter', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\TableFilter\epfl_table_filter_block',
 		));
 }
 
