@@ -46,7 +46,7 @@ function epfl_table_filter_block($attributes, $inner_content)
 
 add_action( 'init', function() {
   // using JS file present in theme
-    wp_register_script('epfl-table-filter-list-min.js', get_theme_root_uri().'/wp-theme-2018/shortcodes/lib/list.min.js?ver=1.5');
+    wp_register_script('epfl-table-filter-list-min.js', plugins_url('js/list.min.js?ver=1.5', __FILE__));
     wp_register_script('epfl-table-filter.js', plugins_url('js/table-filter.js', __FILE__));
     wp_register_script('jquery-change-element-type.js', plugins_url('js/jquery-change-element-type.js', __FILE__));
 
