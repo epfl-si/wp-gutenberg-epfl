@@ -43,13 +43,13 @@ const getAttributes = () => {
 }
 
 let optionsHeader = [
-    { value: '', label: __('No header', 'wp-gutenberg-epfl') },
-    { value: 'header', label: __('Header', 'wp-gutenberg-epfl') },
-    { value: 'header,sort', label: __('Header & sort', 'wp-gutenberg-epfl') },
+    { value: '', label: __('No header', 'epfl') },
+    { value: 'header', label: __('Header', 'epfl') },
+    { value: 'header,sort', label: __('Header & sort', 'epfl') },
 ];
 
 registerBlockType( 'epfl/table-filter', {
-	title: __( 'EPFL Table Filter', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Table Filter', 'epfl'),
 	description: 'v1.0.1',
 	icon: tableFilterIcon,
 	category: 'common',
@@ -63,21 +63,21 @@ registerBlockType( 'epfl/table-filter', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/table-filter-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/table-filter-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
-                            label={ __('Large display', 'wp-gutenberg-epfl') }
+                            label={ __('Large display', 'epfl') }
                             checked={ attributes.largeDisplay }
                             onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
                         />
-                        <strong>{__( 'Placeholder', 'wp-gutenberg-epfl')}</strong>
+                        <strong>{__( 'Placeholder', 'epfl')}</strong>
                         <TextControl
                             value={ attributes.placeHolder }
-                            help={ __('Text to display in search box', 'wp-gutenberg-epfl') }
+                            help={ __('Text to display in search box', 'epfl') }
                             onChange={ placeHolder => setAttributes( { placeHolder } ) }
                         />
                         <SelectControl
-							label={ <h4> { __('Table header', 'wp-gutenberg-epfl') } </h4> }
+							label={ <h4> { __('Table header', 'epfl') } </h4> }
 							value={ attributes.tableHeaderOptions }
 							onChange={ tableHeaderOptions => setAttributes( { tableHeaderOptions } ) }
 							options={ optionsHeader }
@@ -85,7 +85,7 @@ registerBlockType( 'epfl/table-filter', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                        <h2>{ __('Table', 'wp-gutenberg-epfl') }</h2>
+                        <h2>{ __('Table', 'epfl') }</h2>
                         <InnerBlocks 
                             template={ TEMPLATE }
                             templateLock="all" 

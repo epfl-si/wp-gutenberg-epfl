@@ -72,7 +72,7 @@ function DefinitionListPanel ( props ) {
 
 registerBlockType( 'epfl/definition-list', {
 	title: __( 'EPFL Definition List', 'epfl'),
-	description: 'v1.1.0',
+	description: 'v1.1.1',
 	icon: 'editor-alignleft',
 	category: 'common',
 	attributes: getAttributes(),

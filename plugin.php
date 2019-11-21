@@ -3,7 +3,7 @@
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
  * Author: WordPress EPFL Team
- * Version: 1.2.0
+ * Version: 1.2.1
  */
 
 namespace EPFL\Plugins\Gutenberg;
@@ -47,6 +47,39 @@ function polylang_json_api_languages() {
 
 // fix polylang language segmentation
 add_action( 'rest_api_init' , __NAMESPACE__ . '\polylang_json_api_init' );
+
+
+/**
+ * Only allow blocks starting with "epfl/" in editor. If others blocks have to be allowed too, comoing from WordPress 
+ * or others plugins, you'll have to add another filter to add them, for example in a MU-Plugin. But be careful to 
+ * register the filter (add_filter) with a lower priority (ex: 99) to ensure it will be executed after this function.
+ * And also use the content of $allowed_block_types to know which blocks are already allowed and add the new ones.
+ * 
+ * @param Array|Boolean $allowed_block_types Array (or bool=True if all block allowed) with blocks already allowed.
+ * @param Object $post Post resource data
+ */
+function allow_epfl_blocks( $allowed_block_types, $post ) {
+
+    // Reset value
+    $allowed_block_types = [];
+
+    // Retrieving currently registered blocks
+    $registered = \WP_Block_Type_Registry::get_instance()->get_all_registered();
+
+    // Looping through registered blocks to find "epfl/" ones
+    foreach(array_keys($registered) as $block_name)
+    {
+        if(preg_match('/^epfl\//', $block_name)===1)
+        {
+            $allowed_block_types[] = $block_name;
+        }
+    }
+    
+  	return $allowed_block_types;
+}
+
+add_filter( 'allowed_block_types', __NAMESPACE__.'\allow_epfl_blocks', 10, 2 );
+
 
 /**
  * Shortcodes
