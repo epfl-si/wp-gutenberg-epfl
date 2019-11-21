@@ -40,6 +40,7 @@ require_once 'epfl-links-group/controller.php';
 require_once 'epfl-gallery/view.php';
 require_once 'lib/tags.php';
 require_once 'epfl-table-filter/controller.php';
+require_once 'epfl-fields-of-research-list/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -214,6 +215,10 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/table-filter', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\TableFilter\epfl_table_filter_block',
 		));
+
+	register_block_type( 'epfl/fields-of-research-list', array(
+		'render_callback' => 'EPFL\Plugins\Gutenberg\FieldsOfResearchList\epfl_fields_of_research_list_block',
+	));
 }
 
 add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_epfl_register_blocks' );
