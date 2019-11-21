@@ -15,7 +15,7 @@ export default class PreviewMemento extends Component {
 	getEventsUrl() {
 
 		const { attributes } = this.props;
-		
+
 		let eventsUrl = `https://memento.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
 		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=${attributes.nbEvents}`;
 
@@ -35,7 +35,7 @@ export default class PreviewMemento extends Component {
 		axios.get(eventsUrl)
 			.then( response => response.data.results )
 			.then( events => {
-				this.setState({ events: events, eventsUrl: eventsUrl }) 
+				this.setState({ events: events, eventsUrl: eventsUrl })
 			})
 			.catch( err => console.log(err))
 	}
@@ -49,9 +49,9 @@ export default class PreviewMemento extends Component {
 			this.getEvents();
 		}
 	}
-	
+
 	getVisualUrl(event, memento) {
-		
+
 		let visualUrl = "";
 		if (event.academic_calendar_category == null) {
 			if (event.visual_url) {
@@ -77,7 +77,7 @@ export default class PreviewMemento extends Component {
 			return (
 				<p>
 					<Spinner />
-					{ __('Loading events', 'wp-gutenberg-epfl') }
+					{ __('Loading events', 'epfl') }
 				</p>
 			)
 		}
@@ -85,7 +85,7 @@ export default class PreviewMemento extends Component {
 		if ( this.state.events.length === 0 ) {
 			return (
 				<p>
-					{ __('No events found', 'wp-gutenberg-epfl') }
+					{ __('No events found', 'epfl') }
 				</p>
 			)
 		} else  {
@@ -93,27 +93,27 @@ export default class PreviewMemento extends Component {
 		}
 
 		const { className, attributes } = this.props
-		const academicCalendarStyle = { 
+		const academicCalendarStyle = {
 			position: 'absolute', color: '#FFF', padding: '10px 0 0 10px', lineHeight: '1.35em', fontSize:'1em'
 		}
-        
+
     return (
       <div className={ className }>
         <div className="list-group">
           { this.state.events.map( event => {
-					
+
           let visualUrl = this.getVisualUrl(event, attributes.memento);
-          
+
           let placeAndRoom;
           if (!!event.place_and_room) {
             placeAndRoom = <span><br/>Place and room : <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
           }
-          
+
           let eventSpeakerContent;
           if (!!event.speaker) {
             eventSpeakerContent = <span>With <b>{renderHTML(event.speaker)}</b></span>;
           }
-          
+
           let academicCalendarCategory;
           if (!!event.academic_calendar_category) {
             academicCalendarCategory = event.academic_calendar_category.fr_label;
@@ -162,10 +162,10 @@ export default class PreviewMemento extends Component {
                           <p>
                             <span>
                             { eventSpeakerContent }
-                            </span>            
+                            </span>
                             <span>
                                 { placeAndRoom }
-                                <br /> 
+                                <br />
                                 { category }<br />
                             </span>
                           </p>
@@ -177,6 +177,6 @@ export default class PreviewMemento extends Component {
                 }) }
             </div>
         </div>
-        )		
+        )
 	}
 }

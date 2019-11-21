@@ -1,8 +1,8 @@
 import React from 'react';
 
 const { __ } = wp.i18n
-const { 
-  Component, 
+const {
+  Component,
   Fragment,
 } = wp.element
 
@@ -23,21 +23,21 @@ export default class InspectorControlsPeople extends Component {
         const { attributes, setAttributes } = this.props
 
         let optionsColumnsList = [
-            { value: 'list', label: __('As list', 'wp-gutenberg-epfl')},
-            { value: '1', label: __('As card, one column', 'wp-gutenberg-epfl')},
-            { value: '3', label: __('As card, multiple columns', 'wp-gutenberg-epfl')},
+            { value: 'list', label: __('As list', 'epfl')},
+            { value: '1', label: __('As card, one column', 'epfl')},
+            { value: '3', label: __('As card, multiple columns', 'epfl')},
         ];
 
         let optionsOrderList = [
-          { value: 'alphabetical', label: __('Alphabetical order', 'wp-gutenberg-epfl')},
-          { value: 'hierarchical', label: __('Hierarchical order', 'wp-gutenberg-epfl')},
-          { value: 'hierarchical-with-title', label: __('Hierarchical order with title', 'wp-gutenberg-epfl')},
+          { value: 'alphabetical', label: __('Alphabetical order', 'epfl')},
+          { value: 'hierarchical', label: __('Hierarchical order', 'epfl')},
+          { value: 'hierarchical-with-title', label: __('Hierarchical order with title', 'epfl')},
         ]
 
         let structure;
         if (!!attributes.order && attributes.order.startsWith('hierarchical')) {
           structure = <Fragment>
-            <strong>{__( 'Structure', 'wp-gutenberg-epfl')}</strong>
+            <strong>{__( 'Structure', 'epfl')}</strong>
             <TextControl
                 value={ attributes.structure }
                 className="field-with-no-margin-bottom"
@@ -50,7 +50,7 @@ export default class InspectorControlsPeople extends Component {
 
         let sortingPanelBody;
         if (!!attributes.units) {
-            sortingPanelBody = <PanelBody title={ __( 'Sorting', 'wp-gutenberg-epfl' ) }>
+            sortingPanelBody = <PanelBody title={ __( 'Sorting', 'epfl' ) }>
                     <RadioControl
                         selected={ attributes.order }
                         options={ optionsOrderList }
@@ -64,30 +64,30 @@ export default class InspectorControlsPeople extends Component {
 
         content = (
             <InspectorControls>
-                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
-                <PanelBody title={ __( 'Select by', 'wp-gutenberg-epfl') }>
-                    <strong>{__( 'Units', 'wp-gutenberg-epfl')}</strong>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <PanelBody title={ __( 'Select by', 'epfl') }>
+                    <strong>{__( 'Units', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.units }
-                        help={ __('You can enter many units separated by a comma', 'wp-gutenberg-epfl') }
+                        help={ __('You can enter many units separated by a comma', 'epfl') }
 						onChange={ units => setAttributes( { units } ) }
 					/>
-                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
-                    <strong>{__( 'Groups', 'wp-gutenberg-epfl')}</strong>
+                    <h2>{__( 'OR', 'epfl')}</h2>
+                    <strong>{__( 'Groups', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.groups }
-                        help={ __('You can enter many groups separated by a comma', 'wp-gutenberg-epfl') }
+                        help={ __('You can enter many groups separated by a comma', 'epfl') }
 						onChange={ groups => setAttributes( { groups } ) }
 					/>
-                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
-                    <strong>{__( 'Scipers', 'wp-gutenberg-epfl')}</strong>
+                    <h2>{__( 'OR', 'epfl')}</h2>
+                    <strong>{__( 'Scipers', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.scipers }
-                        help={ __('You can enter many scipers separated by a comma', 'wp-gutenberg-epfl') }
+                        help={ __('You can enter many scipers separated by a comma', 'epfl') }
 						onChange={ scipers => setAttributes( { scipers } ) }
 					/>
-                    <h2>{__( 'OR', 'wp-gutenberg-epfl')}</h2>
-                    <strong>{__( 'Doctoral programs', 'wp-gutenberg-epfl')}</strong>
+                    <h2>{__( 'OR', 'epfl')}</h2>
+                    <strong>{__( 'Doctoral programs', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.doctoralProgram }
                         help={ __('Example: EDAM') }
@@ -95,16 +95,16 @@ export default class InspectorControlsPeople extends Component {
 					/>
                 </PanelBody>
                 { sortingPanelBody }
-                <PanelBody title={ __( 'Function', 'wp-gutenberg-epfl' ) }>
+                <PanelBody title={ __( 'Function', 'epfl' ) }>
                     <TextControl
                         value={ attributes.fonction }
                         help={ __('You can enter a function to filter persons. The keyword must be in french. Example: professeur or enseignement') }
 						onChange={ fonction => setAttributes( { fonction } ) }
 					/>
                 </PanelBody>
-                <PanelBody title={ __( 'Columns', 'wp-gutenberg-epfl' ) }>
+                <PanelBody title={ __( 'Columns', 'epfl' ) }>
                     <RadioControl
-                        label={ __("Select a template", 'wp-gutenberg-epfl') }
+                        label={ __("Select a template", 'epfl') }
                         selected={ attributes.columns }
                         options={ optionsColumnsList }
                         onChange={ columns => setAttributes( { columns } ) }

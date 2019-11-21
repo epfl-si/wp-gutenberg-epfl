@@ -25,7 +25,7 @@
 
             if ($is_first_event) {
                 $markup .= '<h2 class="mt-5 mb-4">';
-                $markup .= __('The latest news', 'wp-gutenberg-epfl');
+                $markup .= __('The latest news', 'epfl');
                 $markup .= '</h2>';
                 $markup .= '<div class="row">';
             }

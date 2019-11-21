@@ -20,7 +20,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/hero', {
-	title: __( 'EPFL Hero', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Hero', 'epfl'),
 	description: 'v1.1.0',
 	icon: 'id',
 	category: 'common',
@@ -61,21 +61,21 @@ registerBlockType( 'epfl/hero', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/hero-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/hero-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className }>
                         <h2>EPFL Hero</h2>
                         <TextControl
-                            label={ __('Title','wp-gutenberg-epfl')}
+                            label={ __('Title','epfl')}
                             value={ attributes.title }
                             onChange={ title => setAttributes( { title } ) }
                         />
                         <hr/>
                         <RichText
-                            label={ __('Text', 'wp-gutenberg-epfl')}
+                            label={ __('Text', 'epfl')}
                             value={ attributes.text }
                             onChange={ text => setAttributes( { text } ) }
-                            placeholder={ __('Write your text here','wp-gutenberg-epfl')}
+                            placeholder={ __('Write your text here','epfl')}
                             // has we transited this component from a TextAreaControl
                             // setting multiline to something will make the old content unreadable
                             // false -> use <br>
@@ -90,15 +90,15 @@ registerBlockType( 'epfl/hero', {
                         render={ ( { open } ) => (
                             <Placeholder
                                 icon="images-alt"
-                                label={ __("Image", 'wp-gutenberg-epfl') }
-                                instructions={ __('Please, select an image', 'wp-gutenberg-epfl') }
+                                label={ __("Image", 'epfl') }
+                                instructions={ __('Please, select an image', 'epfl') }
                             >
                                 <IconButton
                                     className="components-icon-button wp-block-image__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
-                                    { __('Upload', 'wp-gutenberg-epfl') }
+                                    { __('Upload', 'epfl') }
                                 </IconButton>
                             </Placeholder>
                         )}
@@ -118,7 +118,7 @@ registerBlockType( 'epfl/hero', {
                             onClick={ onRemoveImage }
                             icon="dismiss"
                         >
-                            { __('Remove image', 'wp-gutenberg-epfl') }
+                            { __('Remove image', 'epfl') }
                         </IconButton>
 
                         ) }

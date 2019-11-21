@@ -51,16 +51,16 @@ function LinkGroupPanel ( props ) {
     return (
         <div>
             <TextControl
-                label={ __('Label', 'wp-gutenberg-epfl') }
+                label={ __('Label', 'epfl') }
                 value={ attributes['label' + index] || ''}
                 onChange={ value => setIndexedAttributes('label', value) }
-                help= { __('Link label', 'wp-gutenberg-epfl') }
+                help= { __('Link label', 'epfl') }
             />
             <TextControl
-                label={ __('URL', 'wp-gutenberg-epfl') }
+                label={ __('URL', 'epfl') }
                 value={ attributes['url' + index]  || '' }
                 onChange={ value => setIndexedAttributes('url', value) }
-                help= { __('Link URL', 'wp-gutenberg-epfl') }
+                help= { __('Link URL', 'epfl') }
             />
             <hr />
         </div>
@@ -68,7 +68,7 @@ function LinkGroupPanel ( props ) {
 }
 
 registerBlockType( 'epfl/links-group', {
-	title: __( 'EPFL Links group', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Links group', 'epfl'),
 	description: 'v1.0.2',
 	icon: 'editor-kitchensink',
 	category: 'common',
@@ -82,18 +82,18 @@ registerBlockType( 'epfl/links-group', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/links-group-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/links-group-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                     <h2>EPFL Links group</h2>
                     <TextControl
-                        label={ __('Title', 'wp-gutenberg-epfl') }
+                        label={ __('Title', 'epfl') }
                         value={ attributes.title }
                         onChange={ title => setAttributes( { title } ) }
-                        help={ <a target="_blank" href="https://epfl-idevelop.github.io/elements/#/molecules/links-group">{ __('Documentation', 'wp-gutenberg-epfl') }</a> }
+                        help={ <a target="_blank" href="https://epfl-idevelop.github.io/elements/#/molecules/links-group">{ __('Documentation', 'epfl') }</a> }
                     />
                     <TextControl
-                        label={ __('URL', 'wp-gutenberg-epfl') }
+                        label={ __('URL', 'epfl') }
                         value={ attributes.mainUrl }
                         onChange={ mainUrl => setAttributes( { mainUrl } ) }
                     />

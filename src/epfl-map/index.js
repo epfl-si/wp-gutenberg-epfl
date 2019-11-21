@@ -16,7 +16,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/map', {
-	title: __( 'EPFL Map', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Map', 'epfl'),
 	description: 'v1.0.1',
 	icon: 'admin-site-alt',
 	category: 'common',
@@ -33,14 +33,14 @@ registerBlockType( 'epfl/map', {
 	    return (
             <Fragment>
 				<InspectorControls>
-					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/map-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/map-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				</InspectorControls>
                 <div className={ className }>
                     <h2>EPFL MAP</h2>
                     <TextControl
                         value={ attributes.query }
                         onChange={ query => setAttributes( { query } ) }
-                        help={ __('A room for example: INN011', 'wp-gutenberg-epfl') }
+                        help={ __('A room for example: INN011', 'epfl') }
                     />
                 </div>
             </Fragment>

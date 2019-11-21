@@ -1,18 +1,22 @@
 <?php
 
-namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
+/**
+* Plugin Name: EPFL polylex
+* Description: Provide a way to search information about EPFL lexes
+* @version: 1.0
+* @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
+*/
 
-define("LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
+namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once(dirname(__FILE__).'/controller.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
+
+define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
 
 
 function process_shortcode($atts) {
-
-    // if supported delegate the rendering to the theme
-    if (!has_action("epfl_polylex_search_action"))
-    {
-        \Utils::render_user_msg('You must activate the epfl theme');
-    }
-
     $atts = shortcode_atts( array(
         'category' => '',
         'subcategory' => '',
@@ -39,14 +43,14 @@ function process_shortcode($atts) {
     $subcategory = sanitize_text_field($atts["subcategory"]);
     $search = sanitize_text_field($atts["search"]);
 
-
     $url = LEX_INFO_PROVIDER_URL;
-    $lexes = \Utils::get_items($url);
+    $lexes = Utils::get_items($url);
 
     ob_start();
+
     try {
-       do_action("epfl_lexes_search_action", $lexes, $category, $subcategory, $search);
-       return ob_get_contents();
+        renderLexSearch($lexes, $category, $subcategory, $search);
+        return ob_get_contents();
     } finally {
         ob_end_clean();
     }

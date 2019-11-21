@@ -1,18 +1,20 @@
 <?php
-
+/**
+* Plugin Name: EPFL labs
+* Description: Provide a way to search information about labs and their tags
+* @version: 1.0
+* @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
+*/
 
 namespace EPFL\Plugins\Shortcodes\EPFLLabSearch;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
-define("LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
+require_once(dirname(__FILE__).'/controller.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
+
+define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
 
 function process_shortcode($atts) {
-
-    // if supported delegate the rendering to the theme
-    if (!has_action("epfl_labs_search_action"))
-    {
-        \Utils::render_user_msg('You must activate the epfl theme');
-    }
-
     $atts = shortcode_atts( array(
         'faculty' => '',
         'institute' => ''
@@ -24,12 +26,12 @@ function process_shortcode($atts) {
 
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
-    $sites = \Utils::get_items($url);    
+    $sites = Utils::get_items($url);
 
     ob_start();
     try {
-       do_action("epfl_labs_search_action", $sites, $faculty, $institute);
-       return ob_get_contents();
+        renderLabsSearch($sites, $faculty, $institute);
+        return ob_get_contents();
     } finally {
         ob_end_clean();
     }

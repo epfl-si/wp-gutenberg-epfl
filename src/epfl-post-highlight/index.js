@@ -7,12 +7,12 @@ const { Fragment } = wp.element
 registerBlockType(
 	'epfl/post-highlight',
 	{
-		title: __( "EPFL Post Highlight", 'wp-gutenberg-epfl'),
+		title: __( "EPFL Post Highlight", 'epfl'),
 		description: 'v1.0.2',
 		category: 'common',
 		keywords: [
-            __( 'post' , 'wp-gutenberg-epfl'),
-            __( 'highlight' , 'wp-gutenberg-epfl'),
+            __( 'post' , 'epfl'),
+            __( 'highlight' , 'epfl'),
 		],
 		attributes: {
 			post: {

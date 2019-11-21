@@ -19,7 +19,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/video', {
-	title: __( 'EPFL Video', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Video', 'epfl'),
 	description: 'v1.0.1',
 	icon: videoIcon,
 	category: 'common',
@@ -37,15 +37,15 @@ registerBlockType( 'epfl/video', {
         return (
             <Fragment>
 				<InspectorControls>
-					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/video-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
+					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/video-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				</InspectorControls>
                 <div className={ className }>
                     <h2>EPFL VIDEO</h2>
 					<TextControl
-						label={ __('URL of the video', 'wp-gutenberg-epfl') }
+						label={ __('URL of the video', 'epfl') }
                         value={ attributes.url }
                         onChange={ url => setAttributes( { url } ) }
-                        help={ __('You can paste a YouTube, Vimeo or SWITCHTube URL', 'wp-gutenberg-epfl') }
+                        help={ __('You can paste a YouTube, Vimeo or SWITCHTube URL', 'epfl') }
                     />
 					</div>
             </Fragment>

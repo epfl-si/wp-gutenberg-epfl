@@ -18,7 +18,7 @@ const {
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/social-feed', {
-	title: __( 'EPFL Social Feed', 'wp-gutenberg-epfl'),
+	title: __( 'EPFL Social Feed', 'epfl'),
 	description: 'v1.0.2',
 	icon: socialFeedIcon,
 	category: 'common',
@@ -51,19 +51,19 @@ registerBlockType( 'epfl/social-feed', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/social-feed-en/', 'wp-gutenberg-epfl') } target="new">{ __('Online help', 'wp-gutenberg-epfl') } </a></p>
-                    <PanelBody title={ __('Size', 'wp-gutenberg-epfl') }>
-                        <label>{ __('Height', 'wp-gutenberg-epfl') }</label>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/social-feed-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <PanelBody title={ __('Size', 'epfl') }>
+                        <label>{ __('Height', 'epfl') }</label>
                         <TextControl
                             value={ attributes.height }
                             onChange={ height => setAttributes( { height } ) }
-                            help={ __('Set the height in pixel (optional). 450 is recommended', 'wp-gutenberg-epfl') }
+                            help={ __('Set the height in pixel (optional). 450 is recommended', 'epfl') }
                             placeholder= { 450 }
                         />
                         <TextControl
                             value={ attributes.width }
                             onChange={ width => setAttributes( { width } ) }
-                            help={ __('Set the width in pixel (optional). 374 is recommended', 'wp-gutenberg-epfl') }
+                            help={ __('Set the width in pixel (optional). 374 is recommended', 'epfl') }
                             placeholder= { 374 }
                         />
                     </PanelBody>
@@ -72,16 +72,16 @@ registerBlockType( 'epfl/social-feed', {
                     <h2>EPFL Social Feed</h2>
 					<PanelBody title='Twitter' initialOpen={false}>
                         <TextControl
-							label={ __('URL','wp-gutenberg-epfl')}
+							label={ __('URL','epfl')}
                             value={ attributes.twitterUrl }
                             onChange={ twitterUrl => setAttributes( { twitterUrl } ) }
-                            help={ __('Url to your Twitter account (optional) (eg. https://twitter.com/EPFL)', 'wp-gutenberg-epfl') }
+                            help={ __('Url to your Twitter account (optional) (eg. https://twitter.com/EPFL)', 'epfl') }
                         />
-                        <label>{ __('Limit', 'wp-gutenberg-epfl') }</label>
+                        <label>{ __('Limit', 'epfl') }</label>
                         <TextControl
                             value={ attributes.twitterLimit }
                             onChange={ twitterLimit => setAttributes( { twitterLimit } ) }
-                            help={ __('0 for unlimited', 'wp-gutenberg-epfl') }
+                            help={ __('0 for unlimited', 'epfl') }
                             placeholder= { 0 }
                             min={ 0 }
                         />
@@ -89,19 +89,19 @@ registerBlockType( 'epfl/social-feed', {
 
                     <PanelBody title='Instagram' initialOpen={false}>
                         <TextControl
-							label={ __('URL','wp-gutenberg-epfl')}
+							label={ __('URL','epfl')}
                             value={ attributes.instagramUrl }
                             onChange={ instagramUrl => setAttributes( { instagramUrl } ) }
-                            help={ __('Url of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)', 'wp-gutenberg-epfl') }
+                            help={ __('Url of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)', 'epfl') }
                         />
                     </PanelBody>
 
                     <PanelBody title='Facebook' initialOpen={false}>
                         <TextControl
-							label={ __('URL','wp-gutenberg-epfl')}
+							label={ __('URL','epfl')}
                             value={ attributes.facebookUrl }
                             onChange={ facebookUrl => setAttributes( { facebookUrl } ) }
-                            help={ __('Url of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)', 'wp-gutenberg-epfl') }
+                            help={ __('Url of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)', 'epfl') }
                         />
                     </PanelBody>
                 </div>

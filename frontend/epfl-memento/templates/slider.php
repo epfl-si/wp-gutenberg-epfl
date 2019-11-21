@@ -17,7 +17,7 @@
 
         if (!(bool) $results) {
             $markup .= '<div><h3>';
-            $markup .= __('No scheduled events', 'wp-gutenberg-epfl');
+            $markup .= __('No scheduled events', 'epfl');
             $markup .= '</h3></div>';
         }
 
@@ -61,7 +61,7 @@
 
                     include(dirname(__FILE__) . '/includes/card-img-top.inc.php');
 
-                    $markup .= '<h3 class="card-title"><span class="badge badge-dark badge-sm">' . __('Just finished', 'wp-gutenberg-epfl') . '</span>';
+                    $markup .= '<h3 class="card-title"><span class="badge badge-dark badge-sm">' . __('Just finished', 'epfl') . '</span>';
                     $markup .= esc_html($event->title);
                     $markup .= '</h3>';
                     $markup .= '<div class="card-info">';
@@ -94,7 +94,7 @@
                     $markup .= '</div>';
                     $markup .= '<div class="card-footer mt-auto">';
                     $markup .= '<a href="' . esc_url($event->event_url) . '" class="btn btn-primary btn-sm">';
-                    $markup .= __('Learn more & apply', 'wp-gutenberg-epfl');
+                    $markup .= __('Learn more & apply', 'epfl');
                     $markup .= '</a>';
                     $markup .= '</div>';
                     $markup .= '</div>';

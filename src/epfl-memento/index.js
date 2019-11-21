@@ -12,12 +12,12 @@ const { Fragment } = wp.element
 registerBlockType(
 	'epfl/memento',
 	{
-		title: __('EPFL Memento', 'wp-gutenberg-epfl'),
+		title: __('EPFL Memento', 'epfl'),
 		description: 'v1.0.5',
 		icon: mementoIcon,
 		category: 'common',
 		keywords: [
-			__('events', 'wp-gutenberg-epfl'),
+			__('events', 'epfl'),
 		],
 		attributes: {
 			memento: {
@@ -66,7 +66,7 @@ registerBlockType(
 		save: props => {
 			// This block is a dynamic block.
 			// So we save only something like this :
-			// <!-- wp:epfl/memento {"memento":"111","template":"4", ...} 
+			// <!-- wp:epfl/memento {"memento":"111","template":"4", ...}
 			// /-->
 			// The render of this block for the end user is doing in PHP.
       return null
