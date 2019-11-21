@@ -1,9 +1,6 @@
 <?php
 
 namespace EPFL\Plugins\Gutenberg\DefinitionList;
-use \EPFL\Plugins\Gutenberg\Lib\Utils;
-
-require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_definition_list_block($attributes) {
   if (!$attributes) return;
@@ -25,8 +22,12 @@ function epfl_definition_list_block($attributes) {
   $definitions = array();
 
   for($i = 1; $i <= 10; $i++){
-    $definitions[] = array('label' => wp_kses_post($attributes['label' . $i]),
-                           'desc'  => wp_kses_post($attributes['desc'. $i]));
+    
+    $label = (array_key_exists('label'.$i, $attributes)) ? wp_kses_post($attributes['label' . $i]) : '';
+    $desc = (array_key_exists('desc'.$i, $attributes)) ? wp_kses_post($attributes['desc' . $i]) : '';
+    
+    $definitions[] = array('label' => $label,
+                           'desc'  => $desc);
   }
 
   ob_start();
