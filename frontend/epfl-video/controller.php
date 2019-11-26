@@ -6,6 +6,13 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/view.php');
 
+/**
+ * Follow URl and potential redirect to return "real" video URL
+ * 
+ * @param String $url Video URL, given by user
+ * 
+ * @return String final video URL
+ */
 function epfl_video_get_final_video_url($url)
 {
 
@@ -52,15 +59,29 @@ function epfl_video_get_final_video_url($url)
     return $res;
 }
 
+
+/**
+ * Formats an error for display
+ * 
+ * @param String $error String to format as an error message
+ * 
+ * @return String Formated error
+ */
 function epfl_video_get_error($error)
 {
     return '<p><font color="red">'.$error.'</font></p>';
 }
 
+
+/**
+ * Handle video rendering
+ * 
+ * @param Array $attributes Parameters given by user in form.
+ */
 function epfl_video_block( $attributes ) {
 
   $url = Utils::get_sanitized_attribute( $attributes, 'url' );
-
+  $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
 
   /* To handle video URL redirection
 
@@ -145,6 +166,6 @@ function epfl_video_block( $attributes ) {
     $url = "https://tube.switch.ch/embed/".$video_id;
   }
 
-  $markup = epfl_video_render($url);
+  $markup = epfl_video_render($url, $large_display);
   return $markup;
 }
