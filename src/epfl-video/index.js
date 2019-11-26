@@ -1,4 +1,3 @@
-
 import videoIcon from './video-icon'
 
 const { __ } = wp.i18n;
@@ -13,19 +12,24 @@ const {
 
 const {
     PanelBody,
-    TextControl,
+	TextControl,
+	ToggleControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: videoIcon,
 	category: 'common',
 	attributes: {
         url: {
 			type: 'url',
+		},
+		largeDisplay: {
+            type: 'boolean',
+            default: false,
         },
 	},
 	supports : {
@@ -38,6 +42,13 @@ registerBlockType( 'epfl/video', {
             <Fragment>
 				<InspectorControls>
 					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/video-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+					<PanelBody title='Format'>
+                        <ToggleControl
+                            label={ __('Large display', 'epfl') }
+                            checked={ attributes.largeDisplay }
+                            onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
+                        />
+					</PanelBody>
 				</InspectorControls>
                 <div className={ className }>
                     <h2>EPFL VIDEO</h2>
