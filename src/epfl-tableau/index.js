@@ -55,13 +55,19 @@ registerBlockType( 'epfl/tableau', {
 							label={ __('Width', 'epfl') }
                             value={ attributes.width }
                             placeholder = "1000"
-                            onChange={ width => setAttributes( { width } ) }
+                            onChange={ width => {
+                                width = Number(width);
+                                setAttributes( { width } );
+                            }}
                         />
                         <TextControl
 							label={ __('Height', 'epfl') }
                             value={ attributes.height }
                             placeholder = "650"
-                            onChange={ height => setAttributes( { height } ) }
+                            onChange={ height => {
+                                height = Number(height);
+                                setAttributes( { height } );
+                            }}
                         />
                 </InspectorControls>
                 <div className={ className }>

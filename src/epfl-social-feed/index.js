@@ -56,13 +56,19 @@ registerBlockType( 'epfl/social-feed', {
                         <label>{ __('Height', 'epfl') }</label>
                         <TextControl
                             value={ attributes.height }
-                            onChange={ height => setAttributes( { height } ) }
+                            onChange={ height => {
+                                height = Number(height);
+                                setAttributes( { height } );
+                              }}
                             help={ __('Set the height in pixel (optional). 450 is recommended', 'epfl') }
                             placeholder= { 450 }
                         />
                         <TextControl
                             value={ attributes.width }
-                            onChange={ width => setAttributes( { width } ) }
+                            onChange={ width => {
+                                width = Number(width);
+                                setAttributes( { width } );
+                              }}
                             help={ __('Set the width in pixel (optional). 374 is recommended', 'epfl') }
                             placeholder= { 374 }
                         />
@@ -80,7 +86,10 @@ registerBlockType( 'epfl/social-feed', {
                         <label>{ __('Limit', 'epfl') }</label>
                         <TextControl
                             value={ attributes.twitterLimit }
-                            onChange={ twitterLimit => setAttributes( { twitterLimit } ) }
+                            onChange={ twitterLimit => {
+                                twitterLimit = Number(twitterLimit);
+                                setAttributes( { twitterLimit } );
+                              }}
                             help={ __('0 for unlimited', 'epfl') }
                             placeholder= { 0 }
                             min={ 0 }
