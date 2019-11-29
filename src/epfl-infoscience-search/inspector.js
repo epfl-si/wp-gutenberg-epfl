@@ -153,7 +153,10 @@ export default class InspectorControlsInfoscience extends Component {
 				<PanelBody title={ __('Limit', 'epfl') }>
 					<TextControl
 						value={ attributes.limit }
-						onChange={ limit => setAttributes( { limit } ) }
+						onChange={ limit => {
+							limit = Number(limit);
+							setAttributes( { limit } );
+						  }}
 						placeholder={ '100' }
 						help={ __('Without a limit only the first 100 publications are shown', 'epfl') }
 					/>

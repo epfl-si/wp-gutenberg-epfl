@@ -44,7 +44,7 @@ Class Utils
      * @param cache_time_sec : Nb of sec during which we have to cache information in transient
      * @return decoded JSON data
      */
-    public static function get_items(string $url, $cache_time_sec=300, $timeout=5) {
+    public static function get_items(string $url, $cache_time_sec=300, $timeout=5, $sslverify=True) {
         /* Generating unique transient ID. We cannot directly use URL (and replace some characters) because we are
         limited to 172 characters for transient identifiers (https://codex.wordpress.org/Transients_API) */
         $transient_id = 'epfl_'.md5($url);
@@ -67,7 +67,7 @@ Class Utils
         }
 
         $start = microtime(true);
-        $response = wp_remote_get($url, array( 'timeout' => $timeout ));
+        $response = wp_remote_get($url, array( 'timeout' => $timeout, 'sslverify' => $sslverify ));
         $end = microtime(true);
 
         // Logging call
