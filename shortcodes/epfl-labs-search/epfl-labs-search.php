@@ -33,6 +33,7 @@ function process_shortcode($atts) {
 
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
+    #$sites = Utils::get_items($url);
     $sites = Utils::get_items($url, 300, 5, False);
 
     ob_start();
