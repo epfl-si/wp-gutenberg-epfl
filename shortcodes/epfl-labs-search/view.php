@@ -87,7 +87,6 @@
                                 endforeach;
                                 ?>">
                     <?php foreach($site->tags as $tag): ?>
-                    <a href="<?php echo esc_html($tag->url); ?>" class="tag tag-primary site-tags-<?php echo esc_html($tag->type); ?>"><?php echo esc_html($tag->name); ?></a>
                         <?php if ($tag->type != 'field-of-research'): ?>
                             <div>
                                 <a href="<?php echo esc_html($tag->url); ?>" class="tag tag-primary site-tags-<?php echo esc_html($tag->type); ?>"><?php echo esc_html($tag->name); ?></a>
