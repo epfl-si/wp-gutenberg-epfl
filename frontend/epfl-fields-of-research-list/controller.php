@@ -35,6 +35,9 @@ function filter_out_unused_language($fields) {
 }
 
 function epfl_fields_of_research_list_block($attributes) {
+    wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
+    wp_enqueue_style( 'epfl-fields-of-research-list-css', plugins_url('epfl-fields-of-research-list.css', __FILE__),false,'1.0','all');
+
     # by default get all sites with at least a tag
     $lang = get_current_or_default_language();
     $url = LABS_INFO_PROVIDER_URL . 'tags/?type=field-of-research';
@@ -42,28 +45,13 @@ function epfl_fields_of_research_list_block($attributes) {
     $fields = Utils::get_items($url, 300, 5, false);
 
     $fields = filter_out_unused_language($fields);
+
     # sort alpha
     usort($fields, function($a, $b) {
       return strcasecmp($a->name, $b->name);
     });
 
-    ob_start();
-?>
-<div class="container-full">
-  <div class="container">
-    <ul class="list-group list-group-flush">
-      <?php foreach($fields as $field): ?>
-      <li class="list-group-item">
-          <a href="<?php echo esc_attr($field->url); ?>">
-            <?php echo esc_html($field->name); ?>
-          </a>
-      </li>
-      <?php endforeach; ?>
-    </ul>
-  </div>
-</div>
-<?php
-    $content = ob_get_contents();
-    ob_end_clean();
-    return $content;
-}
+    set_query_var('epfl_fields-of-research', $fields);
+
+    load_template(dirname(__FILE__).'/view.php');
+  }
