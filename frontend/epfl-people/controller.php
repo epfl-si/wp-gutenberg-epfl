@@ -55,6 +55,7 @@ function epfl_people_block( $attributes ) {
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
     $groups = preg_replace('/\s+/','',$groups);
+    $function = preg_replace('/\s+/','',$groups);
     $scipers = preg_replace('/\s+/','',$scipers);
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
 
