@@ -3,7 +3,7 @@
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
  * Author: WordPress EPFL Team
- * Version: 1.2.3
+ * Version: 1.2.4
  */
 
 namespace EPFL\Plugins\Gutenberg;
@@ -47,7 +47,6 @@ function polylang_json_api_languages() {
 
 // fix polylang language segmentation
 add_action( 'rest_api_init' , __NAMESPACE__ . '\polylang_json_api_init' );
-
 
 /**
  * Only allow blocks starting with "epfl/" in editor. If others blocks have to be allowed too, comoing from WordPress 
