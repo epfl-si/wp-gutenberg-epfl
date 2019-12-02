@@ -12,7 +12,7 @@ registerBlockType(
 	'epfl/news',
 	{
 		title: __( "EPFL News", 'epfl'),
-		description: 'v1.0.3',
+		description: 'v1.0.4',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
