@@ -10,7 +10,7 @@
                 type="text"
                 id="fields-of-research-input"
                 class="form-control search mb-2"
-                placeholder="<?php _e('Type here a name, an url, a keyword, ...', 'epfl') ?>"
+                placeholder="<?php _e('Filter by...', 'epfl') ?>"
                 aria-describedby="fields-of-research-help"
             >
         </div>
@@ -19,7 +19,7 @@
         <?php if (!(empty($fields))): ?>
             <?php foreach($fields as $field): ?>
             <div class="field-of-research-row flex-row d-md-flex pt-1 pb-1 border-bottom align-items-center">
-                <div class="site-title col">
+                <div class="field-of-research-name col">
                     <a href="<?php echo esc_attr($field->url); ?>">
                         <?php echo esc_html($field->name); ?>
                     </a>
@@ -30,3 +30,5 @@
         </div>
     </div>
 </div>
+
+<?php load_template(dirname(__FILE__).'/javascript.php'); ?>
