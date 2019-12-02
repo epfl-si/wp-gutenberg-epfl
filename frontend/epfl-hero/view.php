@@ -8,8 +8,9 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 function epfl_hero_block( $attributes ) {
 
 
-    $title    = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $image_id = Utils::get_sanitized_attribute( $attributes, 'imageId' );
+    $title       = Utils::get_sanitized_attribute( $attributes, 'title' );
+    $image_id    = Utils::get_sanitized_attribute( $attributes, 'imageId' );
+    $description = Utils::get_sanitized_attribute( $attributes, 'description' );
 
     $text = "";
     if (array_key_exists('text', $attributes)) {
@@ -36,9 +37,21 @@ function epfl_hero_block( $attributes ) {
     }
     $markup .= '</div>';
     $markup .= '<div class="hero-img">';
+    $markup .= '<figure class="cover">';
     $markup .= '<picture>';
     $markup .= $image;
     $markup .= '</picture>';
+    $markup .= '<figcaption>';
+    $markup .= '<button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="' . esc_html($description) . '">';
+    $markup .= '<svg class="icon" aria-hidden="true">';
+    $markup .= '<use xlink:href="#icon-info"></use>';
+    $markup .= '</svg>';
+    $markup .= '<svg class="icon icon-rotate-90" aria-hidden="true">';
+    $markup .= '<use xlink:href="#icon-chevron-right"></use>';
+    $markup .= '</svg>';
+    $markup .= '</button>';
+    $markup .= '<p class="sr-only">' . esc_html($description) . '</p>';
+    $markup .= '</figcaption>';
     $markup .= '</div>';
     $markup .= '</div>';
     $markup .= '</div>';
