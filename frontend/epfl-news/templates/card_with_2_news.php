@@ -57,7 +57,7 @@
             $markup .= '<a class="link-pretty" href="' . $url_channel . '">' . __("All news", "epfl" ) . '</a>';
             $markup .= '</p>';
         }
-        
+
         $markup .= '</div>';
         $markup .= '</div>';
 
