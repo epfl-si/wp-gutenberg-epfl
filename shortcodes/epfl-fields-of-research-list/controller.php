@@ -1,9 +1,10 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\FieldsOfResearchList;
 
-require_once(dirname(__FILE__).'/../lib/utils.php');
-require_once(dirname(__FILE__).'/../lib/language.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/language.php');
 require_once(dirname(__FILE__).'/controller.php');
+
 
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 use function EPFL\Plugins\Gutenberg\Lib\Language\get_current_or_default_language;
@@ -34,7 +35,7 @@ function filter_out_unused_language($fields) {
   return $filtered_fields;
 }
 
-function epfl_fields_of_research_list_block($attributes) {
+function epfl_fields_of_research_list_render($attributes) {
     wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
     wp_enqueue_style( 'epfl-fields-of-research-list-css', plugins_url('epfl-fields-of-research-list.css', __FILE__),false,'1.0','all');
 
@@ -55,3 +56,8 @@ function epfl_fields_of_research_list_block($attributes) {
 
     load_template(dirname(__FILE__).'/view.php');
   }
+
+add_action( 'init', function() {
+    // define the shortcode
+    add_shortcode('epfl_fields_of_research_list', __NAMESPACE__ . '\epfl_fields_of_research_list_render');
+});

@@ -4,7 +4,7 @@
 ?>
 
 <div class="container my-3">
-    <div id="sites-list" class="d-flex flex-column">
+    <div id="fields-of-research-list" class="d-flex flex-column">
         <div class="form-group">
             <input
                 type="text"
@@ -18,7 +18,7 @@
         <div class="list">
         <?php if (!(empty($fields))): ?>
             <?php foreach($fields as $field): ?>
-            <div class="site-row flex-row d-md-flex pt-1 pb-1 border-bottom align-items-center">
+            <div class="field-of-research-row flex-row d-md-flex pt-1 pb-1 border-bottom align-items-center">
                 <div class="site-title col">
                     <a href="<?php echo esc_attr($field->url); ?>">
                         <?php echo esc_html($field->name); ?>
