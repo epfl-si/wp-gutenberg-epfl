@@ -3,8 +3,6 @@ namespace EPFL\Plugins\Gutenberg\FieldsOfResearchList;
 
 require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
 require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/language.php');
-require_once(dirname(__FILE__).'/controller.php');
-
 
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 use function EPFL\Plugins\Gutenberg\Lib\Language\get_current_or_default_language;
@@ -21,14 +19,13 @@ function filter_out_unused_language($fields) {
   $filtered_fields = [];
 
   foreach ($fields as $field) {
-
     $object = new \stdClass();
-    if ($current_language === 'fr') {
-      $object->name = $field->name_en;
-      $object->url = $field->url_en;
-    } else {
+    if (strcmp($current_language, 'fr')) {
       $object->name = $field->name_fr;
       $object->url = $field->url_fr;
+    } else {
+      $object->name = $field->name_en;
+      $object->url = $field->url_en;
     }
     $filtered_fields[] = $object;
   }
@@ -52,9 +49,11 @@ function epfl_fields_of_research_list_render($attributes) {
       return strcasecmp($a->name, $b->name);
     });
 
-    set_query_var('epfl_fields-of-research', $fields);
+    ob_start();
+    include(dirname(__FILE__).'/view.php');
+    $content = ob_get_clean();
 
-    load_template(dirname(__FILE__).'/view.php');
+    return $content;
   }
 
 add_action( 'init', function() {
