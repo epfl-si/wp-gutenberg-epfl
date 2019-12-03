@@ -23,12 +23,16 @@ const maxCustomTeaser = 3;
 
 const getAttributes = () => {
     let atts = {
-		'titleSection': {
+		    'titleSection': {
             type: 'string',
         },
         'grayBackground': {
             type: 'boolean',
-		},
+        },
+        'openLinksNewTab': {
+            type: 'boolean',
+            default: false,
+        }
 	};
 
     for (var i = 1; i <= maxCustomTeaser; i++) {
@@ -152,7 +156,7 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.2.3',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -172,6 +176,13 @@ registerBlockType( 'epfl/custom-teaser', {
                             checked={ attributes.grayBackground }
                             onChange={ grayBackground => setAttributes( { grayBackground } ) }
                         />
+                    </PanelBody>
+                    <PanelBody title='Links'>
+                      <ToggleControl
+                          label={ __('Open links in a new tab', 'epfl') }
+                          checked={ attributes.openLinksNewTab }
+                          onChange={ () => setAttributes( { openLinksNewTab: ! attributes.openLinksNewTab } ) }
+                      />
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
