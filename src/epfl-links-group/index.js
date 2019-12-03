@@ -6,6 +6,7 @@ const {
 
 const {
     TextControl,
+    ToggleControl,
 } = wp.components;
 
 const {
@@ -18,13 +19,17 @@ const maxLinksGroup = 10;
 
 const getAttributes = () => {
     let atts = {
-		'title': {
+        'title': {
             type: 'string',
         },
         'mainUrl': {
             type: 'string',
-		},
-	};
+        },
+        'openLinksNewTab': {
+            type: 'boolean',
+            default: false,
+        }
+	    };
 
     for (var i = 1; i <= maxLinksGroup; i++) {
         atts['label'+i] = {
@@ -69,7 +74,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.0.2',
+	description: 'v1.1.2',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -83,6 +88,11 @@ registerBlockType( 'epfl/links-group', {
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/links-group-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <ToggleControl
+                        label={ __('Open links in a new tab', 'epfl') }
+                        checked={ attributes.openLinksNewTab }
+                        onChange={ () => setAttributes( { openLinksNewTab: ! attributes.openLinksNewTab } ) }
+                    />
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                     <h2>EPFL Links group</h2>
