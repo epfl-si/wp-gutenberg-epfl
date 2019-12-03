@@ -14,8 +14,7 @@
             $markup .= '<h4 class="my-3">' . $element->label . '</h4>';
             $markup .= '<div class="contact-list">';
 
-            // Sort array of members
-            usort($element->members, function($a, $b) {return strcmp($a->nom, $b->nom);});
+            sort_members($element->members);
 
             foreach($element->members as $index => $person) {
 
