@@ -12,7 +12,10 @@
         $markup .= '<div class="contact-list">';
 
         foreach($persons as $index => $element) { 
-          
+            
+            // Sort array of members
+            usort($element->members, function($a, $b) {return strcmp($a->nom, $b->nom);});
+
             foreach($element->members as $index => $person) {
 
                 $photo_url  = epfl_people_get_photo($person);

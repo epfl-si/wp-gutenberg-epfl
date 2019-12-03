@@ -8,10 +8,15 @@
         */
 
         $markup = '<div class="container my-3">';
-       
+        
+
         foreach($persons as $index => $element) { 
             $markup .= '<h4 class="my-3">' . $element->label . '</h4>';
             $markup .= '<div class="contact-list">';
+
+            // Sort array of members
+            usort($element->members, function($a, $b) {return strcmp($a->nom, $b->nom);});
+
             foreach($element->members as $index => $person) {
 
                 $photo_url  = epfl_people_get_photo($person);

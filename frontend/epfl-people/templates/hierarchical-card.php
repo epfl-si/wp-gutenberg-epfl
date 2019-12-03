@@ -10,7 +10,10 @@ namespace EPFL\Plugins\Gutenberg\People;
             $markup .= '<div class="card-deck">';
         }
         
-        foreach($persons as $index => $element) { 
+        foreach($persons as $index => $element) {
+
+            // Sort array of members
+            usort($element->members, function($a, $b) {return strcmp($a->nom, $b->nom);});
           
             foreach($element->members as $index => $person) {
 
