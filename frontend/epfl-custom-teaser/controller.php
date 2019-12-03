@@ -30,6 +30,8 @@ function epfl_custom_teaser_block( $attributes ) {
       $greyClasses = 'bg-gray-100 py-4 mt-4';
     }
 
+    $open_links_new_tab = Utils::get_sanitized_attribute( $attributes, 'openLinksNewTab', False);
+
     ob_start();
 ?>
 
@@ -46,7 +48,7 @@ function epfl_custom_teaser_block( $attributes ) {
       ?>
       <div class="card">
       <?php if ($attributes['imageId'.$i]): ?>
-        <a href="<?php echo $attributes['url'.$i] ?: '#' ?>" class="card-img-top">
+        <a <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> href="<?php echo $attributes['url'.$i] ?: '#' ?>" class="card-img-top">
           <picture>
           <?php echo wp_get_attachment_image(
             $attributes['imageId'.$i],
@@ -62,12 +64,12 @@ function epfl_custom_teaser_block( $attributes ) {
         <?php endif; ?>
         <div class="card-body">
           <h3 class="card-title">
-            <a href="<?php echo $attributes['url'.$i] ?: '#' ?>"><?php echo $attributes['title'.$i] ?: __('Title', 'epfl') ?></a>
+            <a <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> href="<?php echo $attributes['url'.$i] ?: '#' ?>"><?php echo $attributes['title'.$i] ?: __('Title', 'epfl') ?></a>
           </h3>
           <p><?php echo $attributes['excerpt'.$i] ?></p>
         </div>
         <div class="card-footer mt-auto">
-          <a href="<?php echo $attributes['url'.$i] ?: '#' ?>" class="btn btn-secondary btn-sm"><?php echo $attributes['buttonLabel'.$i] ?: __('See more', 'epfl') ?></a>
+          <a <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> href="<?php echo $attributes['url'.$i] ?: '#' ?>" class="btn btn-secondary btn-sm"><?php echo $attributes['buttonLabel'.$i] ?: __('See more', 'epfl') ?></a>
         </div>
       </div>
       <?php
