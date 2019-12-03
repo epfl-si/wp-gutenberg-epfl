@@ -156,7 +156,7 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'epfl'),
-	description: 'v1.2.3',
+	description: 'v1.1.3',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
