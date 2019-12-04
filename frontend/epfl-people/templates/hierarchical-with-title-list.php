@@ -8,7 +8,6 @@
         */
 
         $markup = '<div class="container my-3">';
-        
 
         foreach($persons as $index => $element) { 
             $markup .= '<h4 class="my-3">' . $element->label . '</h4>';
