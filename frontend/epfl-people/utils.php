@@ -7,6 +7,14 @@ define(__NAMESPACE__ . "\HIERARCHICAL_ORDER_WITH_TITLE", "hierarchical-with-titl
 define(__NAMESPACE__ . "\ALPHABETICAL_ORDER", "alphabetical");
 
 /**
+ * Sort by name members of same function (Hierarchical order)
+ */
+function sort_members(&$members)
+{
+    usort($members, function($a, $b) {return strcmp($a->nom, $b->nom);});
+}
+
+/**
  * Get person photo
  */
 function epfl_people_get_photo($person) {
