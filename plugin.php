@@ -3,7 +3,7 @@
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
  * Author: WordPress EPFL Team
- * Version: 1.5.4
+ * Version: 1.5.5
  */
 
 namespace EPFL\Plugins\Gutenberg;
@@ -61,6 +61,8 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
 
     // Reset value
     $allowed_block_types = [];
+    // We explicitely deny usage of epfl/card-panel block so we can't add more than 3 blocks inside an epfl/card-deck
+    $explicitly_denied_blocks = ['epfl/card-panel'];
 
     // Retrieving currently registered blocks
     $registered = \WP_Block_Type_Registry::get_instance()->get_all_registered();
@@ -68,7 +70,7 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
     // Looping through registered blocks to find "epfl/" ones
     foreach(array_keys($registered) as $block_name)
     {
-        if(preg_match('/^epfl\//', $block_name)===1)
+        if(preg_match('/^epfl\//', $block_name)===1 && !in_array($block_name, $explicitly_denied_blocks))
         {
             $allowed_block_types[] = $block_name;
         }
