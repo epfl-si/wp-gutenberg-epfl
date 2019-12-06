@@ -64,9 +64,10 @@ registerBlockType( 'epfl/card-deck', {
                         <h2>EPFL Card Deck</h2>
                         <InnerBlocks
                             template={ TEMPLATE }
-                            /* We could lock template to deny adding new blocks but even if we remove the locking inside epfl/card-panel, there's a bug and the system removes the block inside epfl/card-panl block.
-                             So, as workaround, we don't lock but limit new blocks to 'epfl/card-panel'. And because this block is not present in the white list in MU-Plugin EPFL_custom_editor_menu.php, we won't
-                             be able to add new blocks inside and epfl/card-deck block */
+                            /* We could lock template to deny adding new blocks but even if we remove the locking inside epfl/card-panel, there's a bug and the system removes the 
+                             block inside epfl/card-panl block.
+                             So, as workaround, we don't lock but limit new blocks to 'epfl/card-panel'. And because this block is not present in the white list in 
+                             this plugin (plugin.php), we won't be able to add new blocks inside and epfl/card-deck block */
                             allowedBlocks={['epfl/card-panel']}
                            />
                 </div>
