@@ -16,9 +16,7 @@ function epfl_faq_item_block($attributes, $inner_content)
 
     if(empty(trim($question))) return "";
 
-    $anchor = "faq-item-".md5($inner_content);
-
-    //$faq_ref_table .= '<li><a href="#'.$anchor.'">'.$question.'</a></li>';
+    $anchor = "faq-item-".md5(microtime(true). $inner_content);
 
     ob_start();
 ?>
@@ -34,7 +32,12 @@ function epfl_faq_item_block($attributes, $inner_content)
 }
 
 /**
- * Render a FAQ
+ * Render a FAQ block
+ * 
+ * A FAQ block includes epfl/faq-item blocks (one for each couple "question/answer") and displays an index with links to each questions
+ * before the first question/answer is displayed.
+ * This link list is generated using jQuery on client side. Code which do this is in "js/faq-header.js". This means we have to add some
+ * unused CSS class to elements to be able to easily get them using jQuery an build the link index.
  */
 function epfl_faq_block($data, $inner_content) {
 
@@ -43,17 +46,14 @@ function epfl_faq_block($data, $inner_content) {
 
   ob_start();
 
-  // random generated ID for DIV
-  $ul_id = "faq-header".md5(microtime(true). $inner_content);
 ?>
 
 <div class="container py-3">
-  <ul class="link-list epfl-faq-header" id="<?PHP echo $ul_id; ?>">
+  <ul class="link-list epfl-faq-header">
   </ul>
   <?php 
      echo $inner_content;
   ?>
-  
 </div>
 
 <?php
@@ -63,6 +63,5 @@ function epfl_faq_block($data, $inner_content) {
 }
 
 add_action( 'init', function() {
-  // using JS file present in theme
     wp_register_script('epfl-faq-header.js', plugins_url('js/faq-header.js', __FILE__));
 });
