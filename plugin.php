@@ -3,7 +3,7 @@
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
  * Author: WordPress EPFL Team
- * Version: 1.5.6
+ * Version: 1.5.7
  */
 
 namespace EPFL\Plugins\Gutenberg;
@@ -85,7 +85,6 @@ add_filter( 'allowed_block_types', __NAMESPACE__.'\allow_epfl_blocks', 10, 2 );
 /**
  * Shortcodes
  */
-require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-faq/epfl-faq.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-labs-search/epfl-labs-search.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-magistrale/epfl-magistrale.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-polylex-search/epfl-polylex-search.php';

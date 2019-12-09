@@ -38,6 +38,7 @@ import './epfl-table-filter'
 import './epfl-tableau'
 import './epfl-toggle'
 import './epfl-video'
+import './epfl-faq'
 
 
 const getHomeURL = () => {
