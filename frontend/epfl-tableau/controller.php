@@ -26,7 +26,6 @@ function epfl_tableau_block( $attributes ) {
         }
     }
 
-    // = Utils::get_sanitized_attribute( $attributes, 'units' );
     # set or overload url, width and height if set in the shortcode
     if (!empty($attributes['tableauName'])) {
         $tableau_name = $attributes['tableauName'];
