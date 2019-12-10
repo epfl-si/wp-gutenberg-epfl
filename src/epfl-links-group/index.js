@@ -100,7 +100,6 @@ registerBlockType( 'epfl/links-group', {
                         label={ __('Title', 'epfl') }
                         value={ attributes.title }
                         onChange={ title => setAttributes( { title } ) }
-                        help={ <a target="_blank" href="https://epfl-idevelop.github.io/elements/#/molecules/links-group">{ __('Documentation', 'epfl') }</a> }
                     />
                     <TextControl
                         label={ __('URL', 'epfl') }
