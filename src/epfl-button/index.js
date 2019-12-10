@@ -29,6 +29,9 @@ const getAttributes = () => {
         buttonStyle: {
             type: 'string',
         },
+        buttonAlign: {
+            type: 'string',
+        },
         link: {
             type: 'string',
         },
@@ -44,6 +47,10 @@ const getAttributes = () => {
 const optionsButtonStyle = [
     { value: 'primary', label: __('Primary (red)', 'epfl') },
     { value: 'secondary', label: __('Secondary (white)', 'epfl') },
+];
+const optionsButtonAlign = [
+    { value: 'left', label: __('Left', 'epfl') },
+    { value: 'centered', label: __('Centered', 'epfl') },
 ];
 
 registerBlockType( 'epfl/button', {
@@ -73,6 +80,12 @@ registerBlockType( 'epfl/button', {
                             value={ attributes.buttonStyle }
                             onChange={ buttonStyle => setAttributes( { buttonStyle } ) }
                             options={ optionsButtonStyle }
+                        />
+                        <SelectControl
+                            label={ <h4> { __('Alignment', 'epfl') } </h4> }
+                            value={ attributes.buttonAlign }
+                            onChange={ buttonAlign => setAttributes( { buttonAlign } ) }
+                            options={ optionsButtonAlign }
                         />
                     </PanelBody>
                 </InspectorControls>
