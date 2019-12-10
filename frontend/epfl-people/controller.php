@@ -59,7 +59,8 @@ function epfl_people_block( $attributes ) {
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
     $structure = preg_replace('/\s+/','',$structure);
 
-    // Delete whitespace before and after , only
+    // Delete whitespace before and after each comma
+    // function can contain a whitespace
     $functions = explode(",", $function);
     $functions = array_map('trim', $functions);
     $function = implode(",",$functions); 
