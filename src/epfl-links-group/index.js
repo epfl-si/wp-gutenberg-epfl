@@ -74,7 +74,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.1.2',
+	description: 'v1.1.3',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -91,7 +91,7 @@ registerBlockType( 'epfl/links-group', {
                     <ToggleControl
                         label={ __('Open links in a new tab', 'epfl') }
                         checked={ attributes.openLinksNewTab }
-                        onChange={ () => setAttributes( { openLinksNewTab: ! attributes.openLinksNewTab } ) }
+                        onChange={ openLinksNewTab => setAttributes( { openLinksNewTab } ) }
                     />
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
