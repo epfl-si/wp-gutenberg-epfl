@@ -87,7 +87,7 @@ function CustomTeaserPanel ( props ) {
 
     return (
         <div>
-            <h4>{`Custom teaser ${index}`}</h4>
+            <h4>{ __('Custom teaser', 'epfl') + ` ${index}` }</h4>
             <TextControl
                 label={ __('Title', 'epfl') }
                 value={ attributes['title' + index] || ''}
@@ -186,7 +186,7 @@ registerBlockType( 'epfl/custom-teaser', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
-                    <h2>EPFL Custom Teaser</h2>
+                    <h2>{ __('EPFL Custom Teaser', 'epfl') } </h2>
                     <TextControl
                         label={ __('Section title', 'epfl') }
                         value={ attributes.titleSection }

@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/page-teaser',
 	{
 		title: __( "EPFL Page Teaser", 'epfl'),
-		description: 'v1.0.2',
+		description: 'v1.0.3',
 		category: 'common',
 		keywords: [
             __( 'page' , 'epfl'),
@@ -40,7 +40,7 @@ registerBlockType(
 			return (
 				<Fragment>
 					<div className={ className }>
-                        <h2>EPFL Page Teaser</h2>
+                        <h2>{ __('EPFL Page Teaser', 'epfl') }</h2>
 						<InspectorControlsPageTeaser { ...{ attributes, setAttributes } } />
                     </div>
 				</Fragment>

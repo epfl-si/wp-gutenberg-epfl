@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: socialFeedIcon,
 	category: 'common',
 	attributes: {
@@ -75,7 +75,7 @@ registerBlockType( 'epfl/social-feed', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>EPFL Social Feed</h2>
+                    <h2>{ __('EPFL Social Feed', 'epfl') }</h2>
 					<PanelBody title='Twitter' initialOpen={false}>
                         <TextControl
 							label={ __('URL','epfl')}

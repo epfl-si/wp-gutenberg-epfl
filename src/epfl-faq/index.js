@@ -13,8 +13,6 @@ const {
 } = wp.editor;
 
 const {
-    PanelBody,
-    ToggleControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -31,7 +29,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/faq', {
 	title: __( 'EPFL FAQ', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: faqIcon,
 	category: 'common',
 	attributes: getAttributes(),

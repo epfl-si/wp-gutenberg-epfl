@@ -43,7 +43,7 @@ export default class InspectorControlsPeople extends Component {
                 className="field-with-no-margin-bottom"
                 onChange={ structure => setAttributes( { structure } ) }
             />
-            <p>You can enter the name of a custom structure. <a target="_blank" href="https://www.epfl.ch/campus/services/ressources-informatiques/publier-sur-le-web-epfl/people/page-106273-fr-html/">More information</a>. <a target="_blank" href="https://people.epfl.ch/cgi-bin/upldtmpl">List of existing structures</a></p>
+            <p>{ __('You can enter the name of a custom structure.', 'epfl') } <a target="_blank" href="https://www.epfl.ch/campus/services/ressources-informatiques/publier-sur-le-web-epfl/people/page-106273-fr-html/">More information</a>. <a target="_blank" href="https://people.epfl.ch/cgi-bin/upldtmpl">List of existing structures</a></p>
 
           </Fragment>
         }

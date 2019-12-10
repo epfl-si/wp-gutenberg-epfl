@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/post-highlight',
 	{
 		title: __( "EPFL Post Highlight", 'epfl'),
-		description: 'v1.0.2',
+		description: 'v1.0.3',
 		category: 'common',
 		keywords: [
             __( 'post' , 'epfl'),
@@ -32,7 +32,7 @@ registerBlockType(
 			const { attributes, className, setAttributes } = props
 			return (
 				<Fragment>
-					<h2>EPFL Post Highlight</h2>
+					<h2>{ __('EPFL Post Highlight', 'epfl') }</h2>
 					<InspectorControlsPostHighlight { ...{ attributes, setAttributes } } />
                 </Fragment>
 			)

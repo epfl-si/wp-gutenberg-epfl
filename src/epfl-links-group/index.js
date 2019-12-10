@@ -74,7 +74,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.1.3',
+	description: 'v1.1.4',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -95,7 +95,7 @@ registerBlockType( 'epfl/links-group', {
                     />
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
-                    <h2>EPFL Links group</h2>
+                    <h2>{ __('EPFL Links group', 'epfl') }</h2>
                     <TextControl
                         label={ __('Title', 'epfl') }
                         value={ attributes.title }
@@ -106,7 +106,7 @@ registerBlockType( 'epfl/links-group', {
                         value={ attributes.mainUrl }
                         onChange={ mainUrl => setAttributes( { mainUrl } ) }
                     />
-                    <h4>Links</h4>
+                    <h4>{ __('Links', 'epfl') }</h4>
                     {[...Array(maxLinksGroup)].map((x, i) =>
                     <LinkGroupPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}
