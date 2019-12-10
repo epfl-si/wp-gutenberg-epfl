@@ -40,6 +40,7 @@ require_once 'epfl-links-group/controller.php';
 require_once 'epfl-gallery/view.php';
 require_once 'lib/tags.php';
 require_once 'epfl-table-filter/controller.php';
+require_once 'epfl-faq/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -213,6 +214,12 @@ function wp_gutenberg_epfl_register_blocks() {
 
 	register_block_type( 'epfl/table-filter', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\TableFilter\epfl_table_filter_block',
+		));
+	register_block_type( 'epfl/faq', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\FAQ\epfl_faq_block',
+		));
+	register_block_type( 'epfl/faq-item', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\FAQ\epfl_faq_item_block',
 		));
 }
 

@@ -15,28 +15,32 @@ const {
     IconButton,
     PanelBody,
     TextControl,
+    TextareaControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'epfl'),
-	description: 'v1.1.0',
+	description: 'v1.2.0',
 	icon: 'id',
 	category: 'common',
 	attributes: {
 		title: {
 			type: 'string',
-        },
-        text: {
+    },
+    text: {
 			type: 'string',
-        },
-        imageUrl: {
-            type: 'string',
-        },
-        imageId: {
-            type: 'number',
-        },
+    },
+    imageUrl: {
+      type: 'string',
+    },
+    imageId: {
+      type: 'number',
+    },
+    description : {
+      type: 'string',
+    }
 	},
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
@@ -124,6 +128,13 @@ registerBlockType( 'epfl/hero', {
                         ) }
                       </p>
                 )}
+                <hr/>
+                <TextareaControl
+                  label={ __('Description', 'epfl')}
+                  value={ attributes.description }
+                  onChange={ description => setAttributes( { description } ) }
+                  help={ __('This description appears when the user clicks on the information icon', 'epfl') }
+                />
                 </div>
             </Fragment>
 		)

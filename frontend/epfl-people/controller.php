@@ -55,8 +55,10 @@ function epfl_people_block( $attributes ) {
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
     $groups = preg_replace('/\s+/','',$groups);
+    $function = preg_replace('/\s+/','',$function);
     $scipers = preg_replace('/\s+/','',$scipers);
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
+    $structure = preg_replace('/\s+/','',$structure);
 
     if ($columns !== 'list') {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
@@ -87,10 +89,13 @@ function epfl_people_block( $attributes ) {
     }
 
     if ((HIERARCHICAL_ORDER === $order || HIERARCHICAL_ORDER_WITH_TITLE === $order) && "" !== $units) {
-      // People API: &struct=1 parameter corresponds to the hierarchical order
-      $parameter['struct'] = $structure;
+        // People API: &struct=1 parameter corresponds to the hierarchical order
+        if ("" === $structure) {
+            $structure = 1;
+        }
+        $parameter['struct'] = $structure;
     } else {
-      $order = ALPHABETICAL_ORDER;
+        $order = ALPHABETICAL_ORDER;
     }
 
     if (function_exists('pll_current_language')) {

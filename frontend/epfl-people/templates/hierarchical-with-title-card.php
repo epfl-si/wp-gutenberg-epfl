@@ -9,10 +9,12 @@ namespace EPFL\Plugins\Gutenberg\People;
         foreach($persons as $index => $element) { 
             $markup .= '<h2 class="my-3">' . $element->label . '</h2>';
            
-
             if ($columns === '3') {
                 $markup .= '<div class="card-deck">';
             }
+
+            sort_members($element->members);
+
             foreach($element->members as $index => $person) {
 
                 $photo_url = epfl_people_get_photo($person);
