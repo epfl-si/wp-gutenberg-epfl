@@ -46,7 +46,7 @@ function epfl_people_block( $attributes ) {
     var_dump($groups);
     var_dump($scipers);
     var_dump($doctoral_program);
-    var_dump($fonction);
+    var_dump($function);
     var_dump($columns);
     var_dump($order);
     var_dump($structure);
@@ -55,10 +55,14 @@ function epfl_people_block( $attributes ) {
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
     $groups = preg_replace('/\s+/','',$groups);
-    $function = preg_replace('/\s+/','',$function);
     $scipers = preg_replace('/\s+/','',$scipers);
     $doctoral_program = preg_replace('/\s+/','',$doctoral_program);
     $structure = preg_replace('/\s+/','',$structure);
+
+    // Delete whitespace before and after , only
+    $functions = explode(",", $function);
+    $functions = array_map('trim', $functions);
+    $function = implode(",",$functions); 
 
     if ($columns !== 'list') {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
