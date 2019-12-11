@@ -43,12 +43,11 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
     });
     
     // Getting header configuration for current table
-    header_options = $(filter_div).find('input[name="header"]').attr('value').trim();
+    header_options = $(filter_div).find('input[name="header"]').attr('value').split(',');
     
-    if(header_options != "")
+    if(header_options.length > 0)
     {
-        header_options = header_options.split(',');
-
+        
         // if we have at least one option, 'header' will be in it, so...
 
         // Changing <td> into <th> in header
