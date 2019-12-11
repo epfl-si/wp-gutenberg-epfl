@@ -1,6 +1,6 @@
 
 let filterList = [];
-let columns, columnsOk, header_options, table, column_name;
+let columns, columnsOk, header_options, table, column_name, limit_filter_to;
 
 // Looping through table to filter
 $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
@@ -10,22 +10,32 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
 
     table = $(filter_div).find('table');
 
+    // Filter options
+    limit_filter_to = JSON.parse($(filter_div).find('input[name="limit_filter_to_cols"]').attr('value'));
+
     // Looping through rows
     table.find('tr').each(function(tr_index, tr){
 
         // loopging through columns
         $(tr).find('td').each(function(td_index, td) {
 
-            column_name = 'epfl-table-filter-col-'+td_index;
-            // Adding class to sort
-            $(td).toggleClass(column_name);
-
-            // If we don't have all columns names yet, 
-            if(!columnsOk)
+            /* If we have to sort on current column,
+            (we do 'td_index+1' because limit_filter_to doesn't start at 0 like td_index)*/
+            if(limit_filter_to.length == 0 || limit_filter_to.includes(td_index+1))
             {
-                columns.push(column_name);
+
+                column_name = 'epfl-table-filter-col-'+td_index;
+                // Adding class to sort
+                $(td).toggleClass(column_name);
+
+                // If we don't have all columns names yet, 
+                if(!columnsOk)
+                {
+                    columns.push(column_name);
+                }
             }
-        });
+
+        });// End looping on all columns
 
         // Now we have all columns
         columnsOk = true;
@@ -33,12 +43,11 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
     });
     
     // Getting header configuration for current table
-    header_options = $(filter_div).find('input[name="header"]').attr('value').trim();
+    header_options = $(filter_div).find('input[name="header"]').attr('value').split(',');
     
-    if(header_options != "")
+    if(header_options.length > 0)
     {
-        header_options = header_options.split(',');
-
+        
         // if we have at least one option, 'header' will be in it, so...
 
         // Changing <td> into <th> in header
