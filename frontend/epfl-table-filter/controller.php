@@ -26,9 +26,8 @@ function epfl_table_filter_block($attributes, $inner_content)
   $header_options       = Utils::get_sanitized_attribute( $attributes, 'tableHeaderOptions', '');
   
   // Filtering option
-  $filter_only_on_cols  = Utils::get_sanitized_attribute( $attributes, 'filterOnlyOnCols', '');
-  // transforming to array and some sanitize work
-  $filter_only_on_cols_array = explode(",", $filter_only_on_cols);
+  $filter_only_on_cols_array  = explode(",", Utils::get_sanitized_attribute( $attributes, 'filterOnlyOnCols', ''));
+  // Some sanitize work
   $filter_only_on_cols_array = array_map("trim", $filter_only_on_cols_array);
   $filter_only_on_cols_array = array_map("intval", $filter_only_on_cols_array);
   
