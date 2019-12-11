@@ -21,9 +21,9 @@ function epfl_table_filter_block($attributes, $inner_content)
   // Adding CSS
   wp_enqueue_style('epfl-table-filter-style.css');
 
-  $large_display        = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
-  $placeholder          = Utils::get_sanitized_attribute( $attributes, 'placeHolder');
-  $header_options       = Utils::get_sanitized_attribute( $attributes, 'tableHeaderOptions', '');
+  $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
+  $placeholder    = Utils::get_sanitized_attribute( $attributes, 'placeHolder');
+  $header_options = Utils::get_sanitized_attribute( $attributes, 'tableHeaderOptions', '');
   
   // Filtering option
   $filter_only_on_cols_array  = explode(",", Utils::get_sanitized_attribute( $attributes, 'filterOnlyOnCols', ''));
