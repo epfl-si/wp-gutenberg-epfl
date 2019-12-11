@@ -3,6 +3,7 @@
 
     $predefined_faculty = get_query_var('epfl_labs-predefined_faculty');
     $predefined_institute = get_query_var('epfl_labs-predefined_institute');
+    $predefined_field = get_query_var('epfl_labs-predefined_field');
 ?>
 
 <script type='text/javascript'>
@@ -39,10 +40,10 @@ window.onload = function() {  // wait that jQuery is loaded
             });
         });
 
-        <?php if (!empty($predefined_faculty) && empty($predefined_institute)): ?>
+        <?php if ( !empty($predefined_faculty) && empty($predefined_institute) ): ?>
         $('#select-faculty').change();
         <?php endif;?>
-        <?php if (!empty($predefined_institute)): ?>
+        <?php if ( !empty($predefined_institute) ): ?>
         $('#select-institute').change();
         <?php endif;?>
     });

@@ -49,11 +49,11 @@ function polylang_json_api_languages() {
 add_action( 'rest_api_init' , __NAMESPACE__ . '\polylang_json_api_init' );
 
 /**
- * Only allow blocks starting with "epfl/" in editor. If others blocks have to be allowed too, comoing from WordPress 
- * or others plugins, you'll have to add another filter to add them, for example in a MU-Plugin. But be careful to 
+ * Only allow blocks starting with "epfl/" in editor. If others blocks have to be allowed too, comoing from WordPress
+ * or others plugins, you'll have to add another filter to add them, for example in a MU-Plugin. But be careful to
  * register the filter (add_filter) with a lower priority (ex: 99) to ensure it will be executed after this function.
  * And also use the content of $allowed_block_types to know which blocks are already allowed and add the new ones.
- * 
+ *
  * @param Array|Boolean $allowed_block_types Array (or bool=True if all block allowed) with blocks already allowed.
  * @param Object $post Post resource data
  */
@@ -75,7 +75,7 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
             $allowed_block_types[] = $block_name;
         }
     }
-    
+
   	return $allowed_block_types;
 }
 
@@ -91,3 +91,5 @@ require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-magistrale/epfl-magist
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-polylex-search/epfl-polylex-search.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-servicenow-search/epfl-servicenow-search.php';
 require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-study-plan/epfl-study-plan.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-study-plan/epfl-study-plan.php';
+require_once plugin_dir_path( __FILE__ ).'shortcodes/epfl-fields-of-research-list/controller.php';
