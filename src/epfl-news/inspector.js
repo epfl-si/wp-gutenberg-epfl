@@ -23,9 +23,11 @@ export default class InspectorControlsNews extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            channels : null,
+            selectedChannelId: 1,
+            channels: null,
             categories: null,
             themes: null,
+            sections: null,
         }
     }
 
@@ -34,9 +36,9 @@ export default class InspectorControlsNews extends Component {
         let apiRestUrl = "https://actu.epfl.ch/api/v1/";
 
         let entryPointChannels = `${apiRestUrl}channels/?format=json&limit=800`;
-		axios.get(entryPointChannels)
-			.then( response => response.data.results )
-			.then( channels => this.setState({ channels }) )
+		    axios.get(entryPointChannels)
+            .then( response => response.data.results )
+            .then( channels => this.setState({ channels }) )
             .catch( err => console.log(err))
 
         let entryPointCategories = `${apiRestUrl}categories/?format=json&limit=10`;
@@ -50,12 +52,38 @@ export default class InspectorControlsNews extends Component {
             .then( response => response.data.results )
             .then( themes => this.setState({ themes }) )
             .catch( err => console.log(err))
-	}
+
+        let channelId = this.props.attributes.channel;
+        if (channelId == null) {
+          channelId = 1;
+        }
+
+        let entryPointsSections = `${apiRestUrl}channels/${channelId}/projects/?format=json&limit=10`;
+        axios.get(entryPointsSections)
+        .then( response => response.data )
+        .then( sections => this.setState({ sections }) )
+        .catch( err => console.log(err))
+        
+    }
+    
+    componentDidUpdate() {
+        if (this.state.selectedChannelId !== this.props.attributes.channel) {
+
+            this.setState({ selectedChannelId: this.props.attributes.channel });
+            let entryPointsSections = `https://actu.epfl.ch/api/v1/${apiRestUrl}channels/${this.props.attributes.channel}/projects/?format=json&limit=10`;
+            
+            axios.get(entryPointsSections)
+                .then( response => response.data )
+                .then( sections => this.setState({ sections }) )
+                .catch( err => console.log(err))
+        }
+    }
 
     render() {
 
-        const { attributes, setAttributes } = this.props
+        const { attributes, setAttributes } = this.props;
         const handleThemesChange = ( themes ) => setAttributes( { themes: JSON.stringify( themes ) } );
+        const handleSectionsChange = ( sections ) => setAttributes( { sections: JSON.stringify( sections ) } );
 
         let content = "";
 
@@ -96,6 +124,31 @@ export default class InspectorControlsNews extends Component {
             this.state.themes.forEach(theme => {
                 optionsThemesList.push({ label: theme.en_label, value: theme.id });
             });
+
+            let optionsSectionsList = [
+              { value: '0', label: __('No filter', 'epfl') },
+            ];
+            
+            let sectionControl;
+            if (this.state.sections.length !== 0) {
+
+              this.state.sections.forEach(section => {
+                optionsSectionsList.push({ label: section.en_label, value: section.id });
+              });
+
+              sectionControl = <PanelBody title={ __( 'Sections', 'epfl') }>
+                  <PanelRow>
+                      <Select
+                          id='epfl-news-sections'
+                          name='select-three'
+                          value={ JSON.parse( attributes.sections ) }
+                          onChange={ handleSectionsChange }
+                          options={ optionsSectionsList }
+                          isMulti='true'
+                      />
+                    </PanelRow>
+              </PanelBody>
+            }
 
             let nbNewsControl;
             if (attributes.template == 'listing') {
@@ -149,6 +202,7 @@ export default class InspectorControlsNews extends Component {
                             onChange={ lang => setAttributes( { lang } ) }
 	                    />
                     </PanelBody>
+                    { sectionControl }
                     <PanelBody title={ __( 'Themes', 'epfl') }>
                         <PanelRow>
                             <Select
@@ -170,6 +224,7 @@ export default class InspectorControlsNews extends Component {
                             onChange={ category => setAttributes( { category } ) }
 	                    />
                     </PanelBody>
+                    
                 </InspectorControls>
             )
         }

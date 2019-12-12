@@ -112,7 +112,7 @@ function epfl_news_block( $attributes ) {
   $nb_news       = Utils::get_sanitized_attribute( $attributes, 'nbNews', 3 );
   $category      = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
   $themes        = Utils::get_sanitized_attribute( $attributes, 'themes' );
-  $projects      = Utils::get_sanitized_attribute( $attributes, 'projects');
+  $projects      = Utils::get_sanitized_attribute( $attributes, 'sections');
 
   /*
   var_dump("Channel: " . $channel);

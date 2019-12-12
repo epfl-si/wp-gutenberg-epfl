@@ -393,7 +393,7 @@
   font-family: "SuisseIntl", Arial, sans-serif !important;
   color: #212121; }
 
-#epfl-news-themes {
+#epfl-news-themes, #epfl-news-sections {
   width: 100% !important; }
 /**
  * #.# Common SCSS
