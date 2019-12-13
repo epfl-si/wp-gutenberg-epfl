@@ -87,7 +87,7 @@ function CustomTeaserPanel ( props ) {
 
     return (
         <div>
-            <h4>{`Custom teaser ${index}`}</h4>
+            <h4>{ __('Custom teaser', 'epfl') + ` ${index}` }</h4>
             <TextControl
                 label={ __('Title', 'epfl') }
                 value={ attributes['title' + index] || ''}
@@ -156,7 +156,7 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'epfl'),
-	description: 'v1.1.3',
+	description: 'v1.1.4',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -181,12 +181,12 @@ registerBlockType( 'epfl/custom-teaser', {
                       <ToggleControl
                           label={ __('Open links in a new tab', 'epfl') }
                           checked={ attributes.openLinksNewTab }
-                          onChange={ () => setAttributes( { openLinksNewTab: ! attributes.openLinksNewTab } ) }
+                          onChange={ openLinksNewTab => setAttributes( { openLinksNewTab } ) }
                       />
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
-                    <h2>EPFL Custom Teaser</h2>
+                    <h2>{ __('EPFL Custom Teaser', 'epfl') } </h2>
                     <TextControl
                         label={ __('Section title', 'epfl') }
                         value={ attributes.titleSection }

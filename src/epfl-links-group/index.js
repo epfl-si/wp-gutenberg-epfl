@@ -74,7 +74,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.1.2',
+	description: 'v1.1.3',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -91,23 +91,22 @@ registerBlockType( 'epfl/links-group', {
                     <ToggleControl
                         label={ __('Open links in a new tab', 'epfl') }
                         checked={ attributes.openLinksNewTab }
-                        onChange={ () => setAttributes( { openLinksNewTab: ! attributes.openLinksNewTab } ) }
+                        onChange={ openLinksNewTab => setAttributes( { openLinksNewTab } ) }
                     />
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
-                    <h2>EPFL Links group</h2>
+                    <h2>{ __('EPFL Links group', 'epfl') }</h2>
                     <TextControl
                         label={ __('Title', 'epfl') }
                         value={ attributes.title }
                         onChange={ title => setAttributes( { title } ) }
-                        help={ <a target="_blank" href="https://epfl-idevelop.github.io/elements/#/molecules/links-group">{ __('Documentation', 'epfl') }</a> }
                     />
                     <TextControl
                         label={ __('URL', 'epfl') }
                         value={ attributes.mainUrl }
                         onChange={ mainUrl => setAttributes( { mainUrl } ) }
                     />
-                    <h4>Links</h4>
+                    <h4>{ __('Links', 'epfl') }</h4>
                     {[...Array(maxLinksGroup)].map((x, i) =>
                     <LinkGroupPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}

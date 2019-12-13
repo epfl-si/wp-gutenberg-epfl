@@ -22,15 +22,15 @@ const { Fragment } = wp.element;
 
 function testTime(attributes) {
 	if (!attributes.startDateTime || !attributes.endDateTime) {
-		return (<p><b>Warning</b> <i>Please choose a time in the sidebar</i></p>)
+		return (<p><b>{ __('Warning', 'epfl') }</b> <i>{ __('Please choose a time in the sidebar', 'epfl') }</i></p>)
 	} else {
-		return(<i>From {attributes.startDateTime.substring(0,10)}, {attributes.startDateTime.substring(11,20)} to {attributes.endDateTime.substring(0,10)}, {attributes.endDateTime.substring(11,20)}</i> )
+		return(<i>{ __('From', 'epfl') } {attributes.startDateTime.substring(0,10)}, {attributes.startDateTime.substring(11,20)} { __('to', 'epfl') } {attributes.endDateTime.substring(0,10)}, {attributes.endDateTime.substring(11,20)}</i> )
 	}
 };
 
 registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.4',
 	icon: schedulerIcon,
 	category: 'common',
 	attributes: {
@@ -70,7 +70,7 @@ registerBlockType( 'epfl/scheduler', {
             </InspectorControls>
 
             <div className={ className }>
-				<h2>EPFL Scheduler</h2>
+				<h2>{ __('EPFL Scheduler', 'epfl') }</h2>
 				{testTime(attributes)}
                 <InnerBlocks />
             </div>

@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/custom-highlight', {
 	title: __( 'EPFL Custom Highlight', 'epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: customHighlightIcon,
 	category: 'common',
 	attributes: {
@@ -90,7 +90,7 @@ registerBlockType( 'epfl/custom-highlight', {
 				/>
 			</InspectorControls>
 			<div className={ className }>
-				<h2>EPFL Custom Highlight</h2>
+				<h2>{ __('EPFL Custom Highlight', 'epfl') }</h2>
 				<TextControl
 					label={ __('Title', 'epfl')}
 					value={ attributes.title }
