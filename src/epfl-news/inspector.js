@@ -70,7 +70,7 @@ export default class InspectorControlsNews extends Component {
         if (this.state.selectedChannelId !== this.props.attributes.channel) {
 
             this.setState({ selectedChannelId: this.props.attributes.channel });
-            let entryPointsSections = `https://actu.epfl.ch/api/v1/${apiRestUrl}channels/${this.props.attributes.channel}/projects/?format=json&limit=10`;
+            let entryPointsSections = `https://actu.epfl.ch/api/v1/channels/${this.props.attributes.channel}/projects/?format=json&limit=10`;
             
             axios.get(entryPointsSections)
                 .then( response => response.data )
