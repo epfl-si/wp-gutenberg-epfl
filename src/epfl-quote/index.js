@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.4',
 	icon: quoteIcon,
 	category: 'common',
 	attributes: {

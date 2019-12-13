@@ -26,35 +26,40 @@ function epfl_hero_block( $attributes ) {
         ]
     );
 
-    $markup = '<div class="container-full my-3">';
-    $markup .= '<div class="hero">';
-    $markup .= '<div class="hero-content-container">';
-    $markup .= '<h1 class="hero-title">' . $title . '</h1>';
-    if (!empty($text)) {
-      $markup .= '<div class="hero-content">';
-      $markup .= $text;
-      $markup .= '</div>';
-    }
-    $markup .= '</div>';
-    $markup .= '<div class="hero-img">';
-    $markup .= '<figure class="cover">';
-    $markup .= '<picture>';
-    $markup .= $image;
-    $markup .= '</picture>';
-    $markup .= '<figcaption>';
-    $markup .= '<button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="' . esc_html($description) . '">';
-    $markup .= '<svg class="icon" aria-hidden="true">';
-    $markup .= '<use xlink:href="#icon-info"></use>';
-    $markup .= '</svg>';
-    $markup .= '<svg class="icon icon-rotate-90" aria-hidden="true">';
-    $markup .= '<use xlink:href="#icon-chevron-right"></use>';
-    $markup .= '</svg>';
-    $markup .= '</button>';
-    $markup .= '<p class="sr-only">' . esc_html($description) . '</p>';
-    $markup .= '</figcaption>';
-    $markup .= '</div>';
-    $markup .= '</div>';
-    $markup .= '</div>';
+    ob_start();
+?>
 
-    return $markup;
+<div class="container-full my-3">
+  <div class="hero">
+    <div class="hero-content-container">
+      <h1 class="hero-title"><?PHP echo $title; ?></h1>
+    <?php
+if (!empty($text)) { ?>
+      <div class="hero-content"><?PHP echo $text ?></div>
+<?PHP } ?>
+
+    </div>
+    <div class="hero-img">
+      <figure class="cover">
+        <picture><?PHP echo $image; ?></picture>
+        <figcaption>
+          <button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="<?PHP echo esc_html($description); ?>">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-info"></use>
+            </svg>
+            <svg class="icon icon-rotate-90" aria-hidden="true">
+              <use xlink:href="#icon-chevron-right"></use>
+            </svg>
+          </button>
+          <p class="sr-only"><?PHP echo esc_html($description); ?></p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
 }

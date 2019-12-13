@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'epfl'),
-	description: 'v1.2.0',
+	description: 'v1.2.1',
 	icon: 'id',
 	category: 'common',
 	attributes: {

@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: videoIcon,
 	category: 'common',
 	attributes: {

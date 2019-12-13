@@ -12,15 +12,16 @@ function epfl_map_block( $attributes ) {
     $lang    = get_current_or_default_language();
     $map_url = 'https://plan.epfl.ch/iframe/?q=' . $query . '&amp;lang=' . $lang . '&amp;map_zoom=10';
 
-    $markup = '<div class="container my-3">';
-    $markup .= '<div class="embed-responsive embed-responsive-16by9">';
-    $markup .= '<iframe ';
-    $markup .= 'frameborder="0" ';
-    $markup .= 'scrolling="no" ';
-    $markup .= 'src="' . esc_url($map_url) . '"';
-    $markup .= 'class="embed-responsive-item" ';
-    $markup .= ' ></iframe>';
-    $markup .= '</div>';
-    $markup .= '</div>';
-    return $markup;
+    ob_start();
+?>    
+<div class="container my-3">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe frameborder="0" scrolling="no" src="<?PHP echo esc_url($map_url); ?>" class="embed-responsive-item" ></iframe>
+    </div>
+</div>
+
+<?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
 }

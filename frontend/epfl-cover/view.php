@@ -25,31 +25,28 @@ function epfl_cover_block( $attributes ) {
         ]
     );
 
-    $content = '<div class="container my-3">';
+    ob_start();
+?>    
+<div class="container my-3">
+    <figure class="cover">
+        <picture><?PHP echo $attachement; ?></picture>
 
-    $content .= '<figure class="cover">';
-    $content .= '<picture>';
-    $content .= $attachement;
-    $content .= '</picture>';
+<?PHP if (!empty($description)) { ?>
 
-    if (!empty($description)) {
+        <figcaption>
+            <button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="<?PHP echo esc_attr($description); ?>">
+                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-info"></use></svg>
+                <svg class="icon icon-rotate-90" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg>
+            </button>
+            <p class="sr-only"><?PHP echo esc_html($description); ?></p>
+        </figcaption>
+<?PHP } ?>
 
-        $content .= '<figcaption>';
-        $content .= '<button';
-        $content .= ' aria-hidden="true"';
-        $content .= ' type="button"';
-        $content .= ' class="btn-circle"';
-        $content .= ' data-toggle="popover"';
-        $content .= ' data-content="' . esc_attr($description) . '"';
-        $content .= '>';
-        $content .= '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-info"></use></svg>';
-        $content .= '<svg class="icon icon-rotate-90" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg>';
-        $content .= '</button>';
-        $content .= '<p class="sr-only">' . esc_html($description) . '</p>';
-        $content .= '</figcaption>';
-    }
-    $content .= '</figure>';
-    $content .= '</div>';
+    </figure>
+</div>
 
+<?php
+    $content = ob_get_contents();
+    ob_end_clean();
     return $content;
 }
