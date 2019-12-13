@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/post-teaser',
 	{
 		title: __( "EPFL Post Teaser", 'epfl'),
-		description: 'v1.0.1',
+		description: 'v1.0.2',
 		category: 'common',
 		keywords: [
             __( 'page' , 'epfl'),
@@ -39,7 +39,7 @@ registerBlockType(
 			const { attributes, className, setAttributes } = props
 			return (
 				<Fragment>
-					<h2>EPFL Post Teaser</h2>
+					<h2>{ __('EPFL Post Teaser', 'epfl') }</h2>
 					<InspectorControlsPostTeaser { ...{ attributes, setAttributes } } />
 				</Fragment>
 			)

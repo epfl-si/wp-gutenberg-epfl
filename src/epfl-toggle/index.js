@@ -9,14 +9,12 @@ const {
 
 const {
     InspectorControls,
-	RichText,
 	PlainText,
 	InnerBlocks,
 } = wp.editor;
 
 const {
     PanelBody,
-	TextControl,
 	RadioControl,
 } = wp.components;
 
@@ -25,7 +23,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/toggle', {
 
 	title: __( 'EPFL Toggle', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.4',
 	icon: toggleIcon,
 	category: 'common',
 	attributes: {
@@ -62,7 +60,7 @@ registerBlockType( 'epfl/toggle', {
 				</PanelBody>
 			</InspectorControls>
 			<div className={ className }>
-				<h2>EPFL Toggle</h2>
+				<h2>{ __('EPFL Toggle', 'epfl') }</h2>
 				<PlainText
 					placeholder={ __('Title', 'epfl') }
 					value={ attributes.title }

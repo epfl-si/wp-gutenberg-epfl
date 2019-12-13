@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/contact', {
     title: __( 'EPFL Contact', 'epfl'),
-    description: 'v1.0.4',
+    description: 'v1.0.5',
     icon: contactIcon,
     category: 'common',
     attributes: {
@@ -78,8 +78,8 @@ registerBlockType( 'epfl/contact', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>EPFL Contact</h2>
-                    <label><strong>Introduction</strong></label>
+                    <h2>{ __('EPFL Contact', 'epfl') }</h2>
+                    <label><strong>{ __('Introduction', 'epfl') }</strong></label>
                     <hr />
                     <InnerBlocks />
                     <label><strong>{ __( 'Timetable', 'epfl' ) }</strong></label>

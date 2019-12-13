@@ -68,7 +68,7 @@ registerBlockType( 'epfl/hero', {
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/hero-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className }>
-                        <h2>EPFL Hero</h2>
+                        <h2>{ __('EPFL Hero', 'epfl') }</h2>
                         <TextControl
                             label={ __('Title','epfl')}
                             value={ attributes.title }

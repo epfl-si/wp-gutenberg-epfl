@@ -106,12 +106,12 @@ export default class PreviewMemento extends Component {
 
           let placeAndRoom;
           if (!!event.place_and_room) {
-            placeAndRoom = <span><br/>Place and room : <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
+            placeAndRoom = <span><br/>{ __('Place and room :', 'epfl') } <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
           }
 
           let eventSpeakerContent;
           if (!!event.speaker) {
-            eventSpeakerContent = <span>With <b>{renderHTML(event.speaker)}</b></span>;
+            eventSpeakerContent = <span>{ __('With', 'epfl') } <b>{renderHTML(event.speaker)}</b></span>;
           }
 
           let academicCalendarCategory;
@@ -140,7 +140,7 @@ export default class PreviewMemento extends Component {
 
           let category;
           if (!!event.category.en_label) {
-            category = <span>Category : <b>{ event.category.en_label }</b></span>
+            category = <span>{ __('Category :', 'epfl') } <b>{ event.category.en_label }</b></span>
           }
 
 					return (

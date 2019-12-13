@@ -12,8 +12,6 @@ const {
 
 const {
     TextControl,
-    Placeholder,
-    IconButton,
 } = wp.components;
 
 const { Fragment } = wp.element;

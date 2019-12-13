@@ -13,7 +13,6 @@ const {
 } = wp.editor;
 
 const {
-    PanelBody,
     TextControl,
     TextareaControl,
 } = wp.components;
@@ -50,7 +49,7 @@ registerBlockType( 'epfl/tableau', {
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/tableau-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 					<hr/>
-						<h4>Tableau dimensions</h4>
+						<h4>{ __('Tableau dimensions', 'epfl') }</h4>
                         <TextControl
 							label={ __('Width', 'epfl') }
                             value={ attributes.width }
@@ -71,14 +70,14 @@ registerBlockType( 'epfl/tableau', {
                         />
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>EPFL TABLEAU</h2>
+                    <h2>{ __('EPFL Tableau', 'epfl') }</h2>
                         <TextareaControl
 							label={ __('EPFL Tableau content', 'epfl') }
                             value={ attributes.embedCode }
                             onChange={ embedCode => setAttributes( { embedCode } ) }
                             help={ __('Paste here the content of the Embed Code when you press the "Share" button on an EPFL tableau view', 'epfl') }
                         />
-                    <h4>OR</h4>
+                    <h4>{ __('OR', 'epfl') }</h4>
                         <TextControl
 							label={ __('Tableau Name', 'epfl') }
                             value={ attributes.tableauName }
