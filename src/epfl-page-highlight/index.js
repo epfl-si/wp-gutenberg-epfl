@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/page-highlight',
 	{
 		title: __( "EPFL Page Highlight", 'epfl'),
-		description: 'v1.0.2',
+		description: 'v1.0.3',
 		category: 'common',
 		keywords: [
             __( 'page' , 'epfl'),
