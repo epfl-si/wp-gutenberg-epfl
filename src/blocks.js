@@ -39,6 +39,7 @@ import './epfl-tableau'
 import './epfl-toggle'
 import './epfl-video'
 import './epfl-faq'
+import './epfl-button'
 
 
 const getHomeURL = () => {

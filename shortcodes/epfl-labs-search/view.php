@@ -4,10 +4,14 @@
     $sites = get_query_var('epfl_labs-sites');
     $predefined_faculty = get_query_var('epfl_labs-predefined_faculty');
     $predefined_institute = get_query_var('epfl_labs-predefined_institute');
+    $predefined_field = get_query_var('epfl_labs-predefined_field');
     $combo_list_content = get_query_var('eplf_labs-combo_list_content');
 ?>
 
 <div class="container my-3">
+    <?php if (!(empty($predefined_field))): ?>
+        <h2 class="mb-3 font-weight-bold"><?php echo $predefined_field; ?></h2>
+    <?php endif; ?>
     <div id="sites-list" class="d-flex flex-column">
         <div class="form-group">
             <input
@@ -19,6 +23,12 @@
             >
             <div id="selects-filter" class="d-flex flex-wrap flex-column flex-md-row">
                 <?php foreach($combo_list_content as $type => $names): ?>
+                    <?php
+                    // dont show a combobox for field of research
+                    if ($type == "field-of-research") {
+                        continue;
+                    }
+                    ?>
                 <div>
                     <select
                         id="select-<?php echo esc_html($type); ?>"
@@ -33,9 +43,10 @@
                                 case "institute":
                                     _e('All institutes', 'epfl');
                                     break;
-                                case "field-of-research":
-                                    _e('All field of research', 'epfl');
-                                    break;
+                                #TODO: if you use this, add a 's' to "All field"
+                                #case "field-of-research":
+                                #    _e('All field of research', 'epfl');
+                                #    break;
                                 default:
                                 _e("All", 'epfl');
                             }
@@ -56,7 +67,7 @@
         <div id="sorting-header" class="flex-row d-md-flex pt-1 pb-1 border-bottom align-items-center mb-2">
                 <div class="sort col-2" data-sort="site-title"><a href="#" onclick="return false;"><?php _e('Acronym', 'epfl') ?></a></div>
                 <div class="sort col-7" data-sort="site-tagline"><a href="#" onclick="return false;"><?php _e('Title', 'epfl') ?></a></div>
-                <div class="sort col-2" data-sort="site-tags"><a href="#" onclick="return false;"><?php _e('Tags', 'epfl') ?></a></div>
+                <div class="sort col-3" data-sort="site-tags"><a href="#" onclick="return false;"><?php _e('Tags', 'epfl') ?></a></div>
         </div>
         <div class="list">
 
@@ -66,7 +77,7 @@
                 <div class="site-title col-2"><?php echo esc_html($site->title); ?></div>
                 <div class="col-7"><a class="site-url" href="<?php echo esc_html($site->url); ?>"><span class="site-tagline"><?php echo esc_html($site->tagline); ?></span></a></div>
                 <?php if (!(empty($site->tags))): ?>
-                <div class="site-tags col-2 pt-1 d-flex flex-row"
+                <div class="site-tags col-3 pt-1 row justify-content-start ml-0"
                     data-tags="<?php
                                 foreach($site->tags as $tag):
                                     echo esc_html($tag->name);
@@ -76,7 +87,11 @@
                                 endforeach;
                                 ?>">
                     <?php foreach($site->tags as $tag): ?>
-                    <a href="<?php echo esc_html($tag->url); ?>" class="tag tag-primary site-tags-<?php echo esc_html($tag->type); ?>"><?php echo esc_html($tag->name); ?></a>
+                        <?php if ($tag->type != 'field-of-research'): ?>
+                            <div>
+                                <a href="<?php echo esc_html($tag->url); ?>" class="tag tag-primary site-tags-<?php echo esc_html($tag->type); ?>"><?php echo esc_html($tag->name); ?></a>
+                            </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
                 <?php endif; ?>

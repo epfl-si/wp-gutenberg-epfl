@@ -37,6 +37,10 @@ const getAttributes = () => {
         tableHeaderOptions: {
             type: 'string',
         },
+        filterOnlyOnCols: {
+            type: 'string',
+        },
+        
     };
 
     return atts;
@@ -50,7 +54,7 @@ let optionsHeader = [
 
 registerBlockType( 'epfl/table-filter', {
 	title: __( 'EPFL Table Filter', 'epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: tableFilterIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -64,7 +68,7 @@ registerBlockType( 'epfl/table-filter', {
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/table-filter-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-                    <PanelBody title='Format'>
+                    <PanelBody title={ __('Format', 'epfl') }>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }
                             checked={ attributes.largeDisplay }
@@ -82,6 +86,14 @@ registerBlockType( 'epfl/table-filter', {
 							onChange={ tableHeaderOptions => setAttributes( { tableHeaderOptions } ) }
 							options={ optionsHeader }
 						/>
+                    </PanelBody>
+                    <PanelBody title={ __('Filter options', 'epfl') }>
+                        <strong>{__( 'Filter only on column(s) no', 'epfl')}</strong>
+                        <TextControl
+                            value={ attributes.filterOnlyOnCols }
+                            help={ __('If multiple columns, separate with comma', 'epfl') }
+                            onChange={ filterOnlyOnCols => setAttributes( { filterOnlyOnCols } ) }
+                        />
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>

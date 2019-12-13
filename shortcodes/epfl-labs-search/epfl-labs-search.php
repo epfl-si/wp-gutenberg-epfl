@@ -2,7 +2,7 @@
 /**
 * Plugin Name: EPFL labs
 * Description: Provide a way to search information about labs and their tags
-* @version: 1.0
+* @version: 1.1
 * @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
 */
 
@@ -20,17 +20,23 @@ function process_shortcode($atts) {
         'institute' => ''
     ), $atts );
 
+    // field of research can come from the url
+    if (isset($_GET['field-of-research'])) {
+        $atts['field'] = stripslashes($_GET['field-of-research']);
+    }
+
     // sanitize what we get
     $faculty = sanitize_text_field($atts["faculty"]);
     $institute = sanitize_text_field($atts["institute"]);
+    $field = sanitize_text_field($atts["field"]);
 
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
-    $sites = Utils::get_items($url);
+    $sites = Utils::get_items($url, 300, 5, True);
 
     ob_start();
     try {
-        renderLabsSearch($sites, $faculty, $institute);
+        renderLabsSearch($sites, $faculty, $institute, $field);
         return ob_get_contents();
     } finally {
         ob_end_clean();

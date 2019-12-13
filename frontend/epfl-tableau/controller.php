@@ -6,6 +6,9 @@ require_once(dirname(__FILE__).'/view.php');
 
 function epfl_tableau_block( $attributes ) {
 
+    $width = "";
+    $height = "";
+    
     # or get the already set url, width and height
     if (!empty($attributes['embedCode'])) {
         # from a copy-paste of a embed view, parse this information :
@@ -22,6 +25,7 @@ function epfl_tableau_block( $attributes ) {
             $tableau_name = $matches[1];
         }
     }
+
     # set or overload url, width and height if set in the shortcode
     if (!empty($attributes['tableauName'])) {
         $tableau_name = $attributes['tableauName'];
