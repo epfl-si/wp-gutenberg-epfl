@@ -20,9 +20,9 @@ function epfl_faq_item_block($attributes, $inner_content)
 
     ob_start();
 ?>
-  <div class="faq-item" style="border-top: 1px solid #c1c1c1; padding-top: 10px; padding-bottom: 10px;" id="<?PHP echo $anchor; ?>">
-    <h4 style="font-weight: bold;" class="faq-item-question"><?PHP echo $question ?></h4>
-    <?PHP echo $inner_content ?>
+  <div class="faq-item" style="border-top: 1px solid #c1c1c1; padding-top: 10px; padding-bottom: 10px;" id="<?php echo $anchor; ?>">
+    <h4 style="font-weight: bold;" class="faq-item-question"><?php echo $question ?></h4>
+    <?php echo $inner_content ?>
   </div>
 
 <?php

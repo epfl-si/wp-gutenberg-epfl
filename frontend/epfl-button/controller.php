@@ -19,8 +19,8 @@ function epfl_button_block( $attributes ) {
     if($button_align == 'centered') echo '<center>';
 ?>
     
-    <a href="<?PHP echo $link; ?>" <?php if($open_link_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?>>
-        <button class="btn btn-<?PHP echo $button_style; ?>"><?PHP echo $text; ?></button>
+    <a href="<?php echo $link; ?>" <?php if($open_link_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?>>
+        <button class="btn btn-<?php echo $button_style; ?>"><?php echo $text; ?></button>
     </a>
     
 
