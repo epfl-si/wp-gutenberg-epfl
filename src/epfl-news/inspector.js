@@ -57,7 +57,6 @@ export default class InspectorControlsNews extends Component {
         if (channelId == null) {
           channelId = 1;
         }
-
         let entryPointsSections = `${apiRestUrl}channels/${channelId}/projects/?format=json&limit=10`;
         axios.get(entryPointsSections)
         .then( response => response.data )
@@ -68,6 +67,8 @@ export default class InspectorControlsNews extends Component {
     
     componentDidUpdate() {
         if (this.state.selectedChannelId !== this.props.attributes.channel) {
+
+            this.props.attributes.sections = null;
 
             this.setState({ selectedChannelId: this.props.attributes.channel });
             let entryPointsSections = `https://actu.epfl.ch/api/v1/channels/${this.props.attributes.channel}/projects/?format=json&limit=10`;
