@@ -87,7 +87,7 @@ function epfl_custom_highlight_block( $attributes ) {
 
 
 
-<?PHP
+<?php
     $content = ob_get_contents();
 
     ob_end_clean();

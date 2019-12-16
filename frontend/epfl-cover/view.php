@@ -29,18 +29,18 @@ function epfl_cover_block( $attributes ) {
 ?>    
 <div class="container my-3">
     <figure class="cover">
-        <picture><?PHP echo $attachement; ?></picture>
+        <picture><?php echo $attachement; ?></picture>
 
-<?PHP if (!empty($description)) { ?>
+<?php if (!empty($description)) { ?>
 
         <figcaption>
-            <button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="<?PHP echo esc_attr($description); ?>">
+            <button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="<?php echo esc_attr($description); ?>">
                 <svg class="icon" aria-hidden="true"><use xlink:href="#icon-info"></use></svg>
                 <svg class="icon icon-rotate-90" aria-hidden="true"><use xlink:href="#icon-chevron-right"></use></svg>
             </button>
-            <p class="sr-only"><?PHP echo esc_html($description); ?></p>
+            <p class="sr-only"><?php echo esc_html($description); ?></p>
         </figcaption>
-<?PHP } ?>
+<?php } ?>
 
     </figure>
 </div>

@@ -28,31 +28,31 @@ function epfl_post_highlight_block( $attributes ) {
     ob_start();
 ?>    
 <div class="container-full my-3">
-    <div class="fullwidth-teaser '<?PHP echo $classes ?>">
+    <div class="fullwidth-teaser '<?php echo $classes ?>">
 
-<?PHP if (has_post_thumbnail( $post )) { ?>
+<?php if (has_post_thumbnail( $post )) { ?>
         <picture>
-            <source media="(min-width: 1140px)" srcset="<?PHP echo get_the_post_thumbnail_url( $post, 'large' ) ?>">
-                <img src="<?PHP echo get_the_post_thumbnail_url( $post ); ?>" aria-labelledby="background-label" alt="" />
+            <source media="(min-width: 1140px)" srcset="<?php echo get_the_post_thumbnail_url( $post, 'large' ) ?>">
+                <img src="<?php echo get_the_post_thumbnail_url( $post ); ?>" aria-labelledby="background-label" alt="" />
         </picture> ';
-<?PHP } ?>
+<?php } ?>
 
         <div class="fullwidth-teaser-text">
             <div class="fullwidth-teaser-header">
                 <div class="fullwidth-teaser-title">
-                    <h3><?PHP echo $post->post_title; ?></h3>
+                    <h3><?php echo $post->post_title; ?></h3>
                 </div>
-                <a href="<?PHP echo  get_permalink( $post ) ?>" aria-label="<?PHP echo __("Link to read more of that post", 'epfl'); ?>" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block"><?PHP echo __( "Read more", 'epfl' ); ?></a>
+                <a href="<?php echo  get_permalink( $post ) ?>" aria-label="<?php echo __("Link to read more of that post", 'epfl'); ?>" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block"><?php echo __( "Read more", 'epfl' ); ?></a>
             </div>
 
-<?PHP if (!empty($content)) { ?>
+<?php if (!empty($content)) { ?>
             <div class="fullwidth-teaser-content">
-                <p><?PHP echo epfl_excerpt( $post ); ?></p>
+                <p><?php echo epfl_excerpt( $post ); ?></p>
             </div>
-<?PHP } ?>
+<?php } ?>
 
             <div class="fullwidth-teaser-footer">
-                <a href="<?PHP echo  get_permalink( $post ) ?>" aria-label="<?PHP echo __("Link to read more of that post", 'epfl'); ?>" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block"><?PHP echo __( "Read more", 'epfl' ); ?></a>
+                <a href="<?php echo  get_permalink( $post ) ?>" aria-label="<?php echo __("Link to read more of that post", 'epfl'); ?>" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block"><?php echo __( "Read more", 'epfl' ); ?></a>
             </div>
         </div>
     </div>

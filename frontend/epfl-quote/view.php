@@ -33,11 +33,11 @@ function epfl_quote_block( $attributes ) {
 ?>
 <div class="row my-3">
   <div class="col-6 offset-3 col-sm-4 offset-sm-4 col-md-2 offset-md-0 text-center text-md-right">
-    <picture><?PHP echo $attachment; ?></picture>
+    <picture><?php echo $attachment; ?></picture>
   </div>
   <blockquote class="blockquote mt-3 col-md-10 border-0">
-    <p class="mb-0"><?PHP echo esc_attr($quote); ?></p>
-    <footer class="blockquote-footer"><cite title="<?PHP echo esc_attr($author); ?>"><?PHP echo esc_html($author); ?></cite>, <?PHP echo esc_html($position); ?></footer>
+    <p class="mb-0"><?php echo esc_attr($quote); ?></p>
+    <footer class="blockquote-footer"><cite title="<?php echo esc_attr($author); ?>"><?php echo esc_html($author); ?></cite>, <?php echo esc_html($position); ?></footer>
   </blockquote>
 </div>
 

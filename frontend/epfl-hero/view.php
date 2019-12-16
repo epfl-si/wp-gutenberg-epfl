@@ -32,18 +32,18 @@ function epfl_hero_block( $attributes ) {
 <div class="container-full my-3">
   <div class="hero">
     <div class="hero-content-container">
-      <h1 class="hero-title"><?PHP echo $title; ?></h1>
+      <h1 class="hero-title"><?php echo $title; ?></h1>
     <?php
 if (!empty($text)) { ?>
-      <div class="hero-content"><?PHP echo $text ?></div>
-<?PHP } ?>
+      <div class="hero-content"><?php echo $text ?></div>
+<?php } ?>
 
     </div>
     <div class="hero-img">
       <figure class="cover">
-        <picture><?PHP echo $image; ?></picture>
+        <picture><?php echo $image; ?></picture>
         <figcaption>
-          <button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="<?PHP echo esc_html($description); ?>">
+          <button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="<?php echo esc_html($description); ?>">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-info"></use>
             </svg>
@@ -51,7 +51,7 @@ if (!empty($text)) { ?>
               <use xlink:href="#icon-chevron-right"></use>
             </svg>
           </button>
-          <p class="sr-only"><?PHP echo esc_html($description); ?></p>
+          <p class="sr-only"><?php echo esc_html($description); ?></p>
         </figcaption>
       </figure>
     </div>

@@ -16,7 +16,7 @@ function epfl_map_block( $attributes ) {
 ?>    
 <div class="container my-3">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe frameborder="0" scrolling="no" src="<?PHP echo esc_url($map_url); ?>" class="embed-responsive-item" ></iframe>
+        <iframe frameborder="0" scrolling="no" src="<?php echo esc_url($map_url); ?>" class="embed-responsive-item" ></iframe>
     </div>
 </div>
 

@@ -11,9 +11,9 @@ function epfl_video_render($url, $large_display) {
 
     ob_start();
 ?>
-<div class="<?PHP echo $large_display ? "container": "grid"; ?> my-3">
+<div class="<?php echo $large_display ? "container": "grid"; ?> my-3">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="<?PHP echo esc_url($url); ?>" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" frameborder="0" class="embed-responsive-item"></iframe>
+        <iframe src="<?php echo esc_url($url); ?>" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" frameborder="0" class="embed-responsive-item"></iframe>
     </div>
 </div>
 
