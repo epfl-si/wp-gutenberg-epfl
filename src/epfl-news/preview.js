@@ -17,8 +17,8 @@ export default class PreviewNews extends Component {
 	getURL() {
 		const { attributes } = this.props;
 
-		let newsUrl = `https://actu.epfl.ch/api/v1/channels/${attributes.channel}/news/`;
-        newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
+    let newsUrl = `https://actu.epfl.ch/api/v1/channels/${attributes.channel}/news/`;
+    newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
 
 		if (attributes.category !== 0) {
 			newsUrl += `&category=${attributes.category}`;
@@ -29,13 +29,20 @@ export default class PreviewNews extends Component {
 			themes.forEach(theme => {
 				newsUrl += `&themes=${theme.value}`;
 			});
+    }
+    
+    if (attributes.sections !== null) {
+			let sections = JSON.parse(attributes.sections);
+			sections.forEach(section => {
+				newsUrl += `&projects=${section.value}`;
+			});
 		}
 
 		return newsUrl;
 	}
 
 	getNews() {
-        let newsUrl = this.getURL();
+    let newsUrl = this.getURL();
 
 		axios.get(newsUrl)
 			.then( response => response.data.results )
@@ -84,7 +91,7 @@ export default class PreviewNews extends Component {
 		const { className, attributes } = this.props
 
 		if (attributes.displayLinkAllNews) {
-			let url = `https://actu.epfl.ch/search/${this.state.channelName}`;
+      let url = `https://actu.epfl.ch/search/${this.state.channelName}`;
 			linkAllNews = (
 				<p className="text-center">
 					<a className="link-pretty" href={ url }>Toutes les actualités</a>

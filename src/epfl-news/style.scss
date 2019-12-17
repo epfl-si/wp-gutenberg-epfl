@@ -1,4 +1,3 @@
-
 .wp-block-epfl-news {
     
     a:link { 
@@ -29,9 +28,11 @@
         color: rgb(33, 33, 33);
         font-size: 18px;
     }
+
     .h5 {
         font-weight: 700;
     }
+
     .text-muted {
         color: rgb(112, 112, 112);
         font-weight: 400;
@@ -43,6 +44,6 @@
     }
 }
 
-#epfl-news-themes {
+#epfl-news-themes, #epfl-news-sections {
     width: 100% !important;
 }

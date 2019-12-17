@@ -73,9 +73,9 @@ function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category
 
     // filter by projects
     if ($projects != '') {
-        $projects = explode(',', $projects);
+        $projects = json_decode($projects, true);
         foreach ($projects as $project) {
-            $url .= '&projects=' . $project;
+            $url .= '&projects=' . $project['value'];
         }
     }
     return $url;
@@ -112,7 +112,7 @@ function epfl_news_block( $attributes ) {
   $nb_news       = Utils::get_sanitized_attribute( $attributes, 'nbNews', 3 );
   $category      = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
   $themes        = Utils::get_sanitized_attribute( $attributes, 'themes' );
-  $projects      = Utils::get_sanitized_attribute( $attributes, 'projects');
+  $projects      = Utils::get_sanitized_attribute( $attributes, 'sections');
 
   /*
   var_dump("Channel: " . $channel);
@@ -124,6 +124,7 @@ function epfl_news_block( $attributes ) {
   var_dump("Themes: " . $themes);
   var_dump("Projects: " . $projects);
   */
+  
 
   if (epfl_news_check_required_parameters($channel, $lang) == FALSE) {
       return Utils::render_user_msg("News shortcode: Please check required parameters");

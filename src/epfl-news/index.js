@@ -12,7 +12,7 @@ registerBlockType(
 	'epfl/news',
 	{
 		title: __( "EPFL News", 'epfl'),
-		description: 'v1.0.4',
+		description: 'v1.1.0',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
@@ -46,7 +46,11 @@ registerBlockType(
 			themes: {
 				type: 'string',
 				default: null,
-			},
+      },
+      sections: {
+        type: 'string',
+        default: null,
+      },
 		},
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
