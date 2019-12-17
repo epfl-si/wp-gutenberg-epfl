@@ -69,7 +69,7 @@ function CaptionCardPanel ( props ) {
 
     return (
         <div>
-           <h3>{`Caption card ${index}`} </h3>
+           <h3>{ __('Caption card', 'epfl')+ ` ${index}`}</h3>
            <TextControl
                 label={ __('Title', 'epfl') }
                 value={ attributes['title' + index] || ''}
@@ -135,7 +135,7 @@ function CaptionCardPanel ( props ) {
 
 registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: 'screenoptions',
 	category: 'common',
 	attributes: getAttributes(),

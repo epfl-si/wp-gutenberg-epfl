@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/cover', {
 	title: __( 'EPFL Cover', 'epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.4',
 	icon: coverIcon,
 	category: 'common',
 	attributes: {
@@ -64,7 +64,7 @@ registerBlockType( 'epfl/cover', {
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/cover-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
 			<div className={ className }>
-				<h2>EPFL Cover</h2>
+				<h2>{ __('EPFL Cover', 'epfl') }</h2>
 				{ ! attributes.imageId ? (
                     <MediaUpload
                         onSelect={ onImageSelect }

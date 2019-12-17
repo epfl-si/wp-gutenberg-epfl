@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/page-highlight',
 	{
 		title: __( "EPFL Page Highlight", 'epfl'),
-		description: 'v1.0.1',
+		description: 'v1.0.3',
 		category: 'common',
 		keywords: [
             __( 'page' , 'epfl'),
@@ -32,7 +32,7 @@ registerBlockType(
 			const { attributes, className, setAttributes } = props
 			return (
 				<Fragment>
-                    <h2>EPFL Page Highlight</h2>
+                    <h2>{ __('EPFL Page Highlight', 'epfl') }</h2>
 					<InspectorControlsPageHighlight { ...{ attributes, setAttributes } } />
 				</Fragment>
 			)

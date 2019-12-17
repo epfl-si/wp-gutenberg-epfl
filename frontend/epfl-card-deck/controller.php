@@ -19,7 +19,7 @@ function epfl_card_panel_block($attributes, $inner_content)
     if(empty(trim($title))) return "";
 
     $image_post = empty($image_id)? null : get_post($image_id) ;
-    
+
     $link = empty($link)? null : esc_url($link);
 
     ob_start();
@@ -80,9 +80,9 @@ function epfl_card_deck_block($data, $inner_content) {
   ob_start();
 ?>
 
-<div class="container-full py-3<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
+<div class="container-full py-3 px-4<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
   <div class="card-deck <?php echo (sizeof($matches[0]) == 2) ? ' card-deck-line' : '' ?>">
-    <?php 
+    <?php
     echo $inner_content;
     ?>
   </div>

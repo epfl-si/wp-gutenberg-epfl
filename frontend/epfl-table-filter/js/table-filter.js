@@ -43,7 +43,8 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
     });
     
     // Getting header configuration for current table
-    header_options = $(filter_div).find('input[name="header"]').attr('value').split(',');
+    header_options = $(filter_div).find('input[name="header"]').attr('value');
+    header_options = (header_options.trim() != '')? header_options.split(','): [];
     
     if(header_options.length > 0)
     {

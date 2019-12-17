@@ -12,7 +12,6 @@ const {
 } = wp.editor;
 
 const {
-    PanelBody,
     TextareaControl,
 } = wp.components;
 
@@ -20,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/google-forms', {
 	title: __( 'Google Forms', 'epfl'),
-	description: 'v1.0.6',
+	description: 'v1.0.7',
 	icon: googleFormsIcon,
 	category: 'common',
 	attributes: {
@@ -40,7 +39,7 @@ registerBlockType( 'epfl/google-forms', {
 					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/google-form-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				</InspectorControls>
                 <div className={ className }>
-                    <h2>EPFL GOOGLE FORMS</h2>
+                    <h2>{ __('EPFL Google Forms', 'epfl') }</h2>
                         <TextareaControl
 							label={ __('Google Forms <iframe> HTML code', 'epfl')}
                             value={ attributes.data }

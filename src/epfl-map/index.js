@@ -17,7 +17,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/map', {
 	title: __( 'EPFL Map', 'epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.3',
 	icon: 'admin-site-alt',
 	category: 'common',
 	attributes: {
@@ -36,7 +36,7 @@ registerBlockType( 'epfl/map', {
 					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/map-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				</InspectorControls>
                 <div className={ className }>
-                    <h2>EPFL MAP</h2>
+                    <h2>{ __('EPFL MAP', 'epfl') }</h2>
                     <TextControl
                         value={ attributes.query }
                         onChange={ query => setAttributes( { query } ) }

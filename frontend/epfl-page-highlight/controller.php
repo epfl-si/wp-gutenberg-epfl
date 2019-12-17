@@ -26,43 +26,42 @@ function epfl_page_highlight_block( $attributes ) {
     if ($layout == 'bottom') $classes = 'fullwidth-teaser-horizontal';
     if ($layout == 'left') $classes = 'fullwidth-teaser-left';
 
-    $html = '<div class="container-full my-3">';
-    $html .= '<div class="fullwidth-teaser ' . $classes . '">';
+    ob_start();
+?>
 
-    if (has_post_thumbnail( $page )) {
-        $html .= '<picture>';
-        $html .= '<source';
-        $html .= 'media="(min-width: 1140px)"';
-        $html .= 'srcset="' . get_the_post_thumbnail_url( $page, 'large' ) . '"';
-        $html .= '>';
-        $html .= '<img src="' . get_the_post_thumbnail_url( $page ) . '" aria-labelledby="background-label" alt="An image description" />';
-        $html .= '</picture> ';
-    }
+<div class="container-full my-3">
+    <div class="fullwidth-teaser ' . $classes . '">
 
-    $html .= '<div class="fullwidth-teaser-text">';
-    $html .= '<div class="fullwidth-teaser-header">';
-    $html .= '<div class="fullwidth-teaser-title">';
-    $html .= '<h3>';
-    $html .= $page->post_title;
-    $html .= '</h3>';
-    $html .= '</div>';
-    $html .= '<a href="' . get_permalink( $page ) . '" aria-label="Link to read more of that page" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block">' . esc_html( "Read more", 'epfl' ) . '</a>';
-    $html .= '</div>';
+<?php if (has_post_thumbnail( $page )) { ?>
+        <picture>
+            <source media="(min-width: 1140px)" srcset="<?php echo get_the_post_thumbnail_url( $page, 'large' ); ?>">
+            <img src="<?php echo get_the_post_thumbnail_url( $page ) ?>" aria-labelledby="background-label" alt="An image description" />
+        </picture>
+<?php } ?>
 
-    if (!empty($content)) {
-        $html .= '<div class="fullwidth-teaser-content">';
-        $html .= '<p>';
-        $html .= epfl_excerpt( $page );
-        $html .= '</p>';
-        $html .= '</div>';
-    }
+        <div class="fullwidth-teaser-text">
+            <div class="fullwidth-teaser-header">
+                <div class="fullwidth-teaser-title">
+                    <h3><?php echo $page->post_title; ?></h3>
+                </div>
+                <a href="<?php echo get_permalink( $page ); ?>" aria-label="<?php echo __("Link to read more of that page", 'epfl'); ?>" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block"><?php echo  __( "Read more", 'epfl' )?></a>
+            </div>
 
-    $html .= '<div class="fullwidth-teaser-footer">';
-    $html .= '<a href="' . get_permalink( $page ) . '" aria-label="Link to read more of that page" class="btn btn-primary btn-block d-xl-none">' . esc_html( "Read more", 'epfl' ) . '</a>';
-    $html .= '</div>';
-    $html .= '</div>';
-    $html .= '</div>';
-    $html .= '</div>';
+<?php if (!empty($content)) { ?>
+            <div class="fullwidth-teaser-content">
+                <p><?php echo epfl_excerpt( $page ); ?></p>
+            </div>
+<?php } ?>
 
-    return $html;
+            <div class="fullwidth-teaser-footer">
+                <a href="<?php echo get_permalink( $page ); ?>" aria-label="<?php echo __("Link to read more of that page", 'epfl'); ?>" class="btn btn-primary btn-block d-xl-none"><?php echo __( "Read more", 'epfl' ); ?></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
 }

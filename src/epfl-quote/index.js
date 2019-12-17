@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.5',
 	icon: quoteIcon,
 	category: 'common',
 	attributes: {
@@ -69,7 +69,7 @@ registerBlockType( 'epfl/quote', {
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/quote-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
             <div className={ className }>
-                <h2>EPFL QUOTE</h2>
+                <h2>{ __('EPFL Quote', 'epfl') }</h2>
                 { ! attributes.imageId ? (
                     <MediaUpload
                         onSelect={ onImageSelect }

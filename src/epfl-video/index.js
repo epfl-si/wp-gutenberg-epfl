@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.4',
 	icon: videoIcon,
 	category: 'common',
 	attributes: {
@@ -51,7 +51,7 @@ registerBlockType( 'epfl/video', {
 					</PanelBody>
 				</InspectorControls>
                 <div className={ className }>
-                    <h2>EPFL VIDEO</h2>
+					<h2>{ __('EPFL Video' , 'epfl') }</h2>
 					<TextControl
 						label={ __('URL of the video', 'epfl') }
                         value={ attributes.url }

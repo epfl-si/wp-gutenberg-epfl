@@ -22,7 +22,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'epfl'),
-	description: 'v1.2.0',
+	description: 'v1.2.2',
 	icon: 'id',
 	category: 'common',
 	attributes: {
@@ -68,7 +68,7 @@ registerBlockType( 'epfl/hero', {
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/hero-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className }>
-                        <h2>EPFL Hero</h2>
+                        <h2>{ __('EPFL Hero', 'epfl') }</h2>
                         <TextControl
                             label={ __('Title','epfl')}
                             value={ attributes.title }

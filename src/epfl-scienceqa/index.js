@@ -19,7 +19,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/scienceqa', {
 	title: __( 'EPFL Science QA', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: scienceqaIcon,
 	category: 'common',
 	attributes: {
@@ -55,7 +55,7 @@ registerBlockType( 'epfl/scienceqa', {
 			</InspectorControls>
             <div className={ className }>
                 <div id="preview-box">
-                    <h2>EPFL SCIENCE QA</h2>
+                    <h2>{ __('EPFL Science QA', 'epfl') }</h2>
                     <div className="helper">{ __('Please fill the fields in the right-hand column', 'epfl') }</div>
                 </div>
 			</div>
