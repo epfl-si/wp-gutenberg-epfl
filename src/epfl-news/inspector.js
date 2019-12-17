@@ -68,6 +68,7 @@ export default class InspectorControlsNews extends Component {
     componentDidUpdate() {
         if (this.state.selectedChannelId !== this.props.attributes.channel) {
 
+            // If the user changes channels, the sections must be reset
             this.props.attributes.sections = null;
 
             this.setState({ selectedChannelId: this.props.attributes.channel });
