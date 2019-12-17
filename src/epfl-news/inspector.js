@@ -132,7 +132,7 @@ export default class InspectorControlsNews extends Component {
             ];
             
             let sectionControl;
-            if (this.state.sections.length !== 0) {
+            if (this.state.sections != null && this.state.sections.length !== 0) {
 
               this.state.sections.forEach(section => {
                 optionsSectionsList.push({ label: section.en_label, value: section.id });
