@@ -149,7 +149,7 @@ export default class InspectorControlsNews extends Component {
                           isMulti='true'
                       />
                     </PanelRow>
-              </PanelBody>
+              </PanelBody>;
             }
 
             let nbNewsControl;

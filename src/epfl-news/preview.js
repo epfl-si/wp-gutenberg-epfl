@@ -29,6 +29,13 @@ export default class PreviewNews extends Component {
 			themes.forEach(theme => {
 				newsUrl += `&themes=${theme.value}`;
 			});
+    }
+    
+    if (attributes.sections !== null) {
+			let sections = JSON.parse(attributes.sections);
+			sections.forEach(section => {
+				newsUrl += `&projects=${section.value}`;
+			});
 		}
 
 		return newsUrl;
