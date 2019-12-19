@@ -21,7 +21,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/tableau', {
 	title: __( 'EPFL Tableau', 'epfl'),
-	description: 'v1.0.6',
+	description: 'v1.0.7',
 	icon: tableauIcon,
 	category: 'common',
 	attributes: {
