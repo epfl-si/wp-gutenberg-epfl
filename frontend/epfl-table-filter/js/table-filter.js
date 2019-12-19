@@ -10,6 +10,8 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
 
     table = $(filter_div).find('table');
 
+    table.toggleClass('table');
+
     // Filter options
     limit_filter_to = JSON.parse($(filter_div).find('input[name="limit_filter_to_cols"]').attr('value'));
 
@@ -60,7 +62,7 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
         if(header_options.includes('sort'))
         {
             // Setting table to be sorted
-            table.toggleClass('table table-sortable tablesaw-stack tablesaw-sortable');
+            table.toggleClass('table-sortable tablesaw-stack tablesaw-sortable');
             table.attr('data-tablesaw-sortable', '');
 
             // Adding sortable option to headers
