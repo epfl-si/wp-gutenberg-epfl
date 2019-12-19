@@ -62,3 +62,24 @@ function epfl_tableau_block( $attributes ) {
     $markup = epfl_tableau_render($tableau_name, $width, $height);
     return $markup;
 }
+
+
+
+/*
+    Add tags needed by block when we copy/paste HTML content to add a Tableau.
+    If we don't add tags to allowed list, they will be cleaned with WP version >5.2.4
+*/
+function add_block_allowed_tags($tags)
+{
+
+    if(!array_key_exists('object', $tags)) $tags['object'] = [];
+    $tags['object']['width'] = true;
+    $tags['object']['height'] = true;
+    
+    if(!array_key_exists('param', $tags)) $tags['param'] = [];
+    $tags['param']['name'] = true;
+    $tags['param']['value'] = true;
+
+    return $tags;
+}
+add_filter('wp_kses_allowed_html', __NAMESPACE__.'\add_block_allowed_tags');
