@@ -27,9 +27,9 @@ function epfl_news_get_url_channel($data) {
  */
 function epfl_news_get_image_description($news) {
     if (get_locale() == 'fr_FR') {
-        $image_description = $news->fr_description;
+        $image_description = (property_exists($news, 'fr_description'))? $news->fr_description: "";
     } else {
-        $image_description = $news->en_description;
+        $image_description = (property_exists($news, 'en_description'))? $news->en_description: "";
     }
     return $image_description;
 }

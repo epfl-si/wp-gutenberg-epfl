@@ -67,8 +67,11 @@ function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category
 
     // filter by themes
     $themes = json_decode($themes, true);
-    foreach ($themes as $theme) {
-        $url .= '&themes=' . $theme['value'];
+    if(is_array($themes))
+    {
+        foreach ($themes as $theme) {
+            $url .= '&themes=' . $theme['value'];
+        }
     }
 
     // filter by projects

@@ -15,12 +15,13 @@ function epfl_links_group_block( $attributes ) {
   $is_links_teaser = ("" !== $main_url);
 
   $links = [];
-  foreach ($attributes as $key => $value) {
-    $field_key = substr($key, -1);
-    $field_name = substr($key, 0, -1);
-    $value = isset( $value ) ? sanitize_text_field( $value ) : '';
-    $links[$field_key][$field_name] = $value;
+
+  for($i=1; $i<=1; $i++)
+  {
+    $links[] = array('label' => Utils::get_sanitized_attribute( $attributes, 'label'.$i ),
+                     'url'   => Utils::get_sanitized_attribute( $attributes, 'url'.$i ));
   }
+
 
   ob_start();
 ?>

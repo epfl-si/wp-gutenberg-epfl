@@ -74,7 +74,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.1.3',
+	description: 'v1.1.4',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
