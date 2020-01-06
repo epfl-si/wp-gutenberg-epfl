@@ -9,9 +9,8 @@
 namespace EPFL\Plugins\Gutenberg\News;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
-define(__NAMESPACE__ . "\NEWS_URL", "https://actu.epfl.ch/");
-define(__NAMESPACE__ . "\NEWS_API_URL", "https://actu.epfl.ch/api/v1/channels/");
-define(__NAMESPACE__ . "\"NEWS_API_URL_IFRAME", "https://actu.epfl.ch/webservice_iframe/");
+define(__NAMESPACE__ . "\NEWS_API_URL", "https://actu-test.epfl.ch/api/v1/channels/");
+define(__NAMESPACE__ . "\"NEWS_API_URL_IFRAME", "https://actu-test.epfl.ch/webservice_iframe/");
 require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
