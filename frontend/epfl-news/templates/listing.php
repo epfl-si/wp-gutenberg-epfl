@@ -13,15 +13,13 @@
 
         foreach($results as $news) {
 
-            $is_first_event    = ($count==1);
-            $image_description = epfl_news_get_image_description($news);
-            $category          = epfl_news_get_label_category($news);
-            $publish_date      = epfl_news_get_publish_date($news);
-            $subtitle          = epfl_news_get_subtitle($news);
-            $visual_url        = epfl_news_get_visual_url($news);
-            $video_name        = "teaser_" . str_replace("https://actu.epfl.ch/news/", "", $news->news_url);
-            $media_url         = get_attachment_url_by_slug($video_name);
-
+            $is_first_event       = ($count==1);
+            $image_description    = epfl_news_get_image_description($news);
+            $category             = epfl_news_get_label_category($news);
+            $publish_date         = epfl_news_get_publish_date($news);
+            $subtitle             = epfl_news_get_subtitle($news);
+            $visual_url           = epfl_news_get_visual_url($news);
+            
             $markup .= '<a href="' . esc_url($news->news_url) . '" class="list-group-item list-group-teaser link-trapeze-vertical">';
             $markup .= '<div class="list-group-teaser-container">';
             $markup .= '<div class="list-group-teaser-thumbnail">';
