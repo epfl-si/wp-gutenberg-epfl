@@ -9,7 +9,7 @@ namespace EPFL\Plugins\Gutenberg\News;
 function epfl_news_get_url_channel($data) {
     $url_channel = "";
     if (count($data) > 0) {
-        $url_channel .= "https://actu-test.epfl.ch/search/";
+        $url_channel .= "https://staging-actu.epfl.ch/search/";
         if (get_locale() == 'fr_FR') {
             $url_channel .= "fr/";
         } else {
