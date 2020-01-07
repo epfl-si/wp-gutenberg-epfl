@@ -3,6 +3,25 @@ namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
 require_once('File/MARCXML.php');
 
+function isValidXml($content)
+{
+    $content = trim($content);
+    if (empty($content)) {
+        return false;
+    }
+    //html go to hell!
+    if (stripos($content, '<!DOCTYPE html>') !== false) {
+        return false;
+    }
+
+    libxml_use_internal_errors(true);
+    simplexml_load_string($content);
+    $errors = libxml_get_errors();
+    libxml_clear_errors();
+
+    return empty($errors);
+}
+
 Class InfoscienceMarcConverter
 {
 
@@ -310,14 +329,24 @@ Class InfoscienceMarcConverter
      * @return the built array
      */
     public static function convert_marc_to_array($marc_xml) {
+        if (!isValidXml($marc_xml)){
+            throw new InfoscienceUnknownContentException();
+        }
+
         $publications = [];
 
-        $marc_source = new \File_MARCXML($marc_xml, \File_MARC::SOURCE_STRING);
+        try {
+            $marc_source = new \File_MARCXML($marc_xml, \File_MARC::SOURCE_STRING);
 
-        while ($marc_record = $marc_source->next()) {
-            $publications[] = InfoscienceMarcConverter::parse_record($marc_record, false);
+            while ($marc_record = $marc_source->next()) {
+                $publications[] = InfoscienceMarcConverter::parse_record($marc_record, false);
+            }
+
+            return $publications;
         }
-        return $publications;
+        catch (File_MARC_Exception $e) {
+            throw new InfoscienceUnknownContentException();
+        }
     }
 }
 ?>
