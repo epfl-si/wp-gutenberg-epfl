@@ -20,11 +20,6 @@
             $publish_date      = epfl_news_get_publish_date($news);
             $subtitle          = epfl_news_get_subtitle($news);
             $visual_url        = epfl_news_get_visual_url($news);
-            $short_vimeo_video_id = $news->short_vimeo_video_id;
-
-            if ( !empty($short_vimeo_video_id) ) {	
-                $media_url = "https://player.vimeo.com/video/" . $short_vimeo_video_id . "?autoplay=1&loop=1&muted=1&background=1&quality=720";
-            }
 
             if ($is_first_event) {
                 $markup .= '<h2 class="mt-5 mb-4">';

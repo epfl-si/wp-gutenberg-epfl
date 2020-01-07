@@ -25,13 +25,11 @@
             if ( !empty($short_vimeo_video_id) ) {	
                 $media_url = "https://player.vimeo.com/video/" . $short_vimeo_video_id . "?autoplay=1&loop=1&muted=1&background=1&quality=720";
             }
+    
             $markup .= '<div class="fullwidth-teaser fullwidth-teaser-horizontal">';
             if ($media_url) {
                 $markup .= '<div class="embed-responsive embed-responsive-16by9">';
-                $markup .= '<video autoplay muted loop>';
-                $markup .= '<source class="embed-responsive-item" src="' . $media_url; '" type="video/mp4">';
-                $markup .= 'Your browser does not support HTML5 video.';
-                $markup .= '</video>';
+                $markup .= '<iframe src="' . $media_url . '" frameborder="1"></iframe>';
                 $markup .= '</div>';
             } else {
                 $markup .= '<picture>';
