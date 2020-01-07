@@ -17,7 +17,7 @@ export default class PreviewNews extends Component {
 	getURL() {
 		const { attributes } = this.props;
 
-    let newsUrl = `https://actu.epfl.ch/api/v1/channels/${attributes.channel}/news/`;
+    let newsUrl = `${BASE_NEWS_API_REST_URL}channels/${attributes.channel}/news/`;
     newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
 
 		if (attributes.category !== 0) {

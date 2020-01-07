@@ -20,8 +20,6 @@
             $publish_date      = epfl_news_get_publish_date($news);
             $subtitle          = epfl_news_get_subtitle($news);
             $visual_url        = epfl_news_get_visual_url($news);
-            $video_name        = "teaser_" . str_replace("https://actu.epfl.ch/news/", "", $news->news_url);
-            $media_url         = get_attachment_url_by_slug($video_name);
 
             if ($is_first_event) {
                 $markup .= '<h2 class="mt-5 mb-4">';

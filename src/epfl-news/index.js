@@ -3,6 +3,7 @@ import './editor.scss'
 import newsIcon from './news-icon'
 import PreviewNews from './preview'
 import InspectorControlsNews from './inspector'
+import './utils.js';
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
