@@ -128,7 +128,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # 1. direct url -> $attributes['url']
     # 2. url attribute ->
     # 3. with all the attributes, we built a custom one
-    $url = $attributes['url'];
+    $url = htmlspecialchars_decode($attributes['url']);
 
     if ($url) {
         $url = trim($url);
