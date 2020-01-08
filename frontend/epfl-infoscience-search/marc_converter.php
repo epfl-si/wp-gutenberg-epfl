@@ -3,6 +3,27 @@ namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
 require_once('File/MARCXML.php');
 
+function checkXMLValidity($content)  // see https://stackoverflow.com/a/31240779
+{
+    $content = trim($content);
+    if (empty($content)) {
+        throw new InfoscienceUnknownContentException("The data provided are empty.");
+    }
+    //html go to hell!
+    if (stripos($content, '<!DOCTYPE html>') !== false) {
+        throw new InfoscienceUnknownContentException("The data provided is recognised as HTML, despite we need XML.");
+    }
+
+    libxml_use_internal_errors(true);
+    simplexml_load_string($content);
+    $errors = libxml_get_errors();
+    libxml_clear_errors();
+
+    if (!empty($errors)) {
+        throw new InfoscienceUnknownContentException("The data provided can not be parsed as XMl data.");
+    }
+}
+
 Class InfoscienceMarcConverter
 {
 
@@ -310,14 +331,22 @@ Class InfoscienceMarcConverter
      * @return the built array
      */
     public static function convert_marc_to_array($marc_xml) {
-        $publications = [];
+        try {
+            $publications = [];
 
-        $marc_source = new \File_MARCXML($marc_xml, \File_MARC::SOURCE_STRING);
+            checkXMLValidity($marc_xml);
 
-        while ($marc_record = $marc_source->next()) {
-            $publications[] = InfoscienceMarcConverter::parse_record($marc_record, false);
+            $marc_source = new \File_MARCXML($marc_xml, \File_MARC::SOURCE_STRING);
+
+            while ($marc_record = $marc_source->next()) {
+                $publications[] = InfoscienceMarcConverter::parse_record($marc_record, false);
+            }
+
+            return $publications;
         }
-        return $publications;
+        catch (File_MARC_Exception $e) {
+            throw new InfoscienceUnknownContentException("The data provided are not XMLMARC compatible, despite looking as XML.");
+        }
     }
 }
 ?>

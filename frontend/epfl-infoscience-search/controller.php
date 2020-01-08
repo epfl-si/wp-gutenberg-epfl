@@ -2,6 +2,8 @@
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
 /**
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
@@ -22,6 +24,8 @@ require_once('mathjax-config.php');
 require_once('render.php');
 
 define(__NAMESPACE__ . "\INFOSCIENCE_SEARCH_URL", "https://infoscience.epfl.ch/search?");
+
+class InfoscienceUnknownContentException extends \Exception {}  // when we can't read the infoscience returned data
 
 
 /**
@@ -130,7 +134,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $url = trim($url);
         # assert it is an infoscience one :
         if (preg_match('#^https?://infoscience.epfl.ch/#i', $url) !== 1) {
-            $error = new WP_Error( 'not found', 'The url passed is not an Infoscience url', $url );
             return Utils::render_user_msg("Infoscience search shortcode: Please check the url");
         }
 
@@ -254,37 +257,48 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 echo "Error: $error_message";
             }
         } else {
-            $marc_xml = wp_remote_retrieve_body( $response );
+            try {
+                $marc_xml = wp_remote_retrieve_body( $response );
 
-            $publications = InfoscienceMarcConverter::convert_marc_to_array($marc_xml);
+                $publications = InfoscienceMarcConverter::convert_marc_to_array($marc_xml);
 
-            $grouped_by_publications = InfoscienceGroupBy::do_group_by($publications, $group_by, $group_by2, $attributes['sort']);
+                $grouped_by_publications = InfoscienceGroupBy::do_group_by($publications, $group_by, $group_by2, $attributes['sort']);
 
-            if ($debug_data) {
-                $page = RawInfoscienceRender::render($grouped_by_publications, $url);
+                if ($debug_data) {
+                    $page = RawInfoscienceRender::render($grouped_by_publications, $url);
+                    return $page;
+                }
+
+                $page = ClassesInfoscience2018Render::render($grouped_by_publications,
+                                                        $url,
+                                                        $format,
+                                                        $summary,
+                                                        $thumbnail,
+                                                        $debug_template);
+
+                // wrap the page, and add config as html comment
+                $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export($before_unset_attributes, true) .  ' //-->';
+                $html_verbose_comments .= '<!-- epfl_infoscience_search used url :'. var_export($url, true) . ' //-->';
+
+                $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
+
+                $page .= epfl_infoscience_search_get_mathjax_config();
+
+                // cache the result
+                set_transient($cache_key, $page, 4*HOUR_IN_SECONDS);
+
+                // return the page
                 return $page;
+            } catch (InfoscienceUnknownContentException $e) {
+                error_log("Infoscience is not returning valid data : " . $e->getMessage());
+                if (!empty($marc_xml)) {
+                    error_log("Infoscience returned data : " . $marc_xml);
+                } else {
+                    error_log("Infoscience has not returned any data.");
+                }
+
+                return Utils::render_user_msg("Infoscience is not returning valid data");
             }
-
-            $page = ClassesInfoscience2018Render::render($grouped_by_publications,
-                                                    $url,
-                                                    $format,
-                                                    $summary,
-                                                    $thumbnail,
-                                                    $debug_template);
-
-            // wrap the page, and add config as html comment
-            $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export($before_unset_attributes, true) .  ' //-->';
-            $html_verbose_comments .= '<!-- epfl_infoscience_search used url :'. var_export($url, true) . ' //-->';
-
-            $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
-
-            $page .= epfl_infoscience_search_get_mathjax_config();
-
-            // cache the result
-            set_transient($cache_key, $page, 4*HOUR_IN_SECONDS);
-
-            // return the page
-            return $page;
         }
     } else {
         // To tell we're using the cache
