@@ -134,7 +134,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $url = trim($url);
         # assert it is an infoscience one :
         if (preg_match('#^https?://infoscience.epfl.ch/#i', $url) !== 1) {
-            $error = new \WP_Error( 'not found', 'The url passed is not an Infoscience url', $url );
             return Utils::render_user_msg("Infoscience search shortcode: Please check the url");
         }
 
@@ -291,7 +290,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 // return the page
                 return $page;
             } catch (InfoscienceUnknownContentException $e) {
-                $error = new \WP_Error( 'invalid data returned', 'Infoscience is not returning valid data');
                 return Utils::render_user_msg("Infoscience is not returning valid data");
             }
         }
