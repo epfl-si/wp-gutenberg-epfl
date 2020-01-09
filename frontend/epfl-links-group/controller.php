@@ -19,10 +19,12 @@ function epfl_links_group_block( $attributes ) {
   for($i=1; $i<=10; $i++)
   {
     $link_label = Utils::get_sanitized_attribute( $attributes, 'label'.$i );
-    if(trim($link_label)=="") continue;
-    
+    $link_url = Utils::get_sanitized_attribute( $attributes, 'url'.$i );
+    // we skip empty values
+    if($link_label=="" || $link_url == "") continue;
+
     $links[] = array('label' => $link_label,
-                     'url'   => Utils::get_sanitized_attribute( $attributes, 'url'.$i ));
+                     'url'   => $link_url);
   }
 
 
