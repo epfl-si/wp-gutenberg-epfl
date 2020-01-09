@@ -59,13 +59,11 @@ function LinkGroupPanel ( props ) {
                 label={ __('Label', 'epfl') }
                 value={ attributes['label' + index] || ''}
                 onChange={ value => setIndexedAttributes('label', value) }
-                help= { __('Link label', 'epfl') }
             />
             <TextControl
                 label={ __('URL', 'epfl') }
                 value={ attributes['url' + index]  || '' }
                 onChange={ value => setIndexedAttributes('url', value) }
-                help= { __('Link URL', 'epfl') }
             />
             <hr />
         </div>
@@ -74,7 +72,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.1.4',
+	description: 'v1.1.5',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),

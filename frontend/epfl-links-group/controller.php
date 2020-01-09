@@ -16,10 +16,15 @@ function epfl_links_group_block( $attributes ) {
 
   $links = [];
 
-  for($i=1; $i<=1; $i++)
+  for($i=1; $i<=10; $i++)
   {
-    $links[] = array('label' => Utils::get_sanitized_attribute( $attributes, 'label'.$i ),
-                     'url'   => Utils::get_sanitized_attribute( $attributes, 'url'.$i ));
+    $link_label = Utils::get_sanitized_attribute( $attributes, 'label'.$i );
+    $link_url = Utils::get_sanitized_attribute( $attributes, 'url'.$i );
+    // we skip empty values
+    if($link_label=="" || $link_url == "") continue;
+
+    $links[] = array('label' => $link_label,
+                     'url'   => $link_url);
   }
 
 
