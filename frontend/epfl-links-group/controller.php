@@ -8,7 +8,7 @@ function epfl_links_group_block( $attributes ) {
   $main_url           = Utils::get_sanitized_attribute( $attributes, 'mainUrl' );
   $title              = Utils::get_sanitized_attribute( $attributes, 'title' );
   $open_links_new_tab = Utils::get_sanitized_attribute( $attributes, 'openLinksNewTab' );
-  
+
   unset($attributes['mainUrl']);
   unset($attributes['title']);
 
@@ -30,7 +30,7 @@ function epfl_links_group_block( $attributes ) {
 
   ob_start();
 ?>
-<div class="container-grid my-3">
+<div class="my-3">
   <div class="links-group <?php if ($is_links_teaser):?>links-group-teaser<?php endif; ?>">
     <h5 id="links-group-title">
       <?php if($is_links_teaser): ?>
