@@ -14,6 +14,8 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
 
     // Filter options
     limit_filter_to = JSON.parse($(filter_div).find('input[name="limit_filter_to_cols"]').attr('value'));
+    // Sort options
+    numeric_sort_on = JSON.parse($(filter_div).find('input[name="numeric_sort_on_cols"]').attr('value'));
 
     // Looping through rows
     table.find('tr').each(function(tr_index, tr){
@@ -69,6 +71,12 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
             table.find('tr:first').find('th').each(function(th_index, th){
                 $(th).attr('data-tablesaw-sortable-col', '');
                 $(th).toggleClass('tablesaw-sortable-head');
+
+                // If we have to apply numeric sort on current col
+                if(numeric_sort_on.includes(th_index+1))
+                {
+                    $(th).attr('data-tablesaw-sortable-numeric', '');
+                }
             });
 
         }
