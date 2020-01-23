@@ -32,6 +32,12 @@ function epfl_table_filter_block($attributes, $inner_content)
   $filter_only_on_cols_array = array_map("trim", $filter_only_on_cols_array);
   $filter_only_on_cols_array = array_map("intval", $filter_only_on_cols_array);
   
+  // Sorting options
+  $numeric_sort_on_cols  = Utils::get_sanitized_attribute( $attributes, 'numericSortOnCols', '');
+  $numeric_sort_on_cols_array  = (trim($numeric_sort_on_cols)!='')? explode(",", $numeric_sort_on_cols) : array();
+  // Some sanitize work
+  $numeric_sort_on_cols_array = array_map("trim", $numeric_sort_on_cols_array);
+  $numeric_sort_on_cols_array = array_map("intval", $numeric_sort_on_cols_array);
   
   
   // Class without any CSS style but will be used by JS code
@@ -45,8 +51,10 @@ function epfl_table_filter_block($attributes, $inner_content)
             '<input class="search table-filter-search" placeholder="'.$placeholder.'">'.
             // Adding info about header option so JS can use it to set things correctly
             '<input type="hidden" name="header" value="'.$header_options.'">'.
-            // we use a JSON encoded array to store cols on which to sort
+            // we use a JSON encoded array to store cols on which to filter
             '<input type="hidden" name="limit_filter_to_cols" value="'.json_encode($filter_only_on_cols_array).'">'.
+            // we use a JSON encoded array to store cols on which to apply numeric sort
+            '<input type="hidden" name="numeric_sort_on_cols" value="'.json_encode($numeric_sort_on_cols_array).'">'.
              $inner_content.
              '</div>';
 

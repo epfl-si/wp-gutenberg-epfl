@@ -40,7 +40,9 @@ const getAttributes = () => {
         filterOnlyOnCols: {
             type: 'string',
         },
-        
+        numericSortOnCols: {
+            type: 'string',
+        },
     };
 
     return atts;
@@ -54,7 +56,7 @@ let optionsHeader = [
 
 registerBlockType( 'epfl/table-filter', {
 	title: __( 'EPFL Table Filter', 'epfl'),
-	description: 'v1.0.4',
+	description: 'v1.1.0',
 	icon: tableFilterIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -93,6 +95,14 @@ registerBlockType( 'epfl/table-filter', {
                             value={ attributes.filterOnlyOnCols }
                             help={ __('If multiple columns, separate with comma', 'epfl') }
                             onChange={ filterOnlyOnCols => setAttributes( { filterOnlyOnCols } ) }
+                        />
+                    </PanelBody>
+                    <PanelBody title={ __('Sort options', 'epfl') }>
+                        <strong>{__( 'Apply numeric sort on column(s)', 'epfl')}</strong>
+                        <TextControl
+                            value={ attributes.numericSortOnCols }
+                            help={ __('If multiple columns, separate with comma', 'epfl') }
+                            onChange={ numericSortOnCols => setAttributes( { numericSortOnCols } ) }
                         />
                     </PanelBody>
                 </InspectorControls>
