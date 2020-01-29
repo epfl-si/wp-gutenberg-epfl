@@ -21,9 +21,6 @@
             $visual_url           = epfl_news_get_visual_url($news);
             
             if ($is_first_event) {
-                $markup .= '<h2 class="mt-5 mb-4">';
-                $markup .= __('The latest news', 'epfl');
-                $markup .= '</h2>';
                 $markup .= '<div class="row">';
             }
 
