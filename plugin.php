@@ -64,6 +64,15 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
     // We explicitely deny usage of epfl/card-panel block so we can't add more than 3 blocks inside an epfl/card-deck
     $explicitly_denied_blocks = ['epfl/card-panel'];
 
+    // If we're on a post, we add denied blocks to list
+    if($post->post_type == 'post')
+    {
+        // Blocks that are explicitely denied on Posts elements
+        $explicitly_posts_denied_blocks = ['epfl/hero'];
+
+        $explicitly_denied_blocks = array_merge($explicitly_denied_blocks, $explicitly_posts_denied_blocks);
+    }
+
     // Retrieving currently registered blocks
     $registered = \WP_Block_Type_Registry::get_instance()->get_all_registered();
 
