@@ -127,11 +127,12 @@ export default class PreviewMemento extends Component {
 
           let startTime;
           if (!!event.start_time) {
-            startTime = <span className="event-time">{ event.start_time.slice(0, -3) }</span>
+            startTime = <span className="event-time">{ moment(event.start_time,'h:mm').format('h:mm') }</span>
           }
+
           let endTime;
           if (!!event.end_time) {
-            endTime = <span className="event-time">{ event.end_time.slice(0, -3) }</span>
+            endTime = <span className="event-time">{ moment(event.end_time,'h:mm').format('h:mm') }</span>
           }
 
           let endDate;
