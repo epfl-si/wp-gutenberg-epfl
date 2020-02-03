@@ -27,7 +27,7 @@ export default class InspectorControlsMemento extends Component {
     }
 
     componentDidMount() {
-        let apiRestUrl = 'https://memento.epfl.ch/api/v1/';
+        let apiRestUrl = BASE_MEMENTO_API_REST_URL;
 
         let entryPointMementos = `${apiRestUrl}mementos/?format=json&limit=800`;
 		axios.get(entryPointMementos)

@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 import renderHTML from 'react-render-html';
+import moment from 'moment';
 
 const { __ } = wp.i18n
 const { Spinner } = wp.components
@@ -16,7 +17,7 @@ export default class PreviewMemento extends Component {
 
 		const { attributes } = this.props;
 
-		let eventsUrl = `https://memento.epfl.ch/api/v1/mementos/${attributes.memento}/events/`;
+		let eventsUrl = `${BASE_MEMENTO_API_REST_URL}mementos/${attributes.memento}/events/`;
 		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=${attributes.nbEvents}`;
 
 		if (attributes.category !== 0) {
@@ -121,21 +122,21 @@ export default class PreviewMemento extends Component {
 
           let startDate;
           if (!!event.start_date) {
-            startDate = <span className="card-info-date" itemProp="startDate">{event.start_date}</span>
+            startDate = <span className="card-info-date" itemProp="startDate">{moment(event.start_date).format("DD-MM-YYYY")}</span>
           }
 
           let startTime;
           if (!!event.start_time) {
-            startTime = <span className="event-time">{ event.start_time }</span>
+            startTime = <span className="event-time">{ event.start_time.slice(0, -3) }</span>
           }
           let endTime;
           if (!!event.end_time) {
-            endTime = <span className="event-time">{ event.end_time }</span>
+            endTime = <span className="event-time">{ event.end_time.slice(0, -3) }</span>
           }
 
           let endDate;
           if (!!event.end_date) {
-            endDate = <span className="card-info-date" itemProp="endDate">{event.end_date}</span>
+            endDate = <span className="card-info-date" itemProp="endDate">{moment(event.end_date).format("DD-MM-YYYY")}</span>
           }
 
           let category;

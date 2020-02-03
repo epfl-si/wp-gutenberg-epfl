@@ -4,6 +4,7 @@ import './editor.scss'
 import mementoIcon from './memento-icon'
 import PreviewMemento from './preview'
 import InspectorControlsMemento from './inspector'
+import './utils.js';
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -13,7 +14,7 @@ registerBlockType(
 	'epfl/memento',
 	{
 		title: __('EPFL Memento', 'epfl'),
-		description: 'v1.0.6',
+		description: 'v1.0.7',
 		icon: mementoIcon,
 		category: 'common',
 		keywords: [
