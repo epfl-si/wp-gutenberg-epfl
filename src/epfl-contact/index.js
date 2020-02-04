@@ -23,7 +23,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/contact', {
     title: __( 'EPFL Contact', 'epfl'),
-    description: 'v1.0.5',
+    description: 'v1.0.6',
     icon: contactIcon,
     category: 'common',
     attributes: {
