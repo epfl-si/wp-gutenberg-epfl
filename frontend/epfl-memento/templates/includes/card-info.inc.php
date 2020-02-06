@@ -1,13 +1,18 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\Memento;
 
-$markup .= '<span class="card-info-date">' . esc_html($event->start_date) . '</span>';
+$start_date = date_format(date_create($event->start_date), 'm-d-Y');
+$end_date   = date_format(date_create($event->end_date), 'm-d-Y');
+$start_time = date_format(date_create($event->start_time), 'H:i');
+$end_time   = date_format(date_create($event->end_time), 'H:i' );
+
+$markup .= '<span class="card-info-date">' . esc_html($start_date) . '</span>';
 
 if ($event->start_date == $event->end_date){
-    $markup .= '<span>' . esc_html($event->start_time) . '</span>';
-    $markup .= '<span>' . esc_html($event->end_time) . '</span>';
+    $markup .= '<span>' . esc_html($start_time) . '</span>';
+    $markup .= '<span>' . esc_html($end_time) . '</span>';
 } else {
-    $markup .= '<span>' . esc_html($event->end_date) . '</span>';
+    $markup .= '<span>' . esc_html($end_date) . '</span>';
 }
 
 $markup .= '<p>';
