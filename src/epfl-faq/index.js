@@ -29,7 +29,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/faq', {
 	title: __( 'EPFL FAQ', 'epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: faqIcon,
 	category: 'common',
 	attributes: getAttributes(),
