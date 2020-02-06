@@ -107,7 +107,7 @@ export default class InspectorControlsInfoscience extends Component {
 						value={ attributes.field }
 						onChange={ field => setAttributes( { field } ) }
 						options={ optionsFieldFilter }
-						help={ <a target="_blank" href="https://infoscience.epfl.ch/help/search-tips?ln=en">{ __('Search tips', 'epfl') }</a> }
+						help={ <a target="_blank" href="https://infoscience.epfl.ch/docs/search-guide/">{ __('Search tips', 'epfl') }</a> }
 					/>
 					<h2><a href="#" onClick={this.toggleBox}>{ __('Additional search keys', 'epfl') } { this.state.showAdvancedSearch ? '[-]' : '[+]' }</a></h2>
 					{
