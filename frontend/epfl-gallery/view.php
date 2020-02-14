@@ -9,13 +9,14 @@ namespace EPFL\Plugins\Gutenberg\Gallery;
 
 
 function epfl_gallery_block($attr) {
-    $output = '';
-    $instance=md5(implode(',', $attr) . rand());
-
-    /* For an unknown reason, this function can be called with $attr equal to an empty array... so there are
-        PHP Warnings in the logs because we are trying to access 'ids' key. */
+    
+    /* If a gallery block is added but never configured, this function will be called with $attr equal to an empty array... 
+        so there are PHP Warnings in the logs because we are trying to access 'ids' key. */
     if(!array_key_exists('ids', $attr)) return '';
 
+    $output = '';
+    $instance=md5(implode(',', $attr) . rand());
+    
     /* We recover posts info but... not in the same order as the one given in parameters ($attr['ids'])*/
     $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
 
