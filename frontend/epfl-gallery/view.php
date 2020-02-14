@@ -57,7 +57,6 @@ function epfl_gallery_block($attr) {
 
     $output .= '<div class="gallery-nav mb-3" data-gallery="my-gallery-'.$instance.'" aria-hidden="true">';
 
-    
     /* We go through given image order */
     foreach($attr['ids'] as $post_id)
     {
