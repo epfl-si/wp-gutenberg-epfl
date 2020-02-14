@@ -16,7 +16,7 @@ function epfl_gallery_block($attr) {
 
     $output = '';
     $instance=md5(implode(',', $attr) . rand());
-    
+
     /* We recover posts info but... not in the same order as the one given in parameters ($attr['ids'])*/
     $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
 
