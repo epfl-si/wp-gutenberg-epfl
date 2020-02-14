@@ -9,6 +9,11 @@ namespace EPFL\Plugins\Gutenberg\Gallery;
 
 
 function epfl_gallery_block($attr) {
+    
+    /* If a gallery block is added but never configured, this function will be called with $attr equal to an empty array... 
+        so there are PHP Warnings in the logs because we are trying to access 'ids' key. */
+    if(!array_key_exists('ids', $attr)) return '';
+
     $output = '';
     $instance=md5(implode(',', $attr) . rand());
 
