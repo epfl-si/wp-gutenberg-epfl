@@ -12,6 +12,10 @@ function epfl_gallery_block($attr) {
     $output = '';
     $instance=md5(implode(',', $attr) . rand());
 
+    /* For an unknown reason, this function can be called with $attr equal to an empty array... so there are
+        PHP Warnings in the logs because we are trying to access 'ids' key. */
+    if(!array_key_exists('ids', $attr)) return '';
+
     /* We recover posts info but... not in the same order as the one given in parameters ($attr['ids'])*/
     $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
 
@@ -52,6 +56,7 @@ function epfl_gallery_block($attr) {
 
     $output .= '<div class="gallery-nav mb-3" data-gallery="my-gallery-'.$instance.'" aria-hidden="true">';
 
+    
     /* We go through given image order */
     foreach($attr['ids'] as $post_id)
     {
