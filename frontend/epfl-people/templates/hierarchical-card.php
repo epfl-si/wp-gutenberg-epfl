@@ -12,9 +12,10 @@ namespace EPFL\Plugins\Gutenberg\People;
         
         foreach($persons as $index => $element) {
 
-            sort_members($element->members);
+            $members = delete_duplicate_persons($element->members);
+            sort_members($members);
           
-            foreach($element->members as $index => $person) {
+            foreach($members as $index => $person) {
 
                 $photo_url = epfl_people_get_photo($person);
                 

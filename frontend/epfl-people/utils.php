@@ -7,6 +7,24 @@ define(__NAMESPACE__ . "\HIERARCHICAL_ORDER_WITH_TITLE", "hierarchical-with-titl
 define(__NAMESPACE__ . "\ALPHABETICAL_ORDER", "alphabetical");
 
 /**
+ * Delete duplicate entry from array
+ */
+function delete_duplicate_persons($array) {
+  $temp_array = array();
+  $i = 0;
+  $key_array = array();
+
+  foreach($array as $val) {
+      if (!in_array($val->sciper, $key_array)) {
+          $key_array[$i] = $val->sciper;
+          $temp_array[$i] = $val;
+      }
+      $i++;
+  }
+  return $temp_array;
+}
+
+/**
  * Sort by name members of same function (Hierarchical order)
  */
 function sort_members(&$members)
