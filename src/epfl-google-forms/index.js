@@ -58,6 +58,8 @@ registerBlockType( 'epfl/google-forms', {
 		const openErrorModal = () => setErrorOpen( true );
 		const closeErrorModal = () => setErrorOpen( false );
 		
+
+		// extract information from HTML pasted code
 		function extactInfos(fromData, regex)
 		{
 			let infos = fromData.match(regex)
@@ -69,6 +71,7 @@ registerBlockType( 'epfl/google-forms', {
 			return false
 		}
 
+		// Parse HTML pasted code to extract necessary information
 		function parseData(dataToParse) {
 			
 			// Extracting informations
@@ -79,19 +82,24 @@ registerBlockType( 'epfl/google-forms', {
 			// One of the information cannot be found
 			if(parsedUrl !== false  || parsedHeight !== false || parsedWidth !== false) 
 			{
+				// Updating attributes.
 				setAttributes( { url: parsedUrl } )
 				parsedHeight = Number(parsedHeight)
 				setAttributes( { height: parsedHeight } )
 				parsedWidth = Number(parsedWidth)
 				setAttributes( { width: parsedWidth } )
 
+				// Display confirmation
 				openConfirmationModal()
 
+				// We set text area as empty
 				setAttributes( { data: "" } )
 			}
 			else // There was at least one error
 			{
+				// Displaying error box
 				openErrorModal()
+				// keeping pasted value in cell
 				setAttributes( { data: dataToParse } )
 			}
 			
