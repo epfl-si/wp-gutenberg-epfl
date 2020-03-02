@@ -35,9 +35,6 @@ registerBlockType( 'epfl/google-forms', {
 		url: {
 			type: 'string',
 		},
-		width: {
-			type: 'integer',
-		},
 		height: {
 			type: 'integer',
 		}
@@ -74,21 +71,23 @@ registerBlockType( 'epfl/google-forms', {
 		// Parse HTML pasted code to extract necessary information
 		function parseData(dataToParse) {
 			
+			if(dataToParse == "")
+			{
+				setAttributes( { data: "" } )
+				return
+			}
 			// Extracting informations
 			let parsedUrl = extactInfos(dataToParse, /src="(.*?)"/)
 			let parsedHeight = extactInfos(dataToParse, /height="(.*?)"/)
-			let parsedWidth = extactInfos(dataToParse, /width="(.*?)"/)
 
 			// One of the information cannot be found
-			if(parsedUrl !== false  || parsedHeight !== false || parsedWidth !== false) 
+			if(parsedUrl !== false  || parsedHeight !== false ) 
 			{
 				// Updating attributes.
 				setAttributes( { url: parsedUrl } )
 				parsedHeight = Number(parsedHeight)
 				setAttributes( { height: parsedHeight } )
-				parsedWidth = Number(parsedWidth)
-				setAttributes( { width: parsedWidth } )
-
+				
 				// Display confirmation
 				openConfirmationModal()
 
@@ -123,11 +122,6 @@ registerBlockType( 'epfl/google-forms', {
 							label={ __('URL', 'epfl') }
                             value={ attributes.url }
                             onChange={ url => setAttributes( { url } ) }
-                        />
-						<TextControl
-							label={ __('Width', 'epfl') }
-                            value={ attributes.width }
-                            onChange={ width => setAttributes( { width } ) }
                         />
 						<TextControl
 							label={ __('Height', 'epfl') }
