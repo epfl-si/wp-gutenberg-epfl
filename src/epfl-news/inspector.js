@@ -23,7 +23,7 @@ export default class InspectorControlsNews extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedChannelId: 1,
+            selectedChannelId: props.attributes.channel,
             channels: null,
             categories: null,
             themes: null,
@@ -54,9 +54,6 @@ export default class InspectorControlsNews extends Component {
             .catch( err => console.log(err))
 
         let channelId = this.props.attributes.channel;
-        if (channelId == null) {
-          channelId = 1;
-        }
         let entryPointsSections = `${apiRestUrl}channels/${channelId}/projects/?format=json&limit=10`;
         axios.get(entryPointsSections)
         .then( response => response.data )
