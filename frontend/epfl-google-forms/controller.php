@@ -64,18 +64,3 @@ function epfl_google_forms_block( $attributes ) {
     return $markup;
 }
 
-
-/*
-    Add tags needed by block when we copy/paste HTML content to add a Google Form.
-    If we don't add tags to allowed list, they will be cleaned with WP version >5.2.4
-*/
-function add_block_allowed_tags($tags)
-{
-    if(!array_key_exists('iframe', $tags)) $tags['iframe'] = [];
-    $tags['iframe']['src'] = true;
-    $tags['iframe']['width'] = true;
-    $tags['iframe']['height'] = true;
-
-    return $tags;
-}
-add_filter('wp_kses_allowed_html', __NAMESPACE__.'\add_block_allowed_tags');
