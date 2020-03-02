@@ -14,9 +14,14 @@ const {
 const {
 	TextareaControl,
 	TextControl,
+	Modal,
+	Button
 } = wp.components;
 
-const { Fragment } = wp.element;
+const { 
+	Fragment,
+	useState,
+} = wp.element;
 
 registerBlockType( 'epfl/google-forms', {
 	title: __( 'Google Forms', 'epfl'),
@@ -28,7 +33,7 @@ registerBlockType( 'epfl/google-forms', {
 			type: 'string',
 		},
 		url: {
-			type: 'url',
+			type: 'string',
 		},
 		width: {
 			type: 'integer',
@@ -43,11 +48,21 @@ registerBlockType( 'epfl/google-forms', {
 	edit: ( props ) => {
 		const { attributes, className, setAttributes } = props
 		
+		// information modal window
+		const [ isConfirmationOpen, setConfirmationOpen ] = useState( false );
+		const openConfirmationModal = () => setConfirmationOpen( true );
+		const closeConfirmationModal = () => setConfirmationOpen( false );
+
+		// Error modal window
+		const [ isErrorOpen, setErrorOpen ] = useState( false );
+		const openErrorModal = () => setErrorOpen( true );
+		const closeErrorModal = () => setErrorOpen( false );
+		
 		function extactInfos(fromData, regex)
 		{
 			let infos = fromData.match(regex)
 
-			if(Array.isArray(infos))
+			if(Array.isArray(infos) && infos.length > 1)
 			{
 				return infos[1]
 			}
@@ -69,9 +84,16 @@ registerBlockType( 'epfl/google-forms', {
 				setAttributes( { height: parsedHeight } )
 				parsedWidth = Number(parsedWidth)
 				setAttributes( { width: parsedWidth } )
+
+				openConfirmationModal()
+
+				setAttributes( { data: "" } )
 			}
-			
-			setAttributes( { data: "" } )
+			else // There was at least one error
+			{
+				openErrorModal()
+				setAttributes( { data: dataToParse } )
+			}
 			
         }
 
@@ -104,6 +126,26 @@ registerBlockType( 'epfl/google-forms', {
                             value={ attributes.height }
                             onChange={ height => setAttributes( { height } ) }
                         />
+						{ isConfirmationOpen && (
+						<Modal
+							title={ __('Information extracted', 'epfl') }
+							onRequestClose={ closeConfirmationModal }>
+							<p>{ __('Information have been extracted from pasted HTML code', 'epfl') }</p>
+							<Button isDefault onClick={ closeConfirmationModal }>
+								{ __('Close', 'epfl') }
+							</Button>
+						</Modal>
+						) }		
+						{ isErrorOpen && (
+						<Modal
+							title={ __('Error extracting information', 'epfl') }
+							onRequestClose={ closeErrorModal }>
+							<p><font color="#F00">{ __('Wrong HTML code given, impossible to extract information.', 'epfl') }</font></p>
+							<Button isDefault onClick={ closeErrorModal }>
+								{ __('Close', 'epfl') }
+							</Button>
+						</Modal>
+						) }				
                 </div>
             </Fragment>
 		)
