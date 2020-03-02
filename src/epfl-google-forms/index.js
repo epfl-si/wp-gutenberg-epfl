@@ -57,7 +57,7 @@ registerBlockType( 'epfl/google-forms', {
 		
 
 		// extract information from HTML pasted code
-		function extactInfos(fromData, regex)
+		function extractInfos(fromData, regex)
 		{
 			let infos = fromData.match(regex)
 
@@ -77,8 +77,8 @@ registerBlockType( 'epfl/google-forms', {
 				return
 			}
 			// Extracting informations
-			let parsedUrl = extactInfos(dataToParse, /src="(.*?)"/)
-			let parsedHeight = extactInfos(dataToParse, /height="(.*?)"/)
+			let parsedUrl = extractInfos(dataToParse, /src="(.*?)"/)
+			let parsedHeight = extractInfos(dataToParse, /height="(.*?)"/)
 
 			// One of the information cannot be found
 			if(parsedUrl !== false  || parsedHeight !== false ) 
