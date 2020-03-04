@@ -3,7 +3,7 @@
  * Plugin Name: wp-gutenberg-epfl
  * Description: EPFL Gutenberg Blocks
  * Author: WordPress EPFL Team
- * Version: 1.7.12
+ * Version: 1.8.0
  */
 
 namespace EPFL\Plugins\Gutenberg;
@@ -71,7 +71,7 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
                                 'epfl/toggle',
                                 'epfl/quote',
                                 'epfl/video'];
-    
+
     // Retrieving currently registered blocks
     $registered = \WP_Block_Type_Registry::get_instance()->get_all_registered();
 
