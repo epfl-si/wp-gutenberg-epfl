@@ -22,7 +22,6 @@ require_once 'epfl-hero/view.php';
 require_once 'epfl-google-forms/controller.php';
 require_once 'epfl-video/controller.php';
 require_once 'epfl-tableau/controller.php';
-require_once 'epfl-scienceqa/controller.php';
 require_once 'epfl-scheduler/controller.php';
 require_once 'epfl-page-teaser/controller.php';
 require_once 'epfl-custom-highlight/controller.php';
@@ -139,10 +138,6 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/tableau', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\Tableau\epfl_tableau_block',
-    ));
-
-    register_block_type( 'epfl/scienceqa', array(
-		'render_callback' => 'EPFL\Plugins\Gutenberg\ScienceQA\epfl_scienceqa_block',
     ));
 
     register_block_type( 'epfl/scheduler', array(

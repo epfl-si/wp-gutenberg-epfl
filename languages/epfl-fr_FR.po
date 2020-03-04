@@ -233,14 +233,6 @@ msgstr "Fonction"
 msgid "Office"
 msgstr "Bureau"
 
-#: frontend/epfl-scienceqa/view.php:17
-msgid "Science Q&A"
-msgstr ""
-
-#: frontend/epfl-scienceqa/view.php:29
-msgid "Vote"
-msgstr "Voter"
-
 #: frontend/epfl-social-feed/facebook_view.php:28
 msgid "Like our page on Facebook"
 msgstr "Likez notre page Facebook"
@@ -578,7 +570,6 @@ msgid "EPFL Infoscience"
 msgstr ""
 
 #: src/epfl-infoscience-search/index.js:95 src/epfl-people/preview.js:11
-#: src/epfl-scienceqa/index.js:59
 msgid "Please fill the fields in the right-hand column"
 msgstr ""
 
@@ -826,12 +817,10 @@ msgid "Template listing without the first highlighted event"
 msgstr "Template listing sans mettre le 1er événement en valeur"
 
 #: src/epfl-memento/inspector.js:67 src/epfl-news/inspector.js:80
-#: src/epfl-scienceqa/index.js:39
 msgid "French"
 msgstr "Français"
 
 #: src/epfl-memento/inspector.js:68 src/epfl-news/inspector.js:81
-#: src/epfl-scienceqa/index.js:40
 msgid "English"
 msgstr "Anglais"
 
@@ -889,12 +878,10 @@ msgid "Select the number of events"
 msgstr ""
 
 #: src/epfl-memento/inspector.js:117 src/epfl-news/inspector.js:143
-#: src/epfl-scienceqa/index.js:46
 msgid "Language"
 msgstr "Langue"
 
 #: src/epfl-memento/inspector.js:119 src/epfl-news/inspector.js:145
-#: src/epfl-scienceqa/index.js:48
 msgid "Select a language"
 msgstr "Sélectionner une langue"
 
@@ -1255,14 +1242,6 @@ msgstr ""
 
 #: src/epfl-scheduler/index.js:67
 msgid "Please select a end date. Format: mm/dd/yyyy"
-msgstr ""
-
-#: src/epfl-scienceqa/index.js:21
-msgid "EPFL Science QA"
-msgstr ""
-
-#: src/epfl-scienceqa/index.js:49
-msgid "The language used to render Science Q&A survey"
 msgstr ""
 
 #: src/epfl-social-feed/index.js:21
