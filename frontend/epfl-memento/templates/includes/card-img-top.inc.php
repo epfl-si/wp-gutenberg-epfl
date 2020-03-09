@@ -2,7 +2,6 @@
 namespace EPFL\Plugins\Gutenberg\Memento;
 
 $visual_url = get_visual_url($event, $memento_name);
-
 $markup .= '<picture class="card-img-top">';
     if (!empty($event->academic_calendar_category)) {
         $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em; font-size: 2em;">';
@@ -14,7 +13,14 @@ $markup .= '<picture class="card-img-top">';
         }
         $markup .= '</span>';
     }
+    if ($event->canceled === "True") {
+        $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h4 p-2">' . __('Cancelled', 'epfl') . '</span>';
+    }
     if ($visual_url) {
-        $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) . '" />';
+        $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid"';
+        if ($event->canceled === "True") {
+            $markup .= ' style="opacity:0.3"';
+        }
+        $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) . '" />';
     }
 $markup .= '</picture>';

@@ -31,7 +31,14 @@
                 $markup .= esc_html($event->academic_calendar_category->en_label);
             }
             $markup .= '</span>';
-            $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
+            if ($event->canceled === "True") {
+                $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h5 p-2">' . __('Cancelled', 'epfl') . '</span>';
+            }
+            $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid"';
+            if ($event->canceled === "True") {
+                $markup .= ' style="opacity:0.3"';
+            }
+            $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
             $markup .= '</picture>';
             $markup .= '</div>';
             $markup .= '<div class="list-group-teaser-content">';
