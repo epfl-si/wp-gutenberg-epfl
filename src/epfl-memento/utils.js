@@ -1,4 +1,4 @@
-const prod = true;
+const prod = false;
 if (prod) {
   global.BASE_MEMENTO_API_REST_URL = "https://memento.epfl.ch/api/v1/";
 } else {

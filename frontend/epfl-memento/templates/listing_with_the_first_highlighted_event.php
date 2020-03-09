@@ -34,6 +34,9 @@
                 $markup .= '<div class="col-md-6">';
                 $markup .= '<a href="' . esc_url($event->event_url) .'" class="card card-gray link-trapeze-horizontal" itemscope itemtype="http://schema.org/Event">';
                 $markup .= '<div class="card-body">';
+                if ($event->canceled === "True") {
+                    $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h4 p-2">' . __('Cancelled', 'epfl') . '</span>';
+                }
                 $markup .= '<picture class="card-img-top">';
                 $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em;font-size:2em;">';
                 $markup .= '<meta itemprop="eventStatus" content="https://schema.org/EventCancelled">';
@@ -43,7 +46,12 @@
                     $markup .= esc_html($event->academic_calendar_category->en_label);
                 }
                 $markup .= '</span>';
-                $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
+                $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid"';
+                if ($event->canceled === "True") {
+                    $markup .= ' style="opacity:0.3"';
+                }
+                $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
+
                 $markup .= '</picture>';
                 $markup .= '<h3 class="card-title" itemprop="name">' . esc_html($event->title) . '</h3>';
                 $markup .= '<p>' . esc_html(trim_text(strip_tags($event->description), 225)) . '</p>';
@@ -68,7 +76,14 @@
                     $markup .= esc_html($event->academic_calendar_category->en_label);
                 }
                 $markup .= '</span>';
-                $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
+                if ($event->canceled === "True") {
+                    $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h4 p-2">' . __('Cancelled', 'epfl') . '</span>';
+                }
+                $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" ';
+                if ($event->canceled === "True") {
+                    $markup .= ' style="opacity:0.3"';
+                }
+                $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
                 $markup .= '</picture>';
                 $markup .= '</div>';
                 $markup .= '<div class="list-group-teaser-content">';
