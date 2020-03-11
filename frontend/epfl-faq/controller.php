@@ -33,7 +33,7 @@ function epfl_faq_item_block($attributes, $inner_content)
 
 /**
  * Render a FAQ block
- * 
+ *
  * A FAQ block includes epfl/faq-item blocks (one for each couple "question/answer") and displays an index with links to each questions
  * before the first question/answer is displayed.
  * This link list is generated using jQuery on client side. Code which do this is in "js/faq-header.js". This means we have to add some
@@ -48,10 +48,10 @@ function epfl_faq_block($data, $inner_content) {
 
 ?>
 
-<div class="container-grid py-3">
+<div class="container py-3">
   <ul class="link-list epfl-faq-header">
   </ul>
-  <?php 
+  <?php
      echo $inner_content;
   ?>
 </div>
