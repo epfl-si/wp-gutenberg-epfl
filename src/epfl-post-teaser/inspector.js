@@ -22,8 +22,10 @@ export default class InspectorControlsPostTeaser extends Component {
         this.state = {
             posts: null,
         }
+
     }
 
+    
     componentDidMount() {
         const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
         getAllPagesOrPosts('posts', current_lang_code).then( (allPosts) => {
@@ -42,6 +44,7 @@ export default class InspectorControlsPostTeaser extends Component {
         }
 
         const { attributes, setAttributes } = this.props
+        
         const handlePost1Change = ( post1 ) => setAttributes( { post1: JSON.stringify( post1 ) } );
         const handlePost2Change = ( post2 ) => setAttributes( { post2: JSON.stringify( post2 ) } );
         const handlePost3Change = ( post3 ) => setAttributes( { post3: JSON.stringify( post3 ) } );
@@ -71,6 +74,8 @@ export default class InspectorControlsPostTeaser extends Component {
                 marginBottom: '10px'
             }
 
+            
+
             content = (
 				<div>
                 	<InspectorControls>
@@ -83,7 +88,8 @@ export default class InspectorControlsPostTeaser extends Component {
                             />
                         </PanelBody>
 					</InspectorControls>
-                    <h4>{ __( 'Posts', 'epfl') }</h4>
+                    
+                    <b>{ __( 'or select specific posts', 'epfl') }</b>
                     <div style={selectStyle}>
                         <Select
                             id='epfl-page-teaser-post1'
