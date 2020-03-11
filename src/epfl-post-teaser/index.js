@@ -9,7 +9,7 @@ registerBlockType(
 	'epfl/post-teaser',
 	{
 		title: __( "EPFL Post Teaser", 'epfl'),
-		description: 'v1.0.3',
+		description: 'v1.1.0',
 		category: 'common',
 		keywords: [
             __( 'page' , 'epfl'),
