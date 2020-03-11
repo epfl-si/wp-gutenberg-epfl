@@ -17,26 +17,42 @@ function epfl_post_teaser_block( $attributes ) {
     $post2           = Utils::get_sanitized_attribute( $attributes, 'post2' );
     $post3           = Utils::get_sanitized_attribute( $attributes, 'post3' );
     $grayBackground  = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
+    $onlyLastPosts   = Utils::get_sanitized_attribute( $attributes, 'onlyLastPosts', false );
+    
 
     $postsCount = 0;
     $data  = [];
 
-    if ($post1 !== '') {
-        $post1 = json_decode($post1, true);
-        $data[] = $post1["value"];
+    // if we only have to display 3 lasts posts
+    if($onlyLastPosts)
+    {
+        foreach(get_posts() as $post)
+        {
+            $data[] = $post->ID;
+            if(sizeof($data)==3) break;
+        }
+        
+    }
+    else
+    {
+        if ($post1 !== '') {
+            $post1 = json_decode($post1, true);
+            $data[] = $post1["value"];
+        }
+
+        if ($post2 !== '') {
+            $post2 = json_decode($post2, true);
+            $data[] = $post2["value"];
+        }
+
+        if ($post3 !== '') {
+            $post3 = json_decode($post3, true);
+            $data[] = $post3["value"];
+        }
     }
 
-    if ($post2 !== '') {
-        $post2 = json_decode($post2, true);
-        $data[] = $post2["value"];
-    }
 
-    if ($post3 !== '') {
-        $post3 = json_decode($post3, true);
-        $data[] = $post3["value"];
-    }
-
-    foreach($data as $key => $post) {
+    foreach($data as $post) {
         if(!empty($post)) {
             $postsCount++;
         }
@@ -54,7 +70,7 @@ function epfl_post_teaser_block( $attributes ) {
     }
     $html .= ' ">';
 
-    foreach($data as $key => $post) {
+    foreach($data as $post) {
         if (empty($post)) {
             continue;
         }
