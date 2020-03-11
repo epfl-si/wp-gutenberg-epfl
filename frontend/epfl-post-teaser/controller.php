@@ -26,7 +26,7 @@ function epfl_post_teaser_block( $attributes ) {
     // if we only have to display 3 lasts posts
     if($onlyLastPosts)
     {
-        foreach(get_posts() as $post)
+        foreach(get_posts(['numberposts' => 3]) as $post)
         {
             $data[] = $post->ID;
             if(sizeof($data)==3) break;
