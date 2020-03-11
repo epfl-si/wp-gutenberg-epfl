@@ -3,9 +3,7 @@ import InspectorControlsPostTeaser from './inspector'
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { CheckboxControl } = wp.components
-const { 
-	Fragment
-} = wp.element
+const { Fragment } = wp.element
 
 registerBlockType(
 	'epfl/post-teaser',
