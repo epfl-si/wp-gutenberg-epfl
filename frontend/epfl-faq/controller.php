@@ -48,7 +48,7 @@ function epfl_faq_block($data, $inner_content) {
 
 ?>
 
-<div class="container py-3">
+<div class="grid py-3">
   <ul class="link-list epfl-faq-header">
   </ul>
   <?php
