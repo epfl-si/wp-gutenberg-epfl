@@ -102,8 +102,12 @@
                     <div class="lex-number col-1"><?php echo esc_html($lex->lex); ?></div>
                     <div class="col-7"><a class="lex-url" href="<?php echo esc_html($lex->url); ?>"><span class="lex-title"><strong><?php echo esc_html($lex->title); ?></strong></span></a></div>
                     <?php if (!(empty($lex->category))): ?>
-                    <div class="lex-category-subcategory col-4" data-category-subcategory="<?php echo esc_html($lex->category) . esc_html($lex->subcategory); ?>">
-                        <span class="lex-category"><?php echo esc_html($lex->category); ?></span><?php if (!(empty($lex->subcategory))): ?><?php echo ', ' ?><span class="lex-subcategory"><?php echo esc_html($lex->subcategory); ?></span><?php endif; ?></div>
+                    <div class="lex-category-subcategory col-4" data-category-subcategory="<?php echo esc_html($lex->category) . esc_html(implode("", $lex->subcategories)); ?>">
+                        <span class="lex-category"><?php echo esc_html($lex->category); ?></span><?php
+                        foreach ($lex->subcategories as $subcategory):
+                          echo ', ' ?><span class="lex-subcategory"><?php echo esc_html($subcategory); ?></span><?php
+                        endforeach; ?>
+                    </div>
                     <?php endif; ?>
                 </div>
                 <div class="lex-row-2 flex-row d-md-flex pt-2 pb-2">
