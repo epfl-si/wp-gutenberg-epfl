@@ -26,17 +26,15 @@ function tree_categories_with_subcategories($lexes) {
   // build a parentship relation for javascript comboboxes
   $categ_with_sub = [];
 
-  foreach ($order_categ as $categ) {
-    $categ_with_sub[$categ] = [];
-  }
-
   foreach ($lexes as $lex) {
     if (!isset($categ_with_sub[$lex->category])) {
       $categ_with_sub[$lex->category] = [];
     }
 
-    if (!in_array($lex->subcategory, $categ_with_sub[$lex->category])) {
-      $categ_with_sub[$lex->category][] = $lex->subcategory;
+    foreach ($lex->subcategories as $subcategory) {
+      if (!in_array($subcategory, $categ_with_sub[$lex->category])) {
+        $categ_with_sub[$lex->category][] = $subcategory;
+      }
     }
   }
 
@@ -65,8 +63,13 @@ function polylex_filter_out_unused_language($lexes) {
       unset($lex->responsible->urlEn);
       $lex->category = $lex->category->nameFr;
       unset($lex->category->nameEn);
-      $lex->subcategory = $lex->subcategory->nameFr;
-      unset($lex->subcategory->nameEn);
+
+      $lex_subcategories = $lex->subcategories;
+      unset($lex->subcategories);
+      $lex->subcategories = [];
+      foreach ($lex_subcategories as $subcategory) {
+        $lex->subcategories[] = $subcategory->nameFr;
+      }
     } else {
       $lex->title = $lex->titleEn;
       unset($lex->titleEn);
@@ -81,8 +84,13 @@ function polylex_filter_out_unused_language($lexes) {
       unset($lex->responsible->urlFr);
       $lex->category = $lex->category->nameEn;
       unset($lex->category->nameFr);
-      $lex->subcategory = $lex->subcategory->nameEn;
-      unset($lex->subcategory->nameFr);
+
+      $lex_subcategories = $lex->subcategories;
+      unset($lex->subcategories);
+      $lex->subcategories = [];
+      foreach ($lex_subcategories as $subcategory) {
+        $lex->subcategories[] = $subcategory->nameEn;
+      }
     }
   }
 }

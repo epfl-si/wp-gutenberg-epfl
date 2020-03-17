@@ -16,7 +16,7 @@ window.onload = function() {  // wait that jQuery is loaded
                 'lex-title',
                 {name: 'lex-category-subcategory', attr: 'data-category-subcategory'},
                 'lex-category',
-                'lex-subcategory',
+                // 'lex-subcategory', // multiple span with the same class, this may not work
                 'lex-description',
             ]
         };
@@ -53,13 +53,18 @@ window.onload = function() {  // wait that jQuery is loaded
                 lexList.filter();
             } else {
                 lexList.filter(function(item) {
-                    let subcategory_value = item.values()['lex-subcategory'];
+                    // here we can not use
+                    let categorySubcategoriesValue = item.values()['lex-category-subcategory'];
+                    let categoryValue = item.values()['lex-category'];
                     // fix getting values escaped
-                    subcategory = $.parseHTML(subcategory_value);
+                    categorySubcategoriesValue = $.parseHTML(categorySubcategoriesValue);
+                    categoryValue = $.parseHTML(categoryValue);
 
-                    if (subcategory && subcategory.length) {
-                        subcategory = subcategory[0].textContent;
-                        return (subcategory == filter_on);
+                    //get only subcategories by removing category from the chained string
+                    let subcategoriesValue = categorySubcategoriesValue[0].data.replace(new RegExp("^" + categoryValue[0].data, 'i'), "");
+
+                    if (subcategoriesValue && subcategoriesValue.length) {
+                        return (subcategoriesValue.indexOf(filter_on) !== -1);
                     }
                 });
             }

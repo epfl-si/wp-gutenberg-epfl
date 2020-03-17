@@ -13,7 +13,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 require_once(dirname(__FILE__).'/controller.php');
 require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
 
-define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/api/v1/lexes");
+define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex.128.178.222.83.nip.io/api/v1/lexes");
 
 
 function process_shortcode($atts) {
@@ -44,7 +44,7 @@ function process_shortcode($atts) {
     $search = sanitize_text_field($atts["search"]);
 
     $url = LEX_INFO_PROVIDER_URL;
-    $lexes = Utils::get_items($url);
+    $lexes = Utils::get_items($url, 300, 5, False);
 
     ob_start();
 
