@@ -38,6 +38,7 @@ require_once 'epfl-definition-list/controller.php';
 require_once 'epfl-links-group/controller.php';
 require_once 'lib/tags.php';
 require_once 'epfl-table-filter/controller.php';
+require_once 'epfl-table/controller.php';
 require_once 'epfl-faq/controller.php';
 require_once 'epfl-button/controller.php';
 
@@ -214,6 +215,9 @@ function wp_gutenberg_epfl_register_blocks() {
 		));
 	register_block_type( 'epfl/button', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Button\epfl_button_block',
+		));
+	register_block_type( 'epfl/table', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\Table\epfl_table_block',
 		));
 }
 
