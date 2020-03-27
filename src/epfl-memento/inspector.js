@@ -81,6 +81,34 @@ export default class InspectorControlsMemento extends Component {
                 optionsCategoriesList.push({ label: category.en_label, value: category.id });
             });
 
+            let optionsYearsList = [
+              { value: 'no-filter', label: __('No Filter', 'epfl') },
+              { value: '2020', label: '2020' },
+              { value: '2019', label: '2019' },
+              { value: '2018', label: '2018' },
+              { value: '2017', label: '2017' },
+              { value: '2016', label: '2016' },
+              { value: '2015', label: '2015' },
+              { value: '2014', label: '2014' },
+              { value: '2013', label: '2013' },
+              { value: '2012', label: '2012' },
+              { value: '2011', label: '2011' },
+              { value: '2010', label: '2010' },
+            ]
+            
+            let filterPastEventsByYear;
+            if (!!attributes.period && attributes.period === 'past') {
+                filterPastEventsByYear = (
+                    <SelectControl
+                        label={ __("Filter events by year", 'epfl') }
+                        help={ __("Do you want filter past events by year? Please select a year.", 'epfl') }
+                        value={ attributes.year }
+                        options={ optionsYearsList }
+                        onChange={ year => setAttributes( { year } ) }
+                    />
+                )
+            }
+
             content = (
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/memento-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
@@ -125,12 +153,14 @@ export default class InspectorControlsMemento extends Component {
                     </PanelBody>
                     <PanelBody title={ __('Period', 'epfl') }>
                         <RadioControl
+                            style={ {"marginBottom": 0} }
                             label={ __("Select a period", 'epfl') }
                             help={ __("Do you want upcoming events or past events ?", 'epfl') }
                             selected={ attributes.period }
                             options={ optionsPeriodsList }
                             onChange={ period => setAttributes( { period } ) }
-	                    />
+	                      />
+                        { filterPastEventsByYear }
                     </PanelBody>
                     <PanelBody title={ __( 'Category', 'epfl' ) }>
                         <SelectControl

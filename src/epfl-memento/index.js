@@ -44,7 +44,11 @@ registerBlockType(
 			period: {
 				type: 'string',
 				default: 'upcoming',
-			},
+      },
+      year: {
+        type: 'string',
+        default: 'no-filter',
+      },
 			keyword: {
 				type: 'string',
 				default: "",
