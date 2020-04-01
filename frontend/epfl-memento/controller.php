@@ -148,10 +148,10 @@ function epfl_memento_block( $attributes ) {
         $period,
         $year
     );
-    
+
     $events = Utils::get_items($url);
     $memento_slug = get_memento_slug($memento_id);
-    $markup = epfl_memento_render($events->results, $template, $memento_slug);
+    $markup = epfl_memento_render($events->results, $template, $memento_slug, $period);
     return $markup;
 }
 
