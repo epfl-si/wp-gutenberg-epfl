@@ -18,7 +18,13 @@ export default class PreviewMemento extends Component {
 		const { attributes } = this.props;
 
 		let eventsUrl = `${BASE_MEMENTO_API_REST_URL}mementos/${attributes.memento}/events/`;
-		eventsUrl += `?format=json&lang=${attributes.lang}&period=${attributes.period}&limit=${attributes.nbEvents}`;
+    eventsUrl += `?format=json&period=${attributes.period}&limit=${attributes.nbEvents}`;
+
+    if (attributes.lang === 'fr') {
+      eventsUrl += `&lang=fr,en`;
+    } else {
+      eventsUrl += `&lang=en,fr`;
+    }
 
 		if (attributes.category !== 0) {
 			eventsUrl += `&category=${attributes.category}`;
