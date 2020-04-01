@@ -10,6 +10,7 @@
  */
 import * as axios from 'axios';
 
+import './epfl-button'
 import './epfl-caption-cards'
 import './epfl-card-deck'
 import './epfl-contact'
@@ -17,6 +18,8 @@ import './epfl-cover'
 import './epfl-custom-highlight'
 import './epfl-custom-teaser'
 import './epfl-definition-list'
+import './epfl-faq'
+import './epfl-gallery'
 import './epfl-google-forms'
 import './epfl-hero'
 import './epfl-infoscience-search'
@@ -38,8 +41,6 @@ import './epfl-table'
 import './epfl-tableau'
 import './epfl-toggle'
 import './epfl-video'
-import './epfl-faq'
-import './epfl-button'
 
 
 const getHomeURL = () => {
