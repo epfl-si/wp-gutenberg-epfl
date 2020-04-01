@@ -147,7 +147,6 @@ export default class InspectorControlsMemento extends Component {
                     </PanelBody>
                     <PanelBody title={ __('Period', 'epfl') }>
                         <RadioControl
-                            style={ {"marginBottom": 0} }
                             label={ __("Select a period", 'epfl') }
                             help={ __("Do you want upcoming events or past events ?", 'epfl') }
                             selected={ attributes.period }
