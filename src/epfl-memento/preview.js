@@ -34,7 +34,7 @@ export default class PreviewMemento extends Component {
 			eventsUrl += `&keywords=${attributes.keyword}`;
     }
     
-    if (attributes.period === 'past' && attributes.year) {
+    if (attributes.period === 'past' && attributes.year !== 'no-filter') {
       eventsUrl += `&start_year=${attributes.year}`;
     }
 
