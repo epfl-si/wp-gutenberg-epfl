@@ -1,7 +1,7 @@
 <?php
     namespace EPFL\Plugins\Gutenberg\Memento;
 
-    function epfl_memento_listing_with_the_first_highlighted_event($results, $memento_name) {
+    function epfl_memento_listing_with_the_first_highlighted_event($results, $memento_name, $period) {
 
         $memento_url = "https://memento.epfl.ch/" . $memento_name;
         $display_first_event = TRUE;
@@ -10,7 +10,11 @@
         $markup = '<div class="container my-3">';
         $markup .= '<div class="row align-items-center">';
         $markup .= '<div class="col-md-6">';
-        $markup .= '<h2>' . __('Next events', 'epfl') . '</h2>';
+        if ($period === 'past') { 
+          $markup .= '<h2>' . __('Past events', 'epfl') . '</h2>';
+        } else {
+          $markup .= '<h2>' . __('Next events', 'epfl') . '</h2>';
+        }
         $markup .= '</div>';
         $markup .= '<div class="col-md-6 text-right">';
         $markup .= '<a href="' . esc_url($memento_url) . '">' . __('See all events', 'epfl') . '</a>';

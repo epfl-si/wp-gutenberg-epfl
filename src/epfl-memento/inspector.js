@@ -81,6 +81,28 @@ export default class InspectorControlsMemento extends Component {
                 optionsCategoriesList.push({ label: category.en_label, value: category.id });
             });
 
+            let optionsYearsList = [
+              { value: 'no-filter', label: __('No Filter', 'epfl') },
+            ]
+            
+            const currentYear = new Date().getFullYear();
+            for(let year = currentYear; year >= 2008 ; year--) {
+              optionsYearsList.push({ label: year, value: year });
+            }
+
+            let filterPastEventsByYear;
+            if (!!attributes.period && attributes.period === 'past') {
+                filterPastEventsByYear = (
+                    <SelectControl
+                        label={ __("Filter events by year", 'epfl') }
+                        help={ __("Do you want filter past events by year? Please select a year.", 'epfl') }
+                        value={ attributes.year }
+                        options={ optionsYearsList }
+                        onChange={ year => setAttributes( { year } ) }
+                    />
+                )
+            }
+
             content = (
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/memento-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
@@ -130,7 +152,8 @@ export default class InspectorControlsMemento extends Component {
                             selected={ attributes.period }
                             options={ optionsPeriodsList }
                             onChange={ period => setAttributes( { period } ) }
-	                    />
+	                      />
+                        { filterPastEventsByYear }
                     </PanelBody>
                     <PanelBody title={ __( 'Category', 'epfl' ) }>
                         <SelectControl
