@@ -29,6 +29,10 @@ const getAttributes = () => {
             type: 'boolean',
             default: false,
         },
+        navigationThumbnails: {
+            type: 'boolean',
+            default: true,
+        },
     };
 
     return atts;
@@ -55,6 +59,11 @@ registerBlockType( 'epfl/gallery', {
                             label={ __('Large display', 'epfl') }
                             checked={ attributes.largeDisplay }
                             onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
+                        />
+                        <ToggleControl
+                            label={ __('Navigation thumbnails', 'epfl') }
+                            checked={ attributes.navigationThumbnails }
+                            onChange={ navigationThumbnails => setAttributes( { navigationThumbnails } ) }
                         />
                     </PanelBody>
                 </InspectorControls>
