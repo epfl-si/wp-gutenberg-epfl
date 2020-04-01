@@ -3,7 +3,7 @@
 /**
  * Plugin Name: EPFL Memento shortcode
  * Description: provides a shortcode to display events feed
- * @version: 1.1
+ * @version: 1.2
  * @copyright: Copyright (c) 2017 Ecole Polytechnique Federale de Lausanne, Switzerland
  *
  * Text Domain: epfl-memento
@@ -44,7 +44,7 @@ function get_memento_slug($memento_id) {
  * @param $period: period to filter past event or upcoming events
  * @return the API URL of the memento
  */
-function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $category, $keyword, $period)
+function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $category, $keyword, $period, $year)
 {
     // call REST API to get the number of mementos
     $memento_response = Utils::get_items(MEMENTO_API_URL);
@@ -77,6 +77,10 @@ function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $
     // period
     if ($period === 'past' or $period === 'upcoming') {
         $url .= '&period=' . $period;
+    }
+
+    if ($period === 'past' and $year !== '') {
+        $url .= '&start_year=' . $year;
     }
 
     return $url;
@@ -119,7 +123,7 @@ function epfl_memento_block( $attributes ) {
     $period     = Utils::get_sanitized_attribute( $attributes, 'period' );
     $year       = Utils::get_sanitized_attribute( $attributes, 'year' );
 
-    
+    /*
     var_dump("Memento Id: " . $memento_id);
     var_dump("Lang: " . $lang);
     var_dump("Template: " . $template);
@@ -128,7 +132,7 @@ function epfl_memento_block( $attributes ) {
     var_dump("keyword: " . $keyword);
     var_dump("period: " . $period);
     var_dump("year: " . $year);
-    
+    */
 
     if (epfl_memento_check_required_parameters($memento_id, $lang) == FALSE) {
         return Utils::render_user_msg("Memento shortcode: Please check required parameters");
@@ -141,9 +145,10 @@ function epfl_memento_block( $attributes ) {
         $nb_events,
         $category,
         $keyword,
-        $period
+        $period,
+        $year
     );
-    var_dump($url);
+    
     $events = Utils::get_items($url);
     $memento_slug = get_memento_slug($memento_id);
     $markup = epfl_memento_render($events->results, $template, $memento_slug);
