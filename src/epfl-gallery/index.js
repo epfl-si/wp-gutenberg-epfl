@@ -68,6 +68,7 @@ registerBlockType( 'epfl/gallery', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
+                    <h2>{ __('Gallery', 'epfl') }</h2>
                     <InnerBlocks
                         template={ TEMPLATE }
                         templateLock="all"
