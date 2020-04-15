@@ -68,6 +68,7 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
     $posts_blocks_white_list = ['epfl/button',
                                 'epfl/links-group',
                                 'epfl/map',
+                                'epfl/gallery',
                                 'epfl/toggle',
                                 'epfl/quote',
                                 'epfl/video'];
