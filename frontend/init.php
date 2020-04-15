@@ -41,6 +41,7 @@ require_once 'epfl-table-filter/controller.php';
 require_once 'epfl-table/controller.php';
 require_once 'epfl-faq/controller.php';
 require_once 'epfl-button/controller.php';
+require_once 'epfl-gallery/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -219,6 +220,9 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/table', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\Table\epfl_table_block',
 		));
+	register_block_type( 'epfl/gallery', array(
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Gallery\epfl_gallery_block',
+	));
 }
 
 add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_epfl_register_blocks' );
