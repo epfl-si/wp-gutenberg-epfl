@@ -13,10 +13,10 @@ function epfl_table_filter_block($attributes, $inner_content)
 {
 
   // Adding needed scripts
+  wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
   wp_enqueue_script('jquery-change-element-type.js', true);
   wp_enqueue_script('epfl-table-filter-list-min.js', true);
   wp_enqueue_script('epfl-table-filter.js', true);
-  
 
   // Adding CSS
   wp_enqueue_style('epfl-table-filter-style.css');
@@ -24,22 +24,22 @@ function epfl_table_filter_block($attributes, $inner_content)
   $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
   $placeholder    = Utils::get_sanitized_attribute( $attributes, 'placeHolder');
   $header_options = Utils::get_sanitized_attribute( $attributes, 'tableHeaderOptions', '');
-  
+
   // Filtering option
   $filter_only_on_cols  = Utils::get_sanitized_attribute( $attributes, 'filterOnlyOnCols', '');
   $filter_only_on_cols_array  = (trim($filter_only_on_cols)!='')? explode(",", $filter_only_on_cols) : array();
   // Some sanitize work
   $filter_only_on_cols_array = array_map("trim", $filter_only_on_cols_array);
   $filter_only_on_cols_array = array_map("intval", $filter_only_on_cols_array);
-  
+
   // Sorting options
   $numeric_sort_on_cols  = Utils::get_sanitized_attribute( $attributes, 'numericSortOnCols', '');
   $numeric_sort_on_cols_array  = (trim($numeric_sort_on_cols)!='')? explode(",", $numeric_sort_on_cols) : array();
   // Some sanitize work
   $numeric_sort_on_cols_array = array_map("trim", $numeric_sort_on_cols_array);
   $numeric_sort_on_cols_array = array_map("intval", $numeric_sort_on_cols_array);
-  
-  
+
+
   // Class without any CSS style but will be used by JS code
   $classes = array("epfl-table-filter");
   $classes[] = $large_display ? "container": "grid";
@@ -65,13 +65,8 @@ function epfl_table_filter_block($attributes, $inner_content)
 
 add_action( 'init', function() {
   // using JS file present in theme
-    wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
     wp_register_script('epfl-table-filter.js', plugins_url('js/table-filter.js', __FILE__));
     wp_register_script('jquery-change-element-type.js', plugins_url('js/jquery-change-element-type.js', __FILE__));
 
     wp_register_style('epfl-table-filter-style.css', plugins_url('css/epfl-table-filter-style.css', __FILE__));
 });
-
-
-
-  
