@@ -1,15 +1,15 @@
 import InspectorControlsPostTeaser from './inspector'
+import { getAllPagesPostsOrCategories } from '../blocks';
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { CheckboxControl } = wp.components
 const { Fragment } = wp.element
 
 registerBlockType(
 	'epfl/post-teaser',
 	{
 		title: __( "EPFL Post Teaser", 'epfl'),
-		description: 'v1.1.0',
+		description: 'v1.2.0',
 		category: 'common',
 		keywords: [
             __( 'page' , 'epfl'),
@@ -33,11 +33,16 @@ registerBlockType(
 			},
 			onlyLastPosts: {
 				type: 'boolean',
+			},
+			postCategory: {
+				type: 'string',
+				default: null,
 			}
 		},
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 		},
+
 
 		edit: props => {
 			const { attributes, className, setAttributes } = props
@@ -45,11 +50,7 @@ registerBlockType(
 			return (
 				<Fragment>
 					<h2>{ __('EPFL Post Teaser', 'epfl') }</h2>
-					<CheckboxControl
-						label = { __('Display last 3 published posts', 'epfl') }
-						checked = { attributes.onlyLastPosts }
-						onChange = { onlyLastPosts => setAttributes( { onlyLastPosts } ) }
-					/>
+					
 					<InspectorControlsPostTeaser { ...{ attributes, setAttributes } } />
 				</Fragment>
 			)

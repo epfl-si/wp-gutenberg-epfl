@@ -60,13 +60,13 @@ const getHomeURL = () => {
  *                                  Warning, getting content make a render of the post
  * @return a Promise of a list of pages or posts
  */
-export const getAllPagesOrPosts = async (type='pages', lang=null, fields=['id', 'title']) => {
+export const getAllPagesPostsOrCategories = async (type='pages', lang=null, fields=['id', 'title']) => {
     return new Promise((resolve, reject) => {
 
         let homeUrl = getHomeURL();
 
-        if (type !== 'pages' && type !== 'posts') {
-            throw new Error("Please set the type parameter to 'pages' or 'posts'");
+        if (type !== 'pages' && type !== 'posts' && type !== 'categories') {
+            throw new Error("Please set the type parameter to 'pages', 'posts' or 'categories'");
         }
 
         let apiRestUrl = `${homeUrl}/?rest_route=/wp/v2/${type}&per_page=100`;

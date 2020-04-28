@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { getAllPagesOrPosts } from '../blocks';
+import { getAllPagesPostsOrCategories } from '../blocks';
 
 const { __ } = wp.i18n
 const { Component } = wp.element
@@ -26,7 +26,7 @@ export default class InspectorControlsPageTeaser extends Component {
 
     componentDidMount() {
         const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
-        getAllPagesOrPosts('pages', current_lang_code).then( (allPages) => {
+        getAllPagesPostsOrCategories('pages', current_lang_code).then( (allPages) => {
             this.setState({ pages: allPages });
         });
     }
