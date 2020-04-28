@@ -104,19 +104,22 @@ export default class InspectorControlsPostTeaser extends Component {
                             />
                         </PanelBody>
 					</InspectorControls>
-                    <CheckboxControl
-						label = { __('Display last 3 published posts', 'epfl') }
-						checked = { attributes.onlyLastPosts }
-						onChange = { onlyLastPosts => setAttributes( { onlyLastPosts } ) }
-					/>
-                    <Select
-                            id='epfl-post-category'
-                            name='epfl-post-category'
-                            value={ JSON.parse( attributes.postCategory ) }
-                            onChange={ handlePostCategoryChange }
-                            options={ optionsPostsCategoriesList }
-                            placeholder={ __('Category for last 3 to display', 'epfl') }
-						/>
+                    <div style={selectStyle}>
+                        <CheckboxControl
+                            label = { __('Display last 3 published posts', 'epfl') }
+                            checked = { attributes.onlyLastPosts }
+                            onChange = { onlyLastPosts => setAttributes( { onlyLastPosts } ) }
+                        />
+                        <small>{ __('Only display last 3 posts for following category') }</small>
+                        <Select
+                                id='epfl-post-category'
+                                name='epfl-post-category'
+                                value={ JSON.parse( attributes.postCategory ) }
+                                onChange={ handlePostCategoryChange }
+                                options={ optionsPostsCategoriesList }
+                                placeholder={ __('Category', 'epfl') }
+                            />
+                    </div>
                     <b>{ __( 'or select specific posts', 'epfl') }</b>
                     <div style={selectStyle}>
                         <Select
