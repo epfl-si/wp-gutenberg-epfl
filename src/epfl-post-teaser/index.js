@@ -3,7 +3,6 @@ import { getAllPagesPostsOrCategories } from '../blocks';
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const {  } = wp.components
 const { Fragment } = wp.element
 
 registerBlockType(
