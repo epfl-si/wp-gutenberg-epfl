@@ -60,7 +60,7 @@ const getHomeURL = () => {
  *                                  Warning, getting content make a render of the post
  * @return a Promise of a list of pages or posts
  */
-export const getAllPagesOrPosts = async (type='pages', lang=null, fields=['id', 'title']) => {
+export const getAllPagesPostsOrCategories = async (type='pages', lang=null, fields=['id', 'title']) => {
     return new Promise((resolve, reject) => {
 
         let homeUrl = getHomeURL();

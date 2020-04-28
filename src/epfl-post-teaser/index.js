@@ -1,5 +1,5 @@
 import InspectorControlsPostTeaser from './inspector'
-import { getAllPagesOrPosts } from '../blocks';
+import { getAllPagesPostsOrCategories } from '../blocks';
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks

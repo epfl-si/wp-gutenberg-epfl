@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Select from 'react-select';
-import { getAllPagesOrPosts } from '../blocks';
+import { getAllPagesPostsOrCategories } from '../blocks';
 
 const { __ } = wp.i18n
 const { Component } = wp.element
@@ -27,7 +27,7 @@ export default class InspectorControlsPostHighlight extends Component {
 
     componentDidMount() {
         const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
-        getAllPagesOrPosts('posts', current_lang_code).then( (allPosts) => {
+        getAllPagesPostsOrCategories('posts', current_lang_code).then( (allPosts) => {
             this.setState({ posts: allPosts });
         });
 	}
