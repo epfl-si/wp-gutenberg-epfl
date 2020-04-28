@@ -18,7 +18,7 @@ function epfl_post_teaser_block( $attributes ) {
     $post3           = Utils::get_sanitized_attribute( $attributes, 'post3' );
     $grayBackground  = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
     $onlyLastPosts   = Utils::get_sanitized_attribute( $attributes, 'onlyLastPosts', false );
-    
+    $postCategory    = Utils::get_sanitized_attribute( $attributes, 'postCategory' );
 
     $postsCount = 0;
     $data  = [];
@@ -26,7 +26,20 @@ function epfl_post_teaser_block( $attributes ) {
     // if we only have to display 3 lasts posts
     if($onlyLastPosts)
     {
-        foreach(get_posts(['numberposts' => 3]) as $post)
+        $args = ['numberposts' => 3];
+
+        /* If category to filter has been given */
+        if ($postCategory !== '') {
+            $postCategory = json_decode($postCategory, true);
+            
+            /* We ensure a category other than "None" was selected  */
+            if($postCategory["value"] !==null)
+            {
+                $args['category'] = $postCategory["value"];
+            }
+        }
+        
+        foreach(get_posts($args) as $post)
         {
             $data[] = $post->ID;
             if(sizeof($data)==3) break;

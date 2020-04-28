@@ -13,6 +13,7 @@ const {
     PanelBody,
     ToggleControl,
     Spinner,
+    CheckboxControl,
 } = wp.components
 
 export default class InspectorControlsPostTeaser extends Component {
@@ -40,7 +41,7 @@ export default class InspectorControlsPostTeaser extends Component {
     }
 
     render() {
-		if ( ! this.state.posts ) {
+		if ( ! this.state.posts || ! this.state.categories ) {
 			return (
 				<p>
 					<Spinner />
@@ -51,7 +52,7 @@ export default class InspectorControlsPostTeaser extends Component {
 
         const { attributes, setAttributes } = this.props
 
-        const handlePostCategoryChange = ( onlyLastPosts ) => setAttributes( { onlyLastPosts: JSON.stringify( onlyLastPosts ) } );
+        const handlePostCategoryChange = ( postCategory ) => setAttributes( { postCategory: JSON.stringify( postCategory ) } );
         
         const handlePost1Change = ( post1 ) => setAttributes( { post1: JSON.stringify( post1 ) } );
         const handlePost2Change = ( post2 ) => setAttributes( { post2: JSON.stringify( post2 ) } );
@@ -103,7 +104,19 @@ export default class InspectorControlsPostTeaser extends Component {
                             />
                         </PanelBody>
 					</InspectorControls>
-                    
+                    <CheckboxControl
+						label = { __('Display last 3 published posts', 'epfl') }
+						checked = { attributes.onlyLastPosts }
+						onChange = { onlyLastPosts => setAttributes( { onlyLastPosts } ) }
+					/>
+                    <Select
+                            id='epfl-post-category'
+                            name='epfl-post-category'
+                            value={ JSON.parse( attributes.postCategory ) }
+                            onChange={ handlePostCategoryChange }
+                            options={ optionsPostsCategoriesList }
+                            placeholder={ __('Category for last 3 to display', 'epfl') }
+						/>
                     <b>{ __( 'or select specific posts', 'epfl') }</b>
                     <div style={selectStyle}>
                         <Select
@@ -133,14 +146,7 @@ export default class InspectorControlsPostTeaser extends Component {
                             options={ optionsPostsList }
                             placeholder={ __('Select post', 'epfl') }
 						/>
-                        <Select
-                            id='epfl-post-category'
-                            name='epfl-post-category'
-                            value={ JSON.parse( attributes.postCategory ) }
-                            onChange={ handlePostCategoryChange }
-                            options={ optionsPostsCategoriesList }
-                            placeholder={ __('Select post category', 'epfl') }
-						/>
+                        
 				</div>
             )
         }
