@@ -21,6 +21,7 @@ export default class InspectorControlsPostTeaser extends Component {
         super(props);
         this.state = {
             posts: null,
+            categories: null,
         }
 
     }
@@ -28,8 +29,13 @@ export default class InspectorControlsPostTeaser extends Component {
     
     componentDidMount() {
         const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
+
         getAllPagesOrPosts('posts', current_lang_code).then( (allPosts) => {
             this.setState({ posts: allPosts });
+        });
+
+        getAllPagesOrPosts('categories', current_lang_code, ['id', 'name']).then( (allPostCategories) => {
+            this.setState({ categories: allPostCategories });
         });
     }
 
@@ -44,6 +50,8 @@ export default class InspectorControlsPostTeaser extends Component {
         }
 
         const { attributes, setAttributes } = this.props
+
+        const handlePostCategoryChange = ( onlyLastPosts ) => setAttributes( { onlyLastPosts: JSON.stringify( onlyLastPosts ) } );
         
         const handlePost1Change = ( post1 ) => setAttributes( { post1: JSON.stringify( post1 ) } );
         const handlePost2Change = ( post2 ) => setAttributes( { post2: JSON.stringify( post2 ) } );
@@ -58,6 +66,7 @@ export default class InspectorControlsPostTeaser extends Component {
         if (this.state.posts !== null) {
 
             let optionsPostsList = [];
+            let optionsPostsCategoriesList = [];
 
             this.state.posts.forEach(post => {
                 optionsPostsList.push({ label: post.title.rendered, value: post.id });
@@ -74,6 +83,12 @@ export default class InspectorControlsPostTeaser extends Component {
                 marginBottom: '10px'
             }
 
+            this.state.categories.forEach(category => {
+                optionsPostsCategoriesList.push({ label: category.name, value: category.id });
+            });
+
+            // add empty value at first, in case for an unselect
+            optionsPostsCategoriesList.unshift({ value: null, label: __('None', 'epfl') });
             
 
             content = (
@@ -117,6 +132,14 @@ export default class InspectorControlsPostTeaser extends Component {
                             onChange={ handlePost3Change }
                             options={ optionsPostsList }
                             placeholder={ __('Select post', 'epfl') }
+						/>
+                        <Select
+                            id='epfl-post-category'
+                            name='epfl-post-category'
+                            value={ JSON.parse( attributes.postCategory ) }
+                            onChange={ handlePostCategoryChange }
+                            options={ optionsPostsCategoriesList }
+                            placeholder={ __('Select post category', 'epfl') }
 						/>
 				</div>
             )

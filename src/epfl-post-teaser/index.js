@@ -33,6 +33,10 @@ registerBlockType(
 			},
 			onlyLastPosts: {
 				type: 'boolean',
+			},
+			postCategory: {
+				type: 'string',
+				default: null,
 			}
 		},
 		supports : {
