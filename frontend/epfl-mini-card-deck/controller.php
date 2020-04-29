@@ -32,8 +32,7 @@ function epfl_mini_card_panel_block($attributes)
           'thumbnail_16_9_large_40p', // see functions.php
           '',
           [
-            'class' => 'img-fluid',
-            'title' => $image_post->post_excerpt
+            'class' => 'img-fluid'
           ]
           ) ?>
         </picture>
