@@ -193,7 +193,6 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/card-panel', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\CardDeck\epfl_card_panel_block',
 		));
-	
 	register_block_type( 'epfl/definition-list', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\DefinitionList\epfl_definition_list_block',
 		));
