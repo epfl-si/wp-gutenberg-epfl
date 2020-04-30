@@ -70,7 +70,7 @@ registerBlockType( 'epfl/mini-card-deck', {
                 <div className={ className + ' wp-block-scroll' }>
                         <h2>{ __('EPFL Mini Card Deck', 'epfl') }</h2>
                         <TextControl
-                        label={ __('Title (mandatory)', 'epfl') }
+                        label={ __('Title', 'epfl') }
                         value={ attributes.title }
                         onChange={ title => setAttributes( { title } ) }
                     />
@@ -93,4 +93,3 @@ registerBlockType( 'epfl/mini-card-deck', {
         );
 	},
 } );
-
