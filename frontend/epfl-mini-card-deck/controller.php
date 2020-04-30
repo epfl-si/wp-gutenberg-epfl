@@ -24,7 +24,7 @@ function epfl_mini_card_panel_block($attributes)
     ob_start();
 ?>
     <div class="card">
-        <a href="<?php echo $link ?>" class="card link-trapeze-horizontal" <?php if($openLinkNewTab): ?> target="_new" <?php endif; ?>>
+        <a href="<?php echo $link ?>" class="card link-trapeze-horizontal" <?php if($openLinkNewTab): ?> target="_blank" <?php endif; ?>>
         <?php if ($image_post): ?>
           <picture class="card-img-top">
         <?php echo wp_get_attachment_image(
