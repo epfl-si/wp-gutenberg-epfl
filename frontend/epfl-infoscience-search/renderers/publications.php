@@ -300,6 +300,8 @@ Class ConferenceProceedingsShortInfosciencePublication2018Render extends ShortIn
             $html_rendered .= SummaryInfoscienceField2018Render::render($publication, self::$format, false);
         }
 
+        $html_rendered .= '<span class="text-muted small mb-0">';
+
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
 
         if (InfoscienceField2018Render::field_exists($publication['publication_date'])) {
@@ -307,6 +309,8 @@ Class ConferenceProceedingsShortInfosciencePublication2018Render extends ShortIn
         }
 
         $html_rendered .= ConferenceProceedingsDataInfoscienceField2018Render::render($publication, self::$format);
+
+        $html_rendered .= '</span>';
 
         return $html_rendered;
     }
