@@ -350,6 +350,7 @@ function epfl_infoscience_search_convert_keys_values($array_to_convert) {
     $map = array(
         'pattern' => ['p1', $sanitize_pattern_field],
         'field' => ['f1', $convert_fields],
+        'matching' => ['m1', $sanitize_text_field],
         'limit' => ['rg', function($value) {
             return ($value === '') ? '100' : $value;
         }],
@@ -360,9 +361,11 @@ function epfl_infoscience_search_convert_keys_values($array_to_convert) {
         'pattern2' => ['p2', $sanitize_pattern_field],
         'field2' => ['f2', $convert_fields],
         'operator2' => ['op1', $convert_operators],
+        'matching2' => ['m2', $sanitize_text_field],
         'pattern3' => ['p3', $sanitize_pattern_field],
         'field3' => ['f3', $convert_fields],
         'operator3' => ['op2', $convert_operators],
+        'matching3' => ['m3', $sanitize_text_field],
     );
 
     $converted_array = array();
@@ -421,17 +424,31 @@ function epfl_infoscience_search_generate_url_from_attrs($attrs) {
 
     $parameters = array_filter($parameters);
 
+    # this trick allow us to uniq UI, and no separate "normal" and "advanced" search
     # if we have only one operator set (meaning p1 is set and non p2 or p3)
-    # and field resctriction is "any"
+    # and field resctriction is "any" and matching type is "a" (meaning "all of the words")
     # transform it to a non-advanced-search, as it has a better
     # search engine (mainly the date1->date2 operator)
     if (!empty($parameters['p1']) &&
         empty($parameters['p2']) &&
         empty($parameters['p3'])) {
 
-        // yes there is a tricky tranformation to check (fieldrestriction -> to f1)
+        # what about fieldrestriction
+        $is_field_restriction_any = False;
         if (array_key_exists('fieldrestriction', $parameters) &&
-            $parameters['fieldrestriction'] === 'any' &&
+            $parameters['fieldrestriction'] === 'any') {
+                $is_field_restriction_any = True;
+        }
+
+        # what about matching
+        $is_matching_all_of_the_words = False;
+        if (array_key_exists('matching', $parameters) &&
+            $parameters['matching'] === 'a') {
+                $is_matching_all_of_the_words = True;
+        }
+
+        // yes there is a tricky tranformation to check (fieldrestriction -> to f1)
+        if ($is_field_restriction_any && $is_matching_all_of_the_words &&
             empty($parameters['f1']) ) {
             unset($parameters['as1']);
             unset($parameters['op1']);

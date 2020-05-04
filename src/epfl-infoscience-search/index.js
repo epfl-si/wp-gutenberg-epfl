@@ -12,7 +12,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/infoscience-search', {
 	title: __( 'EPFL Infoscience', 'epfl'),
-	description: 'v1.1.2',
+	description: 'v1.2.0',
 	icon: infoscienceIcon,
 	category: 'common',
 	attributes: {
@@ -25,6 +25,10 @@ registerBlockType( 'epfl/infoscience-search', {
 		field: {
 			type: 'string',
 		},
+		matching: {
+			type: 'string',
+			default: 'a'
+		},
 		operator2: {
 			type: 'string',
 		},
@@ -34,6 +38,10 @@ registerBlockType( 'epfl/infoscience-search', {
 		field2: {
 			type: 'string',
 		},
+		matching2: {
+			type: 'string',
+			default: 'a'
+		},
 		operator3: {
 			type: 'string',
 		},
@@ -42,6 +50,10 @@ registerBlockType( 'epfl/infoscience-search', {
 		},
 		field3: {
 			type: 'string',
+		},
+		matching3: {
+			type: 'string',
+			default: 'a'
 		},
 		format: {
 			type: 'string',
