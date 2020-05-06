@@ -13,10 +13,10 @@ function epfl_table_filter_block($attributes, $inner_content)
 {
 
   // Adding needed scripts
-  wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
   wp_enqueue_script('jquery-change-element-type.js', true);
   wp_enqueue_script('epfl-table-filter-list-min.js', true);
   wp_enqueue_script('epfl-table-filter.js', true);
+  
 
   // Adding CSS
   wp_enqueue_style('epfl-table-filter-style.css');
@@ -69,4 +69,8 @@ add_action( 'init', function() {
     wp_register_script('jquery-change-element-type.js', plugins_url('js/jquery-change-element-type.js', __FILE__));
 
     wp_register_style('epfl-table-filter-style.css', plugins_url('css/epfl-table-filter-style.css', __FILE__));
+    /* NOTE: For an unknow reason, if we just register script here and call 'wp_enqueue_script' in epfl_table_filter_block function, 
+    script will be added in footer and table filter won't work...  */
+    wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
+
 });
