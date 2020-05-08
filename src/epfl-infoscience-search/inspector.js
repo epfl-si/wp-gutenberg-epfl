@@ -85,6 +85,14 @@ export default class InspectorControlsInfoscience extends Component {
 			{ value: 'and_not', label: __('AND NOT', 'epfl') },
 		]
 
+		let optionsMatchingType = [
+			{ value: 'a', label: __('All of the words', 'epfl') },
+			{ value: 'o', label: __('Any of the words', 'epfl') },
+			{ value: 'e', label: __('Exact phrase', 'epfl') },
+			{ value: 'p', label: __('Partial phrase', 'epfl') },
+			{ value: 'r', label: __('Regular expression', 'epfl') },
+		]
+
         let content = "";
 
         content = (
@@ -107,6 +115,12 @@ export default class InspectorControlsInfoscience extends Component {
 						value={ attributes.field }
 						onChange={ field => setAttributes( { field } ) }
 						options={ optionsFieldFilter }
+					/>
+					<SelectControl
+						label={ __('Matching', 'epfl') }
+						value={ attributes.matching }
+						onChange={ matching => setAttributes( { matching } ) }
+						options={ optionsMatchingType }
 						help={ <a target="_blank" href="https://infoscience.epfl.ch/docs/search-guide/">{ __('Search tips', 'epfl') }</a> }
 					/>
 					<h2><a href="#" onClick={this.toggleBox}>{ __('Additional search keys', 'epfl') } { this.state.showAdvancedSearch ? '[-]' : '[+]' }</a></h2>
@@ -131,6 +145,12 @@ export default class InspectorControlsInfoscience extends Component {
 							options={ optionsFieldFilter }
 						/>
 						<SelectControl
+							label={ __('Matching', 'epfl') }
+							value={ attributes.matching2 }
+							onChange={ matching2 => setAttributes( { matching2 } ) }
+							options={ optionsMatchingType }
+						/>
+						<SelectControl
 							label={ <h4> { __('Third search text', 'epfl') } </h4> }
 							value={ attributes.operator3 }
 							onChange={ operator3 => setAttributes( { operator3 } ) }
@@ -146,6 +166,12 @@ export default class InspectorControlsInfoscience extends Component {
 							value={ attributes.field3 }
 							onChange={ field3 => setAttributes( { field3 } ) }
 							options={ optionsFieldFilter }
+						/>
+						<SelectControl
+							label={ __('Matching', 'epfl') }
+							value={ attributes.matching3 }
+							onChange={ matching3 => setAttributes( { matching3 } ) }
+							options={ optionsMatchingType }
 						/>
 					</div>
 					}
