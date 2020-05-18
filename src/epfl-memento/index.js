@@ -14,7 +14,7 @@ registerBlockType(
 	'epfl/memento',
 	{
 		title: __('EPFL Memento', 'epfl'),
-		description: 'v1.1.0',
+		description: 'v1.1.1',
 		icon: mementoIcon,
 		category: 'common',
 		keywords: [

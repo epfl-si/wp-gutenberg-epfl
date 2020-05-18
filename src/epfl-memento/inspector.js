@@ -29,7 +29,7 @@ export default class InspectorControlsMemento extends Component {
     componentDidMount() {
         let apiRestUrl = BASE_MEMENTO_API_REST_URL;
 
-        let entryPointMementos = `${apiRestUrl}mementos/?format=json&limit=800`;
+        let entryPointMementos = `${apiRestUrl}mementos/?format=json&limit=800&ordering=en_name`;
 		axios.get(entryPointMementos)
 			.then( response => response.data.results )
 			.then( mementos => this.setState({ mementos }) )
