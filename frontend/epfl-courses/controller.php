@@ -70,8 +70,6 @@ function epfl_courses_block( $attributes ) {
     $url = "https://people.epfl.ch/cgi-bin/getCours";
     $url = add_query_arg($parameters, $url);
 
-    //error_log('Courses URL: '.$url);
-
     // retrieve the data in JSON
     $items = Utils::get_items($url, 300, 15);
 
