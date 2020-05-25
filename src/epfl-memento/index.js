@@ -1,5 +1,4 @@
 import './style.scss'
-import './editor.scss'
 
 import mementoIcon from './memento-icon'
 import PreviewMemento from './preview'

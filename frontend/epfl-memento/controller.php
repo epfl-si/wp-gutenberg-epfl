@@ -51,8 +51,7 @@ function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $
 
     // build URL with all mementos
     $url = MEMENTO_API_URL . '?limit=' . $memento_response->count;
-    $mementos = Utils::get_items($url);
-
+    
     // return events in FR if events exist in this language.
     // otherwise return events in EN (if events exist in this language).
     if ('fr' === $lang) {

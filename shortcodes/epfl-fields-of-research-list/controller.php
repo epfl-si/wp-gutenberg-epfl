@@ -36,7 +36,6 @@ function epfl_fields_of_research_list_render($attributes) {
     wp_enqueue_style( 'epfl-fields-of-research-list-css', plugins_url('epfl-fields-of-research-list.css', __FILE__),false,'1.0','all');
 
     # by default get all sites with at least a tag
-    $lang = get_current_or_default_language();
     $url = LABS_INFO_PROVIDER_URL . 'tags/?type=field-of-research';
     $fields = Utils::get_items($url, 300, 5, True);
 

@@ -16,6 +16,7 @@ require_once 'epfl-cover/view.php';
 require_once 'epfl-toggle/view.php';
 require_once 'epfl-quote/view.php';
 require_once 'epfl-people/controller.php';
+require_once 'epfl-courses/controller.php';
 require_once 'epfl-map/view.php';
 require_once 'epfl-introduction/view.php';
 require_once 'epfl-hero/view.php';
@@ -116,6 +117,10 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/people', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\People\epfl_people_block',
+	));
+	
+	register_block_type( 'epfl/courses', array(
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Courses\epfl_courses_block',
     ));
 
     register_block_type( 'epfl/map', array(
@@ -227,6 +232,7 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/mini-card-panel', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\MiniCardDeck\epfl_mini_card_panel_block',
 		));
+	
 }
 
 add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_epfl_register_blocks' );

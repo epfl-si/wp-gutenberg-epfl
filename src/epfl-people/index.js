@@ -1,5 +1,3 @@
-import './style.scss'
-import './editor.scss'
 import newsIcon from './people-icon'
 import PreviewPeople from './preview'
 import InspectorControlsPeople from './inspector'
