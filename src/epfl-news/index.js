@@ -1,5 +1,4 @@
 import './style.scss'
-import './editor.scss'
 import newsIcon from './news-icon'
 import PreviewNews from './preview'
 import InspectorControlsNews from './inspector'

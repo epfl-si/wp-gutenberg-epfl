@@ -1,4 +1,3 @@
-import './style.scss'
 import infoscienceIcon from './infoscience-icon'
 import InspectorControlsInfoscience from './inspector'
 
