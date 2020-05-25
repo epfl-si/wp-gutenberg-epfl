@@ -117,13 +117,13 @@ function epfl_people_block( $attributes ) {
     // retrieve the data in JSON
     $items = Utils::get_items($url, 300, 15);
     if (false === $items) {
-        return Utils::render_user_msg("People shortcode: Error retrieving items");
+        return Utils::render_user_msg("People block: Error retrieving items");
     }
 
     // If webservice returns an error
     if(property_exists($items, 'Error'))
     {
-        return Utils::render_user_msg("People shortcode: Webservice error: ".$items->Error->text);
+        return Utils::render_user_msg("People block: Webservice error: ".$items->Error->text);
     }
 
     // Create a persons list
