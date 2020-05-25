@@ -43,6 +43,7 @@ Class Utils
      * @param url            : the fetchable url
      * @param cache_time_sec : Nb of sec during which we have to cache information in transient
      * @return decoded JSON data
+     *          False in case of an error
      */
     public static function get_items(string $url, $cache_time_sec=300, $timeout=5, $sslverify=True) {
         /* Generating unique transient ID. We cannot directly use URL (and replace some characters) because we are
@@ -73,7 +74,6 @@ Class Utils
         // Logging call
         do_action('epfl_stats_webservice_call_duration', $url, $end-$start);
 
-
         if (is_array($response)) {
             $header = $response['headers']; // array of http header lines
             $data = $response['body']; // use the content
@@ -85,6 +85,14 @@ Class Utils
                 return False;
             } else {
 
+                $decoded = json_decode($data);
+                /* If error in decoding, */
+                if($decoded === null)
+                {   
+                    error_log("Webservice " . $url . " doesn't returns valid JSON");
+                    return false;
+                }
+
                 /* If we have to store result in a transient,
                 (this time, we don't check if user is logged in or not so futur calls from unlogged users will
                 use cache directly)*/
@@ -93,9 +101,13 @@ Class Utils
                     set_transient($transient_id, $data, $cache_time_sec);
                 }
 
-                return json_decode($data);
+                return $decoded;
+
             }
         }
+
+        // in all cases, we have to return something...
+        return false;
     }
 
 
