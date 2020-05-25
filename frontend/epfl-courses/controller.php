@@ -94,9 +94,10 @@ function epfl_courses_block( $attributes ) {
     else
     {
 
-        $html = '<div class="container"><div class="links-group">'.
-                    '<h5 id="links-group-title">'.$title.'</h5>'.
-                    '<nav class="nav flex-column flex-wrap align-items-start" role="navigation" aria-labelledby="links-group-title">';
+        $html = '<div class="container">'.
+                    '<div class="links-group">'.
+                        '<h5 id="links-group-title">'.$title.'</h5>'.
+                        '<nav class="nav flex-column flex-wrap align-items-start" role="navigation" aria-labelledby="links-group-title">';
 
         foreach($items as $item)
         {
