@@ -11,7 +11,7 @@ use function EPFL\Plugins\Gutenberg\Lib\Templates\epfl_excerpt;
 
 function epfl_post_highlight_block( $attributes ) {
 
-    $layout = Utils::get_sanitized_attribute( $attributes, 'layout', 'right' );
+    $layout = Utils::get_sanitized_attribute( $attributes, 'layout' );
     $post   = Utils::get_sanitized_attribute( $attributes, 'post' );
     $post   = json_decode($post, true);
 
