@@ -8,7 +8,7 @@ registerBlockType(
 	'epfl/post-highlight',
 	{
 		title: __( "EPFL Post Highlight", 'epfl'),
-		description: 'v1.0.4',
+		description: 'v1.0.5',
 		category: 'common',
 		keywords: [
             __( 'post' , 'epfl'),
