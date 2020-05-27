@@ -11,7 +11,7 @@ use function EPFL\Plugins\Gutenberg\Lib\Templates\epfl_excerpt;
 
 function epfl_post_highlight_block( $attributes ) {
 
-    $layout = Utils::get_sanitized_attribute( $attributes, 'layout' );
+    $layout = Utils::get_sanitized_attribute( $attributes, 'layout', 'right' );
     $post   = Utils::get_sanitized_attribute( $attributes, 'post' );
     $post   = json_decode($post, true);
 
@@ -28,13 +28,13 @@ function epfl_post_highlight_block( $attributes ) {
     ob_start();
 ?>    
 <div class="container-full my-3">
-    <div class="fullwidth-teaser '<?php echo $classes ?>">
+    <div class="fullwidth-teaser <?php echo $classes; ?>">
 
 <?php if (has_post_thumbnail( $post )) { ?>
         <picture>
             <source media="(min-width: 1140px)" srcset="<?php echo get_the_post_thumbnail_url( $post, 'large' ) ?>">
                 <img src="<?php echo get_the_post_thumbnail_url( $post ); ?>" aria-labelledby="background-label" alt="" />
-        </picture> ';
+        </picture>
 <?php } ?>
 
         <div class="fullwidth-teaser-text">

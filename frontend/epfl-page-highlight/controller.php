@@ -30,7 +30,7 @@ function epfl_page_highlight_block( $attributes ) {
 ?>
 
 <div class="container-full my-3">
-    <div class="fullwidth-teaser ' . $classes . '">
+    <div class="fullwidth-teaser <?php echo $classes; ?>">
 
 <?php if (has_post_thumbnail( $page )) { ?>
         <picture>
