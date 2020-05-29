@@ -63,6 +63,10 @@ Class InfoscienceMarcConverter
             $url = preg_replace("(^https?://)", "//", $url);
 
             if (preg_match('/\.pdf$/', strtolower($url))) {
+                if (!array_key_exists('fulltext', $sorted_urls)) {
+                    $sorted_urls['fulltext'] = [];
+                }
+
                 # set first position for thesis document
                 if (preg_match('/epfl_th\d+\.pdf$/', strtolower($url))) {
                     array_unshift($sorted_urls['fulltext'], $url);
