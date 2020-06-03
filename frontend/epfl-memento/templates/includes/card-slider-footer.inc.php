@@ -11,6 +11,7 @@ $markup .= '            <svg class="icon" aria-hidden="true"><use xlink:href="#i
 $markup .= '        </button>';
 $markup .= '    </div>';
 $markup .= '</div>';
-$markup .= '<a href="' . esc_url("https://memento.epfl.ch/" . $memento_name . "/?period=30") . '">';
+
+$markup .= '<a href="' . esc_url(get_memento_url($period, $memento_name)) . '">';
 $markup .= __('Complete agenda of events', 'epfl');
 $markup .= '</a>';
