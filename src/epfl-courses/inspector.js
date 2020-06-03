@@ -67,30 +67,30 @@ export default class InspectorControlsCourses extends Component {
         content = (
             <InspectorControls>
                 <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/courses-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-                <PanelBody title={ __('Select by', 'epfl') }>
+                <PanelBody title={ __( 'Select by', 'epfl') }>
                     <TextControl
-                        label={ __('Unit name', 'epfl') }
+                        label={__( 'Unit name', 'epfl')}
                         value={ attributes.unit }
                         help={ __('"GETALL" gives all courses in EPFL"', 'epfl') }
                         onChange={ unit => setAttributes( { unit } ) }
                     />
-                    <h3>{ __('OR', 'epfl') }</h3>
+                    <h3>{__( 'OR', 'epfl')}</h3>
                     <TextControl
-                        label={ __('Scipers', 'epfl') }
+                        label={__( 'Scipers', 'epfl')}
                         value={ attributes.scipers }
                         help={ __('You can enter many scipers separated by a comma', 'epfl') }
                         onChange={ scipers => setAttributes( { scipers } ) }
                     />
                     <h3>{__('OR', 'epfl')}</h3>
                     <SelectControl
-                        label={ __("Section name", 'epfl') }
+                        label={__( 'Section name', 'epfl')}
                         value={ attributes.section }
                         options={ optionsSectionList }
                         onChange={ section => setAttributes ({ section } ) }
                     />
 
                 </PanelBody>
-                <PanelBody title={ __('Filters', 'epfl') }>
+                <PanelBody title={ __( 'Filters', 'epfl' ) }>
                     <TextControl
                         label={ __("Course code", 'epfl') }
                         value={ attributes.courseCode }
@@ -117,7 +117,7 @@ export default class InspectorControlsCourses extends Component {
                         label={ __("Orientation", 'epfl') }
                         value={ attributes.orientation }
                         options={ optionsOrientationList }
-                        onChange= {orientation => setAttributes( { orientation } ) }
+                        onChange={ orientation => setAttributes( { orientation } ) }
                     />
                 </PanelBody>
             </InspectorControls>
