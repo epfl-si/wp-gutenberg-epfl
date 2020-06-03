@@ -66,58 +66,58 @@ export default class InspectorControlsCourses extends Component {
 
         content = (
             <InspectorControls>
-                <p><a className="wp-block-help" href={__('https://www.epfl.ch/campus/services/courses-en/', 'epfl')} target="new">{__('Online help', 'epfl')} </a></p>
-                <PanelBody title={__('Select by', 'epfl')}>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/courses-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <PanelBody title={ __('Select by', 'epfl') }>
                     <TextControl
-                        label={__('Unit name', 'epfl')}
-                        value={attributes.unit}
-                        help={__('"GETALL" gives all courses in EPFL"', 'epfl')}
-                        onChange={unit => setAttributes({ unit })}
+                        label={ __('Unit name', 'epfl') }
+                        value={ attributes.unit }
+                        help={ __('"GETALL" gives all courses in EPFL"', 'epfl') }
+                        onChange={ unit => setAttributes({ unit }) }
                     />
-                    <h3>{__('OR', 'epfl')}</h3>
+                    <h3>{ __('OR', 'epfl') }</h3>
                     <TextControl
-                        label={__('Scipers', 'epfl')}
-                        value={attributes.scipers}
-                        help={__('You can enter many scipers separated by a comma', 'epfl')}
-                        onChange={scipers => setAttributes({ scipers })}
+                        label={ __('Scipers', 'epfl') }
+                        value={ attributes.scipers }
+                        help={ __('You can enter many scipers separated by a comma', 'epfl') }
+                        onChange={ scipers => setAttributes({ scipers }) }
                     />
                     <h3>{__('OR', 'epfl')}</h3>
                     <SelectControl
-                        label={__("Section name", 'epfl')}
-                        value={attributes.section}
-                        options={optionsSectionList}
-                        onChange={section => setAttributes({ section })}
+                        label={ __("Section name", 'epfl') }
+                        value={ attributes.section }
+                        options={ optionsSectionList }
+                        onChange={ section => setAttributes({ section }) }
                     />
 
                 </PanelBody>
-                <PanelBody title={__('Filters', 'epfl')}>
+                <PanelBody title={ __('Filters', 'epfl') }>
                     <TextControl
-                        label={__("Course code", 'epfl')}
-                        value={attributes.courseCode}
-                        onChange={courseCode => setAttributes({ courseCode })}
+                        label={ __("Course code", 'epfl') }
+                        value={ attributes.courseCode }
+                        onChange={ courseCode => setAttributes({ courseCode }) }
                     />
                     <TextControl
-                        label={__("Cursus", 'epfl')}
-                        value={attributes.cursus}
-                        onChange={cursus => setAttributes({ cursus })}
+                        label={ __("Cursus", 'epfl') }
+                        value={ attributes.cursus }
+                        onChange={ cursus => setAttributes({ cursus }) }
                     />
                     <SelectControl
-                        label={__("Teaching language", 'epfl')}
-                        value={attributes.teachingLang}
-                        options={optionsTeachingLangList}
-                        onChange={teachingLang => setAttributes({ teachingLang })}
+                        label={ __("Teaching language", 'epfl') }
+                        value={ attributes.teachingLang }
+                        options={ optionsTeachingLangList }
+                        onChange={ teachingLang => setAttributes({ teachingLang }) }
                     />
                     <SelectControl
-                        label={__("Semester", 'epfl')}
-                        value={attributes.semester}
-                        options={optionsSemesterList}
-                        onChange={semester => setAttributes({ semester })}
+                        label={ __("Semester", 'epfl') }
+                        value={ attributes.semester }
+                        options={ optionsSemesterList }
+                        onChange={ semester => setAttributes({ semester }) }
                     />
                     <SelectControl
-                        label={__("Orientation", 'epfl')}
-                        value={attributes.orientation}
-                        options={optionsOrientationList}
-                        onChange={orientation => setAttributes({ orientation })}
+                        label={ __("Orientation", 'epfl') }
+                        value={ attributes.orientation }
+                        options={ optionsOrientationList }
+                        onChange= {orientation => setAttributes({ orientation }) }
                     />
                 </PanelBody>
             </InspectorControls>
