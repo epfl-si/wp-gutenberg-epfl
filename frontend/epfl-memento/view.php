@@ -19,6 +19,6 @@
     }
 
     function epfl_memento_slider_without_the_first_highlighted_event($results, $memento_name, $period) {
-        return epfl_memento_slider($results, "2", $memento_name);
+        return epfl_memento_slider($results, "2", $memento_name, $period);
     }
 ?>
