@@ -23,15 +23,15 @@ export default class InspectorControlsCourses extends Component {
         const { attributes, setAttributes } = this.props
 
         let optionsTeachingLangList = [
-            { value: '', label: __('All', 'epfl') },
-            { value: 'fr', label: __('French', 'epfl') },
-            { value: 'en', label: __('English', 'epfl') },
+            { value: '', label: __('All', 'epfl')},
+            { value: 'fr', label: __('French', 'epfl')},
+            { value: 'en', label: __('English', 'epfl')},
         ];
 
         let optionsSemesterList = [
-            { value: '', label: __('All', 'epfl') },
-            { value: 'ete', label: __('Summer', 'epfl') },
-            { value: 'hiver', label: __('Winter', 'epfl') },
+            { value: '', label: __('All', 'epfl')},
+            { value: 'ete', label: __('Summer', 'epfl')},
+            { value: 'hiver', label: __('Winter', 'epfl')},
         ];
 
         let optionsOrientationList = [
