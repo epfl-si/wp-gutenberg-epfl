@@ -72,21 +72,21 @@ export default class InspectorControlsCourses extends Component {
                         label={ __('Unit name', 'epfl') }
                         value={ attributes.unit }
                         help={ __('"GETALL" gives all courses in EPFL"', 'epfl') }
-                        onChange={ unit => setAttributes({ unit }) }
+                        onChange={ unit => setAttributes( { unit } ) }
                     />
                     <h3>{ __('OR', 'epfl') }</h3>
                     <TextControl
                         label={ __('Scipers', 'epfl') }
                         value={ attributes.scipers }
                         help={ __('You can enter many scipers separated by a comma', 'epfl') }
-                        onChange={ scipers => setAttributes({ scipers }) }
+                        onChange={ scipers => setAttributes( { scipers } ) }
                     />
                     <h3>{__('OR', 'epfl')}</h3>
                     <SelectControl
                         label={ __("Section name", 'epfl') }
                         value={ attributes.section }
                         options={ optionsSectionList }
-                        onChange={ section => setAttributes({ section }) }
+                        onChange={ section => setAttributes ({ section } ) }
                     />
 
                 </PanelBody>
@@ -94,30 +94,30 @@ export default class InspectorControlsCourses extends Component {
                     <TextControl
                         label={ __("Course code", 'epfl') }
                         value={ attributes.courseCode }
-                        onChange={ courseCode => setAttributes({ courseCode }) }
+                        onChange={ courseCode => setAttributes( { courseCode } ) }
                     />
                     <TextControl
                         label={ __("Cursus", 'epfl') }
                         value={ attributes.cursus }
-                        onChange={ cursus => setAttributes({ cursus }) }
+                        onChange={ cursus => setAttributes( { cursus } ) }
                     />
                     <SelectControl
                         label={ __("Teaching language", 'epfl') }
                         value={ attributes.teachingLang }
                         options={ optionsTeachingLangList }
-                        onChange={ teachingLang => setAttributes({ teachingLang }) }
+                        onChange={ teachingLang => setAttributes( { teachingLang } ) }
                     />
                     <SelectControl
                         label={ __("Semester", 'epfl') }
                         value={ attributes.semester }
                         options={ optionsSemesterList }
-                        onChange={ semester => setAttributes({ semester }) }
+                        onChange={ semester => setAttributes( { semester } ) }
                     />
                     <SelectControl
                         label={ __("Orientation", 'epfl') }
                         value={ attributes.orientation }
                         options={ optionsOrientationList }
-                        onChange= {orientation => setAttributes({ orientation }) }
+                        onChange= {orientation => setAttributes( { orientation } ) }
                     />
                 </PanelBody>
             </InspectorControls>
