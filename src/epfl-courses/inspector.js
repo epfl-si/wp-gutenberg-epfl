@@ -2,12 +2,12 @@ import React from 'react';
 
 const { __ } = wp.i18n
 const {
-  Component,
-  Fragment,
+    Component,
+    Fragment,
 } = wp.element
 
 const {
-	InspectorControls,
+    InspectorControls,
 } = wp.editor
 
 const {
@@ -35,9 +35,31 @@ export default class InspectorControlsCourses extends Component {
         ];
 
         let optionsOrientationList = [
-            { value: '', label: __('All', 'epfl')},
-            { value: 'MA', label: __('Master', 'epfl')},
-            { value: 'BA', label: __('Bachelor', 'epfl')},
+            { value: '', label: __('All', 'epfl') },
+            { value: 'MA', label: __('Master', 'epfl') },
+            { value: 'BA', label: __('Bachelor', 'epfl') },
+        ];
+
+        let optionsSectionList = [
+            { value: '', label: __('<none>', 'epfl') },
+            { value: 'AR', label: __('Architecture', 'epfl') },
+            { value: 'CGC', label: __('Chemistry and chemical engineering', 'epfl') },
+            { value: 'GC', label: __('Civil engineering', 'epfl') },
+            { value: 'SC', label: __('Communication systems', 'epfl') },
+            { value: 'IN', label: __('Computer science', 'epfl') },
+            { value: 'DH', label: __('Digital humanities', 'epfl') },
+            { value: 'EL', label: __('Electrical and electronic engineering', 'epfl') },
+            { value: 'IF', label: __('Financial engineering', 'epfl') },
+            { value: 'SIE', label: __('Environmental sciences and engineering', 'epfl') },
+            { value: 'SV', label: __('Life sciences engineering', 'epfl') },
+            { value: 'MTE', label: __('Management of technology', 'epfl') },
+            { value: 'MX', label: __('Materials science engineering', 'epfl') },
+            { value: 'MA', label: __('Mathematics', 'epfl') },
+            { value: 'GM', label: __('Mechanical engineering', 'epfl') },
+            { value: 'MT', label: __('Microengineering', 'epfl') },
+            { value: 'PH', label: __('Physics', 'epfl') },
+
+
         ];
 
         let content = "";
@@ -50,34 +72,35 @@ export default class InspectorControlsCourses extends Component {
                         label={__( 'Unit name', 'epfl')}
                         value={ attributes.unit }
                         help={ __('"GETALL" gives all courses in EPFL"', 'epfl') }
-						onChange={ unit => setAttributes( { unit } ) }
-					/>
+                        onChange={ unit => setAttributes( { unit } ) }
+                    />
                     <h3>{__( 'OR', 'epfl')}</h3>
                     <TextControl
                         label={__( 'Scipers', 'epfl')}
                         value={ attributes.scipers }
                         help={ __('You can enter many scipers separated by a comma', 'epfl') }
-						onChange={ scipers => setAttributes( { scipers } ) }
-					/>
-                    <h3>{__( 'OR', 'epfl')}</h3>
-                    <TextControl
+                        onChange={ scipers => setAttributes( { scipers } ) }
+                    />
+                    <h3>{__('OR', 'epfl')}</h3>
+                    <SelectControl
                         label={__( 'Section name', 'epfl')}
                         value={ attributes.section }
-						onChange={ section => setAttributes( { section } ) }
-					/>
-                    
+                        options={ optionsSectionList }
+                        onChange={ section => setAttributes ({ section } ) }
+                    />
+
                 </PanelBody>
                 <PanelBody title={ __( 'Filters', 'epfl' ) }>
                     <TextControl
                         label={ __("Course code", 'epfl') }
                         value={ attributes.courseCode }
-						onChange={ courseCode => setAttributes( { courseCode } ) }
-					/>
+                        onChange={ courseCode => setAttributes( { courseCode } ) }
+                    />
                     <TextControl
                         label={ __("Cursus", 'epfl') }
                         value={ attributes.cursus }
-						onChange={ cursus => setAttributes( { cursus } ) }
-					/>
+                        onChange={ cursus => setAttributes( { cursus } ) }
+                    />
                     <SelectControl
                         label={ __("Teaching language", 'epfl') }
                         value={ attributes.teachingLang }
