@@ -17,7 +17,6 @@ function epfl_courses_block( $attributes ) {
     $scipers          = Utils::get_sanitized_attribute( $attributes, 'scipers' );
     $section          = Utils::get_sanitized_attribute( $attributes, 'section' );
     $course_code      = Utils::get_sanitized_attribute( $attributes, 'courseCode' );
-    $cursus           = Utils::get_sanitized_attribute( $attributes, 'cursus' );
     $teaching_lang    = Utils::get_sanitized_attribute( $attributes, 'teachingLang');
     $semester         = Utils::get_sanitized_attribute( $attributes, 'semester');
     $orientation      = Utils::get_sanitized_attribute( $attributes, 'orientation');
@@ -27,7 +26,6 @@ function epfl_courses_block( $attributes ) {
     // var_dump($scipers);
     // var_dump($section);
     // var_dump($course_code);
-    // var_dump($cursus);
     // var_dump($teaching_lang);
     // var_dump($semester);
     // var_dump($orientation);
@@ -53,7 +51,7 @@ function epfl_courses_block( $attributes ) {
     if($semester != "")     { $parameters['sem'] = $semester; }
     if($course_code != "")  { $parameters['code'] = urlencode($course_code); }
     if($orientation != "")  { $parameters['orient'] = urlencode($orientation); }
-    if($cursus != "")       { $parameters['cursus'] = urlencode($cursus); }
+    
 
     /* Presentation */
     if (function_exists('pll_current_language')) {

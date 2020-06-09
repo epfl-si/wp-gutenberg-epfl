@@ -32,9 +32,6 @@ registerBlockType(
 			courseCode: {
 				type: 'string',
 			},
-			cursus: {
-				type: 'string',
-			},
 			teachingLang: {
 				type: 'string',
 			},
