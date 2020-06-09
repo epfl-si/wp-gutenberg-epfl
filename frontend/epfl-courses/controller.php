@@ -97,7 +97,7 @@ function epfl_courses_block( $attributes ) {
 
         foreach($items as $item)
         {
-            $desc = (property_exists($item, 'X_OBJECTIFS') && $item->X_OBJECTIFS != "") ? '<small style="margin:-12px 0px 32px 0px">'.utf8_decode($item->X_OBJECTIFS).'</small>' : '';    
+            $desc = (property_exists($item, 'X_OBJECTIFS') && $item->X_OBJECTIFS != "") ? '<small style="margin:-12px 0px 32px 0px">'.utf8_decode($item->X_OBJECTIFS).'</small>' : '';
             // lang can not exist... in case, for example, if it's a course to learn German (why does someone want to learn German by the way?!? lost a bet?? )
             $lang = (property_exists($item, 'C_LANGUEENS') && $item->C_LANGUEENS != "") ? '<small>('.$item->C_LANGUEENS.')</small>' : '';
 
