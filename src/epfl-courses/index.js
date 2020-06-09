@@ -10,7 +10,7 @@ registerBlockType(
 	'epfl/courses',
 	{
 		title: __( "EPFL Courses", 'epfl'),
-		description: 'v1.1.0',
+		description: 'v1.2.0',
 		icon: coursesIcon,
 		category: 'common',
 		keywords: [
@@ -30,9 +30,6 @@ registerBlockType(
 				type: 'string',
 			},
 			courseCode: {
-				type: 'string',
-			},
-			cursus: {
 				type: 'string',
 			},
 			teachingLang: {

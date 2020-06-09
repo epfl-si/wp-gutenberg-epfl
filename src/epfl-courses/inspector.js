@@ -96,11 +96,6 @@ export default class InspectorControlsCourses extends Component {
                         value={ attributes.courseCode }
                         onChange={ courseCode => setAttributes( { courseCode } ) }
                     />
-                    <TextControl
-                        label={ __("Cursus", 'epfl') }
-                        value={ attributes.cursus }
-                        onChange={ cursus => setAttributes( { cursus } ) }
-                    />
                     <SelectControl
                         label={ __("Teaching language", 'epfl') }
                         value={ attributes.teachingLang }
