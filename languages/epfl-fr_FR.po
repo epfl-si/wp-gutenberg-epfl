@@ -202,7 +202,7 @@ msgstr "Prochains événements"
 
 #: frontend/epfl-memento/templates/slider.php:64
 msgid "Just finished"
-msgstr "Vient de se terminer"
+msgstr "Terminé à l'instant"
 
 #: frontend/epfl-memento/templates/slider.php:97
 msgid "Learn more & apply"
