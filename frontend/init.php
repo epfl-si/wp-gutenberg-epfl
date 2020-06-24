@@ -44,6 +44,7 @@ require_once 'epfl-table/controller.php';
 require_once 'epfl-faq/controller.php';
 require_once 'epfl-button/controller.php';
 require_once 'epfl-gallery/controller.php';
+require_once 'epfl-semester-projects/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -232,7 +233,11 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/mini-card-panel', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\MiniCardDeck\epfl_mini_card_panel_block',
 		));
-	
+
+	register_block_type( 'epfl/semester-projects', array(
+		'render_callback' => 'EPFL\Plugins\Gutenberg\SemesterProjects\epfl_semester_projects_block',
+		));
+
 }
 
 add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_epfl_register_blocks' );
