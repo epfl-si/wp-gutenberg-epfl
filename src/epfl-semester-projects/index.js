@@ -40,7 +40,7 @@ registerBlockType( 'epfl/semester-projects', {
                     
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Contact', 'epfl') }</h2>
+                    <h2>{ __('EPFL Semester Project', 'epfl') }</h2>
                     <TextControl
 							label={ __('Title', 'epfl') }
 							value={ attributes.title }
