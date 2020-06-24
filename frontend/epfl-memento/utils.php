@@ -42,6 +42,10 @@ function trim_text($input, $length, $ellipses = true, $strip_html = true) {
  */
 function is_just_finished($end_date, $end_time) {
 
+    if (empty($end_time)) {
+      return false;
+    }
+
     date_default_timezone_set('Europe/Paris');
     $now = new \DateTime();
     $end_date = new \DateTime($end_date);
