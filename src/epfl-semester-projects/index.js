@@ -36,11 +36,11 @@ registerBlockType( 'epfl/semester-projects', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/contact-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/semester-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Semester Project', 'epfl') }</h2>
+                    <h2>{ __('EPFL Semester Projects', 'epfl') }</h2>
                     <TextControl
 							label={ __('Title', 'epfl') }
 							value={ attributes.title }
