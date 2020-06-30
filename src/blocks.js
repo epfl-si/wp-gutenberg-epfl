@@ -13,6 +13,7 @@ import * as axios from 'axios';
 import './epfl-button'
 import './epfl-caption-cards'
 import './epfl-card-deck'
+import './epfl-carousel'
 import './epfl-contact'
 import './epfl-courses'
 import './epfl-cover'
