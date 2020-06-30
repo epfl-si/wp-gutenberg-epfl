@@ -21,7 +21,7 @@ const {
 
 const { Fragment } = wp.element;
 
-const maxCarousel = 3;
+const maxElements = 5;
 
 const getAttributes = () => {
     let atts = {
@@ -31,7 +31,7 @@ const getAttributes = () => {
         }
 	};
 
-    for (var i = 1; i <= maxCarousel; i++) {
+    for (var i = 1; i <= maxElements; i++) {
         atts['title'+i] = {
 			type: 'string',
         };
@@ -169,7 +169,7 @@ registerBlockType( 'epfl/carousel', {
                 <div className={ className + ' wp-block-scroll' }>
                     <h2>{ __('EPFL Custom Teaser', 'epfl') } </h2>
                     <hr />
-                    {[...Array(maxCarousel)].map((x, i) =>
+                    {[...Array(maxElements)].map((x, i) =>
                     <CarouselPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}
                 </div>
