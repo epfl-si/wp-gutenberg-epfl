@@ -8,7 +8,7 @@ $end_time   = date_format(date_create($event->end_time), 'H:i' );
 
 $markup .= '<span class="card-info-date">' . esc_html($start_date) . '</span>';
 
-if ($event->start_date == $event->end_date){
+if ($event->start_date == $event->end_date && !empty($startime) && !empty($endtime)){
     $markup .= '<span>' . esc_html($start_time) . '</span>';
     $markup .= '<span>' . esc_html($end_time) . '</span>';
 } else {
