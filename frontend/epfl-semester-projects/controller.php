@@ -27,7 +27,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
     foreach($items as $item)
     {
 
-      $html .= '<a class="nav-link nav-pretty" href="'.'#'.'">'.$item->project->description.'</a>';
+      $html .= '<a class="nav-link nav-pretty" href="'.'#'.'">'.$item->project->title.'</a>';
     }
 
 
