@@ -50,7 +50,7 @@ export default class InspectorControlsSemesterProjects extends Component {
 
         if (this.state.sections !== null) {
 
-            let optionsSectionsList = [];
+            let optionsSectionsList = [{ value: '', label: __('<Please choose>', 'epfl') },];
 
             this.state.sections.forEach(section => {
                 optionsSectionsList.push({ label: section.replace("PROJETS_", ""), 
