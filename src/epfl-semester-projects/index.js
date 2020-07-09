@@ -1,5 +1,6 @@
-
+import * as axios from 'axios';
 import semesterProjectsIcon from './semester-projects-icon'
+import InspectorControlsSemesterProjects from './inspector'
 
 const { __ } = wp.i18n;
 
@@ -26,6 +27,9 @@ registerBlockType( 'epfl/semester-projects', {
         title:{
             type: 'string',
         },
+        section:{
+            type: 'string',
+        },
     },
     supports : {
         customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
@@ -35,10 +39,7 @@ registerBlockType( 'epfl/semester-projects', {
 
         return (
             <Fragment>
-                <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/semester-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-                    
-                </InspectorControls>
+                <InspectorControlsSemesterProjects { ...{ attributes, setAttributes } } />
                 <div className={ className }>
                     <h2>{ __('EPFL Semester Projects', 'epfl') }</h2>
                     <TextControl

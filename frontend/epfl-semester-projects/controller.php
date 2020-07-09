@@ -12,9 +12,11 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
 
     $title            = Utils::get_sanitized_attribute( $attributes, 'title' );
+    $section          = Utils::get_sanitized_attribute( $attributes, 'section' );
 
-    $url = "https://isatest.epfl.ch/services/projects/PROJETS_GM";
-    $url = "https://ditex-web.epfl.ch/services/projects/PROJETS_GM";
+    if($section == '') return '';
+
+    $url = "https://ditex-web.epfl.ch/services/projects/".$section;
 
     $items = Utils::get_items($url, 0, 5, false);
 
