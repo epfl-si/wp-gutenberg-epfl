@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/semester-projects', {
     title: __( 'EPFL Semester Projects', 'epfl'),
-    description: 'v1.0.0',
+    description: 'v1.0.1',
     icon: semesterProjectsIcon,
     category: 'common',
     attributes: {
