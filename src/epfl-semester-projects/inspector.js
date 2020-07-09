@@ -25,7 +25,7 @@ export default class InspectorControlsSemesterProjects extends Component {
 
     componentDidMount() {
 
-        let entryPointProjects = `https://isatest.epfl.ch/services/secretariats`;
+        let entryPointProjects = `https://ditex-web.epfl.ch/services/secretariats`;
             axios.get(entryPointProjects)
             .then(response => {
                 

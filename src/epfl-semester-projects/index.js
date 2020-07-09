@@ -41,6 +41,7 @@ registerBlockType( 'epfl/semester-projects', {
             <Fragment>
                 <InspectorControlsSemesterProjects { ...{ attributes, setAttributes } } />
                 <div className={ className }>
+                    <font color="red">DEV mode: This is using ditex-web as proxy</font>
                     <h2>{ __('EPFL Semester Projects', 'epfl') }</h2>
                     <TextControl
 							label={ __('Title', 'epfl') }
