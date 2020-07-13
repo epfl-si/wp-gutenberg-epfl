@@ -16,7 +16,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
     if($section == '') return '';
 
-    $url = "https://ditex-web.epfl.ch/services/projects/".$section;
+    $url = "https://ditex-web.epfl.ch/services/v1/projects/STI/".$section;
 
     $items = Utils::get_items($url, 0, 5, false);
 
