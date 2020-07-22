@@ -45,13 +45,7 @@ function get_memento_slug($memento_id) {
  * @return the API URL of the memento
  */
 function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $category, $keyword, $period, $year)
-{
-    // call REST API to get the number of mementos
-    $memento_response = Utils::get_items(MEMENTO_API_URL);
-
-    // build URL with all mementos
-    $url = MEMENTO_API_URL . '?limit=' . $memento_response->count;
-    
+{    
     // return events in FR if events exist in this language.
     // otherwise return events in EN (if events exist in this language).
     if ('fr' === $lang) {
