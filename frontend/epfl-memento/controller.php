@@ -157,8 +157,8 @@ function epfl_memento_block( $attributes ) {
     $markup = epfl_memento_render($events->results, $template, $memento_slug, $period);
     var_dump($memento_slug);
 
-    var_dump("SERVER:");
-    var_dump($_SERVER);
+    //var_dump("SERVER:");
+    //var_dump($_SERVER);
 
     return $markup;
 }
