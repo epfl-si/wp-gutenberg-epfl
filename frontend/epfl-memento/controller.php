@@ -149,7 +149,7 @@ function epfl_memento_block( $attributes ) {
     var_dump("URL: " . $url);
 
     $events = Utils::get_items($url, 0);
-    var_dump("Events: " . $events);
+    //var_dump("Events: " . $events);
 
     $memento_slug = get_memento_slug($memento_id);
     //var_dump("Slug: " . $memento_slug);
