@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Block Initializer.
  */
 require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
-/*
+
 // load .mo file for translation
 function epfl_gutenberg_load_textdomain() {
 	load_plugin_textdomain( 'epfl', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
@@ -47,7 +47,7 @@ function polylang_json_api_languages() {
 
 // fix polylang language segmentation
 add_action( 'rest_api_init' , __NAMESPACE__ . '\polylang_json_api_init' );
-*/
+
 /**
  * Only allow blocks starting with "epfl/" in editor. If others blocks have to be allowed too, comoing from WordPress
  * or others plugins, you'll have to add another filter to add them, for example in a MU-Plugin. But be careful to
