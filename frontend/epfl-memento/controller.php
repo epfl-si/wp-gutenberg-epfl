@@ -28,7 +28,8 @@ require_once(dirname(__FILE__).'/view.php');
 function get_memento_slug($memento_id) {
 
   $url = MEMENTO_API_URL . $memento_id . '/?format=json';
-  $memento = Utils::get_items($url, 0);
+  $memento = Utils::get_items($url, 300, 20);
+
   return $memento->slug;
 }
 
@@ -86,6 +87,7 @@ function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $
  */
 function epfl_memento_check_required_parameters($memento, $lang)
 {
+
     // check lang
     if ($lang !==  "fr" && $lang !== "en" ) {
         return FALSE;
@@ -140,7 +142,7 @@ function epfl_memento_block( $attributes ) {
         $year
     );
 
-    $events = Utils::get_items($url, 0, 20);
+    $events = Utils::get_items($url, 300, 20);
     $memento_slug = get_memento_slug($memento_id);
     $markup = epfl_memento_render($events->results, $template, $memento_slug, $period);
   
