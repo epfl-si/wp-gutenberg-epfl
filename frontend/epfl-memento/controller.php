@@ -28,11 +28,11 @@ require_once(dirname(__FILE__).'/view.php');
 function get_memento_slug($memento_id) {
 
   $url = MEMENTO_API_URL . $memento_id . '/?format=json';
-  //var_dump("2ème URL: " . $url);
+  var_dump("2ème URL: " . $url);
 
   $memento = Utils::get_items($url, 0);
 
-  //var_dump("SLUG: " . $memento->slug);
+  var_dump("SLUG: " . $memento->slug);
 
   return $memento->slug;
 }
@@ -149,17 +149,13 @@ function epfl_memento_block( $attributes ) {
     var_dump("URL: " . $url);
 
     $events = Utils::get_items($url, 0);
-    //var_dump("NB Events: " . count($events->results));
+    var_dump("NB Events: " . count($events->results));
 
     $memento_slug = get_memento_slug($memento_id);
-    //var_dump("Slug: " . $memento_slug);
+    var_dump("Slug: " . $memento_slug);
 
     $markup = epfl_memento_render($events->results, $template, $memento_slug, $period);
-    //var_dump($memento_slug);
-
-    //var_dump("SERVER:");
-    //var_dump($_SERVER);
-
+  
     return $markup;
 }
 
