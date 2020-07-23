@@ -14,8 +14,8 @@ namespace EPFL\Plugins\Gutenberg\Memento;
 
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
-define(__NAMESPACE__ . "\MEMENTO_API_URL", "https://memento-origin.epfl.ch/api/v1/mementos/");
-define(__NAMESPACE__ . "\MEMENTO_API_URL_IFRAME", "https://memento-origin.epfl.ch/webservice/?frame=1");
+define(__NAMESPACE__ . "\MEMENTO_API_URL", "https://memento.epfl.ch/api/v1/mementos/");
+define(__NAMESPACE__ . "\MEMENTO_API_URL_IFRAME", "https://memento.epfl.ch/webservice/?frame=1");
 require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
@@ -28,12 +28,7 @@ require_once(dirname(__FILE__).'/view.php');
 function get_memento_slug($memento_id) {
 
   $url = MEMENTO_API_URL . $memento_id . '/?format=json';
-  var_dump("2ème URL: " . $url);
-
   $memento = Utils::get_items($url, 0);
-
-  var_dump("SLUG: " . $memento->slug);
-
   return $memento->slug;
 }
 
@@ -91,7 +86,6 @@ function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $
  */
 function epfl_memento_check_required_parameters($memento, $lang)
 {
-
     // check lang
     if ($lang !==  "fr" && $lang !== "en" ) {
         return FALSE;
@@ -146,14 +140,8 @@ function epfl_memento_block( $attributes ) {
         $year
     );
 
-    var_dump("URL: " . $url);
-
     $events = Utils::get_items($url, 0, 20);
-    var_dump("NB Events: " . count($events->results));
-
     $memento_slug = get_memento_slug($memento_id);
-    var_dump("Slug: " . $memento_slug);
-
     $markup = epfl_memento_render($events->results, $template, $memento_slug, $period);
   
     return $markup;

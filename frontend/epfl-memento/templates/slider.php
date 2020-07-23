@@ -4,7 +4,7 @@
     // template = 1
     function epfl_memento_slider($results, $template, $memento_name, $period) {
 
-        $memento_url = "https://memento-origin.epfl.ch/" . $memento_name;
+        $memento_url = "https://memento.epfl.ch/" . $memento_name;
 
         $display_first_event = ($template == 1);
 

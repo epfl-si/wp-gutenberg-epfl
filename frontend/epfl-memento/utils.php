@@ -80,13 +80,13 @@ function get_visual_url($event, $memento_name) {
             $visual_url = substr($event->visual_url, 0, -11) . '509x286.jpg';
         } else {
             if ($memento_name == 'academic-calendar') {
-                $visual_url = "https://memento-origin.epfl.ch/static/img/Others.jpg";
+                $visual_url = "https://memento.epfl.ch/static/img/Others.jpg";
             } else {
-                $visual_url = "https://memento-origin.epfl.ch/static/img/default.jpg";
+                $visual_url = "https://memento.epfl.ch/static/img/default.jpg";
             }
         }
     } else {
-        $visual_url = "https://memento-origin.epfl.ch/static/img/";
+        $visual_url = "https://memento.epfl.ch/static/img/";
         $visual_url .= $event->academic_calendar_category->en_label;
         $visual_url .= ".jpg";
     }
@@ -97,9 +97,9 @@ function get_memento_url($period, $memento_name) {
   if ($period === 'past') {
     $now = date("Y-m-d");
     $year = (intval(substr($now, 0, 4)) - 1) . substr($now, 4, 10) ;
-    $memento_url = "https://memento-origin.epfl.ch/" . $memento_name . "/?period=365&date=" . $year;
+    $memento_url = "https://memento.epfl.ch/" . $memento_name . "/?period=365&date=" . $year;
   } else {
-    $memento_url = "https://memento-origin.epfl.ch/" . $memento_name;
+    $memento_url = "https://memento.epfl.ch/" . $memento_name;
   }
   return $memento_url;
 }

@@ -3,7 +3,7 @@
 
     function epfl_memento_listing_without_the_first_highlighted_event($results, $memento_name) {
 
-        $memento_url = "https://memento-origin.epfl.ch/" . $memento_name;
+        $memento_url = "https://memento.epfl.ch/" . $memento_name;
         $display_first_event = FALSE;
         $nb_events = count($results);
 
