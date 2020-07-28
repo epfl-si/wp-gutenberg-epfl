@@ -50,7 +50,6 @@ const getAttributes = () => {
 
 let optionsHeader = [
     { value: '', label: __('No header', 'epfl') },
-    { value: 'header', label: __('Header', 'epfl') },
     { value: 'header,sort', label: __('Header & sort', 'epfl') },
 ];
 
