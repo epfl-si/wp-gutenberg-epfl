@@ -30,10 +30,6 @@ const getAttributes = () => {
             type: 'boolean',
             default: false,
         },
-        firstLineIsHeader: {
-            type: 'boolean',
-            default: false,
-        },
         placeHolder: {
             type: 'string',
         },
@@ -54,7 +50,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/table', {
 	title: __( 'EPFL Table', 'epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.0',
 	icon: tableIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -73,11 +69,6 @@ registerBlockType( 'epfl/table', {
                             label={ __('Large display', 'epfl') }
                             checked={ attributes.largeDisplay }
                             onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
-                        />
-                        <ToggleControl
-                            label={ __('First line is header', 'epfl') }
-                            checked={ attributes.firstLineIsHeader }
-                            onChange={ firstLineIsHeader => setAttributes( { firstLineIsHeader } ) }
                         />
                     </PanelBody>
                 </InspectorControls>
