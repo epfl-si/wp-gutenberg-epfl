@@ -12,13 +12,15 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
 
     table.toggleClass('table');
 
+    tbody = $(filter_div).find('tbody');
+
     // Filter options
     limit_filter_to = JSON.parse($(filter_div).find('input[name="limit_filter_to_cols"]').attr('value'));
     // Sort options
     numeric_sort_on = JSON.parse($(filter_div).find('input[name="numeric_sort_on_cols"]').attr('value'));
 
     // Looping through rows
-    table.find('tr').each(function(tr_index, tr){
+    tbody.find('tr').each(function(tr_index, tr){
 
         // loopging through columns
         $(tr).find('td').each(function(td_index, td) {
