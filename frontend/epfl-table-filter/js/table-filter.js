@@ -57,10 +57,15 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
         
         // if we have at least one option, 'header' will be in it, so...
 
-        // Changing <td> into <th> in header
-        table.find('tr:first').find('td').changeElementType('th');
-        // Wraping <tr><th> into <thead>
-        table.find('tr:first').wrap('<thead/>').parent().prependTo(table);
+        // There are 2 options for the header. An option from the native block 'table'
+        // and another option 'header & sort' which comes from the custom block epfl-table-filter.
+        // If there is already a header, do not add the 2nd 'custom header'
+        if (table.find('thead').length == 0) {
+          // Changing <td> into <th> in header
+          table.find('tr:first').find('td').changeElementType('th');
+          // Wraping <tr><th> into <thead>
+          table.find('tr:first').wrap('<thead/>').parent().prependTo(table);
+        }
 
         // if we also have to sort table
         if(header_options.includes('sort'))
