@@ -12,6 +12,8 @@ const {
 const {
     PanelBody,
     SelectControl,
+    ToggleControl,
+    TextControl,
 } = wp.components
 
 export default class InspectorControlsSemesterProjects extends Component {
@@ -62,13 +64,26 @@ export default class InspectorControlsSemesterProjects extends Component {
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/semester-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __( 'Section', 'epfl') }>
-                    <SelectControl
-                        value={ attributes.section }
-                        onChange={ section => setAttributes( { section: section } ) }
-                        options={ optionsSectionsList }
-                    />
+                        <SelectControl
+                            value={ attributes.section }
+                            onChange={ section => setAttributes( { section: section } ) }
+                            options={ optionsSectionsList }
+                        />
+                    </PanelBody>
+                    <PanelBody title={ __( 'Filters', 'epfl') }>
+                        <ToggleControl
+                            label={ __('Only current projects', 'epfl') }
+                            checked={ attributes.onlyCurrentProjects }
+                            onChange={ onlyCurrentProjects => setAttributes( { onlyCurrentProjects } ) }
+                        />
+                        <TextControl
+                            label={ __('Professor(s) sciper(s)', 'epfl') }
+                            help={ __('Separated with commas', 'epfl') }
+							value={ attributes.professorScipers }
+							onChange={ professorScipers => setAttributes( { professorScipers } ) }
+						/>
                 
-                </PanelBody>
+                    </PanelBody>
                     
                 </InspectorControls>
             )

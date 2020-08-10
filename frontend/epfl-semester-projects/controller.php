@@ -11,15 +11,34 @@ function epfl_semester_projects_block($attributes, $inner_content) {
     if(is_admin()) return "";
 
 
-    $title            = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $section          = Utils::get_sanitized_attribute( $attributes, 'section' );
+    $title                  = Utils::get_sanitized_attribute( $attributes, 'title' );
+    $section                = Utils::get_sanitized_attribute( $attributes, 'section' );
+    $only_current_projects  = Utils::get_sanitized_attribute( $attributes, 'onlyCurrentProjects', '' ) != '';
+    $professor_scipers      = Utils::get_sanitized_attribute( $attributes, 'professorScipers' );
+    $professor_scipers      = preg_replace('/\s/', '', $professor_scipers);
 
     if($section == '') return '';
 
     $url = "https://ditex-web.epfl.ch/services/v1/projects/STI/".$section;
 
+    // to store parameters
+    $search_params = array();
+
+    if($only_current_projects) $search_params[] = 'date-active='.date("Y-m-d");
+    if($professor_scipers != "")
+    {
+      foreach(explode(',', $professor_scipers) as $sciper)
+      {
+        // yes, we can have multiple 'professor' key defined in query string... it's how the Webservice works...
+        $search_params[] = 'professor='.$sciper;
+      }
+    }
+
+    if(sizeof($search_params)>0) $url .= "/search?".implode('&', $search_params);
+
     $items = Utils::get_items($url, 0, 5, false);
 
+    $html = "";
 
     foreach($items as $item)
     {

@@ -30,6 +30,13 @@ registerBlockType( 'epfl/semester-projects', {
         section:{
             type: 'string',
         },
+        onlyCurrentProjects: {
+            type: 'boolean',
+        },
+        professorScipers: {
+            type: 'string',
+        }
+
     },
     supports : {
         customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
