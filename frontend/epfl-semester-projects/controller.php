@@ -57,8 +57,8 @@ function epfl_semester_projects_block($attributes, $inner_content) {
                             'Archivage'     => $item->project->archivage->fr,
                             'Descriptif'    => $item->project->descriptif->fr,
                             'Commentaires'  => $item->project->commentaire->fr,
-                            'Professors'    => $item->project->enseignants->principal1->name->fr.", ".
-                                                $item->project->enseignants->principal2->name->fr,
+                            'Professors'    => '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr.'</a>, '.
+                                                '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal2->sciper.'" target="_blank">'.$item->project->enseignants->principal2->name->fr. '</a>',
                             'Resp. Admin'   => $item->project->administrateur->fr,
                             'Site'          => $item->project->site->fr,
                             'Labo, site, mail' => $item->project->externe->laboratoire->fr. ", ".
