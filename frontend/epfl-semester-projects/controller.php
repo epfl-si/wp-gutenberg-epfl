@@ -51,7 +51,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
                             'Image'         => $item->project->image->fr,
                             'Types'         => implode(", ", $types),
                             'Section'       => $item->project->section->fr,
-                            'Principal 1'   => $item->project->enseignants->principal1->name->fr,
+                            'Principal 1'   => '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr. '</a>',
                             'Rapport'       => $item->project->rapport->fr,
                             'Présentation'  => $item->project->presentation->fr,
                             'Archivage'     => $item->project->archivage->fr,
