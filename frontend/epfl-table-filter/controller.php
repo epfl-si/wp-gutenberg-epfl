@@ -66,7 +66,7 @@ function epfl_table_filter_block($attributes, $inner_content)
 add_action( 'init', function() {
   // using JS file present in theme
     wp_register_script('epfl-table-filter.js', plugins_url('js/table-filter.js', __FILE__));
-    wp_register_script('jquery-change-element-type.js', plugins_url('js/jquery-change-element-type.js', __FILE__));
+    wp_register_script('jquery-change-element-type.js', plugins_url('lib/jquery-change-element-type.js', dirname(__FILE__)));
 
     wp_register_style('epfl-table-filter-style.css', plugins_url('css/epfl-table-filter-style.css', __FILE__));
     /* NOTE: For an unknow reason, if we just register script here and call 'wp_enqueue_script' in epfl_table_filter_block function, 

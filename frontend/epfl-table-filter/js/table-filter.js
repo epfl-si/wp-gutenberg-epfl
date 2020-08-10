@@ -12,13 +12,15 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
 
     table.toggleClass('table');
 
+    tbody = $(filter_div).find('tbody');
+
     // Filter options
     limit_filter_to = JSON.parse($(filter_div).find('input[name="limit_filter_to_cols"]').attr('value'));
     // Sort options
     numeric_sort_on = JSON.parse($(filter_div).find('input[name="numeric_sort_on_cols"]').attr('value'));
 
     // Looping through rows
-    table.find('tr').each(function(tr_index, tr){
+    tbody.find('tr').each(function(tr_index, tr){
 
         // loopging through columns
         $(tr).find('td').each(function(td_index, td) {
@@ -55,10 +57,15 @@ $(".epfl-table-filter").each(function(filter_div_index, filter_div) {
         
         // if we have at least one option, 'header' will be in it, so...
 
-        // Changing <td> into <th> in header
-        table.find('tr:first').find('td').changeElementType('th');
-        // Wraping <tr><th> into <thead>
-        table.find('tr:first').wrap('<thead/>').parent().prependTo(table);
+        // There are 2 options for the header. An option from the native block 'table'
+        // and another option 'header & sort' which comes from the custom block epfl-table-filter.
+        // If there is already a header, do not add the 2nd 'custom header'
+        if (table.find('thead').length == 0) {
+          // Changing <td> into <th> in header
+          table.find('tr:first').find('td').changeElementType('th');
+          // Wraping <tr><th> into <thead>
+          table.find('tr:first').wrap('<thead/>').parent().prependTo(table);
+        }
 
         // if we also have to sort table
         if(header_options.includes('sort'))

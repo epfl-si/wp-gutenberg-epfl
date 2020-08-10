@@ -232,8 +232,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         delete_transient($cache_key);
     }
 
-    #TODO: remove this transient
-    delete_transient($cache_key);
     $page = get_transient($cache_key);
 
     # not in cache ?

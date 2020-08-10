@@ -18,10 +18,10 @@ if ($function) {
     $markup .= '<div class="contact-list-item"></div>';
 }
 
-$markup .= '<a class="contact-list-item text-muted" style="width:250px;" href="mailto:"' . esc_attr($person->email) . '" itemprop="email">' . esc_attr($person->email) . "</a>";
+$markup .= '<a class="contact-list-item text-muted" style="width:250px;" href="mailto:' . esc_attr($person->email) . '" itemprop="email">' . esc_attr($person->email) . "</a>";
 
 if (isset($phones[0])) {
-    $markup .= '<a class="contact-list-item text-muted" style="width:130px;" href="tel:"'. esc_html($phones[0]) . '" itemprop="telephone">';
+    $markup .= '<a class="contact-list-item text-muted" style="width:130px;" href="tel:'. esc_html($phones[0]) . '" itemprop="telephone">';
     $markup .= '<b>' . esc_html($phones[0]) . '</b>';
     $markup .= '</a>';
 } else {
