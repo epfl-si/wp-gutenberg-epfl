@@ -37,9 +37,9 @@ add_filter( 'get_site_tags', function ($value) {
       // first, fetch for the id of this site
       $site_url = rtrim($site_url, '/');
       $url_site_to_id = $tag_provider_url . '/sites?site_url=' . rawurlencode($site_url);
-      $site = Utils::get_items($url_site_to_id);
+      $sites = Utils::get_items($url_site_to_id);
 
-      if ($site === false && !(defined('WP_DEBUG') && WP_DEBUG)) {
+      if ($sites === false && !(defined('WP_DEBUG') && WP_DEBUG)) {
         # wp-veritas is not responding, get the local option and
         # set a transient, so we dont refresh everytime
         $tags_and_urls_from_option = get_option('epfl:custom_tags');
@@ -53,26 +53,31 @@ add_filter( 'get_site_tags', function ($value) {
         }
       } else {
         # wp-veritas is responding; from the site id, get the tags
-        if (!empty($site)) {
-          $tags_and_urls = []; // [[tag, url], ...]
-          $tags = $site->tags;
+        if (!empty($sites)) {
 
-          if (!empty($tags)) {
-            # all goods, we have data !
+            $site = $sites[0];
 
-            # order it
-            usort($tags, 'EPFL\Plugins\Gutenberg\Lib\Tags\epfl_fetch_site_tags_order_cmp');
+            if (!empty($site)) {
+              $tags_and_urls = []; // [[tag, url], ...]
+              $tags = $site->tags;
 
-            set_transient( 'epfl_custom_tags', $tags, $cache_timeout);
-            # persist into options too, as a fallback if wp_veritas is no more online
-            update_option('epfl:custom_tags', $tags);
-            return $tags;
-          } else {
-            # nothing for this site ? time to remove local entries
-            set_transient( 'epfl_custom_tags', [], $cache_timeout );
-            delete_option('epfl:custom_tags');
-            return;
-          }
+              if (!empty($tags)) {
+                # all goods, we have data !
+
+                # order it
+                usort($tags, 'EPFL\Plugins\Gutenberg\Lib\Tags\epfl_fetch_site_tags_order_cmp');
+
+                set_transient( 'epfl_custom_tags', $tags, $cache_timeout);
+                # persist into options too, as a fallback if wp_veritas is no more online
+                update_option('epfl:custom_tags', $tags);
+                return $tags;
+              } else {
+                # nothing for this site ? time to remove local entries
+                set_transient( 'epfl_custom_tags', [], $cache_timeout );
+                delete_option('epfl:custom_tags');
+                return;
+              }
+           }
         }
       }
     } else {

@@ -13,6 +13,7 @@ const {
     PanelBody,
     ToggleControl,
     Spinner,
+    TextControl,
 } = wp.components
 
 export default class InspectorControlsPageTeaser extends Component {
@@ -79,6 +80,11 @@ export default class InspectorControlsPageTeaser extends Component {
                         />
                     </PanelBody>
                 	</InspectorControls>
+                    <TextControl
+                        label={ __('Title', 'epfl') }
+                        value={ attributes.title }
+                        onChange={ title => setAttributes( { title } ) }
+                    />
 
                     <h4>{ __( 'Pages', 'epfl') }</h4>
 

@@ -5,25 +5,22 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
-
 /**
- * Render a Table filter
+ * Render a Table
  */
 function epfl_table_block($attributes, $inner_content)
 {
 
-  $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
-  
-  $class = $large_display ? "container": "grid";
+  wp_enqueue_script('jquery-change-element-type.js', true);
 
-  $content = '<div class="'. $class .'">'.
-             $inner_content.
-             '</div>';
+  $large_display = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
+  $class = $large_display ? "container": "grid";
+  $content = '<div class="'. $class .'">'.$inner_content.'</div>';
 
   return $content;
 
 }
 
-
-
-  
+add_action( 'init', function() {
+    wp_register_script('jquery-change-element-type.js', plugins_url('lib/jquery-change-element-type.js', dirname(__FILE__)));
+});
