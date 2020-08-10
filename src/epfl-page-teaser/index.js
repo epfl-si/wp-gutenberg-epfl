@@ -8,13 +8,16 @@ registerBlockType(
 	'epfl/page-teaser',
 	{
 		title: __( "EPFL Page Teaser", 'epfl'),
-		description: 'v1.0.3',
+		description: 'v1.0.4',
 		category: 'common',
 		keywords: [
             __( 'page' , 'epfl'),
             __( 'teaser' , 'epfl'),
 		],
 		attributes: {
+			title: {
+				type: 'string',
+			},
 			page1: {
 				type: 'string',
 				default: null,

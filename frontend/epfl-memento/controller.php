@@ -3,7 +3,7 @@
 /**
  * Plugin Name: EPFL Memento shortcode
  * Description: provides a shortcode to display events feed
- * @version: 1.2
+ * @version: 1.3
  * @copyright: Copyright (c) 2017 Ecole Polytechnique Federale de Lausanne, Switzerland
  *
  * Text Domain: epfl-memento
@@ -28,7 +28,7 @@ require_once(dirname(__FILE__).'/view.php');
 function get_memento_slug($memento_id) {
 
   $url = MEMENTO_API_URL . $memento_id . '/?format=json';
-  $memento = Utils::get_items($url);
+  $memento = Utils::get_items($url, 300, 20);
 
   return $memento->slug;
 }
@@ -45,13 +45,7 @@ function get_memento_slug($memento_id) {
  * @return the API URL of the memento
  */
 function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $category, $keyword, $period, $year)
-{
-    // call REST API to get the number of mementos
-    $memento_response = Utils::get_items(MEMENTO_API_URL);
-
-    // build URL with all mementos
-    $url = MEMENTO_API_URL . '?limit=' . $memento_response->count;
-    
+{    
     // return events in FR if events exist in this language.
     // otherwise return events in EN (if events exist in this language).
     if ('fr' === $lang) {
@@ -148,9 +142,10 @@ function epfl_memento_block( $attributes ) {
         $year
     );
 
-    $events = Utils::get_items($url);
+    $events = Utils::get_items($url, 300, 20);
     $memento_slug = get_memento_slug($memento_id);
     $markup = epfl_memento_render($events->results, $template, $memento_slug, $period);
+  
     return $markup;
 }
 
