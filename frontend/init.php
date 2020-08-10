@@ -238,6 +238,8 @@ function wp_gutenberg_epfl_register_blocks() {
 
 	register_block_type( 'epfl/semester-projects', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\SemesterProjects\epfl_semester_projects_block',
+		));
+
 	register_block_type( 'epfl/carousel', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\Carousel\epfl_carousel_block',
 		));

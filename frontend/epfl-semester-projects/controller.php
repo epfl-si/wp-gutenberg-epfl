@@ -38,7 +38,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
     $items = Utils::get_items($url, 0, 5, false);
 
-    $html = "";
+    $html = "<h3>".$title."</h3>";
 
     foreach($items as $item)
     {
