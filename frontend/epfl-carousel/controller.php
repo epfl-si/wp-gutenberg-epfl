@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/content-types/news >> Highlighted Carousel
+
 namespace EPFL\Plugins\Gutenberg\Carousel;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * There's no specific design for this block in the Styleguide so we use "Links-Group" design
+ * https://epfl-si.github.io/elements/#/molecules/links-group
+ */
+
 namespace EPFL\Plugins\Gutenberg\Courses;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

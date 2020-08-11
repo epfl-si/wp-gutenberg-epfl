@@ -1,4 +1,7 @@
 <?php
+
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/map
+
 namespace EPFL\Plugins\Gutenberg\Map;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

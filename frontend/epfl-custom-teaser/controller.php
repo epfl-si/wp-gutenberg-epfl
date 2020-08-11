@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/content-types/basic-page >> Default Teaser
+
 namespace EPFL\Plugins\Gutenberg\CustomTeaser;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/organisms/hero
+
 namespace EPFL\Plugins\Gutenberg\Hero;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

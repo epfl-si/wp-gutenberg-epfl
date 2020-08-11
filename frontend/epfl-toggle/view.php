@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/collapse-group
+
 namespace EPFL\Plugins\Gutenberg\Toggle;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

@@ -1,4 +1,6 @@
 <?php
+// Styleguide: https://epfl-si.github.io/elements/#/content-types/publication
+
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
 require_once('renderers/publications.php');

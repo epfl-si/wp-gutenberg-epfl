@@ -1,4 +1,7 @@
 <?php
+
+// Styleguide: https://epfl-si.github.io/elements/#/atoms/video
+
 namespace EPFL\Plugins\Gutenberg\Video;
 
 /**

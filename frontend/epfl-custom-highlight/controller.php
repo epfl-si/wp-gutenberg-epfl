@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/content-types/news >> Highlighted
+
 namespace EPFL\Plugins\Gutenberg\CustomHighlight;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

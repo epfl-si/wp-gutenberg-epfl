@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/social-feed
+
 function epfl_social_feed_view( $twitter_url,
                                 $twitter_limit,
                                 $instagram_url,
