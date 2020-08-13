@@ -5,6 +5,15 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
+// Return HTML code with a link to given URL
+function get_link($url)
+{
+  if(preg_match('/https?/', $url) === 0) $url = 'https://'.$url;
+
+  return '<a href="'.$url.'" target="_blank">'. $url.'</a>';
+}
+
+
 function epfl_semester_projects_block($attributes, $inner_content) {
     
     // To avoid to execute all code below (useless) when we just click on "Update" to save page while editing it
@@ -36,35 +45,45 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
     if(sizeof($search_params)>0) $url .= "/search?".implode('&', $search_params);
 
+
     $items = Utils::get_items($url, 0, 5, false);
 
     $html = "<h3>".$title."</h3>";
 
     foreach($items as $item)
     {
-      $attributes = array('title' => $item->project->title);
+      $attributes = array('title' => '['.$item->project->noProjet->fr.'] '.$item->project->title);
 
       $types = array();
       foreach($item->project->types as $type){ $types[] = $type->fr;}
 
-      $content_array = array('No project'   => $item->project->noProjet->fr,
-                            'Image'         => $item->project->image->fr,
-                            'Types'         => implode(", ", $types),
-                            'Section'       => $item->project->section->fr,
-                            'Principal 1'   => '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr. '</a>',
-                            'Rapport'       => $item->project->rapport->fr,
-                            'Présentation'  => $item->project->presentation->fr,
-                            'Archivage'     => $item->project->archivage->fr,
-                            'Descriptif'    => $item->project->descriptif->fr,
-                            'Commentaires'  => $item->project->commentaire->fr,
-                            'Professors'    => '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr.'</a>, '.
-                                                '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal2->sciper.'" target="_blank">'.$item->project->enseignants->principal2->name->fr. '</a>',
-                            'Resp. Admin'   => $item->project->administrateur->fr,
-                            'Site'          => $item->project->site->fr,
-                            'Labo, site, mail' => $item->project->externe->laboratoire->fr. ", ".
-                                                  $item->project->externe->site->fr." ,".
-                                                  $item->project->externe->email->fr
-                          );
+      $content_array = array();
+      $content_array['No project'] = $item->project->noProjet->fr;
+      if($item->project->image->fr != '') $content_array['Image'] = $item->project->image->fr;
+      if(sizeof($types)>0) $content_array['Types'] = implode(", ", $types);
+      $content_array['Section'] = $item->project->section->fr;
+      $content_array['Principal 1'] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr. '</a>';
+      if($item->project->rapport->fr != '') $content_array['Rapport'] = $item->project->rapport->fr;
+      if($item->project->presentation->fr != '') $content_array['Présentation'] = $item->project->presentation->fr;
+      if($item->project->archivage->fr != '') $content_array['Archivage'] = $item->project->archivage->fr;
+      if($item->project->descriptif->fr != '') $content_array['Descriptif'] = $item->project->descriptif->fr;
+      if($item->project->commentaire->fr != '') $content_array['Commentaires'] = $item->project->commentaire->fr;
+      
+      $professors = array();
+      if($item->project->enseignants->principal1->sciper != '') $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr.'</a>';
+      if($item->project->enseignants->principal2->sciper != '') $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal2->sciper.'" target="_blank">'.$item->project->enseignants->principal2->name->fr.'</a>';
+        
+      if(sizeof($professors)>0) $content_array['Professors'] = implode(', ', $professors);
+      
+      if($item->project->administrateur->fr != '') $content_array['Resp. Admin'] = $item->project->administrateur->fr;
+      if($item->project->site->fr != '') $content_array['Site'] = get_link($item->project->site->fr);
+
+      $external = array();
+      if($item->project->externe->laboratoire->fr != '') $external[] = $item->project->externe->laboratoire->fr;
+      if($item->project->externe->site->fr != '') $external[] = get_link($item->project->externe->site->fr);
+      if($item->project->externe->email->fr != '') $external[] = '<a href="mailto:'.$item->project->externe->email->fr.'">'.$item->project->externe->email->fr.'</a>';
+      
+      if(sizeof($external)>0) $content_array['Externe'] = implode(", ", $external);
 
       $inner_content = array();
       foreach($content_array as $title => $value)
