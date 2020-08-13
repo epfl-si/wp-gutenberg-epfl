@@ -16,6 +16,7 @@ const {
 const {
     PanelBody,
 	RadioControl,
+	TextControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -23,12 +24,15 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/toggle', {
 
 	title: __( 'EPFL Toggle', 'epfl'),
-	description: 'v1.0.4',
+	description: 'v1.0.5',
 	icon: toggleIcon,
 	category: 'common',
 	attributes: {
 		title: {
 			type: 'string',
+		},
+		anchor: {
+			type: 'string',	
 		},
 		state: {
             type: 'string',
@@ -56,6 +60,12 @@ registerBlockType( 'epfl/toggle', {
                             { label: 'Open', value: 'open' },
                         ] }
                         onChange={ state => setAttributes( { state } ) }
+					/>
+					<TextControl
+						label={ __('Anchor', 'epfl') }
+						help={ __('To point directly on toggle using #<anchor> in URL. Toggle will be opened automatically', 'epfl') }
+						value={ attributes.anchor }
+						onChange={ anchor => setAttributes( { anchor } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
