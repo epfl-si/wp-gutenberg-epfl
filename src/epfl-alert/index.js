@@ -82,7 +82,7 @@ registerBlockType( 'epfl/alert', {
 					<label><small>{ __('Content', 'epfl') }</small></label>
                     <RichText
 						value={ attributes.content }
-						multiline="p"
+						multiline="br"
 						onChange={ content => setAttributes( { content } ) }
 						placeholder={ __('Write your text here','epfl')}
 						keepPlaceholderOnFocus = { true }
