@@ -15,14 +15,13 @@ const {
 const {
     Placeholder,
     IconButton,
-	TextareaControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/pdf-flipbook', {
 	title: __( 'EPFL PDF Flipbook', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: flipbookIcon,
 	category: 'common',
 	attributes: {
