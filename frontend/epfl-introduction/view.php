@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/organisms/introduction
+
 namespace EPFL\Plugins\Gutenberg\Introduction;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

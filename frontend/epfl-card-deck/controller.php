@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/card-deck
+
 namespace EPFL\Plugins\Gutenberg\CardDeck;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

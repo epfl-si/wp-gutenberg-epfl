@@ -1,4 +1,7 @@
 <?php
+
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/links-group
+
 namespace EPFL\Plugins\Gutenberg\LinksGroup;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

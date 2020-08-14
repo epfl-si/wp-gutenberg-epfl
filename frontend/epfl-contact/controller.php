@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/organisms/contact
+
 namespace EPFL\Plugins\Gutenberg\Contact;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/atoms/definition-list
+
 namespace EPFL\Plugins\Gutenberg\DefinitionList;
 
 function epfl_definition_list_block($attributes) {

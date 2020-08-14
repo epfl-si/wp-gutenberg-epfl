@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: not defined in styleguide
+
 namespace EPFL\Plugins\Gutenberg\Scheduler;
 
 use \EPFL\Plugins\Gutenberg\Lib\Utils;

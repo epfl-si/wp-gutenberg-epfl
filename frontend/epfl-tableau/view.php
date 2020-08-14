@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: Not defined in styleguide
+
 function epfl_tableau_render($tableau_name, $width, $height) {
 
     ob_start();

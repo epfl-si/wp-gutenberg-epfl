@@ -1,4 +1,5 @@
 <?php
+    // Styleguide: https://epfl-si.github.io/elements/#/content-types/event >> Hightlight + Listing
     namespace EPFL\Plugins\Gutenberg\Memento;
 
     require_once(dirname(__FILE__) . '/utils.php');

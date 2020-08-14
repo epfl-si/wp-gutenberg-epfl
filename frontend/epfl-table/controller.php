@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/tables
+
 namespace EPFL\Plugins\Gutenberg\Table;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

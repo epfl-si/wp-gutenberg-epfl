@@ -1,4 +1,6 @@
 <?php
+    // Styleguide: Not present in styleguide
+
     namespace EPFL\Plugins\Gutenberg\GoogleForms;
 
     function epfl_google_forms_render($src, $height) {
