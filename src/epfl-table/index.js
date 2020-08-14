@@ -50,7 +50,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/table', {
 	title: __( 'EPFL Table', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: tableIcon,
 	category: 'common',
 	attributes: getAttributes(),
