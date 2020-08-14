@@ -31,7 +31,7 @@ function epfl_carousel_block( $attributes ) {
     ob_start();
 ?>
 
-<div class="container">
+<div class="container-full">
 <div id="carouselNews" class="carousel slide carousel-highlighted-news" data-ride="carousel" data-interval="6000">
   <div class="carousel-inner">
     

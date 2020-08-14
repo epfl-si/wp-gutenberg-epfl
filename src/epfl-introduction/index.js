@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/introduction', {
 	title: __( 'EPFL Introduction', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.4',
 	icon: 'text',
 	category: 'common',
 	attributes: {
@@ -66,7 +66,6 @@ registerBlockType( 'epfl/introduction', {
 						onChange={ content => setAttributes( { content } ) }
 						placeholder={ __('Write your text here','epfl')}
 						keepPlaceholderOnFocus = { true }
-						allowedFormats={[]}
                     />
                 </div>
             </Fragment>
