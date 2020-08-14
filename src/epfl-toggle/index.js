@@ -24,7 +24,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/toggle', {
 
 	title: __( 'EPFL Toggle', 'epfl'),
-	description: 'v1.0.5',
+	description: 'v1.1.0',
 	icon: toggleIcon,
 	category: 'common',
 	attributes: {
