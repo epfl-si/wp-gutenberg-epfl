@@ -42,15 +42,9 @@ function epfl_carousel_block( $attributes ) {
       <div class="carousel-item <?php if($i==1) echo 'active'; ?>">
       <div class="fullwidth-teaser fullwidth-teaser-horizontal">
         <picture>
-        <?php echo wp_get_attachment_image(
-            $attributes['imageId'.$i],
-            'thumbnail_16_9_large_80p', // see functions.php
-            '',
-            [
-              'class' => 'img-fluid',
-              'title' => $image->post_excerpt
-            ]
-            ) ?>
+        <?php 
+          echo '<img src="'.$image->guid.'" aria-labelledby="background-label" alt="'.$image->post_excerpt.'" />';
+        ?>
         </picture>
 
         <div class="fullwidth-teaser-text">
