@@ -16,9 +16,6 @@ function epfl_alert_block( $attributes ) {
   $alert_type     = Utils::get_sanitized_attribute( $attributes, 'alertType' , 'info');
   $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false ) === '1';
   $can_be_closed  = Utils::get_sanitized_attribute( $attributes, 'canBeClosed', false ) === '1';
-  
-
-
 
   ob_start();
   ?>
@@ -33,9 +30,7 @@ function epfl_alert_block( $attributes ) {
     </div>
   </div>
 
-
-  
-  <?php
+<?php
       $content = ob_get_contents();
       ob_end_clean();
       return $content;
