@@ -12,11 +12,12 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
  */
 function epfl_alert_block( $attributes ) {
 
-  $content        = Utils::get_sanitized_attribute( $attributes, 'content' );
+  $content        = $attributes['content'];
   $alert_type     = Utils::get_sanitized_attribute( $attributes, 'alertType' , 'info');
   $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false ) === '1';
   $can_be_closed  = Utils::get_sanitized_attribute( $attributes, 'canBeClosed', false ) === '1';
   
+
 
 
   ob_start();
