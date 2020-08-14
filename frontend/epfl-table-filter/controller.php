@@ -44,8 +44,8 @@ function epfl_table_filter_block($attributes, $inner_content)
 
   // Class without any CSS style but will be used by JS code
   $classes = array("epfl-table-filter");
-  $classes[] = $large_display ? "container": "grid";
-
+  if($large_display) $classes[] = "container";
+  
   // random generated ID for DIV
   $div_id = "table-filter-".md5(microtime(true). $inner_content);
 

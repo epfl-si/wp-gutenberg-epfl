@@ -19,7 +19,7 @@ function epfl_alert_block( $attributes ) {
 
   ob_start();
   ?>
-  <div class="<?php echo $large_display ? "container": "grid"; ?> my-3">
+  <div class="<?php if($large_display) echo "container"; ?> my-3">
     <div class="alert alert-<?php echo $alert_type; echo ($can_be_closed)?' alert-dismissible':' '; ?>  fade show" role="alert">
       <?php echo $content; ?>
       <?php if($can_be_closed): ?>
