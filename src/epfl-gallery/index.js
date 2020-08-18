@@ -53,7 +53,7 @@ registerBlockType( 'epfl/gallery', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/en/it-services/web-services/wordpress-help/text-tools-en/gallery/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/gallery/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __('Format', 'epfl') }>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }
