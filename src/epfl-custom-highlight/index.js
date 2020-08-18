@@ -80,7 +80,7 @@ registerBlockType( 'epfl/custom-highlight', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/custom-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/custom-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<hr/>
 				<RadioControl
 					label={ __("Select a layout", 'epfl') }

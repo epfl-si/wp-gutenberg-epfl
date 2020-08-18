@@ -44,7 +44,7 @@ registerBlockType( 'epfl/introduction', {
 
             <Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/introduction-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/introduction-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<hr/>
 				<ToggleControl
 					label={ __('Change the background to gray', 'epfl') }

@@ -157,7 +157,7 @@ registerBlockType( 'epfl/carousel', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/carousel-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/carousel-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Links'>
                       <ToggleControl
                           label={ __('Open links in a new tab', 'epfl') }

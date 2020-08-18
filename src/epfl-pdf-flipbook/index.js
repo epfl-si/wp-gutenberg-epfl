@@ -57,7 +57,7 @@ registerBlockType( 'epfl/pdf-flipbook', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/pdf-flipbook-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/pdf-flipbook-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
 			<div className={ className }>
 				<h2>{ __('EPFL PDF Flipbook', 'epfl') }</h2>
@@ -85,7 +85,7 @@ registerBlockType( 'epfl/pdf-flipbook', {
                        ) : (
                         <p className="epfl-uploader-file-wrapper">
 							{ attributes.pdfUrl }
-                        
+
                         <IconButton
                             className="epfl-uploader-remove-file"
                             onClick={ onRemovePDF }
@@ -96,7 +96,7 @@ registerBlockType( 'epfl/pdf-flipbook', {
 
                       </p>
                 )}
-				
+
 			</div>
 		</Fragment>
 		)

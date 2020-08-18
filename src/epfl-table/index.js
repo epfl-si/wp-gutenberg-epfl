@@ -19,7 +19,7 @@ const {
 
 const { Fragment } = wp.element;
 
-// Template to have only one nested block, a core/table. And we set the 'fixed layout' option to ensure correct display. 
+// Template to have only one nested block, a core/table. And we set the 'fixed layout' option to ensure correct display.
 const TEMPLATE = [
 	['core/table', { hasFixedLayout: true }, [] ]
 ]
@@ -63,7 +63,7 @@ registerBlockType( 'epfl/table', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/table-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/table-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __('Format', 'epfl') }>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }
@@ -74,9 +74,9 @@ registerBlockType( 'epfl/table', {
                 </InspectorControls>
                 <div className={ className }>
                     <h2>{ __('Table', 'epfl') }</h2>
-                    <InnerBlocks 
+                    <InnerBlocks
                         template={ TEMPLATE }
-                        templateLock="all" 
+                        templateLock="all"
                        />
                 </div>
             </Fragment>
@@ -85,7 +85,7 @@ registerBlockType( 'epfl/table', {
 	save: ( props ) => {
 		return (
                 <InnerBlocks.Content />
-            
+
         );
 	},
 } );

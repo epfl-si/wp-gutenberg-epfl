@@ -148,7 +148,7 @@ registerBlockType( 'epfl/caption-cards', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/caption-cards-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/caption-cards-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                     {[...Array(maxCaptionCards)].map((x, i) =>

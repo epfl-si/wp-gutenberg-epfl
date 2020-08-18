@@ -85,7 +85,7 @@ registerBlockType( 'epfl/links-group', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/links-group-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/links-group-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <ToggleControl
                         label={ __('Open links in a new tab', 'epfl') }
                         checked={ attributes.openLinksNewTab }

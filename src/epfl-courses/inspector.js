@@ -66,7 +66,7 @@ export default class InspectorControlsCourses extends Component {
 
         content = (
             <InspectorControls>
-                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/courses-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/courses-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 <PanelBody title={ __( 'Select by', 'epfl') }>
                     <TextControl
                         label={__( 'Unit name', 'epfl')}

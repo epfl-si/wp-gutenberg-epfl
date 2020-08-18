@@ -41,7 +41,7 @@ registerBlockType( 'epfl/video', {
         return (
             <Fragment>
 				<InspectorControls>
-					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/video-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/video-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 					<PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }
