@@ -16,8 +16,8 @@ function epfl_table_block($attributes, $inner_content)
   wp_enqueue_script('jquery-change-element-type.js', true);
 
   $large_display = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
-  $class = $large_display ? "container": "grid";
-  $content = '<div class="'. $class .'">'.$inner_content.'</div>';
+  $class = $large_display ? 'class="container"': "";
+  $content = '<div '. $class .'>'.$inner_content.'</div>';
 
   return $content;
 

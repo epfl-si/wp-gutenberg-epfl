@@ -10,6 +10,7 @@
  */
 import * as axios from 'axios';
 
+import './epfl-alert'
 import './epfl-button'
 import './epfl-caption-cards'
 import './epfl-card-deck'

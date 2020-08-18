@@ -55,7 +55,7 @@ let optionsHeader = [
 
 registerBlockType( 'epfl/table-filter', {
 	title: __( 'EPFL Table Filter', 'epfl'),
-	description: 'v1.1.2',
+	description: 'v1.1.3',
 	icon: tableFilterIcon,
 	category: 'common',
 	attributes: getAttributes(),
