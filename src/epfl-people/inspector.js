@@ -43,7 +43,7 @@ export default class InspectorControlsPeople extends Component {
                 className="field-with-no-margin-bottom"
                 onChange={ structure => setAttributes( { structure } ) }
             />
-            <p>{ __('You can enter the name of a custom structure.', 'epfl') } <a target="_blank" href="https://www.epfl.ch/campus/services/ressources-informatiques/publier-sur-le-web-epfl/people/page-106273-fr-html/">{ __('More information', 'epfl') }</a>. <a target="_blank" href="https://people.epfl.ch/cgi-bin/upldtmpl">{ __('List of existing structures', 'epfl') }</a></p>
+            <p>{ __('You can enter the name of a custom structure.', 'epfl') } <a target="_blank" href="https://www.epfl.ch/campus/services/website/ressources-informatiques/publier-sur-le-web-epfl/people/page-106273-fr-html/">{ __('More information', 'epfl') }</a>. <a target="_blank" href="https://people.epfl.ch/cgi-bin/upldtmpl">{ __('List of existing structures', 'epfl') }</a></p>
 
           </Fragment>
         }
@@ -64,7 +64,7 @@ export default class InspectorControlsPeople extends Component {
 
         content = (
             <InspectorControls>
-                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/people-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/people-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 <PanelBody title={ __( 'Select by', 'epfl') }>
                     <strong>{__( 'Units', 'epfl')}</strong>
                     <TextControl

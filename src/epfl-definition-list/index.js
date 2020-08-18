@@ -85,7 +85,7 @@ registerBlockType( 'epfl/definition-list', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/definition-list-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/definition-list-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Display as a table', 'epfl') }

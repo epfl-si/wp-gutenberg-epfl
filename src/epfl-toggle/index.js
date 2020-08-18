@@ -32,7 +32,7 @@ registerBlockType( 'epfl/toggle', {
 			type: 'string',
 		},
 		anchor: {
-			type: 'string',	
+			type: 'string',
 		},
 		state: {
             type: 'string',
@@ -49,7 +49,7 @@ registerBlockType( 'epfl/toggle', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/toggle-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/toggle-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<PanelBody>
 					<RadioControl
                         label={ __('Initial state', 'epfl') }

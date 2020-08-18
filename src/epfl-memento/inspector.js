@@ -84,7 +84,7 @@ export default class InspectorControlsMemento extends Component {
             let optionsYearsList = [
               { value: 'no-filter', label: __('No Filter', 'epfl') },
             ]
-            
+
             const currentYear = new Date().getFullYear();
             for(let year = currentYear; year >= 2008 ; year--) {
               optionsYearsList.push({ label: year, value: year });
@@ -105,7 +105,7 @@ export default class InspectorControlsMemento extends Component {
 
             content = (
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/memento-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/memento-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __('Memento', 'capitainewp-gutenberg-blocks', 'epfl') }>
                         <SelectControl
                             label={ __("Select your memento", 'epfl') }

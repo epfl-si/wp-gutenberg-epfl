@@ -51,7 +51,7 @@ registerBlockType( 'epfl/card-deck', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/card-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/card-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'epfl') }
@@ -64,9 +64,9 @@ registerBlockType( 'epfl/card-deck', {
                         <h2>{ __('EPFL Card Deck', 'epfl') }</h2>
                         <InnerBlocks
                             template={ TEMPLATE }
-                            /* We could lock template to deny adding new blocks but even if we remove the locking inside epfl/card-panel, there's a bug and the system removes the 
+                            /* We could lock template to deny adding new blocks but even if we remove the locking inside epfl/card-panel, there's a bug and the system removes the
                              block inside epfl/card-panl block.
-                             So, as workaround, we don't lock but limit new blocks to 'epfl/card-panel'. And because this block is not present in the white list in 
+                             So, as workaround, we don't lock but limit new blocks to 'epfl/card-panel'. And because this block is not present in the white list in
                              this plugin (plugin.php), we won't be able to add new blocks inside and epfl/card-deck block */
                             allowedBlocks={['epfl/card-panel']}
                            />

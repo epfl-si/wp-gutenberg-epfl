@@ -27,7 +27,7 @@ export default class InspectorControlsPostTeaser extends Component {
 
     }
 
-    
+
     componentDidMount() {
         const current_lang_code = document.querySelector( '[name=post_lang_choice]' ).value;
 
@@ -53,7 +53,7 @@ export default class InspectorControlsPostTeaser extends Component {
         const { attributes, setAttributes } = this.props
 
         const handlePostCategoryChange = ( postCategory ) => setAttributes( { postCategory: JSON.stringify( postCategory ) } );
-        
+
         const handlePost1Change = ( post1 ) => setAttributes( { post1: JSON.stringify( post1 ) } );
         const handlePost2Change = ( post2 ) => setAttributes( { post2: JSON.stringify( post2 ) } );
         const handlePost3Change = ( post3 ) => setAttributes( { post3: JSON.stringify( post3 ) } );
@@ -90,12 +90,12 @@ export default class InspectorControlsPostTeaser extends Component {
 
             // add empty value at first, in case for an unselect
             optionsPostsCategoriesList.unshift({ value: null, label: __('None', 'epfl') });
-            
+
 
             content = (
 				<div>
                 	<InspectorControls>
-                        <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/post-teaser-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                        <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/post-teaser-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                         <PanelBody title={ __( 'Gray', 'epfl' ) }>
                             <ToggleControl
                                 label={ __('Change the background to gray', 'epfl') }
@@ -149,7 +149,7 @@ export default class InspectorControlsPostTeaser extends Component {
                             options={ optionsPostsList }
                             placeholder={ __('Select post', 'epfl') }
 						/>
-                        
+
 				</div>
             )
         }
