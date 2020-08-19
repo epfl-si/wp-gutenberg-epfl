@@ -220,7 +220,10 @@ export default class InspectorControlsNews extends Component {
                             help={ __("Do you want filter news by category ? Please select a category", 'epfl') }
                             selected={ attributes.category }
                             options={ optionsCategoriesList }
-                            onChange={ category => setAttributes( { category } ) }
+                            onChange={ category => {
+                                category = Number(category);
+                                setAttributes( { category } );
+                            }}
 	                    />
                     </PanelBody>
 
