@@ -12,7 +12,7 @@ registerBlockType(
 	'epfl/news',
 	{
 		title: __( "EPFL News", 'epfl'),
-		description: 'v1.1.2',
+		description: 'v1.1.3',
 		icon: newsIcon,
 		category: 'common',
 		keywords: [
@@ -20,12 +20,12 @@ registerBlockType(
 		],
 		attributes: {
 			channel: {
-        type: 'integer',
-        default: 1,
+				type: 'integer',
+				default: 1,
 			},
 			template: {
-        type: 'string',
-        default: 'listing',
+				type: 'string',
+				default: 'listing',
 			},
 			displayLinkAllNews: {
 				type: 'boolean',
@@ -46,11 +46,11 @@ registerBlockType(
 			themes: {
 				type: 'string',
 				default: null,
-      },
-      sections: {
-        type: 'string',
-        default: null,
-      },
+			},
+			sections: {
+				type: 'string',
+				default: null,
+			},
 		},
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
