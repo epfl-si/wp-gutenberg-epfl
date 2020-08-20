@@ -49,7 +49,6 @@ function epfl_carousel_block( $attributes ) {
             'thumbnail_16_9_large_80p', // see functions.php
             '',
             [
-              'class' => 'img-fluid',
               'title' => $image->post_excerpt
             ]
             ) ?>

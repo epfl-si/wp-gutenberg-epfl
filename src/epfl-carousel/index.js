@@ -144,7 +144,7 @@ function CarouselPanel ( props ) {
 
 registerBlockType( 'epfl/carousel', {
 	title: __( 'EPFL Carousel', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: carouselIcon,
 	category: 'common',
 	attributes: getAttributes(),
