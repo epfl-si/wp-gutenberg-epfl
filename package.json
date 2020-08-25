@@ -1,18 +1,26 @@
 {
-  "name": "wp-gutenberg-epfl-cgb-guten-block",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "start": "npx cgb-scripts start",
-    "build": "npx cgb-scripts build",
-    "eject": "npx cgb-scripts eject"
-  },
-  "dependencies": {
-    "axios": "^0.18.1",
-    "cgb-scripts": "1.17.0",
-    "moment": "^2.24.0",
-    "react-render-html": "^0.6.0",
-    "react-select": "^2.4.3",
-    "string-strip-html": "4.0.12"
-  }
+	"name": "wp-gutenberg-epfl",
+	"version": "1.0.0",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format:js": "wp-scripts format-js",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"start": "wp-scripts start",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"dependencies": {
+		"axios": "^0.18.1",
+		"moment": "^2.24.0",
+		"react-render-html": "^0.6.0",
+		"react-select": "^2.4.3",
+		"string-strip-html": "4.0.12"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "12.1.1"
+	}
 }

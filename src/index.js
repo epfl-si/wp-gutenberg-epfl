@@ -1,14 +1,12 @@
+
 /**
- * Gutenberg Blocks
+ * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
+ * All files containing `style` keyword are bundled together. The code used
+ * gets applied both to the front of your site and to the editor.
  *
- * All blocks related JavaScript files should be imported here.
- * You can create a new block folder in this dir and include code
- * for that block here as well.
- *
- * All blocks should be included here since this is the file that
- * Webpack is compiling as the input file.
+ * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import * as axios from 'axios';
+import './style.scss';
 
 import './epfl-alert'
 import './epfl-button'

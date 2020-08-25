@@ -1,16 +1,21 @@
 <?php
 /**
- * Plugin Name: wp-gutenberg-epfl
- * Description: EPFL Gutenberg Blocks
- * Author: WordPress EPFL Team
- * Version: 1.25.2
+ * Plugin Name:     wp-gutenberg-epfl
+ * Description:     EPFL Gutenberg Blocks
+ * Version:         2.0.0
+ * Author:          WordPress EPFL Team
+ * License:         GPL-2.0-or-later
+ * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:     wp-gutenberg-epfl
+ *
+ * @package         wp-gutenberg-epfl
  */
 
 namespace EPFL\Plugins\Gutenberg;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+    exit;
 }
 
 /**
@@ -20,7 +25,7 @@ require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
 
 // load .mo file for translation
 function epfl_gutenberg_load_textdomain() {
-	load_plugin_textdomain( 'epfl', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+    load_plugin_textdomain( 'epfl', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 add_action( 'plugins_loaded',  __NAMESPACE__ . '\epfl_gutenberg_load_textdomain' );
 
@@ -63,17 +68,17 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
     $allowed_block_types = [];
     // We explicitely deny usage of epfl/card-panel block so we can't add more than 3 blocks inside an epfl/card-deck
     $explicitly_denied_blocks = ['epfl/card-panel',
-                                 'epfl/mini-card-panel'];
+        'epfl/mini-card-panel'];
 
     // Blocks allowed in Posts
     $posts_blocks_white_list = ['epfl/button',
-                                'epfl/links-group',
-                                'epfl/map',
-                                'epfl/gallery',
-                                'epfl/toggle',
-                                'epfl/quote',
-                                'epfl/video',
-                                'epfl/pdf-flipbook'];
+        'epfl/links-group',
+        'epfl/map',
+        'epfl/gallery',
+        'epfl/toggle',
+        'epfl/quote',
+        'epfl/video',
+        'epfl/pdf-flipbook'];
 
     // Retrieving currently registered blocks
     $registered = \WP_Block_Type_Registry::get_instance()->get_all_registered();
@@ -99,11 +104,61 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
         }
     }
 
-  	return $allowed_block_types;
+    return $allowed_block_types;
 }
 
 add_filter( 'allowed_block_types', __NAMESPACE__.'\allow_epfl_blocks', 10, 2 );
 
+/**
+ * Registers all block assets so that they can be enqueued through the block editor
+ * in the corresponding context.
+ *
+ * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/applying-styles-with-stylesheets/
+ */
+function wp_gutenberg_epfl_bases_block_assets() {
+    $dir = dirname( __FILE__ );
+
+    // Styles.
+    $style_css = 'build/style-index.css';
+    wp_enqueue_style(
+        'wp-gutenberg-epfl-bases-style-css',
+        plugins_url( $style_css, __FILE__ ),
+        array(),
+        filemtime( "$dir/$style_css" )
+    );
+}
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_bases_block_assets' );
+
+function wp_gutenberg_epfl_editor_assets() {
+    $dir = dirname( __FILE__ );
+
+    // Scripts.
+    $script_asset_path = "$dir/build/index.asset.php";
+    if ( ! file_exists( $script_asset_path ) ) {
+        throw new Error(
+            'You need to run `npm start` or `npm run build` for the "wp-gutenberg-epfl/wp-gutenberg-epfl" block first.'
+        );
+    }
+    $index_js     = 'build/index.js';
+    $script_asset = require( $script_asset_path );
+    wp_enqueue_script(
+        'wp-gutenberg-epfl-block-editor',
+        plugins_url( $index_js, __FILE__ ),
+        $script_asset['dependencies'],
+        $script_asset['version']
+    );
+
+    // Styles.
+    $editor_css = 'build/index.css';
+    wp_enqueue_style(
+        'wp-gutenberg-epfl-block-editor',
+        plugins_url( $editor_css, __FILE__ ),
+        array(),
+        filemtime( "$dir/$editor_css" )
+    );
+
+}
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_editor_assets' );
 
 /**
  * Shortcodes

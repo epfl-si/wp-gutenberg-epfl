@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
-import { getAllPagesPostsOrCategories } from '../blocks';
+import { getAllPagesPostsOrCategories } from '../index';
 
 const { __ } = wp.i18n
 const { Component } = wp.element
