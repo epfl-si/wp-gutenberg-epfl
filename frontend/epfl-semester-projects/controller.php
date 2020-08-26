@@ -28,7 +28,9 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
     if($section == '') return '';
 
-    $url = "https://ditex-web.epfl.ch/services/v1/projects/STI/".$section;
+    $target_host = 'ditex-web.epfl.ch';
+
+    $url = "https://'.$target_host.'/services/v1/projects/STI/".$section;
 
     // to store parameters
     $search_params = array();
@@ -95,7 +97,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
       if($item->project->image->link->href != '')
       {
-        $item_html .= '<img src="https://ditex-web.epfl.ch/'.$item->project->image->link->href.'" style="width:500px;"><br>';
+        $item_html .= '<img src="https://'.$target_host.'/'.$item->project->image->link->href.'" style="width:500px;"><br>';
       }
 
       $item_html .= implode("<br>", $inner_content);
