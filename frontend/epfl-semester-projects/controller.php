@@ -91,7 +91,16 @@ function epfl_semester_projects_block($attributes, $inner_content) {
         $inner_content[] = "<b>".$title.": </b>".$value;
       }
 
-      $html .= \EPFL\Plugins\Gutenberg\Toggle\epfl_toggle_block( $attributes, implode("<br>", $inner_content) );
+      $item_html = "";
+
+      if($item->project->image->link->href != '')
+      {
+        $item_html .= '<img src="https://ditex-web.epfl.ch/'.$item->project->image->link->href.'" style="width:500px;"><br>';
+      }
+
+      $item_html .= implode("<br>", $inner_content);
+
+      $html .= \EPFL\Plugins\Gutenberg\Toggle\epfl_toggle_block( $attributes, $item_html );
     }
 
 
