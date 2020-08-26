@@ -30,7 +30,8 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
     $target_host = 'ditex-web.epfl.ch';
 
-    $url = "https://'.$target_host.'/services/v1/projects/STI/".$section;
+    $url = "https://".$target_host."/services/v1/projects/STI/".$section;
+
 
     // to store parameters
     $search_params = array();
