@@ -11,7 +11,7 @@ const {
     InspectorControls,
 	PlainText,
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,

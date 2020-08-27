@@ -9,7 +9,7 @@ const {
 const {
     MediaUpload,
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     TextControl,

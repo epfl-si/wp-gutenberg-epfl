@@ -8,7 +8,7 @@ const {
     MediaUpload,
     InspectorControls,
     RichText,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     Placeholder,

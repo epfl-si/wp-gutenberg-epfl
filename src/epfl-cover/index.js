@@ -11,7 +11,7 @@ const {
 const {
 	MediaUpload,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     Placeholder,
