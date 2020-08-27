@@ -12,7 +12,7 @@ const {
 
 const {
     Placeholder,
-    IconButton,
+    Button,
     PanelBody,
     TextControl,
     TextareaControl,
@@ -97,13 +97,13 @@ registerBlockType( 'epfl/hero', {
                                 label={ __("Image", 'epfl') }
                                 instructions={ __('Please, select an image', 'epfl') }
                             >
-                                <IconButton
-                                    className="components-icon-button wp-block-image__upload-button button button-large"
+                                <Button
+                                    className="components-button.has-icon wp-block-image__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
                                     { __('Upload', 'epfl') }
-                                </IconButton>
+                                </Button>
                             </Placeholder>
                         )}
                         />
@@ -117,13 +117,13 @@ registerBlockType( 'epfl/hero', {
 
                         { props.isSelected && (
 
-                        <IconButton
+                        <Button
                             className="epfl-uploader-remove-image"
                             onClick={ onRemoveImage }
                             icon="dismiss"
                         >
                             { __('Remove image', 'epfl') }
-                        </IconButton>
+                        </Button>
 
                         ) }
                       </p>

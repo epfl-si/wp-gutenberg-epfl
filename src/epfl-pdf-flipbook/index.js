@@ -14,7 +14,7 @@ const {
 
 const {
     Placeholder,
-    IconButton,
+    Button,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -72,13 +72,13 @@ registerBlockType( 'epfl/pdf-flipbook', {
                                 label={ __("PDF", 'epfl') }
                                 instructions={ __('Please, select a PDF', 'epfl') }
                             >
-                                <IconButton
-                                    className="components-icon-button wp-block-file__upload-button button button-large"
+                                <Button
+                                    className="components-button.has-icon wp-block-file__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
                                     { __('Upload', 'epfl') }
-                                </IconButton>
+                                </Button>
                             </Placeholder>
                         )}
                         />
@@ -86,13 +86,13 @@ registerBlockType( 'epfl/pdf-flipbook', {
                         <p className="epfl-uploader-file-wrapper">
 							{ attributes.pdfUrl }
 
-                        <IconButton
+                        <Button
                             className="epfl-uploader-remove-file"
                             onClick={ onRemovePDF }
                             icon="dismiss"
                         >
                             { __('Remove PDF', 'epfl') }
-                        </IconButton>
+                        </Button>
 
                       </p>
                 )}
