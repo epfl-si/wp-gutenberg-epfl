@@ -9,7 +9,7 @@ const {
 
 const {
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	TextareaControl,

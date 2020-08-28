@@ -5,7 +5,7 @@ const { Component } = wp.element
 
 const {
 	InspectorControls,
-} = wp.editor
+} = wp.blockEditor
 
 const {
     PanelBody,

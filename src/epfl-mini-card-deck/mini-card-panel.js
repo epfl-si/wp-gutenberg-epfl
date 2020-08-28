@@ -9,12 +9,12 @@ const {
 const {
     MediaUpload,
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     TextControl,
     Placeholder,
-    IconButton,
+    Button,
     ToggleControl,
 } = wp.components;
 
@@ -75,7 +75,7 @@ registerBlockType( 'epfl/mini-card-panel', {
             <Fragment>
                 <div className={ className }>
                     <h4>{ __('Mini card', 'epfl') }</h4>
-                    
+
                     <TextControl
                         label={ __('Link', 'epfl') }
                         value={ attributes.link }
@@ -86,7 +86,7 @@ registerBlockType( 'epfl/mini-card-panel', {
                             checked={ attributes.openLinkNewTab  }
                             onChange={ openLinkNewTab  => setAttributes( { openLinkNewTab  } ) }
                     />
-                    
+
                     { isSelected ? (
                         <MediaUpload
                             onSelect={ onImageSelect }
@@ -98,13 +98,13 @@ registerBlockType( 'epfl/mini-card-panel', {
                                     label={ __("Image", 'epfl') }
                                     instructions={ __('Please, select an image', 'epfl') }
                                 >
-                                    <IconButton
-                                        className="components-icon-button wp-block-image__upload-button button button-large"
+                                    <Button
+                                        className="components-button.has-icon wp-block-image__upload-button button button-large"
                                         onClick={ open }
                                         icon="upload"
                                     >
                                         { __('Upload', 'epfl') }
-                                    </IconButton>
+                                    </Button>
                                 </Placeholder>
                             )}
                         />
@@ -118,13 +118,13 @@ registerBlockType( 'epfl/mini-card-panel', {
 
                             { props.attributes.imageUrl && (
 
-                            <IconButton
+                            <Button
                                 className={'epfl-uploader-remove-image'}
                                 onClick={ onRemoveImage }
                                 icon="dismiss"
                             >
                                 { __('Remove image', 'epfl') }
-                            </IconButton>
+                            </Button>
 
                             ) }
                             </p>

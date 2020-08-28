@@ -8,7 +8,7 @@ const {
 
 const {
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     TextControl,
@@ -60,7 +60,7 @@ registerBlockType( 'epfl/faq-item', {
                             template={ TEMPLATE }
                             templateLock="all"
                            />
-                    
+
                 </div>
             </Fragment>
 		)
