@@ -10,7 +10,7 @@ const {
     InspectorControls,
     RichText,
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,

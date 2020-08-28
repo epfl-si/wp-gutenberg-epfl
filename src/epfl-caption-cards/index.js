@@ -7,12 +7,12 @@ const {
 const {
     InspectorControls,
     MediaUpload
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     TextControl,
     Placeholder,
-    IconButton,
+    Button,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -96,13 +96,13 @@ function CaptionCardPanel ( props ) {
                             label={ __("Image", 'epfl') }
                             instructions={ __('Please, select an image', 'epfl') }
                         >
-                            <IconButton
-                                className="components-icon-button wp-block-image__upload-button button button-large"
+                            <Button
+                                className="components-button.has-icon wp-block-image__upload-button button button-large"
                                 onClick={ open }
                                 icon="upload"
                             >
                                 { __('Upload', 'epfl') }
-                            </IconButton>
+                            </Button>
                         </Placeholder>
                     )}
                 />
@@ -116,13 +116,13 @@ function CaptionCardPanel ( props ) {
 
                     { props.attributes['imageUrl' + index] && (
 
-                    <IconButton
+                    <Button
                         className={'epfl-uploader-remove-image'}
                         onClick={ onRemoveImage }
                         icon="dismiss"
                     >
                         { __('Remove image', 'epfl') }
-                    </IconButton>
+                    </Button>
 
                     ) }
                     </p>
