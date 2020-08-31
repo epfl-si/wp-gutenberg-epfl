@@ -11,6 +11,9 @@ coverage
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
+# Map files generated through npm start
+build/*.map
+
 # Dependency directories
 node_modules/
 
