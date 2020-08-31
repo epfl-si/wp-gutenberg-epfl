@@ -31,7 +31,8 @@
 		"@wordpress/scripts": "^12.1.1",
 		"eslint": "^7.7.0",
 		"postcss": "^7.0.32",
-		"puppeteer": "^5.2.1",
+		"prettier": "^2.1.1",
+		"puppeteer": ">= 1.5.0 < 3",
 		"typescript": "^4.0.2",
 		"webpack": "^4.44.1"
 	},
