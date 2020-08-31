@@ -28,7 +28,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
     if($section == '') return '';
 
-    $target_host = 'ditex-web.epfl.ch';
+    $target_host = 'isatest.epfl.ch';
 
     $url = "https://".$target_host."/services/v1/projects/STI/".$section;
 
