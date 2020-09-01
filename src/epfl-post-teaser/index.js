@@ -1,5 +1,5 @@
 import InspectorControlsPostTeaser from './inspector'
-import { getAllPagesPostsOrCategories } from '../blocks';
+import { getAllPagesPostsOrCategories } from '../index';
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -46,11 +46,11 @@ registerBlockType(
 
 		edit: props => {
 			const { attributes, className, setAttributes } = props
-			
+
 			return (
 				<Fragment>
 					<h2>{ __('EPFL Post Teaser', 'epfl') }</h2>
-					
+
 					<InspectorControlsPostTeaser { ...{ attributes, setAttributes } } />
 				</Fragment>
 			)

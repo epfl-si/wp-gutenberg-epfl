@@ -1,11 +1,7 @@
 <?php
 /**
- * Blocks Initializer
+ * Block renders Initializer
  *
- * Enqueue CSS/JS of all the blocks.
- *
- * @since 	1.0.0
- * @package CGB
  */
 
 namespace EPFL\Plugins\Gutenberg;
@@ -53,43 +49,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function wp_gutenberg_epfl_bases_block_assets() {
-
-	// Styles.
-	wp_enqueue_style(
-		'wp-gutenberg-epfl-bases-style-css',
-		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
-		array( 'wp-editor' )
-	);
-}
-add_action( 'enqueue_block_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_bases_block_assets' );
-
-function wp_gutenberg_epfl_editor_assets() {
-
-	// Scripts.
-	wp_enqueue_script(
-		'wp-gutenberg-epfl-block',
-		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ),
-		array( 'wp-editor', 'wp-blocks', 'wp-i18n', 'wp-element' )
-	);
-
-	// Envoyer les traductions au JS
-	// Premier paramètre : le nom du script (handle)
-	// Second paramètre : le textdomain
-	if ( function_exists('wp_set_script_translations') ) {
-		wp_set_script_translations( 'wp-gutenberg-epfl-block', 'epfl' );
-	}
-
-	// Styles.
-	wp_enqueue_style(
-		'wp-gutenberg-epfl-block-editor',
-		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ),
-		array( 'wp-edit-blocks' )
-    );
-
-}
-add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_editor_assets' );
-
 // Déclarer les blocs qui ont un rendu côté PHP
 function wp_gutenberg_epfl_register_blocks() {
 
@@ -121,7 +80,7 @@ function wp_gutenberg_epfl_register_blocks() {
     register_block_type( 'epfl/people', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\People\epfl_people_block',
 	));
-	
+
 	register_block_type( 'epfl/courses', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\Courses\epfl_courses_block',
     ));
@@ -239,7 +198,7 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/carousel', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\Carousel\epfl_carousel_block',
 		));
-	
+
 	register_block_type( 'epfl/pdf-flipbook', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\PDFFlipbook\epfl_pdf_flipbook_block',
 		));
@@ -247,7 +206,6 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/alert', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\Alert\epfl_alert_block',
 		));
-
 }
 
 add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_epfl_register_blocks' );
