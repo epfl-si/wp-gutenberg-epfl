@@ -9,6 +9,12 @@
       {
         "loose": true
       }
+    ],
+    [
+      "@wordpress/babel-plugin-makepot",
+      {
+        "output": "languages/epfl-fr_FR-scripts.pot"
+      }
     ]
   ]
 }

@@ -17,5 +17,12 @@
 - Develop. Test. Repeat.
 - Create production build: `npm run build`
 
+### Translate
+
+- Recent entries should be in `languages/epfl-fr_FR-scripts.pot`
+- Copy this entries into the languages/epfl-fr_FR.po
+- Translate it and run the .po to .json converter
+`./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-script-translations.json -f jed`
+
 ## References
 - https://developer.wordpress.org/block-editor/tutorials/
