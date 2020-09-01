@@ -144,7 +144,7 @@ function CarouselPanel ( props ) {
 
 registerBlockType( 'epfl/carousel', {
 	title: __( 'EPFL Carousel', 'epfl'),
-	description: 'v1.0.1',
+	description: 'v1.0.2',
 	icon: carouselIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -166,7 +166,7 @@ registerBlockType( 'epfl/carousel', {
                       />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                     <h2>{ __('EPFL Carousel', 'epfl') } </h2>
                     <hr />
                     {[...Array(maxElements)].map((x, i) =>

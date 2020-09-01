@@ -72,7 +72,7 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.1.6',
+	description: 'v1.1.7',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -92,7 +92,7 @@ registerBlockType( 'epfl/links-group', {
                         onChange={ openLinksNewTab => setAttributes( { openLinksNewTab } ) }
                     />
                 </InspectorControls>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                     <h2>{ __('EPFL Links group', 'epfl') }</h2>
                     <TextControl
                         label={ __('Title', 'epfl') }

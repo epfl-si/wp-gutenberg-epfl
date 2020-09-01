@@ -45,7 +45,7 @@ registerBlockType( 'epfl/faq', {
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/faq-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 
                 </InspectorControls>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                         <h2>{ __('EPFL FAQ items', 'epfl') } </h2>
                         <InnerBlocks
                             template={ TEMPLATE }
