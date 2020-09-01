@@ -9,7 +9,7 @@ const {
 
 const {
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 	TextareaControl,
@@ -18,7 +18,7 @@ const {
 	Button
 } = wp.components;
 
-const { 
+const {
 	Fragment,
 	useState,
 } = wp.element;
@@ -44,7 +44,7 @@ registerBlockType( 'epfl/google-forms', {
 	},
 	edit: ( props ) => {
 		const { attributes, className, setAttributes } = props
-		
+
 		// information modal window
 		const [ isConfirmationOpen, setConfirmationOpen ] = useState( false );
 		const openConfirmationModal = () => setConfirmationOpen( true );
@@ -54,7 +54,7 @@ registerBlockType( 'epfl/google-forms', {
 		const [ isErrorOpen, setErrorOpen ] = useState( false );
 		const openErrorModal = () => setErrorOpen( true );
 		const closeErrorModal = () => setErrorOpen( false );
-		
+
 
 		// extract information from HTML pasted code
 		function extractInfos(fromData, regex)
@@ -70,7 +70,7 @@ registerBlockType( 'epfl/google-forms', {
 
 		// Parse HTML pasted code to extract necessary information
 		function parseData(dataToParse) {
-			
+
 			if(dataToParse == "")
 			{
 				setAttributes( { data: "" } )
@@ -81,13 +81,13 @@ registerBlockType( 'epfl/google-forms', {
 			let parsedHeight = extractInfos(dataToParse, /height="(.*?)"/)
 
 			// One of the information cannot be found
-			if(parsedUrl !== false  || parsedHeight !== false ) 
+			if(parsedUrl !== false  || parsedHeight !== false )
 			{
 				// Updating attributes.
 				setAttributes( { url: parsedUrl } )
 				parsedHeight = Number(parsedHeight)
 				setAttributes( { height: parsedHeight } )
-				
+
 				// Display confirmation
 				openConfirmationModal()
 
@@ -101,13 +101,13 @@ registerBlockType( 'epfl/google-forms', {
 				// keeping pasted value in cell
 				setAttributes( { data: dataToParse } )
 			}
-			
+
         }
 
         return (
             <Fragment>
 				<InspectorControls>
-					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/google-form-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/google-form-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				</InspectorControls>
                 <div className={ className }>
                     <h2>{ __('EPFL Google Forms', 'epfl') }</h2>
@@ -137,7 +137,7 @@ registerBlockType( 'epfl/google-forms', {
 								{ __('Close', 'epfl') }
 							</Button>
 						</Modal>
-						) }		
+						) }
 						{ isErrorOpen && (
 						<Modal
 							title={ __('Error extracting information', 'epfl') }
@@ -147,7 +147,7 @@ registerBlockType( 'epfl/google-forms', {
 								{ __('Close', 'epfl') }
 							</Button>
 						</Modal>
-						) }				
+						) }
                 </div>
             </Fragment>
 		)

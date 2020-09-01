@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/card >> Inside Links
+
 namespace EPFL\Plugins\Gutenberg\PostTeaser;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');

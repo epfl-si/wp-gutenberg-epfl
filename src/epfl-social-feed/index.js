@@ -8,7 +8,7 @@ const {
 
 const {
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -51,7 +51,7 @@ registerBlockType( 'epfl/social-feed', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/social-feed-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/social-feed-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __('Size', 'epfl') }>
                         <label>{ __('Height', 'epfl') }</label>
                         <TextControl

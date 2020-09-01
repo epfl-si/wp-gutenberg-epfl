@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: Not present in styleguide
+
 namespace EPFL\Plugins\Gutenberg\PDFFlipbook;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

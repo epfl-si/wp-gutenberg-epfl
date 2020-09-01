@@ -7,7 +7,7 @@ const {
 const {
 	InspectorControls,
 	RichText,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/introduction', {
 	title: __( 'EPFL Introduction', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.4',
 	icon: 'text',
 	category: 'common',
 	attributes: {
@@ -44,7 +44,7 @@ registerBlockType( 'epfl/introduction', {
 
             <Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/introduction-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/introduction-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<hr/>
 				<ToggleControl
 					label={ __('Change the background to gray', 'epfl') }
@@ -66,7 +66,6 @@ registerBlockType( 'epfl/introduction', {
 						onChange={ content => setAttributes( { content } ) }
 						placeholder={ __('Write your text here','epfl')}
 						keepPlaceholderOnFocus = { true }
-						allowedFormats={[]}
                     />
                 </div>
             </Fragment>

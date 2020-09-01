@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/content-types/school
+
 namespace EPFL\Plugins\Gutenberg\CaptionCards;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

@@ -9,14 +9,14 @@ const {
 const {
     MediaUpload,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
     ToggleControl,
     TextControl,
     Placeholder,
-    IconButton,
+    Button,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -107,13 +107,13 @@ function CarouselPanel ( props ) {
                             label={ __("Image", 'epfl') }
                             instructions={ __('Please, select an image', 'epfl') }
                         >
-                            <IconButton
-                                className="components-icon-button wp-block-image__upload-button button button-large"
+                            <Button
+                                className="components-button.has-icon wp-block-image__upload-button button button-large"
                                 onClick={ open }
                                 icon="upload"
                             >
                                 { __('Upload', 'epfl') }
-                            </IconButton>
+                            </Button>
                         </Placeholder>
                     )}
                 />
@@ -127,13 +127,13 @@ function CarouselPanel ( props ) {
 
                     { props.attributes['imageUrl' + index] && (
 
-                    <IconButton
+                    <Button
                         className={'epfl-uploader-remove-image'}
                         onClick={ onRemoveImage }
                         icon="dismiss"
                     >
                         { __('Remove image', 'epfl') }
-                    </IconButton>
+                    </Button>
 
                     ) }
                     </p>
@@ -144,7 +144,7 @@ function CarouselPanel ( props ) {
 
 registerBlockType( 'epfl/carousel', {
 	title: __( 'EPFL Carousel', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: carouselIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -157,7 +157,7 @@ registerBlockType( 'epfl/carousel', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/carousel-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/carousel-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Links'>
                       <ToggleControl
                           label={ __('Open links in a new tab', 'epfl') }

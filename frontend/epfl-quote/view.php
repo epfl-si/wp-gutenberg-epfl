@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/quote
+
 namespace EPFL\Plugins\Gutenberg\Quote;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

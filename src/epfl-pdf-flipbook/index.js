@@ -10,19 +10,18 @@ const {
 const {
 	MediaUpload,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     Placeholder,
-    IconButton,
-	TextareaControl,
+    Button,
 } = wp.components;
 
 const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/pdf-flipbook', {
 	title: __( 'EPFL PDF Flipbook', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: flipbookIcon,
 	category: 'common',
 	attributes: {
@@ -58,7 +57,7 @@ registerBlockType( 'epfl/pdf-flipbook', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/pdf-flipbook-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/pdf-flipbook-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
 			<div className={ className }>
 				<h2>{ __('EPFL PDF Flipbook', 'epfl') }</h2>
@@ -73,31 +72,31 @@ registerBlockType( 'epfl/pdf-flipbook', {
                                 label={ __("PDF", 'epfl') }
                                 instructions={ __('Please, select a PDF', 'epfl') }
                             >
-                                <IconButton
-                                    className="components-icon-button wp-block-file__upload-button button button-large"
+                                <Button
+                                    className="components-button.has-icon wp-block-file__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
                                     { __('Upload', 'epfl') }
-                                </IconButton>
+                                </Button>
                             </Placeholder>
                         )}
                         />
                        ) : (
                         <p className="epfl-uploader-file-wrapper">
 							{ attributes.pdfUrl }
-                        
-                        <IconButton
+
+                        <Button
                             className="epfl-uploader-remove-file"
                             onClick={ onRemovePDF }
                             icon="dismiss"
                         >
                             { __('Remove PDF', 'epfl') }
-                        </IconButton>
+                        </Button>
 
                       </p>
                 )}
-				
+
 			</div>
 		</Fragment>
 		)

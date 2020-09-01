@@ -1,4 +1,7 @@
 <?php
+
+    // Styleguide: https://epfl-si.github.io/elements/#/organisms/contact
+
     namespace EPFL\Plugins\Gutenberg\People;
 
     require_once(dirname(__FILE__) . '/utils.php');

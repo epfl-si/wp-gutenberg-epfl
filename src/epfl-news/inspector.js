@@ -7,7 +7,7 @@ const { Component } = wp.element
 
 const {
 	InspectorControls,
-} = wp.editor
+} = wp.blockEditor
 
 const {
     PanelBody,
@@ -59,9 +59,9 @@ export default class InspectorControlsNews extends Component {
         .then( response => response.data )
         .then( sections => this.setState({ sections }) )
         .catch( err => console.log(err))
-        
+
     }
-    
+
     componentDidUpdate() {
         if (this.state.selectedChannelId !== this.props.attributes.channel) {
 
@@ -70,7 +70,7 @@ export default class InspectorControlsNews extends Component {
 
             this.setState({ selectedChannelId: this.props.attributes.channel });
             let entryPointsSections = `${BASE_NEWS_API_REST_URL}channels/${this.props.attributes.channel}/projects/?format=json&limit=10`;
-            
+
             axios.get(entryPointsSections)
                 .then( response => response.data )
                 .then( sections => this.setState({ sections }) )
@@ -127,7 +127,7 @@ export default class InspectorControlsNews extends Component {
             let optionsSectionsList = [
               { value: '0', label: __('No filter', 'epfl') },
             ];
-            
+
             let sectionControl;
             if (this.state.sections != null && this.state.sections.length !== 0) {
 
@@ -164,7 +164,7 @@ export default class InspectorControlsNews extends Component {
 
             content = (
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/news-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/news-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __( 'Channel', 'epfl') }>
                         <SelectControl
                             label={ __("Select your news channel", 'epfl') }
@@ -220,10 +220,13 @@ export default class InspectorControlsNews extends Component {
                             help={ __("Do you want filter news by category ? Please select a category", 'epfl') }
                             selected={ attributes.category }
                             options={ optionsCategoriesList }
-                            onChange={ category => setAttributes( { category } ) }
+                            onChange={ category => {
+                                category = Number(category);
+                                setAttributes( { category } );
+                            }}
 	                    />
                     </PanelBody>
-                    
+
                 </InspectorControls>
             )
         }

@@ -8,7 +8,7 @@ const {
 
 const {
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -20,7 +20,7 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
-	description: 'v1.0.4',
+	description: 'v1.0.5',
 	icon: videoIcon,
 	category: 'common',
 	attributes: {
@@ -41,7 +41,7 @@ registerBlockType( 'epfl/video', {
         return (
             <Fragment>
 				<InspectorControls>
-					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/video-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/video-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 					<PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }

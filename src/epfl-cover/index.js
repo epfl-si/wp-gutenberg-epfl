@@ -11,11 +11,11 @@ const {
 const {
 	MediaUpload,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     Placeholder,
-    IconButton,
+    Button,
 	TextareaControl,
 } = wp.components;
 
@@ -61,7 +61,7 @@ registerBlockType( 'epfl/cover', {
 		return (
 		<Fragment>
 			<InspectorControls>
-				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/cover-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/cover-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
 			<div className={ className }>
 				<h2>{ __('EPFL Cover', 'epfl') }</h2>
@@ -76,13 +76,13 @@ registerBlockType( 'epfl/cover', {
                                 label={ __("Image", 'epfl') }
                                 instructions={ __('Please, select an image', 'epfl') }
                             >
-                                <IconButton
-                                    className="components-icon-button wp-block-image__upload-button button button-large"
+                                <Button
+                                    className="components-button.has-icon wp-block-image__upload-button button button-large"
                                     onClick={ open }
                                     icon="upload"
                                 >
                                     { __('Upload', 'epfl') }
-                                </IconButton>
+                                </Button>
                             </Placeholder>
                         )}
                         />
@@ -96,13 +96,13 @@ registerBlockType( 'epfl/cover', {
 
                         { props.isSelected && (
 
-                        <IconButton
+                        <Button
                             className="epfl-uploader-remove-image"
                             onClick={ onRemoveImage }
                             icon="dismiss"
                         >
                             { __('Remove image', 'epfl') }
-                        </IconButton>
+                        </Button>
 
                         ) }
                       </p>

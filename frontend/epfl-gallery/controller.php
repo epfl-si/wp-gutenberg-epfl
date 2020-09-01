@@ -1,4 +1,6 @@
 <?php
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/gallery
+
 /**
  * Surround default media gallery with custom features
  *

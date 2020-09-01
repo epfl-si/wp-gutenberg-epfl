@@ -10,7 +10,7 @@ const {
 
 const {
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     TextControl,
@@ -47,7 +47,7 @@ registerBlockType( 'epfl/tableau', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/tableau-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/tableau-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 					<hr/>
 						<h4>{ __('Tableau dimensions', 'epfl') }</h4>
                         <TextControl

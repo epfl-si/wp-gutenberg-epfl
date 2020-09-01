@@ -47,6 +47,7 @@ require_once 'epfl-gallery/controller.php';
 require_once 'epfl-semester-projects/controller.php';
 require_once 'epfl-carousel/controller.php';
 require_once 'epfl-pdf-flipbook/view.php';
+require_once 'epfl-alert/controller.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -246,6 +247,10 @@ function wp_gutenberg_epfl_register_blocks() {
 	
 	register_block_type( 'epfl/pdf-flipbook', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\PDFFlipbook\epfl_pdf_flipbook_block',
+		));
+
+	register_block_type( 'epfl/alert', array(
+		'render_callback' => 'EPFL\Plugins\Gutenberg\Alert\epfl_alert_block',
 		));
 
 }

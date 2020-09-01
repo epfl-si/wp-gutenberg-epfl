@@ -10,7 +10,7 @@ const {
     InspectorControls,
     RichText,
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -51,7 +51,7 @@ registerBlockType( 'epfl/scheduler', {
       return (
         <Fragment>
             <InspectorControls>
-                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/scheduler-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/scheduler-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 <PanelBody title={ __('Start Date & Time', 'epfl') }>
                     <DateTimePicker
                         currentDate={ attributes.startDateTime }

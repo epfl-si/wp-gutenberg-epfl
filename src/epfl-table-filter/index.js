@@ -10,7 +10,7 @@ const {
 const {
     InspectorControls,
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -55,7 +55,7 @@ let optionsHeader = [
 
 registerBlockType( 'epfl/table-filter', {
 	title: __( 'EPFL Table Filter', 'epfl'),
-	description: 'v1.1.2',
+	description: 'v1.1.3',
 	icon: tableFilterIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -68,7 +68,7 @@ registerBlockType( 'epfl/table-filter', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/table-filter-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/table-filter-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __('Format', 'epfl') }>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }
@@ -107,9 +107,9 @@ registerBlockType( 'epfl/table-filter', {
                 </InspectorControls>
                 <div className={ className }>
                         <h2>{ __('Table', 'epfl') }</h2>
-                        <InnerBlocks 
+                        <InnerBlocks
                             template={ TEMPLATE }
-                            templateLock="all" 
+                            templateLock="all"
                            />
                 </div>
             </Fragment>
@@ -118,7 +118,7 @@ registerBlockType( 'epfl/table-filter', {
 	save: ( props ) => {
 		return (
                 <InnerBlocks.Content />
-            
+
         );
 	},
 } );

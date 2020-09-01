@@ -10,7 +10,7 @@ const {
 const {
     InspectorControls,
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
 } = wp.components;
@@ -42,8 +42,8 @@ registerBlockType( 'epfl/faq', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/faq-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-                    
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/faq-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+
                 </InspectorControls>
                 <div className={ className + ' wp-block-scroll' }>
                         <h2>{ __('EPFL FAQ items', 'epfl') } </h2>

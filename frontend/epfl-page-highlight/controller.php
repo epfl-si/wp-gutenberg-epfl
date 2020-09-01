@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/organisms/fullwidth-teaser
+
 namespace EPFL\Plugins\Gutenberg\PageHighlight;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');

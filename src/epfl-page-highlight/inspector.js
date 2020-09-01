@@ -8,7 +8,7 @@ const { Component } = wp.element
 
 const {
 	InspectorControls,
-} = wp.editor
+} = wp.blockEditor
 
 const {
     PanelBody,
@@ -75,7 +75,7 @@ export default class InspectorControlsPageHighlight extends Component {
             content = (
 				<div>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/page-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/page-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                         <PanelBody title={ __( 'Layout', 'epfl' ) }>
                             <RadioControl
                                 label={ __("Select a layout", 'epfl') }

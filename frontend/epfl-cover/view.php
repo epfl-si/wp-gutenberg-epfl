@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/cover
+
 namespace EPFL\Plugins\Gutenberg\Cover;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

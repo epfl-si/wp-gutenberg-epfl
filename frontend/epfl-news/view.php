@@ -1,4 +1,7 @@
 <?php
+
+    // Styleguide: https://epfl-si.github.io/elements/#/content-types/news
+
     namespace EPFL\Plugins\Gutenberg\News;
 
     require_once(dirname(__FILE__) . '/utils.php');

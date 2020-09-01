@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/molecules/card-deck >> Mini cards
+
 namespace EPFL\Plugins\Gutenberg\MiniCardDeck;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 

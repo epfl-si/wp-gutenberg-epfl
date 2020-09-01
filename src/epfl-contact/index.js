@@ -11,7 +11,7 @@ const {
     InspectorControls,
     RichText,
     InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -68,7 +68,7 @@ registerBlockType( 'epfl/contact', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/contact-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/contact-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'epfl') }

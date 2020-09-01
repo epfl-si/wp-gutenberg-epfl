@@ -8,7 +8,7 @@ const {
 
 const {
     InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -68,7 +68,7 @@ registerBlockType( 'epfl/button', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/button-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/button-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Open link in a new tab', 'epfl') }
@@ -103,7 +103,7 @@ registerBlockType( 'epfl/button', {
                         onChange={ link => setAttributes( { link }) }
                         placeholder={ __('URL', 'epfl') }
                     />
-                        
+
                 </div>
             </Fragment>
 		)

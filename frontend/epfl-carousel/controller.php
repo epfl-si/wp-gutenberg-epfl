@@ -1,5 +1,7 @@
 <?php
 
+// Styleguide: https://epfl-si.github.io/elements/#/content-types/news >> Highlighted Carousel
+
 namespace EPFL\Plugins\Gutenberg\Carousel;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
@@ -29,7 +31,7 @@ function epfl_carousel_block( $attributes ) {
     ob_start();
 ?>
 
-<div class="container">
+<div class="container-full">
 <div id="carouselNews" class="carousel slide carousel-highlighted-news" data-ride="carousel" data-interval="6000">
   <div class="carousel-inner">
     
@@ -47,7 +49,6 @@ function epfl_carousel_block( $attributes ) {
             'thumbnail_16_9_large_80p', // see functions.php
             '',
             [
-              'class' => 'img-fluid',
               'title' => $image->post_excerpt
             ]
             ) ?>

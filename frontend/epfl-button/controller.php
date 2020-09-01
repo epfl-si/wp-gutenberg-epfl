@@ -1,4 +1,5 @@
 <?php
+// Styleguide: https://epfl-si.github.io/elements/#/atoms/button
 
 namespace EPFL\Plugins\Gutenberg\Button;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;

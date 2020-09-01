@@ -6,7 +6,7 @@ const {
 
 const {
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
     PanelBody,
@@ -33,7 +33,7 @@ registerBlockType( 'epfl/map', {
 	    return (
             <Fragment>
 				<InspectorControls>
-					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/map-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/map-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				</InspectorControls>
                 <div className={ className }>
                     <h2>{ __('EPFL MAP', 'epfl') }</h2>
