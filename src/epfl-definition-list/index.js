@@ -72,7 +72,7 @@ function DefinitionListPanel ( props ) {
 
 registerBlockType( 'epfl/definition-list', {
 	title: __( 'EPFL Definition List', 'epfl'),
-	description: 'v1.1.2',
+	description: 'v1.1.3',
 	icon: 'editor-alignleft',
 	category: 'common',
 	attributes: getAttributes(),
@@ -102,7 +102,7 @@ registerBlockType( 'epfl/definition-list', {
                     </PanelBody>
                 </InspectorControls>
                 <h2>{ __('EPFL Definition List', 'epfl') }</h2>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                     {[...Array(maxDefintionList)].map((x, i) =>
                         <DefinitionListPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}

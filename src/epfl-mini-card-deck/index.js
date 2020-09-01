@@ -45,7 +45,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/mini-card-deck', {
 	title: __( 'EPFL Mini Card Deck', 'epfl'),
-	description: 'v1.0.0',
+	description: 'v1.0.1',
 	icon: miniCardIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -67,7 +67,7 @@ registerBlockType( 'epfl/mini-card-deck', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                         <h2>{ __('EPFL Mini Card Deck', 'epfl') }</h2>
                         <TextControl
                         label={ __('Title', 'epfl') }

@@ -38,7 +38,7 @@ const getAttributes = () => {
 
 registerBlockType( 'epfl/card-deck', {
 	title: __( 'EPFL Card Deck', 'epfl'),
-	description: 'v1.0.2',
+	description: 'v1.0.3',
 	icon: cardIcon,
 	category: 'common',
 	attributes: getAttributes(),
@@ -60,7 +60,7 @@ registerBlockType( 'epfl/card-deck', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                         <h2>{ __('EPFL Card Deck', 'epfl') }</h2>
                         <InnerBlocks
                             template={ TEMPLATE }
