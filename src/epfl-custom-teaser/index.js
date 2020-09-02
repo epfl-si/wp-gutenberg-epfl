@@ -156,7 +156,7 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'epfl'),
-	description: 'v1.1.5',
+	description: 'v1.1.6',
 	icon: 'editor-kitchensink',
 	category: 'common',
 	attributes: getAttributes(),
@@ -185,7 +185,7 @@ registerBlockType( 'epfl/custom-teaser', {
                       />
                     </PanelBody>
                 </InspectorControls>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                     <h2>{ __('EPFL Custom Teaser', 'epfl') } </h2>
                     <TextControl
                         label={ __('Section title', 'epfl') }
