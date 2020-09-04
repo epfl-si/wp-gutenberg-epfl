@@ -29,6 +29,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
     if($section == '') return '';
 
     $target_host = 'isa.epfl.ch';
+    $target_host = 'ditex-web.epfl.ch';
 
     $url = "https://".$target_host."/services/v1/projects/".$section;
 
@@ -48,23 +49,88 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
     if(sizeof($search_params)>0) $url .= "/search?".implode('&', $search_params);
 
-
     $items = Utils::get_items($url, 0, 5, false);
 
-    $html = "<h3>".$title."</h3>";
+    ob_start();
+
+?>
+<div class="container">
+  <h2><?php echo $title ?></h2>
+
+<?php foreach($items as $item): 
+  // To use ad ID for collapsing/expanding project
+  $project_id = md5($title.$item->project->noProjet->fr); 
+  
+  $types = array();
+  foreach($item->project->types as $type){ $types[] = $type->fr;}
+
+  $professors = array();
+  if($item->project->enseignants->principal1->sciper != '') $professors[] = $item->project->enseignants->principal1->name->fr;
+  if($item->project->enseignants->principal2->sciper != '') $professors[] = $item->project->enseignants->principal2->name->fr;
+
+  ?>
+
+<section class="collapse-container">
+    <header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse" data-target="#project-available-<?php echo $project_id; ?>" aria-expanded="false" aria-controls="project-available-<?php echo $project_id; ?>">
+      <p class="title"><?php echo $item->project->title; ?></p>
+      <ul class="project-data list-inline has-sep small text-muted">
+        <li>ID: <?php echo $item->project->noProjet->fr; ?></li>
+        <li><span class="sr-only">Semester: </span>????</li>
+        <li><span class="sr-only">Type(s): </span><?php echo implode(", ", $types); ?></li>
+        <li><span class="sr-only">Section(s): </span><?php echo $item->project->section->fr; ?></li>
+        <li class="available"><span class="sr-only">Status: </span><?php echo $item->project->status->label; ?></li>
+        <li><span class="sr-only">Professor: </span><?php echo $item->project->enseignants->principal1->name->fr; ?></li>
+      </ul>
+    </header>
+
+    <div class="collapse collapse-item collapse-item-desktop" id="project-available-<?php echo $project_id; ?>">
+      <div class="project-thumb alignright">
+        <picture>
+          <img src="<?php echo 'https://'.$target_host.'/'.$item->project->image->link->href; ?>" class="img-fluid" style="width:95px;" alt="ALT">
+        </picture>
+      </div>
+      <p><?php echo $item->project->descriptif->fr; ?></p>
+
+      <dl class="definition-list definition-list-grid">
+        <dt>Requirements</dt>
+        <dd>Background in System and Control Theory, experience with C++ and Matlab (or Python).
+          Knowledge of ROS and mathematical optimization will be a big plus.</dd>
+        <dt>Professor(s)</dt>
+        <dd><?php echo implode(", ", $professors); ?></dd>
+        <dt>Supervisor</dt>
+        <dd><?php echo $item->project->administrateur->fr; ?></dd>
+      </dl>
+    </div>
+  </section>
+
+
+<?php endforeach; ?>
+</div>
+
+<?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
+
+
+
+    $html = '<div class="container"><h2>'.$title.'</h2>';
 
     foreach($items as $item)
     {
-      $attributes = array('title' => '['.$item->project->noProjet->fr.'] '.$item->project->title);
 
-      $types = array();
-      foreach($item->project->types as $type){ $types[] = $type->fr;}
+      // To use ad ID for collapsing/expanding project
+      $project_id = md5($title.$item->project->noProjet->fr);
+
+      $html .= '<section class="collapse-container">'.
+               '<header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse" data-target="#project-available-'.$project_id.'" aria-expanded="false" aria-controls="project-available-'.$project_id.'">';
+
+
+      
 
       $content_array = array();
-      $content_array['No project'] = $item->project->noProjet->fr;
       if($item->project->image->fr != '') $content_array['Image'] = $item->project->image->fr;
-      if(sizeof($types)>0) $content_array['Types'] = implode(", ", $types);
-      $content_array['Section'] = $item->project->section->fr;
+      
       $content_array['Principal 1'] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr. '</a>';
       if($item->project->rapport->fr != '') $content_array['Rapport'] = $item->project->rapport->fr;
       if($item->project->presentation->fr != '') $content_array['Présentation'] = $item->project->presentation->fr;
@@ -103,7 +169,8 @@ function epfl_semester_projects_block($attributes, $inner_content) {
 
       $item_html .= implode("<br>", $inner_content);
 
-      $html .= \EPFL\Plugins\Gutenberg\Toggle\epfl_toggle_block( $attributes, $item_html );
+      $html .= '</div></section>';
+
     }
 
 
