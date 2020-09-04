@@ -84,11 +84,13 @@ function epfl_semester_projects_block($attributes, $inner_content) {
     </header>
 
     <div class="collapse collapse-item collapse-item-desktop" id="project-available-<?php echo $project_id; ?>">
+    <?php if($item->project->image->link->href != ''): ?>
       <div class="project-thumb alignright">
         <picture>
           <img src="<?php echo 'https://'.$target_host.'/'.$item->project->image->link->href; ?>" class="img-fluid" style="width:95px;" alt="ALT">
         </picture>
       </div>
+    <?php endif; ?>
       <p><?php echo $item->project->descriptif->fr; ?></p>
 
       <dl class="definition-list definition-list-grid">
