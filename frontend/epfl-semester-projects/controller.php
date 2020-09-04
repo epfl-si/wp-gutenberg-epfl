@@ -87,7 +87,7 @@ function epfl_semester_projects_block($attributes, $inner_content) {
     <?php if($item->project->image->link->href != ''): ?>
       <div class="project-thumb alignright">
         <picture>
-          <img src="<?php echo 'https://'.$target_host.'/'.$item->project->image->link->href; ?>" class="img-fluid" style="width:95px;" alt="ALT">
+          <img src="<?php echo 'https://'.$target_host.'/'.$item->project->image->link->href; ?>" class="img-fluid" style="width:150px;" alt="ALT">
         </picture>
       </div>
     <?php endif; ?>
