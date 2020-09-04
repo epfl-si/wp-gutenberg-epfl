@@ -15,8 +15,9 @@
 - Start development builds: `npm start`
 - Develop. Test. Repeat.
 
-### Production Build
+## Production Build
 - Build is done automagically once you merge your work into master and push it
+- You can still trigger it manually: `npm run build`
 
 ## References
 - https://developer.wordpress.org/block-editor/tutorials/
