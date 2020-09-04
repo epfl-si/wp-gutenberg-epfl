@@ -11,11 +11,12 @@
     - Assert you have npm installed or [follow this process to install it](https://developer.wordpress.org/block-editor/tutorials/devenv/)
 - Install dependencies `npm install`
 
- 
-### Dev
+ ### Dev
 - Start development builds: `npm start`
 - Develop. Test. Repeat.
-- Create production build: `npm run build`
+
+### Production Build
+- Build is done automagically once you merge your work into master and push it
 
 ## References
 - https://developer.wordpress.org/block-editor/tutorials/
