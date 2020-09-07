@@ -1,6 +1,6 @@
 <?php
 
-namespace EPFL\Plugins\Gutenberg\SemesterProjects;
+namespace EPFL\Plugins\Gutenberg\StudentProjects;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
@@ -14,7 +14,7 @@ function get_link($url)
 }
 
 
-function epfl_semester_projects_block($attributes, $inner_content) {
+function epfl_student_projects_block($attributes, $inner_content) {
     
     // To avoid to execute all code below (useless) when we just click on "Update" to save page while editing it
     if(is_admin()) return "";
