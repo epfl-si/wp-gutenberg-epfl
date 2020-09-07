@@ -106,7 +106,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
     <?php if($item->project->image->link !== null): ?>
       <div class="project-thumb alignright">
         <picture>
-          <img src="<?php echo 'https://'.$target_host.'/'.$item->project->image->link->href; ?>" class="img-fluid" style="width:250px;" alt="ALT">
+          <img src="<?php echo 'https://'.$target_host.'/'.$item->project->image->link->href; ?>" class="img-fluid" style="width:100%;" alt="ALT">
         </picture>
       </div>
     <?php endif; ?>
