@@ -16,7 +16,7 @@ const {
     TextControl,
 } = wp.components
 
-export default class InspectorControlsSemesterProjects extends Component {
+export default class InspectorControlsStudentProjects extends Component {
 
     constructor(props) {
         super(props);
@@ -27,8 +27,9 @@ export default class InspectorControlsSemesterProjects extends Component {
 
     componentDidMount() {
 
+        //let entryPointProjects = `https://isa.epfl.ch/services/secretariats`;
         let entryPointProjects = `https://ditex-web.epfl.ch/services/secretariats`;
-            axios.get(entryPointProjects)
+        axios.get(entryPointProjects)
             .then(response => {
                 
                 let sections = [];
