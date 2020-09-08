@@ -61,7 +61,7 @@ registerBlockType( 'epfl/card-deck', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                        <h2>{ __('EPFL Card Deck', 'epfl') }</h2>
+                        <h2 className="epfl-block-title">{ __('EPFL Card Deck', 'epfl') }</h2>
                         <InnerBlocks
                             template={ TEMPLATE }
                             /* We could lock template to deny adding new blocks but even if we remove the locking inside epfl/card-panel, there's a bug and the system removes the

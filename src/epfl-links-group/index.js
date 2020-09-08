@@ -93,7 +93,7 @@ registerBlockType( 'epfl/links-group', {
                     />
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Links group', 'epfl') }</h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Links group', 'epfl') }</h2>
                     <TextControl
                         label={ __('Title', 'epfl') }
                         value={ attributes.title }

@@ -68,7 +68,7 @@ registerBlockType( 'epfl/mini-card-deck', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                        <h2>{ __('EPFL Mini Card Deck', 'epfl') }</h2>
+                        <h2 className="epfl-block-title">{ __('EPFL Mini Card Deck', 'epfl') }</h2>
                         <TextControl
                         label={ __('Title', 'epfl') }
                         value={ attributes.title }

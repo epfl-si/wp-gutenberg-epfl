@@ -75,7 +75,7 @@ registerBlockType( 'epfl/social-feed', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Social Feed', 'epfl') }</h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Social Feed', 'epfl') }</h2>
 					<PanelBody title='Twitter' initialOpen={false}>
                         <TextControl
 							label={ __('URL','epfl')}

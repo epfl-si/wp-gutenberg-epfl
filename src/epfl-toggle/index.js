@@ -70,7 +70,7 @@ registerBlockType( 'epfl/toggle', {
 				</PanelBody>
 			</InspectorControls>
 			<div className={ className }>
-				<h2>{ __('EPFL Toggle', 'epfl') }</h2>
+				<h2 className="epfl-block-title">{ __('EPFL Toggle', 'epfl') }</h2>
 				<PlainText
 					placeholder={ __('Title', 'epfl') }
 					value={ attributes.title }

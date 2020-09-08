@@ -101,7 +101,7 @@ registerBlockType( 'epfl/definition-list', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <h2>{ __('EPFL Definition List', 'epfl') }</h2>
+                <h2 className="epfl-block-title">{ __('EPFL Definition List', 'epfl') }</h2>
                 <div className={ className }>
                     {[...Array(maxDefintionList)].map((x, i) =>
                         <DefinitionListPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
