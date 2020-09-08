@@ -29,7 +29,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
     if($section == '') return '';
 
     $target_host = 'isa.epfl.ch';
-    $target_host = 'ditex-web.epfl.ch';
+    //$target_host = 'ditex-web.epfl.ch';
 
     $url = "https://".$target_host."/services/v1/projects/".$section;
 

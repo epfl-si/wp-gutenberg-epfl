@@ -35202,8 +35202,8 @@ var InspectorControlsStudentProjects = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      //let entryPointProjects = `https://isa.epfl.ch/services/secretariats`;
-      var entryPointProjects = "https://ditex-web.epfl.ch/services/secretariats";
+      var entryPointProjects = "https://isa.epfl.ch/services/secretariats"; //let entryPointProjects = `https://ditex-web.epfl.ch/services/secretariats`;
+
       axios__WEBPACK_IMPORTED_MODULE_0__["get"](entryPointProjects).then(function (response) {
         var sections = [];
         response.data.forEach(function (elem) {
@@ -35240,7 +35240,7 @@ var InspectorControlsStudentProjects = /*#__PURE__*/function (_Component) {
         });
         content = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(InspectorControls, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
           className: "wp-block-help",
-          href: __('https://www.epfl.ch/campus/services/semester-projects-en/', 'epfl'),
+          href: __('https://www.epfl.ch/campus/services/student-projects-en/', 'epfl'),
           target: "new"
         }, __('Online help', 'epfl'), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(PanelBody, {
           title: __('Section', 'epfl')
