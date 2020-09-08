@@ -186,7 +186,7 @@ registerBlockType( 'epfl/custom-teaser', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Custom Teaser', 'epfl') } </h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Custom Teaser', 'epfl') } </h2>
                     <TextControl
                         label={ __('Section title', 'epfl') }
                         value={ attributes.titleSection }

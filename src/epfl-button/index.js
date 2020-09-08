@@ -90,7 +90,7 @@ registerBlockType( 'epfl/button', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h4>{ __('Button', 'epfl') }</h4>
+                    <h2 className="epfl-block-title">{ __('Button', 'epfl') }</h2>
                     <label><small>{ __('Text', 'epfl')  }</small></label>
                     <TextControl
                         value={ attributes.text }

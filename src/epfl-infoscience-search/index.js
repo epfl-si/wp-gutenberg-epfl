@@ -90,7 +90,7 @@ registerBlockType( 'epfl/infoscience-search', {
 			<div className={ className }>
 				<InspectorControlsInfoscience { ...{ attributes, setAttributes } } />
                 <div id="preview-box">
-                    <h2>{ __('EPFL Infoscience', 'epfl') }</h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Infoscience', 'epfl') }</h2>
                     <div className="helper">{ __('Please fill the fields in the right-hand column', 'epfl') }</div>
                 </div>
 			</div>

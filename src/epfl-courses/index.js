@@ -53,7 +53,7 @@ registerBlockType(
 				<Fragment>
 					<InspectorControlsCourses { ...{ attributes, setAttributes } } />
 					<div className={ className }>
-                    	<h2>{ __('EPFL Courses', 'epfl') }</h2>
+                    	<h2 className="epfl-block-title">{ __('EPFL Courses', 'epfl') }</h2>
 						<TextControl
 							label={ __('Title', 'epfl') }
 							value={ attributes.title }

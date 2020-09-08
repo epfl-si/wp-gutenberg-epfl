@@ -61,6 +61,7 @@ registerBlockType(
 			return (
 				<Fragment>
 					<InspectorControlsNews { ...{ attributes, setAttributes } } />
+					<h2 className="epfl-block-title">{ __('EPFL News', 'epfl') }</h2>
 					<PreviewNews { ...{ attributes, className } } />
 				</Fragment>
 			)

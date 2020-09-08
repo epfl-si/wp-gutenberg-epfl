@@ -78,7 +78,7 @@ registerBlockType( 'epfl/contact', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Contact', 'epfl') }</h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Contact', 'epfl') }</h2>
                     <label><strong>{ __('Introduction', 'epfl') }</strong></label>
                     <hr />
                     <InnerBlocks />
