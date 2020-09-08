@@ -90,7 +90,7 @@ registerBlockType( 'epfl/custom-highlight', {
 				/>
 			</InspectorControls>
 			<div className={ className }>
-				<h2>{ __('EPFL Custom Highlight', 'epfl') }</h2>
+				<h2 className="epfl-block-title">{ __('EPFL Custom Highlight', 'epfl') }</h2>
 				<TextControl
 					label={ __('Title', 'epfl')}
 					value={ attributes.title }

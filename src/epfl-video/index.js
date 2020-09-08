@@ -51,7 +51,7 @@ registerBlockType( 'epfl/video', {
 					</PanelBody>
 				</InspectorControls>
                 <div className={ className }>
-					<h2>{ __('EPFL Video' , 'epfl') }</h2>
+					<h2 className="epfl-block-title">{ __('EPFL Video' , 'epfl') }</h2>
 					<TextControl
 						label={ __('URL of the video', 'epfl') }
                         value={ attributes.url }

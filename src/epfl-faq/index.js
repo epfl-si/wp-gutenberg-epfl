@@ -46,7 +46,7 @@ registerBlockType( 'epfl/faq', {
 
                 </InspectorControls>
                 <div className={ className }>
-                        <h2>{ __('EPFL FAQ items', 'epfl') } </h2>
+                        <h2 className="epfl-block-title">{ __('EPFL FAQ items', 'epfl') } </h2>
                         <InnerBlocks
                             template={ TEMPLATE }
                             allowedBlocks={['epfl/faq-item']}

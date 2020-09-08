@@ -64,7 +64,7 @@ registerBlockType( 'epfl/cover', {
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/cover-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
 			<div className={ className }>
-				<h2>{ __('EPFL Cover', 'epfl') }</h2>
+				<h2 className="epfl-block-title">{ __('EPFL Cover', 'epfl') }</h2>
 				{ ! attributes.imageId ? (
                     <MediaUpload
                         onSelect={ onImageSelect }

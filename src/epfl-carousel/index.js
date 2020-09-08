@@ -167,7 +167,7 @@ registerBlockType( 'epfl/carousel', {
                     </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Carousel', 'epfl') } </h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Carousel', 'epfl') } </h2>
                     <hr />
                     {[...Array(maxElements)].map((x, i) =>
                     <CarouselPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />

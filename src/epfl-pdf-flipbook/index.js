@@ -60,7 +60,7 @@ registerBlockType( 'epfl/pdf-flipbook', {
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/pdf-flipbook-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 			</InspectorControls>
 			<div className={ className }>
-				<h2>{ __('EPFL PDF Flipbook', 'epfl') }</h2>
+				<h2 className="epfl-block-title">{ __('EPFL PDF Flipbook', 'epfl') }</h2>
 				{ ! attributes.pdfId ? (
                     <MediaUpload
                         onSelect={ onPDFSelect }

@@ -49,7 +49,7 @@ registerBlockType(
 
 			return (
 				<Fragment>
-					<h2>{ __('EPFL Post Teaser', 'epfl') }</h2>
+					<h2 className="epfl-block-title">{ __('EPFL Post Teaser', 'epfl') }</h2>
 
 					<InspectorControlsPostTeaser { ...{ attributes, setAttributes } } />
 				</Fragment>

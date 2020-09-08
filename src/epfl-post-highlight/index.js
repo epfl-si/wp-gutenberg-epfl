@@ -32,7 +32,7 @@ registerBlockType(
 			const { attributes, className, setAttributes } = props
 			return (
 				<Fragment>
-					<h2>{ __('EPFL Post Highlight', 'epfl') }</h2>
+					<h2 className="epfl-block-title">{ __('EPFL Post Highlight', 'epfl') }</h2>
 					<InspectorControlsPostHighlight { ...{ attributes, setAttributes } } />
                 </Fragment>
 			)
