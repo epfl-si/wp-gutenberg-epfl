@@ -63,6 +63,13 @@ function epfl_student_projects_block($attributes, $inner_content) {
   <h2><?php echo $title ?></h2>
 
 <?php foreach($items as $item): 
+
+  // to skip "deleted" projects
+  if($item->project->status->code == 'STATUT_STAGE_SUPPR')
+  {
+    continue;
+  }
+
   // To use ad ID for collapsing/expanding project
   $project_id = md5($title.$item->project->noProjet->fr); 
   
