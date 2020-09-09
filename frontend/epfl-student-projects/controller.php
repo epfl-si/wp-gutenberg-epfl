@@ -71,8 +71,21 @@ function epfl_student_projects_block($attributes, $inner_content) {
 
   
   $professors = array();
-  if($item->project->enseignants->principal1->sciper != '') $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr.'</a>';
-  if($item->project->enseignants->principal2->sciper != '') $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal2->sciper.'" target="_blank">'.$item->project->enseignants->principal2->name->fr.'</a>';
+  $professors_name_only = array();
+  if($item->project->enseignants->principal1->sciper != '') 
+  {
+    // To extract beginning of the string if exists: "Laboratoire d’automatique 3, IGM – Gestion" to "Laboratoire d’automatique 3"
+    $parts = explode(',', $item->project->enseignants->principal1->laboratory->fr);
+
+    $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr.
+                    '</a> <small>('.$parts[0].')</small>';
+    $professors_name_only[] = $item->project->enseignants->principal1->name->fr;
+  }
+  if($item->project->enseignants->principal2->sciper != '')
+  {
+    $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal2->sciper.'" target="_blank">'.$item->project->enseignants->principal2->name->fr.'</a>';
+    $professors_name_only[] = $item->project->enseignants->principal2->name->fr;
+  }
 
   $details = array();
 
@@ -82,11 +95,34 @@ function epfl_student_projects_block($attributes, $inner_content) {
   }
   $details[] = array('Professor(s)', implode(", ", $professors));
   
-  if($item->project->administrateur !== null)  $details[] = array('Supervisor', $item->project->administrateur->fr);
-  if($item->project->externe->laboratoire !== null) $details[] = array('Laboratory', $item->project->externe->laboratoire->fr);
-  if($item->project->externe->site !== null && preg_match('/^ĥttp/', $item->project->externe->site->fr)===1) $details[] = array('Website', '<a href="'.$item->project->externe->site->fr.'" target="_blank">'.$item->project->externe->site->fr.'</a>');
+  if($item->project->administrateur !== null)  
+  {
+    // Format is "<firstName> <lastName> (<sciper>)" and we need to explode to have "name" and "sciper"...
+    $matches = array();
+    preg_match('/(.*?)\s\(([0-9]+)\)/', $item->project->administrateur->fr, $matches);
+    $details[] = array('Administration', '<a href="https://people.epfl.ch/'.$matches[2].'" target="_blank">'.$matches[1].'</a>');
+  }
 
-  if($item->project->externe->email !== null) $details[] = array('Email', '<a href="mailto:'.$item->project->externe->email->fr.'">'.$item->project->externe->email->fr.'</a>');
+
+  $external = array();
+  if($item->project->externe->laboratoire !== null) $external[] = $item->project->externe->laboratoire->fr;
+  if($item->project->externe->site !== null) 
+  {
+    // website is a link
+    if(preg_match('/^ĥttp/', $item->project->externe->site->fr)===1)
+    {
+      $external[] = '<a href="'.$item->project->externe->site->fr.'" target="_blank">'.$item->project->externe->site->fr.'</a>';
+    }
+    else
+    {
+      $external[] = $item->project->externe->site->fr;
+    }      
+  }
+
+  if($item->project->externe->email !== null) $external[] = '<a href="mailto:'.$item->project->externe->email->fr.'">'.$item->project->externe->email->fr.'</a>';
+  if(sizeof($external)>0) $details[] = array('External', implode(", ", $external));
+
+  if($item->project->site !== null) $details[] = array('Site', '<a href="'.$item->project->site->fr.'" target="_blank">'.$item->project->site->fr.'</a>');
 
 ?>
 
@@ -98,7 +134,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
         <li><span class="sr-only">Type(s): </span><?php echo implode(", ", $types); ?></li>
         <li><span class="sr-only">Section(s): </span><?php echo $item->project->section->fr; ?></li>
         <li><span class="sr-only">Status: </span><?php echo $item->project->status->label; ?></li>
-        <li><span class="sr-only">Professor: </span><?php echo $item->project->enseignants->principal1->name->fr; ?></li>
+        <li><span class="sr-only">Professor: </span><?php echo implode(", ", $professors_name_only); ?></li>
       </ul>
     </header>
 
