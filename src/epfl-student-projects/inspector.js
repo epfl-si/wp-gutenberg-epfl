@@ -16,7 +16,7 @@ const {
     TextControl,
 } = wp.components
 
-export default class InspectorControlsSemesterProjects extends Component {
+export default class InspectorControlsStudentProjects extends Component {
 
     constructor(props) {
         super(props);
@@ -27,8 +27,9 @@ export default class InspectorControlsSemesterProjects extends Component {
 
     componentDidMount() {
 
-        let entryPointProjects = `https://ditex-web.epfl.ch/services/secretariats`;
-            axios.get(entryPointProjects)
+        let entryPointProjects = `https://isa.epfl.ch/services/secretariats`;
+        //let entryPointProjects = `https://ditex-web.epfl.ch/services/secretariats`;
+        axios.get(entryPointProjects)
             .then(response => {
                 
                 let sections = [];
@@ -62,7 +63,7 @@ export default class InspectorControlsSemesterProjects extends Component {
 
             content = (
                 <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/semester-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/student-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <PanelBody title={ __( 'Section', 'epfl') }>
                         <SelectControl
                             value={ attributes.section }
