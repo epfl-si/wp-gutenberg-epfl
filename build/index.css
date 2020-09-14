@@ -1,11 +1,2 @@
-/**
- * The following styles get applied inside the editor only.
- *
- */
-.epfl-block-title {
-  background-color: #007480;
-  color: #fff !important;
-  padding: 5px 10px 5px 10px; }
+.epfl-block-title{background-color:#007480;color:#fff !important;padding:5px 10px 5px 10px}
 
-
-/*# sourceMappingURL=index.css.map*/
