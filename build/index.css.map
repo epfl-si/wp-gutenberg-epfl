@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///editor.scss"],"names":[],"mappings":"AAAA;;;EAGE;AACF;EACE,yBAAyB;EACzB,sBAAsB;EACtB,0BAA0B,EAAE","file":"index.css","sourcesContent":["/**\n * The following styles get applied inside the editor only.\n *\n */\n.epfl-block-title {\n  background-color: #007480;\n  color: #fff !important;\n  padding: 5px 10px 5px 10px; }\n"],"sourceRoot":""}
