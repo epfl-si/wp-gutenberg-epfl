@@ -1,6 +1,6 @@
 import * as axios from 'axios';
-import semesterProjectsIcon from './semester-projects-icon'
-import InspectorControlsSemesterProjects from './inspector'
+import studentProjectsIcon from './student-projects-icon'
+import InspectorControlsStudentProjects from './inspector'
 
 const { __ } = wp.i18n;
 
@@ -18,10 +18,10 @@ const {
 
 const { Fragment } = wp.element;
 
-registerBlockType( 'epfl/semester-projects', {
-    title: __( 'EPFL Semester Projects', 'epfl'),
-    description: 'v1.0.0',
-    icon: semesterProjectsIcon,
+registerBlockType( 'epfl/student-projects', {
+    title: __( 'EPFL Student Projects', 'epfl'),
+    description: 'v1.0.1',
+    icon: studentProjectsIcon,
     category: 'common',
     attributes: {
         title:{
@@ -46,9 +46,9 @@ registerBlockType( 'epfl/semester-projects', {
 
         return (
             <Fragment>
-                <InspectorControlsSemesterProjects { ...{ attributes, setAttributes } } />
+                <InspectorControlsStudentProjects { ...{ attributes, setAttributes } } />
                 <div className={ className }>
-                    <h2>{ __('EPFL Semester Projects', 'epfl') }</h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Student Projects', 'epfl') }</h2>
                     <TextControl
 							label={ __('Title', 'epfl') }
 							value={ attributes.title }
