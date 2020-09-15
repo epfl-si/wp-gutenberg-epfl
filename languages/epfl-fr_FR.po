@@ -376,7 +376,7 @@ msgstr ""
 #: src/epfl-table/index.js:66 src/epfl-tableau/index.js:50
 #: src/epfl-toggle/index.js:48 src/epfl-video/index.js:44
 msgid "Online help"
-msgstr "Aide en ligne"
+msgstr ""
 
 #: src/epfl-button/index.js:74 src/epfl-mini-card-deck/mini-card-panel.js:85
 msgid "Open link in a new tab"
