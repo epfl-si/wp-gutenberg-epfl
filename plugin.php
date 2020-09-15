@@ -33,7 +33,7 @@ add_action( 'plugins_loaded',  __NAMESPACE__ . '\epfl_gutenberg_load_textdomain'
 function wp_gutenberg_set_script_translations() {
     wp_set_script_translations( 'scripts', 'epfl', plugin_dir_path( __FILE__ ) . 'languages/' );
 }
-add_action( 'init', __NAMESPACE__ . '\'wp_gutenberg_set_script_translations' );
+add_action( 'init', __NAMESPACE__ . '\wp_gutenberg_set_script_translations' );
 
 # allow to fetch rest api with the lang parameter
 function polylang_json_api_init() {
