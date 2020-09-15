@@ -62,6 +62,7 @@ registerBlockType(
 			return (
 				<Fragment>
 					<InspectorControlsMemento { ...{ attributes, setAttributes } } />
+					<h2 className="epfl-block-title">{ __('EPFL Memento', 'epfl') }</h2>
 					<PreviewMemento { ...{ attributes, className } } />
 				</Fragment>
 			)

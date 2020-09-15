@@ -53,7 +53,7 @@ registerBlockType( 'epfl/introduction', {
 				/>
 			</InspectorControls>
 	            <div className={ className }>
-	                <h2>EPFL INTRODUCTION</h2>
+	                <h2 className="epfl-block-title">{ __('EPFL Introduction', 'epfl') }</h2>
                     <TextControl
 						label={ __('Title', 'epfl') }
                         value={ attributes.title }

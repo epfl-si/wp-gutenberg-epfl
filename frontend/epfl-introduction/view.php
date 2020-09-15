@@ -10,7 +10,7 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 function epfl_introduction_block( $attributes ) {
 
     $title          = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $content        = $attributes['content'];
+    $content        = array_key_exists('content', $attributes) ? $attributes['content'] : "";
     $grayBackground = Utils::get_sanitized_attribute( $attributes, 'grayBackground', false );
 
     $markup = '<div class="container-full my-3">';

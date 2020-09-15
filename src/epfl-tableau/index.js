@@ -70,7 +70,7 @@ registerBlockType( 'epfl/tableau', {
                         />
                 </InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Tableau', 'epfl') }</h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Tableau', 'epfl') }</h2>
                         <TextareaControl
 							label={ __('EPFL Tableau content', 'epfl') }
                             value={ attributes.embedCode }

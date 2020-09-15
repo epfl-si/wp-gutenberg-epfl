@@ -110,7 +110,7 @@ registerBlockType( 'epfl/google-forms', {
 					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/google-form-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				</InspectorControls>
                 <div className={ className }>
-                    <h2>{ __('EPFL Google Forms', 'epfl') }</h2>
+                    <h2 className="epfl-block-title">{ __('EPFL Google Forms', 'epfl') }</h2>
                         <TextareaControl
 							value={ attributes.data }
 							onChange={ parseData }

@@ -69,7 +69,7 @@ function CaptionCardPanel ( props ) {
 
     return (
         <div>
-           <h3>{ __('Caption card', 'epfl')+ ` ${index}`}</h3>
+           <h2 className="epfl-block-title">{ __('Caption card', 'epfl')+ ` ${index}`}</h2>
            <TextControl
                 label={ __('Title', 'epfl') }
                 value={ attributes['title' + index] || ''}
@@ -135,7 +135,7 @@ function CaptionCardPanel ( props ) {
 
 registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'epfl'),
-	description: 'v1.0.3',
+	description: 'v1.0.4',
 	icon: 'screenoptions',
 	category: 'common',
 	attributes: getAttributes(),
@@ -150,7 +150,7 @@ registerBlockType( 'epfl/caption-cards', {
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/caption-cards-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 </InspectorControls>
-                <div className={ className + ' wp-block-scroll' }>
+                <div className={ className }>
                     {[...Array(maxCaptionCards)].map((x, i) =>
                         <CaptionCardPanel key={i+1} { ...{ attributes, setAttributes, index:i+1 } }  />
                     )}

@@ -70,7 +70,7 @@ registerBlockType( 'epfl/scheduler', {
             </InspectorControls>
 
             <div className={ className }>
-				<h2>{ __('EPFL Scheduler', 'epfl') }</h2>
+				<h2 className="epfl-block-title">{ __('EPFL Scheduler', 'epfl') }</h2>
 				{testTime(attributes)}
                 <InnerBlocks />
             </div>

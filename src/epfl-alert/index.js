@@ -78,7 +78,7 @@ registerBlockType( 'epfl/alert', {
 					</PanelBody>
 				</InspectorControls>
                 <div className={ className }>
-					<h2>{ __('EPFL Alert' , 'epfl') }</h2>
+					<h2 className="epfl-block-title">{ __('EPFL Alert' , 'epfl') }</h2>
 					<label><small>{ __('Content', 'epfl') }</small></label>
                     <RichText
 						value={ attributes.content }
