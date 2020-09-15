@@ -19,10 +19,11 @@
 
 ### Translate
 
-- Recent entries should be in `languages/epfl-fr_FR-scripts.pot`
-- Copy this entries into the languages/epfl-fr_FR.po
-- Translate it and run the .po to .json converter
-`./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-script-translations.json -f jed`
+- While `npm start` is running, recent entries should be in `languages/epfl-fr_FR-scripts.pot`
+- Add or Merge the new entries into the `languages/epfl-fr_FR.po` file
+- Assert the translations in `languages/epfl-fr_FR.po`
+- Update the json file with `./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-scripts.json -f jed1.x -p`
+- Update the mo file with Poedit
 
 ## References
 - https://developer.wordpress.org/block-editor/tutorials/

@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: src/epfl-toggle/index.js:26
+msgid "EPFL Toggle"
+msgstr ""
+
+#: src/epfl-toggle/index.js:52
+msgid "https://www.epfl.ch/campus/services/website/toggle-en/"
+msgstr ""
+
+#: src/epfl-toggle/index.js:52
+msgid "Online help"
+msgstr ""
+
+#: src/epfl-toggle/index.js:55
+msgid "Initial state"
+msgstr ""
+
+#: src/epfl-toggle/index.js:56
+msgid "Do you want display the toggle open or close initially ?"
+msgstr ""
+
+#: src/epfl-toggle/index.js:65
+msgid "Anchor"
+msgstr ""
+
+#: src/epfl-toggle/index.js:66
+msgid ""
+"To point directly on toggle using #<anchor> in URL. Toggle will be opened "
+"automatically"
+msgstr ""
+
+#: src/epfl-toggle/index.js:73
+msgid "EPFL Toggle"
+msgstr ""
+
+#: src/epfl-toggle/index.js:75
+msgid "Title"
+msgstr ""
