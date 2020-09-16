@@ -26,12 +26,12 @@ export default class InspectorControlsStudentProjects extends Component {
     }
 
     componentDidMount() {
-
-        let entryPointProjects = `https://isa.epfl.ch/services/secretariats`;
-        //let entryPointProjects = `https://ditex-web.epfl.ch/services/secretariats`;
+        // current URL will looks like: https://www.epfl.ch/site/path/wp-admin/post.php?post=61&action=edit
+        let entryPointProjects = window.location.href.replace(/wp-admin\/.*/, 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections.php');
         axios.get(entryPointProjects)
             .then(response => {
                 
+                console.log(response);
                 let sections = [];
                 response.data.forEach((elem) => { 
                     if(typeof elem['code'] == 'string' && elem['code'].startsWith('PROJETS_')) sections.push(elem['code']) 
