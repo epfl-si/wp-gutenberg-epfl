@@ -92,7 +92,7 @@ function CarouselPanel ( props ) {
                 onChange={ value => setIndexedAttributes('description', value) }
             />
             <TextControl
-                label={ __('Url', 'epfl') }
+                label={ __('URL', 'epfl') }
                 value={ attributes['url' + index]  || '' }
                 onChange={ value => setIndexedAttributes('url', value) }
             />

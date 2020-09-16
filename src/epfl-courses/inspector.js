@@ -71,14 +71,14 @@ export default class InspectorControlsCourses extends Component {
                     <TextControl
                         label={__( 'Unit name', 'epfl')}
                         value={ attributes.unit }
-                        help={ __('"GETALL" gives all courses in EPFL"', 'epfl') }
+                        help={ __('"GETALL" gives all courses in EPFL', 'epfl') }
                         onChange={ unit => setAttributes( { unit } ) }
                     />
                     <h3>{__( 'OR', 'epfl')}</h3>
                     <TextControl
                         label={__( 'Scipers', 'epfl')}
                         value={ attributes.scipers }
-                        help={ __('You can enter many scipers separated by a comma', 'epfl') }
+                        help={ __('You can enter many scipers separated by commas', 'epfl') }
                         onChange={ scipers => setAttributes( { scipers } ) }
                     />
                     <h3>{__('OR', 'epfl')}</h3>

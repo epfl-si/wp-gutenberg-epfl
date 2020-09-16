@@ -49,7 +49,7 @@ registerBlockType( 'epfl/tableau', {
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/tableau-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 					<hr/>
-						<h4>{ __('Tableau dimensions', 'epfl') }</h4>
+						<h4>{ __('Dimensions', 'epfl') }</h4>
                         <TextControl
 							label={ __('Width', 'epfl') }
                             value={ attributes.width }
@@ -72,14 +72,14 @@ registerBlockType( 'epfl/tableau', {
                 <div className={ className }>
                     <h2 className="epfl-block-title">{ __('EPFL Tableau', 'epfl') }</h2>
                         <TextareaControl
-							label={ __('EPFL Tableau content', 'epfl') }
+							label={ __('Embed code', 'epfl') }
                             value={ attributes.embedCode }
                             onChange={ embedCode => setAttributes( { embedCode } ) }
                             help={ __('Paste here the content of the Embed Code when you press the "Share" button on an EPFL tableau view', 'epfl') }
                         />
                     <h4>{ __('OR', 'epfl') }</h4>
                         <TextControl
-							label={ __('Tableau Name', 'epfl') }
+							label={ __('Tableau ID', 'epfl') }
                             value={ attributes.tableauName }
                             onChange={ tableauName => setAttributes( { tableauName } ) }
                             help={ __('Name of the Tableau view (eg. "EPFLofficialstatistics/StatistiquesOfficielles")', 'epfl') }
