@@ -99,7 +99,7 @@ function CustomTeaserPanel ( props ) {
                 onChange={ value => setIndexedAttributes('excerpt', value) }
             />
             <TextControl
-                label={ __('Url', 'epfl') }
+                label={ __('URL', 'epfl') }
                 value={ attributes['url' + index]  || '' }
                 onChange={ value => setIndexedAttributes('url', value) }
             />

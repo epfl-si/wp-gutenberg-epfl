@@ -180,7 +180,7 @@ export default class InspectorControlsNews extends Component {
                     <PanelBody title={ __( 'Template', 'epfl' ) }>
                         <RadioControl
                             label={ __("Select a template", 'epfl') }
-                            help={ __("Do you need more information about templates? Read this documentation", 'epfl') }
+                            help={ __("Preview the page to see the template applied", 'epfl') }
                             selected={ attributes.template }
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
@@ -217,7 +217,6 @@ export default class InspectorControlsNews extends Component {
                     <PanelBody title={ __( 'Category', 'epfl' ) }>
                         <RadioControl
                             label={ __("Filter news by category", 'epfl') }
-                            help={ __("Do you want filter news by category ? Please select a category", 'epfl') }
                             selected={ attributes.category }
                             options={ optionsCategoriesList }
                             onChange={ category => {

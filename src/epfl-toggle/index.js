@@ -53,7 +53,6 @@ registerBlockType( 'epfl/toggle', {
 				<PanelBody>
 					<RadioControl
                         label={ __('Initial state', 'epfl') }
-                        help={ __('Do you want display the toggle open or close initially ?', 'epfl') }
                         selected={ attributes.state }
                         options={ [
                             { label: 'Closed', value: 'close' },

@@ -82,7 +82,7 @@ export default class InspectorControlsMemento extends Component {
             });
 
             let optionsYearsList = [
-              { value: 'no-filter', label: __('No Filter', 'epfl') },
+              { value: 'no-filter', label: __('No filter', 'epfl') },
             ]
 
             const currentYear = new Date().getFullYear();
@@ -95,7 +95,6 @@ export default class InspectorControlsMemento extends Component {
                 filterPastEventsByYear = (
                     <SelectControl
                         label={ __("Filter events by year", 'epfl') }
-                        help={ __("Do you want filter past events by year? Please select a year.", 'epfl') }
                         value={ attributes.year }
                         options={ optionsYearsList }
                         onChange={ year => setAttributes( { year } ) }
@@ -121,7 +120,6 @@ export default class InspectorControlsMemento extends Component {
                     <PanelBody title={ __( 'Template', 'epfl' ) }>
                         <RadioControl
                             label={ __("Select a template", 'epfl') }
-                            help={ __("Do you need more information about templates? Read this documentation", 'epfl') }
                             selected={ attributes.template }
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
@@ -148,7 +146,6 @@ export default class InspectorControlsMemento extends Component {
                     <PanelBody title={ __('Period', 'epfl') }>
                         <RadioControl
                             label={ __("Select a period", 'epfl') }
-                            help={ __("Do you want upcoming events or past events ?", 'epfl') }
                             selected={ attributes.period }
                             options={ optionsPeriodsList }
                             onChange={ period => setAttributes( { period } ) }
@@ -158,7 +155,6 @@ export default class InspectorControlsMemento extends Component {
                     <PanelBody title={ __( 'Category', 'epfl' ) }>
                         <SelectControl
                             label={ __("Filter events by category", 'epfl') }
-                            help={ __("Do you want filter events by category? Please select a category.", 'epfl') }
                             value={ attributes.categories }
                             options={ optionsCategoriesList }
                             onChange={ category => setAttributes( { category } ) }
@@ -167,7 +163,6 @@ export default class InspectorControlsMemento extends Component {
                     <PanelBody title={ __( 'Keyword', 'epfl' ) }>
                         <TextControl
                             label={ __("Filter events by keyword", 'epfl') }
-                            help={ __("Do you want filter events by keyword? Please type a keyword.", 'epfl') }
                             value={ attributes.keyword }
                             onChange={ keyword => setAttributes( { keyword} )}
                         />

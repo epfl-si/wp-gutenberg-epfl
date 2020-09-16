@@ -7,6 +7,9 @@
             "plural_forms": "nplurals=2; plural=(n > 1);",
             "lang": "fr_FR"
          },
+         "Read more": [
+            "En savoir plus"
+         ],
          "See more": [
             "En savoir plus"
          ],
@@ -14,13 +17,13 @@
             "Titre"
          ],
          "Error extracting parameters": [
-            ""
+            "Erreur lors de l'extraction des paramètres"
          ],
-         "Incorrect URL found": [
-            ""
+         "Incorrect URL": [
+            "URL incorrecte"
          ],
-         "Incorrect dimensions found": [
-            ""
+         "Incorrect dimensions": [
+            "Dimensions incorrectes"
          ],
          "Loading...": [
             "Chargement..."
@@ -74,7 +77,7 @@
             "Média"
          ],
          "Datasets": [
-            "Echantillons de données"
+            "Datasets"
          ],
          "Director(s)": [
             "Directeur(s)"
@@ -92,7 +95,7 @@
             "num."
          ],
          "Patent number(s)": [
-            "Numéro de brevet"
+            "Numéro de(s) brevet(s)"
          ],
          "Detailed record": [
             "Notice détaillée"
@@ -116,7 +119,7 @@
             "Catégorie"
          ],
          "Complete agenda of events": [
-            "Voir l’agenda complet des événements"
+            "Agenda complet des événements"
          ],
          "Past events": [
             "Événements passés"
@@ -142,11 +145,8 @@
          "News": [
             "Actualités"
          ],
-         "Read more": [
-            "En savoir plus"
-         ],
          "Link to read more of that page": [
-            ""
+            "Lien vers le détail de la page"
          ],
          "Position": [
             "Fonction"
@@ -155,7 +155,7 @@
             "Bureau"
          ],
          "Link to read more of that post": [
-            ""
+            "Lien vers le détail de l'article"
          ],
          "Like our page on Facebook": [
             "Likez notre page Facebook"
@@ -167,7 +167,7 @@
             "Nous rejoindre sur Twitter"
          ],
          "EPFL-Video: Error getting final URL": [
-            ""
+            "EPFL-Video: erreur de récupération de l'URL"
          ],
          "Filter by...": [
             "Filtrer par..."
@@ -188,7 +188,7 @@
             "Acronyme"
          ],
          "Tags": [
-            ""
+            "Tags"
          ],
          "All sections": [
             "Toutes les rubriques"
@@ -208,41 +208,86 @@
          "Status as of": [
             "Etat au"
          ],
-         "Left": [
-            "Gauche"
+         "Info": [
+            "Info"
          ],
-         "Centered": [
+         "Success": [
+            "Succès"
+         ],
+         "Warning": [
+            "Avertissement"
+         ],
+         "Danger": [
+            "Danger"
+         ],
+         "EPFL Alert": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/button-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/alert-en/": [
+            "https://www.epfl.ch/campus/services/website/alert-fr/"
          ],
          "Online help": [
             "Aide en ligne"
          ],
-         "Open link in a new tab": [
+         "Large display": [
+            "Affichage large"
+         ],
+         "Alert can be closed": [
+            "L'alerte peut être fermée"
+         ],
+         "Alert type": [
+            "Type d'alerte"
+         ],
+         "Content": [
+            "Contenu"
+         ],
+         "Write your text here": [
+            "Placer votre contenu ici"
+         ],
+         "Primary (red)": [
+            "Principal (rouge)"
+         ],
+         "Secondary (white)": [
+            "Secondaire (blanc)"
+         ],
+         "Left": [
+            "Gauche"
+         ],
+         "Centered": [
+            "Centré"
+         ],
+         "EPFL Button": [
             ""
+         ],
+         "https://www.epfl.ch/campus/services/website/button-en/": [
+            "https://www.epfl.ch/campus/services/website/button-fr/"
+         ],
+         "Open link in a new tab": [
+            "Ouvrir le lien dans un nouvel onglet"
          ],
          "Color": [
-            ""
+            "Couleur"
          ],
          "Alignment": [
-            ""
+            "Alignement"
+         ],
+         "Button": [
+            "Bouton"
          ],
          "Text": [
-            ""
+            "Texte"
          ],
          "Target link": [
-            ""
+            "Lien"
          ],
          "URL": [
-            ""
+            "URL"
          ],
          "Caption card": [
-            ""
+            "Caption card"
          ],
          "Subtitle": [
-            ""
+            "Sous-titre"
          ],
          "Link": [
             "Lien"
@@ -251,73 +296,91 @@
             "Image"
          ],
          "Please, select an image": [
-            ""
+            "Veuillez sélectionner une image"
          ],
          "Upload": [
-            ""
+            "Téléverser"
          ],
          "Remove image": [
-            ""
+            "Enlever l'image"
          ],
          "EPFL Caption Cards": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/caption-cards-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/caption-cards-en/": [
+            "https://www.epfl.ch/campus/services/website/caption-cards-fr/"
          ],
          "EPFL Card Panel": [
             ""
          ],
          "Card": [
-            ""
+            "Carte"
          ],
          "Title (mandatory)": [
-            ""
+            "Titre (nécessaire)"
          ],
          "EPFL Card Deck": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/card-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/card-en/": [
+            "https://www.epfl.ch/campus/services/website/card-fr/"
          ],
          "Wrap with a gray border": [
+            "Entourer d'une bordure grise"
+         ],
+         "Carousel": [
+            "Carrousel"
+         ],
+         "Description": [
+            "Description"
+         ],
+         "EPFL Carousel": [
             ""
+         ],
+         "https://www.epfl.ch/campus/services/website/carousel-en/": [
+            "https://www.epfl.ch/campus/services/website/carousel-fr/"
+         ],
+         "Open links in a new tab": [
+            "Ouvrir les liens dans un nouvel onglet"
          ],
          "EPFL Contact": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/contact-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/contact-en/": [
+            "https://www.epfl.ch/campus/services/website/contact-fr/"
          ],
          "Introduction": [
             "Introduction"
          ],
          "Timetable": [
-            ""
+            "Heures d'ouverture"
          ],
          "Monday to thursday 09:00 am > 18:00 pm": [
-            ""
+            "Du lundi au jeudi, de 09h00 à 18h00"
          ],
          "An email ?": [
-            ""
+            "Un email ?"
          ],
          "A phone number ?": [
-            ""
+            "Un numéro de téléphone ?"
          ],
          "An address ?": [
-            ""
+            "Une adresse ?"
          ],
          "Map": [
-            ""
+            "Carte"
          ],
          "A room/place shown in the interactive map:": [
-            ""
+            "Une salle ou un lieu à afficher dans la carte interactive :"
          ],
          "See plan.epfl.ch for the right name of your room.": [
+            "Cherchez sur plan.epfl.ch pour trouver le nom de la salle"
+         ],
+         "EPFL Courses": [
             ""
          ],
          "courses": [
-            ""
+            "cours"
          ],
          "French": [
             "Français"
@@ -326,100 +389,115 @@
             "Anglais"
          ],
          "Summer": [
-            ""
+            "Eté"
          ],
          "Winter": [
-            ""
+            "Hiver"
+         ],
+         "Master": [
+            "Master"
          ],
          "Bachelor": [
-            ""
+            "Bachelor"
          ],
          "<none>": [
-            ""
+            "<aucune>"
+         ],
+         "Architecture": [
+            "Architecture"
          ],
          "Chemistry and chemical engineering": [
-            ""
+            "Chimie et génie chimique"
          ],
          "Civil engineering": [
-            ""
+            "Génie civil"
          ],
          "Communication systems": [
-            ""
+            "Systèmes de communication"
          ],
          "Computer science": [
-            ""
+            "Informatique"
          ],
          "Digital humanities": [
-            ""
+            "Humanités digitales"
          ],
          "Electrical and electronic engineering": [
-            ""
+            "Génie électrique et électronique"
          ],
          "Financial engineering": [
-            ""
+            "Ingénierie financière"
          ],
          "Environmental sciences and engineering": [
-            ""
+            "Sciences et ingénierie de l'environnement"
          ],
          "Life sciences engineering": [
-            ""
+            "Ingénierie des sciences du vivant"
          ],
          "Management of technology": [
-            ""
+            "Management de la technologie"
          ],
          "Materials science engineering": [
-            ""
+            "Science et génie des matériaux"
          ],
          "Mathematics": [
-            ""
+            "Mathématiques"
          ],
          "Mechanical engineering": [
-            ""
+            "Génie mécanique"
          ],
          "Microengineering": [
-            ""
+            "Microtechnique"
          ],
          "Physics": [
-            ""
+            "Physique"
          ],
-         "https://www.epfl.ch/campus/services/courses-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/courses-en/": [
+            "https://www.epfl.ch/campus/services/website/courses-fr/"
          ],
          "Select by": [
-            ""
+            "Sélection par"
          ],
-         "\"GETALL\" gives all courses in EPFL\"": [
-            ""
+         "Unit name": [
+            "Nom de l'unité"
+         ],
+         "\"GETALL\" gives all courses in EPFL": [
+            "\"GETALL\" fournit la liste de tous les cours EPFL"
          ],
          "OR": [
             "OU"
          ],
          "Scipers": [
-            ""
+            "Scipers"
          ],
-         "You can enter many scipers separated by a comma": [
-            ""
+         "You can enter many scipers separated by commas": [
+            "Vous pouvez entrer plusieurs scipers, séparés par des virgules"
+         ],
+         "Section name": [
+            "Nom de section"
+         ],
+         "Filters": [
+            "Filtres"
          ],
          "Course code": [
-            ""
+            "Code du cours"
+         ],
+         "Teaching language": [
+            "Langue du cours"
          ],
          "Semester": [
-            ""
+            "Semestre"
          ],
          "Orientation": [
-            ""
+            "Orientation"
          ],
          "EPFL Cover": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/cover-en/": [
-            ""
-         ],
-         "Description": [
-            ""
+         "https://www.epfl.ch/campus/services/website/cover-en/": [
+            "https://www.epfl.ch/campus/services/website/cover-fr/"
          ],
          "This description appears when the user clicks on the information icon": [
-            ""
+            "Cette description apparait lorsque l'utilisateur clique sur l'icone information"
          ],
          "EPFL Custom Highlight": [
             ""
@@ -430,32 +508,26 @@
          "Bottom": [
             "Bas"
          ],
-         "https://www.epfl.ch/campus/services/custom-highlight-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/custom-highlight-en/": [
+            "https://www.epfl.ch/campus/services/website/custom-highlight-fr/"
          ],
          "Select a layout": [
-            ""
+            "Sélectionner un type de présentation"
          ],
          "Button label": [
             "Label du bouton"
          ],
          "Custom teaser": [
-            ""
+            "Teaser personnalisé"
          ],
          "Excerpt": [
-            ""
-         ],
-         "Url": [
-            "Url"
+            "Extrait"
          ],
          "EPFL Custom Teaser": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/custom-teaser-en/": [
-            ""
-         ],
-         "Open links in a new tab": [
-            ""
+         "https://www.epfl.ch/campus/services/website/custom-teaser-en/": [
+            "https://www.epfl.ch/campus/services/website/custom-teaser-fr/"
          ],
          "Section title": [
             "Titre de section"
@@ -472,17 +544,14 @@
          "EPFL Definition List": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/definition-list-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/definition-list-en/": [
+            "https://www.epfl.ch/campus/services/website/definition-list-fr/"
          ],
          "Display as a table": [
             "Afficher comme un tableau"
          ],
          "Display the definition list as a table-like component": [
-            "Afficher la liste de définitions comme un composant tableau"
-         ],
-         "Large display": [
-            "Affichage large"
+            "Affiche la liste de définitions comme un composant tableau"
          ],
          "Makes the definition list design wider": [
             "Rendre la liste de définition plus large"
@@ -491,79 +560,79 @@
             ""
          ],
          "FAQ Item": [
-            ""
+            "Entrée de la FAQ"
+         ],
+         "Question": [
+            "Question"
          ],
          "Answer": [
-            ""
+            "Réponse"
          ],
          "EPFL FAQ": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/faq-en/": [
+         "https://www.epfl.ch/campus/services/website/faq-en/": [
+            "https://www.epfl.ch/campus/services/website/faq-fr/"
+         ],
+         "EPFL FAQ items": [
             ""
          ],
          "EPFL Gallery": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/en/it-services/web-services/wordpress-help/text-tools-en/gallery/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/gallery/": [
+            "https://www.epfl.ch/campus/services/website/galerie/"
          ],
          "Format": [
             "Format"
          ],
          "Navigation thumbnails": [
-            ""
+            "Vignettes de navigation"
          ],
          "Gallery": [
-            ""
-         ],
-         "Google Forms": [
-            ""
-         ],
-         "https://www.epfl.ch/campus/services/google-form-en/": [
-            ""
+            "Galerie"
          ],
          "EPFL Google Forms": [
             ""
          ],
+         "https://www.epfl.ch/campus/services/website/google-form-en/": [
+            "https://www.epfl.ch/campus/services/website/google-form-fr/"
+         ],
          "Paste here the <iframe> HTML code you find in \"< >\" tab when you press the \"Send\" button on a GoogleForm edition page, it will extract needed parameters": [
-            ""
+            "Coller ici le code de l'<iframe> HTML trouvé dans l'onglet \"< >\" après avoir pressé le bouton \"Envoyé\" sur la page d'édition du GoogleForm. Les paramètres en seront extraits."
          ],
          "Configuration": [
-            ""
+            "Configuration"
          ],
          "Height": [
-            ""
+            "Hauteur"
          ],
          "Information extracted": [
-            ""
+            "Informations extraites"
          ],
          "Information have been extracted from pasted HTML code": [
-            ""
+            "Les informations ont été extraites du code HTML collé"
          ],
          "Close": [
-            ""
+            "Fermer"
          ],
          "Error extracting information": [
-            ""
+            "Erreur lors de la récupération des informations"
          ],
          "Wrong HTML code given, impossible to extract information.": [
-            ""
+            "Le code HTML proposé n'est pas reconnaissable, impossible d'extraire les informations."
          ],
          "EPFL Hero": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/hero-en/": [
-            ""
-         ],
-         "Write your text here": [
-            ""
+         "https://www.epfl.ch/campus/services/website/hero-en/": [
+            "https://www.epfl.ch/campus/services/website/hero-fr/"
          ],
          "EPFL Infoscience": [
             ""
          ],
          "Please fill the fields in the right-hand column": [
-            ""
+            "Veuillez configurer le bloc dans la barre latérale"
          ],
          "Short": [
             "Court"
@@ -608,13 +677,13 @@
             "Croissant"
          ],
          "Year, then document type": [
-            ""
+            "Année, puis type de document"
          ],
          "Document type": [
-            ""
+            "Type de document"
          ],
          "Document type, then year": [
-            ""
+            "Type de document, puis année"
          ],
          "AND": [
             "ET"
@@ -623,88 +692,88 @@
             "ET NON PAS"
          ],
          "A direct infoscience URL": [
-            "Un lien direct Infoscience"
+            "URL directe d'Infoscience"
          ],
          "a https://infoscience.epfl.ch/search?... url": [
-            ""
+            "URL de type https://infoscience.epfl.ch/search?..."
          ],
          "Or text patterns": [
-            ""
+            "Ou des clés de recherche"
          ],
          "search for:": [
-            ""
+            "Texte de recherche"
          ],
          "Field restriction": [
             "Restriction sur un champ"
          ],
          "Search tips": [
-            ""
+            "Guide pour une recherche précise"
          ],
          "Additional search keys": [
             "Recherche additionnelle"
          ],
          "Second search text": [
-            "Deuxième recherche"
+            "Deuxième texte de recherche"
          ],
          "Third search text": [
             "Troisième recherche"
          ],
          "Limit": [
-            ""
+            "Limite"
          ],
          "Without a limit only the first 100 publications are shown": [
-            ""
+            "Sans limite spécifiée, seules les 100 premières publications sont affichées"
          ],
          "Sort": [
             "Tri"
          ],
          "Options": [
-            ""
+            "Options"
          ],
          "Group by with titles": [
-            ""
+            "Groupement avec titres"
          ],
          "Detail level for a publication": [
             "Niveau de détail d'une publication"
          ],
          "Summaries": [
-            ""
+            "Résumés"
          ],
          "Thumbnails": [
-            ""
+            "Vignettes"
          ],
          "EPFL Introduction": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/introduction-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/introduction-en/": [
+            "https://www.epfl.ch/campus/services/website/introduction-fr/"
          ],
          "Change the background to gray": [
             "Changer le fond en gris"
          ],
-         "Content": [
-            "Contenu"
-         ],
          "Label": [
-            ""
+            "Libellé"
          ],
          "EPFL Links group": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/links-group-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/links-group-en/": [
+            "https://www.epfl.ch/campus/services/website/links-group-fr/"
+         ],
+         "Links": [
+            "Liens"
          ],
          "EPFL Map": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/map-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/map-en/": [
+            "https://www.epfl.ch/campus/services/website/map-fr/"
          ],
-         "A room for example: INN011": [
-            ""
+         "A room. Example: INN011": [
+            "Une salle. Exemple : INN011"
          ],
          "EPFL Memento": [
-            "Mémento EPFL"
+            ""
          ],
          "events": [
             "événements"
@@ -727,8 +796,11 @@
          "No filter": [
             "Pas de filtre"
          ],
-         "https://www.epfl.ch/campus/services/memento-en/": [
-            ""
+         "Filter events by year": [
+            "Filtrer les événements par année"
+         ],
+         "https://www.epfl.ch/campus/services/website/memento-en/": [
+            "https://www.epfl.ch/campus/services/website/memento-fr/"
          ],
          "Memento": [
             "Mémento"
@@ -737,19 +809,16 @@
             "Sélectionner votre mémento"
          ],
          "The events come from the application memento.epfl.ch. If you don't have a memento, please send a request to 1234@epfl.ch": [
-            "Veuillez sélectionner votre memento.%sLes événements proviennent de l'application %smemento.epfl.ch%s.%sSi vous n'avez pas de mémento, merci d'envoyer une demande à %s"
+            "Les événements proviennent de l'application memento.epfl.ch. Si vous n'avez pas de memento, merci d'envoyer une demande au 1234@epfl.ch"
          ],
          "Template": [
-            ""
+            "Modèle"
          ],
          "Select a template": [
-            "Sélectionner un template"
-         ],
-         "Do you need more information about templates? Read this documentation": [
-            "Avez vous besoin de plus d'information à propos des templates? %sMerci de lire la documentation%s\""
+            "Sélectionner un modèle"
          ],
          "Select the number of events": [
-            ""
+            "Sélectionner le nombre d'événements à afficher"
          ],
          "Language": [
             "Langue"
@@ -766,71 +835,71 @@
          "Select a period": [
             "Sélectionner une période"
          ],
-         "Do you want upcoming events or past events ?": [
-            "Voulez vous les événements à venir ou les événements passés ?"
-         ],
          "Filter events by category": [
             "Filtrer les événements par catégorie"
-         ],
-         "Do you want filter events by category? Please select a category.": [
-            "Voulez vous filtrer les événements par catégorie ? Merci de sélectionner une catégorie."
          ],
          "Filter events by keyword": [
             "Filtrer les événements par mot clé"
          ],
-         "Do you want filter events by keyword? Please type a keyword.": [
-            "Voulez vous filtrer les événements par mot clé ? Merci de renseigner un mot clé."
-         ],
          "Loading events": [
             "Chargement des événements"
          ],
-         "No events found": [
-            "Pas d'événements trouvés"
+         "No event found": [
+            "Pas d'événement trouvé"
+         ],
+         "Place and room:": [
+            "Lieu et salle :"
+         ],
+         "Category:": [
+            "Catégorie :"
          ],
          "EPFL Mini Card Deck": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/mini-card-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/mini-card-en/": [
+            "https://www.epfl.ch/campus/services/website/mini-card-fr/"
          ],
          "EPFL Mini Card": [
             ""
          ],
-         "Mini card": [
+         "EPFL Mini card": [
             ""
          ],
          "Legend": [
-            ""
+            "Légende"
          ],
          "EPFL News": [
-            "Actualités de l'EPFL"
+            ""
          ],
          "news": [
             "actualités"
          ],
          "Template Listing": [
-            "Template listing"
+            "Liste"
          ],
          "Template highlighted with 3 news": [
-            "Template highlighted avec 3 actualités"
+            "Avec 3 actualités mises en avant"
          ],
          "Template highlighted with 1 news": [
-            "Template highlighted avec 1 actualité"
+            "Avec 1 actualité mise en avant"
          ],
          "Template card with 1 news": [
-            "Template card avec 1 actualités"
+            "Avec 1 actualité"
          ],
          "Template card with 2 news": [
-            "Template card avec 2 actualités"
+            "Avec 2 actualités"
          ],
          "Template card with 3 news": [
-            "Template card avec 3 actualités"
+            "Avec 3 actualités"
+         ],
+         "Sections": [
+            "Sections"
          ],
          "Select the number of news": [
-            ""
+            "Sélectionner le nombre d'actualités à afficher"
          ],
-         "https://www.epfl.ch/campus/services/news-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/news-en/": [
+            "https://www.epfl.ch/campus/services/website/news-fr/"
          ],
          "Channel": [
             "Canal"
@@ -839,7 +908,10 @@
             "Sélectionner votre canal d'actualités"
          ],
          "The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch": [
-            "Les actualités proviennent de l'application %sactu.epfl.ch%s.%sSi vous n'avez pas de canal, merci d'envoyer une demande à%s"
+            "Les actualités proviennent de l'application actu.epfl.ch. Si vous n'avez pas de canal, merci d'envoyer une demande au 1234@epfl.ch"
+         ],
+         "Preview the page to see the template applied": [
+            "Prévisualiser la page pour voir l'application du modèle"
          ],
          "Display the link \"all news\"": [
             "Afficher le lien \"Toutes les actualités\""
@@ -848,40 +920,37 @@
             "Thèmes"
          ],
          "Filter news by category": [
-            "Filtrer les actualités par une catégorie"
-         ],
-         "Do you want filter news by category ? Please select a category": [
-            "Voulez vous filtrer les actualités par catégorie? Veuillez sélectionner une catégorie."
+            "Filtrer les actualités par catégorie"
          ],
          "Loading EPFL news": [
             "Chargement des actualités de l'EPFL"
          ],
          "No news found": [
-            "Aucune actualités trouvées"
+            "Aucune actualité trouvée"
          ],
          "EPFL Page Highlight": [
             ""
          ],
          "page": [
-            ""
+            "page"
          ],
          "highlight": [
             ""
          ],
          "Loading pages": [
-            ""
+            "Chargement des pages"
          ],
          "None": [
-            ""
+            "Aucune"
          ],
-         "https://www.epfl.ch/campus/services/page-highlight-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/page-highlight-en/": [
+            "https://www.epfl.ch/campus/services/website/page-highlight-fr/"
          ],
          "Layout": [
             "Disposition"
          ],
          "Decides where the text will be aligned, to allow the subject of the picture to be visible": [
-            "Décider où le texte sera aligné, pour permettre au sujet de l'image d'être visible"
+            "Définit l'alignement du texte, pour permettre au sujet de l'image d'être visible"
          ],
          "Select page": [
             "Sélectionnez une page"
@@ -890,100 +959,115 @@
             ""
          ],
          "teaser": [
-            ""
+            "teaser"
          ],
-         "https://www.epfl.ch/campus/services/page-teaser-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/page-teaser-en/": [
+            "https://www.epfl.ch/campus/services/website/page-teaser-fr/"
          ],
          "Gray": [
-            ""
+            "Gris"
          ],
          "Pages": [
+            "Pages"
+         ],
+         "EPFL PDF Flipbook": [
             ""
+         ],
+         "https://www.epfl.ch/campus/services/website/pdf-flipbook-en/": [
+            "https://www.epfl.ch/campus/services/website/pdf-flipbook-fr/"
+         ],
+         "PDF": [
+            "PDF"
+         ],
+         "Please, select a PDF": [
+            "Veuillez sélectionner un PDF"
+         ],
+         "Remove PDF": [
+            "Enlever le PDF"
          ],
          "EPFL People": [
             ""
          ],
          "people": [
-            ""
+            "people"
          ],
-         "As list": [
-            ""
+         "List": [
+            "Liste"
          ],
-         "As card, one column": [
-            ""
+         "Cards, one column": [
+            "Cartes, une colonne"
          ],
-         "As card, multiple columns": [
-            ""
+         "Cards, multiple columns": [
+            "Cartes, plusieurs colonnes"
          ],
          "Alphabetical order": [
-            ""
+            "Ordre alphabétique"
          ],
          "Hierarchical order": [
-            ""
+            "Ordre hiérarchique"
          ],
          "Hierarchical order with title": [
-            ""
+            "Ordre hiérarchique avec titre"
          ],
          "Structure": [
-            ""
+            "Structure"
          ],
          "You can enter the name of a custom structure.": [
-            ""
+            "Vous pouvez entrer le nom d'un structure personnalisée."
          ],
          "More information": [
-            ""
+            "Plus d'informations"
          ],
          "List of existing structures": [
-            ""
+            "Liste des structures existantes"
          ],
          "Sorting": [
-            ""
+            "Tri"
          ],
-         "https://www.epfl.ch/campus/services/people-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/people-en/": [
+            "https://www.epfl.ch/campus/services/website/people-fr/"
          ],
          "Units": [
-            ""
+            "Unités"
          ],
-         "You can enter many units separated by a comma": [
-            ""
+         "You can enter many units separated by commas": [
+            "Vous pouvez entrer plusieurs unités, séparées par des virgules"
          ],
          "Groups": [
-            ""
+            "Groupes"
          ],
-         "You can enter many groups separated by a comma": [
-            ""
+         "You can enter many groups separated by commas": [
+            "Vous pouvez entrer plusieurs groupes, séparés par des virgules"
          ],
          "Doctoral programs": [
-            ""
+            "Programmes doctoraux"
          ],
          "Example: EDAM": [
-            ""
+            "Exemple : EDAM"
          ],
          "Function": [
-            ""
+            "Fonction"
          ],
          "You can enter a function to filter persons. The keyword must be in french. Example: professeur or enseignement": [
-            ""
+            "Vous pouvez entrer le nom d'une fonction en français pour filtrer les personnes. Exemple : professeur ou enseignement"
          ],
          "Columns": [
-            ""
+            "Colonnes"
          ],
          "EPFL Post Highlight": [
             ""
          ],
          "post": [
-            ""
+            "article"
          ],
          "Loading posts": [
-            ""
+            "Chargement des articles"
          ],
          "No post found": [
-            ""
+            "Aucun article trouvé"
          ],
-         "https://www.epfl.ch/campus/services/post-highlight-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/post-highlight-en/": [
+            "https://www.epfl.ch/campus/services/website/post-highlight-fr/"
          ],
          "Select post": [
             "Sélectionnez un post"
@@ -991,182 +1075,200 @@
          "EPFL Post Teaser": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/post-teaser-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/post-teaser-en/": [
+            "https://www.epfl.ch/campus/services/website/post-teaser-fr/"
+         ],
+         "Display last 3 published posts": [
+            "Affiche les 3 derniers articles"
          ],
          "Only display last 3 posts for following category": [
-            ""
+            "Affiche seulement les 3 derniers articles pour la catégorie sélectionnée"
          ],
          "or select specific posts": [
-            ""
+            "ou sélectionner des articles spécifiques"
          ],
          "EPFL Quote": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/quote-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/quote-en/": [
+            "https://www.epfl.ch/campus/services/website/quote-fr/"
          ],
          "Please, select a square image": [
-            ""
+            "Veuillez sélectionner une image carrée"
          ],
          "Quote": [
-            ""
-         ],
-         "Warning": [
-            ""
+            "Citation"
          ],
          "Please choose a time in the sidebar": [
-            ""
+            "Veuillez choisir une heure dans la barre latérale"
          ],
          "From": [
-            ""
+            "A partir de"
          ],
          "to": [
-            ""
+            "à"
          ],
          "EPFL Scheduler": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/scheduler-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/scheduler-en/": [
+            "https://www.epfl.ch/campus/services/website/scheduler-fr/"
          ],
          "Start Date & Time": [
-            ""
+            "Date et heure du début"
          ],
          "End Date & Time": [
-            ""
+            "Date et heure de fin"
          ],
-         "Please select a end date. Format: mm/dd/yyyy": [
-            ""
+         "Please select an end date. Format: mm/dd/yyyy": [
+            "Veuillez sélectionner une date de fin. Format: mm/jj/aaaa"
          ],
          "EPFL Social Feed": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/social-feed-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/social-feed-en/": [
+            "https://www.epfl.ch/campus/services/website/social-feed-fr/"
          ],
          "Size": [
-            ""
+            "Taille"
          ],
          "Set the height in pixel (optional). 450 is recommended": [
-            ""
+            "Régler la hauteur en pixel (optionnel). Recommandation : 450"
          ],
          "Set the width in pixel (optional). 374 is recommended": [
-            ""
+            "Régler la largeur en pixel (optionnel). Recommandation : 374"
          ],
-         "Url to your Twitter account (optional) (eg. https://twitter.com/EPFL)": [
-            ""
+         "URL to your Twitter account (optional) (eg. https://twitter.com/EPFL)": [
+            "URL du compte Twitter (optionnel). Ex. : https://twitter.com/EPFL"
          ],
          "0 for unlimited": [
+            "0 pour illimité"
+         ],
+         "URL of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)": [
+            "URL d'un article Instagram (optionnel). Ex. : https://www.instagram.com/p/BjuYB7Lhylj"
+         ],
+         "URL of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)": [
+            "URL d'un compte Facebook (optionnel). Ex. : https://www.facebook.com/epflcampus"
+         ],
+         "EPFL Student Projects": [
             ""
          ],
-         "Url of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)": [
-            ""
+         "<Please choose>": [
+            "<Sélectionner>"
          ],
-         "Url of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)": [
-            ""
+         "https://www.epfl.ch/campus/services/student-projects-en/": [
+            "https://www.epfl.ch/campus/services/student-projects-fr/"
+         ],
+         "Section": [
+            "Section"
+         ],
+         "Only current projects": [
+            "Seulements les projects en cours"
+         ],
+         "Professor(s) sciper(s)": [
+            "Sciper(s) du/des professeur(s)"
+         ],
+         "Separated with commas": [
+            "Séparé par une virgule"
          ],
          "No header": [
-            ""
+            "Sans en-tête"
          ],
-         "Header": [
-            ""
-         ],
-         "Header & sort": [
-            ""
+         "Sortable header": [
+            "En-têtes triables"
          ],
          "EPFL Table Filter": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/table-filter-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/table-filter-en/": [
+            "https://www.epfl.ch/campus/services/website/table-filter-fr/"
          ],
          "Placeholder": [
-            ""
+            "Libellé"
          ],
          "Text to display in search box": [
-            ""
+            "Texte affiché dans la boite de recherche"
          ],
          "Table header": [
-            ""
+            "En-tête du tableau"
          ],
          "Filter options": [
-            ""
+            "Options de tri"
          ],
          "Filter only on column(s) no": [
-            ""
+            "Filtrer seulement la/les colonne(s) no"
          ],
          "If multiple columns, separate with comma": [
-            ""
+            "A séparer par des virgules s'il y a plusieurs colonnes"
          ],
          "Sort options": [
-            ""
+            "Options de tri"
          ],
          "Apply numeric sort on column(s)": [
+            "Appliquer un tri numérique sur la/les colonne(s)"
+         ],
+         "Table Filter": [
+            "Tableau filtré"
+         ],
+         "EPFL Table": [
             ""
+         ],
+         "https://www.epfl.ch/campus/services/website/table-en/": [
+            "https://www.epfl.ch/campus/services/website/table-fr/"
          ],
          "Table": [
-            ""
-         ],
-         "https://www.epfl.ch/campus/services/table-en/": [
-            ""
+            "Table"
          ],
          "EPFL Tableau": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/tableau-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/tableau-en/": [
+            "https://www.epfl.ch/campus/services/website/tableau-fr/"
          ],
-         "Tableau dimensions": [
-            ""
+         "Dimensions": [
+            "Dimensions"
          ],
          "Width": [
-            ""
+            "Largeur"
          ],
-         "EPFL Tableau content": [
-            ""
+         "Embed code": [
+            "Code intégré (Embed)"
          ],
          "Paste here the content of the Embed Code when you press the \"Share\" button on an EPFL tableau view": [
-            ""
+            "Coller ici le contenu du code intégré (\"Embed code\") trouvé avec le bouton \"Share\" dans la vue Tableau"
          ],
-         "Tableau Name": [
-            ""
+         "Tableau ID": [
+            "Identifiant du Tableau"
          ],
          "Name of the Tableau view (eg. \"EPFLofficialstatistics/StatistiquesOfficielles\")": [
-            ""
+            "Nom de la vue Tableau (ex. : \"EPFLofficialstatistics/StatistiquesOfficielles\")"
          ],
          "EPFL Toggle": [
             ""
          ],
-         "https://www.epfl.ch/campus/services/toggle-en/": [
-            ""
+         "https://www.epfl.ch/campus/services/website/toggle-en/": [
+            "https://www.epfl.ch/campus/services/website/toggle-fr/"
          ],
          "Initial state": [
-            "État initial"
-         ],
-         "Do you want display the toggle open or close initially ?": [
-            ""
-         ],
-         "EPFL Video": [
-            ""
-         ],
-         "https://www.epfl.ch/campus/services/video-en/": [
-            ""
-         ],
-         "URL of the video": [
-            ""
-         ],
-         "You can paste a YouTube, Vimeo or SWITCHTube URL": [
-            ""
-         ],
-         "https://www.epfl.ch/campus/services/website/toggle-en/": [
-            ""
+            "Etat initial"
          ],
          "Anchor": [
             "Ancre"
          ],
          "To point directly on toggle using #<anchor> in URL. Toggle will be opened automatically": [
+            "Pour cibler directement le toggle en utilisant une ancre #<anchor> dans l'URL. Le toggle sera automatiquement ouvert"
+         ],
+         "EPFL Video": [
             ""
+         ],
+         "https://www.epfl.ch/campus/services/website/video-en/": [
+            "https://www.epfl.ch/campus/services/website/video-fr/"
+         ],
+         "URL of the video": [
+            "URL de la vidéo"
+         ],
+         "You can paste a YouTube, Vimeo or SWITCHTube URL": [
+            "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
          ]
       }
    }

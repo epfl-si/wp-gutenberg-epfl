@@ -24,7 +24,7 @@ const {
 } = wp.element;
 
 registerBlockType( 'epfl/google-forms', {
-	title: __( 'Google Forms', 'epfl'),
+	title: __( 'EPFL Google Forms', 'epfl'),
 	description: 'v1.0.9',
 	icon: googleFormsIcon,
 	category: 'common',
