@@ -8,7 +8,8 @@ function epfl_tableau_block( $attributes ) {
 
     $width = "";
     $height = "";
-    
+    $tableau_name = "";
+
     # or get the already set url, width and height
     if (!empty($attributes['embedCode'])) {
         # from a copy-paste of a embed view, parse this information :
@@ -75,7 +76,7 @@ function add_block_allowed_tags($tags)
     if(!array_key_exists('object', $tags)) $tags['object'] = [];
     $tags['object']['width'] = true;
     $tags['object']['height'] = true;
-    
+
     if(!array_key_exists('param', $tags)) $tags['param'] = [];
     $tags['param']['name'] = true;
     $tags['param']['value'] = true;
