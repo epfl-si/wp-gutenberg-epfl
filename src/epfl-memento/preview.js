@@ -117,7 +117,7 @@ export default class PreviewMemento extends Component {
 
           let placeAndRoom;
           if (!!event.place_and_room) {
-            placeAndRoom = <span><br/>{ __('Place and room:', 'epfl') }: <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
+            placeAndRoom = <span><br/>{ __('Place and room:', 'epfl') } <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
           }
 
           let eventSpeakerContent;
