@@ -44,7 +44,9 @@ function process_shortcode($atts) {
     $search = sanitize_text_field($atts["search"]);
 
     $url = LEX_INFO_PROVIDER_URL;
-    $lexes = Utils::get_items($url);
+
+    $cache_timeout = 15 * MINUTE_IN_SECONDS;
+    $lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes");
 
     ob_start();
 

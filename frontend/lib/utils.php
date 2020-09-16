@@ -39,9 +39,59 @@ Class Utils
     }
 
     /**
+     * Fetch and save API result in a transient, and in the WP options table as a fallback
+     * if the url is not responding anymore
+     * This process is deactivated if we are in DEBUG mode
+     * @param int $cache_timeout : cache time validity, in seconds
+     * @param string $backup_in_options : if a name if given, results is saved in Wordpress options table,
+     *                                    in case the url is not responding anymore
+     * @param string $cache_name : name given to cache and option entry
+     * @return JSON data
+     */
+    public static function get_items_with_fallback(string $url, int $cache_timeout, string $cache_name) {
+        # First, check if we have a transient
+        if ( (defined('WP_DEBUG') && WP_DEBUG) || false === ( $data = get_transient( $cache_name ) ) ) {
+            # no transient, then try to get some data
+            $data = Utils::get_items($url, $cache_timeout, 5, True);
+
+            if ($data === false && !(defined('WP_DEBUG') && WP_DEBUG)) {
+                # Remote server is not responding, get the local option and
+                # set a transient, so we dont refresh until the $cache_timeout time
+                $data_from_option = get_option($cache_name);
+                if ($data_from_option === false) {
+                    # already no option set ? set transient to nothing
+                    set_transient($cache_name, [], $cache_timeout);
+                    return;
+                } else {
+                    # update transient with what we got in option
+                    set_transient($cache_name, $data_from_option, $cache_timeout);
+                    return $data_from_option;
+                }
+            } else {
+                # Remote server is responding; from the site id, get the data
+                if (!empty($data)) {
+                    set_transient( $cache_name, $data, $cache_timeout);
+                    # persist into options too, as a fallback if remote server get down
+                    update_option($cache_name, $data);
+                    return $data;
+                } else {
+                    # nothing or empty result has been returned from the server, reset local entries
+                    set_transient( $cache_name, [], $cache_timeout );
+                    delete_option($cache_name);
+                    return;
+                }
+            }
+        } else {
+            # transient is set, use it
+            return $data;
+        }
+    }
+
+    /**
      * Call API
-     * @param url            : the fetchable url
-     * @param cache_time_sec : Nb of sec during which we have to cache information in transient
+     * @param string $url : the fetchable url
+     * @param int $cache_time_sec : Nb of sec during which we have to cache information in transient
+     * @param int $timeout :  How long the connection should stay open in seconds. Default 5.
      * @return decoded JSON data
      *          False in case of an error
      */
@@ -88,7 +138,7 @@ Class Utils
                 $decoded = json_decode($data);
                 /* If error in decoding, */
                 if($decoded === null)
-                {   
+                {
                     error_log("Webservice " . $url . " doesn't returns valid JSON");
                     return false;
                 }
