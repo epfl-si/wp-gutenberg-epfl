@@ -98,7 +98,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
 
   if($item->project->commentaire !== null)
   {
-    $details[] = array('Comment', str_replace('\r\n', '</p><p>', $item->project->commentaire->fr));
+    $details[] = array('Comment', str_replace("\r\n", '</p><p>', $item->project->commentaire->fr));
   }
   $details[] = array('Professor(s)', implode(", ", $professors));
   
@@ -153,7 +153,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
         </picture>
       </div>
     <?php endif; ?>
-      <p><?php echo str_replace('\r\n', '</p><p>', $item->project->descriptif->fr); ?></p>
+      <p><?php echo str_replace("\r\n", '</p><p>', $item->project->descriptif->fr); ?></p>
 
       <dl class="definition-list definition-list-grid">
         <?php foreach($details as $detail): ?>
