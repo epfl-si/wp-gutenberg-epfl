@@ -96,7 +96,7 @@ export default class PreviewMemento extends Component {
 		if ( this.state.events.length === 0 ) {
 			return (
 				<p>
-					{ __('No events found', 'epfl') }
+					{ __('No event found', 'epfl') }
 				</p>
 			)
 		} else  {
@@ -117,7 +117,7 @@ export default class PreviewMemento extends Component {
 
           let placeAndRoom;
           if (!!event.place_and_room) {
-            placeAndRoom = <span><br/>{ __('Place and room :', 'epfl') } <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
+            placeAndRoom = <span><br/>{ __('Place and room:', 'epfl') } <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
           }
 
           let eventSpeakerContent;
@@ -152,7 +152,7 @@ export default class PreviewMemento extends Component {
 
           let category;
           if (!!event.category.en_label) {
-            category = <span>{ __('Category :', 'epfl') } <b>{ event.category.en_label }</b></span>
+            category = <span>{ __('Category:', 'epfl') } <b>{ event.category.en_label }</b></span>
           }
 
 					return (

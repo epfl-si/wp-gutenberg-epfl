@@ -64,7 +64,7 @@ registerBlockType( 'epfl/scheduler', {
                         currentDate={ attributes.endDateTime }
 						value={ attributes.endDateTime }
                         onChange={ endDateTime => setAttributes( { endDateTime } ) }
-                        help={ __('Please select a end date. Format: mm/dd/yyyy', 'epfl') }
+                        help={ __('Please select an end date. Format: mm/dd/yyyy', 'epfl') }
 					/>
 				</PanelBody>
             </InspectorControls>

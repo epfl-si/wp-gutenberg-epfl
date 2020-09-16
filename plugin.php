@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
- * Version:         2.2.1
+ * Version:         2.3.0
  * Author:          WordPress EPFL Team
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -142,7 +142,7 @@ function wp_gutenberg_epfl_editor_assets() {
     $index_js     = 'build/index.js';
     $script_asset = require( $script_asset_path );
     wp_enqueue_script(
-        'wp-gutenberg-epfl-block-editor',
+        'wp-gutenberg-scripts',
         plugins_url( $index_js, __FILE__ ),
         $script_asset['dependencies'],
         $script_asset['version']
@@ -156,7 +156,8 @@ function wp_gutenberg_epfl_editor_assets() {
         array(),
         filemtime( "$dir/$editor_css" )
     );
-
+    // load wordpress translations for JS
+    wp_set_script_translations( 'wp-gutenberg-scripts', 'epfl', plugin_dir_path( __FILE__ ) . 'languages' );
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_editor_assets' );
 

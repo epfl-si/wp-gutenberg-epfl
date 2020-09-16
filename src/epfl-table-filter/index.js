@@ -50,7 +50,7 @@ const getAttributes = () => {
 
 let optionsHeader = [
     { value: '', label: __('No header', 'epfl') },
-    { value: 'header,sort', label: __('Header & sort', 'epfl') },
+    { value: 'header,sort', label: __('Sortable header', 'epfl') },
 ];
 
 registerBlockType( 'epfl/table-filter', {

@@ -74,7 +74,7 @@ registerBlockType( 'epfl/mini-card-panel', {
         return (
             <Fragment>
                 <div className={ className }>
-                    <h4>{ __('Mini card', 'epfl') }</h4>
+                    <h4>{ __('EPFL Mini card', 'epfl') }</h4>
 
                     <TextControl
                         label={ __('Link', 'epfl') }

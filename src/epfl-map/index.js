@@ -40,7 +40,7 @@ registerBlockType( 'epfl/map', {
                     <TextControl
                         value={ attributes.query }
                         onChange={ query => setAttributes( { query } ) }
-                        help={ __('A room for example: INN011', 'epfl') }
+                        help={ __('A room. Example: INN011', 'epfl') }
                     />
                 </div>
             </Fragment>

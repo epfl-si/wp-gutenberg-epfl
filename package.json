@@ -29,6 +29,8 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^12.1.1",
+		"@wordpress/babel-plugin-makepot": "^3.7.0",
+		"po2json": "^0.4.5",
 		"eslint": "^7.7.0",
 		"postcss": "^7.0.32",
 		"prettier": "^2.1.1",

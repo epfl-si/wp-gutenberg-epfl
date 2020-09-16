@@ -23,9 +23,9 @@ export default class InspectorControlsPeople extends Component {
         const { attributes, setAttributes } = this.props
 
         let optionsColumnsList = [
-            { value: 'list', label: __('As list', 'epfl')},
-            { value: '1', label: __('As card, one column', 'epfl')},
-            { value: '3', label: __('As card, multiple columns', 'epfl')},
+            { value: 'list', label: __('List', 'epfl')},
+            { value: '1', label: __('Cards, one column', 'epfl')},
+            { value: '3', label: __('Cards, multiple columns', 'epfl')},
         ];
 
         let optionsOrderList = [
@@ -69,21 +69,21 @@ export default class InspectorControlsPeople extends Component {
                     <strong>{__( 'Units', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.units }
-                        help={ __('You can enter many units separated by a comma', 'epfl') }
+                        help={ __('You can enter many units separated by commas', 'epfl') }
 						onChange={ units => setAttributes( { units } ) }
 					/>
                     <h2>{__( 'OR', 'epfl')}</h2>
                     <strong>{__( 'Groups', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.groups }
-                        help={ __('You can enter many groups separated by a comma', 'epfl') }
+                        help={ __('You can enter many groups separated by commas', 'epfl') }
 						onChange={ groups => setAttributes( { groups } ) }
 					/>
                     <h2>{__( 'OR', 'epfl')}</h2>
                     <strong>{__( 'Scipers', 'epfl')}</strong>
                     <TextControl
                         value={ attributes.scipers }
-                        help={ __('You can enter many scipers separated by a comma', 'epfl') }
+                        help={ __('You can enter many scipers separated by commas', 'epfl') }
 						onChange={ scipers => setAttributes( { scipers } ) }
 					/>
                     <h2>{__( 'OR', 'epfl')}</h2>

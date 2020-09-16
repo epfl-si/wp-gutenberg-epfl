@@ -81,7 +81,7 @@ registerBlockType( 'epfl/social-feed', {
 							label={ __('URL','epfl')}
                             value={ attributes.twitterUrl }
                             onChange={ twitterUrl => setAttributes( { twitterUrl } ) }
-                            help={ __('Url to your Twitter account (optional) (eg. https://twitter.com/EPFL)', 'epfl') }
+                            help={ __('URL to your Twitter account (optional) (eg. https://twitter.com/EPFL)', 'epfl') }
                         />
                         <label>{ __('Limit', 'epfl') }</label>
                         <TextControl
@@ -101,7 +101,7 @@ registerBlockType( 'epfl/social-feed', {
 							label={ __('URL','epfl')}
                             value={ attributes.instagramUrl }
                             onChange={ instagramUrl => setAttributes( { instagramUrl } ) }
-                            help={ __('Url of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)', 'epfl') }
+                            help={ __('URL of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)', 'epfl') }
                         />
                     </PanelBody>
 
@@ -110,7 +110,7 @@ registerBlockType( 'epfl/social-feed', {
 							label={ __('URL','epfl')}
                             value={ attributes.facebookUrl }
                             onChange={ facebookUrl => setAttributes( { facebookUrl } ) }
-                            help={ __('Url of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)', 'epfl') }
+                            help={ __('URL of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)', 'epfl') }
                         />
                     </PanelBody>
                 </div>

@@ -29,12 +29,12 @@ function epfl_google_forms_block( $attributes ) {
     /* Check that iframe has a Google host as source */
     if(preg_match('/\.google\.com$/', $url_host) !== 1)
     {
-        return Utils::render_user_msg(__("Incorrect URL found", "epfl"));
+        return Utils::render_user_msg(__("Incorrect URL", "epfl"));
     }
 
     if(!is_numeric($height))
     {
-        return Utils::render_user_msg(__("Incorrect dimensions found", "epfl"));
+        return Utils::render_user_msg(__("Incorrect dimensions", "epfl"));
     }
 
     $markup = epfl_google_forms_render($url, $height);
