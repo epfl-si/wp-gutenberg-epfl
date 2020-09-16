@@ -31,6 +31,7 @@ export default class InspectorControlsStudentProjects extends Component {
         axios.get(entryPointProjects)
             .then(response => {
                 
+                console.log(response);
                 let sections = [];
                 response.data.forEach((elem) => { 
                     if(typeof elem['code'] == 'string' && elem['code'].startsWith('PROJETS_')) sections.push(elem['code']) 

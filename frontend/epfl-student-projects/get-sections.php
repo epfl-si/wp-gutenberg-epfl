@@ -6,13 +6,11 @@
     $url = "https://isa.epfl.ch/services/secretariats";
 
     // Uncomment for local developing/debugging
-    $url = "https://ditex-web.epfl.ch/services/secretariats";
+    //$url = "https://ditex-web.epfl.ch/services/secretariats";
 
-    
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_PROTOCOLS,  CURLPROTO_HTTP);
     curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
     curl_setopt($curl, CURLOPT_COOKIESESSION, true);
     curl_setopt($curl, CURLOPT_AUTOREFERER, true);
