@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 const { __ } = wp.i18n;
 
 const {
@@ -74,7 +76,7 @@ registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
 	description: 'v1.1.7',
 	icon: 'editor-kitchensink',
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

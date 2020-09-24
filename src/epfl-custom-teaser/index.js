@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 const { __ } = wp.i18n;
 
 const {
@@ -158,7 +160,7 @@ registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'epfl'),
 	description: 'v1.1.6',
 	icon: 'editor-kitchensink',
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'design',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

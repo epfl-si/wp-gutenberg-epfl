@@ -1,5 +1,5 @@
-
 import googleFormsIcon from './google-forms-icon'
+import { hasCommonCategory } from '../block-utils.js'
 
 const { __ } = wp.i18n;
 
@@ -27,7 +27,7 @@ registerBlockType( 'epfl/google-forms', {
 	title: __( 'EPFL Google Forms', 'epfl'),
 	description: 'v1.0.9',
 	icon: googleFormsIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'embed',
 	attributes: {
         data: {
 			type: 'string',

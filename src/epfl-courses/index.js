@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import coursesIcon from './courses-icon'
 import InspectorControlsCourses from './inspector'
 
@@ -12,7 +14,7 @@ registerBlockType(
 		title: __( "EPFL Courses", 'epfl'),
 		description: 'v1.2.0',
 		icon: coursesIcon,
-		category: 'common',
+		category: hasCommonCategory ? 'common' : 'embed',
 		keywords: [
 			__( 'courses' , 'epfl'),
 		],

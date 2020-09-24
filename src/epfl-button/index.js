@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import buttonIcon from './button-icon'
 
 const { __ } = wp.i18n;
@@ -57,7 +59,7 @@ registerBlockType( 'epfl/button', {
 	title: __( 'EPFL Button', 'epfl'),
 	description: 'v1.0.0',
 	icon: buttonIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'widgets',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

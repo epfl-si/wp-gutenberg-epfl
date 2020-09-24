@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import './style.scss'
 
 import mementoIcon from './memento-icon'
@@ -15,7 +17,7 @@ registerBlockType(
 		title: __('EPFL Memento', 'epfl'),
 		description: 'v1.1.2',
 		icon: mementoIcon,
-		category: 'common',
+		category: hasCommonCategory ? 'common' : 'embed',
 		keywords: [
 			__('events', 'epfl'),
 		],

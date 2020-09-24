@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import customHighlightIcon from './custom-highlight-icon'
 
 const { __ } = wp.i18n;
@@ -25,7 +27,7 @@ registerBlockType( 'epfl/custom-highlight', {
 	title: __( 'EPFL Custom Highlight', 'epfl'),
 	description: 'v1.0.2',
 	icon: customHighlightIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'design',
 	attributes: {
 		title: {
 			type: 'string',

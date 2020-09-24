@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import miniCardIcon from './mini-card-icon'
 import './mini-card-panel'
 
@@ -47,7 +49,7 @@ registerBlockType( 'epfl/mini-card-deck', {
 	title: __( 'EPFL Mini Card Deck', 'epfl'),
 	description: 'v1.0.1',
 	icon: miniCardIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'design',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

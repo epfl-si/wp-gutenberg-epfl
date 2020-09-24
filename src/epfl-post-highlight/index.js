@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import InspectorControlsPostHighlight from './inspector'
 
 const { __ } = wp.i18n
@@ -9,7 +11,7 @@ registerBlockType(
 	{
 		title: __( "EPFL Post Highlight", 'epfl'),
 		description: 'v1.0.5',
-		category: 'common',
+		category: hasCommonCategory ? 'common' : 'design',
 		keywords: [
             __( 'post' , 'epfl'),
             __( 'highlight' , 'epfl'),

@@ -1,5 +1,6 @@
-import './style.scss'
+import { hasCommonCategory } from '../block-utils.js'
 
+import './style.scss'
 import coverIcon from './cover-icon'
 
 const { __ } = wp.i18n;
@@ -25,7 +26,7 @@ registerBlockType( 'epfl/cover', {
 	title: __( 'EPFL Cover', 'epfl'),
 	description: 'v1.0.4',
 	icon: coverIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'design',
 	attributes: {
 		imageId: {
 			type: 'number',

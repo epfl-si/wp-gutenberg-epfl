@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import InspectorControlsPageTeaser from './inspector'
 
 const { __ } = wp.i18n
@@ -9,7 +11,7 @@ registerBlockType(
 	{
 		title: __( "EPFL Page Teaser", 'epfl'),
 		description: 'v1.0.4',
-		category: 'common',
+		category: hasCommonCategory ? 'common' : 'design',
 		keywords: [
             __( 'page' , 'epfl'),
             __( 'teaser' , 'epfl'),

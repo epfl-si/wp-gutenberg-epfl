@@ -1,3 +1,4 @@
+import { hasCommonCategory } from '../block-utils.js'
 
 import contactIcon from './contact-icon'
 
@@ -25,7 +26,7 @@ registerBlockType( 'epfl/contact', {
     title: __( 'EPFL Contact', 'epfl'),
     description: 'v1.0.6',
     icon: contactIcon,
-    category: 'common',
+    category: hasCommonCategory ? 'common' : 'design',
     attributes: {
         grayWrapper: {
             type: 'boolean',

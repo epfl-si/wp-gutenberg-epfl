@@ -1,3 +1,4 @@
+import { hasCommonCategory } from '../block-utils.js'
 
 import flipbookIcon from './flipbook-icon'
 
@@ -23,7 +24,7 @@ registerBlockType( 'epfl/pdf-flipbook', {
 	title: __( 'EPFL PDF Flipbook', 'epfl'),
 	description: 'v1.0.1',
 	icon: flipbookIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'media',
 	attributes: {
 		pdfId: {
 			type: 'number',
