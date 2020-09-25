@@ -1,6 +1,7 @@
 import { image } from "@wordpress/icons";
 
 const { __ } = wp.i18n;
+import { hasCommonCategory } from '../block-utils.js'
 
 const {
 	registerBlockType,
@@ -26,7 +27,7 @@ registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'epfl'),
 	description: 'v1.2.2',
 	icon: 'id',
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'design',
 	attributes: {
 		title: {
 			type: 'string',

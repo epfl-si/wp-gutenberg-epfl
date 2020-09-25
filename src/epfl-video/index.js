@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import videoIcon from './video-icon'
 
 const { __ } = wp.i18n;
@@ -22,7 +24,7 @@ registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
 	description: 'v1.0.5',
 	icon: videoIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'media',
 	attributes: {
         url: {
 			type: 'url',

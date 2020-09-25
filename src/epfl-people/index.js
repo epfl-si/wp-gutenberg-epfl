@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import newsIcon from './people-icon'
 import PreviewPeople from './preview'
 import InspectorControlsPeople from './inspector'
@@ -12,7 +14,7 @@ registerBlockType(
 		title: __( "EPFL People", 'epfl'),
 		description: 'v1.1.9',
 		icon: newsIcon,
-		category: 'common',
+		category: hasCommonCategory ? 'common' : 'embed',
 		keywords: [
 			__( 'people' , 'epfl'),
 		],

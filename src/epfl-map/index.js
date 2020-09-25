@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 const { __ } = wp.i18n;
 
 const {
@@ -19,7 +21,7 @@ registerBlockType( 'epfl/map', {
 	title: __( 'EPFL Map', 'epfl'),
 	description: 'v1.0.3',
 	icon: 'admin-site-alt',
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'embed',
 	attributes: {
 		query: {
 			type: 'string',

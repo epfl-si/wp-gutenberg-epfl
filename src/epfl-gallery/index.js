@@ -1,4 +1,4 @@
-
+import { hasCommonCategory } from '../block-utils.js'
 
 const { __ } = wp.i18n;
 
@@ -42,7 +42,7 @@ registerBlockType( 'epfl/gallery', {
 	title: __( 'EPFL Gallery', 'epfl'),
 	description: 'v1.0.0',
 	icon: 'format-gallery',
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'media',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

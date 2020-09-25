@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import faqIcon from './faq-icon'
 import './faq-item'
 
@@ -31,7 +33,7 @@ registerBlockType( 'epfl/faq', {
 	title: __( 'EPFL FAQ', 'epfl'),
 	description: 'v1.0.2',
 	icon: faqIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import schedulerIcon from './scheduler-icon'
 
 const { __ } = wp.i18n;
@@ -32,7 +34,7 @@ registerBlockType( 'epfl/scheduler', {
 	title: __( 'EPFL Scheduler', 'epfl'),
 	description: 'v1.0.4',
 	icon: schedulerIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'widgets',
 	attributes: {
         startDateTime: {
             type: 'string',

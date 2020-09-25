@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import toggleIcon from './toggle-icon'
 
 const { __ } = wp.i18n;
@@ -26,7 +28,7 @@ registerBlockType( 'epfl/toggle', {
 	title: __( 'EPFL Toggle', 'epfl'),
 	description: 'v1.1.0',
 	icon: toggleIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'text',
 	attributes: {
 		title: {
 			type: 'string',

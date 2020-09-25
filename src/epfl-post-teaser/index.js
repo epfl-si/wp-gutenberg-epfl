@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import InspectorControlsPostTeaser from './inspector'
 import { getAllPagesPostsOrCategories } from '../index';
 
@@ -10,7 +12,7 @@ registerBlockType(
 	{
 		title: __( "EPFL Post Teaser", 'epfl'),
 		description: 'v1.2.0',
-		category: 'common',
+		category: hasCommonCategory ? 'common' : 'design',
 		keywords: [
             __( 'page' , 'epfl'),
             __( 'teaser' , 'epfl'),

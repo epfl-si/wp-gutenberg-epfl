@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import alertIcon from './alert-icon'
 
 const { __ } = wp.i18n;
@@ -30,7 +32,7 @@ registerBlockType( 'epfl/alert', {
 	title: __( 'EPFL Alert', 'epfl'),
 	description: 'v1.0.0',
 	icon: alertIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'widgets',
 	attributes: {
         content: {
 			type: 'string',

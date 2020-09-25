@@ -1,6 +1,6 @@
+import { hasCommonCategory } from '../block-utils.js'
 
 import tableauIcon from './tableau-icon'
-
 
 const { __ } = wp.i18n;
 
@@ -23,7 +23,7 @@ registerBlockType( 'epfl/tableau', {
 	title: __( 'EPFL Tableau', 'epfl'),
 	description: 'v1.0.7',
 	icon: tableauIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'embed',
 	attributes: {
         embedCode: {
             type: 'string',

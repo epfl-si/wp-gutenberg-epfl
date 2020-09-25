@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import socialFeedIcon from './social-feed-icon'
 
 const { __ } = wp.i18n;
@@ -21,7 +23,7 @@ registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'epfl'),
 	description: 'v1.0.3',
 	icon: socialFeedIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'embed',
 	attributes: {
         twitterUrl: {
             type: 'url',

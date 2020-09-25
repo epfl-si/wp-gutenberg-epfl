@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import infoscienceIcon from './infoscience-icon'
 import InspectorControlsInfoscience from './inspector'
 
@@ -13,7 +15,7 @@ registerBlockType( 'epfl/infoscience-search', {
 	title: __( 'EPFL Infoscience', 'epfl'),
 	description: 'v1.1.2',
 	icon: infoscienceIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'embed',
 	attributes: {
 		url: {
 			type: 'string',

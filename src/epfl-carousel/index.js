@@ -1,3 +1,4 @@
+import { hasCommonCategory } from '../block-utils.js'
 import { image } from "@wordpress/icons";
 
 import carouselIcon from './carousel-icon'
@@ -146,7 +147,7 @@ registerBlockType( 'epfl/carousel', {
 	title: __( 'EPFL Carousel', 'epfl'),
 	description: 'v1.0.2',
 	icon: carouselIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'media',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

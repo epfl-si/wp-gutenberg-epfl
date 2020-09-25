@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 import { image } from "@wordpress/icons";
 
 import quoteIcon from './quote-icon'
@@ -26,7 +28,7 @@ registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'epfl'),
 	description: 'v1.0.5',
 	icon: quoteIcon,
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'text',
 	attributes: {
 		imageId: {
 			type: 'number',

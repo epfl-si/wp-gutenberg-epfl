@@ -1,4 +1,5 @@
 import {image, image as icon} from '@wordpress/icons';
+import { hasCommonCategory } from '../block-utils.js'
 
 const { __ } = wp.i18n;
 
@@ -139,7 +140,7 @@ registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'epfl'),
 	description: 'v1.0.4',
 	icon: 'screenoptions',
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'design',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

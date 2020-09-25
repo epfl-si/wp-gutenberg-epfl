@@ -1,3 +1,5 @@
+import { hasCommonCategory } from '../block-utils.js'
+
 const { __ } = wp.i18n;
 
 const {
@@ -22,7 +24,7 @@ registerBlockType( 'epfl/introduction', {
 	title: __( 'EPFL Introduction', 'epfl'),
 	description: 'v1.0.4',
 	icon: 'text',
-	category: 'common',
+	category: hasCommonCategory ? 'common' : 'text',
 	attributes: {
 		title: {
 			type: 'string',

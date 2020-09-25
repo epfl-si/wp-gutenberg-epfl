@@ -1,4 +1,6 @@
 import * as axios from 'axios';
+import { hasCommonCategory } from '../block-utils.js'
+
 import studentProjectsIcon from './student-projects-icon'
 import InspectorControlsStudentProjects from './inspector'
 
@@ -22,7 +24,7 @@ registerBlockType( 'epfl/student-projects', {
     title: __( 'EPFL Student Projects', 'epfl'),
     description: 'v1.0.2',
     icon: studentProjectsIcon,
-    category: 'common',
+    category: hasCommonCategory ? 'common' : 'embed',
     attributes: {
         title:{
             type: 'string',

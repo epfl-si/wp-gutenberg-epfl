@@ -1,5 +1,6 @@
-import tableIcon from './table-icon'
+import { hasCommonCategory } from '../block-utils.js'
 
+import tableIcon from './table-icon'
 
 const { __ } = wp.i18n;
 
@@ -52,7 +53,7 @@ registerBlockType( 'epfl/table', {
 	title: __( 'EPFL Table', 'epfl'),
 	description: 'v1.0.1',
 	icon: tableIcon,
-	category: 'common',
+    category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
