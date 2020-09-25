@@ -1,3 +1,5 @@
+import { image } from "@wordpress/icons";
+
 import quoteIcon from './quote-icon'
 
 const { __ } = wp.i18n;
@@ -77,14 +79,13 @@ registerBlockType( 'epfl/quote', {
                         value={ attributes.imageId }
                         render={ ( { open } ) => (
                             <Placeholder
-                                icon="images-alt"
+								icon={ image }
                                 label={ __("Image", 'epfl') }
                                 instructions={ __('Please, select a square image', 'epfl') }
                             >
                                 <Button
-                                    className="components-button.has-icon wp-block-image__upload-button button button-large"
                                     onClick={ open }
-                                    icon="upload"
+									isPrimary={ true }
                                 >
                                     { __('Upload', 'epfl') }
                                 </Button>
