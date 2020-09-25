@@ -1,6 +1,7 @@
 import { hasCommonCategory } from '../block-utils.js'
 
 import flipbookIcon from './flipbook-icon'
+import { page as pdf } from "@wordpress/icons";
 
 const { __ } = wp.i18n;
 
@@ -69,14 +70,12 @@ registerBlockType( 'epfl/pdf-flipbook', {
                         value={ attributes.pdfId }
                         render={ ( { open } ) => (
                             <Placeholder
-                                icon="images-alt"
+								icon={ pdf }
                                 label={ __("PDF", 'epfl') }
-                                instructions={ __('Please, select a PDF', 'epfl') }
                             >
                                 <Button
-                                    className="components-button.has-icon wp-block-file__upload-button button button-large"
                                     onClick={ open }
-                                    icon="upload"
+									isPrimary={ true }
                                 >
                                     { __('Upload', 'epfl') }
                                 </Button>

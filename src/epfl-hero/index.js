@@ -1,3 +1,5 @@
+import { image } from "@wordpress/icons";
+
 const { __ } = wp.i18n;
 import { hasCommonCategory } from '../block-utils.js'
 
@@ -94,14 +96,12 @@ registerBlockType( 'epfl/hero', {
                         value={ attributes.imageId }
                         render={ ( { open } ) => (
                             <Placeholder
-                                icon="images-alt"
+                                icon={ image }
                                 label={ __("Image", 'epfl') }
-                                instructions={ __('Please, select an image', 'epfl') }
                             >
                                 <Button
-                                    className="components-button.has-icon wp-block-image__upload-button button button-large"
                                     onClick={ open }
-                                    icon="upload"
+                                    isPrimary={ true }
                                 >
                                     { __('Upload', 'epfl') }
                                 </Button>

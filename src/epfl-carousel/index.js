@@ -1,4 +1,5 @@
 import { hasCommonCategory } from '../block-utils.js'
+import { image } from "@wordpress/icons";
 
 import carouselIcon from './carousel-icon'
 
@@ -105,14 +106,12 @@ function CarouselPanel ( props ) {
                     value={ attributes['imageId' + index] }
                     render={ ( { open } ) => (
                         <Placeholder
-                            icon="images-alt"
+                            icon={ image }
                             label={ __("Image", 'epfl') }
-                            instructions={ __('Please, select an image', 'epfl') }
                         >
                             <Button
-                                className="components-button.has-icon wp-block-image__upload-button button button-large"
                                 onClick={ open }
-                                icon="upload"
+                                isPrimary={ true }
                             >
                                 { __('Upload', 'epfl') }
                             </Button>
