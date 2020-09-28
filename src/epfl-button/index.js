@@ -39,8 +39,11 @@ const getAttributes = () => {
         },
         text: {
             type: 'string',
+        },
+        asToolTip: {  // used to trigger preview in tooltip view
+            type: 'boolean',
+            default: false,
         }
-
     };
 
     return atts;
@@ -61,11 +64,25 @@ registerBlockType( 'epfl/button', {
 	icon: buttonIcon,
     category: hasCommonCategory ? 'common' : 'widgets',
 	attributes: getAttributes(),
+    example: {
+        attributes: {
+            'asToolTip' : true,
+        },
+    },
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
+
+        if ( attributes.asToolTip ) {
+            // render for the tooltip
+            return(
+                <Fragment>
+                    <img src={ 'https://www.epfl.ch/campus/services/website/wp-content/uploads/2020/05/button.gif' } />
+                </Fragment>
+            );
+        }
 
         return (
             <Fragment>
