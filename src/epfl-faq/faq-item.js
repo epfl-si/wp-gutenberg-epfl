@@ -17,7 +17,7 @@ const {
 const { Fragment } = wp.element;
 
 const TEMPLATE = [
-	['tadv/classic-paragraph', {}, [] ],
+	['core/freeform', {}, [] ],
 ]
 
 const getAttributes = () => {
