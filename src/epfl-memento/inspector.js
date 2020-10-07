@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 import React from 'react';
+import { version } from './index'
 
 const { __ } = wp.i18n
 const { Component } = wp.element
@@ -105,6 +106,7 @@ export default class InspectorControlsMemento extends Component {
             content = (
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/memento-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title={ __('Memento', 'capitainewp-gutenberg-blocks', 'epfl') }>
                         <SelectControl
                             label={ __("Select your memento", 'epfl') }

@@ -1,6 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+	hasCommonCategory,
+	getTooltippedAttributes,
+	getTooltippedExample,
+} from '../block-utils.js'
 
 import alertIcon from './alert-icon'
+
+const version = "v1.0.0";
 
 const { __ } = wp.i18n;
 
@@ -30,10 +36,13 @@ let optionsAlertType = [
 
 registerBlockType( 'epfl/alert', {
 	title: __( 'EPFL Alert', 'epfl'),
-	description: 'v1.0.0',
+	description: __(
+		'Show a message inside a notification zone',
+		'epfl'
+	),
 	icon: alertIcon,
 	category: hasCommonCategory ? 'common' : 'widgets',
-	attributes: {
+	attributes: getTooltippedAttributes({
         content: {
 			type: 'string',
 		},
@@ -49,17 +58,28 @@ registerBlockType( 'epfl/alert', {
             type: 'string',
             default: 'info',
         }
-	},
+	}),
+	example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
 
+		if ( attributes.asToolTip ) {
+			// render the tooltip
+			return (
+				<Fragment>
+					<img src={ blockThumbnails.alert } />
+				</Fragment>
+			);
+		}
+
         return (
             <Fragment>
 				<InspectorControls>
 					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/alert-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+					<p className="wp-block-help">{ version }</p>
 					<PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }

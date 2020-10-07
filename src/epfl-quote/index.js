@@ -1,8 +1,14 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import { image } from "@wordpress/icons";
 
 import quoteIcon from './quote-icon'
+
+const version = "v1.0.5";
 
 const { __ } = wp.i18n;
 
@@ -26,10 +32,13 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/quote', {
 	title: __( 'EPFL Quote', 'epfl'),
-	description: 'v1.0.5',
+	description: __(
+		'Create a quote',
+		'epfl'
+	),
 	icon: quoteIcon,
 	category: hasCommonCategory ? 'common' : 'text',
-	attributes: {
+	attributes: getTooltippedAttributes({
 		imageId: {
 			type: 'number',
         },
@@ -45,13 +54,23 @@ registerBlockType( 'epfl/quote', {
         position : {
 			type: 'string',
 		}
-	},
+	}),
+	example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
 
 		const { attributes, className, setAttributes } = props
+
+		if ( attributes.asToolTip ) {
+			// render the tooltip
+			return(
+				<Fragment>
+					<img src={ blockThumbnails.quote } />
+				</Fragment>
+			);
+		}
 
 		function onImageSelect(imageObject) {
 			setAttributes({
@@ -71,6 +90,7 @@ registerBlockType( 'epfl/quote', {
 		<Fragment>
 			<InspectorControls>
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/quote-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p className="wp-block-help">{ version }</p>
 			</InspectorControls>
             <div className={ className }>
                 <h2 className="epfl-block-title">{ __('EPFL Quote', 'epfl') }</h2>

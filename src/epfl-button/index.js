@@ -1,6 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import buttonIcon from './button-icon'
+
+const version = "v1.0.0";
 
 const { __ } = wp.i18n;
 
@@ -40,13 +46,9 @@ const getAttributes = () => {
         text: {
             type: 'string',
         },
-        asToolTip: {  // used to trigger preview in tooltip view
-            type: 'boolean',
-            default: false,
-        }
     };
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 const optionsButtonStyle = [
@@ -60,15 +62,14 @@ const optionsButtonAlign = [
 
 registerBlockType( 'epfl/button', {
 	title: __( 'EPFL Button', 'epfl'),
-	description: 'v1.0.0',
+    description: __(
+        'Create a link as a button',
+        'epfl'
+    ),
 	icon: buttonIcon,
     category: hasCommonCategory ? 'common' : 'widgets',
 	attributes: getAttributes(),
-    example: {
-        attributes: {
-            'asToolTip' : true,
-        },
-    },
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
@@ -76,10 +77,10 @@ registerBlockType( 'epfl/button', {
         const { attributes, className, setAttributes } = props;
 
         if ( attributes.asToolTip ) {
-            // render for the tooltip
+            // render the tooltip
             return(
                 <Fragment>
-                    <img src={ 'https://www.epfl.ch/campus/services/website/wp-content/uploads/2020/05/button.gif' } />
+                    <img src={ blockThumbnails.button } />
                 </Fragment>
             );
         }
@@ -88,6 +89,7 @@ registerBlockType( 'epfl/button', {
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/button-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Open link in a new tab', 'epfl') }

@@ -1,6 +1,7 @@
 import * as axios from 'axios';
 import React from 'react';
 import Select from 'react-select';
+import { version } from './index';
 
 const { __ } = wp.i18n
 const { Component } = wp.element
@@ -30,25 +31,25 @@ export default class InspectorControlsStudentProjects extends Component {
         let entryPointProjects = window.location.href.replace(/wp-admin\/.*/, 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections.php');
         axios.get(entryPointProjects)
             .then(response => {
-                
+
                 console.log(response);
                 let sections = [];
-                response.data.forEach((elem) => { 
-                    if(typeof elem['code'] == 'string' && elem['code'].startsWith('PROJETS_')) sections.push(elem['code']) 
+                response.data.forEach((elem) => {
+                    if(typeof elem['code'] == 'string' && elem['code'].startsWith('PROJETS_')) sections.push(elem['code'])
                 });
                 sections.sort();
                 return sections;
             })
             .then(sections => this.setState({ sections }))
             .catch( err => console.log(err))
-        
+
     }
 
 
     render() {
 
         const { attributes, setAttributes } = this.props;
-        
+
         let content = "";
 
         if (this.state.sections !== null) {
@@ -56,7 +57,7 @@ export default class InspectorControlsStudentProjects extends Component {
             let optionsSectionsList = [{ value: '', label: __('<Please choose>', 'epfl') },];
 
             this.state.sections.forEach(section => {
-                optionsSectionsList.push({ label: section.replace("PROJETS_", ""), 
+                optionsSectionsList.push({ label: section.replace("PROJETS_", ""),
                                            value: section });
             });
 
@@ -64,6 +65,7 @@ export default class InspectorControlsStudentProjects extends Component {
             content = (
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/student-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title={ __( 'Section', 'epfl') }>
                         <SelectControl
                             value={ attributes.section }
@@ -83,9 +85,9 @@ export default class InspectorControlsStudentProjects extends Component {
 							value={ attributes.professorScipers }
 							onChange={ professorScipers => setAttributes( { professorScipers } ) }
 						/>
-                
+
                     </PanelBody>
-                    
+
                 </InspectorControls>
             )
         }

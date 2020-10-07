@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import { getAllPagesPostsOrCategories } from '../index';
+import { version } from './index';
 
 const { __ } = wp.i18n
 const { Component } = wp.element
@@ -96,6 +97,7 @@ export default class InspectorControlsPostTeaser extends Component {
 				<div>
                 	<InspectorControls>
                         <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/post-teaser-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                        <p className="wp-block-help">{ version }</p>
                         <PanelBody title={ __( 'Gray', 'epfl' ) }>
                             <ToggleControl
                                 label={ __('Change the background to gray', 'epfl') }

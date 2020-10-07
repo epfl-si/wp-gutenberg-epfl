@@ -1269,6 +1269,117 @@
          ],
          "You can paste a YouTube, Vimeo or SWITCHTube URL": [
             "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
+         ],
+         "Show a message inside a notification zone": [
+            "Affichez un message dans une zone de notification"
+         ],
+         "Create a link as a button": [
+            "Créez un lien sous forme de bouton"
+         ],
+         "Create links in the form of image blocks, with an overlayed title and subtitle": [
+            "Créez des liens sous forme de blocs d'images, avec un titre et un sous-titre superposés"
+         ],
+         "Create image blocks (3 per line max), with a title, a link, and some content": [
+            "Créez des blocs d'image (3 par ligne max), composés d'un titre, d'un lien et d'un contenu libre"
+         ],
+         "Create a carousel of images (max 5) in full width, with link, title and description; automatic scrolling every 6 seconds": [
+            "Créez un carousel d'images (max 5) en pleine largeur, avec lien, titre et description; défilement automatique toutes les 6 secondes"
+         ],
+         "Display contact information and a map of the room location": [
+            "Affichez les informations de contact ainsi qu'une carte de l'emplacement du local"
+         ],
+         "Display all courses given by a teacher, in a section or in a lab": [
+            "Affichez tous les cours donnés par un·e enseignant·e, dans une section ou dans un laboratoire"
+         ],
+         "Display a large image in 16:9 format": [
+            "Affichez une grande image au format 16:9"
+         ],
+         "Display a link composed of a full width image, a title and a description": [
+            "Affichez un lien composé d'une image pleine largeur, un titre et une description"
+         ],
+         "Create links (3 per line max) with an image, a title, a short description and a link button": [
+            "Créez des liens (3 par ligne max) avec une image, un titre, un court descriptif et un bouton pour le lien"
+         ],
+         "Display a list of terms and their definitions": [
+            "Affichez une liste de termes et leurs définitions"
+         ],
+         "Display a list of questions and their answers": [
+            "Affichez une liste de questions et leurs réponses"
+         ],
+         "Display a series of images with thumbnails": [
+            "Affichez une série d'images avec miniatures"
+         ],
+         "Embed a form created on Google Forms": [
+            "Intègrez un formulaire créé sur Google Forms"
+         ],
+         "Create an introductory block with a full-width pretext image, a title and a short description. The page title is not displayed.": [
+            "Créez un bloc d'introduction avec une image-prétexte en pleine largeur, un titre et un court descriptif. Le titre de la page ne s'affiche pas"
+         ],
+         "Display a list of publications from Infoscience": [
+            "Affichez une liste de publications provenant d'Infoscience"
+         ],
+         "Highlight a title and some text": [
+            "Mettez en évidence un titre et du texte en guise d'introduction"
+         ],
+         "Create a list of links": [
+            "Créez une liste de liens"
+         ],
+         "Display a map from map.epfl.ch": [
+            "Affichez une carte issue de map.epfl.ch"
+         ],
+         "Display events from memento.epfl.ch": [
+            "Affichez les évènements provenant de memento.epfl.ch"
+         ],
+         "Create links (6 per line max) in the form of small images and short titles": [
+            "Créez des liens (6 par ligne max) sous forme de petites images et de titres brefs"
+         ],
+         "Display news from news.epfl.ch": [
+            "Affichez les actualités provenant d'actu.epfl.ch"
+         ],
+         "Display a link to a page of the site as a large image": [
+            "Affichez un lien vers une page du site sous forme de grande image"
+         ],
+         "Create links (max 3) from the pages of the site, with image, title and short description automatically": [
+            "Créez des liens (max 3) à partir des pages du site, avec image, titre et court descriptif repris automatiquement"
+         ],
+         "Embed a PDF into a web page": [
+            "Intègrez un PDF dans une page web"
+         ],
+         "Display a list of people from the EPFL directory using different criteria": [
+            "Affichez une liste de personnes de l'annuaire de l'EPFL en fonction de différents critères"
+         ],
+         "Display a link to a post of the site as a large image": [
+            "Affichez un lien vers un article de blog sous forme de grande image"
+         ],
+         "Create links (max 3) from the posts of the site, with image, title and short description automatically": [
+            "Créez des liens (max 3) à partir des articles de blog du site, avec image, titre et court descriptif repris automatiquement"
+         ],
+         "Display a list of semester or master's projects from IS Academia": [
+            "Affichez une liste de projets de semestre ou de master, issus de IS Academia"
+         ],
+         "Create a quote": [
+            "Créez une citation"
+         ],
+         "Display content only for a specific period of time": [
+            "Affichez un contenu seulement pendant une période définie"
+         ],
+         "Embed content from Facebook, Instagram and Twitter": [
+            "Intègrez du contenu issu de Facebook, Instagram et Twitter"
+         ],
+         "Create a table": [
+            "Créez un tableau"
+         ],
+         "Embed a graph created with tableau.epfl.ch": [
+            "Intègrez un graphique créé avec tableau.epfl.ch"
+         ],
+         "Create a table with search and sort options": [
+            "Créez un tableau avec options de recherche et de tri"
+         ],
+         "Create a block with toggleable content (accordion)": [
+            "Créez un bloc au contenu retractable (accordéon)"
+         ],
+         "Embed a video from SwitchTube, Vimeo or Youtube": [
+            "Intègrez une vidéo issue de SwitchTube, Vimeo ou Youtube"
          ]
       }
    }

@@ -1,7 +1,14 @@
 import { image } from "@wordpress/icons";
 
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
+
+const version = "v1.2.2";
+
 const { __ } = wp.i18n;
-import { hasCommonCategory } from '../block-utils.js'
 
 const {
 	registerBlockType,
@@ -25,10 +32,13 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/hero', {
 	title: __( 'EPFL Hero', 'epfl'),
-	description: 'v1.2.2',
+    description: __(
+        'Create an introductory block with a full-width pretext image, a title and a short description. The page title is not displayed.',
+        'epfl'
+    ),
 	icon: 'id',
     category: hasCommonCategory ? 'common' : 'design',
-	attributes: {
+	attributes: getTooltippedAttributes({
 		title: {
 			type: 'string',
     },
@@ -44,12 +54,22 @@ registerBlockType( 'epfl/hero', {
     description : {
       type: 'string',
     }
-	},
+	}),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
+
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return (
+                <Fragment>
+                    <img src={ blockThumbnails.hero } />
+                </Fragment>
+            );
+        }
 
         function onImageSelect(imageObject) {
             setAttributes({
@@ -69,6 +89,7 @@ registerBlockType( 'epfl/hero', {
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/hero-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                 </InspectorControls>
                 <div className={ className }>
                         <h2 className="epfl-block-title">{ __('EPFL Hero', 'epfl') }</h2>

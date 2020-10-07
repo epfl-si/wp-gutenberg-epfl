@@ -1,6 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import tableFilterIcon from './table-filter-icon'
+
+const version = "v1.1.3";
 
 const { __ } = wp.i18n;
 
@@ -56,7 +62,10 @@ let optionsHeader = [
 
 registerBlockType( 'epfl/table-filter', {
 	title: __( 'EPFL Table Filter', 'epfl'),
-	description: 'v1.1.3',
+    description: __(
+        'Create a table with search and sort options',
+        'epfl'
+    ),
 	icon: tableFilterIcon,
     category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
@@ -70,6 +79,7 @@ registerBlockType( 'epfl/table-filter', {
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/table-filter-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title={ __('Format', 'epfl') }>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }
