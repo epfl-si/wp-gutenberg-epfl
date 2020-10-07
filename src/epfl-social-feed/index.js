@@ -1,10 +1,10 @@
+import { rss as socialFeedIcon } from '@wordpress/icons';
+
 import {
     hasCommonCategory,
     getTooltippedAttributes,
     getTooltippedExample,
 } from '../block-utils.js'
-
-import socialFeedIcon from './social-feed-icon'
 
 const version = "v1.0.3";
 
