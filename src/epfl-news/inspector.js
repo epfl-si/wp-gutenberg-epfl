@@ -92,7 +92,9 @@ export default class InspectorControlsNews extends Component {
             let optionsChannelsList = [];
 
             this.state.channels.forEach(channel => {
-                optionsChannelsList.push({ label: channel.name, value: channel.id });
+                if (channel.is_active) {
+                    optionsChannelsList.push({ label: channel.name, value: channel.id });
+                }
             });
 
             let optionsTemplatesList = [

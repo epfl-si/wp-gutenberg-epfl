@@ -10,7 +10,7 @@ import PreviewNews from './preview'
 import InspectorControlsNews from './inspector'
 import './utils.js';
 
-export const version = "v1.1.3";
+export const version = "v1.1.5";
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks

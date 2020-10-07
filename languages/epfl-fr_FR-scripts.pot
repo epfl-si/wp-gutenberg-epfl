@@ -52,9 +52,189 @@ msgid "https://www.epfl.ch/campus/services/website/contact-en/"
 msgstr ""
 
 #: src/epfl-contact/index.js:91
+#: src/epfl-news/inspector.js:170
+#: src/epfl-table-filter/index.js:91
 msgid "Online help"
 msgstr ""
 
 #: src/epfl-contact/index.js:95
 msgid "Wrap with a gray border"
+msgstr ""
+
+#: src/epfl-news/index.js:23
+msgid "Display news from news.epfl.ch"
+msgstr ""
+
+#: src/epfl-news/index.js:30
+msgid "news"
+msgstr ""
+
+#: src/epfl-news/index.js:86
+msgid "EPFL News"
+msgstr ""
+
+#: src/epfl-news/inspector.js:101
+msgid "Template Listing"
+msgstr ""
+
+#: src/epfl-news/inspector.js:102
+msgid "Template highlighted with 3 news"
+msgstr ""
+
+#: src/epfl-news/inspector.js:103
+msgid "Template highlighted with 1 news"
+msgstr ""
+
+#: src/epfl-news/inspector.js:104
+msgid "Template card with 1 news"
+msgstr ""
+
+#: src/epfl-news/inspector.js:105
+msgid "Template card with 2 news"
+msgstr ""
+
+#: src/epfl-news/inspector.js:106
+msgid "Template card with 3 news"
+msgstr ""
+
+#: src/epfl-news/inspector.js:110
+msgid "French"
+msgstr ""
+
+#: src/epfl-news/inspector.js:111
+msgid "English"
+msgstr ""
+
+#: src/epfl-news/inspector.js:131
+msgid "No filter"
+msgstr ""
+
+#: src/epfl-news/inspector.js:141
+msgid "Sections"
+msgstr ""
+
+#: src/epfl-news/inspector.js:158
+msgid "Select the number of news"
+msgstr ""
+
+#: src/epfl-news/inspector.js:170
+msgid "https://www.epfl.ch/campus/services/website/news-en/"
+msgstr ""
+
+#: src/epfl-news/inspector.js:172
+msgid "Channel"
+msgstr ""
+
+#: src/epfl-news/inspector.js:174
+msgid "Select your news channel"
+msgstr ""
+
+#: src/epfl-news/inspector.js:175
+msgid ""
+"The news come from the application actu.epfl.ch. If you don't have a news "
+"channel, please send a request to 1234@epfl.ch"
+msgstr ""
+
+#: src/epfl-news/inspector.js:184
+msgid "Template"
+msgstr ""
+
+#: src/epfl-news/inspector.js:186
+msgid "Select a template"
+msgstr ""
+
+#: src/epfl-news/inspector.js:187
+msgid "Preview the page to see the template applied"
+msgstr ""
+
+#: src/epfl-news/inspector.js:194
+msgid "Display the link \"all news\""
+msgstr ""
+
+#: src/epfl-news/inspector.js:199
+msgid "Language"
+msgstr ""
+
+#: src/epfl-news/inspector.js:201
+msgid "Select a language"
+msgstr ""
+
+#: src/epfl-news/inspector.js:202
+msgid "The language used to render news results"
+msgstr ""
+
+#: src/epfl-news/inspector.js:209
+msgid "Themes"
+msgstr ""
+
+#: src/epfl-news/inspector.js:221
+msgid "Category"
+msgstr ""
+
+#: src/epfl-news/inspector.js:223
+msgid "Filter news by category"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:102
+msgid "Text to display in search box"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:106
+msgid "Table header"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:112
+msgid "Filter options"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:113
+msgid "Filter only on column(s) no"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:120
+msgid "Sort options"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:121
+msgid "Apply numeric sort on column(s)"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:124
+msgid "If multiple columns, separate with comma"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:130
+msgid "Table Filter"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:59
+msgid "No header"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:60
+msgid "Sortable header"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:64
+msgid "EPFL Table Filter"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:65
+msgid "Create a table with search and sort options"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:91
+msgid "https://www.epfl.ch/campus/services/website/table-filter-en/"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:93
+msgid "Format"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:95
+msgid "Large display"
+msgstr ""
+
+#: src/epfl-table-filter/index.js:99
+msgid "Placeholder"
 msgstr ""
