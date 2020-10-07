@@ -185,7 +185,9 @@ function wp_gutenberg_epfl_editor_assets() {
             'quote' => plugins_url( 'src/block-thumbnails/quote.jpg', __FILE__ ),
             'scheduler' => plugins_url( 'src/block-thumbnails/scheduler.jpg', __FILE__ ),
             'socialFeed' => plugins_url( 'src/block-thumbnails/social.jpg', __FILE__ ),
+            'table' => plugins_url( 'src/block-thumbnails/table.jpg', __FILE__ ),
             'tableau' => plugins_url( 'src/block-thumbnails/tableau.jpg', __FILE__ ),
+            'tableFilter' => plugins_url( 'src/block-thumbnails/table-filter.jpg', __FILE__ ),
             'toggle' => plugins_url( 'src/block-thumbnails/toggle.jpg', __FILE__ ),
             'video' => plugins_url( 'src/block-thumbnails/video.jpg', __FILE__ ),
         ]

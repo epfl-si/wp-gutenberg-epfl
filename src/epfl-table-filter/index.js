@@ -52,7 +52,7 @@ const getAttributes = () => {
         },
     };
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 let optionsHeader = [
@@ -69,11 +69,21 @@ registerBlockType( 'epfl/table-filter', {
 	icon: tableFilterIcon,
     category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
+
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return(
+                <Fragment>
+                    <img src={ blockThumbnails.tableFilter } />
+                </Fragment>
+            );
+        }
 
         return (
             <Fragment>
