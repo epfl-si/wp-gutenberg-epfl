@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: epflgutenberg\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-09-16 15:49+0200\n"
-"PO-Revision-Date: 2020-09-16 16:11+0200\n"
+"PO-Revision-Date: 2020-10-07 11:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -20,35 +20,22 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: shortcodes/lib/list.min.js\n"
 "X-Poedit-SearchPathExcluded-2: build\n"
 
-#: frontend/epfl-carousel/controller.php:66
-#: frontend/epfl-carousel/controller.php:80
-#: frontend/epfl-news/templates/highlighted_with_1_news.php:49
-#: frontend/epfl-news/templates/highlighted_with_1_news.php:58
-#: frontend/epfl-news/templates/highlighted_with_3_news.php:60
-#: frontend/epfl-news/templates/highlighted_with_3_news.php:69
-#: frontend/epfl-page-highlight/controller.php:49
-#: frontend/epfl-page-highlight/controller.php:59
-#: frontend/epfl-post-highlight/controller.php:47
-#: frontend/epfl-post-highlight/controller.php:57
+#: frontend/epfl-carousel/controller.php:66 frontend/epfl-carousel/controller.php:80 frontend/epfl-news/templates/highlighted_with_1_news.php:49
+#: frontend/epfl-news/templates/highlighted_with_1_news.php:58 frontend/epfl-news/templates/highlighted_with_3_news.php:60
+#: frontend/epfl-news/templates/highlighted_with_3_news.php:69 frontend/epfl-page-highlight/controller.php:49
+#: frontend/epfl-page-highlight/controller.php:59 frontend/epfl-post-highlight/controller.php:47 frontend/epfl-post-highlight/controller.php:57
 msgid "Read more"
 msgstr "En savoir plus"
 
-#: frontend/epfl-custom-highlight/controller.php:72
-#: frontend/epfl-custom-highlight/controller.php:84
-#: frontend/epfl-custom-teaser/controller.php:73
+#: frontend/epfl-custom-highlight/controller.php:72 frontend/epfl-custom-highlight/controller.php:84 frontend/epfl-custom-teaser/controller.php:73
 msgid "See more"
 msgstr "En savoir plus"
 
-#: frontend/epfl-custom-teaser/controller.php:68
-#: shortcodes/epfl-labs-search/view.php:69
-#: shortcodes/epfl-polylex-search/view.php:93
-#: src/epfl-caption-cards/index.js:74 src/epfl-carousel/index.js:85
-#: src/epfl-courses/index.js:58 src/epfl-custom-highlight/index.js:95
-#: src/epfl-custom-teaser/index.js:92 src/epfl-hero/index.js:73
-#: src/epfl-infoscience-search/inspector.js:58
-#: src/epfl-introduction/index.js:58 src/epfl-links-group/index.js:98
-#: src/epfl-mini-card-deck/index.js:73 src/epfl-page-teaser/inspector.js:84
-#: src/epfl-student-projects/index.js:53 src/epfl-toggle/index.js:74
+#: frontend/epfl-custom-teaser/controller.php:68 shortcodes/epfl-labs-search/view.php:69 shortcodes/epfl-polylex-search/view.php:93
+#: src/epfl-caption-cards/index.js:74 src/epfl-carousel/index.js:85 src/epfl-courses/index.js:58 src/epfl-custom-highlight/index.js:95
+#: src/epfl-custom-teaser/index.js:92 src/epfl-hero/index.js:73 src/epfl-infoscience-search/inspector.js:58 src/epfl-introduction/index.js:58
+#: src/epfl-links-group/index.js:98 src/epfl-mini-card-deck/index.js:73 src/epfl-page-teaser/inspector.js:84 src/epfl-student-projects/index.js:53
+#: src/epfl-toggle/index.js:74
 msgid "Title"
 msgstr "Titre"
 
@@ -144,19 +131,16 @@ msgstr "Directeur(s)"
 msgid "Dir."
 msgstr "Dir."
 
-#: frontend/epfl-infoscience-search/renderers/fields.php:331
-#: frontend/epfl-infoscience-search/renderers/fields.php:333
+#: frontend/epfl-infoscience-search/renderers/fields.php:331 frontend/epfl-infoscience-search/renderers/fields.php:333
 #: frontend/epfl-infoscience-search/renderers/fields.php:539
 msgid "p."
 msgstr "p."
 
-#: frontend/epfl-infoscience-search/renderers/fields.php:348
-#: frontend/epfl-infoscience-search/renderers/fields.php:370
+#: frontend/epfl-infoscience-search/renderers/fields.php:348 frontend/epfl-infoscience-search/renderers/fields.php:370
 msgid "Vol."
 msgstr "Vol."
 
-#: frontend/epfl-infoscience-search/renderers/fields.php:359
-#: frontend/epfl-infoscience-search/renderers/fields.php:381
+#: frontend/epfl-infoscience-search/renderers/fields.php:359 frontend/epfl-infoscience-search/renderers/fields.php:381
 msgid "num."
 msgstr "num."
 
@@ -176,15 +160,13 @@ msgstr "Texte intégral"
 msgid "View at publisher"
 msgstr "Consulter chez l'éditeur"
 
-#: frontend/epfl-memento/templates/includes/card-img-top.inc.php:17
-#: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:42
+#: frontend/epfl-memento/templates/includes/card-img-top.inc.php:17 frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:42
 #: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:84
 #: frontend/epfl-memento/templates/listing_without_the_first_highlighted_event.php:35
 msgid "Cancelled"
 msgstr "Annulé"
 
-#: frontend/epfl-memento/templates/includes/card-info.inc.php:21
-#: src/epfl-memento/preview.js:125
+#: frontend/epfl-memento/templates/includes/card-info.inc.php:21 src/epfl-memento/preview.js:125
 msgid "With"
 msgstr "Avec"
 
@@ -192,10 +174,8 @@ msgstr "Avec"
 msgid "Place and room"
 msgstr "Lieu et salle"
 
-#: frontend/epfl-memento/templates/includes/card-info.inc.php:33
-#: frontend/epfl-memento/templates/includes/card-info.inc.php:35
-#: src/epfl-memento/inspector.js:155 src/epfl-news/inspector.js:217
-#: src/epfl-post-teaser/inspector.js:120
+#: frontend/epfl-memento/templates/includes/card-info.inc.php:33 frontend/epfl-memento/templates/includes/card-info.inc.php:35
+#: src/epfl-memento/inspector.js:155 src/epfl-news/inspector.js:217 src/epfl-post-teaser/inspector.js:120
 msgid "Category"
 msgstr "Catégorie"
 
@@ -203,8 +183,7 @@ msgstr "Catégorie"
 msgid "Complete agenda of events"
 msgstr "Agenda complet des événements"
 
-#: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:14
-#: src/epfl-memento/inspector.js:73
+#: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:14 src/epfl-memento/inspector.js:73
 msgid "Past events"
 msgstr "Événements passés"
 
@@ -216,8 +195,7 @@ msgstr "Prochains événements"
 msgid "See all events"
 msgstr "Voir tous les événements"
 
-#: frontend/epfl-memento/templates/listing_without_the_first_highlighted_event.php:14
-#: frontend/epfl-memento/templates/slider.php:20
+#: frontend/epfl-memento/templates/listing_without_the_first_highlighted_event.php:14 frontend/epfl-memento/templates/slider.php:20
 msgid "No scheduled events"
 msgstr "Prochains événements"
 
@@ -229,27 +207,22 @@ msgstr "Terminé à l'instant"
 msgid "Learn more & apply"
 msgstr "Information & inscription"
 
-#: frontend/epfl-news/templates/card_with_2_news.php:52
-#: frontend/epfl-news/templates/card_with_3_news.php:53
-#: frontend/epfl-news/templates/highlighted_with_1_news.php:68
-#: frontend/epfl-news/templates/highlighted_with_3_news.php:96
+#: frontend/epfl-news/templates/card_with_2_news.php:52 frontend/epfl-news/templates/card_with_3_news.php:53
+#: frontend/epfl-news/templates/highlighted_with_1_news.php:68 frontend/epfl-news/templates/highlighted_with_3_news.php:96
 #: frontend/epfl-news/templates/listing.php:45
 msgid "All news"
 msgstr "Toutes les actualités"
 
-#: frontend/epfl-news/templates/highlighted_with_1_news.php:44
-#: frontend/epfl-news/templates/highlighted_with_3_news.php:55
+#: frontend/epfl-news/templates/highlighted_with_1_news.php:44 frontend/epfl-news/templates/highlighted_with_3_news.php:55
 #: frontend/epfl-news/templates/highlighted_with_3_news.php:82
 msgid "News"
 msgstr "Actualités"
 
-#: frontend/epfl-page-highlight/controller.php:49
-#: frontend/epfl-page-highlight/controller.php:59
+#: frontend/epfl-page-highlight/controller.php:49 frontend/epfl-page-highlight/controller.php:59
 msgid "Link to read more of that page"
 msgstr "Lien vers le détail de la page"
 
-#: frontend/epfl-people/templates/includes/card-part.inc.php:13
-#: src/epfl-quote/index.js:126
+#: frontend/epfl-people/templates/includes/card-part.inc.php:13 src/epfl-quote/index.js:126
 msgid "Position"
 msgstr "Fonction"
 
@@ -257,8 +230,7 @@ msgstr "Fonction"
 msgid "Office"
 msgstr "Bureau"
 
-#: frontend/epfl-post-highlight/controller.php:47
-#: frontend/epfl-post-highlight/controller.php:57
+#: frontend/epfl-post-highlight/controller.php:47 frontend/epfl-post-highlight/controller.php:57
 msgid "Link to read more of that post"
 msgstr "Lien vers le détail de l'article"
 
@@ -294,8 +266,7 @@ msgstr "Toutes les facultés"
 msgid "All institutes"
 msgstr "Tous les instituts"
 
-#: shortcodes/epfl-labs-search/view.php:51 src/epfl-courses/inspector.js:26
-#: src/epfl-courses/inspector.js:32 src/epfl-courses/inspector.js:38
+#: shortcodes/epfl-labs-search/view.php:51 src/epfl-courses/inspector.js:26 src/epfl-courses/inspector.js:32 src/epfl-courses/inspector.js:38
 msgid "All"
 msgstr "Tout"
 
@@ -355,29 +326,19 @@ msgstr ""
 msgid "https://www.epfl.ch/campus/services/website/alert-en/"
 msgstr "https://www.epfl.ch/campus/services/website/alert-fr/"
 
-#: src/epfl-alert/index.js:60 src/epfl-button/index.js:71
-#: src/epfl-caption-cards/index.js:151 src/epfl-card-deck/index.js:54
-#: src/epfl-carousel/index.js:160 src/epfl-contact/index.js:71
-#: src/epfl-courses/inspector.js:69 src/epfl-cover/index.js:64
-#: src/epfl-custom-highlight/index.js:83 src/epfl-custom-teaser/index.js:172
-#: src/epfl-definition-list/index.js:88 src/epfl-faq/index.js:45
-#: src/epfl-gallery/index.js:56 src/epfl-google-forms/index.js:110
-#: src/epfl-hero/index.js:68 src/epfl-introduction/index.js:47
-#: src/epfl-links-group/index.js:88 src/epfl-map/index.js:36
-#: src/epfl-memento/inspector.js:107 src/epfl-mini-card-deck/index.js:61
-#: src/epfl-news/inspector.js:167 src/epfl-page-highlight/inspector.js:78
-#: src/epfl-page-teaser/inspector.js:74 src/epfl-pdf-flipbook/index.js:60
-#: src/epfl-people/inspector.js:67 src/epfl-post-highlight/inspector.js:83
-#: src/epfl-post-teaser/inspector.js:98 src/epfl-quote/index.js:69
-#: src/epfl-scheduler/index.js:54 src/epfl-social-feed/index.js:54
-#: src/epfl-student-projects/inspector.js:66 src/epfl-table-filter/index.js:71
-#: src/epfl-table/index.js:66 src/epfl-tableau/index.js:50
-#: src/epfl-toggle/index.js:52 src/epfl-video/index.js:44
+#: src/epfl-alert/index.js:60 src/epfl-button/index.js:71 src/epfl-caption-cards/index.js:151 src/epfl-card-deck/index.js:54
+#: src/epfl-carousel/index.js:160 src/epfl-contact/index.js:71 src/epfl-courses/inspector.js:69 src/epfl-cover/index.js:64
+#: src/epfl-custom-highlight/index.js:83 src/epfl-custom-teaser/index.js:172 src/epfl-definition-list/index.js:88 src/epfl-faq/index.js:45
+#: src/epfl-gallery/index.js:56 src/epfl-google-forms/index.js:110 src/epfl-hero/index.js:68 src/epfl-introduction/index.js:47
+#: src/epfl-links-group/index.js:88 src/epfl-map/index.js:36 src/epfl-memento/inspector.js:107 src/epfl-mini-card-deck/index.js:61
+#: src/epfl-news/inspector.js:167 src/epfl-page-highlight/inspector.js:78 src/epfl-page-teaser/inspector.js:74 src/epfl-pdf-flipbook/index.js:60
+#: src/epfl-people/inspector.js:67 src/epfl-post-highlight/inspector.js:83 src/epfl-post-teaser/inspector.js:98 src/epfl-quote/index.js:69
+#: src/epfl-scheduler/index.js:54 src/epfl-social-feed/index.js:54 src/epfl-student-projects/inspector.js:66 src/epfl-table-filter/index.js:71
+#: src/epfl-table/index.js:66 src/epfl-tableau/index.js:50 src/epfl-toggle/index.js:52 src/epfl-video/index.js:44
 msgid "Online help"
 msgstr "Aide en ligne"
 
-#: src/epfl-alert/index.js:63 src/epfl-definition-list/index.js:97
-#: src/epfl-gallery/index.js:59 src/epfl-table-filter/index.js:74
+#: src/epfl-alert/index.js:63 src/epfl-definition-list/index.js:97 src/epfl-gallery/index.js:59 src/epfl-table-filter/index.js:74
 #: src/epfl-table/index.js:69 src/epfl-video/index.js:47
 msgid "Large display"
 msgstr "Affichage large"
@@ -394,8 +355,7 @@ msgstr "Type d'alerte"
 msgid "Content"
 msgstr "Contenu"
 
-#: src/epfl-alert/index.js:86 src/epfl-hero/index.js:82
-#: src/epfl-introduction/index.js:67
+#: src/epfl-alert/index.js:86 src/epfl-hero/index.js:82 src/epfl-introduction/index.js:67
 msgid "Write your text here"
 msgstr "Placer votre contenu ici"
 
@@ -407,9 +367,7 @@ msgstr "Principal (rouge)"
 msgid "Secondary (white)"
 msgstr "Secondaire (blanc)"
 
-#: src/epfl-button/index.js:52 src/epfl-custom-highlight/index.js:77
-#: src/epfl-page-highlight/inspector.js:53
-#: src/epfl-post-highlight/inspector.js:57
+#: src/epfl-button/index.js:52 src/epfl-custom-highlight/index.js:77 src/epfl-page-highlight/inspector.js:53 src/epfl-post-highlight/inspector.js:57
 msgid "Left"
 msgstr "Gauche"
 
@@ -441,8 +399,7 @@ msgstr "Alignement"
 msgid "Button"
 msgstr "Bouton"
 
-#: src/epfl-button/index.js:94 src/epfl-button/index.js:98
-#: src/epfl-hero/index.js:79
+#: src/epfl-button/index.js:94 src/epfl-button/index.js:98 src/epfl-hero/index.js:79
 msgid "Text"
 msgstr "Texte"
 
@@ -450,10 +407,8 @@ msgstr "Texte"
 msgid "Target link"
 msgstr "Lien"
 
-#: src/epfl-button/index.js:104 src/epfl-carousel/index.js:95
-#: src/epfl-custom-teaser/index.js:102 src/epfl-google-forms/index.js:122
-#: src/epfl-links-group/index.js:64 src/epfl-links-group/index.js:103
-#: src/epfl-social-feed/index.js:81 src/epfl-social-feed/index.js:101
+#: src/epfl-button/index.js:104 src/epfl-carousel/index.js:95 src/epfl-custom-teaser/index.js:102 src/epfl-google-forms/index.js:122
+#: src/epfl-links-group/index.js:64 src/epfl-links-group/index.js:103 src/epfl-social-feed/index.js:81 src/epfl-social-feed/index.js:101
 #: src/epfl-social-feed/index.js:110
 msgid "URL"
 msgstr "URL"
@@ -466,40 +421,31 @@ msgstr "Caption card"
 msgid "Subtitle"
 msgstr "Sous-titre"
 
-#: src/epfl-caption-cards/index.js:84 src/epfl-card-deck/card-panel.js:83
-#: src/epfl-custom-highlight/index.js:105
+#: src/epfl-caption-cards/index.js:84 src/epfl-card-deck/card-panel.js:83 src/epfl-custom-highlight/index.js:105
 #: src/epfl-mini-card-deck/mini-card-panel.js:80
 msgid "Link"
 msgstr "Lien"
 
-#: src/epfl-caption-cards/index.js:96 src/epfl-card-deck/card-panel.js:95
-#: src/epfl-carousel/index.js:107 src/epfl-cover/index.js:76
-#: src/epfl-custom-highlight/index.js:122 src/epfl-custom-teaser/index.js:119
-#: src/epfl-hero/index.js:97 src/epfl-mini-card-deck/mini-card-panel.js:98
+#: src/epfl-caption-cards/index.js:96 src/epfl-card-deck/card-panel.js:95 src/epfl-carousel/index.js:107 src/epfl-cover/index.js:76
+#: src/epfl-custom-highlight/index.js:122 src/epfl-custom-teaser/index.js:119 src/epfl-hero/index.js:97 src/epfl-mini-card-deck/mini-card-panel.js:98
 #: src/epfl-quote/index.js:81
 msgid "Image"
 msgstr "Image"
 
-#: src/epfl-caption-cards/index.js:97 src/epfl-card-deck/card-panel.js:96
-#: src/epfl-carousel/index.js:108 src/epfl-cover/index.js:77
-#: src/epfl-custom-highlight/index.js:123 src/epfl-custom-teaser/index.js:120
-#: src/epfl-hero/index.js:98 src/epfl-mini-card-deck/mini-card-panel.js:99
+#: src/epfl-caption-cards/index.js:97 src/epfl-card-deck/card-panel.js:96 src/epfl-carousel/index.js:108 src/epfl-cover/index.js:77
+#: src/epfl-custom-highlight/index.js:123 src/epfl-custom-teaser/index.js:120 src/epfl-hero/index.js:98 src/epfl-mini-card-deck/mini-card-panel.js:99
 msgid "Please, select an image"
 msgstr "Veuillez sélectionner une image"
 
-#: src/epfl-caption-cards/index.js:104 src/epfl-card-deck/card-panel.js:103
-#: src/epfl-carousel/index.js:115 src/epfl-cover/index.js:84
-#: src/epfl-custom-highlight/index.js:130 src/epfl-custom-teaser/index.js:127
-#: src/epfl-hero/index.js:105 src/epfl-mini-card-deck/mini-card-panel.js:106
-#: src/epfl-pdf-flipbook/index.js:80 src/epfl-quote/index.js:89
+#: src/epfl-caption-cards/index.js:104 src/epfl-card-deck/card-panel.js:103 src/epfl-carousel/index.js:115 src/epfl-cover/index.js:84
+#: src/epfl-custom-highlight/index.js:130 src/epfl-custom-teaser/index.js:127 src/epfl-hero/index.js:105
+#: src/epfl-mini-card-deck/mini-card-panel.js:106 src/epfl-pdf-flipbook/index.js:80 src/epfl-quote/index.js:89
 msgid "Upload"
 msgstr "Téléverser"
 
-#: src/epfl-caption-cards/index.js:124 src/epfl-card-deck/card-panel.js:123
-#: src/epfl-carousel/index.js:135 src/epfl-cover/index.js:104
-#: src/epfl-custom-highlight/index.js:150 src/epfl-custom-teaser/index.js:147
-#: src/epfl-hero/index.js:125 src/epfl-mini-card-deck/mini-card-panel.js:126
-#: src/epfl-quote/index.js:109
+#: src/epfl-caption-cards/index.js:124 src/epfl-card-deck/card-panel.js:123 src/epfl-carousel/index.js:135 src/epfl-cover/index.js:104
+#: src/epfl-custom-highlight/index.js:150 src/epfl-custom-teaser/index.js:147 src/epfl-hero/index.js:125
+#: src/epfl-mini-card-deck/mini-card-panel.js:126 src/epfl-quote/index.js:109
 msgid "Remove image"
 msgstr "Enlever l'image"
 
@@ -531,8 +477,7 @@ msgstr ""
 msgid "https://www.epfl.ch/campus/services/website/card-en/"
 msgstr "https://www.epfl.ch/campus/services/website/card-fr/"
 
-#: src/epfl-card-deck/index.js:57 src/epfl-contact/index.js:74
-#: src/epfl-custom-teaser/index.js:175 src/epfl-mini-card-deck/index.js:64
+#: src/epfl-card-deck/index.js:57 src/epfl-contact/index.js:74 src/epfl-custom-teaser/index.js:175 src/epfl-mini-card-deck/index.js:64
 msgid "Wrap with a gray border"
 msgstr "Entourer d'une bordure grise"
 
@@ -540,8 +485,7 @@ msgstr "Entourer d'une bordure grise"
 msgid "Carousel"
 msgstr "Carrousel"
 
-#: src/epfl-carousel/index.js:90 src/epfl-cover/index.js:112
-#: src/epfl-custom-highlight/index.js:100 src/epfl-hero/index.js:133
+#: src/epfl-carousel/index.js:90 src/epfl-cover/index.js:112 src/epfl-custom-highlight/index.js:100 src/epfl-hero/index.js:133
 msgid "Description"
 msgstr "Description"
 
@@ -553,8 +497,7 @@ msgstr ""
 msgid "https://www.epfl.ch/campus/services/website/carousel-en/"
 msgstr "https://www.epfl.ch/campus/services/website/carousel-fr/"
 
-#: src/epfl-carousel/index.js:163 src/epfl-custom-teaser/index.js:182
-#: src/epfl-links-group/index.js:90
+#: src/epfl-carousel/index.js:163 src/epfl-custom-teaser/index.js:182 src/epfl-links-group/index.js:90
 msgid "Open links in a new tab"
 msgstr "Ouvrir les liens dans un nouvel onglet"
 
@@ -610,13 +553,11 @@ msgstr ""
 msgid "courses"
 msgstr "cours"
 
-#: src/epfl-courses/inspector.js:27 src/epfl-memento/inspector.js:67
-#: src/epfl-news/inspector.js:107
+#: src/epfl-courses/inspector.js:27 src/epfl-memento/inspector.js:67 src/epfl-news/inspector.js:107
 msgid "French"
 msgstr "Français"
 
-#: src/epfl-courses/inspector.js:28 src/epfl-memento/inspector.js:68
-#: src/epfl-news/inspector.js:108
+#: src/epfl-courses/inspector.js:28 src/epfl-memento/inspector.js:68 src/epfl-news/inspector.js:108
 msgid "English"
 msgstr "Anglais"
 
@@ -720,10 +661,8 @@ msgstr "Nom de l'unité"
 msgid "\"GETALL\" gives all courses in EPFL"
 msgstr "\"GETALL\" fournit la liste de tous les cours EPFL"
 
-#: src/epfl-courses/inspector.js:77 src/epfl-courses/inspector.js:84
-#: src/epfl-infoscience-search/inspector.js:84 src/epfl-people/inspector.js:75
-#: src/epfl-people/inspector.js:82 src/epfl-people/inspector.js:89
-#: src/epfl-tableau/index.js:80
+#: src/epfl-courses/inspector.js:77 src/epfl-courses/inspector.js:84 src/epfl-infoscience-search/inspector.js:84 src/epfl-people/inspector.js:75
+#: src/epfl-people/inspector.js:82 src/epfl-people/inspector.js:89 src/epfl-tableau/index.js:80
 msgid "OR"
 msgstr "OU"
 
@@ -769,23 +708,17 @@ msgstr "https://www.epfl.ch/campus/services/website/cover-fr/"
 
 #: src/epfl-cover/index.js:115 src/epfl-hero/index.js:136
 msgid "This description appears when the user clicks on the information icon"
-msgstr ""
-"Cette description apparait lorsque l'utilisateur clique sur l'icone "
-"information"
+msgstr "Cette description apparait lorsque l'utilisateur clique sur l'icone information"
 
 #: src/epfl-custom-highlight/index.js:25 src/epfl-custom-highlight/index.js:93
 msgid "EPFL Custom Highlight"
 msgstr ""
 
-#: src/epfl-custom-highlight/index.js:75
-#: src/epfl-page-highlight/inspector.js:51
-#: src/epfl-post-highlight/inspector.js:55
+#: src/epfl-custom-highlight/index.js:75 src/epfl-page-highlight/inspector.js:51 src/epfl-post-highlight/inspector.js:55
 msgid "Right"
 msgstr "Droite"
 
-#: src/epfl-custom-highlight/index.js:76
-#: src/epfl-page-highlight/inspector.js:52
-#: src/epfl-post-highlight/inspector.js:56
+#: src/epfl-custom-highlight/index.js:76 src/epfl-page-highlight/inspector.js:52 src/epfl-post-highlight/inspector.js:56
 msgid "Bottom"
 msgstr "Bas"
 
@@ -793,9 +726,7 @@ msgstr "Bas"
 msgid "https://www.epfl.ch/campus/services/website/custom-highlight-en/"
 msgstr "https://www.epfl.ch/campus/services/website/custom-highlight-fr/"
 
-#: src/epfl-custom-highlight/index.js:86
-#: src/epfl-page-highlight/inspector.js:81
-#: src/epfl-post-highlight/inspector.js:86
+#: src/epfl-custom-highlight/index.js:86 src/epfl-page-highlight/inspector.js:81 src/epfl-post-highlight/inspector.js:86
 msgid "Select a layout"
 msgstr "Sélectionner un type de présentation"
 
@@ -891,8 +822,7 @@ msgstr ""
 msgid "https://www.epfl.ch/campus/services/website/gallery/"
 msgstr "https://www.epfl.ch/campus/services/website/galerie/"
 
-#: src/epfl-gallery/index.js:57 src/epfl-infoscience-search/inspector.js:179
-#: src/epfl-table-filter/index.js:72 src/epfl-table/index.js:67
+#: src/epfl-gallery/index.js:57 src/epfl-infoscience-search/inspector.js:179 src/epfl-table-filter/index.js:72 src/epfl-table/index.js:67
 msgid "Format"
 msgstr "Format"
 
@@ -914,20 +844,17 @@ msgstr "https://www.epfl.ch/campus/services/website/google-form-fr/"
 
 #: src/epfl-google-forms/index.js:118
 msgid ""
-"Paste here the <iframe> HTML code you find in \"< >\" tab when you press the "
-"\"Send\" button on a GoogleForm edition page, it will extract needed "
+"Paste here the <iframe> HTML code you find in \"< >\" tab when you press the \"Send\" button on a GoogleForm edition page, it will extract needed "
 "parameters"
 msgstr ""
-"Coller ici le code de l'<iframe> HTML trouvé dans l'onglet \"< >\" après "
-"avoir pressé le bouton \"Envoyé\" sur la page d'édition du GoogleForm. Les "
+"Coller ici le code de l'<iframe> HTML trouvé dans l'onglet \"< >\" après avoir pressé le bouton \"Envoyé\" sur la page d'édition du GoogleForm. Les "
 "paramètres en seront extraits."
 
 #: src/epfl-google-forms/index.js:120
 msgid "Configuration"
 msgstr "Configuration"
 
-#: src/epfl-google-forms/index.js:127 src/epfl-social-feed/index.js:56
-#: src/epfl-tableau/index.js:63
+#: src/epfl-google-forms/index.js:127 src/epfl-social-feed/index.js:56 src/epfl-tableau/index.js:63
 msgid "Height"
 msgstr "Hauteur"
 
@@ -949,9 +876,7 @@ msgstr "Erreur lors de la récupération des informations"
 
 #: src/epfl-google-forms/index.js:145
 msgid "Wrong HTML code given, impossible to extract information."
-msgstr ""
-"Le code HTML proposé n'est pas reconnaissable, impossible d'extraire les "
-"informations."
+msgstr "Le code HTML proposé n'est pas reconnaissable, impossible d'extraire les informations."
 
 #: src/epfl-hero/index.js:24 src/epfl-hero/index.js:71
 msgid "EPFL Hero"
@@ -961,8 +886,7 @@ msgstr ""
 msgid "https://www.epfl.ch/campus/services/website/hero-en/"
 msgstr "https://www.epfl.ch/campus/services/website/hero-fr/"
 
-#: src/epfl-infoscience-search/index.js:13
-#: src/epfl-infoscience-search/index.js:93
+#: src/epfl-infoscience-search/index.js:13 src/epfl-infoscience-search/index.js:93
 msgid "EPFL Infoscience"
 msgstr ""
 
@@ -986,8 +910,7 @@ msgstr "Tous les champs"
 msgid "Author"
 msgstr "Auteur"
 
-#: src/epfl-infoscience-search/inspector.js:59
-#: src/epfl-infoscience-search/inspector.js:76
+#: src/epfl-infoscience-search/inspector.js:59 src/epfl-infoscience-search/inspector.js:76
 msgid "Year"
 msgstr "Année"
 
@@ -1011,8 +934,7 @@ msgstr "Éditeur"
 msgid "Abstract"
 msgstr "Résumé"
 
-#: src/epfl-infoscience-search/inspector.js:65
-#: src/epfl-memento/inspector.js:163
+#: src/epfl-infoscience-search/inspector.js:65 src/epfl-memento/inspector.js:163
 msgid "Keyword"
 msgstr "Mot-clé"
 
@@ -1060,15 +982,11 @@ msgstr "URL de type https://infoscience.epfl.ch/search?..."
 msgid "Or text patterns"
 msgstr "Ou des clés de recherche"
 
-#: src/epfl-infoscience-search/inspector.js:103
-#: src/epfl-infoscience-search/inspector.js:125
-#: src/epfl-infoscience-search/inspector.js:142
+#: src/epfl-infoscience-search/inspector.js:103 src/epfl-infoscience-search/inspector.js:125 src/epfl-infoscience-search/inspector.js:142
 msgid "search for:"
 msgstr "Texte de recherche"
 
-#: src/epfl-infoscience-search/inspector.js:106
-#: src/epfl-infoscience-search/inspector.js:128
-#: src/epfl-infoscience-search/inspector.js:145
+#: src/epfl-infoscience-search/inspector.js:106 src/epfl-infoscience-search/inspector.js:128 src/epfl-infoscience-search/inspector.js:145
 msgid "Field restriction"
 msgstr "Restriction sur un champ"
 
@@ -1088,15 +1006,13 @@ msgstr "Deuxième texte de recherche"
 msgid "Third search text"
 msgstr "Troisième recherche"
 
-#: src/epfl-infoscience-search/inspector.js:153
-#: src/epfl-social-feed/index.js:86
+#: src/epfl-infoscience-search/inspector.js:153 src/epfl-social-feed/index.js:86
 msgid "Limit"
 msgstr "Limite"
 
 #: src/epfl-infoscience-search/inspector.js:161
 msgid "Without a limit only the first 100 publications are shown"
-msgstr ""
-"Sans limite spécifiée, seules les 100 premières publications sont affichées"
+msgstr "Sans limite spécifiée, seules les 100 premières publications sont affichées"
 
 #: src/epfl-infoscience-search/inspector.js:164
 msgid "Sort"
@@ -1130,8 +1046,7 @@ msgstr ""
 msgid "https://www.epfl.ch/campus/services/website/introduction-en/"
 msgstr "https://www.epfl.ch/campus/services/website/introduction-fr/"
 
-#: src/epfl-introduction/index.js:50 src/epfl-page-teaser/inspector.js:77
-#: src/epfl-post-teaser/inspector.js:101
+#: src/epfl-introduction/index.js:50 src/epfl-page-teaser/inspector.js:77 src/epfl-post-teaser/inspector.js:101
 msgid "Change the background to gray"
 msgstr "Changer le fond en gris"
 
@@ -1191,8 +1106,7 @@ msgstr "Template listing sans mettre le 1er événement en valeur"
 msgid "Upcomings events"
 msgstr "Prochains événements"
 
-#: src/epfl-memento/inspector.js:77 src/epfl-memento/inspector.js:85
-#: src/epfl-news/inspector.js:112 src/epfl-news/inspector.js:120
+#: src/epfl-memento/inspector.js:77 src/epfl-memento/inspector.js:85 src/epfl-news/inspector.js:112 src/epfl-news/inspector.js:120
 #: src/epfl-news/inspector.js:128
 msgid "No filter"
 msgstr "Pas de filtre"
@@ -1214,19 +1128,14 @@ msgid "Select your memento"
 msgstr "Sélectionner votre mémento"
 
 #: src/epfl-memento/inspector.js:111
-msgid ""
-"The events come from the application memento.epfl.ch. If you don't have a "
-"memento, please send a request to 1234@epfl.ch"
-msgstr ""
-"Les événements proviennent de l'application memento.epfl.ch. Si vous n'avez "
-"pas de memento, merci d'envoyer une demande au 1234@epfl.ch"
+msgid "The events come from the application memento.epfl.ch. If you don't have a memento, please send a request to 1234@epfl.ch"
+msgstr "Les événements proviennent de l'application memento.epfl.ch. Si vous n'avez pas de memento, merci d'envoyer une demande au 1234@epfl.ch"
 
 #: src/epfl-memento/inspector.js:120 src/epfl-news/inspector.js:180
 msgid "Template"
 msgstr "Modèle"
 
-#: src/epfl-memento/inspector.js:122 src/epfl-news/inspector.js:182
-#: src/epfl-people/inspector.js:107
+#: src/epfl-memento/inspector.js:122 src/epfl-news/inspector.js:182 src/epfl-people/inspector.js:107
 msgid "Select a template"
 msgstr "Sélectionner un modèle"
 
@@ -1351,12 +1260,8 @@ msgid "Select your news channel"
 msgstr "Sélectionner votre canal d'actualités"
 
 #: src/epfl-news/inspector.js:171
-msgid ""
-"The news come from the application actu.epfl.ch. If you don't have a news "
-"channel, please send a request to 1234@epfl.ch"
-msgstr ""
-"Les actualités proviennent de l'application actu.epfl.ch. Si vous n'avez pas "
-"de canal, merci d'envoyer une demande au 1234@epfl.ch"
+msgid "The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch"
+msgstr "Les actualités proviennent de l'application actu.epfl.ch. Si vous n'avez pas de canal, merci d'envoyer une demande au 1234@epfl.ch"
 
 #: src/epfl-news/inspector.js:183
 msgid "Preview the page to see the template applied"
@@ -1386,8 +1291,7 @@ msgstr "Aucune actualité trouvée"
 msgid "EPFL Page Highlight"
 msgstr ""
 
-#: src/epfl-page-highlight/index.js:14 src/epfl-page-teaser/index.js:14
-#: src/epfl-post-teaser/index.js:15
+#: src/epfl-page-highlight/index.js:14 src/epfl-page-teaser/index.js:14 src/epfl-post-teaser/index.js:15
 msgid "page"
 msgstr "page"
 
@@ -1399,9 +1303,8 @@ msgstr ""
 msgid "Loading pages"
 msgstr "Chargement des pages"
 
-#: src/epfl-page-highlight/inspector.js:65 src/epfl-page-teaser/inspector.js:61
-#: src/epfl-post-highlight/inspector.js:69 src/epfl-post-teaser/inspector.js:77
-#: src/epfl-post-teaser/inspector.js:92
+#: src/epfl-page-highlight/inspector.js:65 src/epfl-page-teaser/inspector.js:61 src/epfl-post-highlight/inspector.js:69
+#: src/epfl-post-teaser/inspector.js:77 src/epfl-post-teaser/inspector.js:92
 msgid "None"
 msgstr "Aucune"
 
@@ -1409,22 +1312,16 @@ msgstr "Aucune"
 msgid "https://www.epfl.ch/campus/services/website/page-highlight-en/"
 msgstr "https://www.epfl.ch/campus/services/website/page-highlight-fr/"
 
-#: src/epfl-page-highlight/inspector.js:79
-#: src/epfl-post-highlight/inspector.js:84
+#: src/epfl-page-highlight/inspector.js:79 src/epfl-post-highlight/inspector.js:84
 msgid "Layout"
 msgstr "Disposition"
 
-#: src/epfl-page-highlight/inspector.js:85
-#: src/epfl-post-highlight/inspector.js:90
-msgid ""
-"Decides where the text will be aligned, to allow the subject of the picture "
-"to be visible"
-msgstr ""
-"Définit l'alignement du texte, pour permettre au sujet de l'image d'être "
-"visible"
+#: src/epfl-page-highlight/inspector.js:85 src/epfl-post-highlight/inspector.js:90
+msgid "Decides where the text will be aligned, to allow the subject of the picture to be visible"
+msgstr "Définit l'alignement du texte, pour permettre au sujet de l'image d'être visible"
 
-#: src/epfl-page-highlight/inspector.js:96 src/epfl-page-teaser/inspector.js:98
-#: src/epfl-page-teaser/inspector.js:108 src/epfl-page-teaser/inspector.js:117
+#: src/epfl-page-highlight/inspector.js:96 src/epfl-page-teaser/inspector.js:98 src/epfl-page-teaser/inspector.js:108
+#: src/epfl-page-teaser/inspector.js:117
 msgid "Select page"
 msgstr "Sélectionnez une page"
 
@@ -1553,12 +1450,8 @@ msgid "Function"
 msgstr "Fonction"
 
 #: src/epfl-people/inspector.js:101
-msgid ""
-"You can enter a function to filter persons. The keyword must be in french. "
-"Example: professeur or enseignement"
-msgstr ""
-"Vous pouvez entrer le nom d'une fonction en français pour filtrer les "
-"personnes. Exemple : professeur ou enseignement"
+msgid "You can enter a function to filter persons. The keyword must be in french. Example: professeur or enseignement"
+msgstr "Vous pouvez entrer le nom d'une fonction en français pour filtrer les personnes. Exemple : professeur ou enseignement"
 
 #: src/epfl-people/inspector.js:105
 msgid "Columns"
@@ -1584,8 +1477,7 @@ msgstr "Aucun article trouvé"
 msgid "https://www.epfl.ch/campus/services/website/post-highlight-en/"
 msgstr "https://www.epfl.ch/campus/services/website/post-highlight-fr/"
 
-#: src/epfl-post-highlight/inspector.js:100
-#: src/epfl-post-teaser/inspector.js:131 src/epfl-post-teaser/inspector.js:141
+#: src/epfl-post-highlight/inspector.js:100 src/epfl-post-teaser/inspector.js:131 src/epfl-post-teaser/inspector.js:141
 #: src/epfl-post-teaser/inspector.js:150
 msgid "Select post"
 msgstr "Sélectionnez un post"
@@ -1604,8 +1496,7 @@ msgstr "Affiche les 3 derniers articles"
 
 #: src/epfl-post-teaser/inspector.js:113
 msgid "Only display last 3 posts for following category"
-msgstr ""
-"Affiche seulement les 3 derniers articles pour la catégorie sélectionnée"
+msgstr "Affiche seulement les 3 derniers articles pour la catégorie sélectionnée"
 
 #: src/epfl-post-teaser/inspector.js:123
 msgid "or select specific posts"
@@ -1688,20 +1579,12 @@ msgid "0 for unlimited"
 msgstr "0 pour illimité"
 
 #: src/epfl-social-feed/index.js:104
-msgid ""
-"URL of an Instagram post (optional) (eg. https://www.instagram.com/p/"
-"BjuYB7Lhylj)"
-msgstr ""
-"URL d'un article Instagram (optionnel). Ex. : https://www.instagram.com/p/"
-"BjuYB7Lhylj"
+msgid "URL of an Instagram post (optional) (eg. https://www.instagram.com/p/BjuYB7Lhylj)"
+msgstr "URL d'un article Instagram (optionnel). Ex. : https://www.instagram.com/p/BjuYB7Lhylj"
 
 #: src/epfl-social-feed/index.js:113
-msgid ""
-"URL of your Facebook account (optional) (eg. https://www.facebook.com/"
-"epflcampus)"
-msgstr ""
-"URL d'un compte Facebook (optionnel). Ex. : https://www.facebook.com/"
-"epflcampus"
+msgid "URL of your Facebook account (optional) (eg. https://www.facebook.com/epflcampus)"
+msgstr "URL d'un compte Facebook (optionnel). Ex. : https://www.facebook.com/epflcampus"
 
 #: src/epfl-student-projects/index.js:22 src/epfl-student-projects/index.js:51
 msgid "EPFL Student Projects"
@@ -1816,24 +1699,16 @@ msgid "Embed code"
 msgstr "Code intégré (Embed)"
 
 #: src/epfl-tableau/index.js:78
-msgid ""
-"Paste here the content of the Embed Code when you press the \"Share\" button "
-"on an EPFL tableau view"
-msgstr ""
-"Coller ici le contenu du code intégré (\"Embed code\") trouvé avec le bouton "
-"\"Share\" dans la vue Tableau"
+msgid "Paste here the content of the Embed Code when you press the \"Share\" button on an EPFL tableau view"
+msgstr "Coller ici le contenu du code intégré (\"Embed code\") trouvé avec le bouton \"Share\" dans la vue Tableau"
 
 #: src/epfl-tableau/index.js:82
 msgid "Tableau ID"
 msgstr "Identifiant du Tableau"
 
 #: src/epfl-tableau/index.js:85
-msgid ""
-"Name of the Tableau view (eg. \"EPFLofficialstatistics/"
-"StatistiquesOfficielles\")"
-msgstr ""
-"Nom de la vue Tableau (ex. : \"EPFLofficialstatistics/StatistiquesOfficielles"
-"\")"
+msgid "Name of the Tableau view (eg. \"EPFLofficialstatistics/StatistiquesOfficielles\")"
+msgstr "Nom de la vue Tableau (ex. : \"EPFLofficialstatistics/StatistiquesOfficielles\")"
 
 #: src/epfl-toggle/index.js:26 src/epfl-toggle/index.js:72
 msgid "EPFL Toggle"
@@ -1852,12 +1727,8 @@ msgid "Anchor"
 msgstr "Ancre"
 
 #: src/epfl-toggle/index.js:65
-msgid ""
-"To point directly on toggle using #<anchor> in URL. Toggle will be opened "
-"automatically"
-msgstr ""
-"Pour cibler directement le toggle en utilisant une ancre #<anchor> dans "
-"l'URL. Le toggle sera automatiquement ouvert"
+msgid "To point directly on toggle using #<anchor> in URL. Toggle will be opened automatically"
+msgstr "Pour cibler directement le toggle en utilisant une ancre #<anchor> dans l'URL. Le toggle sera automatiquement ouvert"
 
 #: src/epfl-video/index.js:22 src/epfl-video/index.js:54
 msgid "EPFL Video"
@@ -1875,12 +1746,121 @@ msgstr "URL de la vidéo"
 msgid "You can paste a YouTube, Vimeo or SWITCHTube URL"
 msgstr "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
 
+msgid "Show a message inside a notification zone"
+msgstr "Affichez un message dans une zone de notification"
+
+msgid "Create a link as a button"
+msgstr "Créez un lien sous forme de bouton"
+
+msgid "Create links in the form of image blocks, with an overlayed title and subtitle"
+msgstr "Créez des liens sous forme de blocs d'images, avec un titre et un sous-titre superposés"
+
+msgid "Create image blocks (3 per line max), with a title, a link, and some content"
+msgstr "Créez des blocs d'image (3 par ligne max), composés d'un titre, d'un lien et d'un contenu libre"
+
+msgid "Create a carousel of images (max 5) in full width, with link, title and description; automatic scrolling every 6 seconds"
+msgstr "Créez un carousel d'images (max 5) en pleine largeur, avec lien, titre et description; défilement automatique toutes les 6 secondes"
+
+msgid "Display contact information and a map of the room location"
+msgstr "Affichez les informations de contact ainsi qu'une carte de l'emplacement du local"
+
+msgid "Display all courses given by a teacher, in a section or in a lab"
+msgstr "Affichez tous les cours donnés par un·e enseignant·e, dans une section ou dans un laboratoire"
+
+msgid "Display a large image in 16:9 format"
+msgstr "Affichez une grande image au format 16:9"
+
+msgid "Display a link composed of a full width image, a title and a description"
+msgstr "Affichez un lien composé d'une image pleine largeur, un titre et une description"
+
+msgid "Create links (3 per line max) with an image, a title, a short description and a link button"
+msgstr "Créez des liens (3 par ligne max) avec une image, un titre, un court descriptif et un bouton pour le lien"
+
+msgid "Display a list of terms and their definitions"
+msgstr "Affichez une liste de termes et leurs définitions"
+
+msgid "Display a list of questions and their answers"
+msgstr "Affichez une liste de questions et leurs réponses"
+
+msgid "Display a series of images with thumbnails"
+msgstr "Affichez une série d'images avec miniatures"
+
+msgid "Embed a form created on Google Forms"
+msgstr "Intègrez un formulaire créé sur Google Forms"
+
+msgid "Create an introductory block with a full-width pretext image, a title and a short description. The page title is not displayed."
+msgstr "Créez un bloc d'introduction avec une image-prétexte en pleine largeur, un titre et un court descriptif. Le titre de la page ne s'affiche pas"
+
+msgid "Display a list of publications from Infoscience"
+msgstr "Affichez une liste de publications provenant d'Infoscience"
+
+msgid "Highlight a title and some text"
+msgstr "Mettez en évidence un titre et du texte en guise d'introduction"
+
+msgid "Create a list of links"
+msgstr "Créez une liste de liens"
+
+msgid "Display a map from map.epfl.ch"
+msgstr "Affichez une carte issue de map.epfl.ch"
+
+msgid "Display events from memento.epfl.ch"
+msgstr "Affichez les évènements provenant de memento.epfl.ch"
+
+msgid "Create links (6 per line max) in the form of small images and short titles"
+msgstr "Créez des liens (6 par ligne max) sous forme de petites images et de titres brefs"
+
+msgid "Display news from news.epfl.ch"
+msgstr "Affichez les actualités provenant d'actu.epfl.ch"
+
+msgid "Display a link to a page of the site as a large image"
+msgstr "Affichez un lien vers une page du site sous forme de grande image"
+
+msgid "Create links (max 3) from the pages of the site, with image, title and short description automatically"
+msgstr "Créez des liens (max 3) à partir des pages du site, avec image, titre et court descriptif repris automatiquement"
+
+msgid "Embed a PDF into a web page"
+msgstr "Intègrez un PDF dans une page web"
+
+msgid "Display a list of people from the EPFL directory using different criteria"
+msgstr "Affichez une liste de personnes de l'annuaire de l'EPFL en fonction de différents critères"
+
+msgid "Display a link to a post of the site as a large image"
+msgstr "Affichez un lien vers un article de blog sous forme de grande image"
+
+msgid "Create links (max 3) from the posts of the site, with image, title and short description automatically"
+msgstr "Créez des liens (max 3) à partir des articles de blog du site, avec image, titre et court descriptif repris automatiquement"
+
+msgid "Display a list of semester or master's projects from IS Academia"
+msgstr "Affichez une liste de projets de semestre ou de master, issus de IS Academia"
+
+msgid "Create a quote"
+msgstr "Créez une citation"
+
+msgid "Display content only for a specific period of time"
+msgstr "Affichez un contenu seulement pendant une période définie"
+
+msgid "Embed content from Facebook, Instagram and Twitter"
+msgstr "Intègrez du contenu issu de Facebook, Instagram et Twitter"
+
+msgid "Create a table"
+msgstr "Créez un tableau"
+
+msgid "Embed a graph created with tableau.epfl.ch"
+msgstr "Intègrez un graphique créé avec tableau.epfl.ch"
+
+msgid "Create a table with search and sort options"
+msgstr "Créez un tableau avec options de recherche et de tri"
+
+msgid "Create a block with toggleable content (accordion)"
+msgstr "Créez un bloc au contenu retractable (accordéon)"
+
+msgid "Embed a video from SwitchTube, Vimeo or Youtube"
+msgstr "Intègrez une vidéo issue de SwitchTube, Vimeo ou Youtube"
+
 #, fuzzy
 #~| msgid "Do you want filter events by category? Please select a category."
 #~ msgid "Do you want filter past events by year? Please select a year."
-#~ msgstr ""
-#~ "Voulez vous filtrer les événements par catégorie ? Merci de sélectionner "
-#~ "une catégorie."
+#~ msgstr "Voulez vous filtrer les événements par catégorie ? Merci de sélectionner une catégorie."
 
 #, fuzzy
 #~ msgid "Header & sort"
@@ -1902,19 +1882,13 @@ msgstr "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
 #~ msgstr "Voulez vous les événements à venir ou les événements passés ?"
 
 #~ msgid "Do you want filter events by category? Please select a category."
-#~ msgstr ""
-#~ "Voulez vous filtrer les événements par catégorie ? Merci de sélectionner "
-#~ "une catégorie."
+#~ msgstr "Voulez vous filtrer les événements par catégorie ? Merci de sélectionner une catégorie."
 
 #~ msgid "Do you want filter events by keyword? Please type a keyword."
-#~ msgstr ""
-#~ "Voulez vous filtrer les événements par mot clé ? Merci de renseigner un "
-#~ "mot clé."
+#~ msgstr "Voulez vous filtrer les événements par mot clé ? Merci de renseigner un mot clé."
 
 #~ msgid "Do you want filter news by category ? Please select a category"
-#~ msgstr ""
-#~ "Voulez vous filtrer les actualités par catégorie? Veuillez sélectionner "
-#~ "une catégorie."
+#~ msgstr "Voulez vous filtrer les actualités par catégorie? Veuillez sélectionner une catégorie."
 
 #~ msgid "The latest news"
 #~ msgstr "Les dernières actualités"
@@ -1922,12 +1896,8 @@ msgstr "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
 #~ msgid "Oops! That page can&rsquo;t be found."
 #~ msgstr "Oops ! Cette page est introuvable."
 
-#~ msgid ""
-#~ "It looks like nothing was found at this location. You might try with a "
-#~ "search:"
-#~ msgstr ""
-#~ "On dirait que cette adresse n'existe pas sur le site.  Essayez avec une "
-#~ "recherche :"
+#~ msgid "It looks like nothing was found at this location. You might try with a search:"
+#~ msgstr "On dirait que cette adresse n'existe pas sur le site.  Essayez avec une recherche :"
 
 #~ msgid "No article found"
 #~ msgstr "Aucun article trouvé"
@@ -1966,9 +1936,7 @@ msgstr "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
 #~ msgstr "Taggé %1$s"
 
 #~ msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
-#~ msgstr ""
-#~ "Laisser un commentaire sur <span class=\"screen-reader-text\"> on %s</"
-#~ "span>"
+#~ msgstr "Laisser un commentaire sur <span class=\"screen-reader-text\"> on %s</span>"
 
 #~ msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 #~ msgstr "Editer <span class=\"screen-reader-text\">%s</span>"
@@ -2021,31 +1989,20 @@ msgstr "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
 #~ msgid "Nothing Found"
 #~ msgstr "Aucun résultat trouvé"
 
-#~ msgid ""
-#~ "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
-#~ msgstr ""
-#~ "Prêt à publier votre premier post ? <a href=\"%1$s\">Commencer ici</a>."
+#~ msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+#~ msgstr "Prêt à publier votre premier post ? <a href=\"%1$s\">Commencer ici</a>."
 
-#~ msgid ""
-#~ "Sorry, but nothing matched your search terms. Please try again with some "
-#~ "different keywords."
-#~ msgstr ""
-#~ "Désolé, aucun résultat n'a été trouvé avec votre recherche. Vous pouvez "
-#~ "réessayer avec d'autres mots-clés."
+#~ msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+#~ msgstr "Désolé, aucun résultat n'a été trouvé avec votre recherche. Vous pouvez réessayer avec d'autres mots-clés."
 
-#~ msgid ""
-#~ "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-#~ "searching can help."
-#~ msgstr ""
-#~ "Nous sommes dans l'incapacité de vous fournir ce que vous êtes venu "
-#~ "chercher. Peut-être qu'une recherche pourrait vous être utile."
+#~ msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+#~ msgstr "Nous sommes dans l'incapacité de vous fournir ce que vous êtes venu chercher. Peut-être qu'une recherche pourrait vous être utile."
 
 #~ msgid "Published:"
 #~ msgstr "Publié le :"
 
 #~ msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
-#~ msgstr ""
-#~ "Continuer la lecture<span class=\"screen-reader-text\"> \"%s\"</span>"
+#~ msgstr "Continuer la lecture<span class=\"screen-reader-text\"> \"%s\"</span>"
 
 #~ msgid "Laboratories are part of faculties and institutes."
 #~ msgstr "Les laboratoires font partie de facultés et d'instituts."

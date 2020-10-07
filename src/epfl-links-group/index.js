@@ -1,4 +1,10 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
+
+const version = "v1.1.7";
 
 const { __ } = wp.i18n;
 
@@ -42,7 +48,7 @@ const getAttributes = () => {
         };
     }
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 function LinkGroupPanel ( props ) {
@@ -74,20 +80,34 @@ function LinkGroupPanel ( props ) {
 
 registerBlockType( 'epfl/links-group', {
 	title: __( 'EPFL Links group', 'epfl'),
-	description: 'v1.1.7',
+    description: __(
+        'Create a list of links',
+        'epfl'
+    ),
 	icon: 'editor-kitchensink',
     category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return(
+                <Fragment>
+                    <img src={ blockThumbnails.linksGroup } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/links-group-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <ToggleControl
                         label={ __('Open links in a new tab', 'epfl') }
                         checked={ attributes.openLinksNewTab }

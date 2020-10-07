@@ -1,6 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import InspectorControlsPageTeaser from './inspector'
+
+export const version = "v1.0.4";
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -10,13 +16,16 @@ registerBlockType(
 	'epfl/page-teaser',
 	{
 		title: __( "EPFL Page Teaser", 'epfl'),
-		description: 'v1.0.4',
+		description: __(
+			'Create links (max 3) from the pages of the site, with image, title and short description automatically',
+			'epfl'
+		),
 		category: hasCommonCategory ? 'common' : 'design',
 		keywords: [
             __( 'page' , 'epfl'),
             __( 'teaser' , 'epfl'),
 		],
-		attributes: {
+		attributes: getTooltippedAttributes({
 			title: {
 				type: 'string',
 			},
@@ -35,13 +44,24 @@ registerBlockType(
             grayBackground: {
                 type: 'boolean',
             }
-		},
+		}),
+		example: getTooltippedExample(),
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 		},
 
 		edit: props => {
 			const { attributes, className, setAttributes } = props
+
+			if ( attributes.asToolTip ) {
+				// render the tooltip
+				return(
+					<Fragment>
+						<img src={ blockThumbnails.pageTeaser } />
+					</Fragment>
+				);
+			}
+
 			return (
 				<Fragment>
 					<div className={ className }>

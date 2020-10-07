@@ -1,7 +1,13 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+	hasCommonCategory,
+	getTooltippedAttributes,
+	getTooltippedExample,
+} from '../block-utils.js'
 
 import customHighlightIcon from './custom-highlight-icon'
 import { image } from "@wordpress/icons";
+
+const version = "v1.0.2";
 
 const { __ } = wp.i18n;
 
@@ -26,10 +32,13 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/custom-highlight', {
 	title: __( 'EPFL Custom Highlight', 'epfl'),
-	description: 'v1.0.2',
+	description: __(
+		'Display a link composed of a full width image, a title and a description',
+		'epfl'
+	),
 	icon: customHighlightIcon,
 	category: hasCommonCategory ? 'common' : 'design',
-	attributes: {
+	attributes: getTooltippedAttributes({
 		title: {
 			type: 'string',
 		},
@@ -53,12 +62,22 @@ registerBlockType( 'epfl/custom-highlight', {
 			default: 'right',
 		},
 
-	},
+	}),
+	example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
 		const { attributes, className, setAttributes } = props
+
+		if ( attributes.asToolTip ) {
+			// render the tooltip
+			return (
+				<Fragment>
+					<img src={ blockThumbnails.customHighlight } />
+				</Fragment>
+			);
+		}
 
 		function onImageSelect(imageObject) {
 			setAttributes({
@@ -84,6 +103,7 @@ registerBlockType( 'epfl/custom-highlight', {
 		<Fragment>
 			<InspectorControls>
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/custom-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p className="wp-block-help">{ version }</p>
 				<hr/>
 				<RadioControl
 					label={ __("Select a layout", 'epfl') }

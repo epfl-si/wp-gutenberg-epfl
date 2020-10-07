@@ -1,4 +1,10 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
+
+const version = "v1.1.3";
 
 const { __ } = wp.i18n;
 
@@ -41,7 +47,7 @@ const getAttributes = () => {
         };
     }
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 function DefinitionListPanel ( props ) {
@@ -74,20 +80,34 @@ function DefinitionListPanel ( props ) {
 
 registerBlockType( 'epfl/definition-list', {
 	title: __( 'EPFL Definition List', 'epfl'),
-	description: 'v1.1.3',
+    description: __(
+        'Display a list of terms and their definitions',
+        'epfl'
+    ),
 	icon: 'editor-alignleft',
     category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return (
+                <Fragment>
+                    <img src={ blockThumbnails.definitionList } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/definition-list-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Display as a table', 'epfl') }

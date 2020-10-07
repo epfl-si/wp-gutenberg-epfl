@@ -1,6 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import tableFilterIcon from './table-filter-icon'
+
+const version = "v1.1.3";
 
 const { __ } = wp.i18n;
 
@@ -46,7 +52,7 @@ const getAttributes = () => {
         },
     };
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 let optionsHeader = [
@@ -56,20 +62,34 @@ let optionsHeader = [
 
 registerBlockType( 'epfl/table-filter', {
 	title: __( 'EPFL Table Filter', 'epfl'),
-	description: 'v1.1.3',
+    description: __(
+        'Create a table with search and sort options',
+        'epfl'
+    ),
 	icon: tableFilterIcon,
     category: hasCommonCategory ? 'common' : 'text',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return(
+                <Fragment>
+                    <img src={ blockThumbnails.tableFilter } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/table-filter-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title={ __('Format', 'epfl') }>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }

@@ -1,5 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
+
 import { image } from '@wordpress/icons';
+
+const version = "v1.1.6";
 
 const { __ } = wp.i18n;
 
@@ -59,7 +66,7 @@ const getAttributes = () => {
         };
     }
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 function CustomTeaserPanel ( props ) {
@@ -157,20 +164,34 @@ function CustomTeaserPanel ( props ) {
 
 registerBlockType( 'epfl/custom-teaser', {
 	title: __( 'EPFL Custom Teaser', 'epfl'),
-	description: 'v1.1.6',
+    description: __(
+        'Create links (3 per line max) with an image, a title, a short description and a link button',
+        'epfl'
+    ),
 	icon: 'editor-kitchensink',
     category: hasCommonCategory ? 'common' : 'design',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return (
+                <Fragment>
+                    <img src={ blockThumbnails.customTeaser } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/custom-teaser-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'epfl') }

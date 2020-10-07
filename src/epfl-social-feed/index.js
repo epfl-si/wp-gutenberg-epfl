@@ -1,6 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import socialFeedIcon from './social-feed-icon'
+
+const version = "v1.0.3";
 
 const { __ } = wp.i18n;
 
@@ -21,10 +27,13 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'epfl'),
-	description: 'v1.0.3',
+    description: __(
+        'Embed content from Facebook, Instagram and Twitter',
+        'epfl'
+    ),
 	icon: socialFeedIcon,
     category: hasCommonCategory ? 'common' : 'embed',
-	attributes: {
+	attributes: getTooltippedAttributes({
         twitterUrl: {
             type: 'url',
         },
@@ -43,17 +52,28 @@ registerBlockType( 'epfl/social-feed', {
         width: {
             type: 'integer',
         }
-	},
+	}),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return(
+                <Fragment>
+                    <img src={ blockThumbnails.socialFeed } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/social-feed-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title={ __('Size', 'epfl') }>
                         <label>{ __('Height', 'epfl') }</label>
                         <TextControl
