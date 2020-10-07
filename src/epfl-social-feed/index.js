@@ -53,6 +53,7 @@ registerBlockType( 'epfl/social-feed', {
             type: 'integer',
         }
 	}),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},

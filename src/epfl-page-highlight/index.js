@@ -25,7 +25,7 @@ registerBlockType(
             __( 'page' , 'epfl'),
             __( 'highlight' , 'epfl'),
 		],
-		attributes: {
+		attributes: getTooltippedAttributes({
 			page: {
 				type: 'string',
 				default: null,
@@ -34,7 +34,7 @@ registerBlockType(
                 type: 'string',
                 default: 'right',
             },
-		},
+		}),
 		example: getTooltippedExample(),
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class

@@ -3,238 +3,78 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
-#: src/epfl-contact/index.js:102
-msgid "EPFL Contact"
+#: src/epfl-page-highlight/index.js:19
+msgid "Display a link to a page of the site as a large image"
 msgstr ""
 
-#: src/epfl-contact/index.js:103
-msgid "Introduction"
+#: src/epfl-page-highlight/index.js:25
+msgid "page"
 msgstr ""
 
-#: src/epfl-contact/index.js:106
-msgid "Timetable"
+#: src/epfl-page-highlight/index.js:26
+msgid "highlight"
 msgstr ""
 
-#: src/epfl-contact/index.js:113
-msgid "Monday to thursday 09:00 am > 18:00 pm"
+#: src/epfl-page-highlight/index.js:57
+msgid "EPFL Page Highlight"
 msgstr ""
 
-#: src/epfl-contact/index.js:146
-msgid "An email ?"
+#: src/epfl-social-feed/index.js:100
+msgid "EPFL Social Feed"
 msgstr ""
 
-#: src/epfl-contact/index.js:156
-msgid "A phone number ?"
+#: src/epfl-social-feed/index.js:106
+msgid "URL to your Twitter account (optional) (eg. https://twitter.com/EPFL)"
 msgstr ""
 
-#: src/epfl-contact/index.js:166
-msgid "An address ?"
+#: src/epfl-social-feed/index.js:108
+msgid "Limit"
 msgstr ""
 
-#: src/epfl-contact/index.js:173
-msgid "Map"
+#: src/epfl-social-feed/index.js:115
+msgid "0 for unlimited"
 msgstr ""
 
-#: src/epfl-contact/index.js:175
-msgid "A room/place shown in the interactive map:"
+#: src/epfl-social-feed/index.js:126
+msgid ""
+"URL of an Instagram post (optional) (eg. "
+"https://www.instagram.com/p/BjuYB7Lhylj)"
 msgstr ""
 
-#: src/epfl-contact/index.js:179
-msgid "See plan.epfl.ch for the right name of your room."
+#: src/epfl-social-feed/index.js:132
+msgid "URL"
 msgstr ""
 
-#: src/epfl-contact/index.js:33
-msgid "Display contact information and a map of the room location"
+#: src/epfl-social-feed/index.js:135
+msgid ""
+"URL of your Facebook account (optional) (eg. "
+"https://www.facebook.com/epflcampus)"
 msgstr ""
 
-#: src/epfl-contact/index.js:91
-msgid "https://www.epfl.ch/campus/services/website/contact-en/"
+#: src/epfl-social-feed/index.js:30
+msgid "Embed content from Facebook, Instagram and Twitter"
 msgstr ""
 
-#: src/epfl-contact/index.js:91
-#: src/epfl-news/inspector.js:170
-#: src/epfl-table-filter/index.js:91
+#: src/epfl-social-feed/index.js:75
+msgid "https://www.epfl.ch/campus/services/website/social-feed-en/"
+msgstr ""
+
+#: src/epfl-social-feed/index.js:75
 msgid "Online help"
 msgstr ""
 
-#: src/epfl-contact/index.js:95
-msgid "Wrap with a gray border"
+#: src/epfl-social-feed/index.js:77
+msgid "Size"
 msgstr ""
 
-#: src/epfl-news/index.js:23
-msgid "Display news from news.epfl.ch"
+#: src/epfl-social-feed/index.js:78
+msgid "Height"
 msgstr ""
 
-#: src/epfl-news/index.js:30
-msgid "news"
+#: src/epfl-social-feed/index.js:85
+msgid "Set the height in pixel (optional). 450 is recommended"
 msgstr ""
 
-#: src/epfl-news/index.js:86
-msgid "EPFL News"
-msgstr ""
-
-#: src/epfl-news/inspector.js:101
-msgid "Template Listing"
-msgstr ""
-
-#: src/epfl-news/inspector.js:102
-msgid "Template highlighted with 3 news"
-msgstr ""
-
-#: src/epfl-news/inspector.js:103
-msgid "Template highlighted with 1 news"
-msgstr ""
-
-#: src/epfl-news/inspector.js:104
-msgid "Template card with 1 news"
-msgstr ""
-
-#: src/epfl-news/inspector.js:105
-msgid "Template card with 2 news"
-msgstr ""
-
-#: src/epfl-news/inspector.js:106
-msgid "Template card with 3 news"
-msgstr ""
-
-#: src/epfl-news/inspector.js:110
-msgid "French"
-msgstr ""
-
-#: src/epfl-news/inspector.js:111
-msgid "English"
-msgstr ""
-
-#: src/epfl-news/inspector.js:131
-msgid "No filter"
-msgstr ""
-
-#: src/epfl-news/inspector.js:141
-msgid "Sections"
-msgstr ""
-
-#: src/epfl-news/inspector.js:158
-msgid "Select the number of news"
-msgstr ""
-
-#: src/epfl-news/inspector.js:170
-msgid "https://www.epfl.ch/campus/services/website/news-en/"
-msgstr ""
-
-#: src/epfl-news/inspector.js:172
-msgid "Channel"
-msgstr ""
-
-#: src/epfl-news/inspector.js:174
-msgid "Select your news channel"
-msgstr ""
-
-#: src/epfl-news/inspector.js:175
-msgid ""
-"The news come from the application actu.epfl.ch. If you don't have a news "
-"channel, please send a request to 1234@epfl.ch"
-msgstr ""
-
-#: src/epfl-news/inspector.js:184
-msgid "Template"
-msgstr ""
-
-#: src/epfl-news/inspector.js:186
-msgid "Select a template"
-msgstr ""
-
-#: src/epfl-news/inspector.js:187
-msgid "Preview the page to see the template applied"
-msgstr ""
-
-#: src/epfl-news/inspector.js:194
-msgid "Display the link \"all news\""
-msgstr ""
-
-#: src/epfl-news/inspector.js:199
-msgid "Language"
-msgstr ""
-
-#: src/epfl-news/inspector.js:201
-msgid "Select a language"
-msgstr ""
-
-#: src/epfl-news/inspector.js:202
-msgid "The language used to render news results"
-msgstr ""
-
-#: src/epfl-news/inspector.js:209
-msgid "Themes"
-msgstr ""
-
-#: src/epfl-news/inspector.js:221
-msgid "Category"
-msgstr ""
-
-#: src/epfl-news/inspector.js:223
-msgid "Filter news by category"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:102
-msgid "Text to display in search box"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:106
-msgid "Table header"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:112
-msgid "Filter options"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:113
-msgid "Filter only on column(s) no"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:120
-msgid "Sort options"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:121
-msgid "Apply numeric sort on column(s)"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:124
-msgid "If multiple columns, separate with comma"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:130
-msgid "Table Filter"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:59
-msgid "No header"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:60
-msgid "Sortable header"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:64
-msgid "EPFL Table Filter"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:65
-msgid "Create a table with search and sort options"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:91
-msgid "https://www.epfl.ch/campus/services/website/table-filter-en/"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:93
-msgid "Format"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:95
-msgid "Large display"
-msgstr ""
-
-#: src/epfl-table-filter/index.js:99
-msgid "Placeholder"
+#: src/epfl-social-feed/index.js:94
+msgid "Set the width in pixel (optional). 374 is recommended"
 msgstr ""
