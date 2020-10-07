@@ -22,7 +22,7 @@ function epfl_faq_item_block($attributes, $inner_content)
 
     ob_start();
 ?>
-  <div class="faq-item py-4" id="<?php echo $anchor; ?>">
+  <div class="faq-item" id="<?php echo $anchor; ?>">
     <h4 class="faq-item-question"><?php echo $question ?></h4>
     <?php echo $inner_content ?>
   </div>
@@ -50,8 +50,8 @@ function epfl_faq_block($data, $inner_content) {
 
 ?>
 
-<div class="grid py-3">
-  <ul class="link-list epfl-faq-header mb-4 pb-2">
+<div class="grid">
+  <ul class="link-list epfl-faq-header">
   </ul>
   <?php
      echo $inner_content;
