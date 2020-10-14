@@ -134,10 +134,10 @@ function epfl_news_block( $attributes ) {
   var_dump("Themes: " . $themes);
   var_dump("Projects: " . $projects);
   */
-  
+
 
   if (epfl_news_check_required_parameters($channel, $lang) == FALSE) {
-      return Utils::render_user_msg("News shortcode: Please check required parameters");
+      return Utils::render_user_msg("News block: Please check required parameters");
   }
 
   $url = epfl_news_build_api_url(
@@ -151,8 +151,14 @@ function epfl_news_block( $attributes ) {
   );
 
   $actus = Utils::get_items($url);
-  if (property_exists($actus, 'detail') && $actus->detail === "Not found.") {
-      return Utils::render_user_msg("News shortcode: Please check required parameters");
+
+  if (false === $actus) {
+    return Utils::render_user_msg("News block: Error retrieving items");
+  }
+
+  if (is_object($actus) && property_exists($actus, 'detail') && $actus->detail === "Not found.") {
+
+      return Utils::render_user_msg("News block: Please check required parameters");
   }
 
   $markup = epfl_news_render($actus->results, $template, $all_news_link);

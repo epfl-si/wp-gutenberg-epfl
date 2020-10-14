@@ -50,7 +50,7 @@ function epfl_people_block( $attributes ) {
     var_dump($columns);
     var_dump($order);
     var_dump($structure);
-    */    
+    */
 
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
@@ -63,7 +63,7 @@ function epfl_people_block( $attributes ) {
     // function can contain a whitespace
     $functions = explode(",", $function);
     $functions = array_map('trim', $functions);
-    $function = implode(",",$functions); 
+    $function = implode(",",$functions);
 
     if ($columns !== 'list') {
         $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
@@ -116,12 +116,13 @@ function epfl_people_block( $attributes ) {
 
     // retrieve the data in JSON
     $items = Utils::get_items($url, 300, 15);
+
     if (false === $items) {
         return Utils::render_user_msg("People block: Error retrieving items");
     }
 
     // If webservice returns an error
-    if(property_exists($items, 'Error'))
+    if(is_object($items) && property_exists($items, 'Error'))
     {
         return Utils::render_user_msg("People block: Webservice error: ".$items->Error->text);
     }
