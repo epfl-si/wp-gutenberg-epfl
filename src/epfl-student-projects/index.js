@@ -1,8 +1,14 @@
 import * as axios from 'axios';
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import studentProjectsIcon from './student-projects-icon'
 import InspectorControlsStudentProjects from './inspector'
+
+export const version = "v1.0.2";
 
 const { __ } = wp.i18n;
 
@@ -22,10 +28,13 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/student-projects', {
     title: __( 'EPFL Student Projects', 'epfl'),
-    description: 'v1.0.2',
+    description: __(
+        'Display a list of semester or master\'s projects from IS Academia',
+        'epfl'
+    ),
     icon: studentProjectsIcon,
     category: hasCommonCategory ? 'common' : 'embed',
-    attributes: {
+    attributes: getTooltippedAttributes({
         title:{
             type: 'string',
         },
@@ -39,12 +48,22 @@ registerBlockType( 'epfl/student-projects', {
             type: 'string',
         }
 
-    },
+    }),
+    example: getTooltippedExample(),
     supports : {
         customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
     },
     edit: ( props ) => {
         const { attributes, className, setAttributes } = props
+
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return(
+                <Fragment>
+                    <img src={ blockThumbnails.studentProjects } />
+                </Fragment>
+            );
+        }
 
         return (
             <Fragment>

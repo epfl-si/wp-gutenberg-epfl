@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
- * Version:         2.3.3
+ * Version:         2.4.0
  * Author:          WordPress EPFL Team
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -146,6 +146,52 @@ function wp_gutenberg_epfl_editor_assets() {
         plugins_url( $index_js, __FILE__ ),
         $script_asset['dependencies'],
         $script_asset['version']
+    );
+
+    # easiest way to transmit URL to blocks
+    # could be a build config, maybe
+    wp_localize_script(
+        'wp-gutenberg-scripts',
+        'blockThumbnails',
+        [
+            'alert' => plugins_url( 'src/block-thumbnails/alert.jpg', __FILE__ ),
+            'button' => plugins_url( 'src/block-thumbnails/button.gif', __FILE__ ),
+            'captionCards' => plugins_url( 'src/block-thumbnails/caption-cards.jpg', __FILE__ ),
+            'carousel' => plugins_url( 'src/block-thumbnails/carousel.jpg', __FILE__ ),
+            'cardDeck' => plugins_url( 'src/block-thumbnails/card-deck.jpg', __FILE__ ),
+            'contact' => plugins_url( 'src/block-thumbnails/contact.jpg', __FILE__ ),
+            'courses' => plugins_url( 'src/block-thumbnails/courses.jpg', __FILE__ ),
+            'cover' => plugins_url( 'src/block-thumbnails/cover.jpg', __FILE__ ),
+            'customHighlight' => plugins_url( 'src/block-thumbnails/custom-highlight.jpg', __FILE__ ),
+            'customTeaser' => plugins_url( 'src/block-thumbnails/custom-teasers.jpg', __FILE__ ),
+            'definitionList' => plugins_url( 'src/block-thumbnails/definition-list.jpg', __FILE__ ),
+            'faq' => plugins_url( 'src/block-thumbnails/faq.jpg', __FILE__ ),
+            'gallery' => plugins_url( 'src/block-thumbnails/galerie.jpg', __FILE__ ),
+            'googleForms' => plugins_url( 'src/block-thumbnails/google-form.jpg', __FILE__ ),
+            'hero' => plugins_url( 'src/block-thumbnails/hero.jpg', __FILE__ ),
+            'infoscience' => plugins_url( 'src/block-thumbnails/infoscience.jpg', __FILE__ ),
+            'introduction' => plugins_url( 'src/block-thumbnails/introduction.jpg', __FILE__ ),
+            'linksGroup' => plugins_url( 'src/block-thumbnails/links-group.jpg', __FILE__ ),
+            'map' => plugins_url( 'src/block-thumbnails/map.jpg', __FILE__ ),
+            'memento' => plugins_url( 'src/block-thumbnails/memento.jpg', __FILE__ ),
+            'miniCards' => plugins_url( 'src/block-thumbnails/mini-cards.jpg', __FILE__ ),
+            'news' => plugins_url( 'src/block-thumbnails/news.jpg', __FILE__ ),
+            'pageHighlight' => plugins_url( 'src/block-thumbnails/page-highlight.jpg', __FILE__ ),
+            'pageTeaser' => plugins_url( 'src/block-thumbnails/page-teaser.jpg', __FILE__ ),
+            'pdf' => plugins_url( 'src/block-thumbnails/pdf.jpg', __FILE__ ),
+            'people' => plugins_url( 'src/block-thumbnails/people.jpg', __FILE__ ),
+            'studentProjects' => plugins_url( 'src/block-thumbnails/student-projects.jpg', __FILE__ ),
+            'postHighlight' => plugins_url( 'src/block-thumbnails/post-highlight.jpg', __FILE__ ),
+            'postTeaser' => plugins_url( 'src/block-thumbnails/post-teaser.jpg', __FILE__ ),
+            'quote' => plugins_url( 'src/block-thumbnails/quote.jpg', __FILE__ ),
+            'scheduler' => plugins_url( 'src/block-thumbnails/scheduler.jpg', __FILE__ ),
+            'socialFeed' => plugins_url( 'src/block-thumbnails/socialFeed.jpg', __FILE__ ),
+            'table' => plugins_url( 'src/block-thumbnails/table.jpg', __FILE__ ),
+            'tableau' => plugins_url( 'src/block-thumbnails/tableau.jpg', __FILE__ ),
+            'tableFilter' => plugins_url( 'src/block-thumbnails/table-filter.jpg', __FILE__ ),
+            'toggle' => plugins_url( 'src/block-thumbnails/toggle.jpg', __FILE__ ),
+            'video' => plugins_url( 'src/block-thumbnails/video.jpg', __FILE__ ),
+        ]
     );
 
     // Styles.

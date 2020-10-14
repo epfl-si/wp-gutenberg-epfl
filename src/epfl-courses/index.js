@@ -1,7 +1,13 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+	hasCommonCategory,
+	getTooltippedAttributes,
+	getTooltippedExample,
+} from '../block-utils.js'
 
 import coursesIcon from './courses-icon'
 import InspectorControlsCourses from './inspector'
+
+export const version = "v1.2.0";
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -12,13 +18,16 @@ registerBlockType(
 	'epfl/courses',
 	{
 		title: __( "EPFL Courses", 'epfl'),
-		description: 'v1.2.0',
+		description: __(
+			'Display all courses given by a teacher, in a section or in a lab',
+			'epfl'
+		),
 		icon: coursesIcon,
 		category: hasCommonCategory ? 'common' : 'embed',
 		keywords: [
 			__( 'courses' , 'epfl'),
 		],
-		attributes: {
+		attributes: getTooltippedAttributes({
 			title:{
 				type: 'string',
 			},
@@ -44,13 +53,24 @@ registerBlockType(
 				type: 'string',
 			}
 
-		},
+		}),
+		example: getTooltippedExample(),
 		supports : {
 			customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 		},
 
 		edit: props => {
 			const { attributes, className, setAttributes } = props
+
+			if ( attributes.asToolTip ) {
+				// render the tooltip
+				return (
+					<Fragment>
+						<img src={ blockThumbnails.courses } />
+					</Fragment>
+				);
+			}
+
 			return (
 				<Fragment>
 					<InspectorControlsCourses { ...{ attributes, setAttributes } } />

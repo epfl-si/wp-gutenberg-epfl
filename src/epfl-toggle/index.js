@@ -1,6 +1,12 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import toggleIcon from './toggle-icon'
+
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -26,10 +32,13 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/toggle', {
 
 	title: __( 'EPFL Toggle', 'epfl'),
-	description: 'v1.1.0',
+	description: __(
+		'Create a block with toggleable content (accordion)',
+		'epfl'
+	),
 	icon: toggleIcon,
 	category: hasCommonCategory ? 'common' : 'text',
-	attributes: {
+	attributes: getTooltippedAttributes({
 		title: {
 			type: 'string',
 		},
@@ -40,7 +49,8 @@ registerBlockType( 'epfl/toggle', {
             type: 'string',
             default: 'close'
         }
-	},
+	}),
+	example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
@@ -48,10 +58,20 @@ registerBlockType( 'epfl/toggle', {
 
         const { attributes, className, setAttributes } = props
 
+		if ( attributes.asToolTip ) {
+			// render the tooltip
+			return(
+				<Fragment>
+					<img src={ blockThumbnails.toggle } />
+				</Fragment>
+			);
+		}
+
 		return (
 		<Fragment>
 			<InspectorControls>
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/toggle-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p className="wp-block-help">{ version }</p>
 				<PanelBody>
 					<RadioControl
                         label={ __('Initial state', 'epfl') }

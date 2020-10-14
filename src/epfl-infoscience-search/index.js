@@ -1,9 +1,20 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+	hasCommonCategory,
+	getTooltippedAttributes,
+	getTooltippedExample,
+} from '../block-utils.js'
 
 import infoscienceIcon from './infoscience-icon'
 import InspectorControlsInfoscience from './inspector'
+import React from "react";
+
+const version = "v1.1.2";
 
 const { __ } = wp.i18n;
+
+const {
+	InspectorControls,
+} = wp.blockEditor
 
 const {
 	registerBlockType,
@@ -13,10 +24,13 @@ const { Fragment } = wp.element;
 
 registerBlockType( 'epfl/infoscience-search', {
 	title: __( 'EPFL Infoscience', 'epfl'),
-	description: 'v1.1.2',
+	description: __(
+		'Display a list of publications from Infoscience',
+		'epfl'
+	),
 	icon: infoscienceIcon,
 	category: hasCommonCategory ? 'common' : 'embed',
-	attributes: {
+	attributes: getTooltippedAttributes({
 		url: {
 			type: 'string',
 		},
@@ -79,7 +93,8 @@ registerBlockType( 'epfl/infoscience-search', {
 			type: 'boolean',
 			default: null,
 		}
-	},
+	}),
+	example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
@@ -87,8 +102,20 @@ registerBlockType( 'epfl/infoscience-search', {
 
 		const { attributes, className, setAttributes } = props
 
+		if ( attributes.asToolTip ) {
+			// render the tooltip
+			return (
+				<Fragment>
+					<img src={ blockThumbnails.infoscience } />
+				</Fragment>
+			);
+		}
+
 		return (
 		<Fragment>
+			<InspectorControls>
+				<p className="wp-block-help">{ version }</p>
+			</InspectorControls>
 			<div className={ className }>
 				<InspectorControlsInfoscience { ...{ attributes, setAttributes } } />
                 <div id="preview-box">

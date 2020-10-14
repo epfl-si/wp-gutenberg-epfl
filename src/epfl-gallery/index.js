@@ -1,4 +1,10 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
+
+const version = "v1.0.0";
 
 const { __ } = wp.i18n;
 
@@ -35,25 +41,39 @@ const getAttributes = () => {
         },
     };
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 registerBlockType( 'epfl/gallery', {
 	title: __( 'EPFL Gallery', 'epfl'),
-	description: 'v1.0.0',
+    description: __(
+        'Display a series of images with thumbnails',
+        'epfl'
+    ),
 	icon: 'format-gallery',
     category: hasCommonCategory ? 'common' : 'media',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return (
+                <Fragment>
+                    <img src={ blockThumbnails.gallery } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/gallery/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title={ __('Format', 'epfl') }>
                         <ToggleControl
                             label={ __('Large display', 'epfl') }

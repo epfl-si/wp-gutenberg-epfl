@@ -1,7 +1,13 @@
-import { hasCommonCategory } from '../block-utils.js'
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
 
 import miniCardIcon from './mini-card-icon'
 import './mini-card-panel'
+
+const version = "v1.0.1";
 
 const { __ } = wp.i18n;
 
@@ -42,25 +48,39 @@ const getAttributes = () => {
         },
     };
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 registerBlockType( 'epfl/mini-card-deck', {
 	title: __( 'EPFL Mini Card Deck', 'epfl'),
-	description: 'v1.0.1',
+    description: __(
+        'Create links (6 per line max) in the form of small images and short titles',
+        'epfl'
+    ),
 	icon: miniCardIcon,
     category: hasCommonCategory ? 'common' : 'design',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props;
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return(
+                <Fragment>
+                    <img src={ blockThumbnails.miniCards } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/mini-card-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                     <PanelBody title='Format'>
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'epfl') }

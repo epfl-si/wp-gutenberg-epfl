@@ -1,5 +1,12 @@
 import {image, image as icon} from '@wordpress/icons';
-import { hasCommonCategory } from '../block-utils.js'
+
+import {
+    hasCommonCategory,
+    getTooltippedAttributes,
+    getTooltippedExample,
+} from '../block-utils.js'
+
+const version = "v1.0.4";
 
 const { __ } = wp.i18n;
 
@@ -44,7 +51,7 @@ const getAttributes = () => {
         };
     }
 
-    return atts;
+    return getTooltippedAttributes(atts);
 }
 
 function CaptionCardPanel ( props ) {
@@ -138,20 +145,34 @@ function CaptionCardPanel ( props ) {
 
 registerBlockType( 'epfl/caption-cards', {
 	title: __( 'EPFL Caption Cards', 'epfl'),
-	description: 'v1.0.4',
+    description: __(
+        'Create links in the form of image blocks, with an overlayed title and subtitle',
+        'epfl'
+    ),
 	icon: 'screenoptions',
     category: hasCommonCategory ? 'common' : 'design',
 	attributes: getAttributes(),
+    example: getTooltippedExample(),
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
 
+        if ( attributes.asToolTip ) {
+            // render the tooltip
+            return (
+                <Fragment>
+                    <img src={ blockThumbnails.captionCards } />
+                </Fragment>
+            );
+        }
+
         return (
             <Fragment>
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/caption-cards-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                    <p className="wp-block-help">{ version }</p>
                 </InspectorControls>
                 <div className={ className }>
                     {[...Array(maxCaptionCards)].map((x, i) =>

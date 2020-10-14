@@ -1,4 +1,5 @@
 import React from 'react';
+import { version } from './index';
 
 const { __ } = wp.i18n
 const {
@@ -65,6 +66,7 @@ export default class InspectorControlsPeople extends Component {
         content = (
             <InspectorControls>
                 <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/people-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+                <p className="wp-block-help">{ version }</p>
                 <PanelBody title={ __( 'Select by', 'epfl') }>
                     <strong>{__( 'Units', 'epfl')}</strong>
                     <TextControl
