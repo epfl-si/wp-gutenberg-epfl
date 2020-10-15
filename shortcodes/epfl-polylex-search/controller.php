@@ -64,7 +64,7 @@ function polylex_filter_out_unused_language($lexes) {
       $lex->category = $lex->category->nameFr;
       unset($lex->category->nameEn);
 
-      $lex_subcategories = $lex->subcategories;
+      $lex_subcategories = $lex->subcategories ?? [];
       unset($lex->subcategories);
       $lex->subcategories = [];
       foreach ($lex_subcategories as $subcategory) {
@@ -85,7 +85,7 @@ function polylex_filter_out_unused_language($lexes) {
       $lex->category = $lex->category->nameEn;
       unset($lex->category->nameFr);
 
-      $lex_subcategories = $lex->subcategories;
+      $lex_subcategories = $lex->subcategories ?? [];
       unset($lex->subcategories);
       $lex->subcategories = [];
       foreach ($lex_subcategories as $subcategory) {
