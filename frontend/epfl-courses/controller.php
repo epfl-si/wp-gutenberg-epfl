@@ -25,7 +25,7 @@ function epfl_courses_block( $attributes ) {
     $teaching_lang    = Utils::get_sanitized_attribute( $attributes, 'teachingLang');
     $semester         = Utils::get_sanitized_attribute( $attributes, 'semester');
     $orientation      = Utils::get_sanitized_attribute( $attributes, 'orientation');
-    
+
     // var_dump($title);
     // var_dump($unit);
     // var_dump($scipers);
@@ -34,7 +34,7 @@ function epfl_courses_block( $attributes ) {
     // var_dump($teaching_lang);
     // var_dump($semester);
     // var_dump($orientation);
-    
+
     $parameters = [];
 
     if($unit != "")
@@ -56,7 +56,7 @@ function epfl_courses_block( $attributes ) {
     if($semester != "")     { $parameters['sem'] = $semester; }
     if($course_code != "")  { $parameters['code'] = urlencode($course_code); }
     if($orientation != "")  { $parameters['orient'] = urlencode($orientation); }
-    
+
 
     /* Presentation */
     if (function_exists('pll_current_language')) {
@@ -65,7 +65,7 @@ function epfl_courses_block( $attributes ) {
             $parameters['lang'] = $current_language;
         }
     }
-    
+
     $parameters['format'] = 'json';
 
 
@@ -78,13 +78,13 @@ function epfl_courses_block( $attributes ) {
 
 
     if (false === $items) {
-        return Utils::render_user_msg("Course Block: Error retrieving items");
+        return Utils::render_user_msg("Course block: Error retrieving items");
     }
 
     // If webservice returns an error
-    if(property_exists($items, 'Error'))
+    if(is_object($items) && property_exists($items, 'Error'))
     {
-        return Utils::render_user_msg("Course Block: Webservice error: ".$items->Error->text);
+        return Utils::render_user_msg("Course block: Webservice error: ".$items->Error->text);
     }
 
 
