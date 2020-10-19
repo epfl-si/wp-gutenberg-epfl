@@ -23,11 +23,17 @@ if ($event->speaker !== '') {
     $markup .= '<br>';
 }
 
- if ($event->place_and_room !== '') {
+if ($event->place_and_room !== '') {
     $markup .= __('Place and room', 'epfl');
     $markup .= ': <b>' . esc_html($event->place_and_room) . '</b>';
     $markup .= '<br>';
- }
+}
+
+if ($event->url_online_room !== '') {
+  $markup .= __('Online', 'epfl');
+  $markup .= ': <b>' . esc_html($event->url_online_room) . '</b>';
+  $markup .= '<br>';
+}
 
 if (get_current_language() == 'fr' and $event->category->fr_label !== ''){
     $markup .= __('Category', 'epfl') . ': <b>' . esc_html($event->category->fr_label) . '</b>';

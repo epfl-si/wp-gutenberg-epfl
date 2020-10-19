@@ -117,7 +117,12 @@ export default class PreviewMemento extends Component {
 
           let placeAndRoom;
           if (!!event.place_and_room) {
-            placeAndRoom = <span><br/>{ __('Place and room:', 'epfl') } <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
+            placeAndRoom = <span><br/>{ __('Place and room', 'epfl') }: <b><span itemProp="name">{ event.place_and_room }</span></b></span>;
+          }
+
+          let urlOnlineRoom;
+          if (!!event.url_online_room) {
+            urlOnlineRoom = <span><br/>{ __('Online', 'epfl') }: <b><span itemProp="name">{ event.url_online_room }</span></b></span>;
           }
 
           let eventSpeakerContent;
@@ -177,6 +182,7 @@ export default class PreviewMemento extends Component {
                             </span>
                             <span>
                                 { placeAndRoom }
+                                { urlOnlineRoom }
                                 <br />
                                 { category }<br />
                             </span>
