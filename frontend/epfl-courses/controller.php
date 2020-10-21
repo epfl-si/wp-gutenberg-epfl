@@ -87,8 +87,7 @@ function epfl_courses_block( $attributes ) {
         return Utils::render_user_msg("Course block: Webservice error: ".$items->Error->text);
     }
 
-
-    if(sizeof($items) == 0)
+    if(!is_countable($items) || count($items) == 0)
     {
         return '<i>No course found for given parameters</i>';
     }
@@ -115,5 +114,4 @@ function epfl_courses_block( $attributes ) {
     }
 
     return $html;
-
 }

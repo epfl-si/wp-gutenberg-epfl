@@ -83,7 +83,7 @@ function epfl_card_deck_block($data, $inner_content) {
 ?>
 
 <div class="container-full py-3 px-4<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
-  <div class="card-deck <?php echo (sizeof($matches[0]) == 2) ? ' card-deck-line' : '' ?>">
+  <div class="card-deck <?php echo (count($matches[0]) == 2) ? ' card-deck-line' : '' ?>">
     <?php
     echo $inner_content;
     ?>

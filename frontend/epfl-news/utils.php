@@ -8,7 +8,7 @@ namespace EPFL\Plugins\Gutenberg\News;
  */
 function epfl_news_get_url_channel($data) {
     $url_channel = "";
-    if (count($data) > 0) {
+    if (is_countable($data) && count($data) > 0) {
         $url_channel .= BASE_NEWS_URL . "/search/";
         if (get_locale() == 'fr_FR') {
             $url_channel .= "fr/";

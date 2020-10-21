@@ -3,12 +3,7 @@
 
     // template = 1
     function epfl_memento_slider($results, $template, $memento_name, $period) {
-
-        $memento_url = "https://memento.epfl.ch/" . $memento_name;
-
         $display_first_event = ($template == 1);
-
-        $nb_events = count($results);
 
         $markup = '<div class="container-full overflow-hidden my-3 pl-5">';
         $markup .= '<div class="container">';

@@ -6,7 +6,7 @@
 
         $count = 1;
         $header = false;
-        $last = count($results);
+        $last = is_countable($results) ? count($results) : 0;
 
         $url_channel = epfl_news_get_url_channel($results);
 
@@ -24,7 +24,7 @@
             $visual_url           = epfl_news_get_visual_url($news);
             $short_vimeo_video_id = $news->short_vimeo_video_id;
 
-            if ( !empty($short_vimeo_video_id) ) {	
+            if ( !empty($short_vimeo_video_id) ) {
               $media_url = "https://player.vimeo.com/video/" . $short_vimeo_video_id . "?autoplay=1&loop=1&muted=1&background=1&quality=720";
             }
 

@@ -94,7 +94,7 @@ Class InfoscienceMarcConverter
 
         foreach ($fields_0247 as $field) {
             # get the id name, the 0247_2
-            if (sizeof($field) > 1) {
+            if (count($field) > 1) {
                 if (strtolower($field[1]) === 'doi')
                 {
                     $dois[] = $field[0];

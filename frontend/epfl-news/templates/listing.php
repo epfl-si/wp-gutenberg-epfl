@@ -4,8 +4,6 @@
     // template = 1
     function epfl_news_listing($results, $all_news_link) {
         $count = 1;
-        $header = false;
-        $last = count($results);
         $url_channel = epfl_news_get_url_channel($results);
 
         $markup = '<div class="container my-3">';
@@ -19,7 +17,7 @@
             $publish_date         = epfl_news_get_publish_date($news);
             $subtitle             = epfl_news_get_subtitle($news);
             $visual_url           = epfl_news_get_visual_url($news);
-            
+
             $markup .= '<a href="' . esc_url($news->news_url) . '" class="list-group-item list-group-teaser link-trapeze-vertical">';
             $markup .= '<div class="list-group-teaser-container">';
             $markup .= '<div class="list-group-teaser-thumbnail">';

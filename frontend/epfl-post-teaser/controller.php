@@ -33,20 +33,20 @@ function epfl_post_teaser_block( $attributes ) {
         /* If category to filter has been given */
         if ($postCategory !== '') {
             $postCategory = json_decode($postCategory, true);
-            
+
             /* We ensure a category other than "None" was selected  */
             if($postCategory["value"] !==null)
             {
                 $args['category'] = $postCategory["value"];
             }
         }
-        
+
         foreach(get_posts($args) as $post)
         {
             $data[] = $post->ID;
-            if(sizeof($data)==3) break;
+            if(count($data)==3) break;
         }
-        
+
     }
     else
     {

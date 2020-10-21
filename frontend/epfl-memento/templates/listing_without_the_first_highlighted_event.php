@@ -2,11 +2,6 @@
     namespace EPFL\Plugins\Gutenberg\Memento;
 
     function epfl_memento_listing_without_the_first_highlighted_event($results, $memento_name) {
-
-        $memento_url = "https://memento.epfl.ch/" . $memento_name;
-        $display_first_event = FALSE;
-        $nb_events = count($results);
-
         $markup = '<div class="container list-group" style="padding-left: 16px">';
 
         if (!(bool) $results) {
@@ -15,9 +10,7 @@
             $markup .= '</h3></div>';
         }
 
-        $count=1;
         foreach($results as $event) {
-            $is_first_event = ($count==1);
             $visual_url = get_visual_url($event, $memento_name);
             $markup .= '<a href="' . esc_url($event->event_url) . '" class="list-group-item list-group-item-gray list-group-teaser link-trapeze-vertical" itemscope itemtype="http://schema.org/Event">';
             $markup .= '<div class="list-group-teaser-container">';
@@ -49,8 +42,6 @@
             $markup .= '</div>';
             $markup .= '</div>';
             $markup .= '</a>';
-
-            $count++;
         }
 
         $markup .= '</div>';

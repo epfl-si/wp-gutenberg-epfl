@@ -6,7 +6,7 @@
 
         $count = 1;
         $header = false;
-        $last = count($results);
+        $last = is_countable($results) ? count($results) : 0;
         $url_channel = epfl_news_get_url_channel($results);
 
         $markup = '<div class="container-full my-3 pl-5">';

@@ -5,9 +5,7 @@
     function epfl_news_card_with_1_news($results, $all_news_link) {
 
         $count = 1;
-        $header = false;
         $last = count($results);
-        $url_channel = epfl_news_get_url_channel($results);
 
         $markup = '<div class="container-full my-3 pl-5">';
         $markup .= '<div class="list-group">';
@@ -20,7 +18,7 @@
             $publish_date         = epfl_news_get_publish_date($news);
             $subtitle             = epfl_news_get_subtitle($news);
             $visual_url           = epfl_news_get_visual_url($news);
-            
+
             if ($is_first_event) {
                 $markup .= '<div class="row">';
             }

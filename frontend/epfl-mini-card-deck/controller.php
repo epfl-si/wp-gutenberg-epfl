@@ -38,11 +38,11 @@ function epfl_mini_card_panel_block($attributes)
           ]
           ) ?>
         </picture>
-        
+
         <?php endif; /* End if image post */ ?>
 
         <div class="card-body">
-        
+
           <h3 class="card-title"><?php echo $legend ?></h3>
 
         </div>
@@ -73,7 +73,7 @@ function epfl_mini_card_deck_block($attributes, $inner_content) {
 ?>
 
 <div class="container-full py-3 px-4<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
-  <div class="card-deck mini-cards <?php echo (sizeof($matches[0]) == 5) ? ' card-deck-line' : '' ?>">
+  <div class="card-deck mini-cards <?php echo (count($matches[0]) == 5) ? ' card-deck-line' : '' ?>">
     <h2 class="deck-title"><?php echo $title; ?></h2>
     <?php
     echo $inner_content;
