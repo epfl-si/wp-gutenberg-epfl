@@ -116,7 +116,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
   if($item->project->externe->site !== null)
   {
     // website is a link
-    if(preg_match('/^ĥttp/', $item->project->externe->site->fr)===1)
+    if(preg_match('/^http/', $item->project->externe->site->fr)===1)
     {
       $external[] = '<a href="'.$item->project->externe->site->fr.'" target="_blank">'.$item->project->externe->site->fr.'</a>';
     }
