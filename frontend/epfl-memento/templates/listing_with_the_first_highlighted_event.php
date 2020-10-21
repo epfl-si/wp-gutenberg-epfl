@@ -4,13 +4,12 @@
     function epfl_memento_listing_with_the_first_highlighted_event($results, $memento_name, $period) {
 
         $memento_url = get_memento_url($period, $memento_name);
-        $display_first_event = TRUE;
-        $nb_events = count($results);
+        $nb_events = is_countable($results) ? count($results) : 0;
 
         $markup = '<div class="container my-3">';
         $markup .= '<div class="row align-items-center">';
         $markup .= '<div class="col-md-6">';
-        if ($period === 'past') { 
+        if ($period === 'past') {
           $markup .= '<h2>' . __('Past events', 'epfl') . '</h2>';
         } else {
           $markup .= '<h2>' . __('Next events', 'epfl') . '</h2>';
@@ -34,7 +33,7 @@
             $is_first_event = ($count == 1);
             $visual_url = get_visual_url($event, $memento_name);
 
-            if ($is_first_event and $display_first_event) {
+            if ($is_first_event) {
                 $markup .= '<div class="col-md-6">';
                 $markup .= '<a href="' . esc_url($event->event_url) .'" class="card card-gray link-trapeze-horizontal" itemscope itemtype="http://schema.org/Event">';
                 $markup .= '<div class="card-body">';
@@ -99,7 +98,7 @@
                 $markup .= '</div>';
                 $markup .= '</a>';
             }
-            if ($count === $nb_events and $display_first_event) {
+            if ($count === $nb_events) {
                 $markup .= '</div>';
                 $markup .= '</div>';
             }

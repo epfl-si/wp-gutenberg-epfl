@@ -15,7 +15,7 @@ function get_link($url)
 
 
 function epfl_student_projects_block($attributes, $inner_content) {
-    
+
     // To avoid to execute all code below (useless) when we just click on "Update" to save page while editing it
     if(is_admin()) return "";
 
@@ -47,7 +47,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
       }
     }
 
-    if(sizeof($search_params)>0) $url .= "/search?".implode('&', $search_params);
+    if(count($search_params)>0) $url .= "/search?".implode('&', $search_params);
 
     $items = Utils::get_items($url, 0, 5, false);
 
@@ -55,14 +55,14 @@ function epfl_student_projects_block($attributes, $inner_content) {
     {
       return Utils::render_user_msg("Error getting project list");
     }
-    
+
     ob_start();
 
 ?>
 <div class="container">
   <h2><?php echo $title ?></h2>
 
-<?php foreach($items as $item): 
+<?php foreach($items as $item):
 
   // to skip "deleted" projects
   if($item->project->status->code == 'STATUT_STAGE_SUPPR')
@@ -71,15 +71,15 @@ function epfl_student_projects_block($attributes, $inner_content) {
   }
 
   // To use ad ID for collapsing/expanding project
-  $project_id = md5($title.$item->project->noProjet->fr); 
-  
+  $project_id = md5($title.$item->project->noProjet->fr);
+
   $types = array();
   foreach($item->project->types as $type){ $types[] = $type->fr;}
 
-  
+
   $professors = array();
   $professors_name_only = array();
-  if($item->project->enseignants->principal1->sciper != '') 
+  if($item->project->enseignants->principal1->sciper != '')
   {
     // To extract beginning of the string if exists: "Laboratoire d’automatique 3, IGM – Gestion" to "Laboratoire d’automatique 3"
     $parts = explode(',', $item->project->enseignants->principal1->laboratory->fr);
@@ -101,8 +101,8 @@ function epfl_student_projects_block($attributes, $inner_content) {
     $details[] = array('Comment', str_replace("\r\n", '</p><p>', $item->project->commentaire->fr));
   }
   $details[] = array('Professor(s)', implode(", ", $professors));
-  
-  if($item->project->administrateur !== null)  
+
+  if($item->project->administrateur !== null)
   {
     // Format is "<firstName> <lastName> (<sciper>)" and we need to explode to have "name" and "sciper"...
     $matches = array();
@@ -113,7 +113,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
 
   $external = array();
   if($item->project->externe->laboratoire !== null) $external[] = $item->project->externe->laboratoire->fr;
-  if($item->project->externe->site !== null) 
+  if($item->project->externe->site !== null)
   {
     // website is a link
     if(preg_match('/^ĥttp/', $item->project->externe->site->fr)===1)
@@ -123,11 +123,11 @@ function epfl_student_projects_block($attributes, $inner_content) {
     else
     {
       $external[] = $item->project->externe->site->fr;
-    }      
+    }
   }
 
   if($item->project->externe->email !== null) $external[] = '<a href="mailto:'.$item->project->externe->email->fr.'">'.$item->project->externe->email->fr.'</a>';
-  if(sizeof($external)>0) $details[] = array('External', implode(", ", $external));
+  if(count($external)>0) $details[] = array('External', implode(", ", $external));
 
   if($item->project->site !== null) $details[] = array('Site', '<a href="'.$item->project->site->fr.'" target="_blank">'.$item->project->site->fr.'</a>');
 
