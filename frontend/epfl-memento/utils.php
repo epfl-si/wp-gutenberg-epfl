@@ -61,8 +61,9 @@ function is_just_finished($end_date, $end_time) {
 /**
  *
  */
-function is_inscription_required($invitation) {
-    return ($invitation === "Registration required");
+function is_inscription_required($registration) {
+    // id=1 => "Registration required"
+    return ($registration->id === 1);
 }
 
 function get_event() {
