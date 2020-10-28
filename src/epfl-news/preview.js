@@ -30,7 +30,7 @@ export default class PreviewNews extends Component {
 				newsUrl += `&themes=${theme.value}`;
 			});
     }
-    
+
     if (attributes.sections !== null) {
 			let sections = JSON.parse(attributes.sections);
 			sections.forEach(section => {
@@ -110,14 +110,17 @@ export default class PreviewNews extends Component {
 								<div className="list-group-teaser-container">
 									<div className="list-group-teaser-thumbnail">
 										<picture>
-											<img src={ news.thumbnail_url } className="img-fluid" alt={ news.visual_description } />
+											<img src={ news.thumbnail_url
+													? news.thumbnail_url
+													: "https://actu.epfl.ch/static/img/placeholder.png"
+												} className="img-fluid" alt={ news.visual_description } />
 										</picture>
 									</div>
 									<div className="list-group-teaser-content" itemScope itemType="http://schema.org/Article">
 										<p className="h5" itemProp="name">{ news.title }</p>
 										<p>
-											<time dateTime={ news.publish_date } itemProp="datePublished">{ moment(news.publish_date).format('L').split('/').join('.') } </time>
-											<span className="text-muted" itemProp="description">— { stripHtml(news.subtitle) }</span>
+											<time dateTime={ news.publish_date } itemProp="datePublished">{ moment(news.publish_date).format('MM.DD.YYYY') }</time>
+											<span className="text-muted" itemProp="description"> — { stripHtml(news.subtitle) }</span>
 										</p>
 									</div>
 								</div>
