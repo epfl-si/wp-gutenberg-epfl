@@ -11,7 +11,7 @@ import PreviewMemento from './preview'
 import InspectorControlsMemento from './inspector'
 import './utils.js';
 
-export const version = "v1.1.3";
+export const version = "v1.1.4";
 
 const {__} = wp.i18n
 const {registerBlockType} = wp.blocks

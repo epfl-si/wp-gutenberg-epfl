@@ -79,7 +79,9 @@ export default class InspectorControlsMemento extends Component {
             ];
 
             this.state.categories.forEach(category => {
-                optionsCategoriesList.push({ label: category.en_label, value: category.id });
+                if (category.activated) {
+                    optionsCategoriesList.push({ label: category.en_label, value: category.id });
+                }
             });
 
             let optionsYearsList = [

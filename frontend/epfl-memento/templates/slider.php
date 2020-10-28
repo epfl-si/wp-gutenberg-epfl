@@ -26,7 +26,7 @@
 
             $is_first_event = ($count==1);
             $is_just_finished = is_just_finished($event->end_date, $event->end_time);
-            $is_inscription_required = is_inscription_required($event->invitation);
+            $is_inscription_required = is_inscription_required($event->registration);
 
             if ($is_first_event and $display_first_event) {
 
