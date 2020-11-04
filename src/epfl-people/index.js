@@ -8,7 +8,7 @@ import newsIcon from './people-icon'
 import PreviewPeople from './preview'
 import InspectorControlsPeople from './inspector'
 
-export const version = "v1.1.9";
+export const version = "v1.1.10";
 
 const {__} = wp.i18n
 const {registerBlockType} = wp.blocks
