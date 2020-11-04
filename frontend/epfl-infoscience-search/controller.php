@@ -237,7 +237,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # not in cache ?
     if ($page === false || $debug_data || $debug_template) {
         $start = microtime(true);
-        $response = wp_remote_get( $url, ['timeout' => 20] );
+        $response = wp_remote_get( $url, ['timeout' => 30] );
         $end = microtime(true);
 
         // logging call
