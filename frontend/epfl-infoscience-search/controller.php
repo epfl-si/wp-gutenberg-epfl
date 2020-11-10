@@ -8,7 +8,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
  * Description: provides a gutenberg block to search and dispay results from Infoscience
- * Version: 1.0.3
+ * Version: 1.1.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
@@ -224,7 +224,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     $cache_define_by['language'] = $language;
 
-    $cache_key = md5(serialize($cache_define_by));
+    $cache_key = 'epfl_infoscience_search_' . md5(serialize($cache_define_by));
 
     # check if we are here for some cache invalidation
     if (is_admin() && current_user_can( 'edit_pages' )) {
@@ -237,7 +237,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # not in cache ?
     if ($page === false || $debug_data || $debug_template) {
         $start = microtime(true);
-        $response = wp_remote_get( $url, ['timeout' => 30] );
+        $response = wp_remote_get( $url, [
+            'timeout' => 30,
+            # 4 megabytes should be enough to not trigger a memory exhausted error
+            'limit_response_size' => 4000000]
+        );
         $end = microtime(true);
 
         // logging call
@@ -248,7 +252,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 # error is an external cause
                 if (array_key_exists("http_request_failed", $response->errors)) {
                     $error_message = "infoscience.epfl.ch may currently be down or the results you are trying to fetch are too big;";
-                    $error_message .= " Please try again later or set a more precise search with a limit.";
+                    $error_message .= " Please try again later or set a more precise and limited search.";
                 } else {
                     $error_message = $response->get_error_message();
                 }
@@ -282,8 +286,10 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
                 $page .= epfl_infoscience_search_get_mathjax_config();
 
-                // cache the result
-                set_transient($cache_key, $page, 4*HOUR_IN_SECONDS);
+                // cache the result if not empty
+                if (!empty($publications)) {
+                    set_transient($cache_key, $page, 4 * HOUR_IN_SECONDS);
+                }
 
                 // return the page
                 return $page;
@@ -295,7 +301,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                     error_log("Infoscience has not returned any data.");
                 }
 
-                return Utils::render_user_msg("Infoscience is not returning valid data");
+                return Utils::render_user_msg("Infoscience is not returning valid data. Please try again later or set a more precise and limited search.");
             }
         }
     } else {
