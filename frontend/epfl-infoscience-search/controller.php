@@ -286,8 +286,10 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
                 $page .= epfl_infoscience_search_get_mathjax_config();
 
-                // cache the result
-                set_transient($cache_key, $page, 4*HOUR_IN_SECONDS);
+                // cache the result if not empty
+                if (!empty($publications)) {
+                    set_transient($cache_key, $page, 4 * HOUR_IN_SECONDS);
+                }
 
                 // return the page
                 return $page;
