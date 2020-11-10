@@ -8,7 +8,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
  * Description: provides a gutenberg block to search and dispay results from Infoscience
- * Version: 1.0.3
+ * Version: 1.1.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
@@ -224,7 +224,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     $cache_define_by['language'] = $language;
 
-    $cache_key = md5(serialize($cache_define_by));
+    $cache_key = 'epfl_infoscience_search_' . md5(serialize($cache_define_by));
 
     # check if we are here for some cache invalidation
     if (is_admin() && current_user_can( 'edit_pages' )) {
