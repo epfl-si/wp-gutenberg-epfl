@@ -237,7 +237,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # not in cache ?
     if ($page === false || $debug_data || $debug_template) {
         $start = microtime(true);
-        $response = wp_remote_get( $url, ['timeout' => 30] );
+        $response = wp_remote_get( $url, [
+            'timeout' => 30,
+            # 4 megabytes should be enough to not trigger a memory exhausted error
+            'limit_response_size' => 4000000]
+        );
         $end = microtime(true);
 
         // logging call
