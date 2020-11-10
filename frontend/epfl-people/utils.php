@@ -40,7 +40,7 @@ function epfl_people_get_photo($person) {
     if( property_exists($person, 'people') &&
         property_exists($person->people, 'photo_show') &&
         "1" == $person->people->photo_show) {
-        $photo_url = "https://test-people.epfl.ch/private/common/photos/links/" . $person->sciper.".jpg";
+        $photo_url = "https://people.epfl.ch/private/common/photos/links/" . $person->sciper.".jpg";
     }
     return $photo_url;
 }
