@@ -37,8 +37,10 @@ function sort_members(&$members)
  */
 function epfl_people_get_photo($person) {
     $photo_url = "";
-    if( property_exists($person, 'people') && "1" == $person->people->photo_show) {
-        $photo_url = "https://people.epfl.ch/private/common/photos/links/" . $person->sciper.".jpg";
+    if( property_exists($person, 'people') &&
+        property_exists($person->people, 'photo_show') &&
+        "1" == $person->people->photo_show) {
+        $photo_url = "https://test-people.epfl.ch/private/common/photos/links/" . $person->sciper.".jpg";
     }
     return $photo_url;
 }
@@ -71,10 +73,10 @@ function epfl_people_get_phones($person, $order) {
             unset($matches[1]); // remove first digit (0) before local indentifier
             $phones[$key] = "+41 ".implode(" ", $matches);
         }
-        
+
         /* There's no other condition to reformat because normally there is no other format in people.epfl.ch */
     }
-    
+
     return array_unique($phones);
 }
 
@@ -146,5 +148,3 @@ function epfl_people_get_people_url($person) {
     }
     return "https://people.epfl.ch/" . $slug;
 }
-
-?>
