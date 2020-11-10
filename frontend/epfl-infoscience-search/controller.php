@@ -252,7 +252,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 # error is an external cause
                 if (array_key_exists("http_request_failed", $response->errors)) {
                     $error_message = "infoscience.epfl.ch may currently be down or the results you are trying to fetch are too big;";
-                    $error_message .= " Please try again later or set a more precise search with a limit.";
+                    $error_message .= " Please try again later or set a more precise and limited search.";
                 } else {
                     $error_message = $response->get_error_message();
                 }
@@ -299,7 +299,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                     error_log("Infoscience has not returned any data.");
                 }
 
-                return Utils::render_user_msg("Infoscience is not returning valid data");
+                return Utils::render_user_msg("Infoscience is not returning valid data. Please try again later or set a more precise and limited search.");
             }
         }
     } else {
