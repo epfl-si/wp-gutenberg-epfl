@@ -1,10 +1,6 @@
 <?php
     global $wp_embed;
-
-    # height is useless for instagram, as it is fixed
-    # $height = get_query_var('epfl_social_feed_height');
-
-    $instagram_shortcode = '[embed]' . esc_url($instagram_url) . '[/embed]';
+    $instagram_url = trailingslashit(esc_url($instagram_url));
 ?>
 
 <div class="social-feed">
@@ -14,10 +10,17 @@
 
   <div class="social-feed-content">
     <div style="width:<?php esc_html_e($width) ?>px;">
-    <?php echo $wp_embed->run_shortcode($instagram_shortcode); ?>
+
+      <blockquote class="instagram-media"
+                  data-instgrm-captioned
+                  data-instgrm-permalink="<?= $instagram_url ?>"
+                  data-instgrm-version="13"
+      >
+      </blockquote>
+      <script async src="//www.instagram.com/embed.js"></script>
     </div>
     <div>
-      <a class="btn btn-secondary mt-4" href="<?php echo esc_url($instagram_url) ?>" target="_blank"><?php esc_html_e('View this post on Instagram', 'epfl'); ?></a>
+      <a class="btn btn-secondary mt-4" href="<?= $instagram_url ?>" target="_blank"><?php esc_html_e('View this post on Instagram', 'epfl'); ?></a>
     </div>
   </div>
 </div>
