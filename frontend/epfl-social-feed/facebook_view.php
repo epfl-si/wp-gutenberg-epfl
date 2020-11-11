@@ -4,14 +4,7 @@
   </span>
   <div id="fb-root"></div>
   <div class="social-feed-content">
-      <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1';
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-      </script>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="rXqLs5SH"></script>
       <div class="fb-page" style="height:auto;width:<?php esc_html_e($width) ?>px;"
           data-href="<?php echo esc_url($facebook_url) ?>"
           data-tabs="timeline"
