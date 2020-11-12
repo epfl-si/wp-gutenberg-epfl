@@ -1,5 +1,4 @@
 <?php
-    global $wp_embed;
     $instagram_url = trailingslashit(esc_url($instagram_url));
 ?>
 
