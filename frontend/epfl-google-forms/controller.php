@@ -14,7 +14,7 @@ function epfl_google_forms_block( $attributes ) {
     This block also allow to use others subdomains of Google (.google.com) like maps, calendar, etc...
     */
 
-    $url = Utils::get_sanitized_attribute( $attributes, 'url', null);
+    $url = Utils::get_sanitized_url( $attributes, 'url', null);
     $height = Utils::get_sanitized_attribute( $attributes, 'height', null);
 
 
@@ -25,7 +25,7 @@ function epfl_google_forms_block( $attributes ) {
     }
     /* Extract host name to check it */
     $url_host = parse_url($url, PHP_URL_HOST);
-    
+
     /* Check that iframe has a Google host as source */
     if(preg_match('/\.google\.com$/', $url_host) !== 1)
     {

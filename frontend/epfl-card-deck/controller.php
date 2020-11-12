@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 function epfl_card_panel_block($attributes, $inner_content)
 {
     $title      = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $link       = Utils::get_sanitized_attribute( $attributes, 'link' );
+    $link       = Utils::get_sanitized_url( $attributes, 'link' );
     $image_id   = Utils::get_sanitized_attribute( $attributes, 'imageId' );
     $image_url  = Utils::get_sanitized_attribute( $attributes, 'imageUrl' );
 

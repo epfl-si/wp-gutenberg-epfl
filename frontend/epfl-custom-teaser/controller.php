@@ -19,10 +19,10 @@ function epfl_custom_teaser_block( $attributes ) {
         }
 
         $attributes['imageId'.$i]       = Utils::get_sanitized_attribute( $attributes, 'imageId'.$i );
-        $attributes['url'.$i]           = Utils::get_sanitized_attribute( $attributes, 'url'.$i );
+        $attributes['url'.$i]           = Utils::get_sanitized_url( $attributes, 'url'.$i );
         $attributes['buttonLabel'.$i]   = Utils::get_sanitized_attribute( $attributes, 'buttonLabel'.$i );
         $attributes['excerpt'.$i]       = Utils::get_sanitized_attribute( $attributes, 'excerpt'.$i );
-        
+
     }
 
     $attributes['grayBackground'] = Utils::get_sanitized_attribute( $attributes, 'grayBackground', False);
