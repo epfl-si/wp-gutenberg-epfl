@@ -16,6 +16,7 @@
                   data-instgrm-permalink="<?= $instagram_url ?>"
                   data-instgrm-version="13"
       >
+        <div style="height:2px;"></div>
       </blockquote>
       <script async src="//www.instagram.com/embed.js"></script>
     </div>
