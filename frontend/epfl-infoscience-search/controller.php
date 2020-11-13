@@ -294,9 +294,9 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 // return the page
                 return $page;
             } catch (InfoscienceUnknownContentException $e) {
-                error_log("Infoscience is not returning valid data : " . $e->getMessage());
+                error_log("Infoscience is returning invalid data. Message " . $e->getMessage());
                 if (!empty($marc_xml)) {
-                    error_log("Infoscience returned data : " . $marc_xml);
+                    error_log("Excerpt of Infoscience returned data : " . substr($marc_xml, 0, 100));
                 } else {
                     error_log("Infoscience has not returned any data.");
                 }
