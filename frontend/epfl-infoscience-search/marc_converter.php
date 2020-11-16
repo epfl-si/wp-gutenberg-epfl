@@ -158,7 +158,7 @@ Class InfoscienceMarcConverter
         return $value;
     }
 
-    public static function parse_authors($record, $field, $ind1, $ind2, $subfields) {
+    public static function parse_authors_partially($record, $field, $ind1, $ind2, $subfields) {
         $build_search_url = function ($full_name) {
             $full_name = str_replace(' ', '+', $full_name);
             $full_name = str_replace(',', '+', $full_name);
@@ -216,9 +216,13 @@ Class InfoscienceMarcConverter
         $authors = [];
         $people = $record->getFields($field);
         $subfield = $subfields[0];
+        $iterated_authors = 0;  # as we only need the first authors
 
         if ($people && $subfield) {
             foreach ($people as $person) {
+                # as we only need the first 5 authors to know if we are in a 4+ scenario
+                if ($iterated_authors > 5) break;
+
                 if (!$person->isEmpty()) {
                     $person_data = [];
                     $full_name = "";
@@ -256,6 +260,7 @@ Class InfoscienceMarcConverter
 
 
                     $authors[] = $person_data;
+                    $iterated_authors++;
                 }
             }
         }
@@ -301,7 +306,7 @@ Class InfoscienceMarcConverter
 
         $record_array['summary'] = InfoscienceMarcConverter::parse_text($record, '520', '', '', ['a']);
 
-        $record_array['author'] = InfoscienceMarcConverter::parse_authors($record, '700', '', '', ['a']);
+        $record_array['author'] = InfoscienceMarcConverter::parse_authors_partially($record, '700', '', '', ['a']);
 
         $record_array['corporate_name'] = InfoscienceMarcConverter::parse_text($record, '710', '', '', ['a']);
 
@@ -310,9 +315,9 @@ Class InfoscienceMarcConverter
             $record_array['conference'] = InfoscienceMarcConverter::parse_text($record, '711', '2', '', ['a', 'c', 'd'], ['name', 'location', 'date']);
         }
 
-        $record_array['author_1'] = InfoscienceMarcConverter::parse_authors($record, '720', '', '1', ['a']);
-        $record_array['director'] = InfoscienceMarcConverter::parse_authors($record, '720', '', '2', ['a']);
-        $record_array['author_3'] = InfoscienceMarcConverter::parse_authors($record, '720', '', '3', ['a']);
+        $record_array['author_1'] = InfoscienceMarcConverter::parse_authors_partially($record, '720', '', '1', ['a']);
+        $record_array['director'] = InfoscienceMarcConverter::parse_authors_partially($record, '720', '', '2', ['a']);
+        $record_array['author_3'] = InfoscienceMarcConverter::parse_authors_partially($record, '720', '', '3', ['a']);
 
         $record_array['company_name'] = InfoscienceMarcConverter::parse_text($record, '720', '', '5', ['a']);
 
