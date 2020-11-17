@@ -226,16 +226,38 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     $cache_key = 'epfl_infoscience_search_' . md5(serialize($cache_define_by));
 
-    # check if we are here for some cache invalidation
-    if (is_admin() && current_user_can( 'edit_pages' )) {
-        # invalidate the cache if we are editing the page
-        delete_transient($cache_key);
-    }
+    # rule : we save the cache for 1 week, but refresh it every 4 hours
+    $need_cache_refresh = true;
+    $long_cache_value = 1 * WEEK_IN_SECONDS;
+    $short_cache_value = 4 * HOUR_IN_SECONDS;
+
+    // in case we can not get fresh data, show the ones in cache *if possible*, and add this sorry message
+    $sorry_msg = 'This is cached data, they may be obsolete. <a href="mailto:1234@epfl.ch">Contact the support</a> to fix it.';
+    $sorry_cached_data_msg = Utils::render_user_msg($sorry_msg);
 
     $page = get_transient($cache_key);
 
-    # not in cache ?
-    if ($page === false || $debug_data || $debug_template) {
+    # see if we want a force refresh when cache is here
+    if ($page !== false) {
+        $expires = (int) get_option( '_transient_timeout_' . $cache_key, 0 );
+
+        if ($expires && $expires !== 0) {
+            $cache_creation_time = $expires - $long_cache_value;
+            if (time() < $cache_creation_time + $short_cache_value) {
+                # not enough time passed for a cache refresh
+                $need_cache_refresh = false;
+            }
+        }
+    }
+
+    # check if we are here for some cache invalidation by doing a page edit
+    if (is_admin() && current_user_can( 'edit_pages' )) {
+        # tell we want a new cache if we are editing the page
+        $need_cache_refresh = true;
+    }
+
+    # not in cache, or in a force cache refresh scenario ?
+    if ($page === false || $need_cache_refresh || $debug_data || $debug_template) {
         $start = microtime(true);
         $response = wp_remote_get( $url, [
             'timeout' => 30
@@ -256,6 +278,15 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                     $error_message = $response->get_error_message();
                 }
                 echo "Error: $error_message";
+            }
+
+            # anyway, ok there is an Infoscience error, but the final user may still want the list, so print the best we have
+            # some data may be still valid in cache
+            $page = get_transient($cache_key);
+            if ($page !== false) {
+                // To tell we're using the cache
+                do_action('epfl_stats_webservice_call_duration', $url, 0, true);
+                return $sorry_cached_data_msg . $page;
             }
         } else {
             try {
@@ -285,12 +316,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
                 $page .= epfl_infoscience_search_get_mathjax_config();
 
-                // cache the result if not empty
+                // cache the result if we have got some data
                 if (!empty($publications)) {
-                    set_transient($cache_key, $page, 4 * HOUR_IN_SECONDS);
+                    # cache any valid results
+                    set_transient($cache_key, $page, $long_cache_value);
                 }
 
-                // return the page
                 return $page;
             } catch (InfoscienceUnknownContentException $e) {
                 error_log("Infoscience is returning invalid data. Message " . $e->getMessage());
@@ -301,6 +332,15 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 }
 
                 return Utils::render_user_msg("Infoscience is not returning valid data. Please try again later or set a more precise and limited search.");
+
+                # anyway, ok there is an Infoscience error, but the final user may still want the list, so print the best we have
+                # some data may be still valid in cache
+                $page = get_transient($cache_key);
+                if ($page !== false) {
+                    // To tell we're using the cache
+                    do_action('epfl_stats_webservice_call_duration', $url, 0, true);
+                    return $sorry_cached_data_msg . $page;
+                }
             }
         }
     } else {
