@@ -8,7 +8,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_links_group_block( $attributes ) {
-  $main_url           = Utils::get_sanitized_attribute( $attributes, 'mainUrl' );
+  $main_url           = Utils::get_sanitized_url( $attributes, 'mainUrl' );
   $title              = Utils::get_sanitized_attribute( $attributes, 'title' );
   $open_links_new_tab = Utils::get_sanitized_attribute( $attributes, 'openLinksNewTab' );
 

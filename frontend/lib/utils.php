@@ -170,6 +170,16 @@ Class Utils
         return  sanitize_text_field((array_key_exists($name, $attributes))? $attributes[$name]: $default);
     }
 
+    /**
+     * Escape and returns an url who's in the given attributes associative array. If not in array,
+     * $default val is returned
+     */
+    public static function get_sanitized_url($attributes, $name, $default="")
+    {
+        return  esc_url((array_key_exists($name, $attributes))? $attributes[$name]: $default);
+    }
+
+
 
     /**
      * Tells if an attribute associated with a Richtext field contains somethings.

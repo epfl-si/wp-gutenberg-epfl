@@ -14,7 +14,7 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 function epfl_mini_card_panel_block($attributes)
 {
     $legend         = Utils::get_sanitized_attribute( $attributes, 'legend' );
-    $link           = Utils::get_sanitized_attribute( $attributes, 'link' );
+    $link           = Utils::get_sanitized_url( $attributes, 'link' );
     $image_id       = Utils::get_sanitized_attribute( $attributes, 'imageId' );
     $image_url      = Utils::get_sanitized_attribute( $attributes, 'imageUrl' );
     $openLinkNewTab = Utils::get_sanitized_attribute( $attributes, 'openLinkNewTab' , false);

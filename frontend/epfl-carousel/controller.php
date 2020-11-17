@@ -21,20 +21,20 @@ function epfl_carousel_block( $attributes ) {
         }
 
         $attributes['imageId'.$i]       = Utils::get_sanitized_attribute( $attributes, 'imageId'.$i );
-        $attributes['url'.$i]           = Utils::get_sanitized_attribute( $attributes, 'url'.$i );
+        $attributes['url'.$i]           = Utils::get_sanitized_url( $attributes, 'url'.$i );
         $attributes['description'.$i]   = Utils::get_sanitized_attribute( $attributes, 'description'.$i );
-        
+
     }
 
     $open_links_new_tab = Utils::get_sanitized_attribute( $attributes, 'openLinksNewTab', '') != '';
-    
+
     ob_start();
 ?>
 
 <div class="container-full">
 <div id="carouselNews" class="carousel slide carousel-highlighted-news" data-ride="carousel" data-interval="6000">
   <div class="carousel-inner">
-    
+
 
     <?php
       for($i = 1; $i <= $MAX_ELEMENTS; $i++):
@@ -89,11 +89,11 @@ function epfl_carousel_block( $attributes ) {
   </div>
 
   <ol class="carousel-indicators">
-  <?php 
+  <?php
   $slide_index = 0;
   for($i = 1; $i <= $MAX_ELEMENTS; $i++)
   {
-    
+
     if ($attributes['title'.$i])
     {
       $class = ($i==1)?'class="active"':'';

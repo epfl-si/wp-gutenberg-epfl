@@ -17,9 +17,9 @@ function epfl_social_feed_block( $attributes ) {
     $attributes['width']        = Utils::get_sanitized_attribute( $attributes, 'width', DEFAULT_WIDTH );
     $attributes['twitterLimit'] = Utils::get_sanitized_attribute( $attributes, 'twitterLimit' );
     if(intval($attributes['twitterLimit']) == 0)$attributes['twitterLimit'] = '';
-    $attributes['twitterUrl']   = Utils::get_sanitized_attribute( $attributes, 'twitterUrl' );
-    $attributes['instagramUrl'] = Utils::get_sanitized_attribute( $attributes, 'instagramUrl' );
-    $attributes['facebookUrl']  = Utils::get_sanitized_attribute( $attributes, 'facebookUrl' );
+    $attributes['twitterUrl']   = Utils::get_sanitized_url( $attributes, 'twitterUrl' );
+    $attributes['instagramUrl'] = Utils::get_sanitized_url( $attributes, 'instagramUrl' );
+    $attributes['facebookUrl']  = Utils::get_sanitized_url( $attributes, 'facebookUrl' );
 
     return epfl_social_feed_view($attributes['twitterUrl'],
                                 $attributes['twitterLimit'],

@@ -10,20 +10,20 @@ function epfl_button_block( $attributes ) {
     if (!$attributes) return;
 
     $text               = Utils::get_sanitized_attribute( $attributes, 'text' );
-    $link               = Utils::get_sanitized_attribute( $attributes, 'link' );
+    $link               = Utils::get_sanitized_url( $attributes, 'link' );
     $button_style       = Utils::get_sanitized_attribute( $attributes, 'buttonStyle', 'primary' );
     $button_align       = Utils::get_sanitized_attribute( $attributes, 'buttonAlign', 'left' );
     $open_link_new_tab  = Utils::get_sanitized_attribute( $attributes, 'openLinkNewTab', False);
-    
+
     ob_start();
 
     if($button_align == 'centered') echo '<center>';
 ?>
-    
+
     <a href="<?php echo $link; ?>" <?php if($open_link_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?>>
         <button class="btn btn-<?php echo $button_style; ?>"><?php echo $text; ?></button>
     </a>
-    
+
 
 <?php
     if($button_align == 'centered') echo '</center>';

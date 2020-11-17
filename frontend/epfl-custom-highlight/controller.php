@@ -12,7 +12,7 @@ function epfl_custom_highlight_block( $attributes ) {
     $title          = Utils::get_sanitized_attribute( $attributes, 'title' );
     $description    = Utils::get_sanitized_attribute( $attributes, 'description' );
     $image_id       = Utils::get_sanitized_attribute( $attributes, 'imageId' );
-    $link           = Utils::get_sanitized_attribute( $attributes, 'link' );
+    $link           = Utils::get_sanitized_url( $attributes, 'link' );
     $button_label   = Utils::get_sanitized_attribute( $attributes, 'buttonLabel' );
     $layout         = Utils::get_sanitized_attribute( $attributes, 'layout' );
 
