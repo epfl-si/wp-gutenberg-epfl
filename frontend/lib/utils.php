@@ -30,7 +30,7 @@ Class Utils
      */
     public static function render_user_msg($msg) {
         $html = '<div class="alert alert-warning alert-dismissible fade show" role="alert">';
-        $html .= '<strong> Warning </strong>' . $msg;
+        $html .= '<strong> Warning </strong><p>' . $msg . '</p>';
         $html .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
         $html .= '  <span aria-hidden="true">&times;</span>';
         $html .= '</button>';
