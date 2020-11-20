@@ -173,13 +173,32 @@ Class Utils
     /**
      * Escape and returns an url who's in the given attributes associative array. If not in array,
      * $default val is returned
+     * This method is complicated by the need to handle relative URLs that does not necessarily start with '/',
+     * making esc_url adding 'http://' in front of it
+     * (see https://core.trac.wordpress.org/browser/tags/5.5.1/src/wp-includes/formatting.php#L4327)
      */
     public static function get_sanitized_url($attributes, $name, $default="")
     {
-        return  esc_url((array_key_exists($name, $attributes))? $attributes[$name]: $default);
+        $value = (array_key_exists($name, $attributes))? $attributes[$name]: $default;
+
+        $has_scheme = strpos( $value, ':' );
+        $temp_missing_scheme_replace = 'http://';
+
+        if (!$has_scheme) {
+            $value = $temp_missing_scheme_replace . $value;
+        }
+
+        $escaped_value = esc_url($value);
+
+        // reset manually added scheme as we may want to go in a relative URL
+        if (!$has_scheme &&
+            substr($escaped_value, 0, strlen($temp_missing_scheme_replace)) == $temp_missing_scheme_replace
+        ) {
+            $escaped_value = substr($escaped_value, strlen($temp_missing_scheme_replace));
+        }
+
+        return $escaped_value;
     }
-
-
 
     /**
      * Tells if an attribute associated with a Richtext field contains somethings.
