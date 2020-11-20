@@ -176,7 +176,8 @@ Class Utils
      */
     public static function get_sanitized_url($attributes, $name, $default="")
     {
-        return  esc_url((array_key_exists($name, $attributes))? $attributes[$name]: $default);
+        $value = (array_key_exists($name, $attributes))? $attributes[$name]: $default;
+        return preg_replace_callback('(\'|")', function($x) { return htmlentities($x[0], ENT_QUOTES); }, $value);
     }
 
 
