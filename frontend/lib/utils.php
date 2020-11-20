@@ -181,7 +181,7 @@ Class Utils
     {
         $value = (array_key_exists($name, $attributes))? $attributes[$name]: $default;
 
-        $has_scheme = strpos( $value, ':' );
+        $has_scheme = strpos( $value, ':' ) !== false;
         $temp_missing_scheme_replace = 'http://';
 
         if (!$has_scheme) {
