@@ -17,6 +17,7 @@ function epfl_caption_cards_block( $attributes ) {
             $attributes['subtitle'.$i] = Utils::get_sanitized_attribute( $attributes, 'subtitle'.$i );
             $attributes['link'.$i]     = Utils::get_sanitized_url( $attributes, 'link'.$i);
             $attributes['imageId'.$i]  = Utils::get_sanitized_attribute( $attributes, 'imageId'.$i);
+            $attributes['openLinkNewTab'.$i]  = Utils::get_sanitized_attribute( $attributes, 'openLinkNewTab'.$i, false);
         }
     }
 
@@ -28,7 +29,7 @@ function epfl_caption_cards_block( $attributes ) {
             <?php for($i = 1; $i <= 10; $i++): ?>
             <?php if (!empty($attributes['title'.$i])) : ?>
                 <div class="col-sm-6 col-xl-4">
-                <a href="<?php echo $attributes['link'.$i]; ?>" class="card card-overlay link-trapeze-horizontal">
+                <a href="<?php echo $attributes['link'.$i]; ?>" class="card card-overlay link-trapeze-horizontal"<?php if($attributes['openLinkNewTab'.$i]): ?> target="_blank" <?php endif; ?>>
                     <?php if (!empty($attributes['imageId'.$i])):
                         $image = get_post($attributes['imageId'.$i]);
                     ?>

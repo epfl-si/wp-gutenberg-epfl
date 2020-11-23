@@ -23,6 +23,7 @@ const {
     TextControl,
     Placeholder,
     Button,
+    ToggleControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -34,20 +35,24 @@ const getAttributes = () => {
 
     for (var i = 1; i <= maxCaptionCards; i++) {
         atts['title'+i] = {
-			type: 'string',
+            type: 'string',
         };
         atts['subtitle'+i] = {
-			type: 'string',
+            type: 'string',
         };
         atts['link'+i] = {
-			type: 'string',
+            type: 'string',
         };
         atts['imageId'+i] = {
-			type: 'integer',
+            type: 'integer',
         };
         atts['imageUrl'+i] = {
             type: 'string',
             default: null
+        };
+        atts['openLinkNewTab'+i] = {
+            type: 'boolean',
+            default: false
         };
     }
 
@@ -94,6 +99,11 @@ function CaptionCardPanel ( props ) {
                 label={ __('Link', 'epfl') }
                 value={ attributes['link' + index] || ''}
                 onChange={ value => setIndexedAttributes('link', value) }
+            />
+            <ToggleControl
+              label={ __('Open link in a new tab', 'epfl') }
+              checked={ attributes['openLinkNewTab' + index]  || false  }
+              onChange={ value  => setIndexedAttributes( 'openLinkNewTab', value) }
             />
             { isSelected ? (
                 <MediaUpload
