@@ -177,10 +177,25 @@ Class Utils
     public static function get_sanitized_url($attributes, $name, $default="")
     {
         $value = (array_key_exists($name, $attributes))? $attributes[$name]: $default;
-        return preg_replace_callback('(\'|")', function($x) { return htmlentities($x[0], ENT_QUOTES); }, $value);
+        $sanitized_value = preg_replace_callback('(\'|")', function($x) { return htmlentities($x[0], ENT_QUOTES); }, $value);
+
+        $scheme = wp_parse_url($sanitized_value, PHP_URL_SCHEME);
+
+        if (!is_null($scheme) && array_search( $scheme, wp_allowed_protocols()) === false) {
+            return '';
+        }
+
+        /**
+         * Filters a string cleaned and escaped for output as a URL.
+         *
+         * @since 2.3.0
+         *
+         * @param string $good_protocol_url The cleaned URL to be returned.
+         * @param string $original_url      The URL prior to cleaning.
+         * @param string $_context          If 'display', replace ampersands and single quotes only.
+         */
+         return apply_filters( 'clean_url', $sanitized_value, $value, 'display' );
     }
-
-
 
     /**
      * Tells if an attribute associated with a Richtext field contains somethings.
