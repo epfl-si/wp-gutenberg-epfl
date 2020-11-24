@@ -4,7 +4,7 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
-const version = "v1.0.3";
+const version = "v1.0.4";
 
 const { __ } = wp.i18n;
 
@@ -63,7 +63,7 @@ registerBlockType( 'epfl/map', {
                     <TextControl
                         value={ attributes.query }
                         onChange={ query => setAttributes( { query } ) }
-                        help={ __('A room. Example: INN011', 'epfl') }
+                        help={ __('A location by room number (INN011), people name (Pierre Dubois) or place (Vinci)', 'epfl') }
                     />
                 </div>
             </Fragment>
