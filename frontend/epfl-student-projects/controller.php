@@ -73,7 +73,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
             type="text"
             id="student-projects-search-input"
             class="form-control search mb-2"
-            placeholder="<?php _e('Search a project', 'epfl') ?>"
+            placeholder="<?php _e('Search', 'epfl') ?>"
             aria-describedby="student-projects-search-input"
     >
 
