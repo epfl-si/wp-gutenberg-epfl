@@ -57,6 +57,12 @@ function epfl_student_projects_block($attributes, $inner_content) {
       return Utils::render_user_msg("Error getting project list");
     }
 
+    # sort by project name
+    function sortByProjectName($a, $b) {
+        return strcmp($a->project->title, $b->project->title);
+    }
+    usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectName');
+
     ob_start();
 
 ?>
@@ -71,7 +77,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
             aria-describedby="student-projects-search-input"
     >
 
-    <button class="btn btn-secondary sort" data-sort="title"><?php _e('Sort by project name', 'epfl') ?></button>
+    <button class="btn btn-secondary sort asc" data-sort="title"><?php _e('Sort by project name', 'epfl') ?></button>
     <button class="btn btn-secondary sort" data-sort="project-id"><?php _e('Sort by project ID', 'epfl') ?></button>
     <button class="btn btn-secondary sort" data-sort="professor1-name"><?php _e('Sort by professor', 'epfl') ?></button>
     <button class="btn btn-secondary sort" data-sort="project-type"><?php _e('Sort by type', 'epfl') ?></button>
