@@ -83,9 +83,11 @@ function epfl_student_projects_block($attributes, $inner_content) {
   {
     // To extract beginning of the string if exists: "Laboratoire d’automatique 3, IGM – Gestion" to "Laboratoire d’automatique 3"
     $parts = explode(',', $item->project->enseignants->principal1->laboratory->fr);
+    $first_part = reset($parts);
+    $first_part ? $first_part = ' <small>('.$first_part.')</small>' : '';
 
     $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr.
-                    '</a> <small>('.$parts[0].')</small>';
+                    '</a>' . $first_part;
     $professors_name_only[] = $item->project->enseignants->principal1->name->fr;
   }
   if($item->project->enseignants->principal2->sciper != '')
