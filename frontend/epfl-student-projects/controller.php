@@ -170,7 +170,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
       </ul>
     </header>
 
-    <div class="collapse collapse-item collapse-item-desktop" id="project-available-<?php echo $project_id; ?>">
+    <div class="collapse collapse-item collapse-item-desktop project-description" id="project-available-<?php echo $project_id; ?>">
     <?php if($item->project->image->link !== null): ?>
       <div class="project-thumb alignright">
         <picture>
