@@ -139,8 +139,8 @@ function epfl_student_projects_block($attributes, $inner_content) {
       <ul class="project-data list-inline has-sep small text-muted">
         <li>ID: <?php echo $item->project->noProjet->fr; ?></li>
         <li><span class="sr-only">Type(s): </span><?php echo implode(", ", $types); ?></li>
-        <li><span class="sr-only">Section(s): </span><?php echo $item->project->section->fr; ?></li>
-        <li><span class="sr-only">Status: </span><?php echo $item->project->status->label; ?></li>
+        <li><span class="sr-only">Section(s): </span><?= $item->project->section->fr ?? ''; ?></li>
+        <li><span class="sr-only">Status: </span><?= $item->project->status->label ?? '' ?></li>
         <li><span class="sr-only">Professor: </span><?php echo implode(", ", $professors_name_only); ?></li>
       </ul>
     </header>
