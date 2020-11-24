@@ -1377,6 +1377,18 @@
          ],
          "You can paste a YouTube, Vimeo or SWITCHTube URL": [
             "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
+         ],
+         "Sort by project name": [
+            "Trier par nom de projet"
+         ],
+         "Sort by project ID": [
+            "Trier par ID du projet"
+         ],
+         "Sort by professor": [
+            "Trier par professeur"
+         ],
+         "Sort by type": [
+            "Trier par type"
          ]
       }
    }

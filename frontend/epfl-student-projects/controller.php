@@ -19,6 +19,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
     // To avoid to execute all code below (useless) when we just click on "Update" to save page while editing it
     if(is_admin()) return "";
 
+    wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
 
     $title                  = Utils::get_sanitized_attribute( $attributes, 'title' );
     $section                = Utils::get_sanitized_attribute( $attributes, 'section' );
@@ -56,11 +57,33 @@ function epfl_student_projects_block($attributes, $inner_content) {
       return Utils::render_user_msg("Error getting project list");
     }
 
+    # sort by project name
+    function sortByProjectName($a, $b) {
+        return strcmp($a->project->title, $b->project->title);
+    }
+    usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectName');
+
     ob_start();
 
 ?>
-<div class="container">
+<div id='student-projects-list' class="container">
   <h2><?php echo $title ?></h2>
+  <div class="form-group">
+    <input
+            type="text"
+            id="student-projects-search-input"
+            class="form-control search mb-2"
+            placeholder="<?php _e('Search', 'epfl') ?>"
+            aria-describedby="student-projects-search-input"
+    >
+
+    <button class="btn btn-secondary sort asc" data-sort="title"><?php _e('Sort by project name', 'epfl') ?></button>
+    <button class="btn btn-secondary sort" data-sort="project-id"><?php _e('Sort by project ID', 'epfl') ?></button>
+    <button class="btn btn-secondary sort" data-sort="professor1-name"><?php _e('Sort by professor', 'epfl') ?></button>
+    <button class="btn btn-secondary sort" data-sort="project-type"><?php _e('Sort by type', 'epfl') ?></button>
+  </div>
+
+  <div class="list">
 
 <?php foreach($items as $item):
 
@@ -83,9 +106,11 @@ function epfl_student_projects_block($attributes, $inner_content) {
   {
     // To extract beginning of the string if exists: "Laboratoire d’automatique 3, IGM – Gestion" to "Laboratoire d’automatique 3"
     $parts = explode(',', $item->project->enseignants->principal1->laboratory->fr);
+    $first_part = reset($parts);
+    $first_part ? $first_part = ' <small>('.$first_part.')</small>' : '';
 
-    $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank">'.$item->project->enseignants->principal1->name->fr.
-                    '</a> <small>('.$parts[0].')</small>';
+    $professors[] = '<a href="https://people.epfl.ch/'.$item->project->enseignants->principal1->sciper.'" target="_blank" class="professor1-name">'.$item->project->enseignants->principal1->name->fr.
+                    '</a>' . $first_part;
     $professors_name_only[] = $item->project->enseignants->principal1->name->fr;
   }
   if($item->project->enseignants->principal2->sciper != '')
@@ -137,15 +162,15 @@ function epfl_student_projects_block($attributes, $inner_content) {
     <header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse" data-target="#project-available-<?php echo $project_id; ?>" aria-expanded="false" aria-controls="project-available-<?php echo $project_id; ?>">
       <p class="title"><?php echo $item->project->title; ?></p>
       <ul class="project-data list-inline has-sep small text-muted">
-        <li>ID: <?php echo $item->project->noProjet->fr; ?></li>
-        <li><span class="sr-only">Type(s): </span><?php echo implode(", ", $types); ?></li>
-        <li><span class="sr-only">Section(s): </span><?php echo $item->project->section->fr; ?></li>
-        <li><span class="sr-only">Status: </span><?php echo $item->project->status->label; ?></li>
+        <li class="project-id">ID: <?php echo $item->project->noProjet->fr; ?></li>
+        <li class="project-type"><span class="sr-only">Type(s): </span><?php echo implode(", ", $types); ?></li>
+        <li><span class="sr-only">Section(s): </span><?= $item->project->section->fr ?? ''; ?></li>
+        <li><span class="sr-only">Status: </span><?= $item->project->status->label ?? '' ?></li>
         <li><span class="sr-only">Professor: </span><?php echo implode(", ", $professors_name_only); ?></li>
       </ul>
     </header>
 
-    <div class="collapse collapse-item collapse-item-desktop" id="project-available-<?php echo $project_id; ?>">
+    <div class="collapse collapse-item collapse-item-desktop project-description" id="project-available-<?php echo $project_id; ?>">
     <?php if($item->project->image->link !== null): ?>
       <div class="project-thumb alignright">
         <picture>
@@ -166,6 +191,8 @@ function epfl_student_projects_block($attributes, $inner_content) {
   </section>
 <?php endforeach; ?>
 </div>
+</div>
+<?php load_template(dirname(__FILE__).'/javascript.php'); ?>
 
 <?php
     $content = ob_get_contents();

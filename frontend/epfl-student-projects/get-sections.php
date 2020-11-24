@@ -17,12 +17,12 @@
     curl_setopt($curl, CURLOPT_HEADER, true);
     curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0");
 
-    
+
     $response = curl_exec($curl);
     $header_size = curl_getinfo($curl,CURLINFO_HEADER_SIZE);
     $headers = substr($response, 0, $header_size);
     $content = substr($response, $header_size);
-    
+
     // Getting some headers to add to answer
     $matches = array();
     preg_match_all("/Content-(Type|Length):\s.+/", $headers, $matches);
@@ -31,7 +31,7 @@
     {
         header(trim($header));
     }
-    
+
     curl_close($curl);
 
     echo $content;
