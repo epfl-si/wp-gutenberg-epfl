@@ -207,6 +207,17 @@ Class Utils
         return isset($attributes[$name]) && strip_tags($attributes[$name]) != "";
     }
 
+    /**
+     * When you want to render into a var
+     * set $args to get some value for your php file ($path)
+     * https://stackoverflow.com/a/34600568
+     */
+    public static function render_php($path, array $args=null) {
+        ob_start();
+        include($path);
+        $var = ob_get_contents();
+        ob_end_clean();
+        return $var;
+    }
 }
 
-?>

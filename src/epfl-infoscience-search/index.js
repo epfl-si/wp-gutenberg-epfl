@@ -92,6 +92,10 @@ registerBlockType( 'epfl/infoscience-search', {
 		debugTemplate: {
 			type: 'boolean',
 			default: null,
+		},
+		searchBox: {
+			type: 'boolean',
+			default: null,
 		}
 	}),
 	example: getTooltippedExample(),
