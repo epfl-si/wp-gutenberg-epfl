@@ -167,6 +167,11 @@ export default class InspectorControlsInfoscience extends Component {
                         options={ optionsSort }
 						onChange={ sort => setAttributes( { sort } ) }
 					/>
+					<ToggleControl
+						label={ __('Search box', 'epfl') }
+						checked={ attributes.searchBox }
+						onChange={ searchBox => setAttributes( { searchBox } ) }
+					/>
 				</PanelBody>
 				<PanelBody title={ __('Options', 'epfl') } >
 					<SelectControl

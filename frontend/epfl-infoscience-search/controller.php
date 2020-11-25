@@ -76,6 +76,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'thumbnail' => true,
         'group_by' => '', # "", "year", "doctype"
         'group_by2' => '', # "", "year", "doctype"
+        # UI
+        'searchbox' => false,
         # Dev
         'debug' => false,
         'debugdata' => false,
@@ -205,6 +207,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'group_by' => $group_by,
         'group_by2' => $group_by2,
         'sort' => $attributes['sort'],
+        'searchbox' => $attributes['searchbox'],
     ];
 
     # fetch language
@@ -301,7 +304,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                     return $page;
                 }
 
-                $page = ClassesInfoscience2018Render::render($grouped_by_publications,
+                $publications_html = ClassesInfoscience2018Render::render($grouped_by_publications,
                                                         $url,
                                                         $format,
                                                         $summary,
@@ -312,8 +315,13 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export($before_unset_attributes, true) .  ' //-->';
                 $html_verbose_comments .= '<!-- epfl_infoscience_search used url :'. var_export($url, true) . ' //-->';
 
-                $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
+                $page = '';
 
+                if ($attributes['searchbox']) {
+                    $page .= Utils::render_php(dirname(__FILE__).'/search-box.php');
+                }
+
+                $page .= '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $publications_html . '</div>';
                 $page .= epfl_infoscience_search_get_mathjax_config();
 
                 // cache the result if we have got some data
