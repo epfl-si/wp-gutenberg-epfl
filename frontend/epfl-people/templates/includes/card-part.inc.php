@@ -32,7 +32,7 @@
         $markup .= '<a class="btn btn-block btn-primary mb-2" href="mailto:' . esc_attr($person->email) . '">' . esc_html($person->email) . '</a>';
     }
     if (isset($phones[0])) {
-        $markup .= '<a class="btn btn-block btn-secondary" href="tel:' . esc_html($phones[0]) . '">' . esc_html($phones[0]) . '</a>';
+        $markup .= '<a class="btn btn-block btn-secondary" href="tel:' . esc_html(str_replace(' ', '', $phones[0])) . '">' . esc_html($phones[0]) . '</a>';
     }
     $markup .= '</div>';
     $markup .= '</div>';
