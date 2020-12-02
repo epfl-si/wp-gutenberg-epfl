@@ -18,6 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+
 /**
  * Block Initializer.
  */
@@ -51,7 +53,9 @@ function polylang_json_api_languages() {
 }
 
 // fix polylang language segmentation
-add_action( 'rest_api_init' , __NAMESPACE__ . '\polylang_json_api_init' );
+if (is_plugin_active('polylang/polylang.php')) {
+    add_action('rest_api_init', __NAMESPACE__ . '\polylang_json_api_init');
+}
 
 /**
  * Only allow blocks starting with "epfl/" in editor. If others blocks have to be allowed too, comoing from WordPress
