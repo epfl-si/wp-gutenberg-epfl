@@ -37,14 +37,11 @@ function epfl_mini_card_deck_block($attributes, $inner_content) {
   $title        = Utils::get_sanitized_attribute( $attributes, 'title' );
   $gray_wrapper = Utils::get_sanitized_attribute( $attributes, 'grayWrapper', false);
 
-  /* $inner_content already contains HTML with "card" representation. So we can count the number of
-  card with content and then adapt "deck-line" as needed */
-  preg_match_all('/class="card link-trapeze-horizontal"/', $inner_content, $matches);
   ob_start();
 ?>
 
 <div class="container-full py-3 px-4<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
-  <div class="card-deck mini-cards<?php echo (count($matches[0]) == 5) ? ' card-deck-line' : '' ?>">
+  <div class="card-deck mini-cards">
     <h2 class="deck-title"><?php echo $title; ?></h2>
     <?php
     echo $inner_content;
