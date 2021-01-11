@@ -6,7 +6,7 @@ import {
 
 import tableFilterIcon from './table-filter-icon'
 
-const version = "v1.1.3";
+const version = "v1.2.0";
 
 const { __ } = wp.i18n;
 
@@ -49,6 +49,10 @@ const getAttributes = () => {
         },
         numericSortOnCols: {
             type: 'string',
+        },
+        biggerFontSize: {
+            type: 'boolean',
+            default: false,
         },
     };
 
@@ -95,6 +99,11 @@ registerBlockType( 'epfl/table-filter', {
                             label={ __('Large display', 'epfl') }
                             checked={ attributes.largeDisplay }
                             onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
+                        />
+                        <ToggleControl
+                            label={ __('Bigger font size', 'epfl') }
+                            checked={ attributes.biggerFontSize }
+                            onChange={ biggerFontSize => setAttributes( { biggerFontSize } ) }
                         />
                         <strong>{__( 'Placeholder', 'epfl')}</strong>
                         <TextControl
