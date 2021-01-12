@@ -6,7 +6,7 @@ import {
 
 import tableIcon from './table-icon'
 
-const version = "v1.0.1";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -49,6 +49,10 @@ const getAttributes = () => {
         numericSortOnCols: {
             type: 'string',
         },
+        biggerFontSize: {
+            type: 'boolean',
+            default: false,
+        },
     };
 
     return getTooltippedAttributes(atts);
@@ -90,6 +94,11 @@ registerBlockType( 'epfl/table', {
                             label={ __('Large display', 'epfl') }
                             checked={ attributes.largeDisplay }
                             onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
+                        />
+                        <ToggleControl
+                            label={ __('Bigger font size', 'epfl') }
+                            checked={ attributes.biggerFontSize }
+                            onChange={ biggerFontSize => setAttributes( { biggerFontSize } ) }
                         />
                     </PanelBody>
                 </InspectorControls>

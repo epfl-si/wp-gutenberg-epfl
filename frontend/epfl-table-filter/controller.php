@@ -18,12 +18,13 @@ function epfl_table_filter_block($attributes, $inner_content)
   wp_enqueue_script('jquery-change-element-type.js', true);
   wp_enqueue_script('epfl-table-filter-list-min.js', true);
   wp_enqueue_script('epfl-table-filter.js', true);
-  
+
 
   // Adding CSS
   wp_enqueue_style('epfl-table-filter-style.css');
 
   $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
+  $bigger_font_size = Utils::get_sanitized_attribute( $attributes, 'biggerFontSize', false )=== '1';
   $placeholder    = Utils::get_sanitized_attribute( $attributes, 'placeHolder');
   $header_options = Utils::get_sanitized_attribute( $attributes, 'tableHeaderOptions', '');
 
@@ -45,7 +46,8 @@ function epfl_table_filter_block($attributes, $inner_content)
   // Class without any CSS style but will be used by JS code
   $classes = array("epfl-table-filter");
   if($large_display) $classes[] = "container";
-  
+  if ($bigger_font_size) $classes[] = "bigger-font-size-table";
+
   // random generated ID for DIV
   $div_id = "table-filter-".md5(microtime(true). $inner_content);
 
@@ -71,7 +73,7 @@ add_action( 'init', function() {
     wp_register_script('jquery-change-element-type.js', plugins_url('lib/jquery-change-element-type.js', dirname(__FILE__)));
 
     wp_register_style('epfl-table-filter-style.css', plugins_url('css/epfl-table-filter-style.css', __FILE__));
-    /* NOTE: For an unknow reason, if we just register script here and call 'wp_enqueue_script' in epfl_table_filter_block function, 
+    /* NOTE: For an unknow reason, if we just register script here and call 'wp_enqueue_script' in epfl_table_filter_block function,
     script will be added in footer and table filter won't work...  */
     wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
 

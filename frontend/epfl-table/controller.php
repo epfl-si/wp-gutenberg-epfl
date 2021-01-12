@@ -16,8 +16,21 @@ function epfl_table_block($attributes, $inner_content)
   wp_enqueue_script('jquery-change-element-type.js', true);
 
   $large_display = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
-  $class = $large_display ? 'class="container"': "";
-  $content = '<div '. $class .'>'.$inner_content.'</div>';
+
+  $bigger_font_size = Utils::get_sanitized_attribute( $attributes, 'biggerFontSize', false )=== '1';
+
+  $classes = [];
+
+  if ($large_display) $classes[] = "container";
+  if ($bigger_font_size) $classes[] = "bigger-font-size-table";
+
+  if (!empty($classes)) {
+	$classes = implode(' ', $classes);
+	$content = '<div class="'. $classes .'">'.$inner_content.'</div>';
+  } else {
+	$content = '<div>'.$inner_content.'</div>';
+  }
+
 
   return $content;
 
