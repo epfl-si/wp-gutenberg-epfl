@@ -45,7 +45,7 @@ function epfl_contact_block($attributes, $inner_content) {
           ?>
           <?php for ($i=1; $i < 4; $i++): ?>
           <?php if (Utils::richtext_content_exists($attributes, 'information'.$i)): ?>
-          <p><?php echo urldecode($attributes['information'.$i]) ?: '' ?></p>
+          <p><?php echo $attributes['information'.$i] ?: '' ?></p>
           <hr>
           <?php
           endif;
