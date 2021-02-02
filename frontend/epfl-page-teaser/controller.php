@@ -50,7 +50,7 @@ function epfl_page_teaser_block( $attributes ) {
     $html .= '<div class="container">';
     if($title != '')
     {
-        $html .= ' <h3 class="h6 mb-3 '. (($pagesCount < 3) ? ' text-center' : ''). '">'.$title.'</h3>';
+        $html .= ' <h2 class="'. (($pagesCount < 3) ? ' text-center' : ''). '">'.$title.'</h2>';
     }
     $html .= '  <div class="card-deck';
     if ($pagesCount < 3) {
