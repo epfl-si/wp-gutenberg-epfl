@@ -42,9 +42,9 @@ function epfl_page_teaser_block( $attributes ) {
         }
     }
 
-    $html = '<div class="container-full my-3 py-3 ';
+    $html = '<div class="container-full py-3 p-lg-5 ';
     if ($grayBackground) {
-        $html .= ' bg-gray-100';
+        $html .= ' bg-gray-100 py-4 my-4';
     }
     $html .= '">';
     $html .= '<div class="container">';
