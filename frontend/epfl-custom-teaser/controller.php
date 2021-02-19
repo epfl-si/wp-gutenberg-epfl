@@ -28,7 +28,7 @@ function epfl_custom_teaser_block( $attributes ) {
     $attributes['grayBackground'] = Utils::get_sanitized_attribute( $attributes, 'grayBackground', False);
     $greyClasses = '';
     if ($attributes['grayBackground']) {
-      $greyClasses = 'bg-gray-100 py-4 mt-4';
+      $greyClasses = 'bg-gray-100 py-4 my-4';
     }
 
     $open_links_new_tab = Utils::get_sanitized_attribute( $attributes, 'openLinksNewTab', False);
@@ -36,7 +36,7 @@ function epfl_custom_teaser_block( $attributes ) {
     ob_start();
 ?>
 
-<div class="container-full p-lg-5 <?php echo $greyClasses ?>">
+<div class="container-full py-3 p-lg-5 <?php echo $greyClasses ?>">
   <div class="container">
     <?php if ($attributes['titleSection']): ?>
     <h2 class="<?php echo ($elementCount < 3) ? ' text-center' : '' ?>"><?php echo $attributes['titleSection'] ?></h2>
