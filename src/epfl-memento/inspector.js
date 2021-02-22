@@ -38,7 +38,7 @@ export default class InspectorControlsMemento extends Component {
 			.then( mementos => this.setState({ mementos }) )
             .catch( err => console.log(err))
 
-        let entryPointCategories = `${apiRestUrl}categories/?format=json&limit=800`;
+        let entryPointCategories = `${apiRestUrl}categories/?format=json&limit=800&ordering=en_label`;
         axios.get(entryPointCategories)
             .then( response => response.data.results )
             .then( categories => this.setState({ categories }) )
