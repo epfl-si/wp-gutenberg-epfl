@@ -8,7 +8,7 @@ namespace EPFL\Plugins\Gutenberg\Lib\Language;
 
 function get_current_or_default_language() {
     $default_lang = 'en';
-    $allowed_langs = array('en', 'fr');
+    $allowed_langs = array('en', 'fr', 'de');
     $language = $default_lang;
 
     /* If Polylang installed */
@@ -22,6 +22,9 @@ function get_current_or_default_language() {
 
         if ($lang === 'fr-FR') {
             $language = 'fr';
+        }
+        if ($lang === 'de-DE') {
+            $language = 'de';
         }
     }
 
