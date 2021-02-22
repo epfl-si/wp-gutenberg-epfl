@@ -39,12 +39,12 @@ function get_memento_slug($memento_id) {
  * @param $memento: slug of memento
  * @param $template: id of the template
  * @param $lang: lang of the event (fr or en)
- * @param $category: id of the event category
+ * @param $categories: id of the event categories
  * @param $keyword: keyword to filter events
  * @param $period: period to filter past event or upcoming events
  * @return the API URL of the memento
  */
-function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $category, $keyword, $period, $year)
+function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $categories, $keyword, $period, $year)
 {    
     // return events in FR if events exist in this language.
     // otherwise return events in EN (if events exist in this language).
@@ -57,9 +57,13 @@ function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $
     // define API URL
     $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $nb_events;
 
-    // filter by category
-    if ($category !== '' && $category !== "0") {
-        $url .= '&category=' . $category;
+    // filter by categories
+    $categories = json_decode($categories, true);
+    if(is_array($categories))
+    {
+        foreach ($categories as $category) {
+            $url .= '&category=' . $category['value'];
+        }
     }
 
     // keyword
@@ -111,7 +115,7 @@ function epfl_memento_block( $attributes ) {
     $lang       = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
     $template   = Utils::get_sanitized_attribute( $attributes, 'template', 'slider_with_the_first_highlighted_event' );
     $nb_events  = Utils::get_sanitized_attribute( $attributes, 'nbEvents', 10 );
-    $category   = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
+    $categories = Utils::get_sanitized_attribute( $attributes, 'categories', 0 );
     $keyword    = Utils::get_sanitized_attribute( $attributes, 'keyword' );
     $period     = Utils::get_sanitized_attribute( $attributes, 'period' );
     $year       = Utils::get_sanitized_attribute( $attributes, 'year' );
@@ -121,7 +125,7 @@ function epfl_memento_block( $attributes ) {
     var_dump("Lang: " . $lang);
     var_dump("Template: " . $template);
     var_dump("nb_events: " . $nb_events);
-    var_dump("category: " . $category);
+    var_dump("categories: " . $categories);
     var_dump("keyword: " . $keyword);
     var_dump("period: " . $period);
     var_dump("year: " . $year);
@@ -136,7 +140,7 @@ function epfl_memento_block( $attributes ) {
         $lang,
         $template,
         $nb_events,
-        $category,
+        $categories,
         $keyword,
         $period,
         $year
