@@ -88,6 +88,10 @@ function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category
             $url .= '&projects=' . $project['value'];
         }
     }
+
+    // add current time in milliseconds to avoid being cached
+    $url .= '&nocache=' . round(microtime(true) * 1000);
+
     return $url;
 }
 
