@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 import React from 'react';
+import Select from 'react-select';
 import { version } from './index'
 
 const { __ } = wp.i18n
@@ -11,6 +12,7 @@ const {
 
 const {
     PanelBody,
+    PanelRow,
     SelectControl,
     RadioControl,
     TextControl,
@@ -46,6 +48,7 @@ export default class InspectorControlsMemento extends Component {
     render() {
 
         const { attributes, setAttributes } = this.props
+        const handleCategoriesChange = ( categories ) => setAttributes( { categories: JSON.stringify( categories ) } );
 
         let content = "";
 
@@ -156,13 +159,17 @@ export default class InspectorControlsMemento extends Component {
 	                      />
                         { filterPastEventsByYear }
                     </PanelBody>
-                    <PanelBody title={ __( 'Category', 'epfl' ) }>
-                        <SelectControl
-                            label={ __("Filter events by category", 'epfl') }
-                            value={ attributes.categories }
+                    <PanelBody title={ __( 'Categories', 'epfl') }>
+                        <PanelRow>
+                        <Select
+                            id='epfl-memento-categories'
+                            name='select-categories'
+                            value={ JSON.parse( attributes.categories ) }
+                            onChange={ handleCategoriesChange }
                             options={ optionsCategoriesList }
-                            onChange={ category => setAttributes( { category } ) }
+                            isMulti='true'
                         />
+                         </PanelRow>
                     </PanelBody>
                     <PanelBody title={ __( 'Keyword', 'epfl' ) }>
                         <TextControl

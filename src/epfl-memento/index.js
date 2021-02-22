@@ -11,7 +11,7 @@ import PreviewMemento from './preview'
 import InspectorControlsMemento from './inspector'
 import './utils.js';
 
-export const version = "v1.1.4";
+export const version = "v1.2.0";
 
 const {__} = wp.i18n
 const {registerBlockType} = wp.blocks
@@ -47,9 +47,9 @@ registerBlockType(
                 type: 'string',
                 default: 'en',
             },
-            category: {
-                type: 'integer',
-                default: 0,
+            categories: {
+                type: 'string',
+                default: null,
             },
             period: {
                 type: 'string',
