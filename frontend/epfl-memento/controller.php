@@ -117,7 +117,7 @@ function epfl_memento_block( $attributes ) {
     $nb_events  = Utils::get_sanitized_attribute( $attributes, 'nbEvents', 10 );
     $categories = Utils::get_sanitized_attribute( $attributes, 'categories', 0 );
     $keyword    = Utils::get_sanitized_attribute( $attributes, 'keyword' );
-    $period     = Utils::get_sanitized_attribute( $attributes, 'period' );
+    $period     = Utils::get_sanitized_attribute( $attributes, 'period', 'upcoming');
     $year       = Utils::get_sanitized_attribute( $attributes, 'year' );
 
     /*
