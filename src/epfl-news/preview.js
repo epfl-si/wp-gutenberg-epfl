@@ -91,7 +91,7 @@ export default class PreviewNews extends Component {
 		const { className, attributes } = this.props
 
 		if (attributes.displayLinkAllNews) {
-      let url = `https://actu.epfl.ch/search/${this.state.channelName}`;
+      let url = `${BASE_NEWS_API_REST_URL}search/${this.state.channelName}`;
 			linkAllNews = (
 				<p className="text-center">
 					<a className="link-pretty" href={ url }>Toutes les actualités</a>
