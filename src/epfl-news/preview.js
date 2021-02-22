@@ -14,18 +14,11 @@ export default class PreviewNews extends Component {
 		newsUrl: null,
 	}
 
-  getDateTime() {
-    let d = new Date();
-    return d.getMilliseconds();
-  }
-
 	getURL() {
 		const { attributes } = this.props;
 
     let newsUrl = `${BASE_NEWS_API_REST_URL}channels/${attributes.channel}/news/`;
     newsUrl += `?format=json&lang=${attributes.lang}&limit=${attributes.nbNews}`;
-    // add current time in milliseconds to avoid being cached
-    newsUrl += `&nocache=${this.getDateTime()}`;
 
 		if (attributes.category !== 0) {
 			newsUrl += `&category=${attributes.category}`;
