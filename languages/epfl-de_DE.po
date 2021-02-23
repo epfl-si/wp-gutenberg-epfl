@@ -104,3 +104,46 @@ msgstr "Diesen Beitrag auf Instagram anschauen"
 #: frontend/epfl-social-feed/facebook_view.php:21
 msgid "Like our page on Facebook"
 msgstr "Unsere Facebook-Seite liken"
+
+# Student project
+msgid "Sort by project name"
+msgstr ""
+
+msgid "Sort by project ID"
+msgstr ""
+
+msgid "Sort by professor"
+msgstr ""
+
+msgid "Sort by type"
+msgstr ""
+
+msgid "ID: "
+msgstr ""
+
+msgid "Section(s): "
+msgstr ""
+
+msgid "Type(s): "
+msgstr ""
+
+msgid "Status: "
+msgstr ""
+
+msgid "Professor: "
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Professor(s)"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "External"
+msgstr ""
+
+msgid "Site"
+msgstr ""

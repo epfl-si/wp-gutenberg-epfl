@@ -123,16 +123,16 @@ function epfl_student_projects_block($attributes, $inner_content) {
 
   if($item->project->commentaire !== null)
   {
-    $details[] = array('Comment', str_replace("\r\n", '</p><p>', $item->project->commentaire->fr));
+    $details[] = array(__('Comment'), str_replace("\r\n", '</p><p>', $item->project->commentaire->fr));
   }
-  $details[] = array('Professor(s)', implode(", ", $professors));
+  $details[] = array(__('Professor(s)'), implode(", ", $professors));
 
   if($item->project->administrateur !== null)
   {
     // Format is "<firstName> <lastName> (<sciper>)" and we need to explode to have "name" and "sciper"...
     $matches = array();
     preg_match('/(.*?)\s\(([0-9]+)\)/', $item->project->administrateur->fr, $matches);
-    $details[] = array('Administration', '<a href="https://people.epfl.ch/'.$matches[2].'" target="_blank">'.$matches[1].'</a>');
+    $details[] = array(__('Administration'), '<a href="https://people.epfl.ch/'.$matches[2].'" target="_blank">'.$matches[1].'</a>');
   }
 
 
@@ -152,9 +152,9 @@ function epfl_student_projects_block($attributes, $inner_content) {
   }
 
   if($item->project->externe->email !== null) $external[] = '<a href="mailto:'.$item->project->externe->email->fr.'">'.$item->project->externe->email->fr.'</a>';
-  if(count($external)>0) $details[] = array('External', implode(", ", $external));
+  if(count($external)>0) $details[] = array(__('External'), implode(", ", $external));
 
-  if($item->project->site !== null) $details[] = array('Site', '<a href="'.$item->project->site->fr.'" target="_blank">'.$item->project->site->fr.'</a>');
+  if($item->project->site !== null) $details[] = array(__('Site'), '<a href="'.$item->project->site->fr.'" target="_blank">'.$item->project->site->fr.'</a>');
 
 ?>
 
@@ -162,11 +162,11 @@ function epfl_student_projects_block($attributes, $inner_content) {
     <header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse" data-target="#project-available-<?php echo $project_id; ?>" aria-expanded="false" aria-controls="project-available-<?php echo $project_id; ?>">
       <p class="title"><?php echo $item->project->title; ?></p>
       <ul class="project-data list-inline has-sep small text-muted">
-        <li class="project-id">ID: <?php echo $item->project->noProjet->fr; ?></li>
-        <li class="project-type"><span class="sr-only">Type(s): </span><?php echo implode(", ", $types); ?></li>
-        <li><span class="sr-only">Section(s): </span><?= $item->project->section->fr ?? ''; ?></li>
-        <li><span class="sr-only">Status: </span><?= $item->project->status->label ?? '' ?></li>
-        <li><span class="sr-only">Professor: </span><?php echo implode(", ", $professors_name_only); ?></li>
+        <li class="project-id"><?php _e('ID: ', 'epfl'); ?><?php echo $item->project->noProjet->fr; ?></li>
+        <li class="project-type"><span class="sr-only"><?php _e('Type(s): ', 'epfl'); ?></span><?php echo implode(", ", $types); ?></li>
+        <li><span class="sr-only"><?php _e('Section(s): ', 'epfl'); ?></span><?= $item->project->section->fr ?? ''; ?></li>
+        <li><span class="sr-only"><?php _e('Status: '); ?></span><?= $item->project->status->label ?? '' ?></li>
+        <li><span class="sr-only"><?php _e('Professor: '); ?></span><?php echo implode(", ", $professors_name_only); ?></li>
       </ul>
     </header>
 
@@ -198,5 +198,4 @@ function epfl_student_projects_block($attributes, $inner_content) {
     $content = ob_get_contents();
     ob_end_clean();
     return $content;
-
 }

@@ -2063,6 +2063,10 @@ msgstr "URL de la vidéo"
 msgid "You can paste a YouTube, Vimeo or SWITCHTube URL"
 msgstr "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
 
+msgid "Bigger font size"
+msgstr "Taille de police plus grande"
+
+# Student project
 msgid "Sort by project name"
 msgstr "Trier par nom de projet"
 
@@ -2075,5 +2079,32 @@ msgstr "Trier par professeur"
 msgid "Sort by type"
 msgstr "Trier par type"
 
-msgid "Bigger font size"
-msgstr "Taille de police plus grande"
+msgid "ID: "
+msgstr ""
+
+msgid "Section(s): "
+msgstr ""
+
+msgid "Type(s): "
+msgstr ""
+
+msgid "Status: "
+msgstr ""
+
+msgid "Professor: "
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Professor(s)"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "External"
+msgstr ""
+
+msgid "Site"
+msgstr ""
