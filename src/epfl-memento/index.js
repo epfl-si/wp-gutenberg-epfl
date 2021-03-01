@@ -4,6 +4,8 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
+import * as axios from 'axios';
+
 import './style.scss'
 
 import mementoIcon from './memento-icon'
@@ -46,6 +48,10 @@ registerBlockType(
             lang: {
                 type: 'string',
                 default: 'en',
+            },
+            category: {
+              type: 'integer',
+              default: 0,
             },
             categories: {
                 type: 'string',
