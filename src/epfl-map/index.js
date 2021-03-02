@@ -66,12 +66,12 @@ registerBlockType( 'epfl/map', {
 					</InspectorControls>
 					<div className={className}>
 						<h2 className="epfl-block-title">{__('EPFL Map', 'epfl')}</h2>
-						<p>{ __('Rechercher à partir de :', 'epfl') }
+						<p>{ __('Search with', 'epfl') }
 							<SelectControl
 								value={ attributes.searchType }
 								options={ [
-									{ label: __('Query', 'epfl'), value: 'searchAll' },
-									{ label: __('A specific room', 'epfl'), value: 'searchRoom' },
+									{ label: __('A name or a place', 'epfl'), value: 'searchAll' },
+									{ label: __('A room number', 'epfl'), value: 'searchRoom' },
 									{ label: __('An URL copy-pasted from plan.epfl.ch', 'epfl'), value: 'searchURL' },
 								] }
 								onChange={ searchType => setAttributes({searchType}) }

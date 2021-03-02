@@ -1396,11 +1396,11 @@
          "Search for": [
             "Rechercher"
          ],
-         "Query": [
-            "Clé de recherche"
+         "A name or a place": [
+            "Un nom ou un lieu"
          ],
-         "A specific room": [
-            "Une salle spécifique"
+         "A room number": [
+            "Un local précis"
          ],
          "An URL copy-pasted from plan.epfl.ch": [
             "Une URL copiée directement depuis plan.epfl.ch"

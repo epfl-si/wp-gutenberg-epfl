@@ -2083,12 +2083,12 @@ msgid "Search for"
 msgstr "Rechercher"
 
 #: src/epfl-map/index.js:78
-msgid "Query"
-msgstr "Clé de recherche"
+msgid "A name or a place"
+msgstr "Un nom ou un lieu"
 
 #: src/epfl-map/index.js:79
-msgid "A specific room"
-msgstr "Une salle spécifique"
+msgid "A room number"
+msgstr "Un local précis"
 
 #: src/epfl-map/index.js:80
 msgid "An URL copy-pasted from plan.epfl.ch"
