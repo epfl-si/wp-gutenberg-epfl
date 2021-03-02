@@ -50,8 +50,8 @@ registerBlockType(
                 default: 'en',
             },
             category: {
-              type: 'integer',
-              default: 0,
+              type: 'string',
+              default: "0",
             },
             categories: {
                 type: 'string',
