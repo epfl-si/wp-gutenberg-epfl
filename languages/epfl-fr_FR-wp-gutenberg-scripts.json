@@ -1392,6 +1392,21 @@
          ],
          "Bigger font size": [
             "Taille de police plus grande"
+         ],
+         "Search for": [
+            "Rechercher"
+         ],
+         "A name or a place": [
+            "Un nom ou un lieu"
+         ],
+         "A room number": [
+            "Un local précis"
+         ],
+         "An URL copy-pasted from plan.epfl.ch": [
+            "Une URL copiée directement depuis plan.epfl.ch"
+         ],
+         "Search with": [
+            "Rechercher à partir de"
          ]
       }
    }

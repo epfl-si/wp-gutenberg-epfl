@@ -4,7 +4,7 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
-const version = "v1.0.4";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -17,8 +17,9 @@ const {
 } = wp.blockEditor;
 
 const {
-    PanelBody,
-    TextControl,
+	PanelBody,
+	TextControl,
+	SelectControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -34,6 +35,10 @@ registerBlockType( 'epfl/map', {
 	attributes: getTooltippedAttributes({
 		query: {
 			type: 'string',
+		},
+		searchType: {
+			type: 'string',
+			default: 'searchAll',
 		},
 	}),
 	example: getTooltippedExample(),
@@ -52,21 +57,32 @@ registerBlockType( 'epfl/map', {
 			);
 		}
 
-	    return (
-            <Fragment>
-				<InspectorControls>
-					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/map-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-					<p className="wp-block-help">{ version }</p>
-				</InspectorControls>
-                <div className={ className }>
-                    <h2 className="epfl-block-title">{ __('EPFL Map', 'epfl') }</h2>
-                    <TextControl
-                        value={ attributes.query }
-                        onChange={ query => setAttributes( { query } ) }
-                        help={ __('A location by room number (INN011), people name (Pierre Dubois) or place (Vinci)', 'epfl') }
-                    />
-                </div>
-            </Fragment>
+			return (
+				<Fragment>
+					<InspectorControls>
+						<p><a className="wp-block-help" href={__('https://www.epfl.ch/campus/services/website/map-en/', 'epfl')}
+									target="new">{__('Online help', 'epfl')} </a></p>
+						<p className="wp-block-help">{version}</p>
+					</InspectorControls>
+					<div className={className}>
+						<h2 className="epfl-block-title">{__('EPFL Map', 'epfl')}</h2>
+						<p>{ __('Search with', 'epfl') }
+							<SelectControl
+								value={ attributes.searchType }
+								options={ [
+									{ label: __('A name or a place', 'epfl'), value: 'searchAll' },
+									{ label: __('A room number', 'epfl'), value: 'searchRoom' },
+									{ label: __('An URL copy-pasted from plan.epfl.ch', 'epfl'), value: 'searchURL' },
+								] }
+								onChange={ searchType => setAttributes({searchType}) }
+							/>
+							<TextControl
+								value={attributes.query}
+								onChange={query => setAttributes({query})}
+							/>
+						</p>
+					</div>
+				</Fragment>
 		)
 	},
 	save: ( props ) => {

@@ -2077,3 +2077,23 @@ msgstr "Trier par type"
 
 msgid "Bigger font size"
 msgstr "Taille de police plus grande"
+
+#: src/epfl-map/index.js:75
+msgid "Search for"
+msgstr "Rechercher"
+
+#: src/epfl-map/index.js:78
+msgid "A name or a place"
+msgstr "Un nom ou un lieu"
+
+#: src/epfl-map/index.js:79
+msgid "A room number"
+msgstr "Un local précis"
+
+#: src/epfl-map/index.js:80
+msgid "An URL copy-pasted from plan.epfl.ch"
+msgstr "Une URL copiée directement depuis plan.epfl.ch"
+
+#: src/epfl-map/index.js:69
+msgid "Search with"
+msgstr "Rechercher à partir de"
