@@ -4,6 +4,8 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
+import * as axios from 'axios';
+
 import './style.scss'
 
 import mementoIcon from './memento-icon'
@@ -11,7 +13,7 @@ import PreviewMemento from './preview'
 import InspectorControlsMemento from './inspector'
 import './utils.js';
 
-export const version = "v1.1.4";
+export const version = "v1.2.0";
 
 const {__} = wp.i18n
 const {registerBlockType} = wp.blocks
@@ -48,8 +50,12 @@ registerBlockType(
                 default: 'en',
             },
             category: {
-                type: 'integer',
-                default: 0,
+              type: 'integer',
+              default: 0,
+            },
+            categories: {
+                type: 'string',
+                default: null,
             },
             period: {
                 type: 'string',
