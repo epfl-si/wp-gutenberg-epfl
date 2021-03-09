@@ -109,6 +109,7 @@ export default class InspectorControlsNews extends Component {
             let optionsLanguagesList = [
                 { value: 'fr', label: __('French', 'epfl') },
                 { value: 'en', label: __('English', 'epfl') },
+                { value: 'de', label: __('German', 'epfl') },
             ];
 
             let optionsCategoriesList = [
