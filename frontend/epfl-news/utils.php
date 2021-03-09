@@ -6,12 +6,14 @@ namespace EPFL\Plugins\Gutenberg\News;
  *
  * $data: all data from back-end
  */
-function epfl_news_get_url_channel($data) {
+function epfl_news_get_url_channel($data, $lang) {
     $url_channel = "";
     if (is_countable($data) && count($data) > 0) {
         $url_channel .= BASE_NEWS_URL . "/search/";
-        if (get_locale() == 'fr_FR') {
+        if ($lang == 'fr') {
             $url_channel .= "fr/";
+        } else if ($lang == 'de') {
+            $url_channel .= "de/";
         } else {
             $url_channel .= "en/";
         }
@@ -35,9 +37,11 @@ function epfl_news_get_image_description($news) {
  *
  * $news: news to display
  */
-function epfl_news_get_label_category($news) {
-    if (get_locale() == 'fr_FR') {
+function epfl_news_get_label_category($news, $lang) {
+    if ($lang == 'fr') {
         $label_category = $news->category->fr_label;
+    } else if ($lang == 'de') {
+        $label_category = $news->category->de_label;
     } else {
         $label_category = $news->category->en_label;
     }

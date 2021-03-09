@@ -105,7 +105,9 @@ function epfl_news_build_api_url($channel, $template, $nb_news, $lang, $category
 function epfl_news_check_required_parameters($channel, $lang) {
 
     // check lang
-    if ($lang !==  "fr" && $lang !== "en" ) {
+    if ($lang !==  "fr"
+        && $lang !== "en"
+        && $lang !== "de" ) {
         return FALSE;
     }
 
@@ -165,6 +167,6 @@ function epfl_news_block( $attributes ) {
       return Utils::render_user_msg("News block: Please check required parameters");
   }
 
-  $markup = epfl_news_render($actus->results, $template, $all_news_link);
+  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang);
   return $markup;
 }
