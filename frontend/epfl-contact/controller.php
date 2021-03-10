@@ -29,7 +29,7 @@ function epfl_contact_block($attributes, $inner_content) {
     <?php if ($gray_wrapper): ?><div class="bg-white p-4 p-md-5"><?php endif; ?>
       <div class="row">
         <div class="col-lg-6">
-          <h3>Contact</h3>
+          <h3><?php _e("Contact", "epfl" ) ?></h3>
           <?php if (trim($inner_content) != ""):
             echo $inner_content;
           endif; ?>
