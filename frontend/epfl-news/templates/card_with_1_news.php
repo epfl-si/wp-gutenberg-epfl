@@ -2,7 +2,7 @@
     namespace EPFL\Plugins\Gutenberg\News;
 
     // template = 4
-    function epfl_news_card_with_1_news($results, $all_news_link) {
+    function epfl_news_card_with_1_news($results, $all_news_link, $lang) {
 
         $count = 1;
         $last = count($results);
@@ -14,7 +14,7 @@
 
             $is_first_event       = ($count==1);
             $image_description    = epfl_news_get_image_description($news);
-            $category             = epfl_news_get_label_category($news);
+            $category             = epfl_news_get_label_category($news, $lang);
             $publish_date         = epfl_news_get_publish_date($news);
             $subtitle             = epfl_news_get_subtitle($news);
             $visual_url           = epfl_news_get_visual_url($news);

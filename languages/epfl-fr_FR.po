@@ -2097,3 +2097,6 @@ msgstr "Une URL copiée directement depuis plan.epfl.ch"
 #: src/epfl-map/index.js:69
 msgid "Search with"
 msgstr "Rechercher à partir de"
+
+msgid "German"
+msgstr "Allemand"
