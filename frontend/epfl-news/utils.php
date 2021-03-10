@@ -39,11 +39,11 @@ function epfl_news_get_image_description($news) {
  */
 function epfl_news_get_label_category($news, $lang) {
     if ($lang == 'fr') {
-        $label_category = $news->category->fr_label;
+        $label_category = $news->category->fr_label ?? '';
     } else if ($lang == 'de') {
-        $label_category = $news->category->de_label;
+        $label_category = $news->category->de_label ?? '';
     } else {
-        $label_category = $news->category->en_label;
+        $label_category = $news->category->en_label ?? '';
     }
     return $label_category;
 }
