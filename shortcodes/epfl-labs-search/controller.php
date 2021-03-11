@@ -6,7 +6,7 @@ namespace EPFL\Plugins\Shortcodes\EPFLLabSearch;
  * render the shortcode, mainly a form and his table
  */
 function renderLabsSearch($sites, $faculty, $institute, $field) {
-  wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
+  wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], '2.3.1', false);
   wp_enqueue_style( 'epfl-labs-search-css', plugins_url('epfl-labs-search.css', __FILE__),false,'1.1','all');
 
   filter_out_unused_language($sites);

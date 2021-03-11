@@ -6,7 +6,7 @@ namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
  * render the shortcode, mainly a form and his table
  */
 function renderLexSearch($lexes, $category, $subcategory, $search) {
-  wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
+  wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], '2.3.1', false);
   wp_enqueue_style( 'epfl-polylex-search-css', plugins_url('epfl-polylex-search.css', __FILE__),false,'1.1','all');
 
   polylex_filter_out_unused_language($lexes);

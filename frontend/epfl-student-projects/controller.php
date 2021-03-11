@@ -19,7 +19,7 @@ function epfl_student_projects_block($attributes, $inner_content) {
     // To avoid to execute all code below (useless) when we just click on "Update" to save page while editing it
     if(is_admin()) return "";
 
-    wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
+    wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], '2.3.1', false);
 
     $title                  = Utils::get_sanitized_attribute( $attributes, 'title' );
     $section                = Utils::get_sanitized_attribute( $attributes, 'section' );
