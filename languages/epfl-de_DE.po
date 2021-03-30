@@ -61,7 +61,7 @@ msgstr "Kommende Veranstaltungen"
 
 #: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:19
 msgid "See all events"
-msgstr "Den vollständigen Veranstaltungskalender anschauen"
+msgstr "Zum vollständigen Veranstaltungskalende"
 
 #: frontend/epfl-memento/templates/slider.php:92
 msgid "Learn more & apply"
@@ -110,4 +110,4 @@ msgstr "Kontakt"
 
 #: frontend/epfl-memento/templates/includes/card-slider-footer.inc.php:16
 msgid "Complete agenda of events"
-msgstr "Den vollständigen Veranstaltungskalender anschauen"
+msgstr "Zum vollständigen Veranstaltungskalende"
