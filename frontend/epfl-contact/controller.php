@@ -16,7 +16,7 @@ function epfl_contact_block($attributes, $inner_content) {
         strpos($key, 'timetable') !== false) {
             $attributes[$key] = wp_kses_post($value);
         }
-        else {
+        elseif ($key != 'mapQuery') {  //mapQuery will be sanitize by Map
             $attributes[$key] = sanitize_text_field($value);
         }
     }
@@ -60,7 +60,7 @@ function epfl_contact_block($attributes, $inner_content) {
         ?>
         <div class="col-lg-6 d-flex flex-column">
           <?php echo
-           epfl_map_block(['query' => $attributes['mapQuery'], 'lang' => pll_current_language()]); ?>
+           epfl_map_block(['query' => $attributes['mapQuery'] ?? null, 'searchType' => $attributes['searchType'] ?? null, 'lang' => pll_current_language()]); ?>
         </div>
         <?php endif; ?>
       </div>
