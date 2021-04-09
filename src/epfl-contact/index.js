@@ -177,6 +177,7 @@ registerBlockType( 'epfl/contact', {
                     <hr />
                     <label><strong>{ __( 'Map', 'epfl' ) }</strong></label>
                     <SelectControl
+                      label={ __('A room/place shown in the interactive map:', 'epfl') }
                       value={ attributes.searchType }
                       options={ [
                           { label: __('A name or a place', 'epfl'), value: 'searchAll' },
@@ -186,7 +187,6 @@ registerBlockType( 'epfl/contact', {
                       onChange={ searchType => setAttributes({searchType}) }
                     />
                     <TextControl
-                        label={ __('A room/place shown in the interactive map:', 'epfl') }
                         value={ attributes.mapQuery }
                         onChange={ mapQuery => setAttributes( { mapQuery } ) }
                         placeholder={ 'CM 0 361.2' }
