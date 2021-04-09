@@ -6,7 +6,7 @@ import {
 
 import contactIcon from './contact-icon'
 
-const version = "v1.0.6";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -24,6 +24,7 @@ const {
     PanelBody,
     TextControl,
     ToggleControl,
+    SelectControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -67,7 +68,11 @@ registerBlockType( 'epfl/contact', {
         },
         mapQuery: {
             type: 'string',
-        }
+        },
+        searchType: {
+            type: 'string',
+            default: 'searchAll',
+        },
     }),
     example: getTooltippedExample(),
     supports : {
@@ -171,6 +176,15 @@ registerBlockType( 'epfl/contact', {
                     />
                     <hr />
                     <label><strong>{ __( 'Map', 'epfl' ) }</strong></label>
+                    <SelectControl
+                      value={ attributes.searchType }
+                      options={ [
+                          { label: __('A name or a place', 'epfl'), value: 'searchAll' },
+                          { label: __('A room number', 'epfl'), value: 'searchRoom' },
+                          { label: __('An URL copy-pasted from plan.epfl.ch', 'epfl'), value: 'searchURL' },
+                      ] }
+                      onChange={ searchType => setAttributes({searchType}) }
+                    />
                     <TextControl
                         label={ __('A room/place shown in the interactive map:', 'epfl') }
                         value={ attributes.mapQuery }
