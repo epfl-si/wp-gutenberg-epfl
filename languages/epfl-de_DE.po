@@ -45,7 +45,7 @@ msgstr "Mehr erfahren"
 #: frontend/epfl-news/templates/highlighted_with_3_news.php:96
 #: frontend/epfl-news/templates/listing.php:43
 msgid "All news"
-msgstr "Alle Neuigkeiten"
+msgstr "Alle News"
 
 #: frontend/epfl-infoscience-search/renderers/publications.php:101
 msgid "Detailed record"
@@ -61,7 +61,7 @@ msgstr "Kommende Veranstaltungen"
 
 #: frontend/epfl-memento/templates/listing_with_the_first_highlighted_event.php:19
 msgid "See all events"
-msgstr "Den vollständigen Veranstaltungskalender anschauen"
+msgstr "Zum vollständigen Veranstaltungskalende"
 
 #: frontend/epfl-memento/templates/slider.php:92
 msgid "Learn more & apply"
@@ -104,3 +104,10 @@ msgstr "Diesen Beitrag auf Instagram anschauen"
 #: frontend/epfl-social-feed/facebook_view.php:21
 msgid "Like our page on Facebook"
 msgstr "Unsere Facebook-Seite liken"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+#: frontend/epfl-memento/templates/includes/card-slider-footer.inc.php:16
+msgid "Complete agenda of events"
+msgstr "Zum vollständigen Veranstaltungskalende"

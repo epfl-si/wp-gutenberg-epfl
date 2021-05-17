@@ -26,8 +26,11 @@ export default class PreviewMemento extends Component {
       eventsUrl += `&lang=en,fr`;
     }
 
-		if (attributes.category !== 0) {
-			eventsUrl += `&category=${attributes.category}`;
+		if (attributes.categories !== null) {
+			let categories = JSON.parse(attributes.categories);
+			categories.forEach(category => {
+			  eventsUrl += `&category=${category.value}`;
+			});
 		}
 
 		if (attributes.keyword !== '') {

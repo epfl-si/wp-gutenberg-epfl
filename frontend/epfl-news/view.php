@@ -12,8 +12,8 @@
     require_once(dirname(__FILE__) . '/templates/card_with_2_news.php');
     require_once(dirname(__FILE__) . '/templates/card_with_3_news.php');
 
-    function epfl_news_render($results, $template, $all_news_link) {
+    function epfl_news_render($results, $template, $all_news_link, $lang) {
         $function_to_be_called = __NAMESPACE__ . '\epfl_news_' . $template;
-        $markup = $function_to_be_called($results, $all_news_link);
+        $markup = $function_to_be_called($results, $all_news_link, $lang);
         return $markup;
     }

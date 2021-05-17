@@ -2,6 +2,8 @@
 
 namespace EPFL\Plugins\Gutenberg\People;
 
+use function EPFL\Plugins\Gutenberg\Lib\Language\get_current_or_default_language;
+
 define(__NAMESPACE__ . "\HIERARCHICAL_ORDER", "hierarchical");
 define(__NAMESPACE__ . "\HIERARCHICAL_ORDER_WITH_TITLE", "hierarchical-with-title");
 define(__NAMESPACE__ . "\ALPHABETICAL_ORDER", "alphabetical");
@@ -146,5 +148,11 @@ function epfl_people_get_people_url($person) {
     } else {
         $slug = $person->sciper;
     }
-    return "https://people.epfl.ch/" . $slug;
+    $language = get_current_or_default_language();
+
+    if ($language == 'de') {
+        $language = 'en';
+    }
+
+    return add_query_arg('lang', $language, "https://people.epfl.ch/" . $slug);
 }
