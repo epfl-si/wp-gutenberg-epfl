@@ -57,7 +57,9 @@ export default class InspectorControlsMemento extends Component {
             let optionsMementosList = [];
 
             this.state.mementos.forEach(memento => {
-                optionsMementosList.push({ label: memento.en_name, value: memento.id });
+                if (memento.is_active) {
+                  optionsMementosList.push({ label: memento.en_name, value: memento.id });
+                }
             });
 
             let optionsTemplatesList = [
