@@ -165,6 +165,10 @@ function epfl_video_block( $attributes ) {
 
     $url = "https://tube.switch.ch/embed/".$video_id;
   }
+  // else if video not [youtube, vimeo, tube.switch] then
+  else {
+    return Utils::render_user_msg("Embed of video is only possible from SwitchTube, Vimeo or Youtube");
+  }
 
   $markup = epfl_video_render($url, $large_display);
   return $markup;
