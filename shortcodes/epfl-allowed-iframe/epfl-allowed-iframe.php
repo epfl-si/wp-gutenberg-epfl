@@ -4,6 +4,10 @@ namespace EPFL\Plugins\Shortcodes\EPFLAllowedIframe;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
+
+    // To avoid to execute all code below (useless) when we just click on "Update" to save page while editing it
+    if(is_admin()) return "";
+
     $atts = shortcode_atts( array(
             'url' => ''
     ), $atts );
@@ -13,9 +17,7 @@ function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
     }
     else
     {
-       if ( $screen->parent_base != 'edit' ) {
           return Utils::render_user_msg("iframe url not allowed");
-       }	
     }
 ?>
 
