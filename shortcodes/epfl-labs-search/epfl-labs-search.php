@@ -17,7 +17,8 @@ define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/ap
 function process_shortcode($atts) {
     $atts = shortcode_atts( array(
         'faculty' => '',
-        'institute' => ''
+        'institute' => '',
+        'fied' => ''
     ), $atts );
 
     // field of research can come from the url
