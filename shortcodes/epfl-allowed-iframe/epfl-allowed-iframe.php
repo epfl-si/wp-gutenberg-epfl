@@ -8,7 +8,7 @@ function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
             'url' => ''
     ), $atts );
 
-    if (strpos(file_get_contents("./wp-content/plugins/wp-gutenberg-epfl-custom/shortcodes/epfl-allowed-iframe/allowed_url.txt"),$atts['url']) !== false) {
+    if (strpos(file_get_contents("./wp-content/plugins/wp-gutenberg-epfl/shortcodes/epfl-allowed-iframe/allowed_url.txt"),$atts['url']) !== false) {
     	$url = sanitize_text_field($atts['url']);
     }
     else
