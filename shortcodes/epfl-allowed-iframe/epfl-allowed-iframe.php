@@ -1,6 +1,7 @@
 <?php
 
-namespace EPFL\Plugins\Shortcodes\EPFLAllowedIframe;use \EPFL\Plugins\Gutenberg\Lib\Utils;
+namespace EPFL\Plugins\Shortcodes\EPFLAllowedIframe;
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
     $atts = shortcode_atts( array(
