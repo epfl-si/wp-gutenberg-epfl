@@ -18,7 +18,7 @@ function process_shortcode($atts) {
     $atts = shortcode_atts( array(
         'faculty' => '',
         'institute' => '',
-        'fied' => ''
+        'field' => ''
     ), $atts );
 
     // field of research can come from the url
