@@ -31,6 +31,11 @@ function process_shortcode($atts) {
     $institute = sanitize_text_field($atts["institute"]);
     $field = sanitize_text_field($atts["field"]);
 
+    // move back any encoded html entities
+    $faculty = html_entity_decode($faculty);
+    $institute = html_entity_decode($institute);
+    $field = html_entity_decode($field);
+
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
 
