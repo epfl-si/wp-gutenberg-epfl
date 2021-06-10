@@ -77,7 +77,7 @@ function epfl_carousel_block( $attributes ) {
           </div>
 
           <div class="fullwidth-teaser-footer">
-            <a href="#" aria-label="Link to read more of that page" class="btn btn-primary btn-block d-xl-none"><?php echo __("Read more", 'epfl'); ?></a>
+            <a href="<?php echo esc_url($attributes['url'.$i]); ?>" aria-label="Link to read more of that page" class="btn btn-primary btn-block d-xl-none"><?php echo __("Read more", 'epfl'); ?></a>
           </div>
         </div>
       </div>
