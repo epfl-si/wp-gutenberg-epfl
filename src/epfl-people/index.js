@@ -70,6 +70,9 @@ registerBlockType(
                 type: 'boolean',
                 default: true,
             },
+            title: {
+                type: 'string',
+            }
         }),
         example: getTooltippedExample(),
         supports: {

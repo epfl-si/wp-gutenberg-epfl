@@ -2,12 +2,12 @@
 namespace EPFL\Plugins\Gutenberg\People;
 
     // colums = 1 and 3
-    function epfl_people_hierarchical_with_title_card($persons, $from, $columns, $display_options) {
+    function epfl_people_hierarchical_with_title_card($persons, $from, $columns, $title, $display_options) {
 
       $markup = '<div class="container my-3">';
-        
+      $markup .= '<h2>' . $title . '</h2>';
         foreach($persons as $index => $element) { 
-            $markup .= '<h2 class="my-3">' . $element->label . '</h2>';
+            $markup .= '<h3 class="my-3">' . $element->label . '</h3>';
            
             if ($columns === '3') {
                 $markup .= '<div class="card-deck">';

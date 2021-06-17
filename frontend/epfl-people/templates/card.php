@@ -2,10 +2,10 @@
 namespace EPFL\Plugins\Gutenberg\People;
 
     // colums = 1 and 3
-    function epfl_people_card($persons, $from, $columns, $display_options) {
+    function epfl_people_card($persons, $from, $columns, $title, $display_options) {
 
         $markup = '<div class="container my-3">';
-
+        $markup .= '<h2>' . $title . '</h2>';
         if ($columns === '3') {
             $markup .= '<div class="card-deck">';
         }

@@ -1,16 +1,16 @@
 <?php
     namespace EPFL\Plugins\Gutenberg\People;
     // colums = 1
-    function epfl_people_hierarchical_with_title_list($persons, $from, $display_options) {
+    function epfl_people_hierarchical_with_title_list($persons, $from, $title, $display_options) {
         /*
         var_dump($persons);
         var_dump($from);
         */
 
         $markup = '<div class="container my-3">';
-
+        $markup .= '<h2>' . $title . '</h2>';
         foreach($persons as $index => $element) { 
-            $markup .= '<h4 class="my-3">' . $element->label . '</h4>';
+            $markup .= '<h3 class="my-3">' . $element->label . '</h3>';
             $markup .= '<div class="contact-list">';
 
             $members = delete_duplicate_persons($element->members);

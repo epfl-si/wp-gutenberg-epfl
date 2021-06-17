@@ -68,6 +68,13 @@ export default class InspectorControlsPeople extends Component {
             <InspectorControls>
                 <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/people-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 <p className="wp-block-help">{ version }</p>
+                <PanelBody title={__('Block title', 'epfl')}>
+                    <TextControl
+                        value={ attributes.title }
+                        help={ __('You can enter a block title', 'epfl') }
+                        onChange={ title => setAttributes( { title } ) }
+                    />
+                </PanelBody>
                 <PanelBody title={ __( 'Select by', 'epfl') }>
                     <strong>{__( 'Units', 'epfl')}</strong>
                     <TextControl

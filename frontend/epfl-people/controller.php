@@ -44,6 +44,7 @@ function epfl_people_block( $attributes ) {
     $display_room     = Utils::get_sanitized_attribute( $attributes, 'displayRoom', TRUE );
     $display_email    = Utils::get_sanitized_attribute( $attributes, 'displayEmail', TRUE );
     $display_phone    = Utils::get_sanitized_attribute( $attributes, 'displayPhone', TRUE );
+    $title            = Utils::get_sanitized_attribute( $attributes, 'title');
 
     /*
     var_dump($units);
@@ -58,6 +59,7 @@ function epfl_people_block( $attributes ) {
     var_dump($display_room);
     var_dump($display_email);
     var_dump($display_phone);
+    var_dump($title);
     */
 
     $display_options = array(
@@ -158,7 +160,7 @@ function epfl_people_block( $attributes ) {
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     }
 
-    $markup = epfl_people_render($persons, $from, $columns, $order, $display_options);
+    $markup = epfl_people_render($persons, $from, $columns, $order, $title, $display_options);
     return $markup;
 
 }
