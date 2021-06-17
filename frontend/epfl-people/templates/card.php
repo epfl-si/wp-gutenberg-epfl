@@ -2,7 +2,7 @@
 namespace EPFL\Plugins\Gutenberg\People;
 
     // colums = 1 and 3
-    function epfl_people_card($persons, $from, $columns) {
+    function epfl_people_card($persons, $from, $columns, $display_options) {
 
         $markup = '<div class="container my-3">';
 

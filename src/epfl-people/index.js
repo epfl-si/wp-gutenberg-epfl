@@ -53,7 +53,23 @@ registerBlockType(
             },
             structure: {
                 type: 'string',
-            }
+            },
+            displayFunction: {
+                type: 'boolean',
+                default: true,
+            },
+            displayRoom: {
+                type: 'boolean',
+                default: true,
+            },
+            displayEmail: {
+                type: 'boolean',
+                default: true,
+            },
+            displayPhone: {
+                type: 'boolean',
+                default: true,
+            },
         }),
         example: getTooltippedExample(),
         supports: {

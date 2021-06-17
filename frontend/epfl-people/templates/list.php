@@ -1,7 +1,7 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\People;
     // colums = 1
-    function epfl_people_list($persons, $from) {
+    function epfl_people_list($persons, $from, $display_options) {
 
         /*
         var_dump($persons);
