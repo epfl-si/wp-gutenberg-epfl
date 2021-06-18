@@ -14,7 +14,6 @@ namespace EPFL\Plugins\Gutenberg\People;
 
         // Try to load the filtered_fields in the script if available.
         try {
-            $jsonObj = json_decode($custom_data, true);
             $fields = explode(",", $filtered_fields);
             $joined = implode("','", $fields);
             $checkbox_fields = "['$joined']";
@@ -39,6 +38,15 @@ namespace EPFL\Plugins\Gutenberg\People;
             $room       = epfl_people_get_room($person, $from, ALPHABETICAL_ORDER);
             $room_url   = epfl_people_get_room_url($room);
             $people_url = epfl_people_get_people_url($person);
+
+            try {
+                $sciper_str = (string) $person_sciper;
+                $this_custom = $jsonObj[$sciper_str];
+                $person_custom = json_encode($this_custom);
+            } catch (Exception $e) {
+                $person_custom = 'undefined';
+            }
+
             $people_data .= "
                 {
                     sciper: '$person_sciper',
@@ -51,12 +59,10 @@ namespace EPFL\Plugins\Gutenberg\People;
                     name: '$person_name',
                     lastname: '$person_surname',
                     email: '$person_email',
-                    custom: customData['$person_sciper']
+                    custom: $person_custom
                 },
             ";
         }
-
-        $markup = "<!-- $checkbox_fields -->";
 
         // Include the 'Dynamic' JS file dealing with the cards and filters
         include(dirname(__FILE__) . '/includes/dynamic-card-part.inc.php');
