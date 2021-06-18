@@ -43,7 +43,7 @@ namespace EPFL\Plugins\Gutenberg\People;
                 {
                     sciper: '$person_sciper',
                     picture: '$photo_url',
-                    efunction: '$function',
+                    position: '$function',
                     phone: '$phones[0]',
                     room: '$room',
                     roomUrl: '$room_url',

@@ -15,6 +15,10 @@ var peopleData = [
     $people_data
 ];
 
+var filterOptions = {
+    position: Array.from(new Set(peopleData.map(x => x.position))).sort()
+};
+
 //\" // comment to better debug js ?> <script>
 
 var peoplespace = {}
@@ -41,11 +45,11 @@ peoplespace.updateFilters = function () {
 }
 
 peoplespace.getCheckBoxGroups = function (filterOptions) {
-    var checkboxesGroups =  `<div style='padding: 10px; background-color: #efefef;'>
+    var checkboxesGroups =  `<div style='padding: 2rem; background-color: #f5f5f5; font-size: smaller;'>
     <h5>Positions Filter:</h5>
-    \${filterOptions.efunctions.map(pos => 
+    \${filterOptions.position.map(pos => 
         `<div class='custom-control custom-checkbox'>
-            <input type='checkbox' value='\${pos}' id='\${pos}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='efunction' checked>
+            <input type='checkbox' value='\${pos}' id='\${pos}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='position' checked>
             <label class='custom-control-label' for='\${pos}'>\${pos}</label></div>`).join('')}
     </div>`
     return checkboxesGroups
@@ -59,18 +63,18 @@ peoplespace.getCustomData = function (custom) {
     return customMarkup
 }
 
-peoplespace.getFunctionPart = function (efunction) {
-    if (efunction) {
+peoplespace.getFunctionPart = function (position) {
+    if (position) {
         return `
         <dt>\${postionLabel}</dt>
-        <dd>\${efunction}</dd>`;
+        <dd>\${position}</dd>`;
     }
     return `
         <dt></dt>
         <dd>&nbsp;</dd>`;
 }
 
-peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopleUrl, efunction, email, phone, custom}) {
+peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopleUrl, position, email, phone, custom}) {
     return `
 
     <div class='card' id='\${sciper}'>
@@ -84,7 +88,7 @@ peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopl
         </a>
       </h3>
       <dl class='definition-list definition-list-grid my-0'>
-        \${peoplespace.getFunctionPart(efunction)}
+        \${peoplespace.getFunctionPart(position)}
         \${peoplespace.getCustomData(custom)}
         <dt></dt>
         <dd>&nbsp;</dd>
@@ -96,14 +100,6 @@ peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopl
     </div>
   </div>`
 }
-
-// 
-
-
-
-var filterOptions = {
-    efunctions: Array.from(new Set(peopleData.map(x => x.efunction))).sort()
-};
 
 peoplespace.filterCard = function (card) {
     var condition = true
