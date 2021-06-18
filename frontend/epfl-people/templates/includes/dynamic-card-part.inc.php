@@ -5,9 +5,19 @@
 $markup .= "
 <script>
 
-var peoplespace = {}
-
 var postionLabel = '$position_label';
+
+var checkboxFields = $checkbox_fields;
+
+var customData = $custom_data;
+
+var peopleData = [
+    $people_data
+];
+
+//\" // comment to better debug js ?> <script>
+
+var peoplespace = {}
 
 peoplespace.filters = {}
 
@@ -19,7 +29,7 @@ peoplespace.updateFilters = function () {
             name: check[i].name,
             value: check[i].value,
             checked: check[i].checked
-        })
+        });
     }
     const filters = results.filter(x => x.checked).reduce((obj, val) => {
         obj[val.name] = obj[val.name] || []
@@ -28,11 +38,10 @@ peoplespace.updateFilters = function () {
     }, {})
     peoplespace.filters = filters
     this.renderCards()
-
 }
 
 peoplespace.getCheckBoxGroups = function (filterOptions) {
-    var checkboxesGroups =  `<div style='padding: 10px; background-color: #eee;'>
+    var checkboxesGroups =  `<div style='padding: 10px; background-color: #efefef;'>
     <h5>Positions Filter:</h5>
     \${filterOptions.efunctions.map(pos => 
         `<div class='custom-control custom-checkbox'>
@@ -88,11 +97,9 @@ peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopl
   </div>`
 }
 
-var customData = $custom_data;
+// 
 
-var peopleData = [
-    $people_data
-];
+
 
 var filterOptions = {
     efunctions: Array.from(new Set(peopleData.map(x => x.efunction))).sort()
