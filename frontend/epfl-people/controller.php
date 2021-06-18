@@ -40,7 +40,9 @@ function epfl_people_block( $attributes ) {
     $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
     $order            = Utils::get_sanitized_attribute( $attributes, 'order', ALPHABETICAL_ORDER );
     $structure        = Utils::get_sanitized_attribute( $attributes, 'structure', '1' );
-
+    $custom_data      = Utils::get_sanitized_attribute( $attributes, 'customData' );
+    $filtered_fields  = Utils::get_sanitized_attribute( $attributes, 'filteredFields' );
+    
     /*
     var_dump($units);
     var_dump($groups);
@@ -50,8 +52,10 @@ function epfl_people_block( $attributes ) {
     var_dump($columns);
     var_dump($order);
     var_dump($structure);
+    var_dump($custom_data);
+    var_dump($filtered_fields);
     */
-
+    
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
     $groups = preg_replace('/\s+/','',$groups);
@@ -66,7 +70,7 @@ function epfl_people_block( $attributes ) {
     $function = implode(",",$functions);
 
     if ($columns !== 'list') {
-        $columns = (is_numeric($columns) && intval($columns) <= 3 && intval($columns) >= 1) ? $columns : 3;
+        $columns = (is_numeric($columns) && intval($columns) <= 4 && intval($columns) >= 1) ? $columns : 4;
     }
 
     // The user must fill in one of the 4 fields
@@ -143,7 +147,7 @@ function epfl_people_block( $attributes ) {
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     }
 
-    $markup = epfl_people_render($persons, $from, $columns, $order);
+    $markup = epfl_people_render($persons, $from, $columns, $order, $custom_data, $filtered_fields);
     return $markup;
 
 }
