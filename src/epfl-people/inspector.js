@@ -24,10 +24,12 @@ export default class InspectorControlsPeople extends Component {
 
         const { attributes, setAttributes } = this.props
 
+
         let optionsColumnsList = [
             { value: 'list', label: __('List', 'epfl')},
             { value: '1', label: __('Cards, one column', 'epfl')},
             { value: '3', label: __('Cards, multiple columns', 'epfl')},
+            { value: '4', label: __('Cards, filtered, custom data', 'epfl')}
         ];
 
         let optionsOrderList = [
@@ -134,6 +136,24 @@ export default class InspectorControlsPeople extends Component {
                         onChange={ () => setAttributes( { displayPhone: ! attributes.displayPhone } ) }
                     />
                 </PanelBody>
+                {attributes && attributes.columns === '4' &&
+                    <>
+                        <PanelBody title={ __( 'Custom Data', 'epfl' ) }>
+                            <TextControl
+                                value={ attributes.customData }
+                                help={ __('You can enter custom data to enrich the cards profile.') }
+                                onChange={ customData => setAttributes( { customData } ) }
+                            />
+                        </PanelBody>
+                        <PanelBody title={ __( 'Filtered Fields', 'epfl' ) }>
+                            <TextControl
+                                value={ attributes.filteredFields }
+                                help={ __('You can enter the comma separated list of fields.') }
+                                onChange={ filteredFields => setAttributes( { filteredFields } ) }
+                            />
+                        </PanelBody>
+                    </>
+                }
                 <PanelBody title={ __( 'Columns', 'epfl' ) }>
                     <RadioControl
                         label={ __("Select a template", 'epfl') }

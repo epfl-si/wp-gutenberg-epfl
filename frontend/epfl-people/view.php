@@ -8,15 +8,24 @@
     require_once(dirname(__FILE__) . '/templates/list.php');
     require_once(dirname(__FILE__) . '/templates/hierarchical-list.php');
     require_once(dirname(__FILE__) . '/templates/hierarchical-with-title-list.php');
+    require_once(dirname(__FILE__) . '/templates/dynamic-card.php');
     require_once(dirname(__FILE__) . '/templates/card.php');
     require_once(dirname(__FILE__) . '/templates/hierarchical-card.php');
     require_once(dirname(__FILE__) . '/templates/hierarchical-with-title-card.php');
 
-    function epfl_people_render($persons, $from, $columns, $order, $title, $display_options) {
-        //var_dump($persons);
-        //var_dump($from);
-        //var_dump($columns);
-        //var_dump($display_options);
+    function epfl_people_render($persons, $from, $columns, $order, $title, $display_options, $custom_data = "", $filtered_fields = "") {
+        /*
+        var_dump($persons);
+        var_dump($from);
+        var_dump($columns);
+        var_dump($custom_data);
+        var_dump($filtered_fields);
+        */
+
+        // Calling the  epfl_dynamic_people_card function directly if selected.
+        if ( ALPHABETICAL_ORDER === $order && $columns === '4') {
+            $markup = epfl_dynamic_people_card($persons, $from, '3', $custom_data, $filtered_fields);
+        }
 
         /* You may wonder why we don't directly call "epfl_people_card" function with all
         3 parameters? Because it doesn't work... only the first 2 paramters are given to
@@ -25,7 +34,7 @@
         here to avoid others persons to want to simplify this code by directly calling 
         "epfl_people_card" and not understand why it's not working... */
       
-        if ( ALPHABETICAL_ORDER === $order ) {
+        else if ( ALPHABETICAL_ORDER === $order ) {
             $function_to_be_called = __NAMESPACE__ . '\epfl_people_' . $columns;
             $markup = $function_to_be_called($persons, $from, $title, $display_options);
         } else if ( HIERARCHICAL_ORDER === $order ) {
