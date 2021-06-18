@@ -1,6 +1,6 @@
 <?php
 
-// $position_label, $custom_data and $people_data vars are required for this partial file.
+// $position_label, $checkbox_fields and $people_data vars are required for this partial file.
 
 $markup .= "
 <script>
@@ -8,8 +8,6 @@ $markup .= "
 var postionLabel = '$position_label';
 
 var checkboxFields = $checkbox_fields;
-
-var customData = $custom_data;
 
 var peopleData = [
     $people_data
