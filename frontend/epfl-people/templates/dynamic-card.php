@@ -5,13 +5,21 @@ namespace EPFL\Plugins\Gutenberg\People;
 
         $position_label =  __('Position', 'epfl');
 
-        $markup = "<!-- $filtered_fields -->";
-
         // Try to load he custom data in the script if available.
         try {
             $jsonObj = json_decode($custom_data, true);
         } catch (Exception $e) {
             $custom_data = "{}";
+        }
+
+        // Try to load the filtered_fields in the script if available.
+        try {
+            $jsonObj = json_decode($custom_data, true);
+            $fields = explode(",", $filtered_fields);
+            $joined = implode("','", $fields);
+            $checkbox_fields = "['$joined']";
+        } catch (Exception $e) {
+            $checkbox_fields = "[]";
         }
 
         $people_data = "";
@@ -48,15 +56,14 @@ namespace EPFL\Plugins\Gutenberg\People;
             ";
         }
 
+        $markup = "<!-- $checkbox_fields -->";
+
         // Include the 'Dynamic' JS file dealing with the cards and filters
         include(dirname(__FILE__) . '/includes/dynamic-card-part.inc.php');
 
 
         // Adding class container 
         $markup .= '<div class="container my-3" id="main-people-container"><div id="dyn-filters"></div><div id="dyn-cards"><div></div>';
-        
-        // $markup  = preg_replace("/\s+/", " ", $markup);
-
 
         return $markup; 
     }
