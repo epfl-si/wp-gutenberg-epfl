@@ -1,6 +1,6 @@
 <?php
 
-// $position_label, $checkbox_fields and $people_data vars are required for this partial file.
+// $position_label, $office_label, $checkbox_fields and $people_data vars are required for this partial file.
 
 $markup .= "
 <script>
@@ -9,23 +9,43 @@ var postionLabel = '$position_label';
 
 var officeLabel = '$office_label';
 
-var checkboxFields = $checkbox_fields;
+var checkboxFields = $checkbox_fields.filter(function (f) {
+    return f !== '';
+});
 
 var peopleData = [
     $people_data
-];
-
-var customOptions = peopleData.map(x => x.custom).filter(x => x)
-
-var filterOptions = [
-    {
-        id: 'position',
-        options: Array.from(new Set(peopleData.map(x => x.position))).sort(),
-        title: 'Position Filter'
+].map(function (item) {
+    if (!item.custom) {
+        return item;
     }
-];
+    var customObj = item.custom.reduce(function (obj, item) {
+        obj[item.key] = item.value;
+        return obj;
+    }, {});
+    return Object.assign({}, item, customObj);
+});
 
-//\" // comment to better debug js ?> <script>
+function getFilterLabel (field) {
+    if (field === 'position') {
+        return postionLabel
+    } else if (field === 'room') {
+        return officeLabel
+    }
+    return field
+}
+
+var filterOptions = checkboxFields.map(function (field) {
+    return {
+        id: field,
+        options: Array.from(new Set(peopleData.map(function (x) {
+            return x[field];
+        }))).filter(function (x) {
+            return x;
+        }).sort(),
+        title: getFilterLabel(field)
+    };x
+});
 
 var peoplespace = {}
 
@@ -33,7 +53,7 @@ peoplespace.filters = {}
 
 peoplespace.updateFilters = function () {
     var check = document.querySelectorAll(\"input[type=checkbox]\");
-    var results = []
+    var results = [];
     for (var i = 0; i < check.length; i++) {
         results.push({
             name: check[i].name,
@@ -41,29 +61,31 @@ peoplespace.updateFilters = function () {
             checked: check[i].checked
         });
     }
-    const filters = results.filter(x => x.checked).reduce((obj, val) => {
-        obj[val.name] = obj[val.name] || []
-        obj[val.name].push(val.value)
-        return obj    
-    }, {})
-    peoplespace.filters = filters
-    this.renderCards()
-}
+    var filters = results.filter(function (x) {
+        return x.checked;
+    }).reduce(function (obj, val) {
+        obj[val.name] = obj[val.name] || [];
+        obj[val.name].push(val.value);
+        return obj;
+    }, {});
+    peoplespace.filters = filters;
+    this.renderCards();
+};
 
 peoplespace.getSingleGroup = function (item) {
     return `
-    <div class='col-sm-4'>
+    <div class='col-sm-3'>
         <h5>\${item.title}:</h5>
         \${item.options.map(pos => 
         `<div class='custom-control custom-checkbox'>
-            <input type='checkbox' value='\${pos}' id='\${pos}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='position' checked>
+            <input type='checkbox' value='\${pos}' id='\${pos}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='\${item.id}' checked>
             <label class='custom-control-label' for='\${pos}'>\${pos}</label></div>`).join('')}
     </div>`;
 }
 
 peoplespace.getCheckBoxGroups = function () {
     var checkboxesGroups =  `<div class='row' style='padding: 2rem; background-color: #f5f5f5; font-size: smaller;'>
-    \${filterOptions.map(item => peoplespace.getSingleGroup(item))}
+    \${filterOptions.filter(item => checkboxFields.includes(item.id)).map(item => peoplespace.getSingleGroup(item))}
     </div>`
     return checkboxesGroups
 }
@@ -157,8 +179,9 @@ peoplespace.filterCard = function (card) {
  }
 
  peoplespace.renderPeopleComponents = function () {
-   
-    peoplespace.renderCheckboxes()
+    if (checkboxFields.length > 0) {
+        peoplespace.renderCheckboxes()
+    }
     peoplespace.renderCards()
     peoplespace.updateFilters()
 
@@ -172,6 +195,11 @@ window.onload = (event) => {
     peoplespace.initialize();
 }
 </script>
+
+<noscript>
+    <b>You need to have Javascript activated in order to render this page.</b>
+</noscript>
+
 ";
 
 ?>
