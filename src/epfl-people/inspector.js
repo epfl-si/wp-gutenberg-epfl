@@ -10,10 +10,10 @@ const {
 const {
 	InspectorControls,
 } = wp.blockEditor
-
 const {
     PanelBody,
     TextControl,
+    TextareaControl,
     RadioControl,
     ToggleControl,
 } = wp.components
@@ -139,16 +139,16 @@ export default class InspectorControlsPeople extends Component {
                 {attributes && attributes.columns === '4' &&
                     <>
                         <PanelBody title={ __( 'Custom Data', 'epfl' ) }>
-                            <TextControl
+                            <TextareaControl
                                 value={ attributes.customData }
-                                help={ __('You can enter custom data to enrich the cards profile.') }
+                                help={ __('You can enter custom JSON object to enrich the cards profile: {"<sciper>": [{"key": "<propery key>", "value": "<property value>"}]}, ...') }
                                 onChange={ customData => setAttributes( { customData } ) }
                             />
                         </PanelBody>
                         <PanelBody title={ __( 'Filtered Fields', 'epfl' ) }>
                             <TextControl
                                 value={ attributes.filteredFields }
-                                help={ __('You can enter the comma separated list of fields.') }
+                                help={ __('You can enter the comma separated list of fields (ie. position,...). Leave it blank to skip the filtering part.') }
                                 onChange={ filteredFields => setAttributes( { filteredFields } ) }
                             />
                         </PanelBody>
