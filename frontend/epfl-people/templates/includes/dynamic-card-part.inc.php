@@ -1,6 +1,6 @@
 <?php
 
-// $position_label, $office_label, $checkbox_fields and $people_data vars are required for this partial file.
+// $position_label, $checkbox_fields and $people_data vars are required for this partial file.
 
 $markup .= "
 <script>
@@ -35,17 +35,11 @@ function getFilterLabel (field) {
     return field
 }
 
-var filterOptions = checkboxFields.map(function (field) {
-    return {
-        id: field,
-        options: Array.from(new Set(peopleData.map(function (x) {
-            return x[field];
-        }))).filter(function (x) {
-            return x;
-        }).sort(),
-        title: getFilterLabel(field)
-    };x
-});
+var filterOptions = checkboxFields.map(field => ({
+    id: field,
+    options: Array.from(new Set(peopleData.map(x => x[field]))).filter(x => x).sort(),
+    title: getFilterLabel(field)
+}))
 
 var peoplespace = {}
 
@@ -53,7 +47,7 @@ peoplespace.filters = {}
 
 peoplespace.updateFilters = function () {
     var check = document.querySelectorAll(\"input[type=checkbox]\");
-    var results = [];
+    var results = []
     for (var i = 0; i < check.length; i++) {
         results.push({
             name: check[i].name,
@@ -61,25 +55,26 @@ peoplespace.updateFilters = function () {
             checked: check[i].checked
         });
     }
-    var filters = results.filter(function (x) {
-        return x.checked;
-    }).reduce(function (obj, val) {
-        obj[val.name] = obj[val.name] || [];
-        obj[val.name].push(val.value);
-        return obj;
-    }, {});
-    peoplespace.filters = filters;
-    this.renderCards();
-};
+    const filters = results.filter(x => x.checked).reduce((obj, val) => {
+        obj[val.name] = obj[val.name] || []
+        obj[val.name].push(val.value)
+        return obj    
+    }, {})
+    peoplespace.filters = filters
+    this.renderCards()
+}
+
+peoplespace.getSingleCheckbox = function (option, id) {
+    return `<div class='custom-control custom-checkbox'>
+    <input type='checkbox' value='\${option}' id='\${option}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='\${id}' checked>
+    <label class='custom-control-label' for='\${option}'>\${option }</label></div>`
+}
 
 peoplespace.getSingleGroup = function (item) {
     return `
     <div class='col-sm-3'>
         <h5>\${item.title}:</h5>
-        \${item.options.map(pos => 
-        `<div class='custom-control custom-checkbox'>
-            <input type='checkbox' value='\${pos}' id='\${pos}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='\${item.id}' checked>
-            <label class='custom-control-label' for='\${pos}'>\${pos}</label></div>`).join('')}
+        \${item.options.map(option => peoplespace.getSingleCheckbox(option, item.id)).join('')}
     </div>`;
 }
 
