@@ -5,6 +5,8 @@ namespace EPFL\Plugins\Gutenberg\People;
 
         $position_label =  __('Position', 'epfl');
 
+        $office_label = __('Office', 'epfl');
+
         // Try to load he custom data in the script if available.
         try {
             $jsonObj = json_decode($custom_data, true);
