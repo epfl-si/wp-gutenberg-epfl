@@ -7,15 +7,23 @@ $markup .= "
 
 var postionLabel = '$position_label';
 
+var officeLabel = '$office_label';
+
 var checkboxFields = $checkbox_fields;
 
 var peopleData = [
     $people_data
 ];
 
-var filterOptions = {
-    position: Array.from(new Set(peopleData.map(x => x.position))).sort()
-};
+var customOptions = peopleData.map(x => x.custom).filter(x => x)
+
+var filterOptions = [
+    {
+        id: 'position',
+        options: Array.from(new Set(peopleData.map(x => x.position))).sort(),
+        title: 'Position Filter'
+    }
+];
 
 //\" // comment to better debug js ?> <script>
 
@@ -42,13 +50,20 @@ peoplespace.updateFilters = function () {
     this.renderCards()
 }
 
-peoplespace.getCheckBoxGroups = function (filterOptions) {
-    var checkboxesGroups =  `<div style='padding: 2rem; background-color: #f5f5f5; font-size: smaller;'>
-    <h5>Positions Filter:</h5>
-    \${filterOptions.position.map(pos => 
+peoplespace.getSingleGroup = function (item) {
+    return `
+    <div class='col-sm-4'>
+        <h5>\${item.title}:</h5>
+        \${item.options.map(pos => 
         `<div class='custom-control custom-checkbox'>
             <input type='checkbox' value='\${pos}' id='\${pos}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='position' checked>
             <label class='custom-control-label' for='\${pos}'>\${pos}</label></div>`).join('')}
+    </div>`;
+}
+
+peoplespace.getCheckBoxGroups = function () {
+    var checkboxesGroups =  `<div class='row' style='padding: 2rem; background-color: #f5f5f5; font-size: smaller;'>
+    \${filterOptions.map(item => peoplespace.getSingleGroup(item))}
     </div>`
     return checkboxesGroups
 }
@@ -58,7 +73,7 @@ peoplespace.getCustomData = function (custom) {
         return ''
     }
     var customMarkup = custom.map(prop => `<dt>\${prop.key}</dt><dd>\${prop.value}</dd>`)
-    return customMarkup
+    return customMarkup.join('')
 }
 
 peoplespace.getFunctionPart = function (position) {
@@ -72,7 +87,18 @@ peoplespace.getFunctionPart = function (position) {
         <dd>&nbsp;</dd>`;
 }
 
-peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopleUrl, position, email, phone, custom}) {
+peoplespace.getOfficePart = function (room, roomUrl) {
+    if (room && roomUrl) {
+        return `
+        <dt>\${officeLabel}</dt>    
+        <dd><a class='link-pretty' href='\${roomUrl}' data-jzz-gui-player='true'>\${room}</a></dd>`;
+    }
+    return `
+        <dt></dt>
+        <dd>&nbsp;</dd>`;
+}
+
+peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopleUrl, room, roomUrl, position, email, phone, custom}) {
     return `
 
     <div class='card' id='\${sciper}'>
@@ -87,6 +113,7 @@ peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopl
       </h3>
       <dl class='definition-list definition-list-grid my-0'>
         \${peoplespace.getFunctionPart(position)}
+        \${peoplespace.getOfficePart(room, roomUrl)}
         \${peoplespace.getCustomData(custom)}
         <dt></dt>
         <dd>&nbsp;</dd>
@@ -125,7 +152,7 @@ peoplespace.filterCard = function (card) {
 
  peoplespace.renderCheckboxes = function () {
     var wrapperCheckboxes = document.getElementById('dyn-filters');
-    var checkboxGroups = peoplespace.getCheckBoxGroups(filterOptions);
+    var checkboxGroups = peoplespace.getCheckBoxGroups();
     wrapperCheckboxes.innerHTML = checkboxGroups
  }
 
