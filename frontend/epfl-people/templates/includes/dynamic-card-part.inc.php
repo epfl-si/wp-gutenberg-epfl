@@ -112,7 +112,7 @@ peoplespace.getAllCheckbox = function (groupid) {
 peoplespace.getSingleGroup = function (item) {
     return `
     <div class='col-sm-3'>
-        <h5>\${item.title}:</h5>
+        <h5>\${item.title.charAt(0).toUpperCase() + item.title.slice(1)}:</h5>
         <div class='checkbox-container'>
         \${peoplespace.getAllCheckbox(item.id)}
         \${item.options.map(option => peoplespace.getSingleCheckbox(option, item.id)).join('')}
