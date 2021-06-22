@@ -3,6 +3,30 @@
 // $position_label, $checkbox_fields and $people_data vars are required for this partial file.
 
 $markup .= "
+<style>
+
+.checkbox-container {
+    max-width: 700px;
+    max-height: 230px;
+    overflow-y: auto;
+}
+
+.checkbox-label {
+    white-space: nowrap;
+}
+
+.checkbox-groups-container {
+    border: 1px solid #d5d5d5;
+    padding: 2rem;
+    background-color: #f5f5f5;
+    font-size: smaller;
+    width: 100%;
+    margin-left: 1px;
+    margin-bottom: 4px;
+}
+
+</style>
+
 <script>
 
 var postionLabel = '$position_label';
@@ -67,19 +91,37 @@ peoplespace.updateFilters = function () {
 peoplespace.getSingleCheckbox = function (option, id) {
     return `<div class='custom-control custom-checkbox'>
     <input type='checkbox' value='\${option}' id='\${option}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='\${id}' checked>
-    <label class='custom-control-label' for='\${option}'>\${option }</label></div>`
+    <label class='custom-control-label checkbox-label' for='\${option}'>\${option}</label></div>`
+}
+
+peoplespace.handleAllCheckboxClick = function (checkboxesid) {
+    const checkboxesRef = document.getElementsByName(checkboxesid);
+    const checkedProp = checkboxesRef[0].checked
+    for (let i = 1; i < checkboxesRef.length; i++) {
+        checkboxesRef[i].checked = checkedProp
+    }
+    this.updateFilters()
+}
+
+peoplespace.getAllCheckbox = function (groupid) {
+    return `<div class='custom-control custom-checkbox'>
+    <input type='checkbox' value='All' id='\${groupid}_All' class='custom-control-input' onclick='peoplespace.handleAllCheckboxClick(\"\${groupid}\")' name='\${groupid}' checked>
+    <label class='custom-control-label' for='\${groupid}_All'>All</label></div>`
 }
 
 peoplespace.getSingleGroup = function (item) {
     return `
     <div class='col-sm-3'>
         <h5>\${item.title}:</h5>
+        <div class='checkbox-container'>
+        \${peoplespace.getAllCheckbox(item.id)}
         \${item.options.map(option => peoplespace.getSingleCheckbox(option, item.id)).join('')}
+        </div>
     </div>`;
 }
 
 peoplespace.getCheckBoxGroups = function () {
-    var checkboxesGroups =  `<div class='row' style='padding: 2rem; background-color: #f5f5f5; font-size: smaller;'>
+    var checkboxesGroups =  `<div class='row checkbox-groups-container'>
     \${filterOptions.filter(item => checkboxFields.includes(item.id)).map(item => peoplespace.getSingleGroup(item))}
     </div>`
     return checkboxesGroups
@@ -144,16 +186,19 @@ peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopl
 }
 
 peoplespace.filterCard = function (card) {
-    var condition = true
+    var conditions = [];
     Object.keys(peoplespace.filters).forEach(filterKey => {
-        if (!card[filterKey]) {
-            condition = false
+        if (peoplespace.filters[filterKey].includes('All')) {
+            // Skip
         }
-        if (!peoplespace.filters[filterKey].includes(card[filterKey])) {
-            condition = false
+        else if (!card[filterKey]) {
+            conditions.push(1);
+        }
+        else if (!peoplespace.filters[filterKey].includes(card[filterKey])) {
+            conditions.push(1);
         }
     })
-    return condition
+    return conditions.length === 0
  }
 
  peoplespace.getFilteredData = function () {
