@@ -1,7 +1,7 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\People;
     // colums = 1
-    function epfl_people_list($persons, $from) {
+    function epfl_people_list($persons, $from, $title, $display_options) {
 
         /*
         var_dump($persons);
@@ -9,8 +9,9 @@ namespace EPFL\Plugins\Gutenberg\People;
         */
 
         $markup = '<div class="container my-3">';
+        $markup .= '<h2>' . $title . '</h2>';
         $markup .= '<div class="contact-list">';
-      
+
         foreach($persons as $index => $person){
         
             $photo_url  = epfl_people_get_photo($person);
