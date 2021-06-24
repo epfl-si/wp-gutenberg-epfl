@@ -12,7 +12,10 @@ function epfl_study_plan_process_shortcode( $atts, $content = null ) {
             'plan' => ''
             ), $atts );
     $plan = sanitize_text_field($atts['plan']);
-    $url = "https://prod-edu.epfl.ch/export/" . $plan;
+    
+    //$url = "https://isa.epfl.ch/pe/".$plan;
+    $url = "https://test-edu.epfl.ch/responsive/export/".$plan;
+    //var_dump($url);
     ob_start();
 
 ?>
