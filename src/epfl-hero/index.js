@@ -117,7 +117,7 @@ registerBlockType( 'epfl/hero', {
                             label={__('URL of the video', 'epfl')}
                             value={ attributes.videoUrl }
                             onChange={ videoUrl => setAttributes( { videoUrl } ) }
-                            help={ __('You can paste a Vimeo URL', 'epfl') }
+                            help={ __('You can paste a Vimeo URL like https://vimeo.com/339972923', 'epfl') }
                         />
                         <hr/>
                         { ! attributes.imageId ? (
