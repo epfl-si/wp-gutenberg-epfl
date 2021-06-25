@@ -7,14 +7,25 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
+
+function get_video_id( $video_url ) {
+    $video_id = "";
+    if (!empty($video_url)) {
+      $video_id = end(explode("/", $video_url));
+    }
+    return $video_id;
+}
+
 function epfl_hero_block( $attributes ) {
 
 
     $title       = Utils::get_sanitized_attribute( $attributes, 'title' );
     $image_id    = Utils::get_sanitized_attribute( $attributes, 'imageId' );
     $description = Utils::get_sanitized_attribute( $attributes, 'description' );
+    $video_url   = Utils::get_sanitized_attribute( $attributes, 'videoUrl' );
 
-    $short_vimeo_video_id = "545363021";
+    $short_vimeo_video_id = get_video_id($video_url);
+
     if (!empty($short_vimeo_video_id)) {
       $media_url = "https://player.vimeo.com/video/" . $short_vimeo_video_id . "?autoplay=1&loop=1&muted=1&background=1&quality=720";
     }
