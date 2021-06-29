@@ -77,7 +77,7 @@
                 $markup .= '<h3 class="card-title">' . esc_html($news->title) . '</h3>';
                 $markup .= '<div class="card-info">';
                 $markup .= '<span class="card-info-date">';
-                $markup .= '<time datetime="DATETIME HERE">' . esc_html($publish_date) . '</time>';
+                $markup .= '<time datetime="' . esc_attr(epfl_news_get_publish_date($news, "Y-m-d")) . '">' . esc_html($publish_date) . '</time>';
                 $markup .= '</span>';
                 $markup .= '<span>' . __('News', 'epfl') . '</span>';
                 $markup .= '<span>' . esc_html($category) . '</span>';

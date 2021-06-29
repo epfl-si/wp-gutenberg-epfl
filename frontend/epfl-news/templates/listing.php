@@ -28,7 +28,7 @@
             $markup .= '<div class="list-group-teaser-content">';
             $markup .= '<p class="h5">' . esc_html($news->title) . '</p>';
             $markup .= '<p>';
-            $markup .= '<time datetime="' . esc_attr($publish_date) . '"><span class="sr-only">Published:</span>' . esc_html($publish_date) . '</time>';
+            $markup .= '<time datetime="' . esc_attr(epfl_news_get_publish_date($news, "Y-m-d")) . '"><span class="sr-only">Published:</span>' . esc_html($publish_date) . '</time>';
             $markup .= '<span class="text-muted"> — ' . esc_html($subtitle) . '</span>';
             $markup .= '</p>';
             $markup .= '</div>';
