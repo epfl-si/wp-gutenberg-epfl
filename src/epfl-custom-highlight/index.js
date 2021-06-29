@@ -7,7 +7,7 @@ import {
 import customHighlightIcon from './custom-highlight-icon'
 import { image } from "@wordpress/icons";
 
-const version = "v1.0.2";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -21,11 +21,13 @@ const {
 } = wp.blockEditor;
 
 const {
-    Placeholder,
-    Button,
-	TextControl,
-	TextareaControl,
-	RadioControl,
+  Placeholder,
+  Button,
+  TextControl,
+  TextareaControl,
+  RadioControl,
+  ToggleControl,
+  PanelBody,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -61,7 +63,10 @@ registerBlockType( 'epfl/custom-highlight', {
 			type: 'string',
 			default: 'right',
 		},
-
+    openLinksNewTab: {
+      type: 'boolean',
+      default: false,
+    },
 	}),
 	example: getTooltippedExample(),
 	supports : {
@@ -104,13 +109,22 @@ registerBlockType( 'epfl/custom-highlight', {
 			<InspectorControls>
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/custom-highlight-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<p className="wp-block-help">{ version }</p>
-				<hr/>
-				<RadioControl
-					label={ __("Select a layout", 'epfl') }
-					selected={ attributes.layout }
-					options={ optionsLayoutList }
-					onChange={ layout => setAttributes( { layout } ) }
-				/>
+        <hr />
+        <PanelBody title='Layout'>
+          <RadioControl
+            label={ __("Select a layout", 'epfl') }
+            selected={ attributes.layout }
+            options={ optionsLayoutList }
+            onChange={ layout => setAttributes( { layout } ) }
+          />
+        </PanelBody>
+        <PanelBody title='Links'>
+          <ToggleControl
+            label={ __('Open links in a new tab', 'epfl') }
+            checked={ attributes.openLinksNewTab }
+            onChange={ openLinksNewTab => setAttributes( { openLinksNewTab } ) }
+          />
+        </PanelBody>
 			</InspectorControls>
 			<div className={ className }>
 				<h2 className="epfl-block-title">{ __('EPFL Custom Highlight', 'epfl') }</h2>
