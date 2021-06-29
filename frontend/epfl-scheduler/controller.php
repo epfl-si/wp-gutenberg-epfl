@@ -50,6 +50,6 @@ function epfl_scheduler_block( $attributes, $inner_content ) {
 
     // check if we can  display content
     if ( $now >= $start_date && $now <= $end_date ) {
-        return $inner_content;
+        return "<div class=\"container\">" . $inner_content . "</div>";
     }
 }
