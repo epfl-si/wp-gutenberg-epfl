@@ -7,12 +7,28 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
+
+function get_video_id( $video_url ) {
+    $video_id = "";
+    if (!empty($video_url)) {
+      $video_id = end(explode("/", $video_url));
+    }
+    return $video_id;
+}
+
 function epfl_hero_block( $attributes ) {
 
 
     $title       = Utils::get_sanitized_attribute( $attributes, 'title' );
     $image_id    = Utils::get_sanitized_attribute( $attributes, 'imageId' );
     $description = Utils::get_sanitized_attribute( $attributes, 'description' );
+    $video_url   = Utils::get_sanitized_attribute( $attributes, 'videoUrl' );
+
+    $short_vimeo_video_id = get_video_id($video_url);
+
+    if (!empty($short_vimeo_video_id)) {
+      $media_url = "https://player.vimeo.com/video/" . $short_vimeo_video_id . "?autoplay=1&loop=1&muted=1&background=1&quality=720";
+    }
 
     $text = "";
     if (array_key_exists('text', $attributes)) {
@@ -43,7 +59,14 @@ if (!empty($text)) { ?>
     </div>
     <div class="hero-img">
       <figure class="cover">
+        <?php
+        if ($media_url) { ?>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="<?php echo $media_url ?>" frameborder="1"></iframe>
+          </div>
+        <?php } else { ?>
         <picture><?php echo $image; ?></picture>
+        <?php } ?>
         <figcaption>
           <button aria-hidden="true" type="button" class="btn-circle" data-toggle="popover" data-content="<?php echo esc_html($description); ?>">
             <svg class="icon" aria-hidden="true">
