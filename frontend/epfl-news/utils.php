@@ -53,9 +53,9 @@ function epfl_news_get_label_category($news, $lang) {
  *
  * $news: news to display
  */
-function epfl_news_get_publish_date($news) {
+function epfl_news_get_publish_date($news, $format='d.m.y') {
     $publish_date = new \DateTime($news->publish_date);
-    $publish_date = $publish_date->format('d.m.y');
+    $publish_date = $publish_date->format($format);
     return $publish_date;
 }
 
