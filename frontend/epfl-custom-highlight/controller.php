@@ -9,12 +9,13 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_custom_highlight_block( $attributes ) {
 
-    $title          = Utils::get_sanitized_attribute( $attributes, 'title' );
-    $description    = Utils::get_sanitized_attribute( $attributes, 'description' );
-    $image_id       = Utils::get_sanitized_attribute( $attributes, 'imageId' );
-    $link           = Utils::get_sanitized_url( $attributes, 'link' );
-    $button_label   = Utils::get_sanitized_attribute( $attributes, 'buttonLabel' );
-    $layout         = Utils::get_sanitized_attribute( $attributes, 'layout' );
+    $title              = Utils::get_sanitized_attribute( $attributes, 'title' );
+    $description        = Utils::get_sanitized_attribute( $attributes, 'description' );
+    $image_id           = Utils::get_sanitized_attribute( $attributes, 'imageId' );
+    $link               = Utils::get_sanitized_url( $attributes, 'link' );
+    $button_label       = Utils::get_sanitized_attribute( $attributes, 'buttonLabel' );
+    $layout             = Utils::get_sanitized_attribute( $attributes, 'layout' );
+    $open_links_new_tab = Utils::get_sanitized_attribute( $attributes, 'openLinksNewTab', False );
 
     $image = wp_get_attachment_image(
         $image_id,
@@ -69,7 +70,7 @@ function epfl_custom_highlight_block( $attributes ) {
             <?php echo $title ?>
           </h3>
         </div>
-        <a href="<?php echo $link ?>" aria-label="Link to read more of that page" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block"><?php echo $button_label ?: __('See more', 'epfl') ?></a>
+        <a href="<?php echo $link ?>" <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> aria-label="Link to read more of that page" class="btn btn-primary triangle-outer-bottom-right d-none d-xl-block"><?php echo $button_label ?: __('See more', 'epfl') ?></a>
       </div>
 
       <?php if (!empty($description)): ?>
