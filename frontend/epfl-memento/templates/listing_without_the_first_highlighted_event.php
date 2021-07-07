@@ -2,6 +2,8 @@
     namespace EPFL\Plugins\Gutenberg\Memento;
 
     function epfl_memento_listing_without_the_first_highlighted_event($results, $memento_name) {
+
+        $memento_url = get_memento_url($period, $memento_name);
         $markup = '<div class="container list-group" style="padding-left: 16px">';
 
         if (!(bool) $results) {
@@ -43,7 +45,9 @@
             $markup .= '</div>';
             $markup .= '</a>';
         }
-
+        $markup .= '<a href="' . esc_url($memento_url) . '" class="list-group-teaser-more">';
+        $markup .= __('See all events', 'epfl');
+        $markup .= '</a>';
         $markup .= '</div>';
         return $markup;
     }

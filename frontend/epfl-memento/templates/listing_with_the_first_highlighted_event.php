@@ -7,18 +7,6 @@
         $nb_events = is_countable($results) ? count($results) : 0;
 
         $markup = '<div class="container my-3">';
-        $markup .= '<div class="row align-items-center">';
-        $markup .= '<div class="col-md-6">';
-        if ($period === 'past') {
-          $markup .= '<h2>' . __('Past events', 'epfl') . '</h2>';
-        } else {
-          $markup .= '<h2>' . __('Next events', 'epfl') . '</h2>';
-        }
-        $markup .= '</div>';
-        $markup .= '<div class="col-md-6 text-right">';
-        $markup .= '<a href="' . esc_url($memento_url) . '">' . __('See all events', 'epfl') . '</a>';
-        $markup .= '</div>';
-        $markup .= '</div>';
         $markup .= '<div class="row mt-2">';
 
         if (!(bool) $results) {
@@ -99,6 +87,9 @@
                 $markup .= '</a>';
             }
             if ($count === $nb_events) {
+                $markup .= '<a href="' . esc_url($memento_url) . '" class="list-group-teaser-more">';
+                $markup .= __('See all events', 'epfl');
+                $markup .= '</a>';
                 $markup .= '</div>';
                 $markup .= '</div>';
             }
