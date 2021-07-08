@@ -16,6 +16,8 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 define(__NAMESPACE__ . "\MEMENTO_API_URL", "https://memento.epfl.ch/api/v1/mementos/");
 define(__NAMESPACE__ . "\MEMENTO_API_URL_IFRAME", "https://memento.epfl.ch/webservice/?frame=1");
+define('REGISTRATION_SOLD_OUT_ID', '4');
+
 require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
