@@ -29,7 +29,7 @@
 
         $count = 1;
         foreach($results as $event) {
-          
+
             $is_first_event = ($count == 1);
             $visual_url = get_visual_url($event, $memento_name);
 
