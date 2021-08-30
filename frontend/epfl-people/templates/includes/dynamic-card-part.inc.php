@@ -1,8 +1,9 @@
 <?php
 
 // $position_label, $checkbox_fields and $people_data vars are required for this partial file.
+// Note: The two preg_replace statements in this file belong to a simple but workable minification effort,
 
-$markup .= "
+$payload = preg_replace('/\v|\h(?:[\v\h]+)/', '', "
 <style>
 
 .checkbox-container {
@@ -29,21 +30,21 @@ $markup .= "
 
 <script>
 
-var postionLabel = '$position_label';
+const postionLabel = '$position_label';
 
-var officeLabel = '$office_label';
+const officeLabel = '$office_label';
 
-var checkboxFields = $checkbox_fields.filter(function (f) {
+const checkboxFields = $checkbox_fields.filter(function (f) {
     return f !== '';
 });
 
-var peopleData = [
+const peopleData = [
     $people_data
 ].map(function (item) {
     if (!item.custom) {
         return item;
     }
-    var customObj = item.custom.reduce(function (obj, item) {
+    const customObj = item.custom.reduce(function (obj, item) {
         obj[item.key] = item.value;
         return obj;
     }, {});
@@ -52,26 +53,26 @@ var peopleData = [
 
 function getFilterLabel (field) {
     if (field === 'position') {
-        return postionLabel
+        return postionLabel;
     } else if (field === 'room') {
-        return officeLabel
+        return officeLabel;
     }
     return field
 }
 
-var filterOptions = checkboxFields.map(field => ({
+const filterOptions = checkboxFields.map(field => ({
     id: field,
     options: Array.from(new Set(peopleData.map(x => x[field]))).filter(x => x).sort(),
     title: getFilterLabel(field)
-}))
+}));
 
-var peoplespace = {}
+const peoplespace = {};
 
-peoplespace.filters = {}
+peoplespace.filters = {};
 
 peoplespace.updateFilters = function () {
-    var check = document.querySelectorAll(\"input[type=checkbox]\");
-    var results = []
+    const check = document.querySelectorAll(\"input[type=checkbox]\");
+    const results = [];
     for (var i = 0; i < check.length; i++) {
         results.push({
             name: check[i].name,
@@ -80,34 +81,48 @@ peoplespace.updateFilters = function () {
         });
     }
     const filters = results.filter(x => x.checked).reduce((obj, val) => {
-        obj[val.name] = obj[val.name] || []
-        obj[val.name].push(val.value)
-        return obj    
-    }, {})
-    peoplespace.filters = filters
+        obj[val.name] = obj[val.name] || [];
+        obj[val.name].push(val.value);
+        return obj;
+    }, {});
+    peoplespace.filters = filters;
     this.renderCards()
-}
+};
 
 peoplespace.getSingleCheckbox = function (option, id) {
     return `<div class='custom-control custom-checkbox'>
     <input type='checkbox' value='\${option}' id='\${option}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='\${id}' checked>
     <label class='custom-control-label checkbox-label' for='\${option}'>\${option}</label></div>`
-}
+};
+
+peoplespace.checkIfAllCardsShouldBeHidden = function () {
+    const check = document.querySelectorAll(\"input[type=checkbox]\");
+    const selectionState = filterOptions.map(element => {
+        const identifier = element.id;
+        const thisGroup =  document.getElementsByName(identifier);
+        const thisGroupArr = Array.prototype.slice.call(thisGroup).filter(x => x.checked);
+        return thisGroupArr.length > 0;
+    });
+    if(selectionState.includes(false)) {
+        peoplespace.hideAllCards()
+    }
+};
 
 peoplespace.handleAllCheckboxClick = function (checkboxesid) {
     const checkboxesRef = document.getElementsByName(checkboxesid);
-    const checkedProp = checkboxesRef[0].checked
+    const checkedProp = checkboxesRef[0].checked;
     for (let i = 1; i < checkboxesRef.length; i++) {
-        checkboxesRef[i].checked = checkedProp
-    }
-    this.updateFilters()
-}
+        checkboxesRef[i].checked = checkedProp;
+    }    
+    peoplespace.updateFilters();
+    peoplespace.checkIfAllCardsShouldBeHidden();
+};
 
 peoplespace.getAllCheckbox = function (groupid) {
     return `<div class='custom-control custom-checkbox'>
     <input type='checkbox' value='All' id='\${groupid}_All' class='custom-control-input' onclick='peoplespace.handleAllCheckboxClick(\"\${groupid}\")' name='\${groupid}' checked>
-    <label class='custom-control-label' for='\${groupid}_All'>All</label></div>`
-}
+    <label class='custom-control-label' for='\${groupid}_All'>All</label></div>`;
+};
 
 peoplespace.getSingleGroup = function (item) {
     return `
@@ -118,22 +133,22 @@ peoplespace.getSingleGroup = function (item) {
         \${item.options.map(option => peoplespace.getSingleCheckbox(option, item.id)).join('')}
         </div>
     </div>`;
-}
+};
 
 peoplespace.getCheckBoxGroups = function () {
-    var checkboxesGroups =  `<div class='row checkbox-groups-container'>
+    const checkboxesGroups =  `<div class='row checkbox-groups-container'>
     \${filterOptions.filter(item => checkboxFields.includes(item.id)).map(item => peoplespace.getSingleGroup(item))}
-    </div>`
-    return checkboxesGroups
-}
+    </div>`;
+    return checkboxesGroups;
+};
 
 peoplespace.getCustomData = function (custom) {
     if (!custom) {
-        return ''
+        return '';
     }
-    var customMarkup = custom.map(prop => `<dt>\${prop.key}</dt><dd>\${prop.value}</dd>`)
-    return customMarkup.join('')
-}
+    const customMarkup = custom.map(prop => `<dt>\${prop.key}</dt><dd>\${prop.value}</dd>`);
+    return customMarkup.join('');
+};
 
 peoplespace.getFunctionPart = function (position) {
     if (position) {
@@ -144,7 +159,7 @@ peoplespace.getFunctionPart = function (position) {
     return `
         <dt></dt>
         <dd>&nbsp;</dd>`;
-}
+};
 
 peoplespace.getOfficePart = function (room, roomUrl) {
     if (room && roomUrl) {
@@ -155,7 +170,7 @@ peoplespace.getOfficePart = function (room, roomUrl) {
     return `
         <dt></dt>
         <dd>&nbsp;</dd>`;
-}
+};
 
 peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopleUrl, room, roomUrl, position, email, phone, custom}) {
     return `
@@ -182,14 +197,14 @@ peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopl
         <a class='btn btn-block btn-secondary' href='tel:\${phone}' data-jzz-gui-player='true'>\${phone}</a>
       </div>
     </div>
-  </div>`
-}
+  </div>`;
+};
 
 peoplespace.filterCard = function (card) {
-    var conditions = [];
+    const conditions = [];
     Object.keys(peoplespace.filters).forEach(filterKey => {
         if (peoplespace.filters[filterKey].includes('All')) {
-            // Skip
+            /* Skip */
         }
         else if (!card[filterKey]) {
             conditions.push(1);
@@ -197,49 +212,55 @@ peoplespace.filterCard = function (card) {
         else if (!peoplespace.filters[filterKey].includes(card[filterKey])) {
             conditions.push(1);
         }
-    })
+    });
     return conditions.length === 0
- }
+ };
 
  peoplespace.getFilteredData = function () {
-     const filteredData = peopleData.filter(card => peoplespace.filterCard(card))
-     return filteredData
- }
+     const filteredData = peopleData.filter(card => peoplespace.filterCard(card));
+     return filteredData;
+ };
+
+ peoplespace.hideAllCards = function () {
+    const wrapperCards = document.getElementById('dyn-cards');
+    wrapperCards.innerHTML = `<div class='card-deck'></div>`;
+ };
 
  peoplespace.renderCards = function () {
-    var wrapperCards = document.getElementById('dyn-cards');
-    var allCards = this.getFilteredData(peopleData).map(data => peoplespace.getCardComponent(data)).join('');
+    const wrapperCards = document.getElementById('dyn-cards');
+    const allCards = peoplespace.getFilteredData(peopleData).map(data => peoplespace.getCardComponent(data)).join('');
     wrapperCards.innerHTML = `<div class='card-deck'>\${allCards}</div>`;
- }
+ };
 
  peoplespace.renderCheckboxes = function () {
-    var wrapperCheckboxes = document.getElementById('dyn-filters');
-    var checkboxGroups = peoplespace.getCheckBoxGroups();
-    wrapperCheckboxes.innerHTML = checkboxGroups
- }
+    const wrapperCheckboxes = document.getElementById('dyn-filters');
+    const checkboxGroups = peoplespace.getCheckBoxGroups();
+    wrapperCheckboxes.innerHTML = checkboxGroups;
+ };
 
  peoplespace.renderPeopleComponents = function () {
     if (checkboxFields.length > 0) {
-        peoplespace.renderCheckboxes()
+        peoplespace.renderCheckboxes();
     }
-    peoplespace.renderCards()
-    peoplespace.updateFilters()
+    peoplespace.renderCards();
+    peoplespace.updateFilters();
 
- }
+ };
 
  peoplespace.initialize = function () {
     this.renderPeopleComponents();
-}
+};
 
-window.onload = (event) => {
-    peoplespace.initialize();
-}
+window.onload = (event) => {peoplespace.initialize();}
+
 </script>
 
 <noscript>
     <b>You need to have Javascript activated in order to render this page.</b>
 </noscript>
 
-";
+");
+
+$markup .= preg_replace('/peoplespace/', 'pspc', $payload);
 
 ?>
