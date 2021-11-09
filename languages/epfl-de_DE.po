@@ -111,3 +111,6 @@ msgstr "Kontakt"
 #: frontend/epfl-memento/templates/includes/card-slider-footer.inc.php:16
 msgid "Complete agenda of events"
 msgstr "Zum vollständigen Veranstaltungskalende"
+
+msgid "Sold out"
+msgstr "Vergriffen"
