@@ -4,3 +4,4 @@ https://my.matterport.com/show/?m=xP5eFRqd72h
 https://my.matterport.com/show/?m=FSrCT6JAfHs
 https://my.matterport.com/show/?m=prTDR6c7qMh
 https://cede-webapps.epfl.ch/MOOCsCatalog/index.html
+https://edamonitoring.epfl.ch/grafana/d/k1JaxB57k/eda-license-monitor?orgId=1&var-vendor_daemon=cdslmd&var-license_feature=All&var-used_licenses=0&var-used_filter=Currently%20used&from=now-3h&to=now&theme=light&kiosk
