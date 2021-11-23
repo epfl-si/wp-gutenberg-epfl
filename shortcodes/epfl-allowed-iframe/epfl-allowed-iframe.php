@@ -3,35 +3,68 @@
 namespace EPFL\Plugins\Shortcodes\EPFLAllowedIframe;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
+
+// Logic to validate the sortcode URL attribute with the whitelist
+function allowed_url_checker( $url, $allowed_url ) {
+    if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {
+        return false;
+    }
+    if ( false === filter_var( $allowed_url, FILTER_VALIDATE_URL ) ) {
+        return false;
+    }
+    $url = parse_url( $url );
+    // HTTPS only
+    if ( ( isset( $url['scheme'] ) && 'https' !== $url['scheme'] ) || empty( $url['scheme'] ) ) {
+        return false;
+    }
+
+    $allowed_url = parse_url( $allowed_url );
+    // host has to be the same
+    if ( $allowed_url['host'] !== $url['host'] ) {
+        return false;
+    }
+
+    // path has to be the same
+    if ( $allowed_url['path'] !== $url['path'] ) {
+        return false;
+    }
+
+    return true;
+}
+
+// Validate the URL against the whitelist
+function is_this_url_allowed( $url ) {
+    $allowed_urls = file( WP_PLUGIN_DIR . '/wp-gutenberg-epfl/shortcodes/epfl-allowed-iframe/allowed_url.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
+    foreach ( $allowed_urls as $allowed_url ) {
+        if ( allowed_url_checker( $url, $allowed_url ) ) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
-    $atts = shortcode_atts( array(
-            'url' => ''
-    ), $atts );
+    $atts = shortcode_atts( array( 'url' => '' ), $atts );
 
-    if (strpos(file_get_contents("./wp-content/plugins/wp-gutenberg-epfl/shortcodes/epfl-allowed-iframe/allowed_url.txt"),$atts['url']) !== false) {
-    	$url = sanitize_text_field($atts['url']);
+    if ( is_this_url_allowed( $atts['url'] ) ) {
+
+        return sprintf('
+            <div class="my-3 container">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="%s" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" frameborder="0" class="embed-responsive-item"></iframe>
+                </div>
+            </div>', esc_url( sanitize_text_field( $atts['url'] ) )
+        );
+
+    } else {
+        // Only display the error when the user is logged in
+        if ( is_user_logged_in() ) {
+            return Utils::render_user_msg( "iframe url not allowed" );
+        }
     }
-    else
-    {
-       if ( $screen->parent_base != 'edit' ) {
-          return Utils::render_user_msg("iframe url not allowed");
-       }	
-    }
-?>
-
-<div class="my-3 container">
-    <div class="embed-responsive embed-responsive-16by9">
-	<iframe src="<?php echo esc_url($url); ?>" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" frameborder="0" class="embed-responsive-item"></iframe>
-    </div>
-</div>
-
-<?php
-
-    return ob_get_clean();
 }
 
 add_action( 'init', function() {
-  // define the shortcode
-  add_shortcode('epfl_allowed_iframe', __NAMESPACE__ . '\epfl_allowed_iframe_process_shortcode');
+    // define the shortcode
+    add_shortcode( 'epfl_allowed_iframe', __NAMESPACE__ . '\epfl_allowed_iframe_process_shortcode' );
 });
-
