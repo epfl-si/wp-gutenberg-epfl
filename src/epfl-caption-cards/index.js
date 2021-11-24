@@ -6,7 +6,7 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
-const version = "v1.0.4";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -20,6 +20,7 @@ const {
 } = wp.blockEditor;
 
 const {
+    PanelBody,
     TextControl,
     Placeholder,
     Button,
@@ -31,7 +32,12 @@ const { Fragment } = wp.element;
 const maxCaptionCards = 10;
 
 const getAttributes = () => {
-    let atts = {};
+    let atts = {
+        grayWrapper: {
+            type: 'boolean',
+            default: false,
+        },
+    };
 
     for (var i = 1; i <= maxCaptionCards; i++) {
         atts['title'+i] = {
@@ -183,6 +189,13 @@ registerBlockType( 'epfl/caption-cards', {
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/caption-cards-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <p className="wp-block-help">{ version }</p>
+                    <PanelBody title="Format">
+                        <ToggleControl
+                          label={__('Wrap with a gray border', 'epfl')}
+                          checked={attributes.grayWrapper}
+                          onChange={grayWrapper => setAttributes({ grayWrapper })}
+                        />
+                    </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
                     {[...Array(maxCaptionCards)].map((x, i) =>

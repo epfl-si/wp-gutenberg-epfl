@@ -8,10 +8,14 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_caption_cards_block( $attributes ) {
-    if (!$attributes) return;
+    $gray_wrapper  = Utils::get_sanitized_attribute($attributes, 'grayWrapper', false);
+
+    // got gray_wrapper until now, see if there is other data or stop here
+    unset($attributes['grayWrapper']);
+
+    if (!$attributes || array_filter($attributes) == []) return;
 
     for ($i = 1; $i <= 10; $i++) {
-
         if (array_key_exists('title'.$i, $attributes)) {
             $attributes['title'.$i]    = Utils::get_sanitized_attribute( $attributes, 'title'.$i );
             $attributes['subtitle'.$i] = Utils::get_sanitized_attribute( $attributes, 'subtitle'.$i );
@@ -24,7 +28,7 @@ function epfl_caption_cards_block( $attributes ) {
     ob_start();
 ?>
 
-    <div class="container-full p-lg-5">
+    <div class="container-full p-lg-5 <?php echo ($gray_wrapper) ? 'bg-gray-100' : ''?>">
         <div class="row">
             <?php for($i = 1; $i <= 10; $i++): ?>
             <?php if (!empty($attributes['title'.$i])) : ?>
