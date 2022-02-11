@@ -10,10 +10,10 @@ const {
 const {
 	InspectorControls,
 } = wp.blockEditor
-
 const {
     PanelBody,
     TextControl,
+    TextareaControl,
     RadioControl,
     ToggleControl,
 } = wp.components
@@ -24,10 +24,12 @@ export default class InspectorControlsPeople extends Component {
 
         const { attributes, setAttributes } = this.props
 
+
         let optionsColumnsList = [
             { value: 'list', label: __('List', 'epfl')},
             { value: '1', label: __('Cards, one column', 'epfl')},
             { value: '3', label: __('Cards, multiple columns', 'epfl')},
+            { value: '4', label: __('Cards, filtered, custom data', 'epfl')}
         ];
 
         let optionsOrderList = [
@@ -134,6 +136,24 @@ export default class InspectorControlsPeople extends Component {
                         onChange={ () => setAttributes( { displayPhone: ! attributes.displayPhone } ) }
                     />
                 </PanelBody>
+                {attributes && attributes.columns === '4' &&
+                    <>
+                        <PanelBody title={ __( 'Custom Data', 'epfl' ) }>
+                            <TextareaControl
+                                value={ attributes.customData }
+                                help={ __('You can enter custom JSON object to enrich the cards profile: {"<sciper>": [{"key": "<propery key>", "value": "<property value>"}]}, ...') }
+                                onChange={ customData => setAttributes( { customData } ) }
+                            />
+                        </PanelBody>
+                        <PanelBody title={ __( 'Filtered Fields', 'epfl' ) }>
+                            <TextControl
+                                value={ attributes.filteredFields }
+                                help={ __('You can enter the comma separated list of fields (ie. position,...). Leave it blank to skip the filtering part.') }
+                                onChange={ filteredFields => setAttributes( { filteredFields } ) }
+                            />
+                        </PanelBody>
+                    </>
+                }
                 <PanelBody title={ __( 'Columns', 'epfl' ) }>
                     <RadioControl
                         label={ __("Select a template", 'epfl') }

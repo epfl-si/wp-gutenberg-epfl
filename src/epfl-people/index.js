@@ -47,6 +47,12 @@ registerBlockType(
                 type: 'string',
                 default: '3',
             },
+            customData: {
+                type: 'string',
+            },
+            filteredFields: {
+                type: 'string',
+            },
             order: {
                 type: 'string',
                 default: 'alphabetical',
