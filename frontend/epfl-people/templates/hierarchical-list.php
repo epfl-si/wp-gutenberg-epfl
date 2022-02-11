@@ -1,7 +1,7 @@
 <?php
     namespace EPFL\Plugins\Gutenberg\People;
     // colums = 1
-    function epfl_people_hierarchical_list($persons, $from) {
+    function epfl_people_hierarchical_list($persons, $from, $title, $display_options) {
 
         /*
         var_dump($persons);
@@ -9,6 +9,7 @@
         */
 
         $markup = '<div class="container my-3">';
+        $markup .= '<h2>' . $title . '</h2>';
         $markup .= '<div class="contact-list">';
 
         foreach($persons as $index => $element) { 

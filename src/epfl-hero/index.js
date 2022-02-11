@@ -6,7 +6,7 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
-const version = "v1.2.2";
+const version = "v1.3.0";
 
 const { __ } = wp.i18n;
 
@@ -52,6 +52,9 @@ registerBlockType( 'epfl/hero', {
       type: 'number',
     },
     description : {
+      type: 'string',
+    },
+    videoUrl: {
       type: 'string',
     }
 	}),
@@ -108,6 +111,13 @@ registerBlockType( 'epfl/hero', {
                             // setting multiline to something will make the old content unreadable
                             // false -> use <br>
                             multiline={ false }
+                        />
+                        <hr/>
+                        <TextControl
+                            label={__('URL of the video', 'epfl')}
+                            value={ attributes.videoUrl }
+                            onChange={ videoUrl => setAttributes( { videoUrl } ) }
+                            help={ __('You can paste a Vimeo URL like https://vimeo.com/339972923', 'epfl') }
                         />
                         <hr/>
                         { ! attributes.imageId ? (

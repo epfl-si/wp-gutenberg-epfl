@@ -13,12 +13,18 @@ $markup .= '<picture class="card-img-top">';
         }
         $markup .= '</span>';
     }
-    if ($event->canceled === "True") {
-        $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h4 p-2">' . __('Cancelled', 'epfl') . '</span>';
+    if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+        $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h4 p-2">';
+        if ($event->canceled === "True") {
+            $markup .= __('Cancelled', 'epfl');
+        } else if ($event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+            $markup .= __('Sold out', 'epfl');
+        }
+        $markup .= '</span>';
     }
     if ($visual_url) {
         $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid"';
-        if ($event->canceled === "True") {
+        if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
             $markup .= ' style="opacity:0.3"';
         }
         $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) . '" />';

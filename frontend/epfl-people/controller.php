@@ -40,9 +40,13 @@ function epfl_people_block( $attributes ) {
     $columns          = Utils::get_sanitized_attribute( $attributes, 'columns', '3' );
     $order            = Utils::get_sanitized_attribute( $attributes, 'order', ALPHABETICAL_ORDER );
     $structure        = Utils::get_sanitized_attribute( $attributes, 'structure', '1' );
+    $display_function = Utils::get_sanitized_attribute( $attributes, 'displayFunction', TRUE );
+    $display_room     = Utils::get_sanitized_attribute( $attributes, 'displayRoom', TRUE );
+    $display_email    = Utils::get_sanitized_attribute( $attributes, 'displayEmail', TRUE );
+    $display_phone    = Utils::get_sanitized_attribute( $attributes, 'displayPhone', TRUE );
+    $title            = Utils::get_sanitized_attribute( $attributes, 'title');
     $custom_data      = Utils::get_sanitized_attribute( $attributes, 'customData' );
     $filtered_fields  = Utils::get_sanitized_attribute( $attributes, 'filteredFields' );
-    
     /*
     var_dump($units);
     var_dump($groups);
@@ -52,10 +56,22 @@ function epfl_people_block( $attributes ) {
     var_dump($columns);
     var_dump($order);
     var_dump($structure);
+    var_dump($display_function);
+    var_dump($display_room);
+    var_dump($display_email);
+    var_dump($display_phone);
+    var_dump($title);
     var_dump($custom_data);
     var_dump($filtered_fields);
     */
-    
+
+    $display_options = array(
+      "display_function" => $display_function,
+      "display_room" => $display_room,
+      "display_email" => $display_email,
+      "display_phone" => $display_phone
+    );
+
     // Delete all whitespace (including tabs and line ends)
     $units = preg_replace('/\s+/','',$units);
     $groups = preg_replace('/\s+/','',$groups);
@@ -147,7 +163,7 @@ function epfl_people_block( $attributes ) {
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     }
 
-    $markup = epfl_people_render($persons, $from, $columns, $order, $custom_data, $filtered_fields);
+    $markup = epfl_people_render($persons, $from, $columns, $order, $title, $display_options, $custom_data, $filtered_fields);
     return $markup;
 
 }

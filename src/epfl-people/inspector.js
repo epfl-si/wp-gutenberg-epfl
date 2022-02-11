@@ -15,6 +15,7 @@ const {
     TextControl,
     TextareaControl,
     RadioControl,
+    ToggleControl,
 } = wp.components
 
 export default class InspectorControlsPeople extends Component {
@@ -69,6 +70,13 @@ export default class InspectorControlsPeople extends Component {
             <InspectorControls>
                 <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/people-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                 <p className="wp-block-help">{ version }</p>
+                <PanelBody title={__('Block title', 'epfl')}>
+                    <TextControl
+                        value={ attributes.title }
+                        help={ __('You can enter a block title', 'epfl') }
+                        onChange={ title => setAttributes( { title } ) }
+                    />
+                </PanelBody>
                 <PanelBody title={ __( 'Select by', 'epfl') }>
                     <strong>{__( 'Units', 'epfl')}</strong>
                     <TextControl
@@ -103,8 +111,30 @@ export default class InspectorControlsPeople extends Component {
                     <TextControl
                         value={ attributes.fonction }
                         help={ __('You can enter a function to filter persons. The keyword must be in french. Example: professeur or enseignement') }
-						onChange={ fonction => setAttributes( { fonction } ) }
-					/>
+                        onChange={ fonction => setAttributes( { fonction } ) }
+                    />
+                </PanelBody>
+                <PanelBody title={ __( 'Display options', 'epfl' ) }>
+                    <ToggleControl
+                        label={ __('Display function', 'epfl') }
+                        checked={ attributes.displayFunction }
+                        onChange={ () => setAttributes( { displayFunction: ! attributes.displayFunction } ) }
+                    />
+                    <ToggleControl
+                        label={ __('Display office', 'epfl') }
+                        checked={ attributes.displayRoom }
+                        onChange={ () => setAttributes( { displayRoom: ! attributes.displayRoom } ) }
+                    />
+                    <ToggleControl
+                        label={ __('Display email', 'epfl') }
+                        checked={ attributes.displayEmail }
+                        onChange={ () => setAttributes( { displayEmail: ! attributes.displayEmail } ) }
+                    />
+                    <ToggleControl
+                        label={ __('Display phone', 'epfl') }
+                        checked={ attributes.displayPhone }
+                        onChange={ () => setAttributes( { displayPhone: ! attributes.displayPhone } ) }
+                    />
                 </PanelBody>
                 {attributes && attributes.columns === '4' &&
                     <>

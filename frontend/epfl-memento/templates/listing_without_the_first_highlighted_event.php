@@ -2,6 +2,8 @@
     namespace EPFL\Plugins\Gutenberg\Memento;
 
     function epfl_memento_listing_without_the_first_highlighted_event($results, $memento_name) {
+
+        $memento_url = get_memento_url($period, $memento_name);
         $markup = '<div class="container list-group" style="padding-left: 16px">';
 
         if (!(bool) $results) {
@@ -24,11 +26,17 @@
                 $markup .= esc_html($event->academic_calendar_category->en_label);
             }
             $markup .= '</span>';
-            if ($event->canceled === "True") {
-                $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h5 p-2">' . __('Cancelled', 'epfl') . '</span>';
+            if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+                $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h5 p-2">';
+                if ($event->canceled === "True") {
+                    $markup .= __('Cancelled', 'epfl');
+                } elseif ($event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+                    $markup .= __('Sold out', 'epfl');
+                }
+                $markup .= '</span>';
             }
             $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid"';
-            if ($event->canceled === "True") {
+            if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
                 $markup .= ' style="opacity:0.3"';
             }
             $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
@@ -43,7 +51,9 @@
             $markup .= '</div>';
             $markup .= '</a>';
         }
-
+        $markup .= '<a href="' . esc_url($memento_url) . '" class="list-group-teaser-more">';
+        $markup .= __('See all events', 'epfl');
+        $markup .= '</a>';
         $markup .= '</div>';
         return $markup;
     }

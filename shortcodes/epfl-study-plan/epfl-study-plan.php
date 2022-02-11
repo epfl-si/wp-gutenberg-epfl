@@ -12,13 +12,12 @@ function epfl_study_plan_process_shortcode( $atts, $content = null ) {
             'plan' => ''
             ), $atts );
     $plan = sanitize_text_field($atts['plan']);
-
-    $url = "https://isa.epfl.ch/pe/".$plan;
+    $url = "https://prod-edu.epfl.ch/export/".$plan;
     ob_start();
 
 ?>
 
-<div class="container my-3">[remote_content url="<?PHP echo $url; ?>" find="~content~" replace="study-plan table-like"]</div>
+<div class="container my-3">[remote_content url="<?PHP echo $url; ?>" ]</div>
 
 <?php
 

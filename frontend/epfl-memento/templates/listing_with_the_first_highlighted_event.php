@@ -7,18 +7,6 @@
         $nb_events = is_countable($results) ? count($results) : 0;
 
         $markup = '<div class="container my-3">';
-        $markup .= '<div class="row align-items-center">';
-        $markup .= '<div class="col-md-6">';
-        if ($period === 'past') {
-          $markup .= '<h2>' . __('Past events', 'epfl') . '</h2>';
-        } else {
-          $markup .= '<h2>' . __('Next events', 'epfl') . '</h2>';
-        }
-        $markup .= '</div>';
-        $markup .= '<div class="col-md-6 text-right">';
-        $markup .= '<a href="' . esc_url($memento_url) . '">' . __('See all events', 'epfl') . '</a>';
-        $markup .= '</div>';
-        $markup .= '</div>';
         $markup .= '<div class="row mt-2">';
 
         if (!(bool) $results) {
@@ -37,9 +25,15 @@
                 $markup .= '<div class="col-md-6">';
                 $markup .= '<a href="' . esc_url($event->event_url) .'" class="card card-gray link-trapeze-horizontal" itemscope itemtype="http://schema.org/Event">';
                 $markup .= '<div class="card-body">';
-                if ($event->canceled === "True") {
-                    $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h4 p-2">' . __('Cancelled', 'epfl') . '</span>';
-                }
+                if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+                  $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h4 p-2">';
+                  if ($event->canceled === "True") {
+                    $markup .= __('Cancelled', 'epfl');
+                  } else if ($event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+                    $markup .= __('Sold out', 'epfl');
+                  }
+                  $markup .= '</span>';
+              }
                 $markup .= '<picture class="card-img-top">';
                 $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em;font-size:2em;">';
                 $markup .= '<meta itemprop="eventStatus" content="https://schema.org/EventCancelled">';
@@ -50,8 +44,8 @@
                 }
                 $markup .= '</span>';
                 $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid"';
-                if ($event->canceled === "True") {
-                    $markup .= ' style="opacity:0.3"';
+                if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+                  $markup .= ' style="opacity:0.3"';
                 }
                 $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
 
@@ -79,11 +73,17 @@
                     $markup .= esc_html($event->academic_calendar_category->en_label);
                 }
                 $markup .= '</span>';
-                if ($event->canceled === "True") {
-                    $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h5 p-2">' . __('Cancelled', 'epfl') . '</span>';
+                if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+                    $markup .= '<span style="position: absolute; z-index: 1; background: #e43; color: #fff;" class="h5 p-2">';
+                    if ($event->canceled === "True") {
+                      $markup .= __('Cancelled', 'epfl');
+                    } else if ($event->registration->id == REGISTRATION_SOLD_OUT_ID) {
+                      $markup .= __('Sold out', 'epfl');
+                    }
+                    $markup .= '</span>';
                 }
                 $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" ';
-                if ($event->canceled === "True") {
+                if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
                     $markup .= ' style="opacity:0.3"';
                 }
                 $markup .= ' title="' . esc_attr($event->image_description) . '" alt="' . esc_attr($event->image_description) .'" />';
@@ -99,6 +99,9 @@
                 $markup .= '</a>';
             }
             if ($count === $nb_events) {
+                $markup .= '<a href="' . esc_url($memento_url) . '" class="list-group-teaser-more">';
+                $markup .= __('See all events', 'epfl');
+                $markup .= '</a>';
                 $markup .= '</div>';
                 $markup .= '</div>';
             }

@@ -13,5 +13,5 @@ $markup .= '    </div>';
 $markup .= '</div>';
 
 $markup .= '<a href="' . esc_url(get_memento_url($period, $memento_name)) . '">';
-$markup .= __('Complete agenda of events', 'epfl');
+$markup .= __('See all events', 'epfl');
 $markup .= '</a>';

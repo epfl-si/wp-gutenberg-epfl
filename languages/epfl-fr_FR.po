@@ -2100,3 +2100,7 @@ msgstr "Rechercher à partir de"
 
 msgid "German"
 msgstr "Allemand"
+
+msgid "Sold out"
+msgstr "Complet"
+

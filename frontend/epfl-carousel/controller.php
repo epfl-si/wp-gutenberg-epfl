@@ -106,13 +106,13 @@ function epfl_carousel_block( $attributes ) {
   ?>
   </ol>
 
-  <button role="button" class="carousel-control carousel-control-prev" role="button" data-slide="prev" data-target="#carouselNews">
+  <button class="carousel-control carousel-control-prev" type="button" data-slide="prev" data-target="#carouselNews">
     <svg class="icon" aria-hidden="true">
       <use xlink:href="#icon-chevron-left"></use>
     </svg>
     <span class="sr-only">Previous</span>
   </button>
-  <button role="button" class="carousel-control carousel-control-next" role="button" data-slide="next" data-target="#carouselNews">
+  <button class="carousel-control carousel-control-next" type="button" data-slide="next" data-target="#carouselNews">
     <svg class="icon" aria-hidden="true">
       <use xlink:href="#icon-chevron-right"></use>
     </svg>
