@@ -3,6 +3,13 @@
 // $position_label, $checkbox_fields and $people_data vars are required for this partial file.
 // Note: The two preg_replace statements in this file belong to a simple but workable minification effort,
 
+function test_display_selected ($var) {
+    return $var == 1;
+}
+
+$selected_fields_array = array_keys(array_filter($display_options, "test_display_selected"));
+$display_fields = implode("','", $selected_fields_array); 
+
 $payload = preg_replace('/\v|\h(?:[\v\h]+)/', '', "
 <style>
 
@@ -19,7 +26,7 @@ $payload = preg_replace('/\v|\h(?:[\v\h]+)/', '', "
 .checkbox-groups-container {
     border: 1px solid #d5d5d5;
     padding: 2rem;
-    background-color: #f5f5f5;
+    background-color: #fff;
     font-size: smaller;
     width: 100%;
     margin-left: 1px;
@@ -33,6 +40,8 @@ $payload = preg_replace('/\v|\h(?:[\v\h]+)/', '', "
 const postionLabel = '$position_label';
 
 const officeLabel = '$office_label';
+
+const displayFields = ['$display_fields'];
 
 const checkboxFields = $checkbox_fields.filter(function (f) {
     return f !== '';
@@ -151,25 +160,49 @@ peoplespace.getCustomData = function (custom) {
 };
 
 peoplespace.getFunctionPart = function (position) {
-    if (position) {
+    if (position && displayFields.includes('display_function')) {
         return `
         <dt>\${postionLabel}</dt>
         <dd>\${position}</dd>`;
     }
-    return `
-        <dt></dt>
-        <dd>&nbsp;</dd>`;
+    else if (displayFields.includes('display_function')) {
+        return `
+            <dt></dt>
+            <dd>&nbsp;</dd>`;
+    }
+    return ``;
 };
 
 peoplespace.getOfficePart = function (room, roomUrl) {
-    if (room && roomUrl) {
+    if (room && roomUrl && displayFields.includes('display_room')) {
         return `
         <dt>\${officeLabel}</dt>    
         <dd><a class='link-pretty' href='\${roomUrl}' data-jzz-gui-player='true'>\${room}</a></dd>`;
     }
-    return `
+    else if (displayFields.includes('display_room')) {
+        return `
         <dt></dt>
         <dd>&nbsp;</dd>`;
+    }
+    return ``;
+};
+
+peoplespace.getEmailPart = function (email) {
+    if (email && displayFields.includes('display_email')) {
+        return `
+        <a class='btn btn-block btn-primary mb-2' href='mailto:\${email}' data-jzz-gui-player='true'>\${email}</a>   
+        `;
+    }
+    return ``;
+};
+
+peoplespace.getPhonePart = function (phone) {
+    if (phone && displayFields.includes('display_phone')) {
+        return `
+        <a class='btn btn-block btn-secondary' href='tel:\${phone}' data-jzz-gui-player='true'>\${phone}</a>
+        `;
+    }
+    return ``;
 };
 
 peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopleUrl, room, roomUrl, position, email, phone, custom}) {
@@ -189,12 +222,10 @@ peoplespace.getCardComponent = function ({sciper, name, lastname, picture, peopl
         \${peoplespace.getFunctionPart(position)}
         \${peoplespace.getOfficePart(room, roomUrl)}
         \${peoplespace.getCustomData(custom)}
-        <dt></dt>
-        <dd>&nbsp;</dd>
       </dl>
       <div class='w-100 mt-2 mt-md-auto'>
-        <a class='btn btn-block btn-primary mb-2' href='mailto:\${email}' data-jzz-gui-player='true'>\${email}</a>
-        <a class='btn btn-block btn-secondary' href='tel:\${phone}' data-jzz-gui-player='true'>\${phone}</a>
+        \${peoplespace.getEmailPart(email)}
+        \${peoplespace.getPhonePart(phone)}
       </div>
     </div>
   </div>`;

@@ -1,7 +1,7 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\People;
 
-    function epfl_dynamic_people_card($persons, $from, $columns, $custom_data = "", $filtered_fields = "") {
+    function epfl_dynamic_people_card($persons, $from, $columns, $custom_data = "", $filtered_fields = "", $display_options) {
 
         $position_label =  __('Position', 'epfl');
 

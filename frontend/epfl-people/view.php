@@ -24,7 +24,7 @@
 
         // Calling the  epfl_dynamic_people_card function directly if selected.
         if ( ALPHABETICAL_ORDER === $order && $columns === '4') {
-            $markup = epfl_dynamic_people_card($persons, $from, '3', $custom_data, $filtered_fields);
+            $markup = epfl_dynamic_people_card($persons, $from, '3', $custom_data, $filtered_fields, $display_options);
         }
 
         /* You may wonder why we don't directly call "epfl_people_card" function with all
