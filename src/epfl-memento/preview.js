@@ -1,5 +1,4 @@
 import * as axios from 'axios';
-import renderHTML from 'react-render-html';
 import moment from 'moment';
 
 const { __ } = wp.i18n
@@ -130,7 +129,7 @@ export default class PreviewMemento extends Component {
 
           let eventSpeakerContent;
           if (!!event.speaker) {
-            eventSpeakerContent = <span>{ __('With', 'epfl') } <b>{renderHTML(event.speaker)}</b></span>;
+            eventSpeakerContent = <span>{ __('With', 'epfl') } <b>{event.speaker}</b></span>;
           }
 
           let academicCalendarCategory;
