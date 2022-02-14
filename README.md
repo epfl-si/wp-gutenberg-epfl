@@ -27,8 +27,3 @@
 
 ## References
 - https://developer.wordpress.org/block-editor/tutorials/
-
-## Troubleshoot
-
-- npm i -> Unable to install node-gyp
-  - Don't use the lastest node, but try with `nvm use 14.15.1`
