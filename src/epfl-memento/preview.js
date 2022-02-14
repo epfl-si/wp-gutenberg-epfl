@@ -1,5 +1,6 @@
 import * as axios from 'axios';
 import moment from 'moment';
+import DOMPurify from 'dompurify';
 
 const { __ } = wp.i18n
 const { Spinner } = wp.components
@@ -129,7 +130,7 @@ export default class PreviewMemento extends Component {
 
           let eventSpeakerContent;
           if (!!event.speaker) {
-            eventSpeakerContent = <span>{ __('With', 'epfl') } <b>{event.speaker}</b></span>;
+            eventSpeakerContent = <span>{ __('With', 'epfl') } <b dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(event.speaker)}}></b></span>;
           }
 
           let academicCalendarCategory;
