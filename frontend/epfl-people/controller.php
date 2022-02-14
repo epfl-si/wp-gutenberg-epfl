@@ -44,9 +44,11 @@ function epfl_people_block( $attributes ) {
     $display_room     = Utils::get_sanitized_attribute( $attributes, 'displayRoom', TRUE );
     $display_email    = Utils::get_sanitized_attribute( $attributes, 'displayEmail', TRUE );
     $display_phone    = Utils::get_sanitized_attribute( $attributes, 'displayPhone', TRUE );
+    $display_custom_data    = Utils::get_sanitized_attribute( $attributes, 'displayCustomData', TRUE );
     $title            = Utils::get_sanitized_attribute( $attributes, 'title');
     $custom_data      = Utils::get_sanitized_attribute( $attributes, 'customData' );
     $filtered_fields  = Utils::get_sanitized_attribute( $attributes, 'filteredFields' );
+
     /*
     var_dump($units);
     var_dump($groups);
@@ -69,7 +71,8 @@ function epfl_people_block( $attributes ) {
       "display_function" => $display_function,
       "display_room" => $display_room,
       "display_email" => $display_email,
-      "display_phone" => $display_phone
+      "display_phone" => $display_phone,
+      "display_custom_data" => $display_custom_data
     );
 
     // Delete all whitespace (including tabs and line ends)

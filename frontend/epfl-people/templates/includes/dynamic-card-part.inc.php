@@ -154,6 +154,8 @@ peoplespace.getCheckBoxGroups = function () {
 peoplespace.getCustomData = function (custom) {
     if (!custom) {
         return '';
+    } else if (!displayFields.includes('display_custom_data')) {
+        return '';
     }
     const customMarkup = custom.map(prop => `<dt>\${prop.key}</dt><dd>\${prop.value}</dd>`);
     return customMarkup.join('');
