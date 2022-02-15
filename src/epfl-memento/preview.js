@@ -1,5 +1,5 @@
 import * as axios from 'axios';
-import moment from 'moment';
+import daysjs from 'daysjs';
 import DOMPurify from 'dompurify';
 
 const { __ } = wp.i18n
@@ -36,7 +36,7 @@ export default class PreviewMemento extends Component {
 		if (attributes.keyword !== '') {
 			eventsUrl += `&keywords=${attributes.keyword}`;
     }
-    
+
     if (attributes.period === 'past' && attributes.year !== 'no-filter') {
       eventsUrl += `&start_year=${attributes.year}`;
     }
@@ -140,22 +140,22 @@ export default class PreviewMemento extends Component {
 
           let startDate;
           if (!!event.start_date) {
-            startDate = <span className="card-info-date" itemProp="startDate">{moment(event.start_date).format("DD-MM-YYYY")}</span>
+            startDate = <span className="card-info-date" itemProp="startDate">{daysjs(event.start_date).format("DD-MM-YYYY")}</span>
           }
 
           let startTime;
           if (!!event.start_time) {
-            startTime = <span className="event-time">{ moment(event.start_time,'h:mm').format('h:mm') }</span>
+            startTime = <span className="event-time">{ daysjs(event.start_time,'h:mm').format('h:mm') }</span>
           }
 
           let endTime;
           if (!!event.end_time) {
-            endTime = <span className="event-time">{ moment(event.end_time,'h:mm').format('h:mm') }</span>
+            endTime = <span className="event-time">{ daysjs(event.end_time,'h:mm').format('h:mm') }</span>
           }
 
           let endDate;
           if (!!event.end_date) {
-            endDate = <span className="card-info-date" itemProp="endDate">{moment(event.end_date).format("DD-MM-YYYY")}</span>
+            endDate = <span className="card-info-date" itemProp="endDate">{daysjs(event.end_date).format("DD-MM-YYYY")}</span>
           }
 
           let category;

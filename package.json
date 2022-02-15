@@ -24,7 +24,7 @@
 		"@wordpress/icons": "^2.9.1",
 		"axios": "^0.21.2",
 		"dompurify": "^2.3.5",
-		"moment": "^2.24.0",
+		"dayjs": "^1.10.7",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-select": "^5.2.2",
