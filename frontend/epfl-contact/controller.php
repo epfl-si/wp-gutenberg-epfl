@@ -6,6 +6,7 @@ namespace EPFL\Plugins\Gutenberg\Contact;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 use function EPFL\Plugins\Gutenberg\Map\epfl_map_block;
+use function EPFL\Plugins\Gutenberg\Lib\Language\get_current_or_default_language;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
@@ -60,7 +61,7 @@ function epfl_contact_block($attributes, $inner_content) {
         ?>
         <div class="col-lg-6 d-flex flex-column">
           <?php echo
-           epfl_map_block(['query' => $attributes['mapQuery'] ?? null, 'searchType' => $attributes['searchType'] ?? null, 'lang' => pll_current_language()]); ?>
+           epfl_map_block(['query' => $attributes['mapQuery'] ?? null, 'searchType' => $attributes['searchType'] ?? null, 'lang' => get_current_or_default_language()]); ?>
         </div>
         <?php endif; ?>
       </div>
