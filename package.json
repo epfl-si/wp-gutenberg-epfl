@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@wordpress/babel-plugin-makepot": "^4.0.1",
 		"@wordpress/icons": "^2.9.1",
-		"@wordpress/scripts": "^13.0.3",
+		"@wordpress/scripts": "^21.0.1",
 		"axios": "^0.21.2",
 		"moment": "^2.24.0",
 		"po2json": "^0.4.5",
