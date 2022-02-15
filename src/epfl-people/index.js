@@ -76,6 +76,10 @@ registerBlockType(
                 type: 'boolean',
                 default: true,
             },
+            displayCustomData: {
+                type: 'boolean',
+                default: true,
+            },
             title: {
                 type: 'string',
             }

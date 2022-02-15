@@ -135,6 +135,13 @@ export default class InspectorControlsPeople extends Component {
                         checked={ attributes.displayPhone }
                         onChange={ () => setAttributes( { displayPhone: ! attributes.displayPhone } ) }
                     />
+                    {attributes && attributes.columns === '4' &&
+                        <ToggleControl
+                            label={ __('Display custom data', 'epfl') }
+                            checked={ attributes.displayCustomData }
+                            onChange={ () => setAttributes( { displayCustomData: ! attributes.displayCustomData } ) }
+                        />  
+                    }
                 </PanelBody>
                 {attributes && attributes.columns === '4' &&
                     <>
