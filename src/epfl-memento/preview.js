@@ -1,6 +1,6 @@
 import * as axios from 'axios';
-import renderHTML from 'react-render-html';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import DOMPurify from 'dompurify';
 
 const { __ } = wp.i18n
 const { Spinner } = wp.components
@@ -36,7 +36,7 @@ export default class PreviewMemento extends Component {
 		if (attributes.keyword !== '') {
 			eventsUrl += `&keywords=${attributes.keyword}`;
     }
-    
+
     if (attributes.period === 'past' && attributes.year !== 'no-filter') {
       eventsUrl += `&start_year=${attributes.year}`;
     }
@@ -130,7 +130,7 @@ export default class PreviewMemento extends Component {
 
           let eventSpeakerContent;
           if (!!event.speaker) {
-            eventSpeakerContent = <span>{ __('With', 'epfl') } <b>{renderHTML(event.speaker)}</b></span>;
+            eventSpeakerContent = <span>{ __('With', 'epfl') } <b dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(event.speaker)}}></b></span>;
           }
 
           let academicCalendarCategory;
@@ -138,24 +138,26 @@ export default class PreviewMemento extends Component {
             academicCalendarCategory = event.academic_calendar_category.fr_label;
           }
 
-          let startDate;
+          const startTime = dayjs(event.start_date + ' ' + (event.start_time || '')),
+                endTime = dayjs((event.end_date || event.start_date) + ' ' + (event.end_time || (event.start_time || '')));
+          let startDateSpan;
           if (!!event.start_date) {
-            startDate = <span className="card-info-date" itemProp="startDate">{moment(event.start_date).format("DD-MM-YYYY")}</span>
+            startDateSpan = <span className="card-info-date" itemProp="startDate">{ startTime.format("DD-MM-YYYY") }</span>
           }
 
-          let startTime;
+          let startTimeSpan;
           if (!!event.start_time) {
-            startTime = <span className="event-time">{ moment(event.start_time,'h:mm').format('h:mm') }</span>
+            startTimeSpan = <span className="event-time">{ startTime.format('H:mm') }</span>
           }
 
-          let endTime;
+          let endTimeSpan;
           if (!!event.end_time) {
-            endTime = <span className="event-time">{ moment(event.end_time,'h:mm').format('h:mm') }</span>
+            endTimeSpan = <span className="event-time">{ endTime.format('H:mm') }</span>
           }
 
-          let endDate;
+          let endDateSpan;
           if (!!event.end_date) {
-            endDate = <span className="card-info-date" itemProp="endDate">{moment(event.end_date).format("DD-MM-YYYY")}</span>
+            endDateSpan = <span className="card-info-date" itemProp="endDate">{ endTime.format("DD-MM-YYYY") }</span>
           }
 
           let category;
@@ -177,8 +179,8 @@ export default class PreviewMemento extends Component {
                     <div className="list-group-teaser-content">
                       <p className="h5 card-title" itemProp="name">{ event.title }</p>
                         <div className="card-info mt-0">
-                          { startDate } - { endDate } <br />
-                          { startTime } > { endTime }
+                          { startDateSpan } - { endDateSpan } <br />
+                          { startTimeSpan } > { endTimeSpan }
                           <p>
                             <span>
                             { eventSpeakerContent }

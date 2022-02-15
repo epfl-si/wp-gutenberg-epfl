@@ -1,6 +1,6 @@
 import * as axios from 'axios';
 import stripHtml from "string-strip-html";
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 const { __ } = wp.i18n
 const { Spinner } = wp.components
@@ -119,7 +119,7 @@ export default class PreviewNews extends Component {
 									<div className="list-group-teaser-content" itemScope itemType="http://schema.org/Article">
 										<p className="h5" itemProp="name">{ news.title }</p>
 										<p>
-											<time dateTime={ news.publish_date } itemProp="datePublished">{ moment(news.publish_date).format('MM.DD.YYYY') }</time>
+											<time dateTime={ news.publish_date } itemProp="datePublished">{ dayjs(news.publish_date).format('MM.DD.YYYY') }</time>
 											<span className="text-muted" itemProp="description"> — { stripHtml(news.subtitle) }</span>
 										</p>
 									</div>

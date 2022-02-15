@@ -19,7 +19,7 @@
 
 ### Translate
 
-- While `npm start` is running, recent entries should be in `languages/epfl-fr_FR-scripts.pot`
+- While `npm start` is running, recent entries should be in `languages/epfl.pot`
 - Add or Merge the new entries into the `languages/epfl-fr_FR.po` file
 - Assert the translations in `languages/epfl-fr_FR.po`
 - Update the json file with `./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-scripts.json -f jed1.x -p`
@@ -27,8 +27,3 @@
 
 ## References
 - https://developer.wordpress.org/block-editor/tutorials/
-
-## Troubleshoot
-
-- npm i -> Unable to install node-gyp
-  - Don't use the lastest node, but try with `nvm use 14.15.1`
