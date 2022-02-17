@@ -418,11 +418,13 @@ Class ReportsShortInfosciencePublication2018Render extends ShortInfosciencePubli
 
 Class StudentProjectsDetailedInfosciencePublication2018Render extends DetailedInfosciencePublication2018Render {
     public static function get_content($publication, $format, $summary) {
-        $html_rendered = '<span class="text-muted small mb-0">';
+        $html_rendered = '<span class="text-muted small mb-2">';
         $html_rendered .= '<span class="infoscience_host">';
         $html_rendered .= PublicationDateInfoscienceField2018Render::render($publication, self::$format);
         $html_rendered .= '</span>';
         $html_rendered .= '</span>';
+
+        $html_rendered .= StudentAdvisorInfoscienceField2018Render::render($publication, $format, NULL);
 
         return $html_rendered;
     }

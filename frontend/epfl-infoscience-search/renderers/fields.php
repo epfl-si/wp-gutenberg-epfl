@@ -126,6 +126,34 @@ Class DirectorAuthorInfoscienceField2018Render extends AuthorInfoscienceField201
     }
 }
 
+Class StudentAdvisorInfoscienceField2018Render extends AuthorInfoscienceField2018Render {
+    protected static function pre_render() {
+        return '<p class="text-muted small infoscience_advisors mt-2">Advisor(s): ';
+    }
+
+    protected static function post_render() {
+        return '</p>';
+    }
+
+    public static function render($publication, $format, $has_next=false, $field_name='director') {
+        $html_rendered = "";
+
+        if (self::field_exists($publication[$field_name])) {
+            $html_rendered .= self::pre_render();
+
+            foreach($publication[$field_name] as $index => $author) {
+                if ($index != 0) {
+                    $html_rendered .= "; ";
+                }
+                $html_rendered .= self::render_author($author['initial_name'], $author['search_url']);
+            }
+
+            $html_rendered .= self::post_render();
+        }
+        return $html_rendered;
+    }
+}
+
 
 Class TitleInfoscienceField2018Render extends InfoscienceField2018Render {
     public static function render($publication, $format, $has_next=false) {
