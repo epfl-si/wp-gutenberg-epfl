@@ -139,7 +139,7 @@ function wp_gutenberg_epfl_editor_assets() {
     // Scripts.
     $script_asset_path = "$dir/build/index.asset.php";
     if ( ! file_exists( $script_asset_path ) ) {
-        throw new Error(
+        throw new \Error(
             'You need to run `npm start` or `npm run build` for the "wp-gutenberg-epfl/wp-gutenberg-epfl" block first.'
         );
     }
