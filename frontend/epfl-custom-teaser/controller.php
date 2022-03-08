@@ -38,7 +38,7 @@ function epfl_custom_teaser_block( $attributes ) {
 
 <div class="container-full py-3 p-lg-5 <?php echo $greyClasses ?>">
   <div class="container">
-    <?php if ($attributes['titleSection']): ?>
+    <?php if (isset($attributes['titleSection'])): ?>
     <h2 class="<?php echo ($elementCount < 3) ? ' text-center' : '' ?>"><?php echo $attributes['titleSection'] ?></h2>
     <?php endif; ?>
     <div class="card-deck<?php echo ($elementCount < 3) ? ' card-deck-line' : '' ?>">
@@ -48,7 +48,7 @@ function epfl_custom_teaser_block( $attributes ) {
         $image = get_post($attributes['imageId'.$i]);
       ?>
       <div class="card">
-      <?php if ($attributes['imageId'.$i]): ?>
+      <?php if (isset($attributes['imageId'.$i])): ?>
         <a <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> href="<?php echo $attributes['url'.$i] ?: '#' ?>" class="card-img-top">
           <picture>
           <?php echo wp_get_attachment_image(
