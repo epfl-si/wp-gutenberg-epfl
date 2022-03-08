@@ -64,10 +64,9 @@ if (is_plugin_active('polylang/polylang.php')) {
  * And also use the content of $allowed_block_types to know which blocks are already allowed and add the new ones.
  *
  * @param Array|Boolean $allowed_block_types Array (or bool=True if all block allowed) with blocks already allowed.
- * @param Object $post Post resource data
+ * @param WP_Block_Editor_Context $block_editor_context
  */
-function allow_epfl_blocks( $allowed_block_types, $post ) {
-
+function allow_epfl_blocks( $allowed_block_types, $block_editor_context ) {
     // Reset value
     $allowed_block_types = [];
     // We explicitely deny usage of epfl/card-panel block so we can't add more than 3 blocks inside an epfl/card-deck
@@ -92,7 +91,7 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
     {
         if(preg_match('/^epfl\//', $block_name)===1 && !in_array($block_name, $explicitly_denied_blocks))
         {
-            if($post->post_type == 'post')
+            if($block_editor_context->post->post_type == 'post')
             {
                 $block_ok = in_array($block_name, $posts_blocks_white_list);
             }
@@ -111,7 +110,7 @@ function allow_epfl_blocks( $allowed_block_types, $post ) {
     return $allowed_block_types;
 }
 
-add_filter( 'allowed_block_types', __NAMESPACE__.'\allow_epfl_blocks', 10, 2 );
+add_filter( 'allowed_block_types_all', __NAMESPACE__.'\allow_epfl_blocks', 10, 2 );
 
 /**
  * Registers all block assets so that they can be enqueued through the block editor
