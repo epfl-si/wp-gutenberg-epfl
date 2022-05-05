@@ -87,7 +87,6 @@ registerBlockType( 'epfl/introduction', {
 						multiline="p"
 						onChange={ content => setAttributes( { content } ) }
 						placeholder={ __('Write your text here','epfl')}
-						keepPlaceholderOnFocus = { true }
                     />
                 </div>
             </Fragment>

@@ -116,7 +116,6 @@ registerBlockType( 'epfl/contact', {
                         value={ attributes.timetable1 }
                         onChange={ timetable1 => setAttributes( { timetable1 } ) }
                         placeholder={ __('Monday to thursday 09:00 am > 18:00 pm', 'epfl') }
-                        keepPlaceholderOnFocus = { true }
                         className="timetable1"
                     />
                     <hr />
@@ -149,7 +148,6 @@ registerBlockType( 'epfl/contact', {
                         tagName="div"
                         multiline="p"
                         placeholder={ __( 'An email ?', 'epfl' ) }
-                        keepPlaceholderOnFocus = { true }
                         value={ attributes.information1 }
                         className="information1"
                         onChange={ information1 => setAttributes( { information1 } ) }
@@ -159,7 +157,6 @@ registerBlockType( 'epfl/contact', {
                         tagName="div"
                         multiline="p"
                         placeholder={ __( 'A phone number ?', 'epfl' ) }
-                        keepPlaceholderOnFocus = { true }
                         value={ attributes.information2 }
                         className="information2"
                         onChange={ information2 => setAttributes( { information2 } ) }
@@ -169,7 +166,6 @@ registerBlockType( 'epfl/contact', {
                         tagName="div"
                         multiline="p"
                         placeholder={ __( 'An address ?', 'epfl' ) }
-                        keepPlaceholderOnFocus = { true }
                         value={ attributes.information3 }
                         className="information3"
                         onChange={ information3 => setAttributes( { information3 } ) }
