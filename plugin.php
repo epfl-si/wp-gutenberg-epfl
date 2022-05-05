@@ -35,8 +35,15 @@ add_action( 'plugins_loaded',  __NAMESPACE__ . '\epfl_gutenberg_load_textdomain'
 function polylang_json_api_init() {
     global $polylang;
 
-    $default = pll_default_language();
-    $langs = pll_languages_list();
+    # happens this function are not defined if the site has polylang but
+    # not installed any language
+    if (!function_exists('\pll_default_language') ||
+        !function_exists('\pll_languages_list')) {
+      return;
+    }
+
+    $default = \pll_default_language();
+    $langs = \pll_languages_list();
 
     if (isset($_GET['lang'])) {
         $cur_lang = $_GET['lang'];
@@ -49,7 +56,7 @@ function polylang_json_api_init() {
 }
 
 function polylang_json_api_languages() {
-    return pll_languages_list();
+    return \pll_languages_list();
 }
 
 // fix polylang language segmentation
