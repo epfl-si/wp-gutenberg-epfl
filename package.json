@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@wordpress/babel-plugin-makepot": "^4.0.1",
 		"@wordpress/icons": "^2.9.1",
-		"@wordpress/scripts": "^21.0.1",
+		"@wordpress/scripts": "21.0.2",
 		"axios": "^0.21.2",
 		"dayjs": "^1.10.7",
 		"dompurify": "^2.3.5",
@@ -32,18 +32,18 @@
 		"string-strip-html": "4.0.12"
 	},
 	"scripts": {
-		"build": "npx wp-scripts build",
-		"check-engines": "npx wp-scripts check-engines",
-		"check-licenses": "npx wp-scripts check-licenses",
-		"format:js": "npx wp-scripts format-js",
-		"lint:css": "npx wp-scripts lint-style",
-		"lint:js": "npx wp-scripts lint-js",
-		"lint:md:docs": "npx wp-scripts lint-md-docs",
-		"lint:md:js": "npx wp-scripts lint-md-js",
-		"lint:pkg-json": "npx wp-scripts lint-pkg-json",
-		"packages-update": "npx wp-scripts packages-update",
-		"start": "npx wp-scripts start",
-		"test:e2e": "npx wp-scripts test-e2e",
-		"test:unit": "npx wp-scripts test-unit-js"
+		"build": "wp-scripts build",
+		"check-engines": "wp-scripts check-engines",
+		"check-licenses": "wp-scripts check-licenses",
+		"format:js": "wp-scripts format-js",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md:docs": "wp-scripts lint-md-docs",
+		"lint:md:js": "wp-scripts lint-md-js",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"start": "wp-scripts start",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js"
 	}
 }
