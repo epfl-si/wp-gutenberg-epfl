@@ -134,8 +134,10 @@ Class Utils
                 error_log("Webservice " . $url . " doesn't seem to be returning JSON");
                 return False;
             } else {
-
-                $decoded = json_decode($data);
+                // sometimes, we receive some strange char (seen from people JSON return), like
+                // \x1c (file separator in ASCII), so we better clean it
+                $data_cleaned = preg_replace('/[[:cntrl:]]/', '', $data);
+                $decoded = json_decode($data_cleaned);
                 /* If error in decoding, */
                 if($decoded === null)
                 {
