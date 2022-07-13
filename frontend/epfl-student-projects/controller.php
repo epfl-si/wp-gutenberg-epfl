@@ -13,6 +13,9 @@ function get_link($url)
   return '<a href="'.$url.'" target="_blank">'. $url.'</a>';
 }
 
+function sortByProjectName($a, $b) {
+    return strcmp($a->project->title, $b->project->title);
+}
 
 function epfl_student_projects_block($attributes, $inner_content) {
 
@@ -57,10 +60,6 @@ function epfl_student_projects_block($attributes, $inner_content) {
       return Utils::render_user_msg("Error getting project list");
     }
 
-    # sort by project name
-    function sortByProjectName($a, $b) {
-        return strcmp($a->project->title, $b->project->title);
-    }
     usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectName');
 
     ob_start();
