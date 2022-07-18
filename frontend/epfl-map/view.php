@@ -21,16 +21,16 @@ function epfl_map_block( $attributes ) {
 
         # assert we have iframe in url, or add it
         if  (strpos($map_url, 'plan.epfl.ch/iframe') === false) {
-            $map_url = str_replace("plan.epfl.ch/", "plan.epfl.ch/iframe/", $map_url);
+            $map_url = str_replace("plan.epfl.ch/", "plan.epfl.ch/iframe", $map_url);
         }
 
     } else {
         $query   = Utils::get_sanitized_attribute( $attributes, 'query' );
 
         if ($search_type == 'searchRoom') {
-            $map_url = 'https://plan.epfl.ch/iframe/?q==' . $query . '&amp;lang=' . $lang . '&amp;map_zoom=10';
+            $map_url = 'https://plan.epfl.ch/iframe?q==' . $query . '&amp;lang=' . $lang . '&amp;map_zoom=10';
         } else {
-            $map_url = 'https://plan.epfl.ch/iframe/?q=' . $query . '&amp;lang=' . $lang . '&amp;map_zoom=10';
+            $map_url = 'https://plan.epfl.ch/iframe?q=' . $query . '&amp;lang=' . $lang . '&amp;map_zoom=10';
         }
     }
 
