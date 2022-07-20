@@ -19,21 +19,15 @@ function epfl_table_block($attributes, $inner_content)
 
   $bigger_font_size = Utils::get_sanitized_attribute( $attributes, 'biggerFontSize', false )=== '1';
 
-  $classes = [];
+  $classes = ['table'];
 
   if ($large_display) $classes[] = "container";
   if ($bigger_font_size) $classes[] = "bigger-font-size-table";
 
-  if (!empty($classes)) {
-	$classes = implode(' ', $classes);
-	$content = '<div class="'. $classes .'">'.$inner_content.'</div>';
-  } else {
-	$content = '<div>'.$inner_content.'</div>';
-  }
-
+  $classes = implode(' ', $classes);
+  $content = '<div class="'. $classes .'">'.$inner_content.'</div>';
 
   return $content;
-
 }
 
 add_action( 'init', function() {
