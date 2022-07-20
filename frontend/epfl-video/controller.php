@@ -75,13 +75,20 @@ function epfl_video_get_error($error)
 
 /**
  * Handle video rendering
- * 
+ *
  * @param Array $attributes Parameters given by user in form.
  */
 function epfl_video_block( $attributes ) {
 
   $url = Utils::get_sanitized_attribute( $attributes, 'url' );
+  $display_type = Utils::get_sanitized_attribute( $attributes, 'displayType', 'standard' );
+
+  // manage old version of the block, before they are migrated with a page update button click
   $large_display  = Utils::get_sanitized_attribute( $attributes, 'largeDisplay', false )=== '1';
+
+  if ($large_display) {
+    $display_type = 'large';
+  }
 
   /* To handle video URL redirection
 
@@ -170,6 +177,6 @@ function epfl_video_block( $attributes ) {
     return Utils::render_user_msg("Embed of video is only possible from SwitchTube, Vimeo or Youtube");
   }
 
-  $markup = epfl_video_render($url, $large_display);
+  $markup = epfl_video_render($url, $display_type);
   return $markup;
 }
