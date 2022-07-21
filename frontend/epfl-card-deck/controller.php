@@ -74,15 +74,29 @@ function epfl_card_panel_block($attributes, $inner_content)
 function epfl_card_deck_block($data, $inner_content) {
 
   $gray_wrapper = Utils::get_sanitized_attribute($data, 'grayWrapper', false);
+  $display_type = Utils::get_sanitized_attribute($data, 'displayType', 'full' );
 
   /* $inner_content already contains HTML with "card" representation. So we can count the number of
   card with content and then adapt "deck-line" as needed */
   preg_match_all('/\<div class=\"card\"\>/', $inner_content, $matches);
 
+  $classes = ['py-3', 'px-4'];
+
+  if ($gray_wrapper) $classes[] = 'bg-gray-100';
+
+  if(isset($display_type) && $display_type == 'large') {
+    $classes[] = "container";
+  } else {  // default
+  if (count($matches[0]) == 2) {
+    $classes[] = 'card-deck-line';
+  }
+    $classes[] = "container-full";
+  }
+
   ob_start();
 ?>
 
-<div class="container-full py-3 px-4<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
+<div class="<?= implode(" ", $classes); ?>">
   <div class="card-deck <?php echo (count($matches[0]) == 2) ? ' card-deck-line' : '' ?>">
     <?php
     echo $inner_content;
