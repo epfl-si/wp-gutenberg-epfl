@@ -7,7 +7,7 @@
         $last = is_countable($results) ? count($results) : 0;
         $url_channel = epfl_news_get_url_channel($results, $lang);
 
-        $markup = '<div class="container-full my-3 pl-5">';
+        $markup = '<div class="container-full p-3 p-md-4 p-lg-5">';
         $markup .= '<div class="list-group">';
 
         foreach($results as $news) {
