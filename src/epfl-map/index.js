@@ -4,7 +4,7 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
-const version = "v1.1.0";
+const version = "v1.2.0";
 
 const { __ } = wp.i18n;
 
@@ -20,6 +20,7 @@ const {
 	PanelBody,
 	TextControl,
 	SelectControl,
+	RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -39,6 +40,10 @@ registerBlockType( 'epfl/map', {
 		searchType: {
 			type: 'string',
 			default: 'searchAll',
+		},
+		displayType: {
+			type: 'string',  // 'standard', 'large'
+			default: 'large'
 		},
 	}),
 	example: getTooltippedExample(),
@@ -63,6 +68,17 @@ registerBlockType( 'epfl/map', {
 						<p><a className="wp-block-help" href={__('https://www.epfl.ch/campus/services/website/map-en/', 'epfl')}
 									target="new">{__('Online help', 'epfl')} </a></p>
 						<p className="wp-block-help">{version}</p>
+						<PanelBody title='Format'>
+							<RadioControl
+								label={ __('Display', 'epfl') }
+								selected={ attributes.displayType }
+								options={ [
+									{ label: 'Standard', value: 'standard' },
+									{ label: 'Large', value: 'large' },
+								] }
+								onChange={ ( displayType ) => setAttributes( { displayType } ) }
+							/>
+						</PanelBody>
 					</InspectorControls>
 					<div className={className}>
 						<h2 className="epfl-block-title">{__('EPFL Map', 'epfl')}</h2>

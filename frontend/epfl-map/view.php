@@ -14,6 +14,7 @@ function epfl_map_block( $attributes ) {
     $lang    = get_current_or_default_language();
 
     $search_type   = Utils::get_sanitized_attribute( $attributes, 'searchType' );
+    $display_type = Utils::get_sanitized_attribute( $attributes, 'displayType', 'large' );
 
     if ($search_type == 'searchURL') {
         # sanitize url
@@ -34,9 +35,16 @@ function epfl_map_block( $attributes ) {
         }
     }
 
+  $classes = ['my-3'];
+  if(!isset($display_type) || $display_type == 'large') {
+    $classes[] = "container";
+  } else if($display_type == 'standard') {
+    $classes[] = "container-grid";
+  }
+
     ob_start();
 ?>
-<div class="container my-3">
+<div class="<?= implode(" ", $classes) ?>">
     <div class="embed-responsive embed-responsive-16by9">
         <iframe frameborder="0" scrolling="no" src="<?php echo esc_url($map_url); ?>" class="embed-responsive-item" ></iframe>
     </div>
