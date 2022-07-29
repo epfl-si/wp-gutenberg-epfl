@@ -49,12 +49,15 @@ export default class InspectorControlsMemento extends Component {
 
 		const { attributes, setAttributes } = this.props
 		const handleCategoriesChange = (categories) => setAttributes({ categories: JSON.stringify(categories) })
+		const allEventsId = 0  // This is the special case, when we want all the events
 
 		let content = ''
 
 		if (this.state.mementos !== null && this.state.categories !== null) {
 
 			let optionsMementosList = []
+
+			optionsMementosList.push({ label: __('All events'), value: allEventsId })  // This is the special case, when we want all the events
 
 			this.state.mementos.forEach(memento => {
 				if (memento.is_active) {
