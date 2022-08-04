@@ -20,9 +20,12 @@
 ### Translate
 
 - While `npm start` is running, recent entries should be in `languages/epfl.pot`
-- Add or Merge the new entries into the `languages/epfl-fr_FR.po` file
+- Add or Merge the new entries into every `languages/*.po` files
 - Assert the translations in `languages/epfl-fr_FR.po`
-- Update the json file with `./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-scripts.json -f jed1.x -p`
+- Update the json file with:
+	```
+	./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-scripts.json -f jed1.x -p
+	```
 - Update the mo file with Poedit
 
 ## References
