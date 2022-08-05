@@ -114,3 +114,88 @@ msgstr "Zum vollständigen Veranstaltungskalende"
 
 msgid "Sold out"
 msgstr "Vergriffen"
+
+#: frontend/epfl-social-follow/controller.php:27
+msgid "Follow us"
+msgstr "Folge uns"
+
+#: frontend/epfl-social-follow/controller.php:27
+msgid "in social networks"
+msgstr "in sozialen Netzwerken"
+
+#: frontend/epfl-social-share/controller.php:27
+msgid "Share on"
+msgstr "Teilen über"
+
+#: src/epfl-social-follow/index.js:100
+msgid "URL of an Instagram post (eg. https://www.instagram.com/p/BjuYB7Lhylj)"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:109
+msgid "URL of a Youtube post (eg. https://www.youtube.com/user/epflnews)"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:115
+msgid "URL"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:118
+msgid "URL of a Linkedin post (eg. https://www.linkedin.com/school/epfl/)"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:30
+msgid "Links to Facebook, Twitter, Linkedin, Istagram and Youtube accounts"
+msgstr ""
+
+#: src/epfl-social-share/index.js:29
+msgid "Add content page in Facebook, Twitter, Linkedin or send it by email of the current user"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:72
+msgid "https://www.epfl.ch/campus/services/website/social-follow-en/"
+msgstr "https://www.epfl.ch/campus/services/website/social-follow-de/"
+
+#: src/epfl-social-follow/index.js:72
+#: src/epfl-social-share/index.js:76
+msgid "Online help"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:76
+msgid "EPFL Social Follow"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:82
+msgid "URL of your Facebook account (eg. https://www.facebook.com/epflcampus)"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:91
+msgid "URL to your Twitter account (eg. https://twitter.com/EPFL)"
+msgstr ""
+
+#: src/epfl-social-share/index.js:102
+msgid "Copy URL"
+msgstr ""
+
+#: src/epfl-social-share/index.js:76
+msgid "https://www.epfl.ch/campus/services/website/social-share-en/"
+msgstr "https://www.epfl.ch/campus/services/website/social-share-de/"
+
+#: src/epfl-social-share/index.js:80
+msgid "EPFL Social Share"
+msgstr ""
+
+#: src/epfl-social-share/index.js:82
+msgid "Facebook"
+msgstr ""
+
+#: src/epfl-social-share/index.js:87
+msgid "Twitter"
+msgstr ""
+
+#: src/epfl-social-share/index.js:92
+msgid "Email"
+msgstr ""
+
+#: src/epfl-social-share/index.js:97
+msgid "Linkedin"
+msgstr ""
