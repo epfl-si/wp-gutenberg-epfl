@@ -15,7 +15,7 @@ function epfl_social_share_block( $attributes ) {
     $openLinkedin = Utils::get_sanitized_attribute( $attributes, 'openLinkedin', true );
     $openCopyUrl  = Utils::get_sanitized_attribute( $attributes, 'openCopyUrl', true );
 
-    $url          = get_site_url();
+    $url          = get_permalink();
     $title        = get_the_title();
 
     ob_start();
