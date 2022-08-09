@@ -94,6 +94,7 @@ msgid "Office"
 msgstr "Büro"
 
 #: frontend/epfl-social-feed/twitter_view.php:17
+#: frontend/epfl-social-follow/controller.php:47
 msgid "Follow us on Twitter"
 msgstr "Uns auf Twitter folgen"
 
@@ -123,9 +124,53 @@ msgstr "Folge uns"
 msgid "in social networks"
 msgstr "in sozialen Netzwerken"
 
+#: frontend/epfl-social-follow/controller.php:37
+msgid "Follow us on Facebook"
+msgstr "Uns auf Facebook folgen"
+
+#: frontend/epfl-social-follow/controller.php:57
+msgid "Follow us on Istagram"
+msgstr "Uns auf Istagram folgen"
+
+#: frontend/epfl-social-follow/controller.php:67
+msgid "Follow us Youtube"
+msgstr "Uns auf Youtube folgen"
+
+#: frontend/epfl-social-follow/controller.php:77
+msgid "Follow us on LinkedIn"
+msgstr "Uns auf LinkedIn folgen"
+
 #: frontend/epfl-social-share/controller.php:27
 msgid "Share on"
 msgstr "Teilen über"
+
+#: frontend/epfl-social-share/controller.php:37
+msgid "Share on Facebook"
+msgstr "Auf Facebook teilen"
+
+#: frontend/epfl-social-share/controller.php:47
+msgid "Share on Twitter"
+msgstr "Auf Facebook teilen"
+
+#: frontend/epfl-social-share/controller.php:57
+msgid "Share on LinkedIn"
+msgstr "Auf LinkedIn teilen"
+
+#: frontend/epfl-social-share/controller.php:67
+msgid "Share by e-mail"
+msgstr "Auf E-Mail teilen"
+
+#: frontend/epfl-social-share/controller.php:76
+msgid "Shared link"
+msgstr "Gemeinsamer Link"
+
+#: frontend/epfl-social-share/controller.php:77
+msgid "Copy the URL of the page"
+msgstr "Kopieren Sie die URL der Seite"
+
+#: frontend/epfl-social-share/controller.php:77
+msgid "Copied URL !"
+msgstr "Kopierte URL !"
 
 #: src/epfl-social-follow/index.js:100
 msgid "URL of an Instagram post (eg. https://www.instagram.com/p/BjuYB7Lhylj)"
@@ -173,8 +218,9 @@ msgid "URL to your Twitter account (eg. https://twitter.com/EPFL)"
 msgstr ""
 
 #: src/epfl-social-share/index.js:102
+#: frontend/epfl-social-share/controller.php:77
 msgid "Copy URL"
-msgstr ""
+msgstr "URL kopieren"
 
 #: src/epfl-social-share/index.js:76
 msgid "https://www.epfl.ch/campus/services/website/social-share-en/"

@@ -25,7 +25,7 @@ function epfl_social_share_block( $attributes ) {
     <div class="social-share-container">
       <div class="social-share ">
         <p class="social-share-text">
-          <?php echo __("Share on", 'epfl'); ?>
+          <?php echo __("Share on", "epfl"); ?>
         </p>
         <ul class="social-icon-list list-inline">
           <?php if ($openFacebook): ?>
@@ -34,7 +34,7 @@ function epfl_social_share_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-facebook"></use>
               </svg>
-              <span class="sr-only">Share on Facebook</span>
+              <span class="sr-only"><?php echo __("Share on Facebook", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -44,7 +44,7 @@ function epfl_social_share_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-twitter"></use>
               </svg>
-              <span class="sr-only">Share on Twitter</span>
+              <span class="sr-only"><?php echo __("Share on Twitter", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -54,7 +54,7 @@ function epfl_social_share_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-linkedin"></use>
               </svg>
-              <span class="sr-only">Share on LinkedIn</span>
+              <span class="sr-only"><?php echo __("Share on LinkedIn", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -64,7 +64,7 @@ function epfl_social_share_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-mail-plane"></use>
               </svg>
-              <span class="sr-only">Share by e-mail</span>
+              <span class="sr-only"><?php echo __("Share by e-mail", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -73,8 +73,8 @@ function epfl_social_share_block( $attributes ) {
       <?php if ($openCopyUrl): ?>
       <div class="social-share-copylink">
         <div class="input-group">
-          <input type="text" class="form-control sr-only" value="<?php echo $url ?>" aria-label="Lien de partage">
-          <button class="btn btn-primary btn-sm social-share-copy" title="Copier l'URL de la page" type="button" data-success="URL copiée !">Copier l'URL</button>
+          <input type="text" class="form-control sr-only" value="<?php echo $url ?>" aria-label="<?php echo __("Shared link", "epfl"); ?>">
+          <button class="btn btn-primary btn-sm social-share-copy" title="<?php echo __("Copy the URL of the page", "epfl"); ?>" type="button" data-success="<?php echo __("Copied URL !", "epfl"); ?>"><?php echo __("Copy URL", "epfl"); ?></button>
         </div>
       </div>
       <?php endif; ?>

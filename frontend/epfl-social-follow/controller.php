@@ -24,7 +24,7 @@ function epfl_social_follow_block( $attributes ) {
 
       <div class="social-share ">
         <p class="social-share-text">
-          <?php echo __("Follow us", 'epfl'); ?> <span class="sr-only"><?php echo __("in social networks", 'epfl'); ?></span>
+          <?php echo __("Follow us", "epfl"); ?> <span class="sr-only"><?php echo __("in social networks", "epfl"); ?></span>
         </p>
 
         <ul class="social-icon-list list-inline">
@@ -34,7 +34,7 @@ function epfl_social_follow_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-facebook"></use>
               </svg>
-              <span class="sr-only">Follow us on Facebook</span>
+              <span class="sr-only"><?php echo __("Follow us on Facebook", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -44,7 +44,7 @@ function epfl_social_follow_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-twitter"></use>
               </svg>
-              <span class="sr-only">Follow us on Twitter</span>
+              <span class="sr-only"><?php echo __("Follow us on Twitter", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -54,7 +54,7 @@ function epfl_social_follow_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-instagram"></use>
               </svg>
-              <span class="sr-only">Follow us on Instagram</span>
+              <span class="sr-only"><?php echo __("Follow us on Istagram", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -64,7 +64,7 @@ function epfl_social_follow_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-youtube"></use>
               </svg>
-              <span class="sr-only">Follow us on Youtube</span>
+              <span class="sr-only"><?php echo __("Follow us on Youtube", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -74,7 +74,7 @@ function epfl_social_follow_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-linkedin"></use>
               </svg>
-              <span class="sr-only">Follow us on LinkedIn</span>
+              <span class="sr-only"><?php echo __("Follow us on LinkedIn", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>

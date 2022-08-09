@@ -277,6 +277,7 @@ msgid "View this post on Instagram"
 msgstr "Voir ce post sur Instagram"
 
 #: frontend/epfl-social-feed/twitter_view.php:17
+#: frontend/epfl-social-follow/controller.php:47
 msgid "Follow us on Twitter"
 msgstr "Nous rejoindre sur Twitter"
 
@@ -2115,9 +2116,53 @@ msgstr "Suivez nous sur"
 msgid "in social networks"
 msgstr "les réseaux sociaux"
 
-#: frontend/epfl-social-share/controller.php:27
+#: frontend/epfl-social-follow/controller.php:37
+msgid "Follow us on Fabecook"
+msgstr "Nous rejoindre sur Fabecook"
+
+#: frontend/epfl-social-follow/controller.php:57
+msgid "Follow us on Istagram"
+msgstr "Nous rejoindre sur Istagram"
+
+#: frontend/epfl-social-follow/controller.php:67
+msgid "Follow us Youtube"
+msgstr "Nous rejoindre sur Youtube"
+
+#: frontend/epfl-social-follow/controller.php:77
+msgid "Follow us on LinkedIn"
+msgstr "Nous rejoindre sur LinkedIn"
+
+#: frontend/epfl-social-share/controller.php:28
 msgid "Share on"
 msgstr "Partager cette page"
+
+#: frontend/epfl-social-share/controller.php:37
+msgid "Share on Facebook"
+msgstr "Partager sur Facebook"
+
+#: frontend/epfl-social-share/controller.php:47
+msgid "Share on Twitter"
+msgstr "Partager sur Twitter"
+
+#: frontend/epfl-social-share/controller.php:57
+msgid "Share on LinkedIn"
+msgstr "Partager sur LinkedIn"
+
+#: frontend/epfl-social-share/controller.php:67
+msgid "Share by e-mail"
+msgstr "Partager par email"
+
+#: frontend/epfl-social-share/controller.php:76
+msgid "Shared link"
+msgstr "Lien de partage"
+
+#: frontend/epfl-social-share/controller.php:77
+msgid "Copy the URL of the page"
+msgstr "Partager par email"
+
+#: frontend/epfl-social-share/controller.php:77
+msgid "Copied URL !"
+msgstr "URL copiée !"
 
 #: src/epfl-social-follow/index.js:100
 msgid "URL of an Instagram account (eg. https://www.instagram.com/p/BjuYB7Lhylj)"
@@ -2156,6 +2201,7 @@ msgid "URL of a Twitter account (eg. https://twitter.com/EPFL)"
 msgstr "URL vers votre compte Twitter (eg. https://twitter.com/EPFL)"
 
 #: src/epfl-social-share/index.js:102
+#: frontend/epfl-social-share/controller.php:77
 msgid "Copy URL"
 msgstr "Copier l'URL"
 

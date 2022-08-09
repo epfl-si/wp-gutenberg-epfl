@@ -1420,8 +1420,41 @@
          "in social networks": [
             "les réseaux sociaux"
          ],
+         "Follow us on Fabecook": [
+            "Nous rejoindre sur Fabecook"
+         ],
+         "Follow us on Istagram": [
+            "Nous rejoindre sur Istagram"
+         ],
+         "Follow us Youtube": [
+            "Nous rejoindre sur Youtube"
+         ],
+         "Follow us on LinkedIn": [
+            "Nous rejoindre sur LinkedIn"
+         ],
          "Share on": [
             "Partager cette page"
+         ],
+         "Share on Facebook": [
+            "Partager sur Facebook"
+         ],
+         "Share on Twitter": [
+            "Partager sur Twitter"
+         ],
+         "Share on LinkedIn": [
+            "Partager sur LinkedIn"
+         ],
+         "Share by e-mail": [
+            "Partager par email"
+         ],
+         "Shared link": [
+            "Lien de partage"
+         ],
+         "Copy the URL of the page": [
+            "Partager par email"
+         ],
+         "Copied URL !": [
+            "URL copiée !"
          ],
          "URL of an Instagram account (eg. https://www.instagram.com/p/BjuYB7Lhylj)": [
             "URL d'un compte Instagram (ex. https://www.instagram.com/p/BjuYB7Lhylj)"
