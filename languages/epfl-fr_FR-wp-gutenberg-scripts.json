@@ -1423,10 +1423,10 @@
          "Follow us on Fabecook": [
             "Nous rejoindre sur Fabecook"
          ],
-         "Follow us on Istagram": [
-            "Nous rejoindre sur Istagram"
+         "Follow us on Instagram": [
+            "Nous rejoindre sur Instagram"
          ],
-         "Follow us Youtube": [
+         "Follow us on Youtube": [
             "Nous rejoindre sur Youtube"
          ],
          "Follow us on LinkedIn": [
@@ -1453,7 +1453,7 @@
          "Copy the URL of the page": [
             "Partager par email"
          ],
-         "Copied URL !": [
+         "URL copied !": [
             "URL copiée !"
          ],
          "URL of an Instagram account (eg. https://www.instagram.com/p/BjuYB7Lhylj)": [

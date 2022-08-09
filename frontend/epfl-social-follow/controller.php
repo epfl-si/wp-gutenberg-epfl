@@ -54,7 +54,7 @@ function epfl_social_follow_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-instagram"></use>
               </svg>
-              <span class="sr-only"><?php echo __("Follow us on Istagram", "epfl"); ?></span>
+              <span class="sr-only"><?php echo __("Follow us on Instagram", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>

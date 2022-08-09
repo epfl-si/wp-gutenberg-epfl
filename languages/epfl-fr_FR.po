@@ -2121,11 +2121,11 @@ msgid "Follow us on Fabecook"
 msgstr "Nous rejoindre sur Fabecook"
 
 #: frontend/epfl-social-follow/controller.php:57
-msgid "Follow us on Istagram"
-msgstr "Nous rejoindre sur Istagram"
+msgid "Follow us on Instagram"
+msgstr "Nous rejoindre sur Instagram"
 
 #: frontend/epfl-social-follow/controller.php:67
-msgid "Follow us Youtube"
+msgid "Follow us on Youtube"
 msgstr "Nous rejoindre sur Youtube"
 
 #: frontend/epfl-social-follow/controller.php:77
@@ -2161,7 +2161,7 @@ msgid "Copy the URL of the page"
 msgstr "Partager par email"
 
 #: frontend/epfl-social-share/controller.php:77
-msgid "Copied URL !"
+msgid "URL copied !"
 msgstr "URL copiée !"
 
 #: src/epfl-social-follow/index.js:100

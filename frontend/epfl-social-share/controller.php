@@ -74,7 +74,7 @@ function epfl_social_share_block( $attributes ) {
       <div class="social-share-copylink">
         <div class="input-group">
           <input type="text" class="form-control sr-only" value="<?php echo $url ?>" aria-label="<?php echo __("Shared link", "epfl"); ?>">
-          <button class="btn btn-primary btn-sm social-share-copy" title="<?php echo __("Copy the URL of the page", "epfl"); ?>" type="button" data-success="<?php echo __("Copied URL !", "epfl"); ?>"><?php echo __("Copy URL", "epfl"); ?></button>
+          <button class="btn btn-primary btn-sm social-share-copy" title="<?php echo __("Copy the URL of the page", "epfl"); ?>" type="button" data-success="<?php echo __("URL copied !", "epfl"); ?>"><?php echo __("Copy URL", "epfl"); ?></button>
         </div>
       </div>
       <?php endif; ?>

@@ -129,11 +129,11 @@ msgid "Follow us on Facebook"
 msgstr "Uns auf Facebook folgen"
 
 #: frontend/epfl-social-follow/controller.php:57
-msgid "Follow us on Istagram"
-msgstr "Uns auf Istagram folgen"
+msgid "Follow us on Instagram"
+msgstr "Uns auf Instagram folgen"
 
 #: frontend/epfl-social-follow/controller.php:67
-msgid "Follow us Youtube"
+msgid "Follow us on Youtube"
 msgstr "Uns auf Youtube folgen"
 
 #: frontend/epfl-social-follow/controller.php:77
@@ -169,8 +169,8 @@ msgid "Copy the URL of the page"
 msgstr "Kopieren Sie die URL der Seite"
 
 #: frontend/epfl-social-share/controller.php:77
-msgid "Copied URL !"
-msgstr "Kopierte URL !"
+msgid "URL copied !"
+msgstr "URL kopiert !"
 
 #: src/epfl-social-follow/index.js:100
 msgid "URL of an Instagram post (eg. https://www.instagram.com/p/BjuYB7Lhylj)"
