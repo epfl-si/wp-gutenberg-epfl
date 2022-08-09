@@ -190,6 +190,8 @@ function wp_gutenberg_epfl_editor_assets() {
             'quote' => plugins_url( 'src/block-thumbnails/quote.jpg', __FILE__ ),
             'scheduler' => plugins_url( 'src/block-thumbnails/scheduler.jpg', __FILE__ ),
             'socialFeed' => plugins_url( 'src/block-thumbnails/socialFeed.jpg', __FILE__ ),
+            'socialFollow' => plugins_url( 'src/block-thumbnails/socialFollow.jpg', __FILE__ ),
+            'socialShare' => plugins_url( 'src/block-thumbnails/socialShare.jpg', __FILE__ ),
             'table' => plugins_url( 'src/block-thumbnails/table.jpg', __FILE__ ),
             'tableau' => plugins_url( 'src/block-thumbnails/tableau.jpg', __FILE__ ),
             'tableFilter' => plugins_url( 'src/block-thumbnails/table-filter.jpg', __FILE__ ),
