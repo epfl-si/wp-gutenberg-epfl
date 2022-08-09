@@ -3,6 +3,7 @@ https://my.matterport.com/show/
 https://cede-webapps.epfl.ch/MOOCsCatalog/index.html
 https://edamonitoring.epfl.ch/grafana/d/k1JaxB57k/eda-license-monitor
 https://sisbdev-test.epfl.ch/contactforms/create
-https://sisbdev.epfl.ch/contactforms/create 
+https://sisbdev.epfl.ch/contactforms/create
+https://www.podcastics.com/player
 
 # Note: please specify full URL, starting with https://

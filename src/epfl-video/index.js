@@ -6,7 +6,7 @@ import {
 
 import videoIcon from './video-icon'
 
-const version = "v1.0.5";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -21,10 +21,14 @@ const {
 const {
     PanelBody,
 	TextControl,
-	ToggleControl,
+	RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
+
+const supports = {
+	customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
+}
 
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
@@ -38,15 +42,13 @@ registerBlockType( 'epfl/video', {
         url: {
 			type: 'url',
 		},
-		largeDisplay: {
-            type: 'boolean',
-            default: false,
-        },
+		displayType: {
+			type: 'string',  // 'standard', 'large', 'full'
+			default: 'standard'
+		},
 	}),
 	example: getTooltippedExample(),
-	supports : {
-		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
-	},
+	supports : supports,
 	edit: ( props ) => {
         const { attributes, className, setAttributes } = props
 
@@ -65,10 +67,15 @@ registerBlockType( 'epfl/video', {
 					<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/video-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 					<p className="wp-block-help">{ version }</p>
 					<PanelBody title='Format'>
-                        <ToggleControl
-                            label={ __('Large display', 'epfl') }
-                            checked={ attributes.largeDisplay }
-                            onChange={ largeDisplay => setAttributes( { largeDisplay } ) }
+                        <RadioControl
+							label={ __('Display', 'epfl') }
+							selected={ attributes.displayType }
+							options={ [
+								{ label: 'Standard', value: 'standard' },
+								{ label: 'Large', value: 'large' },
+								{ label: 'Full', value: 'full' },
+							] }
+							onChange={ ( displayType ) => setAttributes( { displayType } ) }
                         />
 					</PanelBody>
 				</InspectorControls>
@@ -87,4 +94,41 @@ registerBlockType( 'epfl/video', {
 	save: ( props ) => {
 		return null;
 	},
+	deprecated: [
+		{
+			isEligible({ largeDisplay }) {
+				if (largeDisplay) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+			attributes: {
+				url: {
+					type: 'url',
+				},
+				largeDisplay: {
+					type: 'boolean',
+					default: false,
+				},
+			},
+			supports : supports,
+			migrate( attributes ) {
+				if (attributes.largeDisplay) {
+					return {
+						displayType: 'large',
+						...attributes,
+					};
+				} else {
+					return {
+						displayType: 'standard',
+						...attributes,
+					}
+				}
+			},
+			save: ( props ) => {
+				return null;
+			},
+		},
+	],
 } );

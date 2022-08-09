@@ -44,7 +44,7 @@ function epfl_table_filter_block($attributes, $inner_content)
 
 
   // Class without any CSS style but will be used by JS code
-  $classes = array("epfl-table-filter");
+  $classes = ["epfl-table-filter", 'table'];
   if($large_display) $classes[] = "container";
   if ($bigger_font_size) $classes[] = "bigger-font-size-table";
 

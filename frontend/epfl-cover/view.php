@@ -11,11 +11,7 @@ function epfl_cover_block( $attributes ) {
 
     $image_id    = Utils::get_sanitized_attribute( $attributes, 'imageId' );
     $description = Utils::get_sanitized_attribute( $attributes, 'description' );
-
-    /*
-    var_dump($image_id);
-    var_dump($description);
-    */
+    $display_type = Utils::get_sanitized_attribute( $attributes, 'displayType', 'large' );
 
     $attachement = wp_get_attachment_image(
         $image_id,
@@ -27,9 +23,16 @@ function epfl_cover_block( $attributes ) {
         ]
     );
 
+    $classes = ['my-3'];
+    if(!isset($display_type) || $display_type == 'large') {
+        $classes[] = "container";
+    } else if($display_type == 'full') {
+        $classes[] = "container-full";
+    }
+
     ob_start();
-?>    
-<div class="container my-3">
+?>
+<div class="<?php echo implode(" ", $classes) ?>">
     <figure class="cover">
         <picture><?php echo $attachement; ?></picture>
 

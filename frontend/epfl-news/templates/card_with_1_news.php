@@ -7,7 +7,7 @@
         $count = 1;
         $last = count($results);
 
-        $markup = '<div class="container-full my-3 pl-5">';
+        $markup = '<div class="container-full p-3 p-md-4 p-lg-5">';
         $markup .= '<div class="list-group">';
 
         foreach($results as $news) {

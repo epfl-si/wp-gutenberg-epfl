@@ -9,7 +9,7 @@ import {
 import './style.scss'
 import coverIcon from './cover-icon'
 
-const version = "v1.0.4";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -23,9 +23,11 @@ const {
 } = wp.blockEditor;
 
 const {
+	PanelBody,
     Placeholder,
     Button,
 	TextareaControl,
+	RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -47,7 +49,11 @@ registerBlockType( 'epfl/cover', {
 		},
 		description : {
 			type: 'string',
-		}
+		},
+		displayType: {
+			type: 'string',  // 'standard', 'large', 'full'
+			default: 'large'
+		},
 	}),
 	example: getTooltippedExample(),
 	supports : {
@@ -85,6 +91,17 @@ registerBlockType( 'epfl/cover', {
 			<InspectorControls>
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/cover-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
 				<p className="wp-block-help">{ version }</p>
+				<PanelBody title='Format'>
+					<RadioControl
+						label={ __('Display', 'epfl') }
+						selected={ attributes.displayType }
+						options={ [
+							{ label: 'Large', value: 'large' },
+							{ label: 'Full', value: 'full' },
+						] }
+						onChange={ ( displayType ) => setAttributes( { displayType } ) }
+					/>
+				</PanelBody>
 			</InspectorControls>
 			<div className={ className }>
 				<h2 className="epfl-block-title">{ __('EPFL Cover', 'epfl') }</h2>

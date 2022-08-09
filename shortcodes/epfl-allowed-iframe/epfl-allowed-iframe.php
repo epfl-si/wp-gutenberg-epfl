@@ -24,8 +24,8 @@ function allowed_url_checker( $url, $allowed_url ) {
         return false;
     }
 
-    // path has to be the same
-    if ( $allowed_url['path'] !== $url['path'] ) {
+    // path has to start with the configured URL
+    if ( ! is_prefix($allowed_url['path'], $url['path']) ) {
         return false;
     }
 
@@ -62,6 +62,10 @@ function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
             return Utils::render_user_msg( "iframe url not allowed" );
         }
     }
+}
+
+function is_prefix ($short, $long) {
+    return strncmp($long, $short, strlen($short)) === 0;
 }
 
 add_action( 'init', function() {

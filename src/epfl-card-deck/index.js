@@ -23,6 +23,7 @@ const {
 const {
     PanelBody,
     ToggleControl,
+    RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -38,6 +39,10 @@ const getAttributes = () => {
         grayWrapper: {
             type: 'boolean',
             default: false,
+        },
+        displayType: {
+            type: 'string',  // 'large', 'full'
+            default: 'full'
         },
     };
 
@@ -75,6 +80,15 @@ registerBlockType( 'epfl/card-deck', {
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/card-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <p className="wp-block-help">{ version }</p>
                     <PanelBody title='Format'>
+                        <RadioControl
+                            label={ __('Display', 'epfl') }
+                            selected={ attributes.displayType }
+                            options={ [
+                                { label: 'Large', value: 'large' },
+                                { label: 'Full', value: 'full' },
+                            ] }
+                            onChange={ ( displayType ) => setAttributes( { displayType } ) }
+                        />
                         <ToggleControl
                             label={ __('Wrap with a gray border', 'epfl') }
                             checked={ attributes.grayWrapper }

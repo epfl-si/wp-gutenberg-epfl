@@ -75,7 +75,7 @@ function epfl_news_get_subtitle($news) {
  */
 function epfl_news_get_visual_url($news) {
   if ($news->visual_url) {
-      $visual_url = substr($news->visual_url, 0, -11) . '1296x728.jpg';
+      $visual_url = substr($news->visual_url, 0, -12) . '1296x728.jpg';
   } else {
       $visual_url = 'https://actu.epfl.ch/static/img/placeholder.png';
   }
