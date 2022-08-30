@@ -137,7 +137,7 @@ Class InfoscienceMarcConverter
         foreach ($fields as $field) {
             $sub_value = [];
             foreach($subfields as $index=>$subfield) {
-                if ($subfield && $subfield !== '') {
+                if ($subfield === '0' || !empty($subfield)) {
                     if ($field->getSubfield($subfield)) {
                         if ($subfields_name && array_key_exists($index, $subfields_name)) {
                             $sub_value[$subfields_name[$index]] = $field->getSubfield($subfield)->getData();
