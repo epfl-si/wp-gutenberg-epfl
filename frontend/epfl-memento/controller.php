@@ -18,21 +18,27 @@ define(__NAMESPACE__ . "\MEMENTO_API_URL", "https://memento.epfl.ch/api/v1/memen
 define(__NAMESPACE__ . "\MEMENTO_API_URL_IFRAME", "https://memento.epfl.ch/webservice/?frame=1");
 define('REGISTRATION_SOLD_OUT_ID', '4');
 
+define(__NAMESPACE__ . "\MEMENTO_ALL_EVENTS_API_URL", "https://memento.epfl.ch/api/v1/events/");
+define(__NAMESPACE__ . "\MEMENTO_API_ALL_EVENTS_ID", "0");  // the memento with id 0 should not exist, so we use the 0 as the "all events"
+define(__NAMESPACE__ . "\MEMENTO_ALL_EVENTS_SLUG", "all_events");
+
 require_once(dirname(__FILE__).'/../lib/utils.php');
 require_once(dirname(__FILE__).'/view.php');
 
 /**
  * Call memento REST api to get the memento slug
- * 
+ *
  * @param $memento_id: ID of memento
  * @return the slug of memento
  */
 function get_memento_slug($memento_id) {
-
-  $url = MEMENTO_API_URL . $memento_id . '/?format=json';
-  $memento = Utils::get_items($url, 300, 20);
-
-  return $memento->slug;
+	if ($memento_id === MEMENTO_API_ALL_EVENTS_ID) {
+		return MEMENTO_ALL_EVENTS_SLUG;
+	} else {
+		$url = MEMENTO_API_URL . $memento_id . '/?format=json';
+		$memento = Utils::get_items($url, 300, 20);
+		return $memento->slug;
+	}
 }
 
 /**
@@ -47,7 +53,7 @@ function get_memento_slug($memento_id) {
  * @return the API URL of the memento
  */
 function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $categories, $keyword, $period, $year)
-{    
+{
     // return events in FR if events exist in this language.
     // otherwise return events in EN (if events exist in this language).
     if ('fr' === $lang) {
@@ -56,8 +62,14 @@ function epfl_memento_build_api_url($memento_id, $lang, $template, $nb_events, $
         $lang = 'en,fr';
     }
 
-    // define API URL
-    $url = MEMENTO_API_URL . $memento_id . '/events/?format=json&lang=' . $lang . '&limit=' . $nb_events;
+	if ($memento_id === MEMENTO_API_ALL_EVENTS_ID) {
+		$url = MEMENTO_ALL_EVENTS_API_URL;
+	} else {
+		// define API URL
+		$url = MEMENTO_API_URL . $memento_id . '/events/';
+	}
+
+	$url .= '?format=json&lang=' . $lang . '&limit=' . $nb_events;
 
     // filter by categories
     $categories = json_decode($categories, true);
@@ -122,16 +134,6 @@ function epfl_memento_block( $attributes ) {
     $period     = Utils::get_sanitized_attribute( $attributes, 'period', 'upcoming');
     $year       = Utils::get_sanitized_attribute( $attributes, 'year' );
 
-    /*
-    var_dump("Memento Id: " . $memento_id);
-    var_dump("Lang: " . $lang);
-    var_dump("Template: " . $template);
-    var_dump("nb_events: " . $nb_events);
-    var_dump("categories: " . $categories);
-    var_dump("keyword: " . $keyword);
-    var_dump("period: " . $period);
-    var_dump("year: " . $year);
-    */
 
     if (epfl_memento_check_required_parameters($memento_id, $lang) == FALSE) {
         return Utils::render_user_msg("Memento shortcode: Please check required parameters");
@@ -151,7 +153,7 @@ function epfl_memento_block( $attributes ) {
     $events = Utils::get_items($url, 300, 20);
     $memento_slug = get_memento_slug($memento_id);
     $markup = epfl_memento_render($events->results, $template, $memento_slug, $period);
-  
+
     return $markup;
 }
 

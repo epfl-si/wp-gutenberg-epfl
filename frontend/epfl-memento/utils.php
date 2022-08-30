@@ -94,13 +94,19 @@ function get_visual_url($event, $memento_name) {
     return $visual_url;
 }
 
-function get_memento_url($period, $memento_name) {
-  if ($period === 'past') {
-    $now = date("Y-m-d");
-    $year = (intval(substr($now, 0, 4)) - 1) . substr($now, 4, 10) ;
-    $memento_url = "https://memento.epfl.ch/" . $memento_name . "/?period=365&date=" . $year;
-  } else {
-    $memento_url = "https://memento.epfl.ch/" . $memento_name;
-  }
-  return $memento_url;
+function get_memento_url($period, $memento_name)
+{
+	if ($memento_name === MEMENTO_ALL_EVENTS_SLUG) {
+		$memento_url = "https://memento.epfl.ch";
+	} else {
+		$memento_url = "https://memento.epfl.ch/" . $memento_name;
+	}
+
+	if ($period === 'past') {
+		$now = date("Y-m-d");
+		$year = (intval(substr($now, 0, 4)) - 1) . substr($now, 4, 10);
+		$memento_url .= "/?period=365&date=" . $year;
+	}
+
+	return $memento_url;
 }
