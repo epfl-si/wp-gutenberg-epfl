@@ -49,7 +49,7 @@ Class InfoscienceMarcConverter
     * urls => icon, fulltext
     */
     public static function parse_files($record, $field) {
-        $file_urls  = InfoscienceMarcConverter::parse_text($record, '856', '4', '', ['u', 'z']);
+        $file_urls  = InfoscienceMarcConverter::parse_text($record, '856', '4', '', ['u', '0']);
         $sorted_urls = [];
 
         foreach($file_urls as $url_and_type) {
@@ -76,7 +76,7 @@ Class InfoscienceMarcConverter
             } else {
                 $matches = [];
                 preg_match('/(\.png|\.jpg|\.jpeg|\.gif)$/', $url, $matches);
-                if ($matches && $type == 'THUMBNAIL') {
+                if ($matches && $type == 'Thumbnail') {
                     $sorted_urls['icon'][] = $url;
                 }
             }
