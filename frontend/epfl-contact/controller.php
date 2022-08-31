@@ -60,8 +60,12 @@ function epfl_contact_block($attributes, $inner_content) {
         if (isset($attributes['mapQuery']) && !empty(trim($attributes['mapQuery'])) && $attributes['mapQuery'] != 'INN011'):
         ?>
         <div class="col-md-6 d-flex flex-column">
+          <h4 class="sr-only">Access map</h4>
+          <div class="media-map">
           <?php echo
-           epfl_map_block(['query' => $attributes['mapQuery'] ?? null, 'searchType' => $attributes['searchType'] ?? null, 'lang' => get_current_or_default_language()]); ?>
+           epfl_map_block(['query' => $attributes['mapQuery'] ?? null, 'searchType' => $attributes['searchType'] ?? null, 'lang' => get_current_or_default_language(), 'noWrapper' => true]);
+          ?>
+          </div>
         </div>
         <?php endif; ?>
       </div>
