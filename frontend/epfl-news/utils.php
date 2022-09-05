@@ -69,17 +69,39 @@ function epfl_news_get_subtitle($news) {
 }
 
 /**
- * Get visual url
+ * Get visual url. Default to 1280x720.jpg, 16/9
+ * actu accept any width-height number, as it has a dynamic image generator
  *
  * $news: news to display
- */
-function epfl_news_get_visual_url($news) {
+ * $withSize: should the url returned have a size ?
+  */
+function epfl_news_get_visual_url($news, $hasSize = true) {
   if ($news->visual_url) {
-      $visual_url = substr($news->visual_url, 0, -12) . '1296x728.jpg';
+      $visual_url = substr($news->visual_url, 0, -12);  // first remove incoming size
+      if ($hasSize) {
+          $visual_url = $visual_url . '1280x720.jpg';
+      }
   } else {
       $visual_url = 'https://actu.epfl.ch/static/img/placeholder.png';
   }
   return $visual_url;
+}
+
+
+/**
+ * @param $news
+ * @return the different media source to be included inside a <picture>, before the <img>
+ */
+function epfl_news_get_picture_source_media_for_visual($news) {
+    $visual_url_nosize = esc_url(epfl_news_get_visual_url($news, false));
+
+    $markup = '';
+    $markup .= '<source media="(min-width: 1920px)" srcset="'. $visual_url_nosize .'1920x1080.jpg 1x, '. $visual_url_nosize .'2560x1440.jpg 2x">';
+    $markup .= '<source media="(min-width: 768px)" srcset="'. $visual_url_nosize .'1280x720.jpg 1x, '. $visual_url_nosize .'2560x1440.jpg 2x">';
+    $markup .= '<source media="(min-width: 576px)" srcset="'. $visual_url_nosize .'768x432.jpg 1x, '. $visual_url_nosize .'1920x1080.jpg 2x">';
+    $markup .= '<source media="(max-width: 575px)" srcset="'. $visual_url_nosize .'576x324.jpg 1x, '. $visual_url_nosize .'1280x720.jpg 2x">';
+
+    return $markup;
 }
 
 /**

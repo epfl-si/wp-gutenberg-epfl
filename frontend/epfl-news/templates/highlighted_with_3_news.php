@@ -44,6 +44,7 @@
                     $markup .= '</div>';
                 } else {
                     $markup .= '<picture>';
+                    $markup .= epfl_news_get_picture_source_media_for_visual($news);
                     $markup .= '<img src="' . esc_url($visual_url) . '" aria-labelledby="background-label" alt="' . esc_attr($image_description) . '"/>';
                     $markup .= '</picture>';
                 }

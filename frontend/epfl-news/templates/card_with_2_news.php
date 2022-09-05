@@ -26,6 +26,7 @@
             $markup .= '<div class="col-md-6">';
             $markup .= '<a href="' . esc_url($news->news_url) . '" class="card link-trapeze-horizontal" itemscope itemtype="https://schema.org/NewsArticle">';
             $markup .= '<picture class="card-img-top">';
+            $markup .= epfl_news_get_picture_source_media_for_visual($news);
             $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" title="' . esc_attr($image_description) . '" alt="' . esc_attr($image_description) . '" />';
             $markup .= '</picture>';
             $markup .= '<div class="card-body">';
