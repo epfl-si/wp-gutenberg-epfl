@@ -76,7 +76,7 @@ Class InfoscienceMarcConverter
             } else {
                 $matches = [];
                 preg_match('/(\.png|\.jpg|\.jpeg|\.gif)$/', $url, $matches);
-                if ($matches && $type == 'Thumbnail') {
+                if ($matches && strcasecmp($type,'Thumbnail') === 0) {  // insensitive value check
                     $sorted_urls['icon'][] = $url;
                 }
             }
