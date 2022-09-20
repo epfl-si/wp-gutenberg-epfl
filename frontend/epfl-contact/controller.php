@@ -65,7 +65,7 @@ function epfl_contact_block($attributes, $inner_content) {
         </div>
         <?php endif; ?>
       </div>
-    <?php if ($gray_wrapper): ?></div><?php endif; ?>
+    </div>
   </div>
 
 <?php
