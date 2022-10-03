@@ -122,6 +122,7 @@
                           <?php echo date("d.m.Y", strtotime(esc_html($lex->effectiveDate))); ?>
                         <?php endif; ?>
                     </div>
+                    <?php if (!$lex->isAbrogated): ?>
                     <div class="lex-revisionDate col-4">
                         <?php if (esc_html($lex->revisionDate)): ?>
                           <?php _e('Status as of', 'epfl') . ' ' ?>
@@ -129,10 +130,20 @@
                         <?php endif; ?>
                     </div>
                     <div class="lex-responsible col d-md-flex flex-row">
-                        <a href="<?php echo esc_html($lex->responsible->url); ?>" target="_blank">
-                            <?php echo esc_html($lex->responsible->firstName . ' ' . $lex->responsible->lastName); ?>
-                        </a>
+                      <a href="<?php echo esc_html($lex->responsible->url); ?>" target="_blank">
+                        <?php echo esc_html($lex->responsible->firstName . ' ' . $lex->responsible->lastName); ?>
+                      </a>
                     </div>
+                    <?php else: ?>
+                    <div class="lex-abrogationDate col-4">
+                      <?php if (!empty($lex->abrogationDate)): ?>
+                        <?php _e('Abrogated on', 'epfl') . ' ' ?>
+                        <?php echo date("d.m.Y", strtotime(esc_html($lex->abrogationDate))); ?>
+                      <?php endif; ?>
+                    </div>
+                    <div class="lex-responsible col d-md-flex flex-row">
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php endforeach; ?>

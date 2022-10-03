@@ -20,7 +20,8 @@ function process_shortcode($atts) {
     $atts = shortcode_atts( array(
         'category' => '',
         'subcategory' => '',
-        'search' => ''
+        'search' => '',
+        'abrogated' => ''
     ), $atts );
 
     // search can come from the url
@@ -42,8 +43,15 @@ function process_shortcode($atts) {
     $category = sanitize_text_field($atts["category"]);
     $subcategory = sanitize_text_field($atts["subcategory"]);
     $search = sanitize_text_field($atts["search"]);
+    $abrogated = empty(sanitize_text_field($atts["abrogated"]));
 
     $url = LEX_INFO_PROVIDER_URL;
+
+    if ($abrogated) {
+        $url .= '?isAbrogated=1';
+    } else {
+        $url .= '?isAbrogated=0';
+    }
 
     $cache_timeout = 15 * MINUTE_IN_SECONDS;
     $lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes");
