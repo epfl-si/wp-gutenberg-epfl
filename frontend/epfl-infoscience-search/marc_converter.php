@@ -49,7 +49,7 @@ Class InfoscienceMarcConverter
     * urls => icon, fulltext
     */
     public static function parse_files($record, $field) {
-        $file_urls  = InfoscienceMarcConverter::parse_text($record, '856', '4', '', ['u', 'z']);
+        $file_urls  = InfoscienceMarcConverter::parse_text($record, '856', '4', '', ['u', '0']);
         $sorted_urls = [];
 
         foreach($file_urls as $url_and_type) {
@@ -76,7 +76,7 @@ Class InfoscienceMarcConverter
             } else {
                 $matches = [];
                 preg_match('/(\.png|\.jpg|\.jpeg|\.gif)$/', $url, $matches);
-                if ($matches && $type == 'THUMBNAIL') {
+                if ($matches && strcasecmp($type,'Thumbnail') === 0) {  // insensitive value check
                     $sorted_urls['icon'][] = $url;
                 }
             }
@@ -137,7 +137,7 @@ Class InfoscienceMarcConverter
         foreach ($fields as $field) {
             $sub_value = [];
             foreach($subfields as $index=>$subfield) {
-                if ($subfield && $subfield !== '') {
+                if ($subfield === '0' || !empty($subfield)) {
                     if ($field->getSubfield($subfield)) {
                         if ($subfields_name && array_key_exists($index, $subfields_name)) {
                             $sub_value[$subfields_name[$index]] = $field->getSubfield($subfield)->getData();

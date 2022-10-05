@@ -1413,6 +1413,96 @@
          ],
          "Sold out": [
             "Complet"
+         ],
+         "Follow us": [
+            "Suivez nous sur"
+         ],
+         "in social networks": [
+            "les réseaux sociaux"
+         ],
+         "Follow us on Fabecook": [
+            "Nous rejoindre sur Fabecook"
+         ],
+         "Follow us on Instagram": [
+            "Nous rejoindre sur Instagram"
+         ],
+         "Follow us on Youtube": [
+            "Nous rejoindre sur Youtube"
+         ],
+         "Follow us on LinkedIn": [
+            "Nous rejoindre sur LinkedIn"
+         ],
+         "Share on": [
+            "Partager cette page"
+         ],
+         "Share on Facebook": [
+            "Partager sur Facebook"
+         ],
+         "Share on Twitter": [
+            "Partager sur Twitter"
+         ],
+         "Share on LinkedIn": [
+            "Partager sur LinkedIn"
+         ],
+         "Share by e-mail": [
+            "Partager par email"
+         ],
+         "Shared link": [
+            "Lien de partage"
+         ],
+         "Copy the URL of the page": [
+            "Partager par email"
+         ],
+         "URL copied !": [
+            "URL copiée !"
+         ],
+         "URL of an Instagram account (eg. https://www.instagram.com/p/BjuYB7Lhylj)": [
+            "URL d'un compte Instagram (ex. https://www.instagram.com/p/BjuYB7Lhylj)"
+         ],
+         "URL of a Youtube account (eg. https://www.youtube.com/user/epflnews)": [
+            "URL d'un compte Youtube (ex. https://www.youtube.com/user/epflnews)"
+         ],
+         "URL of a Linkedin post (eg. https://www.linkedin.com/school/epfl/)": [
+            ""
+         ],
+         "Links to Facebook, Twitter, Linkedin, Istagram and Youtube accounts": [
+            "Liens vers des comptes Facebook, Twitter, Linkedin, Istagram et Youtube"
+         ],
+         "Add content page in Facebook, Twitter, Linkedin or send it by email of the current user": [
+            ""
+         ],
+         "https://www.epfl.ch/campus/services/website/social-follow-en/": [
+            "https://www.epfl.ch/campus/services/website/social-follow-fr/"
+         ],
+         "EPFL Social Follow": [
+            ""
+         ],
+         "URL of a Facebook account (eg. https://www.facebook.com/epflcampus)": [
+            "URL d'un compte Facebook (ex. https://www.facebook.com/epflcampus)"
+         ],
+         "URL of a Twitter account (eg. https://twitter.com/EPFL)": [
+            "URL vers votre compte Twitter (eg. https://twitter.com/EPFL)"
+         ],
+         "Copy URL": [
+            "Copier l'URL"
+         ],
+         "https://www.epfl.ch/campus/services/website/social-share-en/": [
+            "https://www.epfl.ch/campus/services/website/social-share-fr/"
+         ],
+         "EPFL Social Share": [
+            ""
+         ],
+         "Facebook": [
+            "Facebook"
+         ],
+         "Twitter": [
+            "Twitter"
+         ],
+         "Email": [
+            "Email"
+         ],
+         "Linkedin": [
+            "Linkedin"
          ]
       }
    }

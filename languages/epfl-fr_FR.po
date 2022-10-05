@@ -277,6 +277,7 @@ msgid "View this post on Instagram"
 msgstr "Voir ce post sur Instagram"
 
 #: frontend/epfl-social-feed/twitter_view.php:17
+#: frontend/epfl-social-follow/controller.php:47
 msgid "Follow us on Twitter"
 msgstr "Nous rejoindre sur Twitter"
 
@@ -386,6 +387,8 @@ msgstr "https://www.epfl.ch/campus/services/website/alert-fr/"
 #: src/epfl-student-projects/inspector.js:67 src/epfl-table-filter/index.js:91
 #: src/epfl-table/index.js:86 src/epfl-tableau/index.js:69
 #: src/epfl-toggle/index.js:73 src/epfl-video/index.js:65
+#: src/epfl-social-follow/index.js:72
+#: src/epfl-social-share/index.js:76
 msgid "Online help"
 msgstr "Aide en ligne"
 
@@ -473,6 +476,7 @@ msgstr "Lien"
 #: src/epfl-links-group/index.js:72 src/epfl-links-group/index.js:125
 #: src/epfl-social-feed/index.js:103 src/epfl-social-feed/index.js:123
 #: src/epfl-social-feed/index.js:132
+#: src/epfl-social-follow/index.js:115
 msgid "URL"
 msgstr "URL"
 
@@ -2107,3 +2111,123 @@ msgstr "Allemand"
 msgid "Sold out"
 msgstr "Complet"
 
+#: frontend/epfl-social-follow/controller.php:27
+msgid "Follow us"
+msgstr "Suivez nous sur"
+
+#: frontend/epfl-social-follow/controller.php:27
+msgid "in social networks"
+msgstr "les réseaux sociaux"
+
+#: frontend/epfl-social-follow/controller.php:37
+msgid "Follow us on Fabecook"
+msgstr "Nous rejoindre sur Fabecook"
+
+#: frontend/epfl-social-follow/controller.php:57
+msgid "Follow us on Instagram"
+msgstr "Nous rejoindre sur Instagram"
+
+#: frontend/epfl-social-follow/controller.php:67
+msgid "Follow us on Youtube"
+msgstr "Nous rejoindre sur Youtube"
+
+#: frontend/epfl-social-follow/controller.php:77
+msgid "Follow us on LinkedIn"
+msgstr "Nous rejoindre sur LinkedIn"
+
+#: frontend/epfl-social-share/controller.php:28
+msgid "Share on"
+msgstr "Partager cette page"
+
+#: frontend/epfl-social-share/controller.php:37
+msgid "Share on Facebook"
+msgstr "Partager sur Facebook"
+
+#: frontend/epfl-social-share/controller.php:47
+msgid "Share on Twitter"
+msgstr "Partager sur Twitter"
+
+#: frontend/epfl-social-share/controller.php:57
+msgid "Share on LinkedIn"
+msgstr "Partager sur LinkedIn"
+
+#: frontend/epfl-social-share/controller.php:67
+msgid "Share by e-mail"
+msgstr "Partager par email"
+
+#: frontend/epfl-social-share/controller.php:76
+msgid "Shared link"
+msgstr "Lien de partage"
+
+#: frontend/epfl-social-share/controller.php:77
+msgid "Copy the URL of the page"
+msgstr "Partager par email"
+
+#: frontend/epfl-social-share/controller.php:77
+msgid "URL copied !"
+msgstr "URL copiée !"
+
+#: src/epfl-social-follow/index.js:100
+msgid "URL of an Instagram account (eg. https://www.instagram.com/p/BjuYB7Lhylj)"
+msgstr "URL d'un compte Instagram (ex. https://www.instagram.com/p/BjuYB7Lhylj)"
+
+#: src/epfl-social-follow/index.js:109
+msgid "URL of a Youtube account (eg. https://www.youtube.com/user/epflnews)"
+msgstr "URL d'un compte Youtube (ex. https://www.youtube.com/user/epflnews)"
+
+#: src/epfl-social-follow/index.js:118
+msgid "URL of a Linkedin post (eg. https://www.linkedin.com/school/epfl/)"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:30
+msgid "Links to Facebook, Twitter, Linkedin, Istagram and Youtube accounts"
+msgstr "Liens vers des comptes Facebook, Twitter, Linkedin, Istagram et Youtube"
+
+#: src/epfl-social-share/index.js:29
+msgid "Add content page in Facebook, Twitter, Linkedin or send it by email of the current user"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:72
+msgid "https://www.epfl.ch/campus/services/website/social-follow-en/"
+msgstr "https://www.epfl.ch/campus/services/website/social-follow-fr/"
+
+#: src/epfl-social-follow/index.js:76
+msgid "EPFL Social Follow"
+msgstr ""
+
+#: src/epfl-social-follow/index.js:82
+msgid "URL of a Facebook account (eg. https://www.facebook.com/epflcampus)"
+msgstr "URL d'un compte Facebook (ex. https://www.facebook.com/epflcampus)"
+
+#: src/epfl-social-follow/index.js:91
+msgid "URL of a Twitter account (eg. https://twitter.com/EPFL)"
+msgstr "URL vers votre compte Twitter (eg. https://twitter.com/EPFL)"
+
+#: src/epfl-social-share/index.js:102
+#: frontend/epfl-social-share/controller.php:77
+msgid "Copy URL"
+msgstr "Copier l'URL"
+
+#: src/epfl-social-share/index.js:76
+msgid "https://www.epfl.ch/campus/services/website/social-share-en/"
+msgstr "https://www.epfl.ch/campus/services/website/social-share-fr/"
+
+#: src/epfl-social-share/index.js:80
+msgid "EPFL Social Share"
+msgstr ""
+
+#: src/epfl-social-share/index.js:82
+msgid "Facebook"
+msgstr "Facebook"
+
+#: src/epfl-social-share/index.js:87
+msgid "Twitter"
+msgstr "Twitter"
+
+#: src/epfl-social-share/index.js:92
+msgid "Email"
+msgstr "Email"
+
+#: src/epfl-social-share/index.js:97
+msgid "Linkedin"
+msgstr "Linkedin"

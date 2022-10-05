@@ -26,10 +26,10 @@ function epfl_contact_block($attributes, $inner_content) {
     ob_start();
 ?>
 
-    <div class="container-full <?php echo ($gray_wrapper) ? 'bg-gray-100 py-2 my-5' : 'my-3'; ?>">
+    <div class="container <?php echo ($gray_wrapper) ? 'bg-gray-100 py-2 my-5' : 'my-3'; ?>">
     <?php if ($gray_wrapper): ?><div class="bg-white p-4 p-md-5"><?php endif; ?>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-md-6">
           <h3><?php _e("Contact", "epfl" ) ?></h3>
           <?php if (trim($inner_content) != ""):
             echo $inner_content;
@@ -59,9 +59,13 @@ function epfl_contact_block($attributes, $inner_content) {
         # meaning some contact shortcode have this value but don't want to show a map
         if (isset($attributes['mapQuery']) && !empty(trim($attributes['mapQuery'])) && $attributes['mapQuery'] != 'INN011'):
         ?>
-        <div class="col-lg-6 d-flex flex-column">
+        <div class="col-md-6 d-flex flex-column">
+          <h4 class="sr-only">Access map</h4>
+          <div class="media-map">
           <?php echo
-           epfl_map_block(['query' => $attributes['mapQuery'] ?? null, 'searchType' => $attributes['searchType'] ?? null, 'lang' => get_current_or_default_language()]); ?>
+           epfl_map_block(['query' => $attributes['mapQuery'] ?? null, 'searchType' => $attributes['searchType'] ?? null, 'lang' => get_current_or_default_language(), 'noWrapper' => true]);
+          ?>
+          </div>
         </div>
         <?php endif; ?>
       </div>
