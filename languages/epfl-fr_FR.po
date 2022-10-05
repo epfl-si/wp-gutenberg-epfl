@@ -338,6 +338,9 @@ msgstr "Entrée en vigueur au"
 msgid "Status as of"
 msgstr "Etat au"
 
+msgid "Abrogated on"
+msgstr "Abrogé le"
+
 #: src/epfl-alert/index.js:31
 msgid "Info"
 msgstr "Info"

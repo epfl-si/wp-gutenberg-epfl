@@ -15,10 +15,14 @@ Fonctionnalités :
 
 ## Utilisation
 
-Inclure cette ligne dans la page
-```
-[epfl_polylex_search]
-```
+- Inclure cette ligne dans la page afin d'avoir les lexes actives
+    ```
+    [epfl_polylex_search]
+    ```
+- Pour n'afficher que les abrogées, utiliser
+    ```
+    [epfl_polylex_search abrogated="true"]
+    ```
 
 ###  Préfiltrage
 

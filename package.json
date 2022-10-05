@@ -1,6 +1,6 @@
 {
 	"name": "wp-gutenberg-epfl",
-	"version": "2.21.3",
+	"version": "2.22.2",
 	"description": "Plugin for Wordpress which provides multiple blocks for EPFL services",
 	"author": "WordPress EPFL Team",
 	"license": "GPL-2.0-or-later",

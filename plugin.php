@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
- * Version:         2.21.3
+ * Version:         2.22.0
  * Author:          WordPress EPFL Team
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -190,8 +190,6 @@ function wp_gutenberg_epfl_editor_assets() {
             'quote' => plugins_url( 'src/block-thumbnails/quote.jpg', __FILE__ ),
             'scheduler' => plugins_url( 'src/block-thumbnails/scheduler.jpg', __FILE__ ),
             'socialFeed' => plugins_url( 'src/block-thumbnails/socialFeed.jpg', __FILE__ ),
-            'socialFollow' => plugins_url( 'src/block-thumbnails/socialFollow.jpg', __FILE__ ),
-            'socialShare' => plugins_url( 'src/block-thumbnails/socialShare.jpg', __FILE__ ),
             'table' => plugins_url( 'src/block-thumbnails/table.jpg', __FILE__ ),
             'tableau' => plugins_url( 'src/block-thumbnails/tableau.jpg', __FILE__ ),
             'tableFilter' => plugins_url( 'src/block-thumbnails/table-filter.jpg', __FILE__ ),
