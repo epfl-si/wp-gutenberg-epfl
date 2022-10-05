@@ -26,8 +26,8 @@ function epfl_contact_block($attributes, $inner_content) {
     ob_start();
 ?>
 
-    <div class="container <?php echo ($gray_wrapper) ? 'bg-gray-100 py-2 my-5' : 'my-3'; ?>">
-    <?php if ($gray_wrapper): ?><div class="bg-white p-4 p-md-5"><?php endif; ?>
+    <div class="container-full my-5<?php if ($gray_wrapper) : ?> bg-gray-100 py-5<?php endif; ?>">
+      <div class="container<?php if ($gray_wrapper): ?> bg-white p-4 p-md-5<?php endif; ?>">
       <div class="row">
         <div class="col-md-6">
           <h3><?php _e("Contact", "epfl" ) ?></h3>
@@ -69,7 +69,7 @@ function epfl_contact_block($attributes, $inner_content) {
         </div>
         <?php endif; ?>
       </div>
-    <?php if ($gray_wrapper): ?></div><?php endif; ?>
+    </div>
   </div>
 
 <?php
