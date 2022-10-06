@@ -43,11 +43,11 @@ function process_shortcode($atts) {
     $category = sanitize_text_field($atts["category"]);
     $subcategory = sanitize_text_field($atts["subcategory"]);
     $search = sanitize_text_field($atts["search"]);
-    $abrogated = empty(sanitize_text_field($atts["abrogated"]));
+    $abrogated = sanitize_text_field($atts["abrogated"]);
 
     $url = LEX_INFO_PROVIDER_URL;
 
-    if ($abrogated) {
+    if ($abrogated === "true" || $abrogated === "1") {
         $url .= '?isAbrogated=1';
     } else {
         $url .= '?isAbrogated=0';
