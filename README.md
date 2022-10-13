@@ -7,7 +7,8 @@
 - Clone this repo to your local machine using `git clone https://github.com/epfl-si/wp-gutenberg-epfl`
  
 ### Setup
-- npm
+- node 14 + npm
+    - Assert you have Node 14.x, the only one working with Wordpress Gutenberg
     - Assert you have npm installed or [follow this process to install it](https://developer.wordpress.org/block-editor/tutorials/devenv/)
 - Install dependencies `npm install`
 
