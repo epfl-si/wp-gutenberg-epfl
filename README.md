@@ -10,6 +10,7 @@
 - node 14 + npm
     - Assert you have Node 14.x, the only one working with Wordpress Gutenberg
     - Assert you have npm installed or [follow this process to install it](https://developer.wordpress.org/block-editor/tutorials/devenv/)
+- If you use a Wordpress version >=5.9, checkout the branch update/5.9
 - Install dependencies `npm install`
 
  
