@@ -8,7 +8,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 // Logic to validate the ID attribute with the whitelist
 function allowed_id_checker($id, $allowed_id)
 {
-	return str_starts_with($id, $allowed_id);
+	return substr($id, 0, strlen($allowed_id)) === $allowed_id;
 }
 
 // Validate the URL against the whitelist
