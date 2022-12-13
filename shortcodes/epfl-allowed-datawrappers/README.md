@@ -20,7 +20,7 @@ The following shortcode
 ```
 will display the iframe if the whitelist contains the same id.
 
-By default the format is container-grid, but a parameter can specify to use large dispaly : container
+By default the format is container-grid, but a parameter can specify to use large display : container
 ```
 [epfl_allowed_datawrappers id='mDixY7' display='large']
 ```
