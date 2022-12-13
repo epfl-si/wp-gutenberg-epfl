@@ -69,17 +69,50 @@ function epfl_news_get_subtitle($news) {
 }
 
 /**
- * Get visual url
+ * Get visual url. Default to 1280x720.jpg, 16/9
+ * actu accept any width-height number, as it has a dynamic image generator
  *
  * $news: news to display
- */
-function epfl_news_get_visual_url($news) {
+ * $withSize: should the url returned have a size ?
+  */
+function epfl_news_get_visual_url($news, $hasSize = true) {
   if ($news->visual_url) {
-      $visual_url = substr($news->visual_url, 0, -12) . '1296x728.jpg';
+      $visual_url = substr($news->visual_url, 0, -12);  // first remove incoming size
+      if ($hasSize) {
+          $visual_url = $visual_url . '1440x810.jpg';
+      }
   } else {
       $visual_url = 'https://actu.epfl.ch/static/img/placeholder.png';
   }
   return $visual_url;
+}
+
+
+/**
+ * @param $news
+ * @param $max_width set a max width in pixels for cases you don't want the full set of width
+ * @return the different media source to be included inside a <picture>, before the <img>
+ */
+function epfl_news_get_picture_source_media_for_visual($news, $max_width = null) {
+    $visual_url_nosize = esc_url(epfl_news_get_visual_url($news, false));
+
+    $markup = '';
+    if (!$max_width || $max_width >= 1920) {
+        $markup .= '<source media="(min-width: 1920px)" srcset="' . $visual_url_nosize . '1920x1080.jpg 1x, ' . $visual_url_nosize . '2240x1260.jpg 2x">';
+    }
+    if (!$max_width || $max_width >= 1366) {
+        $markup .= '<source media="(min-width: 1366px)" srcset="' . $visual_url_nosize . '1440x810.jpg 1x, ' . $visual_url_nosize . '1920x1080.jpg 2x">';
+    }
+    if (!$max_width || $max_width >= 1200) {
+        $markup .= '<source media="(min-width: 1200px)" srcset="' . $visual_url_nosize . '1440x810.jpg 1x, ' . $visual_url_nosize . '1600x900.jpg 2x">';
+    }
+    if (!$max_width || $max_width >= 576) {
+        $markup .= '<source media="(min-width: 576px)" srcset="'. $visual_url_nosize .'768x432.jpg 1x, '. $visual_url_nosize .'1440x810.jpg 2x">';
+    }
+
+    $markup .= '<source media="(max-width: 575px)" srcset="'. $visual_url_nosize .'576x324.jpg 1x, '. $visual_url_nosize .'1440x810.jpg 2x">';
+
+    return $markup;
 }
 
 /**

@@ -28,6 +28,8 @@ require_once 'epfl-post-teaser/controller.php';
 require_once 'epfl-post-highlight/controller.php';
 require_once 'epfl-infoscience-search/controller.php';
 require_once 'epfl-social-feed/controller.php';
+require_once 'epfl-social-follow/controller.php';
+require_once 'epfl-social-share/controller.php';
 require_once 'epfl-contact/controller.php';
 require_once 'epfl-caption-cards/controller.php';
 require_once 'epfl-card-deck/controller.php';
@@ -144,6 +146,14 @@ function wp_gutenberg_epfl_register_blocks() {
 
     register_block_type( 'epfl/social-feed', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\SocialFeed\epfl_social_feed_block',
+		));
+
+    register_block_type( 'epfl/social-follow', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\SocialFollow\epfl_social_follow_block',
+		));
+
+    register_block_type( 'epfl/social-share', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\SocialShare\epfl_social_share_block',
 		));
 
     register_block_type( 'epfl/contact', array(

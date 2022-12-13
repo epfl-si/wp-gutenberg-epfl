@@ -36,5 +36,6 @@ if ($display_options["display_phone"]) {
 
 if ($display_options["display_room"]) {
     $markup .= '<a class="contact-list-item text-muted" style="width:130px;" href="' . esc_url($room_url) . '" itemprop="workLocation">' . esc_html($room) . '</a>';
-    $markup .= '</div>';
 }
+
+$markup .= '</div>';

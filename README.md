@@ -7,8 +7,10 @@
 - Clone this repo to your local machine using `git clone https://github.com/epfl-si/wp-gutenberg-epfl`
  
 ### Setup
-- npm
+- node 14 + npm
+    - Assert you have Node 14.x, the only one working with Wordpress Gutenberg
     - Assert you have npm installed or [follow this process to install it](https://developer.wordpress.org/block-editor/tutorials/devenv/)
+- If you use a Wordpress version >=5.9, checkout the branch update/5.9
 - Install dependencies `npm install`
 
  
@@ -20,9 +22,12 @@
 ### Translate
 
 - While `npm start` is running, recent entries should be in `languages/epfl.pot`
-- Add or Merge the new entries into the `languages/epfl-fr_FR.po` file
+- Add or Merge the new entries into every `languages/*.po` files
 - Assert the translations in `languages/epfl-fr_FR.po`
-- Update the json file with `./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-scripts.json -f jed1.x -p`
+- Update the json file with:
+	```
+	./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-scripts.json -f jed1.x -p
+	```
 - Update the mo file with Poedit
 
 ## References

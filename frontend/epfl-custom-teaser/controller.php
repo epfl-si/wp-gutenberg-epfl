@@ -39,7 +39,7 @@ function epfl_custom_teaser_block( $attributes ) {
 <div class="container-full py-3 p-lg-5 <?php echo $greyClasses ?>">
   <div class="container">
     <?php if (isset($attributes['titleSection'])): ?>
-    <h2 class="<?php echo ($elementCount < 3) ? ' text-center' : '' ?>"><?php echo $attributes['titleSection'] ?></h2>
+    <h2 class="text-center"><?php echo $attributes['titleSection'] ?></h2>
     <?php endif; ?>
     <div class="card-deck<?php echo ($elementCount < 3) ? ' card-deck-line' : '' ?>">
       <?php

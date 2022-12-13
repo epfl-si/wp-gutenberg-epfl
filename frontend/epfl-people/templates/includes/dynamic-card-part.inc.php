@@ -2,12 +2,7 @@
 
 // $position_label, $checkbox_fields and $people_data vars are required for this partial file.
 // Note: The two preg_replace statements in this file belong to a simple but workable minification effort,
-
-function test_display_selected ($var) {
-    return $var == 1;
-}
-
-$selected_fields_array = array_keys(array_filter($display_options, "test_display_selected"));
+$selected_fields_array = array_keys(array_filter($display_options, function($var) { return $var == 1; }));
 $display_fields = implode("','", $selected_fields_array); 
 
 $payload = preg_replace('/\v|\h(?:[\v\h]+)/', '', "

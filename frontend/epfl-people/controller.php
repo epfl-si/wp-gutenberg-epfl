@@ -30,6 +30,17 @@ function epfl_people_sortArrayByArray($data,$orderArray) {
     return $result;
 }
 
+/**
+ * To remove empty commas from list of entry separated by a comma
+ *
+ */
+function epfl_people_trim_and_filter_empty($data) {
+    $result = [];
+    $result = explode(",", $data);
+    $result = array_filter($result, 'strlen');
+    return implode(",", $result) ?? "";
+}
+
 function epfl_people_block( $attributes ) {
 
     $units            = Utils::get_sanitized_attribute( $attributes, 'units' );
@@ -98,12 +109,15 @@ function epfl_people_block( $attributes ) {
     }
 
     if ("" !== $units) {
+        $units = epfl_people_trim_and_filter_empty($units);
         $parameter['units'] = $units;
         $from = 'units';
     } else if ("" !== $groups) {
+        $groups = epfl_people_trim_and_filter_empty($groups);
         $parameter['groups'] = $groups;
         $from = 'groups';
     } else if ("" !== $scipers) {
+        $scipers = epfl_people_trim_and_filter_empty($scipers);
         $parameter['scipers'] = $scipers;
         $from = 'scipers';
     } else {
@@ -159,7 +173,7 @@ function epfl_people_block( $attributes ) {
     // Sort by scipers
     if ("" !== $scipers) {
         // Respect given order when sciper
-        $scipers =  array_map('intval', explode(',', $parameter['scipers']));
+        $scipers = array_map('intval', explode(',', $parameter['scipers']));
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
     } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
         // Sort persons list alphabetically when units, doctoral program or groups

@@ -1,76 +1,77 @@
 
 .wp-block-epfl-memento {
-    
-    a:link { 
-        text-decoration:none !important;
-    }
 
-    .list-group-teaser-container {
-        background-color: rgb(230, 230, 230);
-        margin: 0;
-        padding: 0;
-    }
+  a:link {
+	text-decoration: none !important;
+  }
 
-    .list-group-teaser-thumbnail {
-        float: left;
-        margin-right: 3%;
-    }
+  .list-group-teaser-container {
+	background-color: rgb(230, 230, 230);
+	margin: 0;
+	padding: 0;
+  }
 
-    .h5 {
-        font-size: 120%;
-        font-weight: 700;
-    }
+  .list-group-teaser-thumbnail {
+	float: left;
+	margin-right: 3%;
+  }
+
+  .h5 {
+	font-size: 120%;
+	font-weight: 700;
+  }
 
 
-    .img-fluid {
-        width: 180px;
-    }
+  .img-fluid {
+	width: 180px;
+  }
 
-    .text-center {
-        margin: auto;
-        width: 30%;
-        text-decoration: underline;
-    }
+  .text-center {
+	margin: auto;
+	width: 30%;
+	text-decoration: underline;
+  }
 
-    .list-group-teaser-content {
-        font-family: "SuisseIntl", Arial, sans-serif !important;
-        color: rgb(33, 33, 33);
-        font-size: 18px;
-    }
-    .text-muted {
-        color: rgb(112, 112, 112);
-        font-weight: 400;
-    }
+  .list-group-teaser-content {
+	font-family: "SuisseIntl", Arial, sans-serif !important;
+	color: rgb(33, 33, 33);
+	font-size: 18px;
+  }
 
-    a.link-pretty {
-        font-family: "SuisseIntl", Arial, sans-serif !important;
-        color: rgb(33, 33, 33);
-    }
+  .text-muted {
+	color: rgb(112, 112, 112);
+	font-weight: 400;
+  }
 
-    .list-group-teaser-thumbnail {
-      width: 100%;
-    }
+  a.link-pretty {
+	font-family: "SuisseIntl", Arial, sans-serif !important;
+	color: rgb(33, 33, 33);
+  }
 
-    .list-group-teaser-thumbnail img {
-        
-        width: 80%;
-        margin-top: 5%;
-        margin-bottom: 5%;
-        margin-left: 10%;
-    }
+  .list-group-teaser-thumbnail {
+	width: 100%;
+  }
 
-    .card-title {
-      margin-left: 50px;
-      margin-right: 50px;
-    }
+  .list-group-teaser-thumbnail img {
 
-    .card-info {
-        margin-top: 5%;
-        padding-bottom: 5%;
-        margin-left: 10%;
-        margin-right: 10%;
-        background-color: #e6e6e6;
-    }
+	width: 80%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 10%;
+  }
+
+  .card-title {
+	margin-left: 50px;
+	margin-right: 50px;
+  }
+
+  .card-info {
+	margin-top: 5%;
+	padding-bottom: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
+	background-color: #e6e6e6;
+  }
 }
 
 #epfl-memento-categories {

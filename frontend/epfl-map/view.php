@@ -15,6 +15,7 @@ function epfl_map_block( $attributes ) {
 
     $search_type   = Utils::get_sanitized_attribute( $attributes, 'searchType' );
     $display_type = Utils::get_sanitized_attribute( $attributes, 'displayType', 'large' );
+    $no_wrapper =  Utils::get_sanitized_attribute( $attributes, 'noWrapper', false );  // no need for a *container* div ?
 
     if ($search_type == 'searchURL') {
         # sanitize url
@@ -44,11 +45,17 @@ function epfl_map_block( $attributes ) {
 
     ob_start();
 ?>
+<?php if (!$no_wrapper) : ?>
 <div class="<?= implode(" ", $classes) ?>">
+<?php endif; ?>
+
     <div class="embed-responsive embed-responsive-16by9">
         <iframe frameborder="0" scrolling="no" src="<?php echo esc_url($map_url); ?>" class="embed-responsive-item" ></iframe>
     </div>
+
+<?php if (!$no_wrapper) : ?>
 </div>
+<?php endif; ?>
 
 <?php
     $content = ob_get_contents();

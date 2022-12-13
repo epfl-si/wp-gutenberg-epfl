@@ -22,6 +22,7 @@
             $markup .= '<div class="list-group-teaser-container">';
             $markup .= '<div class="list-group-teaser-thumbnail">';
             $markup .= '<picture>';
+            $markup .= epfl_news_get_picture_source_media_for_visual($news);
             $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid" alt="' . esc_attr($image_description) . '">';
             $markup .= '</picture>';
             $markup .= '</div>';

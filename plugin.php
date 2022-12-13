@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
- * Version:         2.20.0
+ * Version:         2.23.0
  * Author:          WordPress EPFL Team
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -148,7 +148,8 @@ function wp_gutenberg_epfl_editor_assets() {
     wp_enqueue_script(
         'wp-gutenberg-scripts',
         plugins_url( $index_js, __FILE__ ),
-        $script_asset['dependencies'],
+		// quickfix: merge prerequistes that the dependy manager from wp-scripts does not seems to find by himself
+        array_merge($script_asset['dependencies'],['wp-editor', 'wp-blocks', 'wp-i18n', 'wp-element']),
         $script_asset['version']
     );
 
