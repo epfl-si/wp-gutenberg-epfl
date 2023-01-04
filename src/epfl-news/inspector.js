@@ -153,19 +153,6 @@ export default class InspectorControlsNews extends Component {
               </PanelBody>;
             }
 
-            let nbNewsControl;
-            if (attributes.template == 'listing') {
-                nbNewsControl = <RangeControl
-                            label={ __("Select the number of news", 'epfl') }
-                            value={ attributes.nbNews }
-                            onChange={ nbNews  => setAttributes( { nbNews } ) }
-                            min={ 0 }
-                            max={ 20 }
-                            beforeIcon="arrow-down"
-                            afterIcon="arrow-up"
-                        />;
-            }
-
             content = (
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/news-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
@@ -190,7 +177,29 @@ export default class InspectorControlsNews extends Component {
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
 	                    />
-                        { nbNewsControl }
+                        { attributes.template === 'listing' &&
+							<RangeControl
+								label={ __("Select the number of news", 'epfl') }
+								value={ attributes.nbNews }
+								onChange={ nbNews  => setAttributes( { nbNews } ) }
+								min={ 0 }
+								max={ 20 }
+								beforeIcon="arrow-down"
+								afterIcon="arrow-up"
+							/>
+						}
+						{ attributes.template === 'highlighted_with_1_news' &&
+							<SelectControl
+								label={ __("Select the text position", 'epfl') }
+								value={ attributes.highlighted1TextPosition }
+								options={ [
+									{ value: 'horizontal', label: __('Centered', 'epfl') },
+									{ value: 'left', label: __('Left', 'epfl') },
+									{ value: 'right', label: __('Right', 'epfl') },
+								] }
+								onChange={ highlighted1TextPosition => setAttributes( { highlighted1TextPosition } )}
+							/>
+						}
                         <ToggleControl
                             label={ __('Display the link "all news"', 'epfl') }
                             checked={ attributes.displayLinkAllNews }

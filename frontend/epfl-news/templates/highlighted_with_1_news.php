@@ -2,7 +2,7 @@
     namespace EPFL\Plugins\Gutenberg\News;
 
     // template = 3
-    function epfl_news_highlighted_with_1_news($results, $all_news_link, $lang) {
+    function epfl_news_highlighted_with_1_news($results, $all_news_link, $lang, $text_position) {
         $count = 1;
         $url_channel = epfl_news_get_url_channel($results, $lang);
 
@@ -24,7 +24,15 @@
                 $media_url = "https://player.vimeo.com/video/" . $short_vimeo_video_id . "?autoplay=1&loop=1&muted=1&background=1&quality=720";
             }
 
-            $markup .= '<div class="fullwidth-teaser fullwidth-teaser-horizontal">';
+            if ( $text_position == 'left' ) {
+                $text_position = ' fullwidth-teaser-left';
+            } elseif ( $text_position == 'right' ) {
+                $text_position = '';
+            } else {  // the default, 'horizontal'
+                $text_position = ' fullwidth-teaser-horizontal';
+            }
+
+            $markup .= '<div class="fullwidth-teaser' . $text_position .'">';
             if ($media_url) {
                 $markup .= '<div class="embed-responsive embed-responsive-16by9">';
                 $markup .= '<iframe src="' . $media_url . '" frameborder="1"></iframe>';

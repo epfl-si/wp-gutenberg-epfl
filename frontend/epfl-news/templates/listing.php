@@ -2,7 +2,7 @@
     namespace EPFL\Plugins\Gutenberg\News;
 
     // template = 1
-    function epfl_news_listing($results, $all_news_link, $lang) {
+    function epfl_news_listing($results, $all_news_link, $lang, $text_position) {
         $count = 1;
         $url_channel = epfl_news_get_url_channel($results, $lang);
 
