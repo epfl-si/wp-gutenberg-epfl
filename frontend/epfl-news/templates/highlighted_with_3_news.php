@@ -2,7 +2,7 @@
     namespace EPFL\Plugins\Gutenberg\News;
 
     // template = 2
-    function epfl_news_highlighted_with_3_news($results, $all_news_link, $lang) {
+    function epfl_news_highlighted_with_3_news($results, $all_news_link, $lang, $text_position) {
 
         $count = 1;
         $header = false;

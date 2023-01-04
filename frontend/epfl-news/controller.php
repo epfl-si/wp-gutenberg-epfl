@@ -2,7 +2,7 @@
 /**
  * Plugin Name: EPFL News shortcode
  * Description: provides a shortcode to display news feed
- * @version: 1.1
+ * @version: 1.2
  * @copyright: Copyright (c) 2017 Ecole Polytechnique Federale de Lausanne, Switzerland
  */
 
@@ -126,21 +126,10 @@ function epfl_news_block( $attributes ) {
   $template      = Utils::get_sanitized_attribute( $attributes,'template', 'listing' );
   $all_news_link = Utils::get_sanitized_attribute( $attributes, 'displayLinkAllNews', FALSE );
   $nb_news       = Utils::get_sanitized_attribute( $attributes, 'nbNews', 3 );
+  $text_position = Utils::get_sanitized_attribute( $attributes, 'highlighted1TextPosition', 'horizontal' );
   $category      = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
   $themes        = Utils::get_sanitized_attribute( $attributes, 'themes' );
   $projects      = Utils::get_sanitized_attribute( $attributes, 'sections');
-
-  /*
-  var_dump("Channel: " . $channel);
-  var_dump("Lang: " . $lang);
-  var_dump("Template: " . $template);
-  var_dump("All news link: " . $all_news_link);
-  var_dump("Nb news: " . $nb_news);
-  var_dump("Category: " . $category);
-  var_dump("Themes: " . $themes);
-  var_dump("Projects: " . $projects);
-  */
-
 
   if (epfl_news_check_required_parameters($channel, $lang) == FALSE) {
       return Utils::render_user_msg("News block: Please check required parameters");
@@ -167,6 +156,6 @@ function epfl_news_block( $attributes ) {
       return Utils::render_user_msg("News block: Please check required parameters");
   }
 
-  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang);
+  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang, $text_position);
   return $markup;
 }

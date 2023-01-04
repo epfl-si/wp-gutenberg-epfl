@@ -46,6 +46,10 @@ registerBlockType(
 				type: 'integer',
 				default: 3,
 			},
+			highlighted1TextPosition : {
+				type: 'string',
+				default: 'horizontal',
+			},
 			lang: {
 				type: 'string',
 				default: 'en',
