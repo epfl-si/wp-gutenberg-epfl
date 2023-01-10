@@ -37,7 +37,16 @@
             }
 
             if ($is_first_event) { // FIRST EVENT
-                $markup .= '<div class="fullwidth-teaser fullwidth-teaser-horizontal">';
+                if ( $text_position == 'left' ) {
+                    $text_position = ' fullwidth-teaser-left';
+                } elseif ( $text_position == 'right' ) {
+                    $text_position = '';
+                } else {  // the default, 'horizontal'
+                    $text_position = ' fullwidth-teaser-horizontal';
+                }
+
+                $markup .= '<div class="fullwidth-teaser' . $text_position .'">';
+
                 if ($media_url) {
                     $markup .= '<div class="embed-responsive embed-responsive-16by9">';
                     $markup .= '<iframe src="' . $media_url . '" frameborder="1"></iframe>';

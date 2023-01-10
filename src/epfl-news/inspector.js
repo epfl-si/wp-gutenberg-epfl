@@ -188,7 +188,7 @@ export default class InspectorControlsNews extends Component {
 								afterIcon="arrow-up"
 							/>
 						}
-						{ attributes.template === 'highlighted_with_1_news' &&
+						{ ['highlighted_with_1_news', 'highlighted_with_3_news'].includes(attributes.template) &&
 							<SelectControl
 								label={ __("Select the text position", 'epfl') }
 								value={ attributes.highlighted1TextPosition }
