@@ -5,5 +5,7 @@ https://edamonitoring.epfl.ch/grafana/d/k1JaxB57k/eda-license-monitor
 https://sisbdev-test.epfl.ch/contactforms/create
 https://sisbdev.epfl.ch/contactforms/create
 https://www.podcastics.com/player
+https://lgg.epfl.ch/publications/2021/Weaving/vis_app/index.html
+https://v1.embednotion.com/embed/1c271e78eecb4dc58bc25dc30fd853d7
 
 # Note: please specify full URL, starting with https://
