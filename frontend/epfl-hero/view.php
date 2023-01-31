@@ -60,7 +60,7 @@ if (!empty($text)) { ?>
     <div class="hero-img">
       <figure class="cover">
         <?php
-        if (isset($media_url) && ($media_url!==null)) { ?>
+        if (isset($media_url)) { ?>
           <div class="embed-responsive embed-responsive-16by9">
             <iframe src="<?php echo $media_url ?>" frameborder="1"></iframe>
           </div>
