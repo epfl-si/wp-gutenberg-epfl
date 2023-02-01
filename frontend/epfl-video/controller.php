@@ -101,12 +101,20 @@ function epfl_video_block( $attributes ) {
     return epfl_video_get_error(__("EPFL-Video: Error getting final URL", 'epfl-video'));
   }
 
+  /* mediaspaces.epfl.ch need to be converted to api.switch */
+  if (preg_match('/(mediaspace\.epfl\.ch)/', $url)===1) {
+      $partner_id = '113';
+      $mediaspace_video_id = substr($url, strrpos($url, '/')+1 );
+
+      $url = 'https://api.cast.switch.ch/p/'. $partner_id .'/sp/'. $partner_id .'00/playManifest/entryId/'. $mediaspace_video_id .'/format/url/protocol/https/video.mp4';
+  }
+
   /* If YouTube video - Allowed formats:
     - https://www.youtube.com/watch?v=Tit6bvRIDtI
     - https://www.youtube.com/watch?v=Tit6bvRIDtI&t=281s
     - https://www.youtube.com/watch?v=M4Ufs7-FpvU&feature=youtu.be
   */
-  if(preg_match('/(youtube\.com|youtu\.be)/', $url)===1 && preg_match('/\/embed\//', $url)===0)
+  else if(preg_match('/(youtube\.com|youtu\.be)/', $url)===1 && preg_match('/\/embed\//', $url)===0)
   {
 
     // if supported delegate the rendering to the theme
@@ -174,7 +182,7 @@ function epfl_video_block( $attributes ) {
   }
   // else if video not [youtube, vimeo, tube.switch] then
   else {
-    return Utils::render_user_msg("Embed of video is only possible from SwitchTube, Vimeo or Youtube");
+    return Utils::render_user_msg("Embed of video is only possible from Mediaspace, SwitchTube, Vimeo or Youtube");
   }
 
   $markup = epfl_video_render($url, $display_type);

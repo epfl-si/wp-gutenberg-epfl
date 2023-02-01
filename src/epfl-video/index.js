@@ -6,7 +6,7 @@ import {
 
 import videoIcon from './video-icon'
 
-const version = "v1.1.0";
+const version = "v1.2.0";
 
 const { __ } = wp.i18n;
 
@@ -33,7 +33,7 @@ const supports = {
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
 	description: __(
-		'Embed a video from SwitchTube, Vimeo or Youtube',
+		'Embed a video from Mediaspace, SwitchTube, Vimeo or Youtube',
 		'epfl'
 	),
 	icon: videoIcon,
@@ -85,7 +85,7 @@ registerBlockType( 'epfl/video', {
 						label={ __('URL of the video', 'epfl') }
                         value={ attributes.url }
                         onChange={ url => setAttributes( { url } ) }
-                        help={ __('You can paste a YouTube, Vimeo or SWITCHTube URL', 'epfl') }
+                        help={ __('You can paste a Mediaspace, YouTube, Vimeo or SWITCHTube URL', 'epfl') }
                     />
 					</div>
             </Fragment>
