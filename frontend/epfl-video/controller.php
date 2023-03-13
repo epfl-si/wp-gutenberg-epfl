@@ -104,6 +104,7 @@ function epfl_video_block( $attributes ) {
   /* mediaspaces.epfl.ch need to be converted to api.switch */
   if (preg_match('/(mediaspace\.epfl\.ch)/', $url)===1) {
       $partner_id = '113';
+      $url = rtrim($url, '/');  // remove last '/', if any
       $mediaspace_video_id = substr($url, strrpos($url, '/')+1 );
 
       $url = 'https://api.cast.switch.ch/p/'. $partner_id .'/sp/'. $partner_id .'00/playManifest/entryId/'. $mediaspace_video_id .'/format/url/protocol/https/video.mp4';
