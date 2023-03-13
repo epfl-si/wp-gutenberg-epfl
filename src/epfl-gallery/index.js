@@ -99,7 +99,9 @@ registerBlockType( 'epfl/gallery', {
 	},
 	save: ( props ) => {
 		return (
+            <div { ...props } >
                 <InnerBlocks.Content />
+            </div>
         );
 	},
 } );
