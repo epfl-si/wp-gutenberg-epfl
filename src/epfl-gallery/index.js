@@ -24,10 +24,6 @@ const {
 
 const { Fragment } = wp.element;
 
-// Template to have only one nested block, a core/gallery. And we set the 'fixed layout' option to ensure correct display.
-const TEMPLATE = [
-	['core/gallery', { hasFixedLayout: true }, [] ]
-]
 
 const getAttributes = () => {
     let atts = {
@@ -90,8 +86,12 @@ registerBlockType( 'epfl/gallery', {
                 <div className={ className }>
                     <h2 className="epfl-block-title">{ __('Gallery', 'epfl') }</h2>
                     <InnerBlocks
-                        template={ TEMPLATE }
-                        templateLock="all"
+                        // Template to have only one nested block, a core/gallery.
+                        // as a gallery is composed of images, allow the image block.
+                        template={ [
+                            ['core/gallery', {}, [] ]
+                        ] }
+                        allowedBlocks={ ['core/gallery', 'core/image'] }
                        />
                 </div>
             </Fragment>
@@ -99,7 +99,9 @@ registerBlockType( 'epfl/gallery', {
 	},
 	save: ( props ) => {
 		return (
+            <div { ...props } >
                 <InnerBlocks.Content />
+            </div>
         );
 	},
 } );
