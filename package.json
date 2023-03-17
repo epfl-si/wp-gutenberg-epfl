@@ -21,7 +21,7 @@
 	},
 	"main": "build/index.js",
 	"devDependencies": {
-		"@wordpress/babel-plugin-makepot": "^5.13.0",
+		"@wordpress/babel-plugin-makepot": "^4.4.0",
 		"@wordpress/icons": "^9.20.0",
 		"@wordpress/scripts": "^26.0.0",
 		"axios": "^0.21.2",
