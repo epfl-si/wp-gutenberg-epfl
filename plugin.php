@@ -36,21 +36,26 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\epfl_gutenberg_load_textdomain' 
 function polylang_json_api_init() {
 	global $polylang;
 
-	$default = pll_default_language();
-	$langs   = pll_languages_list();
+	if (!empty($polylang) &&
+	    function_exists('\pll_default_language') &&
+	    function_exists('\pll_languages_list')) {
 
-	if ( isset( $_GET['lang'] ) ) {
-		$cur_lang = $_GET['lang'];
-		if ( ! in_array( $cur_lang, $langs ) ) {
-			$cur_lang = $default;
+		$default = \pll_default_language();
+		$langs   = \pll_languages_list();
+
+		if ( isset( $_GET['lang'] ) ) {
+			$cur_lang = $_GET['lang'];
+			if ( ! in_array( $cur_lang, $langs ) ) {
+				$cur_lang = $default;
+			}
+			$polylang->curlang         = $polylang->model->get_language( $cur_lang );
+			$GLOBALS['text_direction'] = $polylang->curlang->is_rtl ? 'rtl' : 'ltr';
 		}
-		$polylang->curlang         = $polylang->model->get_language( $cur_lang );
-		$GLOBALS['text_direction'] = $polylang->curlang->is_rtl ? 'rtl' : 'ltr';
 	}
 }
 
 function polylang_json_api_languages() {
-	return pll_languages_list();
+	return \pll_languages_list();
 }
 
 // fix polylang language segmentation
