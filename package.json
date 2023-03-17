@@ -21,9 +21,9 @@
 	},
 	"main": "build/index.js",
 	"devDependencies": {
-		"@wordpress/babel-plugin-makepot": "^4.0.1",
-		"@wordpress/icons": "^2.9.1",
-		"@wordpress/scripts": "^21.0.2",
+		"@wordpress/babel-plugin-makepot": "^5.13.0",
+		"@wordpress/icons": "^9.20.0",
+		"@wordpress/scripts": "^26.0.0",
 		"axios": "^0.21.2",
 		"dayjs": "^1.10.7",
 		"dompurify": "^2.3.5",
