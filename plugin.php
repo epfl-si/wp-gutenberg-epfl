@@ -36,9 +36,9 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\epfl_gutenberg_load_textdomain' 
 function polylang_json_api_init() {
 	global $polylang;
 
-	if (!empty($polylang) &&
-	    function_exists('\pll_default_language') &&
-	    function_exists('\pll_languages_list')) {
+	if ( ! empty( $polylang ) &&
+	     function_exists( '\pll_default_language' ) &&
+	     function_exists( '\pll_languages_list' ) ) {
 
 		$default = \pll_default_language();
 		$langs   = \pll_languages_list();
@@ -69,17 +69,17 @@ if ( is_plugin_active( 'polylang/polylang.php' ) ) {
  * register the filter (add_filter) with a lower priority (ex: 99) to ensure it will be executed after this function.
  * And also use the content of $allowed_block_types to know which blocks are already allowed and add the new ones.
  *
- * @param array|Boolean $allowed_block_types Array (or bool=True if all block allowed) with blocks already allowed.
- * @param WP_Block_Editor_Context $block_editor_context
+ * @param array|Boolean $allowed_block_types array (or bool=True if all block allowed) with blocks already allowed.
+ * @param \WP_Block_Editor_Context $block_editor_context
  */
 function allow_epfl_blocks( $allowed_block_types, $block_editor_context ) {
-    // Reset value
-    $allowed_block_types = [];
-    // We explicitely deny usage of epfl/card-panel block so we can't add more than 3 blocks inside an epfl/card-deck
-    $explicitly_denied_blocks = [
+	// Reset value
+	$allowed_block_types = [];
+	// We explicitely deny usage of epfl/card-panel block so we can't add more than 3 blocks inside an epfl/card-deck
+	$explicitly_denied_blocks = [
 		'epfl/card-panel',
-        'epfl/mini-card-panel'
-    ];
+		'epfl/mini-card-panel'
+	];
 
 	// Blocks allowed in Posts
 	$posts_blocks_white_list = [
@@ -96,31 +96,25 @@ function allow_epfl_blocks( $allowed_block_types, $block_editor_context ) {
 	// Retrieving currently registered blocks
 	$registered = \WP_Block_Type_Registry::get_instance()->get_all_registered();
 
-    // Looping through registered blocks to find "epfl/" ones
-    foreach(array_keys($registered) as $block_name)
-    {
-        if(preg_match('/^epfl\//', $block_name)===1 && !in_array($block_name, $explicitly_denied_blocks))
-        {
-            if($block_editor_context->post->post_type == 'post')
-            {
-                $block_ok = in_array($block_name, $posts_blocks_white_list);
-            }
-            else
-            {
-                $block_ok = true;
-            }
+	// Looping through registered blocks to find "epfl/" ones
+	foreach ( array_keys( $registered ) as $block_name ) {
+		if ( preg_match( '/^epfl\//', $block_name ) === 1 && ! in_array( $block_name, $explicitly_denied_blocks ) ) {
+			if ( $block_editor_context->post->post_type == 'post' ) {
+				$block_ok = in_array( $block_name, $posts_blocks_white_list );
+			} else {
+				$block_ok = true;
+			}
 
-            if($block_ok)
-            {
-                $allowed_block_types[] = $block_name;
-            }
-        }
-    }
+			if ( $block_ok ) {
+				$allowed_block_types[] = $block_name;
+			}
+		}
+	}
 
-    return $allowed_block_types;
+	return $allowed_block_types;
 }
 
-add_filter( 'allowed_block_types_all', __NAMESPACE__.'\allow_epfl_blocks', 10, 2 );
+add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\allow_epfl_blocks', 10, 2 );
 
 /**
  * Registers all block assets so that they can be enqueued through the block editor
