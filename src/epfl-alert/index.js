@@ -106,7 +106,6 @@ registerBlockType( 'epfl/alert', {
 						value={ attributes.content }
 						onChange={ content => setAttributes( { content } ) }
 						placeholder={ __('Write your text here','epfl')}
-						keepPlaceholderOnFocus = { true }
                     />
 					</div>
             </Fragment>
