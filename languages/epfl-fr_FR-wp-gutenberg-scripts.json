@@ -8,7 +8,7 @@
             "lang": "fr_FR"
          },
          "Read more": [
-            "En savoir plus"
+            "Lire la suite"
          ],
          "See more": [
             "En savoir plus"
@@ -210,6 +210,9 @@
          ],
          "Status as of": [
             "Etat au"
+         ],
+         "Abrogated on": [
+            "Abrogé le"
          ],
          "Info": [
             "Info"
@@ -1375,8 +1378,8 @@
          "URL of the video": [
             "URL de la vidéo"
          ],
-         "You can paste a YouTube, Vimeo or SWITCHTube URL": [
-            "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
+         "You can paste a Mediaspace, YouTube or Vimeo URL": [
+            "Vous pouvez coller une URL de vidéo Mediaspace, YouTube ou Vimeo"
          ],
          "Sort by project name": [
             "Trier par nom de projet"

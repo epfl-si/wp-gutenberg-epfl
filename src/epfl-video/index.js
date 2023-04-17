@@ -85,7 +85,7 @@ registerBlockType( 'epfl/video', {
 						label={ __('URL of the video', 'epfl') }
                         value={ attributes.url }
                         onChange={ url => setAttributes( { url } ) }
-                        help={ __('You can paste a Mediaspace, YouTube, Vimeo or SWITCHTube URL', 'epfl') }
+                        help={ __('You can paste a Mediaspace, YouTube or Vimeo URL', 'epfl') }
                     />
 					</div>
             </Fragment>

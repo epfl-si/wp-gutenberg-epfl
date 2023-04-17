@@ -1996,8 +1996,8 @@ msgid "URL of the video"
 msgstr "URL de la vidéo"
 
 #: src/epfl-video/index.js:81
-msgid "You can paste a YouTube, Vimeo or SWITCHTube URL"
-msgstr "Vous pouvez coller une URL YouTube, Vimeo ou SWITCHTube"
+msgid "You can paste a Mediaspace, YouTube or Vimeo URL"
+msgstr "Vous pouvez coller une URL de vidéo Mediaspace, YouTube ou Vimeo"
 
 msgid "Sort by project name"
 msgstr "Trier par nom de projet"
