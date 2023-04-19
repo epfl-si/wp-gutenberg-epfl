@@ -107,7 +107,7 @@ function epfl_video_block( $attributes ) {
       $url = rtrim($url, '/');  // remove last '/', if any
       $mediaspace_video_id = substr($url, strrpos($url, '/')+1 );
 
-      $url = 'https://api.cast.switch.ch/p/'. $partner_id .'/sp/'. $partner_id .'00/playManifest/entryId/'. $mediaspace_video_id .'/format/url/protocol/https/video.mp4';
+      $url = 'https://api.cast.switch.ch/p/'. $partner_id .'/sp/'. $partner_id .'00/playManifest/entryId/'. $mediaspace_video_id .'/format/url/protocol/https/flavorParamIds/6,7/video.mp4';
   }
 
   /* If YouTube video - Allowed formats:
