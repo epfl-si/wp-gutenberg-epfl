@@ -14,7 +14,7 @@ function epfl_map_block( $attributes ) {
     $lang    = get_current_or_default_language();
 
     $search_type   = Utils::get_sanitized_attribute( $attributes, 'searchType' );
-    $display_type = Utils::get_sanitized_attribute( $attributes, 'displayType', 'large' );
+    $display_type = Utils::get_sanitized_attribute( $attributes, 'displayType', 'large' );  // or standard
     $no_wrapper =  Utils::get_sanitized_attribute( $attributes, 'noWrapper', false );  // no need for a *container* div ?
 
     if ($search_type == 'searchURL') {
@@ -39,8 +39,6 @@ function epfl_map_block( $attributes ) {
   $classes = ['my-3'];
   if(!isset($display_type) || $display_type == 'large') {
     $classes[] = "container";
-  } else if($display_type == 'standard') {
-    $classes[] = "container-grid";
   }
 
     ob_start();
