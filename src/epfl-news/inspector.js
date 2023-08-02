@@ -153,6 +153,9 @@ export default class InspectorControlsNews extends Component {
               </PanelBody>;
             }
 
+            const helpLinkURL = 'https://support.epfl.ch/epfl?id=epfl_sc_cat_item&sys_id=482a3e3f4f7b9b009d2bdf601310c735';
+            const helpLinkText = `The news come from the application actu.epfl.ch. If you don\'t have a news channel, please create a request `;
+
             content = (
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/news-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
@@ -160,7 +163,6 @@ export default class InspectorControlsNews extends Component {
                     <PanelBody title={ __( 'Channel', 'epfl') }>
                         <SelectControl
                             label={ __("Select your news channel", 'epfl') }
-                            help={ __("The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch", 'epfl') }
                             value={ attributes.channel }
                             options={ optionsChannelsList }
                             onChange={ channel => {
@@ -168,6 +170,10 @@ export default class InspectorControlsNews extends Component {
                               setAttributes( { channel } );
                             }}
                         />
+                        <div className="custom-help small">
+                            { __(helpLinkText, 'epfl') }
+                            <a href={ helpLinkURL } target={ '_blank' } >{ __('here', 'epfl') }</a>.
+                        </div>
                     </PanelBody>
                     <PanelBody title={ __( 'Template', 'epfl' ) }>
                         <RadioControl

@@ -1430,13 +1430,15 @@ msgstr "Canal"
 msgid "Select your news channel"
 msgstr "Sélectionner votre canal d'actualités"
 
+msgid "here"
+msgstr "ici"
+
 #: src/epfl-news/inspector.js:175
 msgid ""
-"The news come from the application actu.epfl.ch. If you don't have a news channel, please "
-"send a request to 1234@epfl.ch"
+"The news come from the application actu.epfl.ch. If you don't have a news channel, please create a request "
 msgstr ""
 "Les actualités proviennent de l'application actu.epfl.ch. Si vous n'avez pas de canal, merci "
-"d'envoyer une demande au 1234@epfl.ch"
+"de créer une demande "
 
 #: src/epfl-news/inspector.js:187
 msgid "Preview the page to see the template applied"

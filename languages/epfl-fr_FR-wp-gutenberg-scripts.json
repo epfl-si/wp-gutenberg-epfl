@@ -976,8 +976,11 @@
          "Select your news channel": [
             "Sélectionner votre canal d'actualités"
          ],
-         "The news come from the application actu.epfl.ch. If you don't have a news channel, please send a request to 1234@epfl.ch": [
-            "Les actualités proviennent de l'application actu.epfl.ch. Si vous n'avez pas de canal, merci d'envoyer une demande au 1234@epfl.ch"
+         "here": [
+            "ici"
+         ],
+         "The news come from the application actu.epfl.ch. If you don't have a news channel, please create a request ": [
+            "Les actualités proviennent de l'application actu.epfl.ch. Si vous n'avez pas de canal, merci de créer une demande "
          ],
          "Preview the page to see the template applied": [
             "Prévisualiser la page pour voir l'application du modèle"
