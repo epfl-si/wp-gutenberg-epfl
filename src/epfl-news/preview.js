@@ -87,7 +87,7 @@ export default class PreviewNews extends Component {
 			//console.log(this.state.newsList);
 		}
 
-		let linkAllNews;
+		let linkAllNews, linkSubscribe;
 		const { className, attributes } = this.props
 
 		if (attributes.displayLinkAllNews) {
@@ -95,6 +95,15 @@ export default class PreviewNews extends Component {
 			linkAllNews = (
 				<p className="text-center">
 					<a className="link-pretty" href={ url }>Toutes les actualités</a>
+				</p>
+			)
+		}
+
+		if (attributes.displayLinkSubscribe) {
+			let url = `${BASE_NEWS}/subscription/news/subscribe/${attributes.channel}`;
+			linkSubscribe = (
+				<p className="text-center">
+					<a className="link-pretty" href={ url }>{ __("Subscribe to channel", 'epfl') }</a>
 				</p>
 			)
 		}
@@ -129,6 +138,7 @@ export default class PreviewNews extends Component {
 							)
 					}) }
 					{ linkAllNews }
+					{ linkSubscribe }
 				</div>
 			</div>
 		)

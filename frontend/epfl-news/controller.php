@@ -125,6 +125,7 @@ function epfl_news_block( $attributes ) {
   $lang          = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
   $template      = Utils::get_sanitized_attribute( $attributes,'template', 'listing' );
   $all_news_link = Utils::get_sanitized_attribute( $attributes, 'displayLinkAllNews', FALSE );
+  $subscribe     = Utils::get_sanitized_attribute( $attributes, 'displayLinkSubscribe', FALSE );
   $nb_news       = Utils::get_sanitized_attribute( $attributes, 'nbNews', 3 );
   $text_position = Utils::get_sanitized_attribute( $attributes, 'highlighted1TextPosition', 'horizontal' );
   $category      = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
@@ -133,6 +134,11 @@ function epfl_news_block( $attributes ) {
 
   if (epfl_news_check_required_parameters($channel, $lang) == FALSE) {
       return Utils::render_user_msg("News block: Please check required parameters");
+  }
+
+  $subscribe_link = false;
+  if ($subscribe) {
+      $subscribe_link = BASE_NEWS_URL . "/subscription/news/subscribe/" . $channel;
   }
 
   $url = epfl_news_build_api_url(
@@ -156,6 +162,6 @@ function epfl_news_block( $attributes ) {
       return Utils::render_user_msg("News block: Please check required parameters");
   }
 
-  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang, $text_position);
+  $markup = epfl_news_render($actus->results, $template, $all_news_link, $subscribe_link, $lang, $text_position);
   return $markup;
 }

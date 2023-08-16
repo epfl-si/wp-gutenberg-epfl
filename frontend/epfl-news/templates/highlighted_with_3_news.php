@@ -2,7 +2,7 @@
     namespace EPFL\Plugins\Gutenberg\News;
 
     // template = 2
-    function epfl_news_highlighted_with_3_news($results, $all_news_link, $lang, $text_position) {
+    function epfl_news_highlighted_with_3_news($results, $all_news_link, $subscribe_link, $lang, $text_position) {
 
         $count = 1;
         $header = false;
@@ -104,6 +104,13 @@
                     $markup .= '<p class="text-center">';
                     $markup .= '<a class="link-pretty" href="' . $url_channel . '">';
                     $markup .= __('All news', 'epfl' );
+                    $markup .= '</a>';
+                    $markup .= '</p>';
+                }
+                if ($subscribe_link) {
+                    $markup .= '<p class="text-center">';
+                    $markup .= '<a class="link-pretty" href="' . $subscribe_link . '">';
+                    $markup .= __('Subscribe to channel', 'epfl' );
                     $markup .= '</a>';
                     $markup .= '</p>';
                 }
