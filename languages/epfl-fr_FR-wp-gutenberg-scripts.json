@@ -145,6 +145,9 @@
          "All news": [
             "Toutes les actualités"
          ],
+         "Subscribe to channel": [
+            "S'abonner au canal"
+         ],
          "News": [
             "Actualités"
          ],
@@ -987,6 +990,9 @@
          ],
          "Display the link \"all news\"": [
             "Afficher le lien \"Toutes les actualités\""
+         ],
+         "Display the subscribe link": [
+            "Afficher le lien \"S'abonner au canal\""
          ],
          "Themes": [
             "Thèmes"
