@@ -28,7 +28,9 @@
 	```
 	./node_modules/po2json/bin/po2json ./languages/epfl-fr_FR.po ./languages/epfl-fr_FR-wp-gutenberg-scripts.json -f jed1.x -p
 	```
-- Update the mo file with Poedit
+- Update the *.mo files with 
+   - `msgfmt -o epfl-fr_FR.mo epfl-fr_FR.po` and 
+   - `msgfmt -o epfl-de_DE.mo epfl-de_DE.po` 
 
 ## References
 - https://developer.wordpress.org/block-editor/tutorials/
