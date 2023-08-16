@@ -211,6 +211,11 @@ export default class InspectorControlsNews extends Component {
                             checked={ attributes.displayLinkAllNews }
                             onChange={ () => setAttributes( { displayLinkAllNews: ! attributes.displayLinkAllNews } ) }
                         />
+                        <ToggleControl
+                            label={ __('Display the subscribe link', 'epfl') }
+                            checked={ attributes.displayLinkSubscribe }
+                            onChange={ () => setAttributes( { displayLinkSubscribe: ! attributes.displayLinkSubscribe } ) }
+                        />
                     </PanelBody>
                     <PanelBody title={ __( 'Language', 'epfl' ) }>
                         <RadioControl

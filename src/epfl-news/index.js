@@ -42,6 +42,10 @@ registerBlockType(
 				type: 'boolean',
 				default: false,
 			},
+			displayLinkSubscribe: {
+				type: 'boolean',
+				default: false,
+			},
 			nbNews: {
 				type: 'integer',
 				default: 3,

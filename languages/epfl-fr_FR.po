@@ -240,6 +240,9 @@ msgstr "Information & inscription"
 msgid "All news"
 msgstr "Toutes les actualités"
 
+msgid "Subscribe to channel"
+msgstr "S'abonner au canal"
+
 #: frontend/epfl-news/templates/highlighted_with_1_news.php:42
 #: frontend/epfl-news/templates/highlighted_with_3_news.php:55
 #: frontend/epfl-news/templates/highlighted_with_3_news.php:82
@@ -1447,6 +1450,10 @@ msgstr "Prévisualiser la page pour voir l'application du modèle"
 #: src/epfl-news/inspector.js:194
 msgid "Display the link \"all news\""
 msgstr "Afficher le lien \"Toutes les actualités\""
+
+#: src/epfl-news/inspector.js:209
+msgid "Display the subscribe link"
+msgstr "Afficher le lien \"S'abonner au canal\""
 
 #: src/epfl-news/inspector.js:209
 msgid "Themes"
