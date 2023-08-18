@@ -137,7 +137,7 @@ function epfl_people_block( $attributes ) {
         }
         $parameter['struct'] = $structure;
     } else {
-        $order = ALPHABETICAL_ORDER;
+        if (RANDOM_ORDER !== $order) $order = ALPHABETICAL_ORDER;
     }
 
     if (function_exists('pll_current_language')) {
@@ -177,7 +177,12 @@ function epfl_people_block( $attributes ) {
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
     } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
         // Sort persons list alphabetically when units, doctoral program or groups
-        usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
+        if (RANDOM_ORDER === $order) {
+            shuffle($persons);
+            $order = ALPHABETICAL_ORDER;
+        } else {
+            usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
+        }
     }
 
     $markup = epfl_people_render($persons, $from, $columns, $order, $title, $display_options, $custom_data, $filtered_fields);

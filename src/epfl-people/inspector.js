@@ -36,6 +36,7 @@ export default class InspectorControlsPeople extends Component {
           { value: 'alphabetical', label: __('Alphabetical order', 'epfl')},
           { value: 'hierarchical', label: __('Hierarchical order', 'epfl')},
           { value: 'hierarchical-with-title', label: __('Hierarchical order with title', 'epfl')},
+          { value: 'random', label: __('Random order', 'epfl')},
         ]
 
         let structure;
