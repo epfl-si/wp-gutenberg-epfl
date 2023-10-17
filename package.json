@@ -27,7 +27,7 @@
 		"axios": "^0.21.2",
 		"dayjs": "^1.10.7",
 		"dompurify": "^2.3.5",
-		"po2json": "^0.3.0",
+		"po2json": "git://github.com/vilu85/po2json.git#a58abbf5daf2f81ef2c6d534023d814c43415122",
 		"react-select": "^5.7.7",
 		"string-strip-html": "^13.4.3"
 	},
