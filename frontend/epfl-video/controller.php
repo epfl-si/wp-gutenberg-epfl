@@ -8,9 +8,9 @@ require_once(dirname(__FILE__).'/view.php');
 
 /**
  * Follow URl and potential redirect to return "real" video URL
- * 
+ *
  * @param String $url Video URL, given by user
- * 
+ *
  * @return String final video URL
  */
 function epfl_video_get_final_video_url($url)
@@ -62,9 +62,9 @@ function epfl_video_get_final_video_url($url)
 
 /**
  * Formats an error for display
- * 
+ *
  * @param String $error String to format as an error message
- * 
+ *
  * @return String Formated error
  */
 function epfl_video_get_error($error)
@@ -104,10 +104,18 @@ function epfl_video_block( $attributes ) {
   /* mediaspaces.epfl.ch need to be converted to api.switch */
   if (preg_match('/(mediaspace\.epfl\.ch)/', $url)===1) {
       $partner_id = '113';
+      $uiconf_id = '23448972';
       $url = rtrim($url, '/');  // remove last '/', if any
       $mediaspace_video_id = substr($url, strrpos($url, '/')+1 );
 
-      $url = 'https://api.cast.switch.ch/p/'. $partner_id .'/sp/'. $partner_id .'00/playManifest/entryId/'. $mediaspace_video_id .'/format/url/protocol/https/flavorParamIds/6,7/video.mp4';
+      $markup = epfl_video_kaltura_render(
+          $mediaspace_video_id,
+          $partner_id,
+          $uiconf_id,
+          $display_type
+      );
+
+      return $markup;
   }
 
   /* If YouTube video - Allowed formats:
