@@ -1,5 +1,5 @@
 import * as axios from 'axios';
-import stripHtml from "string-strip-html";
+import { stripHtml } from "string-strip-html";
 import dayjs from 'dayjs';
 
 const { __ } = wp.i18n
