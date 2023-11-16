@@ -6,7 +6,7 @@ import {
 
 import videoIcon from './video-icon'
 
-const version = "v1.2.0";
+const version = "v1.3.0";
 
 const { __ } = wp.i18n;
 

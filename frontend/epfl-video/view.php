@@ -37,9 +37,27 @@ function epfl_video_kaltura_render(
       <div id="<?= $target_id ?>" style="width: 100%;height: <?php echo $height ?>"></div>
       <script
         type="text/javascript"
-        src='https://api.cast.switch.ch/p/<?= $partner_id ?>/embedPlaykitJs/uiconf_id/<?= $uiconf_id ?>?autoembed=true&targetId=<?= $target_id ?>&entry_id=<?= $mediaspace_video_id ?>&config[playback]={"autoplay":true}'
+				src="https://api.cast.switch.ch/p/<?= $partner_id ?>/embedPlaykitJs/uiconf_id/<?= $uiconf_id ?>"
       >
       </script>
+			<script type="text/javascript">
+				try {
+					let kalturaPlayer = KalturaPlayer.setup({
+						targetId: "<?= $target_id ?>",
+						provider: {
+							partnerId: '<?= $partner_id ?>',
+							uiConfId: '<?= $uiconf_id ?>'
+						},
+						playback: {
+							autoplay: false,
+							muted: false
+						}
+					});
+					kalturaPlayer.loadMedia({entryId: '<?= $mediaspace_video_id ?>'});
+				} catch (e) {
+					console.error(e.message)
+				}
+			</script>
     </div>
   </div>
 
