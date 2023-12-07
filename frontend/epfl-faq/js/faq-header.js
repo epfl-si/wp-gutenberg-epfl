@@ -9,3 +9,14 @@ $(".epfl-faq-header").each(function(header_ul_index, header_ul) {
     });
 
 });
+
+// Getting potential anchor given in URL
+var hash = $(location).attr('hash');
+if(hash != "")
+{
+    // To look for DIV element in page (have a look at "../controller.php" to see how anchors are defined in document)
+    var div_anchor_tag = $('div[id="'+hash.substring(1)+'"]');
+    console.log(div_anchor_tag);
+    // Scrolling to element
+    $('html,body').animate({scrollTop: div_anchor_tag.offset().top},'fast');
+}
