@@ -145,6 +145,10 @@
                     </div>
                     <?php endif; ?>
                 </div>
+				<div class="lex-row-4 flex-row d-md-flex pt-2 pb-2">
+					<div class="col-1"></div>
+					<div class="col lex-description"><a class="lex-url" href="<?php echo esc_html($lex->urlLastCons); ?>"><?php echo esc_html($lex->urlLastCons); ?></a></div>
+				</div>
             </div>
             <?php endforeach; ?>
         <?php endif; ?>
