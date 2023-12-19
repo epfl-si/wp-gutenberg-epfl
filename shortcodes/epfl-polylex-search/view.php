@@ -145,10 +145,6 @@
                     </div>
                     <?php endif; ?>
                 </div>
-				<div class="lex-row-2 flex-row d-md-flex pt-2 pb-2">
-					<div class="col-1"></div>
-					<div class="col lex-description"><?php echo htmlspecialchars_decode(esc_html($lex->description)); ?></div>
-				</div>
 				<?php if (esc_html($lex->urlLastCons)): ?>
 					<div class="lex-row-2 flex-row d-md-flex pt-2 pb-2">
 						<div class="col-1"></div>
