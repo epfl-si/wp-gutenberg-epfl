@@ -132,8 +132,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     if ($url) {
         $url = trim($url);
-        #var_dump($url);
-        var_dump(preg_match( '#^https?://infoscience-prod.epfl.ch/#i', $url ));
         # assert it is an infoscience one :
         if (
         # preg_match( '#^https?://infoscience(-prod|-test)?.epfl.ch/#i', $url ) !== 1
@@ -148,18 +146,21 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $query = proper_parse_str($parts['query']);
 
         # are we one DSpace or with Invenio ?
-        $backengine = 'invenio';  # | 'dspace'
+        $backengine = '';  # 'invenio' | 'dspace'
 
 
         if (array_key_exists('p', $query) && !empty($query['p'])) {
             $backengine = 'invenio';
         }
         # when we use 'query in the url parameters, it is certainly dspace
-        else if (array_key_exists('query', $query) && !empty($query['query'])) {
+        else if (
+            array_key_exists('query', $query) &&
+            !empty($query['query'])
+        ) {
             $backengine = 'dspace';
         }
 
-
+        # Invenio only ?
         $recid_matches = [];
         preg_match('#^https?://infoscience.epfl.ch/record/(\d+)/?#i', $url, $recid_matches);
 
@@ -169,7 +170,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
             $recid = $recid_matches[1];
             $url = "https://infoscience.epfl.ch/search?p=recid:'" . $recid . "'";
         }
-
 
         #
         # override values
