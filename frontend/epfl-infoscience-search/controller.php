@@ -13,7 +13,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
  * License: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
-*/
+ */
 
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname( __FILE__) . '/lib');
 
@@ -32,7 +32,7 @@ class InfoscienceUnknownContentException extends \Exception {}  // when we can't
  *
  * Entry point when we come from Gutenberg block
  *
-*/
+ */
 function epfl_infoscience_search_block( $provided_attributes ) {
     # things to change:
     # field 'content' to attribute 'url'
@@ -260,7 +260,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     if ($page === false || $need_cache_refresh || $debug_data || $debug_template) {
         $start = microtime(true);
         $response = wp_remote_get( $url, [
-            'timeout' => 30
+                'timeout' => 30
             ]
         );
         $end = microtime(true);
@@ -302,11 +302,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 }
 
                 $page = ClassesInfoscience2018Render::render($grouped_by_publications,
-                                                        $url,
-                                                        $format,
-                                                        $summary,
-                                                        $thumbnail,
-                                                        $debug_template);
+                    $url,
+                    $format,
+                    $summary,
+                    $thumbnail,
+                    $debug_template);
 
                 // wrap the page, and add config as html comment
                 $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export($before_unset_attributes, true) .  ' //-->';
@@ -353,12 +353,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
 
 /**
-* From any attributes, set them as url parameters for Infoscience
-*
-* @param array $attrs attributes that need to be sent to Infoscience
-*
-* @return string $url the url build
-*/
+ * From any attributes, set them as url parameters for Infoscience
+ *
+ * @param array $attrs attributes that need to be sent to Infoscience
+ *
+ * @return string $url the url build
+ */
 function epfl_infoscience_search_convert_keys_values($array_to_convert) {
     $convert_fields = function($value) {
         return ($value === 'any') ? '' : $value;
@@ -428,12 +428,12 @@ function epfl_infoscience_search_convert_keys_values($array_to_convert) {
 }
 
 /**
-* From any attributes, set them as url parameters for Infoscience
-*
-* @param array $attrs attributes that need to be sent to Infoscience
-*
-* @return string $url the url build
-*/
+ * From any attributes, set them as url parameters for Infoscience
+ *
+ * @param array $attrs attributes that need to be sent to Infoscience
+ *
+ * @return string $url the url build
+ */
 function epfl_infoscience_search_generate_url_from_attrs($attrs) {
     $url = INFOSCIENCE_SEARCH_URL;
 
