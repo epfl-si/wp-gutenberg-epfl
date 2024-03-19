@@ -80,6 +80,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'debug' => false,
         'debugdata' => false,
         'debugtemplate' => false,
+        '$debugcache' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
@@ -121,6 +122,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         unset($attributes['debugdata']);
     }
 
+    $debug_cache = $attributes['debugcache'];
     $debug_template = $attributes['debugtemplate'];
     unset($attributes['debugtemplate']);
 
@@ -257,7 +259,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     }
 
     # not in cache, or in a force cache refresh scenario ?
-    if ($page === false || $need_cache_refresh || $debug_data || $debug_template) {
+    if ($page === false || $need_cache_refresh || $debug_cache || $debug_data || $debug_template) {
         $start = microtime(true);
         $response = wp_remote_get( $url, [
                 'timeout' => 30
