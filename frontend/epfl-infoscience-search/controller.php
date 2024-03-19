@@ -121,6 +121,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         unset($attributes['debugdata']);
     }
 
+    $debug_cache = $attributes['debugcache'];
     $debug_template = $attributes['debugtemplate'];
     unset($attributes['debugtemplate']);
 
@@ -250,14 +251,19 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         }
     }
 
-    # check if we are here for some cache invalidation by doing a page edit
-    if (is_admin() && current_user_can( 'edit_pages' )) {
+    if (
+        # check if we are here for some cache invalidation by doing a page edit
+        ( is_admin() && current_user_can( 'edit_pages' ) ) ||
+        $debug_cache ||
+        $debug_data ||
+        $debug_template
+    ) {
         # tell we want a new cache if we are editing the page
         $need_cache_refresh = true;
     }
 
     # not in cache, or in a force cache refresh scenario ?
-    if ($page === false || $need_cache_refresh || $debug_data || $debug_template) {
+    if ( $page === false || $need_cache_refresh ) {
         $start = microtime(true);
         $response = wp_remote_get( $url, [
                 'timeout' => 30
