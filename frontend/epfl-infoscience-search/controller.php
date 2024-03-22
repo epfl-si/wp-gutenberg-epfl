@@ -34,11 +34,6 @@ class InfoscienceUnknownContentException extends \Exception {}  // when we can't
  *
  */
 function epfl_infoscience_search_block( $provided_attributes ) {
-    # things to change:
-    # field 'content' to attribute 'url'
-    $content = null;
-
-    #TODO: set this css to editor too
     # deliver the css
     wp_enqueue_style('epfl-infoscience-search-shortcode-style.css');
 
