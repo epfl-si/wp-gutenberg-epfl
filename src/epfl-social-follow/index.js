@@ -37,7 +37,7 @@ registerBlockType( 'epfl/social-follow', {
         facebookUrl: {
             type: 'url',
         },
-        TwitterUrl: {
+        twitterUrl: {
             type: 'url',
         },
         instagramUrl: {
