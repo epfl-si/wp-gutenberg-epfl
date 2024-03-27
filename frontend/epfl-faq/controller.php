@@ -18,7 +18,9 @@ function epfl_faq_item_block($attributes, $inner_content)
 
     if(empty(trim($question))) return "";
 
-    $anchor = "faq-item-".md5(microtime(true). $inner_content);
+    // We assume that the question won't change in the future so we use it to create the anchor.
+    // and we also assume that there will be only one question with this name on current page
+    $anchor = "faq-item-".md5($question);
 
     ob_start();
 ?>
