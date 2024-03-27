@@ -336,6 +336,9 @@ msgstr "Etat au"
 msgid "Abrogated on"
 msgstr "Abrogé le"
 
+msgid "Last consultation"
+msgstr "Dernière consultation"
+
 #: src/epfl-alert/index.js:31
 msgid "Info"
 msgstr "Info"

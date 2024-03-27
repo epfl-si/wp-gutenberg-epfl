@@ -28,7 +28,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/social-follow', {
 	title: __( 'EPFL Social Follow', 'epfl'),
     description: __(
-        'Links to Facebook, Twitter, Linkedin, Istagram and Youtube accounts',
+        'Links to Facebook, X, LinkedIn, Instagram and YouTube accounts',
         'epfl'
     ),
 	icon: socialFeedIcon,
@@ -83,12 +83,12 @@ registerBlockType( 'epfl/social-follow', {
                         />
                     </PanelBody>
 
-					<PanelBody title='Twitter' initialOpen={false}>
+					<PanelBody title='X' initialOpen={false}>
                         <TextControl
 							label={ __('URL','epfl')}
                             value={ attributes.twitterUrl }
                             onChange={ twitterUrl => setAttributes( { twitterUrl } ) }
-                            help={ __('URL of a Twitter account (eg. https://twitter.com/EPFL)', 'epfl') }
+                            help={ __('URL of a X account (eg. https://x.com/EPFL)', 'epfl') }
                         />
                     </PanelBody>
 
@@ -97,7 +97,7 @@ registerBlockType( 'epfl/social-follow', {
 							label={ __('URL','epfl')}
                             value={ attributes.instagramUrl }
                             onChange={ instagramUrl => setAttributes( { instagramUrl } ) }
-                            help={ __('URL of an Instagram account (eg. https://www.instagram.com/p/BjuYB7Lhylj)', 'epfl') }
+                            help={ __('URL of an Instagram account (eg. https://www.instagram.com/epflcampus/)', 'epfl') }
                         />
                     </PanelBody>
 
@@ -106,16 +106,16 @@ registerBlockType( 'epfl/social-follow', {
 							label={ __('URL','epfl')}
                             value={ attributes.youtubeUrl }
                             onChange={ youtubeUrl => setAttributes( { youtubeUrl } ) }
-                            help={ __('URL of a Youtube account (eg. https://www.youtube.com/user/epflnews)', 'epfl') }
+                            help={ __('URL of a YouTube account (eg. https://www.youtube.com/user/epflnews)', 'epfl') }
                         />
                     </PanelBody>
 
-                    <PanelBody title='Linkedin' initialOpen={false}>
+                    <PanelBody title='LinkedIn' initialOpen={false}>
                         <TextControl
 							label={ __('URL','epfl')}
                             value={ attributes.linkedinUrl }
                             onChange={ linkedinUrl => setAttributes( { linkedinUrl } ) }
-                            help={ __('URL of a Linkedin account (eg. https://www.linkedin.com/school/epfl/)', 'epfl') }
+                            help={ __('URL of a LinkedIn account (eg. https://www.linkedin.com/school/epfl/)', 'epfl') }
                         />
                     </PanelBody>
                 </div>
