@@ -40,11 +40,11 @@ function epfl_social_follow_block( $attributes ) {
           <?php endif; ?>
           <?php if (!empty($twitterUrl)): ?>
           <li>
-            <a href="<?php echo $twitterUrl ?>" class="social-icon social-icon-twitter social-icon-discrete" target="_blank" rel="nofollow noopener">
+            <a href="<?php echo $twitterUrl ?>" class="social-icon social-icon-x social-icon-discrete" target="_blank" rel="nofollow noopener">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-twitter"></use>
+                <use xlink:href="#icon-x"></use>
               </svg>
-              <span class="sr-only"><?php echo __("Follow us on Twitter", "epfl"); ?></span>
+              <span class="sr-only"><?php echo __("Follow us on X", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
@@ -64,7 +64,7 @@ function epfl_social_follow_block( $attributes ) {
               <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-youtube"></use>
               </svg>
-              <span class="sr-only"><?php echo __("Follow us on Youtube", "epfl"); ?></span>
+              <span class="sr-only"><?php echo __("Follow us on YouTube", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>
