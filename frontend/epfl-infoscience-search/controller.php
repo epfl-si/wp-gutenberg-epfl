@@ -8,7 +8,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
  * Description: provides a gutenberg block to search and dispay results from Infoscience
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
@@ -18,6 +18,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname( __FILE__) . '/lib');
 
 require_once('utils.php');
+require_once('long_term_cache.php');
 require_once('marc_converter.php');
 require_once('group_by.php');
 require_once('mathjax-config.php');
@@ -25,6 +26,7 @@ require_once('render.php');
 
 define(__NAMESPACE__ . "\INFOSCIENCE_SEARCH_URL", "https://infoscience.epfl.ch/search?");
 
+class InfoscienceHTTPError extends \Exception {}  // when we can't get remote data
 class InfoscienceUnknownContentException extends \Exception {}  // when we can't read the infoscience returned data
 
 
@@ -34,6 +36,9 @@ class InfoscienceUnknownContentException extends \Exception {}  // when we can't
  *
  */
 function epfl_infoscience_search_block( $provided_attributes ) {
+    # if we got any msg, set it into this banner
+    $banner_msgs = [];
+
     # deliver the css
     wp_enqueue_style('epfl-infoscience-search-shortcode-style.css');
 
@@ -193,6 +198,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $url = epfl_infoscience_search_generate_url_from_attrs($attributes+$unmanaged_attributes);
     }
 
+    /*
+     * Cache features part
+     * Here we used a homemade cache system, the point being to have
+     * a best effort cache, meaning it does not disappear if there is no
+     * new values to set in.
+     */
     $cache_define_by = [
         'url' => $url,
         'format' => $format,
@@ -201,155 +212,187 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'group_by' => $group_by,
         'group_by2' => $group_by2,
         'sort' => $attributes['sort'],
+        'language' => get_language()
     ];
 
-    # fetch language
-    # if you can, use the method
-    # use function EPFL\Language\get_current_or_default_language;
+    $serialized_attributes = serialize($cache_define_by);
+    $md5_id = md5($serialized_attributes);
+    $cache_key = 'epfl_infoscience_search_' . $md5_id;
 
-    $default_lang = 'en';
-    $allowed_langs = array('en', 'fr');
-    $language = $default_lang;
-    # If Polylang installed
-    if(function_exists('pll_current_language'))
-    {
-        $current_lang = pll_current_language('slug');
-        // Check if current lang is supported. If not, use default lang
-        $language = (in_array($current_lang, $allowed_langs)) ? $current_lang : $default_lang;
-    }
-
-    $cache_define_by['language'] = $language;
-
-    $cache_key = 'epfl_infoscience_search_' . md5(serialize($cache_define_by));
-
-    # rule : we save the cache for 1 week, but refresh it every 4 hours
-    $need_cache_refresh = true;
-    $long_cache_value = 1 * WEEK_IN_SECONDS;
+    $long_cache_value = 1 * DAY_IN_SECONDS; // was 1 * WEEK_IN_SECONDS;
     $short_cache_value = 4 * HOUR_IN_SECONDS;
+    // there is the third cache, the db_cache that is unlimited in time
+    // see ./long_term_cache.php for details
 
-    // in case we can not get fresh data, show the ones in cache *if possible*, and add this sorry message
-    $sorry_msg = 'This is cached data, they may be obsolete. <a href="mailto:1234@epfl.ch">Contact the support</a> to fix it.';
-    $sorry_cached_data_msg = Utils::render_user_msg($sorry_msg);
+    // Flag which cache we are currently using, to show a banner at the end
+    $cache_in_use = null;  // | 'short' | 'long' | 'db'
 
-    $page = get_transient($cache_key);
-
-    # see if we want a force refresh when cache is here
-    if ($page !== false) {
+    // As defined by the $short_cache_value, we may need to refresh it.
+    // You may wonder why not using the transient timeout system ? Well, as we want
+    // two cache timer (short and long), this assert that long cache is still there, longer than the short one
+    $isShortCacheExpiredFn = function () use ($cache_key, $short_cache_value, $long_cache_value): bool {
+        // See if we want a force refresh when short cache is here, so we have fresh data
         $expires = (int) get_option( '_transient_timeout_' . $cache_key, 0 );
 
-        if ($expires && $expires !== 0) {
-            $cache_creation_time = $expires - $long_cache_value;
-            if (time() < $cache_creation_time + $short_cache_value) {
-                # not enough time passed for a cache refresh
-                $need_cache_refresh = false;
-            }
-        }
-    }
+        if (!$expires || $expires == 0) return true;
 
+        $cache_creation_time = $expires - $long_cache_value;
+        if ( time() < $cache_creation_time + $short_cache_value ) {
+            # not enough time passed for a cache refresh, keep it short
+            return false;
+        } else {
+            return true;
+        }
+    };
+
+    $isShortCacheExpired = $isShortCacheExpiredFn();
+    /*
+     * End of cache features
+     */
+
+    // these are reasons we may not want to use the cache
     if (
-        # check if we are here for some cache invalidation by doing a page edit
+        // if we are here for some cache invalidation by doing a page edit
         ( is_admin() && current_user_can( 'edit_pages' ) ) ||
+        // short cache need an update
+        $isShortCacheExpired ||
         $debug_cache ||
         $debug_data ||
         $debug_template
     ) {
-        # tell we want a new cache if we are editing the page
-        $need_cache_refresh = true;
+        $try_the_cache = false;
+    } else {
+        $try_the_cache = true;
     }
 
-    # not in cache, or in a force cache refresh scenario ?
-    if ( $page === false || $need_cache_refresh ) {
-        $start = microtime(true);
-        $response = wp_remote_get( $url, [
-                'timeout' => 30
-            ]
-        );
-        $end = microtime(true);
+    $page = $try_the_cache ? get_transient($cache_key) : false;
 
-        // logging call
-        do_action('epfl_stats_webservice_call_duration', $url, $end-$start);
+    if ($page !== false) {  // yep, we are using the cache at this point
+        // Tell the api call timer about it
+        do_action( 'epfl_stats_webservice_call_duration', $url, 0, true );
 
-        if ( is_wp_error( $response ) ) {
-            if ($response->errors) {
-                # error is an external cause
-                if (array_key_exists("http_request_failed", $response->errors)) {
-                    $error_message = "infoscience.epfl.ch may currently be down or the results you are trying to fetch are too big;";
-                    $error_message .= " Please try again later or set a more precise and limited search.";
-                } else {
-                    $error_message = $response->get_error_message();
-                }
-                echo "Error: $error_message";
-            }
+        // define which cache for later banners if any
+        $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
+        // save everytime we can the cache into the db
+        save_page_in_cache_table($md5_id, $serialized_attributes, $page);
+    } else {
+        // no cache for u, time to do the hard work
+        // crawl, build and cache the page
+        try {
+            $start = microtime( true );
+            $response = wp_remote_get( $url, [
+                    'timeout' => 30
+                ]
+            );
+            $end = microtime( true );
 
-            # anyway, ok there is an Infoscience error, but the final user may still want the list, so print the best we have
-            # some data may be still valid in cache
-            $page = get_transient($cache_key);
-            if ($page !== false) {
-                // To tell we're using the cache
-                do_action('epfl_stats_webservice_call_duration', $url, 0, true);
-                return $sorry_cached_data_msg . $page;
-            }
-        } else {
-            try {
-                $marc_xml = wp_remote_retrieve_body( $response );
+            // log the time the call has needed
+            do_action( 'epfl_stats_webservice_call_duration', $url, $end - $start );
 
-                $publications = InfoscienceMarcConverter::convert_marc_to_array($marc_xml);
-
-                $grouped_by_publications = InfoscienceGroupBy::do_group_by($publications, $group_by, $group_by2, $attributes['sort']);
-
-                if ($debug_data) {
-                    $page = RawInfoscienceRender::render($grouped_by_publications, $url);
-                    return $page;
+            if ( is_wp_error( $response ) ) {
+                if ( $response->errors ) {
+                    # error is an external cause
+                    if ( array_key_exists( "http_request_failed", $response->errors ) ) {
+                        $error_message = "infoscience.epfl.ch may currently be down or the results you are trying to fetch are too big;";
+                        $error_message .= " Please try again later or set a more precise and limited search.";
+                    } else {
+                        $error_message = $response->get_error_message();
+                    }
                 }
 
-                $page = ClassesInfoscience2018Render::render($grouped_by_publications,
+                // delegate further down the managment of this
+                throw new InfoscienceHTTPError( $error_message );
+            }
+
+            // no http error, let's continue
+            $marc_xml = wp_remote_retrieve_body( $response );
+
+            $publications = InfoscienceMarcConverter::convert_marc_to_array( $marc_xml );
+
+            $grouped_by_publications = InfoscienceGroupBy::do_group_by( $publications, $group_by, $group_by2, $attributes['sort'] );
+
+            if ( $debug_data ) {
+                $page = RawInfoscienceRender::render( $grouped_by_publications, $url );
+            } else {
+                $page = ClassesInfoscience2018Render::render( $grouped_by_publications,
                     $url,
                     $format,
                     $summary,
                     $thumbnail,
-                    $debug_template);
+                    $debug_template );
 
                 // wrap the page, and add config as html comment
-                $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export($before_unset_attributes, true) .  ' //-->';
-                $html_verbose_comments .= '<!-- epfl_infoscience_search used url :'. var_export($url, true) . ' //-->';
+                $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export( $before_unset_attributes, true ) . ' //-->';
+                $html_verbose_comments .= '<!-- epfl_infoscience_search used url :' . var_export( $url, true ) . ' //-->';
 
                 $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
 
                 $page .= epfl_infoscience_search_get_mathjax_config();
 
-                // cache the result if we have got some data
-                if (!empty($publications)) {
+                // cache the result if we have got some valid data
+                if ( !empty( $publications ) ) {
                     # cache any valid results
-                    set_transient($cache_key, $page, $long_cache_value);
+                    set_transient( $cache_key, $page, $long_cache_value );
+                    save_page_in_cache_table($md5_id, $serialized_attributes, $page);
                 }
+            }
+        }
+            # on error, do something with the error, then start a best effort to find something into caches
+        catch (
+        InfoscienceHTTPError |
+        InfoscienceUnknownContentException |
+        Exception $e
+        ) {
+            if ($e instanceof InfoscienceHTTPError) {
+                $banner_msgs[] = "Infoscience is no responding. HTTP error.";
+            } elseif ($e instanceof InfoscienceUnknownContentException) {
+                $banner_msgs[] = "Infoscience is not returning valid data. Please try again later or set a more precise and limited search.";
 
-                return $page;
-            } catch (InfoscienceUnknownContentException $e) {
                 error_log("Infoscience is returning invalid data. Message " . $e->getMessage());
                 if (!empty($marc_xml)) {
                     error_log("Excerpt of Infoscience returned data : " . substr($marc_xml, 0, 100));
                 } else {
                     error_log("Infoscience has not returned any data.");
                 }
+            } else {
+                $banner_msgs[] = 'Error: ' . $e->getMessage();
+            }
 
-                return Utils::render_user_msg("Infoscience is not returning valid data. Please try again later or set a more precise and limited search.");
+            $page = get_transient($cache_key);
 
-                # anyway, ok there is an Infoscience error, but the final user may still want the list, so print the best we have
-                # some data may be still valid in cache
-                $page = get_transient($cache_key);
-                if ($page !== false) {
-                    // To tell we're using the cache
-                    do_action('epfl_stats_webservice_call_duration', $url, 0, true);
-                    return $sorry_cached_data_msg . $page;
+            if ($page !== false) {
+                // Tell the api timer we're using the cache
+                do_action('epfl_stats_webservice_call_duration', $url, 0, true);
+                // save a copy of the render into long term db
+                save_page_in_cache_table($md5_id, $serialized_attributes, $page);
+                $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
+            } else {
+                // take a look in db if cache is over
+                $page = get_page_from_cache_table($md5_id);
+                // Tell the api timer we're using the cache
+                do_action('epfl_stats_webservice_call_duration', $url, 0, true);
+                if ($page) {
+                    $cache_in_use = 'db';
                 }
             }
         }
-    } else {
-        // To tell we're using the cache
-        do_action('epfl_stats_webservice_call_duration', $url, 0, true);
-        // Use cache
-        return $page;
     }
+
+    // check and add banner, if needed
+    if ( $cache_in_use == 'long' ) {
+        // in case we can not get fresh data, show the ones in cache *if possible*, and add this sorry message
+        $banner_msgs[] = 'This is cached data, the list is certainly obsolete.';
+    } elseif ( $cache_in_use == 'db' ) {
+        $banner_msgs[] = 'This content is currently static. Please go to infoscience.epfl.ch and search for an updated list.';
+    }
+
+    if ( $banner_msgs ) {
+        $banner_msgs = Utils::render_user_msg(
+            "<p> - ".implode('</p><p> - ', $banner_msgs)."</p>"
+        );
+    }
+
+    return $banner_msgs . $page;
 }
 
 
