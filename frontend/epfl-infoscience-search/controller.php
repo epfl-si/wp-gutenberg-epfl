@@ -390,6 +390,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $banner_msgs = Utils::render_user_msg(
             "<p> - ".implode('</p><p> - ', $banner_msgs)."</p>"
         );
+    } else {
+        $banner_msgs = '';
     }
 
     return $banner_msgs . $page;
