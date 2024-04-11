@@ -26,11 +26,28 @@ Class Utils
     }
 
     /**
-     * Return a user message
+     * Return a user message, warning type
      */
     public static function render_user_msg($msg) {
         $html = '<div class="alert alert-warning alert-dismissible fade show" role="alert">';
         $html .= '<strong> Warning </strong><p>' . $msg . '</p>';
+        $html .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+        $html .= '  <span aria-hidden="true">&times;</span>';
+        $html .= '</button>';
+        $html .= '</div>';
+        return $html;
+    }
+
+    /**
+     * Return a user message, with customized options
+     * $type: can be success, info, warning or danger
+     * $is_big: do we want the div to be full sized ?
+     */
+    public static function render_user_msg_custom($msg, $title, $type, $is_big) {
+        $container_class = $is_big ? ' container' : '';
+
+        $html = '<div class="alert alert-' . $type . ' alert-dismissible fade show' . $container_class . '" role="alert">';
+        $html .= '<strong class="pl-1">' . $title .'</strong><p class="pl-1">' . $msg . '</p>';
         $html .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
         $html .= '  <span aria-hidden="true">&times;</span>';
         $html .= '</button>';
