@@ -80,6 +80,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'debug' => false,
         'debugdata' => false,
         'debugtemplate' => false,
+        'debugcache' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
