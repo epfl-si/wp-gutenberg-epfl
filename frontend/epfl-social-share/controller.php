@@ -42,9 +42,9 @@ function epfl_social_share_block( $attributes ) {
           <li>
             <a href="https://twitter.com/intent/tweet?url=<?php echo $url ?>&text=<?php echo $title ?>&hashtags=epfl" class="social-icon social-icon-twitter social-icon-discrete" target="_blank" rel="nofollow noopener">
               <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-twitter"></use>
+                <use xlink:href="#icon-x"></use>
               </svg>
-              <span class="sr-only"><?php echo __("Share on Twitter", "epfl"); ?></span>
+              <span class="sr-only"><?php echo __("Share on X", "epfl"); ?></span>
             </a>
           </li>
           <?php endif; ?>

@@ -84,7 +84,7 @@ registerBlockType( 'epfl/social-share', {
 					  onChange={ openFacebook => setAttributes( { openFacebook} ) }
 					/>
 					<ToggleControl
-					  label={ __('Twitter', 'epfl') }
+					  label={ __('X', 'epfl') }
 					  checked={ attributes.openTwitter }
 					  onChange={ openTwitter => setAttributes( { openTwitter} ) }
 					/>

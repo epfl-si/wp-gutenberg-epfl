@@ -28,7 +28,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/social-follow', {
 	title: __( 'EPFL Social Follow', 'epfl'),
     description: __(
-        'Links to Facebook, X, LinkedIn, Instagram and YouTube accounts',
+        'Links to Facebook, X, LinkedIn, Instagram, YouTube, Mastodon and TikTok accounts',
         'epfl'
     ),
 	icon: socialFeedIcon,
@@ -49,6 +49,12 @@ registerBlockType( 'epfl/social-follow', {
         linkedinUrl: {
 			type: 'url',
         },
+		mastodon: {
+			type: 'url',
+		},
+		tiktok: {
+			type: 'url',
+		},
 	}),
     example: getTooltippedExample(),
 	supports : {
@@ -118,6 +124,24 @@ registerBlockType( 'epfl/social-follow', {
                             help={ __('URL of a LinkedIn account (eg. https://www.linkedin.com/school/epfl/)', 'epfl') }
                         />
                     </PanelBody>
+
+					<PanelBody title='Mastodon' initialOpen={false}>
+						<TextControl
+							label={ __('URL','epfl')}
+							value={ attributes.mastodon }
+							onChange={ mastodon => setAttributes( { mastodon } ) }
+							help={ __('URL of a Mastodon account (eg. https://mastodon.org/school/epfl/)', 'epfl') }
+						/>
+					</PanelBody>
+
+					<PanelBody title='TikTok' initialOpen={false}>
+						<TextControl
+							label={ __('URL','epfl')}
+							value={ attributes.tiktok }
+							onChange={ tiktok => setAttributes( { tiktok } ) }
+							help={ __('URL of a LinkedIn account (eg. https://www.tiktok.com/school/epfl/)', 'epfl') }
+						/>
+					</PanelBody>
                 </div>
             </Fragment>
 		)
