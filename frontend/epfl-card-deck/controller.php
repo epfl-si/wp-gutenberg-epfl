@@ -82,8 +82,6 @@ function epfl_card_deck_block($data, $inner_content) {
 
   $classes = ['py-3', 'px-4'];
 
-  if ($gray_wrapper) $classes[] = 'bg-gray-100';
-
   if(isset($display_type) && $display_type == 'large') {
     $classes[] = "container";
   } else {  // default
@@ -96,12 +94,14 @@ function epfl_card_deck_block($data, $inner_content) {
   ob_start();
 ?>
 
-<div class="<?= implode(" ", $classes); ?>">
-  <div class="card-deck <?php echo (count($matches[0]) == 2) ? ' card-deck-line' : '' ?>">
-    <?php
-    echo $inner_content;
-    ?>
-  </div>
+<div class="container-full <?= $gray_wrapper ? 'bg-gray-100' : '' ?>">
+	<div class="<?= implode(" ", $classes); ?>">
+	  <div class="card-deck <?php echo (count($matches[0]) == 2) ? ' card-deck-line' : '' ?>">
+		<?php
+		echo $inner_content;
+		?>
+	  </div>
+	</div>
 </div>
 
 <?php
