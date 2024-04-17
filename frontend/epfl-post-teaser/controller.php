@@ -15,6 +15,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 function epfl_post_teaser_block( $attributes ) {
 
+	$title           = Utils::get_sanitized_attribute( $attributes, 'title' );
     $post1           = Utils::get_sanitized_attribute( $attributes, 'post1' );
     $post2           = Utils::get_sanitized_attribute( $attributes, 'post2' );
     $post3           = Utils::get_sanitized_attribute( $attributes, 'post3' );
@@ -79,6 +80,9 @@ function epfl_post_teaser_block( $attributes ) {
     }
     $html .= '">';
     $html .= '<div class="container">';
+
+	$html .= '<h3 class="mb-5">'.$title.'</h3>';
+
     $html .= '  <div class="card-deck';
     if ($postsCount < 3) {
         $html .= ' card-deck-line';

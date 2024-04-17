@@ -11,6 +11,7 @@ const {
 } = wp.blockEditor
 
 const {
+	TextControl,
     PanelBody,
     ToggleControl,
     Spinner,
@@ -106,6 +107,11 @@ export default class InspectorControlsPostTeaser extends Component {
                             />
                         </PanelBody>
 					</InspectorControls>
+					<TextControl
+						label={ __('Title', 'epfl') }
+						value={ attributes.title }
+						onChange={ title => setAttributes( { title } ) }
+					/>
                     <div style={selectStyle}>
                         <CheckboxControl
                             label = { __('Display last 3 published posts', 'epfl') }
