@@ -1219,8 +1219,8 @@
          "EPFL Social Feed": [
             ""
          ],
-         "Embed content from Facebook, Instagram and Twitter": [
-            "Intègrez du contenu issu de Facebook, Instagram et Twitter"
+         "Embed content from Facebook, Instagram and X": [
+            "Intègrez du contenu issu de Facebook, Instagram et X"
          ],
          "https://www.epfl.ch/campus/services/website/social-feed-en/": [
             "https://www.epfl.ch/campus/services/website/social-feed-fr/"
@@ -1471,11 +1471,11 @@
          "URL of a Linkedin post (eg. https://www.linkedin.com/school/epfl/)": [
             ""
          ],
-         "Links to Facebook, Twitter, Linkedin, Istagram and Youtube accounts": [
-            "Liens vers des comptes Facebook, Twitter, Linkedin, Istagram et Youtube"
+         "Links to Facebook, X, LinkedIn, Instagram, YouTube, Mastodon and TikTok accounts": [
+            "Liens vers des comptes Facebook, X, Linkedin, Istagram, YouTube, Mastodon et TikTok"
          ],
-         "Add content page in Facebook, Twitter, Linkedin or send it by email of the current user": [
-            ""
+         "Add content page in Facebook, X, Linkedin or send it by email of the current user": [
+            "Ajouter le contenu de la page dans Facebook, X, Linkedin ou l'envoyer par email à l'utilisateur courant"
          ],
          "https://www.epfl.ch/campus/services/website/social-follow-en/": [
             "https://www.epfl.ch/campus/services/website/social-follow-fr/"

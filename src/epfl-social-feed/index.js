@@ -28,7 +28,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'epfl'),
     description: __(
-        'Embed content from Facebook, Instagram and Twitter',
+        'Embed content from Facebook, Instagram and X',
         'epfl'
     ),
 	icon: socialFeedIcon,
