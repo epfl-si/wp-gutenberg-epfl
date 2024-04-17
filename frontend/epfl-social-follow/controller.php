@@ -14,6 +14,8 @@ function epfl_social_follow_block( $attributes ) {
     $instagramUrl = Utils::get_sanitized_url( $attributes, 'instagramUrl' );
     $youtubeUrl   = Utils::get_sanitized_url( $attributes, 'youtubeUrl' );
     $linkedinUrl  = Utils::get_sanitized_url( $attributes, 'linkedinUrl' );
+	$mastodonUrl  = Utils::get_sanitized_url( $attributes, 'mastodon' );
+	$tiktokUrl  = Utils::get_sanitized_url( $attributes, 'tiktok' );
 
     ob_start();
 ?>
@@ -78,6 +80,26 @@ function epfl_social_follow_block( $attributes ) {
             </a>
           </li>
           <?php endif; ?>
+		  <?php if (!empty($mastodonUrl)): ?>
+			<li>
+				<a href="<?php echo $mastodonUrl ?>" class="social-icon social-icon-mastodon social-icon-discrete" target="_blank" rel="nofollow noopener">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-mastodon"></use>
+					</svg>
+					<span class="sr-only"><?php echo __("Follow us on Mastodon", "epfl"); ?></span>
+				</a>
+			</li>
+		  <?php endif; ?>
+		  <?php if (!empty($tiktokUrl)): ?>
+			<li>
+				<a href="<?php echo $tiktokUrl ?>" class="social-icon social-icon-tiktok social-icon-discrete" target="_blank" rel="nofollow noopener">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-tiktok"></use>
+					</svg>
+					<span class="sr-only"><?php echo __("Follow us on TikTok", "epfl"); ?></span>
+				</a>
+			</li>
+		  <?php endif; ?>
         </ul>
       </div>
 

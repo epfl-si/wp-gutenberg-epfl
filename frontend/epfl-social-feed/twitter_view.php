@@ -1,5 +1,5 @@
 <div class="social-feed">
-  <span class="social-icon social-icon-twitter social-icon-round"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter"></use></svg></span>
+  <span class="social-icon social-icon-x social-icon-discrete"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-x"></use></svg></span>
   <div class="social-feed-content">
     <div style="width:<?php esc_html_e($width) ?>px;">
       <a class="twitter-timeline"
@@ -14,7 +14,7 @@
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
     <div>
-      <a class="btn btn-secondary mt-4" href="<?php echo esc_url($twitter_url) ?>" target="_blank"><?php esc_html_e('Follow us on Twitter', 'epfl'); ?></a>
+      <a class="btn btn-secondary mt-4" href="<?php echo esc_url($twitter_url) ?>" target="_blank"><?php esc_html_e('Follow us on X', 'epfl'); ?></a>
     </div>
   </div>
 </div>

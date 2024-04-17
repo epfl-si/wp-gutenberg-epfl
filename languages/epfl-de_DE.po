@@ -149,8 +149,8 @@ msgid "Share on Facebook"
 msgstr "Auf Facebook teilen"
 
 #: frontend/epfl-social-share/controller.php:47
-msgid "Share on Twitter"
-msgstr "Auf Facebook teilen"
+msgid "Share on X"
+msgstr "Auf X teilen"
 
 #: frontend/epfl-social-share/controller.php:57
 msgid "Share on LinkedIn"

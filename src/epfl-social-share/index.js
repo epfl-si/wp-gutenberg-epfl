@@ -27,7 +27,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/social-share', {
 	title: __( 'EPFL Social Share', 'epfl'),
     description: __(
-        'Add content page in Facebook, Twitter, Linkedin or send it by email of the current user',
+        'Add content page in Facebook, X, Linkedin or send it by email of the current user',
         'epfl'
     ),
 	icon: socialFeedIcon,
@@ -84,7 +84,7 @@ registerBlockType( 'epfl/social-share', {
 					  onChange={ openFacebook => setAttributes( { openFacebook} ) }
 					/>
 					<ToggleControl
-					  label={ __('Twitter', 'epfl') }
+					  label={ __('X', 'epfl') }
 					  checked={ attributes.openTwitter }
 					  onChange={ openTwitter => setAttributes( { openTwitter} ) }
 					/>

@@ -28,7 +28,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/social-feed', {
 	title: __( 'EPFL Social Feed', 'epfl'),
     description: __(
-        'Embed content from Facebook, Instagram and Twitter',
+        'Embed content from Facebook, Instagram and X',
         'epfl'
     ),
 	icon: socialFeedIcon,
@@ -98,12 +98,12 @@ registerBlockType( 'epfl/social-feed', {
                 </InspectorControls>
                 <div className={ className }>
                     <h2 className="epfl-block-title">{ __('EPFL Social Feed', 'epfl') }</h2>
-					<PanelBody title='Twitter' initialOpen={false}>
+					<PanelBody title='X' initialOpen={false}>
                         <TextControl
 							label={ __('URL','epfl')}
                             value={ attributes.twitterUrl }
                             onChange={ twitterUrl => setAttributes( { twitterUrl } ) }
-                            help={ __('URL to your Twitter account (optional) (eg. https://twitter.com/EPFL)', 'epfl') }
+							help={ __('URL of a X account (eg. https://x.com/EPFL)', 'epfl') }
                         />
                         <label>{ __('Limit', 'epfl') }</label>
                         <TextControl
