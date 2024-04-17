@@ -130,7 +130,7 @@ registerBlockType( 'epfl/social-follow', {
 							label={ __('URL','epfl')}
 							value={ attributes.mastodon }
 							onChange={ mastodon => setAttributes( { mastodon } ) }
-							help={ __('URL of a Mastodon account (eg. https://mastodon.org/school/epfl/)', 'epfl') }
+							help={ __('URL of a Mastodon account (eg. https://joinmastodon.org/)', 'epfl') }
 						/>
 					</PanelBody>
 
@@ -139,7 +139,7 @@ registerBlockType( 'epfl/social-follow', {
 							label={ __('URL','epfl')}
 							value={ attributes.tiktok }
 							onChange={ tiktok => setAttributes( { tiktok } ) }
-							help={ __('URL of a LinkedIn account (eg. https://www.tiktok.com/school/epfl/)', 'epfl') }
+							help={ __('URL of a TikTok account (eg. https://www.tiktok.com/@epflstudents)', 'epfl') }
 						/>
 					</PanelBody>
                 </div>
