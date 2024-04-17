@@ -7,7 +7,7 @@ import {
 import InspectorControlsPostTeaser from './inspector'
 import { getAllPagesPostsOrCategories } from '../index';
 
-export const version = "v1.2.0";
+export const version = "v1.3.0";
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -48,6 +48,9 @@ registerBlockType(
 			postCategory: {
 				type: 'string',
 				default: null,
+			},
+			title: {
+				type: 'string'
 			}
 		}),
 		example: getTooltippedExample(),
