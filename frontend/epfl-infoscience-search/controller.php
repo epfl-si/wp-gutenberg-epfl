@@ -18,6 +18,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname( __FILE__) . '/lib');
 
 require_once('utils.php');
+require_once('debug.php');
 require_once('long_term_cache.php');
 require_once('marc_converter.php');
 require_once('group_by.php');
@@ -113,14 +114,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     $group_by2 = $attributes['group_by2'];
     unset($attributes['group_by2']);
 
+    $debug = $attributes['debug'];
+    unset($attributes['debug']);
 
-    if ( $attributes['debug']) {
-        $debug_data = $attributes['debug'];  # alias
-        unset($attributes['debug']);
-    } else {
-        $debug_data = $attributes['debugdata'];
-        unset($attributes['debugdata']);
-    }
+    $debug_data = $attributes['debugdata'];
+    unset($attributes['debugdata']);
 
     $debug_cache = $attributes['debugcache'];
     $debug_template = $attributes['debugtemplate'];
@@ -310,30 +308,26 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
             $grouped_by_publications = InfoscienceGroupBy::do_group_by( $publications, $group_by, $group_by2, $attributes['sort'] );
 
-            if ( $debug_data ) {
-                $page = RawInfoscienceRender::render( $grouped_by_publications, $url );
-            } else {
-                $page = ClassesInfoscience2018Render::render( $grouped_by_publications,
-                    $url,
-                    $format,
-                    $summary,
-                    $thumbnail,
-                    $debug_template );
+            $page = ClassesInfoscience2018Render::render( $grouped_by_publications,
+                $url,
+                $format,
+                $summary,
+                $thumbnail,
+                $debug_template );
 
-                // wrap the page, and add config as html comment
-                $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export( $before_unset_attributes, true ) . ' //-->';
-                $html_verbose_comments .= '<!-- epfl_infoscience_search used url :' . var_export( $url, true ) . ' //-->';
+            // wrap the page, and add config as html comment
+            $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export( $before_unset_attributes, true ) . ' //-->';
+            $html_verbose_comments .= '<!-- epfl_infoscience_search used url :' . var_export( $url, true ) . ' //-->';
 
-                $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
+            $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
 
-                $page .= epfl_infoscience_search_get_mathjax_config();
+            $page .= epfl_infoscience_search_get_mathjax_config();
 
-                // cache the result if we have got some valid data
-                if ( !empty( $publications ) ) {
-                    # cache any valid results
-                    set_transient( $cache_key, $page, $long_cache_value );
-                    save_page_in_cache_table($md5_id, $serialized_attributes, $page);
-                }
+            // cache the result if we have got some valid data
+            if ( !empty( $publications ) ) {
+                # cache any valid results
+                set_transient( $cache_key, $page, $long_cache_value );
+                save_page_in_cache_table($md5_id, $serialized_attributes, $page);
             }
         }
             # on error, do something with the error, then start a best effort to find something into caches
@@ -393,7 +387,19 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $banner_msgs = '';
     }
 
-    return $banner_msgs . $page;
+    # WIP
+    #$banner_msgs = get_banner_msg($current_language);
+
+    $debug_info_div = '';
+    if ($debug) {
+        $debug_info_div = get_debug_info_div(
+            $cache_define_by,
+            $cache_in_use,
+            $debug_data && isset($grouped_by_publications) ? $grouped_by_publications : []
+        );
+    }
+
+    return $banner_msgs . $debug_info_div . $page;
 }
 
 

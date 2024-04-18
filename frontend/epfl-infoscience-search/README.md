@@ -71,13 +71,13 @@ Cases when the cache is bypassed:
 An incomplete list of some useful attributes. Some of the attributes may be hidden from the UI and require the code editor view.
 
 - debug
-  - Set it to get additional information. 
+  - Set it to get additional information as a div at the top of the render. 
   ```
   <!-- wp:epfl/infoscience-search {"pattern":"vetterli","debug":true} /-->
   ```
 - debugData
   - Set it to get additional information about the raw data.
 - debugTemplate
-    - Set it debug the template system.
-- debugCache
-  - Set it to debug the cache system.
+    - Set it to debug the template system.
+- noCache
+  - Set it to desactivate the cache. Should be used on dev only.
