@@ -10,20 +10,18 @@ require_once('render.php');
 function get_debug_info_div(
     $attributes,
     $cache_in_use,
+    $server_engine_name,  # which server engine is in use
     $publications = []  # set it to something if you want to debug data
 ): string {
-    $debug_div = '<div class="container-full border p-4">';
+    $debug_div = '<div class="container-full border-top border-bottom p-4">';
 
     $debug_div .= '<h3>Debug</h3>';
 
-    if ( $cache_in_use ) {
-        $debug_div .= '<p>Cache in use: ' . $cache_in_use . '</p>';
-    }
+    $debug_div .= '<p>Identified server engine: ' . $server_engine_name . '</p>';
+    $debug_div .= '<p>Cache in use: ' . $cache_in_use . '</p>';
 
-    if ( $attributes ) {
-        $debug_div .= '<p>Attributes</p>';
-        $debug_div .= '<pre>'. var_export($attributes, true) . '</pre>';
-    }
+    $debug_div .= '<h4>Attributes</h4>';
+    $debug_div .= '<pre>'. var_export($attributes, true) . '</pre>';
 
     if ( $publications ) {
         $debug_div .= '<h4>Data</h4>';

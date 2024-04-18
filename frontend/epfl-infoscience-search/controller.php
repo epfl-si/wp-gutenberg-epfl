@@ -40,6 +40,9 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # if we got any msg, set it into this banner
     $banner_msgs = [];
 
+    # we may need to identify which engine the server is running
+    $server_engine_name = null;  # 'invenio', 'dspace'
+
     # deliver the css
     wp_enqueue_style('epfl-infoscience-search-shortcode-style.css');
 
@@ -134,7 +137,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     if ($url) {
         $url = trim($url);
         # assert it is an infoscience one :
-        if (preg_match('#^https?://infoscience.epfl.ch/#i', $url) !== 1) {
+        if (
+            (!preg_match( '#^https?://infoscience.epfl.ch/#i', $url ) == 1) &&
+            (!preg_match( '#^https?://infoscience-prod.epfl.ch/#i', $url) == 1 ) &&
+            (!preg_match( '#^https?://infoscience-test.epfl.ch/#i', $url) == 1 )
+        ) {
             return Utils::render_user_msg("Infoscience search shortcode: Please check the url");
         }
 
@@ -151,8 +158,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $parts = parse_url($url);
         $query = proper_parse_str($parts['query']);
 
+        # try to find with the current url the engine. It should help for later operations
+        $server_engine_name = find_server_engine_by_url_parameters($url, $query);
+
         #
-        # override values
+        # override parameters
 
         # set the given url to the good format
         $query['of'] = 'xm';
@@ -303,6 +313,11 @@ function epfl_infoscience_search_block( $provided_attributes ) {
             }
 
             // no http error, let's continue
+            // do we need to further check the server engine name ?
+            if ( !isset($server_engine_name) ) {
+                $server_engine_name = find_server_engine_by_headers( $response );
+            }
+
             $marc_xml = wp_remote_retrieve_body( $response );
 
             $publications = InfoscienceMarcConverter::convert_marc_to_array( $marc_xml );
@@ -396,6 +411,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $debug_info_div = get_debug_info_div(
             $cache_define_by,
             $cache_in_use,
+            $server_engine_name,
             $debug_data && isset($grouped_by_publications) ? $grouped_by_publications : []
         );
     }
