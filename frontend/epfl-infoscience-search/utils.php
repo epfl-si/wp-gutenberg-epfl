@@ -77,12 +77,11 @@ function proper_parse_str($str) {
 /**
  * Identify the server type with the provided url
  *
- * @param $url string
- * @param $query array
+ * @param $query array  An parse_url returned object like
  *
- * @return string | null  If it is identifiable, it returns 'invenio' or 'dspace'. Otherwise null
+ * @return string  If it is identifiable, it returns 'invenio' or 'dspace'. Otherwise an empty string
  */
-function find_server_engine_by_url_parameters($url, $query) {
+function find_server_engine_by_url_parameters($query) {
     if ( !empty($query) ) {
         if ( isset($query['query']) ) {
             return 'dspace';
@@ -91,7 +90,7 @@ function find_server_engine_by_url_parameters($url, $query) {
         }
     }
 
-    return null;
+    return '';
 }
 
 /**

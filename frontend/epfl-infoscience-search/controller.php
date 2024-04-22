@@ -159,7 +159,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         $query = proper_parse_str($parts['query']);
 
         # try to find with the current url the engine. It should help for later operations
-        $server_engine_name = find_server_engine_by_url_parameters($url, $query);
+        $server_engine_name = find_server_engine_by_url_parameters($query);
 
         #
         # override parameters

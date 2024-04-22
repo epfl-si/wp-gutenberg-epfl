@@ -17,7 +17,19 @@ function get_debug_info_div(
 
     $debug_div .= '<h3>Debug</h3>';
 
-    $debug_div .= '<p>Identified server engine: ' . $server_engine_name . '</p>';
+
+    // server engine ID
+    $debug_div .= '<p>Identified server engine: ';
+    if ( $server_engine_name == null ) {
+        $debug_div .= 'untested (cache may be in use)';
+    } else if ( $server_engine_name == '' ) {
+        $debug_div .= 'unknown';
+    } else {
+        $debug_div .= $server_engine_name;
+    }
+    $debug_div .= '</p>';
+
+
     $debug_div .= '<p>Cache in use: ' . $cache_in_use . '</p>';
 
     $debug_div .= '<h4>Attributes</h4>';
