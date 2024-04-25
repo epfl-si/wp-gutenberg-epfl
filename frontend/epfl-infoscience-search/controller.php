@@ -67,6 +67,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     }
 
     $infoscience_search_managed_attributes = array(
+        'serverengine' => 'invenio',
         # Content 1
         'url' => '',
         # or Content 2
@@ -101,6 +102,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     # Unset element unused in url, with backup first
     $before_unset_attributes = $attributes;
+
+    $server_engine_name = $attributes['serverengine'];
 
     $format = $attributes['format'];
     unset($attributes['format']);
