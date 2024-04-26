@@ -43,8 +43,6 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
         # when it is a basket, dont touch the args, only the of one :
         if (!array_key_exists('bskid', $query) || empty($query['bskid'])) {
 
-            $query['as'] = '1';
-
             # set default if not already set :
             if (!array_key_exists('rg', $query) || empty($query['rg'])) {
                 $query['rg'] = '100';
@@ -96,7 +94,6 @@ function epfl_infoscience_search_generate_url_from_attrs($attrs) {
 
     # default parameters may change afterward
     $default_parameters = array(
-        'as' => '1',  # advanced search
         'ln' => 'en',  #TODO: dynamic language
         'of' => 'xm',  # template format
         'sf' => 'year', # year sorting
