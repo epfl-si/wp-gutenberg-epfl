@@ -7,7 +7,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 /**
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
- * Description: provides a gutenberg block to search and dispay results from Infoscience
+ * Description: provides a gutenberg block to search and display results from Infoscience
  * Version: 1.3.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
