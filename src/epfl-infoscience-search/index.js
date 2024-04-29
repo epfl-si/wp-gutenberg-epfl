@@ -175,7 +175,7 @@ registerBlockType( 'epfl/infoscience-search', {
 									</div>
 									<div style={ { 'marginLeft': '48px' } }>
 										<div>{ __('1. While this block is selected, on the right side menu, select the \'Block\' tab.', 'epfl') }</div>
-										<div>{ __('2. Then, click on the dropdown \'Transform to variation\' and select \'EPFL Infoscience', 'epfl') }</div>
+										<div>{ __('2. Then, click on the dropdown \'Transform to variation\' and select \'EPFL Infoscience\'', 'epfl') }</div>
 									</div>
 								</div>
 							</div>
