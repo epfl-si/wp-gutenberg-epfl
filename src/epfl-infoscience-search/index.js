@@ -163,12 +163,12 @@ registerBlockType( 'epfl/infoscience-search', {
 							<div className="helper">{ __('Please fill the fields in the right-hand column', 'epfl') }</div>
 						</div> :
 						<div id="preview-box">
-							<h2 className="epfl-block-title">{ __('Obsolete EPFL Infoscience', 'epfl') }</h2>
+							<h2 className="epfl-block-title" style={ { 'backgroundColor': '#B51F1F' }}>{ __('EPFL Infoscience', 'epfl') } - (Obsolete)</h2>
 							<div className="helper" style={ { 'textAlign': 'left' } }>
 								<div style={ {
 									'marginBottom': '12px',
 									'textAlign': 'center'
-								} }>{ __('This publication list is static. This block is obsolete.', 'epfl') }</div>
+								} }>{ __('This block is obsolete. As a result, it will provide a static list of publication.', 'epfl') }</div>
 								<div>
 									<div style={ { 'marginBottom': '12px', 'marginLeft': '24px' } }>
 										{ __('Please follow this steps to migrate into a dynamic list on the new Infoscience:', 'epfl') }
