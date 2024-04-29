@@ -39,6 +39,8 @@ They should provide a MARCXML list. The code is compatible with Invenio data com
 
 Valid results are cached once the page is published and visited.
 
+Take a look into ./charts after reading this for some meaningful info about the cache.
+
 The cache system consists of three parts :
 - short 
   - as soon as some valid results are fetched from infoscience.epfl.ch, they are put into this cache.
@@ -52,6 +54,7 @@ The cache system consists of three parts :
   - TTL: More than the short one
 - db
   - a copy of the short cache. Used when we transit from an engine to another, and the urls are no more compatible. So we still have some data to provide. 
+  - Later, it will be a readonly table used only to keep results for the old infoscience block.
   - use: a custom table
   - type: eternal
   - TTL: as long as the data in the table 'epfl_infoscience_cache_db' exists.
