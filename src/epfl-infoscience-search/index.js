@@ -129,7 +129,7 @@ registerBlockType( 'epfl/infoscience-search', {
 			type: 'boolean',
 			default: null,
 		},
-		noCache: {
+		deactivateCache: {
 			type: 'boolean',
 			default: null,
 		}

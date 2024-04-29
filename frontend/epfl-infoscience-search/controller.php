@@ -86,7 +86,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'debug' => false,
         'debugdata' => false,
         'debugtemplate' => false,
-        'desactivatecache' => false,
+        'deactivatecache' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
@@ -130,7 +130,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     $debug_template = $attributes['debugtemplate'];
     unset($attributes['debugtemplate']);
 
-    $desactivate_cache = $attributes['nocache'];
+    $deactivate_cache = $attributes['deactivatecache'];
 
     $url = generate_url_from_attributes($attributes, $unmanaged_attributes);
 
@@ -192,7 +192,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         ( is_admin() && current_user_can( 'edit_pages' ) ) ||
         // short cache need an update
         $isShortCacheExpired ||
-        $desactivate_cache ||
+        $deactivate_cache ||
         $debug_data ||
         $debug_template
     ) {
