@@ -24,6 +24,7 @@ require_once('url.php');
 require_once('marc_converter.php');
 require_once('group_by.php');
 require_once('mathjax-config.php');
+require_once('banner.php');
 require_once('render.php');
 
 define(__NAMESPACE__ . "\INFOSCIENCE_SEARCH_URL", "https://infoscience.epfl.ch/search?");
@@ -38,6 +39,8 @@ class InfoscienceUnknownContentException extends \Exception {}  // when we can't
  *
  */
 function epfl_infoscience_search_block( $provided_attributes ) {
+    $current_language = get_language();
+
     # if we got any msg, set it into this banner
     $banner_msgs = [];
 
@@ -145,7 +148,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'group_by' => $group_by,
         'group_by2' => $group_by2,
         'sort' => $attributes['sort'],
-        'language' => get_language()
+        'language' => $current_language
     ];
 
     $serialized_attributes = serialize($cache_define_by);
@@ -309,21 +312,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     // check and add banner, if needed
     if ( $cache_in_use == 'long' ) {
         // in case we can not get fresh data, show the ones in cache *if possible*, and add this sorry message
-        $banner_msgs[] = 'This is cached data, the list is certainly obsolete.';
-    } elseif ( $cache_in_use == 'db' ) {
-        $banner_msgs[] = 'This content is currently static. Please go to infoscience.epfl.ch and search for an updated list.';
+        $banner_msgs[] = 'This is cached data, the list may be obsolete.';
     }
-
-    if ( $banner_msgs ) {
-        $banner_msgs = Utils::render_user_msg(
-            "<p> - ".implode('</p><p> - ', $banner_msgs)."</p>"
-        );
-    } else {
-        $banner_msgs = '';
-    }
-
-    # WIP
-    #$banner_msgs = get_banner_msg($current_language);
 
     $debug_info_div = '';
     if ($debug) {
@@ -335,7 +325,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         );
     }
 
-    return $banner_msgs . $debug_info_div . $page;
+    return get_banners(false, $banner_msgs, $current_language) .
+           $debug_info_div . $page;
 }
 
 add_action( 'init', function() {
