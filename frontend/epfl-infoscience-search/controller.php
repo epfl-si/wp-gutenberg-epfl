@@ -41,9 +41,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # if we got any msg, set it into this banner
     $banner_msgs = [];
 
-    # we may need to identify which engine the server is running
-    $server_engine_name = null;  # 'invenio', 'dspace'
-
     # deliver the css
     wp_enqueue_style('epfl-infoscience-search-shortcode-style.css');
 
@@ -238,12 +235,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
                 // delegate further down the managment of this
                 throw new InfoscienceHTTPError( $error_message );
-            }
-
-            // no http error, let's continue
-            // do we need to further check the server engine name ?
-            if ( !isset($server_engine_name) ) {
-                $server_engine_name = find_server_engine_by_headers( $response );
             }
 
             $marc_xml = wp_remote_retrieve_body( $response );
