@@ -17,6 +17,7 @@ function get_debug_info_div(
 
     $debug_div .= '<h3>Debug</h3>';
 
+    $debug_div .= '<p>Server Engine: ' . var_export($server_engine_name, true) . '</p>';
 
     // server engine ID
     $debug_div .= '<p>Identified server engine: ';
