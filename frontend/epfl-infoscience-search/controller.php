@@ -163,6 +163,32 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     // Flag which cache we are currently using, to show a banner at the end
     $cache_in_use = null;  // | 'short' | 'long' | 'db'
 
+    /**
+     * Old block - try to fetch what is in the db
+     */
+    // ok, as we have two variants of the block coming here, we may need to crawl different data
+    if ($server_engine_name === 'invenio') {  // meaning we have the old block
+        $page = get_page_from_cache_table( $md5_id );  // use whatever is in the long terme cache db
+        // Tell the api timer we're using the cache
+        do_action( 'epfl_stats_webservice_call_duration', $url, 0, true );
+        if ( $page ) {
+            $cache_in_use = 'db';
+        }
+
+        $debug_info_div = '';
+        if ($debug) {
+            $debug_info_div = get_debug_info_div(
+                $cache_define_by,
+                $cache_in_use,
+                $server_engine_name,
+                $debug_data && isset($grouped_by_publications) ? $grouped_by_publications : []
+            );
+        }
+
+        return get_banners(true, $banner_msgs, $current_language) .
+               $debug_info_div . $page;  // stop here, it is enough for the old block
+    }
+
     // As defined by the $short_cache_value, we may need to refresh it.
     // You may wonder why not using the transient timeout system ? Well, as we want
     // two cache timer (short and long), this assert that long cache is still there, longer than the short one
@@ -209,8 +235,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
         // define which cache for later banners if any
         $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
-        // save everytime we can the cache into the db
-        save_page_in_cache_table($md5_id, $serialized_attributes, $page);
     } else {
         // no cache for u, time to do the hard work
         // crawl, build and cache the page
@@ -265,7 +289,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
             if ( !empty( $publications ) ) {
                 # cache any valid results
                 set_transient( $cache_key, $page, $long_cache_value );
-                save_page_in_cache_table($md5_id, $serialized_attributes, $page);
             }
         }
             # on error, do something with the error, then start a best effort to find something into caches
@@ -294,17 +317,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
             if ($page !== false) {
                 // Tell the api timer we're using the cache
                 do_action('epfl_stats_webservice_call_duration', $url, 0, true);
-                // save a copy of the render into long term db
-                save_page_in_cache_table($md5_id, $serialized_attributes, $page);
                 $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
-            } else {
-                // take a look in db if cache is over
-                $page = get_page_from_cache_table($md5_id);
-                // Tell the api timer we're using the cache
-                do_action('epfl_stats_webservice_call_duration', $url, 0, true);
-                if ($page) {
-                    $cache_in_use = 'db';
-                }
             }
         }
     }
