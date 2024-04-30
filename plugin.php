@@ -114,6 +114,24 @@ function allow_epfl_blocks( $allowed_block_types, $block_editor_context ) {
 	return $allowed_block_types;
 }
 
+function load_custom_block_controller() {
+    $api_source = isset($_GET['api_source']) ? $_GET['api_source'] : 'default';
+
+    switch ($api_source) {
+        case 'isa':
+            require 'controller-isa.php';
+            break;
+        case 'zen':
+            require 'controller-zen.php';
+            break;
+        default:
+            require 'controller-default.php';
+            break;
+    }
+}
+add_action('init', 'load_custom_block_controller');
+
+
 add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\allow_epfl_blocks', 10, 2 );
 
 /**

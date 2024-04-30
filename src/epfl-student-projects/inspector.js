@@ -1,96 +1,95 @@
-import * as axios from 'axios';
 import React from 'react';
-import Select from 'react-select';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, SelectControl, ToggleControl, TextControl } from '@wordpress/components';
 import { version } from './index';
+import { __ } from '@wordpress/i18n';
 
-const { __ } = wp.i18n
-const { Component } = wp.element
-
-const {
-	InspectorControls,
-} = wp.editor
-
-const {
-    PanelBody,
-    SelectControl,
-    ToggleControl,
-    TextControl,
-} = wp.components
-
-export default class InspectorControlsStudentProjects extends Component {
-
+export default class InspectorControlsStudentProjects extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sections: null,
+            sections: [],
+            apiSource: ''
+        };
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        // Check if apiSource has changed
+        if (prevState.apiSource !== this.state.apiSource && this.state.apiSource !== '') {
+            this.fetchData(this.state.apiSource);
         }
     }
-
-    componentDidMount() {
-        // current URL will looks like: https://www.epfl.ch/site/path/wp-admin/post.php?post=61&action=edit
-        let entryPointProjects = window.location.href.replace(/wp-admin\/.*/, 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections.php');
-        axios.get(entryPointProjects)
-            .then(response => {
-
-                console.log(response);
-                let sections = [];
-                response.data.forEach((elem) => {
-                    if(typeof elem['code'] == 'string' && elem['code'].startsWith('PROJETS_')) sections.push(elem['code'])
-                });
-                sections.sort();
-                return sections;
-            })
-            .then(sections => this.setState({ sections }))
-            .catch( err => console.log(err))
-
-    }
-
-
-    render() {
-
-        const { attributes, setAttributes } = this.props;
-
-        let content = "";
-
-        if (this.state.sections !== null) {
-
-            let optionsSectionsList = [{ value: '', label: __('<Please choose>', 'epfl') },];
-
-            this.state.sections.forEach(section => {
-                optionsSectionsList.push({ label: section.replace("PROJETS_", ""),
-                                           value: section });
+    fetchData(source) {
+        let entryPointProjects;
+        if (source === 'isa') {
+            entryPointProjects = window.location.href.replace(/wp-admin\/.*/, 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections-isa.php');
+        } else if (source === 'zen') {
+            entryPointProjects = window.location.href.replace(/wp-admin\/.*/, 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections-zen.php');
+        } else {
+            return;
+        }
+    
+        fetch(entryPointProjects)
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                sections: data.map(section => ({
+                    label: (section.name && section.name.fr !== undefined) ? section.name.fr : section.acronym,
+                    value: (section.code !== undefined) ? section.code : section.id
+                }))
             });
-
-
-            content = (
-                <InspectorControls>
-                    <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/student-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
-                    <p className="wp-block-help">{ version }</p>
-                    <PanelBody title={ __( 'Section', 'epfl') }>
-                        <SelectControl
-                            value={ attributes.section }
-                            onChange={ section => setAttributes( { section: section } ) }
-                            options={ optionsSectionsList }
-                        />
-                    </PanelBody>
-                    <PanelBody title={ __( 'Filters', 'epfl') }>
-                        <ToggleControl
-                            label={ __('Only current projects', 'epfl') }
-                            checked={ attributes.onlyCurrentProjects }
-                            onChange={ onlyCurrentProjects => setAttributes( { onlyCurrentProjects } ) }
-                        />
-                        <TextControl
-                            label={ __('Professor(s) sciper(s)', 'epfl') }
-                            help={ __('Separated with commas', 'epfl') }
-							value={ attributes.professorScipers }
-							onChange={ professorScipers => setAttributes( { professorScipers } ) }
-						/>
-
-                    </PanelBody>
-
-                </InspectorControls>
-            )
-        }
-        return content;
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            this.setState({ sections: [] }); // Handle error by setting sections to empty
+        });
     }
+    
+    render() {
+        const { attributes, setAttributes } = this.props;
+        const optionsSectionsList = this.state.sections.map(section => ({
+            label: section.label,
+            value: section.value
+        }));
+    
+        return (
+            <InspectorControls>
+                <PanelBody title={__('API Source')}>
+                    <SelectControl
+                        label={__('Select API Source')}
+                        value={this.state.apiSource}
+                        options={[
+                            { label: 'Select API', value: '' },
+                            { label: 'ISA', value: 'isa' },
+                            { label: 'ZEN', value: 'zen' }
+                        ]}
+                        onChange={(apiSource) => {
+                            this.setState({ apiSource });
+                            this.fetchData(apiSource);
+                        }}
+                    />
+                </PanelBody>
+                <PanelBody title={__('Section')}>
+                    <SelectControl
+                        value={attributes.section}
+                        onChange={section => setAttributes({ section })}
+                        options={[{label: 'Please choose', value: ''}, ...optionsSectionsList]}
+                    />
+                </PanelBody>
+                <PanelBody title={ __( 'Filters', 'epfl') }>
+                    <ToggleControl
+                        label={ __('Only current projects', 'epfl') }
+                        checked={ attributes.onlyCurrentProjects }
+                        onChange={ onlyCurrentProjects => setAttributes( { onlyCurrentProjects } ) }
+                    />
+                    <TextControl
+                        label={ __('Professor(s) sciper(s)', 'epfl') }
+                        help={ __('Separated with commas', 'epfl') }
+						value={ attributes.professorScipers }
+						onChange={ professorScipers => setAttributes( { professorScipers } ) }
+					/>
+                </PanelBody>
+            </InspectorControls>
+        );
+    }    
 }
