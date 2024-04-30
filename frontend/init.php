@@ -42,7 +42,7 @@ require_once 'epfl-table/controller.php';
 require_once 'epfl-faq/controller.php';
 require_once 'epfl-button/controller.php';
 require_once 'epfl-gallery/controller.php';
-require_once 'epfl-student-projects/controller.php';
+// require_once 'epfl-student-projects/controller.php';
 require_once 'epfl-carousel/controller.php';
 require_once 'epfl-pdf-flipbook/view.php';
 require_once 'epfl-alert/controller.php';
@@ -205,10 +205,10 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/mini-card-panel', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\MiniCardDeck\epfl_mini_card_panel_block',
 		));
-
-	register_block_type( 'epfl/student-projects', array(
-		'render_callback' => 'EPFL\Plugins\Gutenberg\StudentProjects\epfl_student_projects_block',
-		));
+	// NOTE: not needed since i am doing the logic of redirection in plugin.php
+	// register_block_type( 'epfl/student-projects', array(
+	// 	'render_callback' => 'EPFL\Plugins\Gutenberg\StudentProjects\epfl_student_projects_block',
+	// 	));
 
 	register_block_type( 'epfl/carousel', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\Carousel\epfl_carousel_block',
