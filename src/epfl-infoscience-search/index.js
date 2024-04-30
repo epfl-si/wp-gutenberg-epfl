@@ -30,7 +30,7 @@ registerBlockType( 'epfl/infoscience-search', {
 		'epfl'
 	),
 	icon: infoscienceIcon,
-	category: '',
+	category: hasCommonCategory ? 'common' : 'embed',
 	variations: [
 		{
 			name: 'epfl/infoscience-search-dspace',
