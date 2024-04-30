@@ -163,7 +163,7 @@ registerBlockType( 'epfl/infoscience-search', {
 							<div className="helper">{ __('Please fill the fields in the right-hand column', 'epfl') }</div>
 						</div> :
 						<div id="preview-box">
-							<h2 className="epfl-block-title" style={ { 'backgroundColor': '#B51F1F' }}>{ __('EPFL Infoscience', 'epfl') } - (Obsolete)</h2>
+							<h2 className="epfl-block-title" style={ { 'backgroundColor': '#B51F1F' }}>{ __('EPFL Infoscience', 'epfl') } (Obsolete)</h2>
 							<div className="helper" style={ { 'textAlign': 'left' } }>
 								<div style={ {
 									'marginBottom': '12px',
