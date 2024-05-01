@@ -42,15 +42,11 @@ function epfl_links_group_block( $attributes ) {
       <?php echo esc_html($title) ?>
       <?php endif; ?>
     </h5>
-    <nav
-      class="nav flex-column flex-wrap align-items-start"
-      role="navigation"
-      aria-labelledby="links-group-title"
-    >
-    <?php foreach($links as $link): ?>
-      <a class="nav-link link-pretty" <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> href="<?php echo esc_url($link['url']) ?>"><?php echo esc_html($link['label']) ?></a>
-    <?php endforeach ?>
-    </nav>
+	<ul>
+		<?php foreach($links as $link): ?>
+			<li><a <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> href="<?php echo esc_url($link['url']) ?>"><?php echo esc_html($link['label']) ?></a></li>
+		<?php endforeach ?>
+	</ul>
   </div>
 </div>
 
