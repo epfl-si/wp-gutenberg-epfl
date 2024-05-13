@@ -42,7 +42,7 @@ function epfl_links_group_block( $attributes ) {
       <?php echo esc_html($title) ?>
       <?php endif; ?>
     </h5>
-	<ul>
+	<ul class="list-unstyled">
 		<?php foreach($links as $link): ?>
 			<li><a <?php if($open_links_new_tab): ?>target="_blank" rel="noopener"<?php endif; ?> href="<?php echo esc_url($link['url']) ?>"><?php echo esc_html($link['label']) ?></a></li>
 		<?php endforeach ?>
