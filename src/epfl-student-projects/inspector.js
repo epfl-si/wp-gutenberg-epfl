@@ -32,11 +32,23 @@ export default class InspectorControlsStudentProjects extends React.Component {
         fetch(entryPointProjects)
         .then(response => response.json())
         .then(data => {
+            let filteredAndMappedSections;
+            console.log(data)
+            if (this.state.apiSource === 'zen') {
+                filteredAndMappedSections = data.map(section => ({
+                    label: section.acronym,
+                    value: section.acronym
+                }));
+            } else if (this.state.apiSource === 'isa') {
+                filteredAndMappedSections = data
+                    .filter(section => section.code && section.code.startsWith('PROJETS_'))
+                    .map(section => ({
+                        label: section.name.fr, 
+                        value: section.code
+                    }));
+            }
             this.setState({
-                sections: data.map(section => ({
-                    label: (section.name && section.name.fr !== undefined) ? section.name.fr : section.acronym,
-                    value: (section.code !== undefined) ? section.code : section.id
-                }))
+                sections: filteredAndMappedSections
             });
         })
         .catch(error => {
@@ -65,6 +77,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
                         ]}
                         onChange={(apiSource) => {
                             this.setState({ apiSource });
+                            setAttributes({ apiSource });
                             this.fetchData(apiSource);
                         }}
                     />
