@@ -1,17 +1,15 @@
 <?php
-
+// leaving this page for now even tough its not being use
 namespace EPFL\Plugins\Gutenberg\StudentProjects;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once(dirname(__FILE__).'/../lib/utils.php');
 
-// Return HTML code with a link to given URL
 function get_link($url) {
     if (preg_match('/https?/', $url) === 0) $url = 'https://' . $url;
     return '<a href="' . $url . '" target="_blank">' . $url . '</a>';
 }
 
-// Custom function to sort projects by title
 function sortByProjectTitle($a, $b) {
     return strcmp($a->title, $b->title);
 }
