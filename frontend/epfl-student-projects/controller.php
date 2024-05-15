@@ -13,7 +13,11 @@ function get_link($url)
   return '<a href="' . $url . '" target="_blank">' . $url . '</a>';
 }
 
-function sortByProjectName($a, $b)
+function sortByProjectNameIsa($a, $b) {
+  return strcmp($a->project->title, $b->project->title);
+}
+
+function sortByProjectNameZen($a, $b)
 {
   return strcmp($a->title, $b->title);
 }
@@ -30,9 +34,12 @@ function handle_isa($attributes)
     return '';
 
   $target_host = 'isa.epfl.ch';
+  //$target_host = 'ditex-web.epfl.ch';
+
   $url = "https://" . $target_host . "/services/v1/projects/" . $section;
 
   $search_params = array();
+
   if ($only_current_projects)
     $search_params[] = 'date-active=' . date("Y-m-d");
   if ($professor_scipers != "") {
@@ -49,16 +56,20 @@ function handle_isa($attributes)
     return Utils::render_user_msg("Error getting project list");
   }
 
-  usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectName');
+  usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectNameIsa');
 
   ob_start();
   ?>
   <div id='student-projects-list' class="container">
     <h2><?php echo $title ?></h2>
     <div class="form-group">
-      <input type="text" id="student-projects-search-input" class="form-control search mb-2"
-        placeholder="<?php _e('Search', 'epfl') ?>" aria-describedby="student-projects-search-input">
-
+      <input 
+        type="text" 
+        id="student-projects-search-input" 
+        class="form-control search mb-2"
+        placeholder="<?php _e('Search', 'epfl') ?>" 
+        aria-describedby="student-projects-search-input"
+      >
       <button class="btn btn-secondary sort asc" data-sort="title"><?php _e('Sort by project name', 'epfl') ?></button>
       <button class="btn btn-secondary sort" data-sort="project-id"><?php _e('Sort by project ID', 'epfl') ?></button>
       <button class="btn btn-secondary sort" data-sort="professor1-name"><?php _e('Sort by professor', 'epfl') ?></button>
@@ -206,6 +217,8 @@ function handle_zen($attributes)
   if ($items === false) {
     return Utils::render_user_msg("Error getting project list from ZEN");
   }
+
+  usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectNameZen');
 
   ob_start();
   ?>
