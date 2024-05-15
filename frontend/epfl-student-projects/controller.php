@@ -228,6 +228,7 @@ function handle_zen($attributes)
         placeholder="<?php _e('Search', 'epfl') ?>" aria-describedby="student-projects-search-input">
       <button class="btn btn-secondary sort asc" data-sort="title"><?php _e('Sort by project title', 'epfl'); ?></button>
       <button class="btn btn-secondary sort" data-sort="project-id"><?php _e('Sort by project ID', 'epfl'); ?></button>
+      <button class="btn btn-secondary sort" data-sort="project-date"><?php _e('Sort by date', 'epfl') ?></button>
     </div>
 
     <div class="list">
