@@ -52,7 +52,7 @@ function epfl_caption_cards_block( $attributes ) {
                         <strong class="text-padded"><?php echo $attributes['subtitle'.$i]; ?></strong>
                     </p>
                     </div>
-                    <?php if ($link): ?>
+                    <?php if (!empty($attributes['link'.$i])): ?>
                 </a>
                     <?php else: ?>
                 </div>
