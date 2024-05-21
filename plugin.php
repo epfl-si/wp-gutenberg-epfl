@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
@@ -12,6 +13,8 @@
  */
 
 namespace EPFL\Plugins\Gutenberg;
+
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

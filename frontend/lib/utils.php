@@ -2,8 +2,18 @@
 
 namespace EPFL\Plugins\Gutenberg\Lib;
 
+use Dotenv\Dotenv;
 Class Utils
 {
+    protected static $dotenv;
+
+    public static function loadEnv() {
+        if (is_null(self::$dotenv)) {
+            self::$dotenv = Dotenv::createImmutable(__DIR__ . "/../../");
+            self::$dotenv->load();
+        }
+    }
+
     public static function debug($var) {
         print "<pre>";
         var_dump($var);
@@ -186,8 +196,9 @@ Class Utils
      * @return mixed The response body, or false on failure.
      */
     public static function zen_api_request($url) {
-        $jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoic3RpX3plbl9hcGkiLCJkaXNwbGF5TmFtZSI6InN0aV96ZW5fYXBpIiwibmFtZSI6eyJmYW1pbHlOYW1lIjoic3RpX3plbl9hcGkifSwidGVxdWlsYSI6eyJ2ZXJzaW9uIjoiMi4xLjgiLCJmaXJzdG5hbWUiOiIiLCJwcm92aWRlciI6IiIsInN0YXR1cyI6Im9rIiwia2V5IjoiZmRrdGk2NnkwM3ViZjRrdjl2b2xqYWFsNDkyZTZmNHIiLCJlbWFpbCI6IiIsImdyb3VwIjoic3RpX3plbl9hcGlfY29uc3VtZXIiLCJ1c2VyIjoic3RpX3plbl9hcGkiLCJyZXF1ZXN0aG9zdCI6IjEwLjk1LjQ4Ljk4IiwiYXV0aHN0cmVuZ3RoIjoiMSIsIm9yZyI6IkVQRkwiLCJ1bmlxdWVpZCI6Ik0wNjU3OCIsIm5hbWUiOiJzdGlfemVuX2FwaSIsImhvc3QiOiIxMjguMTc4LjIzLjE5OCIsImF1dGhvcmlnIjoicGFzc3dvcmQiLCJkaXNwbGF5bmFtZSI6InN0aV96ZW5fYXBpIn19LCJpYXQiOjE3MTQwMzU0MDR9.Kr9E22Zby5zJMatyLneoMsxtTOkH0g9YCFw2Z9yQ4XA';  // Your JWT token here
-        
+        self::loadEnv();
+
+        $jwt = $_ENV['JWT_TOKEN'];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

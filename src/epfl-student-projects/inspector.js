@@ -1,7 +1,6 @@
 import React from 'react';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, ToggleControl, TextControl } from '@wordpress/components';
-import { version } from './index';
 import { __ } from '@wordpress/i18n';
 
 export default class InspectorControlsStudentProjects extends React.Component {
@@ -20,20 +19,17 @@ export default class InspectorControlsStudentProjects extends React.Component {
         }
     }
     fetchData(source) {
-        let entryPointProjects;
-        if (source === 'isa') {
-            entryPointProjects = window.location.href.replace(/wp-admin\/.*/, 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections-isa.php');
-        } else if (source === 'zen') {
-            entryPointProjects = window.location.href.replace(/wp-admin\/.*/, 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections-zen.php');
-        } else {
-            return;
-        }
-    
+        const basePath = 'wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections';
+        const entryPointProjects = (source === 'isa' || source === 'zen') 
+            ? window.location.href.replace(/wp-admin\/.*/, `${basePath}-${source}.php`)
+            : null;
+        if (entryPointProjects === null) {
+          return 
+        } 
         fetch(entryPointProjects)
         .then(response => response.json())
         .then(data => {
             let filteredAndMappedSections;
-            console.log(data)
             if (this.state.apiSource === 'zen') {
                 filteredAndMappedSections = data.map(section => ({
                     label: section.acronym,

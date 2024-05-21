@@ -3,7 +3,7 @@
 
     header('Access-Control-Allow-Origin: *');
 
-     $url = "https://isa.epfl.ch/services/secretariats";
+    $url = "https://isa.epfl.ch/services/secretariats";
    
     // Uncomment for local developing/debugging
     //$url = "https://ditex-web.epfl.ch/services/secretariats";
