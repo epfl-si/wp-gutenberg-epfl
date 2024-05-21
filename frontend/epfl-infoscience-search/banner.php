@@ -36,15 +36,15 @@ function get_banners(
 * When long term cache is in use, we show a specific banner.
 */
 function get_banner_msg_long_term_db($language) {
-    $link_infoscience = '<a href="https://infoscience.epfl.ch/" target="blank=">Infoscience</a>';
+    $link_infoscience = '<a href="https://infoscience.epfl.ch/" target="_blank">Infoscience</a>';
 
     $link_help = $language == 'fr' ?
-        '<a href="https://help-infoscience.epfl.ch/" target="blank=">l\'aide infoscience</a>' :
-        '<a href="https://help-infoscience.epfl.ch/" target="blank=">Infoscience help</a>';
+        '<a href="https://help-infoscience.epfl.ch/" target="_blank">l\'aide infoscience</a>' :
+        '<a href="https://help-infoscience.epfl.ch/" target="_blank">Infoscience help</a>';
 
     $link_contact = $language == 'fr' ?
-        '<a href="mailto:infoscience@epfl.ch" target="blank=">contacter le support</a>' :
-        '<a href="mailto:infoscience@epfl.ch" target="blank=">contact support</a>';
+        '<a href="mailto:infoscience@epfl.ch" target="_blank">contacter le support</a>' :
+        '<a href="mailto:infoscience@epfl.ch" target="_blank">contact support</a>';
 
     $db_cache_banner_title = $language == 'fr' ?
         'Avertissement' :
