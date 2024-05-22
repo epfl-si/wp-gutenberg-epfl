@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, ToggleControl, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -26,7 +27,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
         if (entryPointProjects === null) {
           return 
         } 
-        fetch(entryPointProjects)
+        axios.get(entryPointProjects)
         .then(response => response.json())
         .then(data => {
             let filteredAndMappedSections;
