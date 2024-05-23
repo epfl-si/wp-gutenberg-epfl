@@ -14,8 +14,6 @@
 
 namespace EPFL\Plugins\Gutenberg;
 
-require_once __DIR__ . '/vendor/autoload.php';
-
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,6 +21,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
+// Load environment variables after WordPress has loaded
+add_action('plugins_loaded', function () {
+    $utils_path = plugin_dir_path(__FILE__) . 'lib/utils.php';
+    if (file_exists($utils_path)) {
+        require_once $utils_path;
+        if (class_exists('EPFL\Plugins\Gutenberg\Lib\Utils')) {
+            \EPFL\Plugins\Gutenberg\Lib\Utils::loadEnv();
+        } else {
+            error_log("Class 'EPFL\Plugins\Gutenberg\Lib\Utils' not found in $utils_path");
+        }
+    } else {
+        error_log("Utils.php file not found at: " . $utils_path);
+    }
+});
 /**
  * Block Initializer.
  */
