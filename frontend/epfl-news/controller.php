@@ -32,6 +32,9 @@ function epfl_news_get_limit($template, $nb_news)
         case "listing":
             $limit = $nb_news;
             break;
+        case "horizontal":
+            $limit = $nb_news;
+            break;
         case "highlighted_with_3_news":
         case "card_with_3_news":
             $limit = 3;
@@ -125,6 +128,7 @@ function epfl_news_block( $attributes ) {
   $lang          = Utils::get_sanitized_attribute( $attributes, 'lang', 'en' );
   $template      = Utils::get_sanitized_attribute( $attributes,'template', 'listing' );
   $all_news_link = Utils::get_sanitized_attribute( $attributes, 'displayLinkAllNews', FALSE );
+  $gray_wrapper  = Utils::get_sanitized_attribute( $attributes, 'grayWrapper', FALSE );
   $nb_news       = Utils::get_sanitized_attribute( $attributes, 'nbNews', 3 );
   $text_position = Utils::get_sanitized_attribute( $attributes, 'highlighted1TextPosition', 'horizontal' );
   $category      = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
@@ -156,6 +160,6 @@ function epfl_news_block( $attributes ) {
       return Utils::render_user_msg("News block: Please check required parameters");
   }
 
-  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang, $text_position);
+  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang, $text_position, $gray_wrapper);
   return $markup;
 }

@@ -10,7 +10,7 @@ import PreviewNews from './preview'
 import InspectorControlsNews from './inspector'
 import './utils.js';
 
-export const version = "v1.3.0";
+export const version = "v1.4.0";
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -39,6 +39,10 @@ registerBlockType(
 				default: 'listing',
 			},
 			displayLinkAllNews: {
+				type: 'boolean',
+				default: false,
+			},
+			grayWrapper: {
 				type: 'boolean',
 				default: false,
 			},
