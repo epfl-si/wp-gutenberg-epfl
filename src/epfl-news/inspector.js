@@ -104,6 +104,7 @@ export default class InspectorControlsNews extends Component {
                 { value: 'card_with_1_news', label: __('Template card with 1 news', 'epfl')},
                 { value: 'card_with_2_news', label: __('Template card with 2 news', 'epfl')},
                 { value: 'card_with_3_news', label: __('Template card with 3 news', 'epfl')},
+                { value: 'horizontal', label: __('Template horizontal', 'epfl')},
             ];
 
             let optionsLanguagesList = [
@@ -183,7 +184,7 @@ export default class InspectorControlsNews extends Component {
                             options={ optionsTemplatesList }
                             onChange={ template => setAttributes( { template } ) }
 	                    />
-                        { attributes.template === 'listing' &&
+                        { ['listing', 'horizontal'].includes(attributes.template) &&
 							<RangeControl
 								label={ __("Select the number of news", 'epfl') }
 								value={ attributes.nbNews }
@@ -194,6 +195,13 @@ export default class InspectorControlsNews extends Component {
 								afterIcon="arrow-up"
 							/>
 						}
+                        { attributes.template === 'horizontal' &&
+                            <ToggleControl
+                              label={__('Wrap with a gray border', 'epfl')}
+                              checked={ attributes.grayWrapper }
+                              onChange={ () => setAttributes( { grayWrapper: ! attributes.grayWrapper } ) }
+                            />
+                        }
 						{ ['highlighted_with_1_news', 'highlighted_with_3_news'].includes(attributes.template) &&
 							<SelectControl
 								label={ __("Select the text position", 'epfl') }
