@@ -4,6 +4,42 @@ namespace EPFL\Plugins\Gutenberg\Lib;
 
 Class Utils
 {
+    protected static $env;
+
+    public static function loadEnv() {
+        if (is_null(self::$env)) {
+            self::$env = self::parseEnv(__DIR__ . "/../../.env");
+        }
+    }
+    private static function parseEnv($filePath) {
+        if (!file_exists($filePath)) {
+            throw new \Exception("Environment file not found: " . $filePath);
+        }
+
+        $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $env = [];
+
+        foreach ($lines as $line) {
+            if (strpos(trim($line), '#') === 0) {
+                continue;
+            }
+
+            list($key, $value) = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+
+            if (!empty($key)) {
+                $env[$key] = $value;
+            }
+        }
+
+        foreach ($env as $key => $value) {
+            $_ENV[$key] = $value;
+        }
+
+        return $env;
+    }
+
     public static function debug($var) {
         print "<pre>";
         var_dump($var);
@@ -179,6 +215,39 @@ Class Utils
         return false;
     }
 
+    /**
+     * Makes an HTTP GET request to the specified URL with optional headers.
+     * @param string $url The URL to make the request to.
+     * @param array $headers Optional headers to include in the request.
+     * @return mixed The response body, or false on failure.
+     */
+    public static function zen_api_request($url) {
+        self::loadEnv();
+
+        $jwt = $_ENV['JWT_TOKEN'];
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'Authorization: Bearer ' . $jwt,
+            'Content-Type: application/json'
+        ));
+        curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
+        curl_setopt($curl, CURLOPT_COOKIESESSION, true);
+        curl_setopt($curl, CURLOPT_AUTOREFERER, true);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0");
+
+        $response = curl_exec($curl);
+        
+        if (!$response) {
+            error_log("API request failed: " . curl_error($curl));  // Log error to PHP error log
+            curl_close($curl);
+            return false;
+        }
+        curl_close($curl);
+        return json_decode($response, true);  // Return decoded JSON response
+    }
 
     /**
      * Sanitize and returns an attribute who's in the given attributes associative array. If not in array,
