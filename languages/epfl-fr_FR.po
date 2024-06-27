@@ -1989,8 +1989,8 @@ msgid "EPFL Video"
 msgstr ""
 
 #: src/epfl-video/index.js:32
-msgid "Embed a video from SwitchTube, Vimeo or Youtube"
-msgstr "Intègrez une vidéo issue de SwitchTube, Vimeo ou Youtube"
+msgid "Embed a video from Mediaspace, Vimeo or Youtube"
+msgstr "Intègrez une vidéo issue de Mediaspace, Vimeo ou Youtube"
 
 #: src/epfl-video/index.js:65
 msgid "https://www.epfl.ch/campus/services/website/video-en/"

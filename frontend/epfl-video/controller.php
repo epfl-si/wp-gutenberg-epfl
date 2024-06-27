@@ -179,19 +179,9 @@ function epfl_video_block( $attributes ) {
 
     $url = "https://player.vimeo.com/video/".$video_id;
   }
-  // if Switch video
-  else if(preg_match('/tube\.switch\.ch/', $url)===1 && preg_match('/\/embed\//', $url)===0)
-  {
-    /* Extracting video ID from URL which is like :
-    https://tube.switch.ch/videos/2527ae24
-    */
-    $video_id = substr($url, strrpos($url, '/')+1 );
-
-    $url = "https://tube.switch.ch/embed/".$video_id;
-  }
-  // else if video not [youtube, vimeo, tube.switch] then
+  // else if video not [youtube, vimeo, Mediaspace] then
   else {
-    return Utils::render_user_msg("Embed of video is only possible from Mediaspace, SwitchTube, Vimeo or Youtube");
+    return Utils::render_user_msg("Embed of video is only possible from Mediaspace, Vimeo or Youtube");
   }
 
   $markup = epfl_video_render($url, $display_type);

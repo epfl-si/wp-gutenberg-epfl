@@ -6,7 +6,7 @@ import {
 
 import videoIcon from './video-icon'
 
-const version = "v1.3.0";
+const version = "v1.4.0";
 
 const { __ } = wp.i18n;
 
@@ -33,7 +33,7 @@ const supports = {
 registerBlockType( 'epfl/video', {
 	title: __( 'EPFL Video', 'epfl'),
 	description: __(
-		'Embed a video from Mediaspace, SwitchTube, Vimeo or Youtube',
+		'Embed a video from Mediaspace, Vimeo or Youtube',
 		'epfl'
 	),
 	icon: videoIcon,
