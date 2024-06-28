@@ -21,7 +21,15 @@ const {
 	createBlock,
 } = wp.blocks;
 
+const {
+  TextareaControl,
+} = wp.components;
+
+const { decodeEntities } = wp.htmlEntities;
+
 const { Fragment } = wp.element;
+
+import { transformInvenioURLToDSpaceURL } from './transform'
 
 registerBlockType( 'epfl/infoscience-search', {
 	title: 'EPFL Infoscience (obsolete)',
@@ -45,23 +53,8 @@ registerBlockType( 'epfl/infoscience-search', {
 			isActive: (blockAttributes, variationAttributes) =>
 				blockAttributes.serverEngine === 'dspace',
 			scope: ['block', 'inserter', 'transform'],
-
 		},
 	],
-	transforms: {
-		to: [
-			{
-				type: 'block',
-				blocks: ['epfl/infoscience-search'],
-				transform: (attributes) => {
-					return createBlock(
-						'epfl/infoscience-search',
-						{ 'serverEngine': 'dspace', ...attributes },
-					)
-				},
-			},
-		],
-	},
 	attributes: getTooltippedAttributes({
 		serverEngine: {
 			type: 'string',
@@ -150,6 +143,10 @@ registerBlockType( 'epfl/infoscience-search', {
 			)
 		}
 
+    const proposedMigrationUrl = attributes.url ?
+      transformInvenioURLToDSpaceURL( decodeEntities(attributes.url) ) :
+      ''
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -174,16 +171,31 @@ registerBlockType( 'epfl/infoscience-search', {
 										{ __('Please follow this steps to migrate into a dynamic list on the new Infoscience:', 'epfl') }
 									</div>
 									<div style={ { 'marginLeft': '48px' } }>
-										<div>{ __('1. While this block is selected, on the right side menu, select the \'Block\' tab.', 'epfl') }</div>
-										<div>{ __('2. Then, click on the dropdown \'Transform to variation\' and select \'EPFL Infoscience\'', 'epfl') }</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					}
-				</div>
-			</Fragment>
-		)
+                    <ol>
+                      <li>
+                        <span>{ __('The first task it to build your correct url. Based on your current URL, the system may propose this one:', 'epfl') }</span>
+                        <div><a href={ proposedMigrationUrl } target={ '_blank' }>{ proposedMigrationUrl }</a></div>
+                      </li>
+                      <li>
+                        <span>{ __('Open the proposed URL and check that the result is corresponding to your likings or create a new URL on infoscience.epfl.ch', 'epfl') }</span>
+                        <TextareaControl
+                          value={ proposedMigrationUrl }
+                          readonly
+                          style={ { backgroundColor:'#EBEBE4' } }
+                          //onChange={ url => setAttributes( { url } ) }
+                        ></TextareaControl>
+                      </li>
+                      <li>{ __('While this block is selected, on the right side menu, select the \'Block\' tab.', 'epfl') }</li>
+                      <li>{ __('Then, click on the dropdown \'Transform to variation\' and select \'EPFL Infoscience\'', 'epfl') }</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </Fragment>
+    )
 	},
 	save: props => {
 		return null
