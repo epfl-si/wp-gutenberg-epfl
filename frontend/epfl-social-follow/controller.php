@@ -21,10 +21,10 @@ function epfl_social_follow_block( $attributes ) {
 ?>
 
 
-  <div class="container">
+  <div class="row">
     <div class="social-share-container social-share-light">
 
-      <div class="social-share ">
+      <div class="social-share">
         <p class="social-share-text">
           <?php echo __("Follow us", "epfl"); ?> <span class="sr-only"><?php echo __("in social networks", "epfl"); ?></span>
         </p>
