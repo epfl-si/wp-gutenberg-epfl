@@ -2,8 +2,6 @@
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
-use \EPFL\Plugins\Gutenberg\Lib\Utils;
-
 /**
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl

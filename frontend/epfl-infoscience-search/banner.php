@@ -2,8 +2,6 @@
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
-use \EPFL\Plugins\Gutenberg\Lib\Utils;
-
 
 /**
  * Get banners, depending on the current list, of the used cache, or
@@ -17,7 +15,7 @@ function get_banners(
     $final_banner = '';
 
     if ( !empty($banner_msgs) ) {
-        $final_banner .= Utils::render_user_msg_custom(
+        $final_banner .= render_user_msg_custom(
             "<p> - ".implode('</p><p> - ', $banner_msgs)."</p>",
             'Avertissement',
             'info',
@@ -62,7 +60,7 @@ function get_banner_msg_long_term_db($language) {
         For any assistance, please consult the $link_help or $link_contact.
         EODEN;
 
-    return Utils::render_user_msg_custom(
+    return render_user_msg_custom(
         $db_cache_banner_msg,
         $db_cache_banner_title,
         'info',
