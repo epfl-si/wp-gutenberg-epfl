@@ -18,7 +18,7 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
             (!preg_match( '#^https?://infoscience-prod.epfl.ch/#i', $url) == 1 ) &&
             (!preg_match( '#^https?://infoscience-test.epfl.ch/#i', $url) == 1 )
         ) {
-            return Utils::render_user_msg("Infoscience search shortcode: Please check the url");
+            return render_user_msg("Infoscience search shortcode: Please check the url");
         }
 
         $recid_matches = [];
