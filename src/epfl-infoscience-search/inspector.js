@@ -85,10 +85,8 @@ export default class InspectorControlsInfoscience extends Component {
 			{ value: 'and_not', label: __('AND NOT', 'epfl') },
 		]
 
-        let content = "";
-
-        content = (
-            <InspectorControls>
+    return <>
+      <InspectorControls>
 				<PanelBody title={ __('A direct infoscience URL', 'epfl') }>
 					<TextareaControl
 						value={ attributes.url }
@@ -96,60 +94,61 @@ export default class InspectorControlsInfoscience extends Component {
 						placeholder={ __('a https://infoscience.epfl.ch/search?... url', 'epfl') }
 					/>
 				</PanelBody>
-				<PanelBody title={ __('Or text patterns', 'epfl') }>
-					<TextControl
-						value={ attributes.pattern }
-						onChange={ pattern => setAttributes( { pattern } ) }
-						placeholder={ __('search for:', 'epfl') }
-					/>
-					<SelectControl
-						label={ __('Field restriction', 'epfl') }
-						value={ attributes.field }
-						onChange={ field => setAttributes( { field } ) }
-						options={ optionsFieldFilter }
-						help={ <a target="_blank" href="https://infoscience.epfl.ch/docs/search-guide/">{ __('Search tips', 'epfl') }</a> }
-					/>
-					<h2><a href="#" onClick={this.toggleBox}>{ __('Additional search keys', 'epfl') } { this.state.showAdvancedSearch ? '[-]' : '[+]' }</a></h2>
-					{
-						!!this.state.showAdvancedSearch &&
-            		<div>
-						<SelectControl
-							label={ <h4> { __('Second search text', 'epfl') } </h4> }
-							value={ attributes.operator2 }
-							onChange={ operator2 => setAttributes( { operator2 } ) }
-							options={ optionsOperatorFilter }
-						/>
-						<TextControl
-							value={ attributes.pattern2 }
-							onChange={ pattern2 => setAttributes( { pattern2 } ) }
-							placeholder={ __('search for:', 'epfl') }
-						/>
-						<SelectControl
-							label={ __('Field restriction', 'epfl') }
-							value={ attributes.field2 }
-							onChange={ field2 => setAttributes( { field2 } ) }
-							options={ optionsFieldFilter }
-						/>
-						<SelectControl
-							label={ <h4> { __('Third search text', 'epfl') } </h4> }
-							value={ attributes.operator3 }
-							onChange={ operator3 => setAttributes( { operator3 } ) }
-							options={ optionsOperatorFilter }
-						/>
-						<TextControl
-							value={ attributes.pattern3 }
-							onChange={ pattern3 => setAttributes( { pattern3 } ) }
-							placeholder={ __('search for:', 'epfl') }
-						/>
-						<SelectControl
-							label={ __('Field restriction', 'epfl') }
-							value={ attributes.field3 }
-							onChange={ field3 => setAttributes( { field3 } ) }
-							options={ optionsFieldFilter }
-						/>
-					</div>
-					}
-				</PanelBody>
+        { attributes.serverEngine !== 'dspace' &&
+          <PanelBody title={ __('Or text patterns', 'epfl') }>
+            <TextControl
+              value={ attributes.pattern }
+              onChange={ pattern => setAttributes( { pattern } ) }
+              placeholder={ __('search for:', 'epfl') }
+            />
+            <SelectControl
+              label={ __('Field restriction', 'epfl') }
+              value={ attributes.field }
+              onChange={ field => setAttributes( { field } ) }
+              options={ optionsFieldFilter }
+              help={ <a target="_blank" href="https://infoscience.epfl.ch/docs/search-guide/">{ __('Search tips', 'epfl') }</a> }
+            />
+            <h2><a href="#" onClick={this.toggleBox}>{ __('Additional search keys', 'epfl') } { this.state.showAdvancedSearch ? '[-]' : '[+]' }</a></h2>
+            { !!this.state.showAdvancedSearch &&
+                  <div>
+              <SelectControl
+                label={ <h4> { __('Second search text', 'epfl') } </h4> }
+                value={ attributes.operator2 }
+                onChange={ operator2 => setAttributes( { operator2 } ) }
+                options={ optionsOperatorFilter }
+              />
+              <TextControl
+                value={ attributes.pattern2 }
+                onChange={ pattern2 => setAttributes( { pattern2 } ) }
+                placeholder={ __('search for:', 'epfl') }
+              />
+              <SelectControl
+                label={ __('Field restriction', 'epfl') }
+                value={ attributes.field2 }
+                onChange={ field2 => setAttributes( { field2 } ) }
+                options={ optionsFieldFilter }
+              />
+              <SelectControl
+                label={ <h4> { __('Third search text', 'epfl') } </h4> }
+                value={ attributes.operator3 }
+                onChange={ operator3 => setAttributes( { operator3 } ) }
+                options={ optionsOperatorFilter }
+              />
+              <TextControl
+                value={ attributes.pattern3 }
+                onChange={ pattern3 => setAttributes( { pattern3 } ) }
+                placeholder={ __('search for:', 'epfl') }
+              />
+              <SelectControl
+                label={ __('Field restriction', 'epfl') }
+                value={ attributes.field3 }
+                onChange={ field3 => setAttributes( { field3 } ) }
+                options={ optionsFieldFilter }
+              />
+            </div>
+            }
+          </PanelBody>
+        }
 				<PanelBody title={ __('Limit', 'epfl') }>
 					<TextControl
 						value={ attributes.limit }
@@ -194,8 +193,6 @@ export default class InspectorControlsInfoscience extends Component {
 					/>
 				</PanelBody>
 			</InspectorControls>
-        )
-
-        return content;
+    </>
     }
 }
