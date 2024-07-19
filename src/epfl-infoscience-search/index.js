@@ -8,7 +8,7 @@ import infoscienceIcon from './infoscience-icon'
 import InspectorControlsInfoscience from './inspector'
 import React from "react";
 
-const version = "v1.2.0";
+const version = "v1.3.1";
 
 const { __ } = wp.i18n;
 

@@ -8,7 +8,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
  * Description: provides a gutenberg block to search and dispay results from Infoscience
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
@@ -271,8 +271,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
         // define which cache for later banners if any
         $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
-        // save everytime we can the cache into the db
-        save_page_in_cache_table($md5_id, $serialized_attributes, $page);
     } else {
         // no cache for u, time to do the hard work
         // crawl, build and cache the page
@@ -331,7 +329,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 if ( !empty( $publications ) ) {
                     # cache any valid results
                     set_transient( $cache_key, $page, $long_cache_value );
-                    save_page_in_cache_table($md5_id, $serialized_attributes, $page);
                 }
             }
         }
@@ -362,7 +359,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 // Tell the api timer we're using the cache
                 do_action('epfl_stats_webservice_call_duration', $url, 0, true);
                 // save a copy of the render into long term db
-                save_page_in_cache_table($md5_id, $serialized_attributes, $page);
                 $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
             } else {
                 // take a look in db if cache is over
