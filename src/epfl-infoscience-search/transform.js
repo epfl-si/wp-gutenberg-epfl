@@ -9,22 +9,60 @@ const {
   buildQueryString,
 } = wp.url;
 
-export const transformInvenioURLToDSpaceURL = ( url ) =>  {
-  console.log('transforming url...', getQueryArgs( url ) )
 
+const parseP = (p = '') => {
+
+  // direct search with p=recid:'51128';
+  // becomes query=cris.legacyId:51128
+
+  if (p.includes('recid:')) {
+    p = p.replace('recid:', 'cris.legacyId:')
+  }
+
+  return p
+}
+
+const getSortOrderFromInvenioUrl = (sortField, sortDirection ) => {
+  let sortParameters = {}
+
+  if (sortDirection === 'a') {
+    sortParameters['spc.sd'] = 'ASC'
+  } else if (sortDirection === 'd') {
+    sortParameters['spc.sd'] = 'DESC'
+  }
+
+  if (sortField === 'year') {
+    sortParameters['spc.sf'] = 'dc.date.issued'
+  }
+
+  return sortParameters
+}
+
+export const transformInvenioURLToDSpaceURL = ( url ) =>  {
   // get and omit some paramaters
   const {
-    p,
-    c,
+    c,  // cleared
+    p,  // to query
+    sf,  // to spc.sf
+    rg,  // to spc.rpp
+    so,  // to spc.sd
+    sort, // to spc.sd
     ...queryArgs
   } = getQueryArgs( url )
 
-  const newQueryString = buildQueryString( {
-    query: p,
+  let newQuery = {
+    configuration: 'researchoutputs',
+    query: parseP(p),
+    'spc.rpp': rg ?? 10,
+    ...getSortOrderFromInvenioUrl(sf, so ?? sort),
     ...queryArgs
-  } );
+  }
 
-  console.log('transformed query...', newQueryString)
+  // clean up empty entries
+  newQuery = Object.entries(newQuery).reduce((a,[k,v]) => (v ? (a[k]=v, a) : a), {})
+
+  const newQueryString = buildQueryString( newQuery );
 
   return getProtocol(url) + '//' + getAuthority(url) + '/search?' + newQueryString
+
 }

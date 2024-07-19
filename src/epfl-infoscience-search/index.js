@@ -22,12 +22,13 @@ const {
 } = wp.blocks;
 
 const {
+  Button,
   TextareaControl,
 } = wp.components;
 
 const { decodeEntities } = wp.htmlEntities;
 
-const { Fragment } = wp.element;
+const { Fragment, useState } = wp.element;
 
 import { transformInvenioURLToDSpaceURL } from './transform'
 
@@ -52,7 +53,7 @@ registerBlockType( 'epfl/infoscience-search', {
 			attributes: { serverEngine: 'dspace' },
 			isActive: (blockAttributes, variationAttributes) =>
 				blockAttributes.serverEngine === 'dspace',
-			scope: ['block', 'inserter', 'transform'],
+			scope: ['block', 'inserter'],
 		},
 	],
 	attributes: getTooltippedAttributes({
@@ -130,9 +131,11 @@ registerBlockType( 'epfl/infoscience-search', {
 	supports : {
 		customClassName: false, // Removes the default field in the inspector that allows you to assign a custom class
 	},
-	edit: (props) => {
+	edit: ({ attributes, className, setAttributes }) => {
 
-		const { attributes, className, setAttributes } = props
+    const [ proposedMigrationUrl, setProposedMigrationUrl ] = useState( attributes.url ?
+      transformInvenioURLToDSpaceURL( decodeEntities(attributes.url) ) :
+      '' );
 
 		if (attributes.asToolTip) {
 			// render the tooltip
@@ -143,10 +146,6 @@ registerBlockType( 'epfl/infoscience-search', {
 			)
 		}
 
-    const proposedMigrationUrl = attributes.url ?
-      transformInvenioURLToDSpaceURL( decodeEntities(attributes.url) ) :
-      ''
-
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -154,40 +153,59 @@ registerBlockType( 'epfl/infoscience-search', {
 				</InspectorControls>
 				<div className={ className }>
 					<InspectorControlsInfoscience { ...{ attributes, setAttributes } } />
-					{ attributes.serverEngine && attributes.serverEngine === 'dspace' ?
+					{ attributes.serverEngine === 'dspace' ?
 						<div id="preview-box">
 							<h2 className="epfl-block-title">{ __('EPFL Infoscience', 'epfl') }</h2>
 							<div className="helper">{ __('Please fill the fields in the right-hand column', 'epfl') }</div>
 						</div> :
 						<div id="preview-box">
 							<h2 className="epfl-block-title" style={ { 'backgroundColor': '#B51F1F' }}>{ __('EPFL Infoscience', 'epfl') } (Obsolete)</h2>
-							<div className="helper" style={ { 'textAlign': 'left' } }>
-								<div style={ {
-									'marginBottom': '12px',
-									'textAlign': 'center'
-								} }>{ __('This block is obsolete. As a result, it will provide a static list of publication.', 'epfl') }</div>
-								<div>
-									<div style={ { 'marginBottom': '12px', 'marginLeft': '24px' } }>
-										{ __('Please follow this steps to migrate into a dynamic list on the new Infoscience:', 'epfl') }
-									</div>
-									<div style={ { 'marginLeft': '48px' } }>
-                    <ol>
+              <div className="helper" style={ { 'textAlign': 'left' } }>
+                <div style={ {
+                  'marginBottom': '12px',
+                  'textAlign': 'center'
+                } }>{ __('The new Infoscience site has been deployed. This block is now obsolete.', 'epfl') }
+                </div>
+                <div style={ {
+                  'marginBottom': '12px',
+                  'textAlign': 'center'
+                } }>{ __('As a result, this block provide only a static list of the last known publications from the old system.', 'epfl') }
+                </div>
+                <div>
+                  <div style={ { 'marginBottom': '12px', 'marginLeft': '24px' } }>
+                    { __('I you want to migrate into a dynamic list, please follow this steps:', 'epfl') }
+                  </div>
+                  <div style={ { 'marginLeft': '48px', 'marginRight': '48px' } }>
+                    <ul>
                       <li>
-                        <span>{ __('The first task it to build your correct url. Based on your current URL, the system may propose this one:', 'epfl') }</span>
-                        <div><a href={ proposedMigrationUrl } target={ '_blank' }>{ proposedMigrationUrl }</a></div>
+                        <span>{ __('Build your new url by going to ', 'epfl') }<a
+                          href="https://infoscience.epfl.ch" target="_blank">Infoscience</a>
+                        </span>
+                        <span>
+                          { __(' and paste the new url below.', 'epfl') }
+                        </span>
+                        { proposedMigrationUrl &&
+                          <span>
+                            { __(' Or, based on your old URL, use the proposed one below:', 'epfl') }
+                          </span>
+                        }
+                        <div>
+                          <TextareaControl
+                            value={ proposedMigrationUrl }
+                            onChange={ textValue => setProposedMigrationUrl(textValue) }
+                          ></TextareaControl>
+                        </div>
                       </li>
-                      <li>
-                        <span>{ __('Open the proposed URL and check that the result is corresponding to your likings or create a new URL on infoscience.epfl.ch', 'epfl') }</span>
-                        <TextareaControl
-                          value={ proposedMigrationUrl }
-                          readonly
-                          style={ { backgroundColor:'#EBEBE4' } }
-                          //onChange={ url => setAttributes( { url } ) }
-                        ></TextareaControl>
-                      </li>
-                      <li>{ __('While this block is selected, on the right side menu, select the \'Block\' tab.', 'epfl') }</li>
-                      <li>{ __('Then, click on the dropdown \'Transform to variation\' and select \'EPFL Infoscience\'', 'epfl') }</li>
-                    </ol>
+                      <span className={'mt-1'}>
+                        <Button
+                          variant="primary"
+                          onClick={
+                            event => setAttributes({ url: proposedMigrationUrl, serverEngine: 'dspace' })
+                          }
+                        >Migrate to a dynamic list
+                        </Button>
+                      </span>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -196,8 +214,8 @@ registerBlockType( 'epfl/infoscience-search', {
         </div>
       </Fragment>
     )
-	},
-	save: props => {
-		return null
-	},
+  },
+  save: props => {
+    return null
+  },
 });
