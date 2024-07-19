@@ -164,48 +164,47 @@ registerBlockType( 'epfl/infoscience-search', {
                 <div style={ {
                   'marginBottom': '12px',
                   'textAlign': 'center'
-                } }>{ __('The new Infoscience site has been deployed. This block is now obsolete.', 'epfl') }
+                } }>{ __('The new Infoscience site has been deployed. This block version is now obsolete.', 'epfl') }
                 </div>
                 <div style={ {
                   'marginBottom': '12px',
                   'textAlign': 'center'
-                } }>{ __('As a result, this block provide only a static list of the last known publications from the old system.', 'epfl') }
+                } }>{ __('As a result, the block is now providing only a static list of the last known publications from the old Infoscience.', 'epfl') }
                 </div>
                 <div>
                   <div style={ { 'marginBottom': '12px', 'marginLeft': '24px' } }>
-                    { __('I you want to migrate into a dynamic list, please follow this steps:', 'epfl') }
+                    <div>
+                      { __('If you want to migrate into a dynamic list, you have to fill a new Url in the text area below.', 'epfl') }
+                    </div>
+                    <div>
+                      { proposedMigrationUrl ?
+                      <span>
+                        You can build your new Url by going to <a
+                          href="https://infoscience.epfl.ch" target="_blank">Infoscience</a> or use the prefilled one based on your old Url.
+                      </span> :
+                      <span>
+                        You can build your new Url by going to <a
+                          href="https://infoscience.epfl.ch" target="_blank">Infoscience</a>
+                      </span>
+                      }
+                    </div>
                   </div>
                   <div style={ { 'marginLeft': '48px', 'marginRight': '48px' } }>
-                    <ul>
-                      <li>
-                        <span>{ __('Build your new url by going to ', 'epfl') }<a
-                          href="https://infoscience.epfl.ch" target="_blank">Infoscience</a>
-                        </span>
-                        <span>
-                          { __(' and paste the new url below.', 'epfl') }
-                        </span>
-                        { proposedMigrationUrl &&
-                          <span>
-                            { __(' Or, based on your old URL, use the proposed one below:', 'epfl') }
-                          </span>
+                    <div style={ { 'marginTop': '8px' } }>
+                      <TextareaControl
+                        value={ proposedMigrationUrl }
+                        onChange={ textValue => setProposedMigrationUrl(textValue) }
+                      ></TextareaControl>
+                    </div>
+                    <span className={ 'mt-1' }>
+                      <Button
+                        variant="primary"
+                        onClick={
+                          event => setAttributes({ url: proposedMigrationUrl, serverEngine: 'dspace' })
                         }
-                        <div>
-                          <TextareaControl
-                            value={ proposedMigrationUrl }
-                            onChange={ textValue => setProposedMigrationUrl(textValue) }
-                          ></TextareaControl>
-                        </div>
-                      </li>
-                      <span className={'mt-1'}>
-                        <Button
-                          variant="primary"
-                          onClick={
-                            event => setAttributes({ url: proposedMigrationUrl, serverEngine: 'dspace' })
-                          }
-                        >Migrate to a dynamic list
-                        </Button>
-                      </span>
-                    </ul>
+                      >Migrate to a dynamic list
+                      </Button>
+                    </span>
                   </div>
                 </div>
               </div>
