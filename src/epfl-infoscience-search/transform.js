@@ -11,12 +11,14 @@ const {
 
 
 const parseP = (p = '') => {
+  if (p && (typeof p === 'string' || p instanceof String) ) {
+    if (p.includes('recid:')) {
+      p = p.replace('recid:', 'cris.legacyId:')
+    }
 
-  // direct search with p=recid:'51128';
-  // becomes query=cris.legacyId:51128
-
-  if (p.includes('recid:')) {
-    p = p.replace('recid:', 'cris.legacyId:')
+    if (p.includes('unit:')) {
+      p = p.replace('unit:', 'dc.description.sponsorship:')
+    }
   }
 
   return p
