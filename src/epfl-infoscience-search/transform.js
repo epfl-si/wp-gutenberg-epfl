@@ -55,7 +55,7 @@ export const transformInvenioURLToDSpaceURL = ( url ) =>  {
   let newQuery = {
     configuration: 'researchoutputs',
     query: parseP(p),
-    'spc.rpp': rg ?? 10,
+    'spc.rpp': rg,
     ...getSortOrderFromInvenioUrl(sf, so ?? sort),
     ...queryArgs
   }
