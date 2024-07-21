@@ -109,27 +109,3 @@ function find_server_engine_by_url_parameters($query) {
 
     return '';
 }
-
-/**
- * Identify the server type with the response
- *
- * @param $response string the return of a wp_remote_get call
- *
- * @return string | null  If it is identifiable, it returns 'invenio' or 'dspace'. Otherwise null
- *
- */
-function find_server_engine_by_headers($response) {
-
-    if ( !empty($response) ) {
-        $header_server = wp_remote_retrieve_header($response, 'Server');
-        $header_content_disposition = wp_remote_retrieve_header($response, 'content-disposition');
-
-        if ( isset( $header_server) && $header_server == 'Apache' ) {
-            return 'invenio';
-        } elseif ( isset( $header_content_disposition) && $header_content_disposition == 'inline;filename="publications.xml"' ) {
-            return 'dspace';
-        }
-    }
-
-    return null;
-}
