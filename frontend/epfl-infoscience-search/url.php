@@ -40,29 +40,25 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
         # set the given url to the good format
         $query['of'] = 'xm';
 
-        # when it is a basket, dont touch the args, only the of one :
-        if (!array_key_exists('bskid', $query) || empty($query['bskid'])) {
+        # set default if not already set :
+        if (!array_key_exists('spc.rpp', $query) || empty($query['spc.rpp'])) {
+            $query['spc.rpp'] = '100';
+        }
 
-            # set default if not already set :
-            if (!array_key_exists('rg', $query) || empty($query['rg'])) {
-                $query['rg'] = '100';
-            }
+        #empty or not, the limit attribute has the last word
+        if (!empty($atts['limit'])) {
+            $query['spc.rpp'] = $atts['limit'];
+        }
 
-            #empty or not, the limit attribute has the last word
-            if (!empty($atts['limit'])) {
-                $query['rg'] = $atts['limit'];
-            }
+        if (!array_key_exists('spc.sf', $query) || empty($query['spc.sf'])) {
+            $query['spc.sf'] = 'dc.date.issued';
+        }
 
-            if (!array_key_exists('sf', $query) || empty($query['sf'])) {
-                $query['sf'] = 'year';
-            }
-
-            if (!array_key_exists('so', $query) || empty($query['so'])) {
-                if (array_key_exists('sort', $atts) && $atts['sort'] === 'asc') {
-                    $query['so'] = 'a';
-                } else {
-                    $query['so'] = 'd';
-                }
+        if (!array_key_exists('spc.sd', $query) || empty($query['spc.sd'])) {
+            if (array_key_exists('sort', $atts) && $atts['sort'] === 'asc') {
+                $query['spc.sd'] = 'ASC';
+            } else {
+                $query['spc.sd'] = 'DESC';
             }
         }
 
