@@ -46,8 +46,8 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
         }
 
         #empty or not, the limit attribute has the last word
-        if (!empty($atts['limit'])) {
-            $query['spc.rpp'] = $atts['limit'];
+        if (!empty($attributes['limit'])) {
+            $query['spc.rpp'] = $attributes['limit'];
         }
 
         if (!array_key_exists('spc.sf', $query) || empty($query['spc.sf'])) {
@@ -55,7 +55,7 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
         }
 
         if (!array_key_exists('spc.sd', $query) || empty($query['spc.sd'])) {
-            if (array_key_exists('sort', $atts) && $atts['sort'] === 'asc') {
+            if (array_key_exists('sort', $attributes) && $attributes['sort'] === 'asc') {
                 $query['spc.sd'] = 'ASC';
             } else {
                 $query['spc.sd'] = 'DESC';
