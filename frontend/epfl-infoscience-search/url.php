@@ -142,6 +142,7 @@ function epfl_infoscience_search_generate_url_from_attrs($attrs) {
 
 /**
  * From any attributes, set them as url parameters for Infoscience
+ * It may not used anymore as this feature is no more in Dspace
  *
  * @param array $attrs attributes that need to be sent to Infoscience
  *
