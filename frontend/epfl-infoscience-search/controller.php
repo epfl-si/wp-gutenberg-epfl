@@ -103,6 +103,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     $before_unset_attributes = $attributes;
 
     $server_engine_name = $attributes['serverengine'];
+    unset($attributes['serverengine']);
 
     $format = $attributes['format'];
     unset($attributes['format']);
@@ -129,6 +130,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     unset($attributes['debugtemplate']);
 
     $deactivate_cache = $attributes['deactivatecache'];
+    unset($attributes['deactivatecache']);
 
     # as the cache is identified with the url too, separate the getter
     if (empty($server_engine_name) || $server_engine_name == 'invenio') {
