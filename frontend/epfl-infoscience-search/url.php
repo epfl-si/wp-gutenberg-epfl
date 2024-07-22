@@ -119,6 +119,9 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
         # set the given url to the good format
         $query['of'] = 'xm';
 
+        # mandatory params
+        $query['spc.page'] = '1';
+
         # set default if not already set :
         if (!array_key_exists('spc.rpp', $query) || empty($query['spc.rpp'])) {
             $query['spc.rpp'] = '100';
