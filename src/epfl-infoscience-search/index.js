@@ -9,7 +9,7 @@ import InspectorControlsDspace from './inspectorDspace'
 import InspectorControlsInvenio from './inspectorInvenio'
 import React from "react";
 
-const version = "v2.0.1";
+const version = "v2.0.2";
 
 
 const { __ } = wp.i18n;
