@@ -11,6 +11,7 @@ import React from "react";
 
 const version = "v2.0.0";
 
+
 const { __ } = wp.i18n;
 
 const {

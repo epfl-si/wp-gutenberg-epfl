@@ -55,6 +55,8 @@ function assert_or_create_cache_table(): void {
 }
 
 /**
+ * This function is no more in use because the Infoscience V2 (invenio) has been set to readonly and all the cache
+ * should have been manually fulfilled
  * @param $md5_id                string md5 generated from serialized
  * @param $serialized_attributes string Serialized data that has been used to generate the $page
  * @param $page                  string The rendered html. This gonna be saved as BLOB
