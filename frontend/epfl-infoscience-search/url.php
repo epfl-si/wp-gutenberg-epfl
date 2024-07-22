@@ -124,7 +124,7 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
 
         # set default if not already set :
         if (!array_key_exists('spc.rpp', $query) || empty($query['spc.rpp'])) {
-            $query['spc.rpp'] = '100';
+            $query['spc.rpp'] = '20';
         }
 
         #empty or not, the limit attribute has the last word

@@ -72,7 +72,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         # or Content 2
         'pattern' => '',
         'fieldrestriction' => 'any',  # "any", "author", "title", "year", "unit", "collection", "journal", "summary", "keyword", "issn", "doi"
-        'limit' => 100,
+        'limit' => 20,
         'sort' => 'desc',  # "asc", "desc"
         # Presentation
         'format' => 'short',  # "short", "detailed"
