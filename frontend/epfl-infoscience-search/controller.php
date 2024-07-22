@@ -243,12 +243,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         // crawl, build and cache the page
         try {
             $start = microtime( true );
-            $response = wp_remote_get( str_replace('https', 'http', $url), [
-                    'timeout' => 30,
-                    'headers' => [
-                        //'Host' => 'infoscience.epfl.ch',
-                        'access'=> 'xah-B31y?9HY/28xW6tr'
-                    ]
+            $response = wp_remote_get( $url, [
+                    'timeout' => 30
                 ]
             );
             $end = microtime( true );
