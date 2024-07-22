@@ -130,7 +130,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     $deactivate_cache = $attributes['deactivatecache'];
 
-    $url = generate_url_from_attributes($attributes, $unmanaged_attributes);
+    # as the cache is identified with the url too, separate the getter
+    if (empty($server_engine_name) || $server_engine_name == 'invenio') {
+        $url = old_generate_url_from_attributes( $attributes, $unmanaged_attributes );
+    } else {
+        $url = generate_url_from_attributes( $attributes, $unmanaged_attributes );
+    }
 
     /*
      * Cache features part
@@ -165,7 +170,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
      * Old block - try to fetch what is in the db
      */
     // ok, as we have two variants of the block coming here, we may need to crawl different data
-    if ($server_engine_name === 'invenio') {  // meaning we have the old block
+    if (empty($server_engine_name) || $server_engine_name == 'invenio') {  // meaning we have the old block
         $page = get_page_from_cache_table( $md5_id );  // use whatever is in the long terme cache db
         // Tell the api timer we're using the cache
         do_action( 'epfl_stats_webservice_call_duration', $url, 0, true );
@@ -238,8 +243,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         // crawl, build and cache the page
         try {
             $start = microtime( true );
-            $response = wp_remote_get( $url, [
-                    'timeout' => 30
+            $response = wp_remote_get( str_replace('https', 'http', $url), [
+                    'timeout' => 30,
+                    'headers' => [
+                        //'Host' => 'infoscience.epfl.ch',
+                        'access'=> 'xah-B31y?9HY/28xW6tr'
+                    ]
                 ]
             );
             $end = microtime( true );

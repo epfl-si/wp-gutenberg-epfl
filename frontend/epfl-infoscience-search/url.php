@@ -2,11 +2,88 @@
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
+
+/**
+ * This is the old way to get an url. Kept to be able build the md5
+ * so we can crawl the cache again
+*/
+function old_generate_url_from_attributes($attributes, $unmanaged_attributes) {
+    # Url priority :
+    # 1. direct url -> $attributes['url']
+    # 2. url attribute ->
+    # 3. with all the attributes, we built a custom one
+    $url = htmlspecialchars_decode( $attributes['url'] );
+
+    if ( $url ) {
+        $url = trim( $url );
+        # assert it is an infoscience one :
+        if ( preg_match( '#^https?://infoscience.epfl.ch/#i', $url ) !== 1 ) {
+            return Utils::render_user_msg( "Infoscience search shortcode: Please check the url" );
+        }
+
+        $recid_matches = [];
+        preg_match( '#^https?://infoscience.epfl.ch/record/(\d+)/?#i', $url, $recid_matches );
+
+        if ( count( $recid_matches ) >= 2 ) {
+            # this is direct record url
+            # transform it to a recid search
+            $recid = $recid_matches[1];
+            $url   = "https://infoscience.epfl.ch/search?p=recid:'" . $recid . "'";
+        }
+
+        $parts = parse_url( $url );
+        $query = proper_parse_str( $parts['query'] );
+
+        #
+        # override values
+
+        # set the given url to the good format
+        $query['of'] = 'xm';
+
+        # when it is a basket, dont touch the args, only the of one :
+        if ( ! array_key_exists( 'bskid', $query ) || empty( $query['bskid'] ) ) {
+
+            # set default if not already set :
+            if ( ! array_key_exists( 'rg', $query ) || empty( $query['rg'] ) ) {
+                $query['rg'] = '100';
+            }
+
+            #empty or not, the limit attribute has the last word
+            if ( ! empty( $atts['limit'] ) ) {
+                $query['rg'] = $atts['limit'];
+            }
+
+            if ( ! array_key_exists( 'sf', $query ) || empty( $query['sf'] ) ) {
+                $query['sf'] = 'year';
+            }
+
+            if ( ! array_key_exists( 'so', $query ) || empty( $query['so'] ) ) {
+                if ( array_key_exists( 'sort', $atts ) && $atts['sort'] === 'asc' ) {
+                    $query['so'] = 'a';
+                } else {
+                    $query['so'] = 'd';
+                }
+            }
+        }
+
+        # We may use http_build_query($query, null, '&amp;'); when provided urls are overencoded
+        # looks fine at the moment
+        $query = http_build_query( $query, null );
+
+        # from foo[1]=bar1&foo[2]=bar2 to foo[]=bar&foo[]=bar2
+        $url = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $query );
+
+        $url = INFOSCIENCE_SEARCH_URL . urldecode( $url );
+    } else {
+        # no direct url were provided, build the custom one ourself
+        $url = epfl_infoscience_search_generate_url_from_attrs( $attributes + $unmanaged_attributes );
+    }
+}
+
 /**
  * Receive and parse the attributes to generate an url.
  * if $attributes['url'] is set, use it, or build a custom one with the other attributes
  */
-
 function generate_url_from_attributes($attributes, $unmanaged_attributes) {
     $url = htmlspecialchars_decode($attributes['url']);
 
