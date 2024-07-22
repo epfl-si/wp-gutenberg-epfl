@@ -78,6 +78,8 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes) {
         # no direct url were provided, build the custom one ourself
         $url = epfl_infoscience_search_generate_url_from_attrs( $attributes + $unmanaged_attributes );
     }
+
+    return $url;
 }
 
 /**
