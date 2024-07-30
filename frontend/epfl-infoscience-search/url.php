@@ -100,14 +100,33 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
             return render_user_msg("Infoscience search shortcode: Please check the url");
         }
 
-        $recid_matches = [];
-        preg_match('#^https?://infoscience.epfl.ch/record/(\d+)/?#i', $url, $recid_matches);
+        # use regex's to find which url we may have to transform
+        $recid_matches = [];  # direct record
+        $unit_url_matches = [];  # direct unit url
+        $person_url_matches = [];  # direct person url
 
+        preg_match('#^https?://infoscience.epfl.ch/record/(\d+)/?#i', $url, $recid_matches);
         if (count($recid_matches) >= 2) {
             # this is direct record url
             # transform it to a recid search
             $recid = $recid_matches[1];
             $url = "https://infoscience.epfl.ch/search?p=recid:'" . $recid . "'";
+        } else {
+            preg_match('/\/entities\/orgunit\/([^\/]+)$/', $url, $unit_url_matches);
+
+            if (count($unit_url_matches) >= 2) {
+                $unit_uuid = $unit_url_matches[1];
+
+                $url = 'https://infoscience.epfl.ch/server/api/discover/export?spc.page=1&configuration=RELATION.OrgUnit.publications&scope='. $unit_uuid;
+            } else {
+                preg_match('/\/entities\/person\/([^\/]+)$/', $url, $person_url_matches);
+
+                if (count($person_url_matches) >= 2) {
+                    $person_uuid = $person_url_matches[1];
+
+                    $url = 'https://infoscience.epfl.ch/server/api/discover/export?spc.page=1&configuration=RELATION.Person.researchoutputs&scope='. $person_uuid;
+                }
+            }
         }
 
         $parts = parse_url($url);
@@ -127,7 +146,7 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
             $query['spc.rpp'] = '20';
         }
 
-        #empty or not, the limit attribute has the last word
+        # empty or not, the limit attribute has the last word
         if (!empty($attributes['limit'])) {
             $query['spc.rpp'] = $attributes['limit'];
         }
