@@ -49,8 +49,8 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes) {
             }
 
             #empty or not, the limit attribute has the last word
-            if ( ! empty( $atts['limit'] ) ) {
-                $query['rg'] = $atts['limit'];
+            if ( ! empty( $attributes['limit'] ) ) {
+                $query['rg'] = $attributes['limit'];
             }
 
             if ( ! array_key_exists( 'sf', $query ) || empty( $query['sf'] ) ) {
@@ -58,7 +58,7 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes) {
             }
 
             if ( ! array_key_exists( 'so', $query ) || empty( $query['so'] ) ) {
-                if ( array_key_exists( 'sort', $atts ) && $atts['sort'] === 'asc' ) {
+                if ( array_key_exists( 'sort', $attributes ) && $attributes['sort'] === 'asc' ) {
                     $query['so'] = 'a';
                 } else {
                     $query['so'] = 'd';
