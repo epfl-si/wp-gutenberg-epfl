@@ -6,7 +6,7 @@ namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
  * Description: provides a gutenberg block to search and display results from Infoscience
- * Version: 2.0.2
+ * Version: 2.1.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
