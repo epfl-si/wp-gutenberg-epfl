@@ -85,11 +85,6 @@ export default class InspectorControlsDspace extends Component {
             checked={ attributes.summary }
             onChange={ summary => setAttributes( { summary } ) }
           />
-          <ToggleControl
-            label={ __('Thumbnails', 'epfl') }
-                        checked={ attributes.thumbnail }
-            onChange={ thumbnail => setAttributes( { thumbnail } ) }
-          />
         </PanelBody>
       </InspectorControls>
     </>
