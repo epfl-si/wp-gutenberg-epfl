@@ -7,7 +7,7 @@ namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
  * This is the old way to get an url. Kept to be able build the md5
  * so we can crawl the cache again
 */
-function old_generate_url_from_attributes($attributes, $unmanaged_attributes) {
+function old_generate_url_from_attributes($attributes, $unmanaged_attributes, $original_attributes) {
     # Url priority :
     # 1. direct url -> $attributes['url']
     # 2. url attribute ->
@@ -48,9 +48,9 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes) {
                 $query['rg'] = '100';
             }
 
-            #empty or not, the limit attribute has the last word
-            if ( ! empty( $attributes['limit'] ) ) {
-                $query['rg'] = $attributes['limit'];
+            # using original attributes here because of a bug on md5 creation
+            if ( ! empty( $original_attributes['limit'] ) ) {
+                $query['rg'] = $original_attributes['limit'];
             }
 
             if ( ! array_key_exists( 'sf', $query ) || empty( $query['sf'] ) ) {

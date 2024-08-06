@@ -72,7 +72,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         # or Content 2
         'pattern' => '',
         'fieldrestriction' => 'any',  # "any", "author", "title", "year", "unit", "collection", "journal", "summary", "keyword", "issn", "doi"
-        'limit' => 20,
+        'limit' => 100,
         'sort' => 'desc',  # "asc", "desc"
         # Presentation
         'format' => 'short',  # "short", "detailed"
@@ -134,7 +134,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
     # as the cache is identified with the url too, separate the getter
     if (empty($server_engine_name) || $server_engine_name == 'invenio') {
-        $url = old_generate_url_from_attributes( $attributes, $unmanaged_attributes );
+        $url = old_generate_url_from_attributes( $attributes, $unmanaged_attributes, $atts );
     } else {
         $url = generate_url_from_attributes( $attributes, $unmanaged_attributes );
     }
