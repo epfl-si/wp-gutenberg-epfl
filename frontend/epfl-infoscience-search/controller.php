@@ -65,6 +65,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         }
     }
 
+    $has_provided_a_limit_from_ui = array_key_exists('limit', $atts);
+
     $infoscience_search_managed_attributes = array(
         'serverengine' => 'invenio',
         # Content 1
@@ -136,7 +138,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     if (empty($server_engine_name) || $server_engine_name == 'invenio') {
         $url = old_generate_url_from_attributes( $attributes, $unmanaged_attributes, $atts );
     } else {
-        $url = generate_url_from_attributes( $attributes, $unmanaged_attributes );
+        $url = generate_url_from_attributes( $attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui );
     }
 
     /*

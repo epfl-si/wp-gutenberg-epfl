@@ -86,7 +86,7 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes, $o
  * Receive and parse the attributes to generate an url.
  * if $attributes['url'] is set, use it, or build a custom one with the other attributes
  */
-function generate_url_from_attributes($attributes, $unmanaged_attributes) {
+function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui) {
     $url = htmlspecialchars_decode($attributes['url']);
 
     if ($url) {  // we got a direct url
@@ -147,7 +147,7 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes) {
         }
 
         # empty or not, the limit attribute has the last word
-        if (!empty($attributes['limit'])) {
+        if ($has_provided_a_limit_from_ui && !empty($attributes['limit'])) {
             $query['spc.rpp'] = $attributes['limit'];
         }
 
