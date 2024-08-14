@@ -85,6 +85,7 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes, $o
 /**
  * Receive and parse the attributes to generate an url.
  * if $attributes['url'] is set, use it, or build a custom one with the other attributes
+ * @throws \Exception
  */
 function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui) {
     $url = htmlspecialchars_decode($attributes['url']);
@@ -128,9 +129,18 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_p
                 }
             }
         }
+        # keep a track if we have an url with an entity
+        $is_a_search_url = count($recid_matches) + count($unit_url_matches) + count($person_url_matches) == 0;
 
         $parts = parse_url($url);
         $query = proper_parse_str($parts['query']);
+
+        # check if we have at least a query, nobody want the full db, certainly not the server
+        if ($is_a_search_url &&
+            (!array_key_exists('query', $query) || empty( $query['query'] ))
+        ) {
+            throw new \Exception("the URL provided has not the 'query' parameters");
+        }
 
         #
         # override parameters
