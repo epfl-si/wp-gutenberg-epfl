@@ -2,6 +2,8 @@
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
+use EPFL\Plugins\Gutenberg\Lib\Utils;
+
 
 /**
  * This is the old way to get an url. Kept to be able build the md5
