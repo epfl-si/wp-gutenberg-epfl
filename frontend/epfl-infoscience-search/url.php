@@ -151,6 +151,11 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_p
             $query['spc.rpp'] = $attributes['limit'];
         }
 
+        # set the hard-limit, so we don't overload the server
+        if (array_key_exists('spc.rpp', $query) && intval($query['spc.rpp']) > 500  ) {
+            $query['spc.rpp'] = 500;
+        }
+
         if (!array_key_exists('spc.sf', $query) || empty($query['spc.sf'])) {
             $query['spc.sf'] = 'dc.date.issued';
         }
