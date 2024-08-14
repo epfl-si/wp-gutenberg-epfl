@@ -2,6 +2,8 @@
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
+use EPFL\Plugins\Gutenberg\Lib\Utils;
+
 
 /**
  * This is the old way to get an url. Kept to be able build the md5
@@ -85,6 +87,7 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes, $o
 /**
  * Receive and parse the attributes to generate an url.
  * if $attributes['url'] is set, use it, or build a custom one with the other attributes
+ * @throws \Exception
  */
 function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui) {
     $url = htmlspecialchars_decode($attributes['url']);
@@ -128,9 +131,18 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_p
                 }
             }
         }
+        # keep a track if we have an url with an entity
+        $is_a_search_url = count($recid_matches) + count($unit_url_matches) + count($person_url_matches) == 0;
 
         $parts = parse_url($url);
         $query = proper_parse_str($parts['query']);
+
+        # check if we have at least a query, nobody want the full db, certainly not the server
+        if ($is_a_search_url &&
+            (!array_key_exists('query', $query) || empty( $query['query'] ))
+        ) {
+            throw new \Exception("the URL provided has not the 'query' parameters");
+        }
 
         #
         # override parameters
@@ -149,6 +161,11 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_p
         # empty or not, the limit attribute has the last word
         if ($has_provided_a_limit_from_ui && !empty($attributes['limit'])) {
             $query['spc.rpp'] = $attributes['limit'];
+        }
+
+        # set the hard-limit, so we don't overload the server
+        if (array_key_exists('spc.rpp', $query) && intval($query['spc.rpp']) > 500  ) {
+            $query['spc.rpp'] = 500;
         }
 
         if (!array_key_exists('spc.sf', $query) || empty($query['spc.sf'])) {

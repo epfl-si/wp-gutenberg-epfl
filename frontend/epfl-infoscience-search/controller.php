@@ -138,7 +138,12 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     if (empty($server_engine_name) || $server_engine_name == 'invenio') {
         $url = old_generate_url_from_attributes( $attributes, $unmanaged_attributes, $atts );
     } else {
-        $url = generate_url_from_attributes( $attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui );
+        try {
+            $url = generate_url_from_attributes( $attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui );
+        } catch ( \Exception $e ) {
+            $banner_msgs[] = 'Error: ' . $e->getMessage();
+            return get_banners(false, $banner_msgs, $current_language);
+        }
     }
 
     /*
@@ -162,8 +167,8 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     $md5_id = md5($serialized_attributes);
     $cache_key = 'epfl_infoscience_search_' . $md5_id;
 
-    $long_cache_value = 1 * DAY_IN_SECONDS; // was 1 * WEEK_IN_SECONDS;
-    $short_cache_value = 4 * HOUR_IN_SECONDS;
+    $long_cache_value = 1 * DAY_IN_SECONDS;
+    $short_cache_value = 12 * HOUR_IN_SECONDS;
     // there is the third cache, the db_cache that is unlimited in time
     // see ./long_term_cache.php for details
 

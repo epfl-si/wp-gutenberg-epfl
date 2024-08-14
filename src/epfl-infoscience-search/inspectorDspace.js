@@ -56,7 +56,7 @@ export default class InspectorControlsDspace extends Component {
               setAttributes( { limit } );
               }}
             placeholder={ '20' }
-            help={ __('Without a limit only the first 20 publications are shown', 'epfl') }
+            help={ __('Without a limit only the first 20 publications are shown. Max 500.', 'epfl') }
           />
         </PanelBody>
         <PanelBody title={ __('Sort', 'epfl') }>

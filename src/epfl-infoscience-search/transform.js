@@ -52,9 +52,14 @@ export const transformInvenioURLToDSpaceURL = ( url ) =>  {
     ...queryArgs
   } = getQueryArgs( url )
 
+  let newP = parseP(p);
+
+  // Can't get a p ? Stop here, we won't propose an empty query url that fetches all the db
+  if (newP == '') return ''
+
   let newQuery = {
     configuration: 'researchoutputs',
-    query: parseP(p),
+    query: newP,
     'spc.rpp': rg,
     ...getSortOrderFromInvenioUrl(sf, so ?? sort),
     ...queryArgs
