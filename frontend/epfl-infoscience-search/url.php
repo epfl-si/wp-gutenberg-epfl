@@ -6,8 +6,8 @@ use EPFL\Plugins\Gutenberg\Lib\Utils;
 
 
 /**
- * This is the old way to get an url. Kept to be able build the md5
- * so we can crawl the cache again
+ * This is the old way to get an url. Kept it as it is, to be able build the md5
+ * so we can crawl the eternal cache again
 */
 function old_generate_url_from_attributes($attributes, $unmanaged_attributes, $original_attributes) {
     # Url priority :
