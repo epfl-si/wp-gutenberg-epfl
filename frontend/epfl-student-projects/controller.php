@@ -6,7 +6,6 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 require_once (dirname(__FILE__) . '/../lib/utils.php');
 
-Utils::loadEnv();
 
 function get_link($url)
 {
@@ -213,8 +212,11 @@ function epfl_student_projects_block($attributes, $inner_content)
 function handle_zen($attributes)
 {
   $section = Utils::get_sanitized_attribute($attributes, 'section');
-  $url = $_ENV["API_URL_PROJECTS"] . $section;
+  $url = "https://test-sti-zen.epfl.ch/api/public/projects/unit/" . $section;
   $items = Utils::zen_api_request($url);
+
+  var_dump("blajefeljflsjfkesfesjflkekefjslksejflksef");
+  var_dump($items);
 
   if ($items === NULL) {
     return Utils::render_user_msg("Error getting project list from ZEN or project list is empty");
