@@ -4,41 +4,6 @@ namespace EPFL\Plugins\Gutenberg\Lib;
 
 Class Utils
 {
-    protected static $env;
-
-    public static function loadEnv() {
-        if (is_null(self::$env)) {
-            self::$env = self::parseEnv(__DIR__ . "/../../.env");
-        }
-    }
-    private static function parseEnv($filePath) {
-        if (!file_exists($filePath)) {
-            throw new \Exception("Environment file not found: " . $filePath);
-        }
-
-        $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $env = [];
-
-        foreach ($lines as $line) {
-            if (strpos(trim($line), '#') === 0) {
-                continue;
-            }
-
-            list($key, $value) = explode('=', $line, 2);
-            $key = trim($key);
-            $value = trim($value);
-
-            if (!empty($key)) {
-                $env[$key] = $value;
-            }
-        }
-
-        foreach ($env as $key => $value) {
-            $_ENV[$key] = $value;
-        }
-
-        return $env;
-    }
 
     public static function debug($var) {
         print "<pre>";
@@ -222,14 +187,11 @@ Class Utils
      * @return mixed The response body, or false on failure.
      */
     public static function zen_api_request($url) {
-        self::loadEnv();
 
-        $jwt = $_ENV['JWT_TOKEN'];
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-            'Authorization: Bearer ' . $jwt,
             'Content-Type: application/json'
         ));
         curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
@@ -245,8 +207,11 @@ Class Utils
             curl_close($curl);
             return false;
         }
+
         curl_close($curl);
-        return json_decode($response, true);  // Return decoded JSON response
+        $data = json_decode($response, true); 
+
+        return $data;
     }
 
     /**
