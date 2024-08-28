@@ -12,7 +12,6 @@ window.onload = function() {  // wait that jQuery is loaded
                 'professor1-name',
                 'project-type',
                 'project-description',
-                'project-date'
             ]
         };
         const studentProjectsList = new List('student-projects-list', options);

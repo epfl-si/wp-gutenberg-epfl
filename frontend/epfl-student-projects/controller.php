@@ -34,7 +34,7 @@ function handle_isa($attributes)
   if ($section == '')
     return '';
 
-  $target_host = 'isa.epfl.ch';
+    $target_host = 'isa.epfl.ch';
   //$target_host = 'ditex-web.epfl.ch';
 
   $url = "https://" . $target_host . "/services/v1/projects/" . $section;
@@ -193,8 +193,6 @@ function handle_isa($attributes)
   return $content;
 }
 
-
-
 function epfl_student_projects_block($attributes, $inner_content)
 {
 
@@ -204,110 +202,154 @@ function epfl_student_projects_block($attributes, $inner_content)
     case 'zen':
       return handle_zen($attributes);
     case 'isa':
-    default:
       return handle_isa($attributes);
   }
 }
 
 function handle_zen($attributes)
 {
-  $section = Utils::get_sanitized_attribute($attributes, 'section');
-  $url = "https://test-sti-zen.epfl.ch/api/public/projects/unit/" . $section;
-  $items = Utils::zen_api_request($url);
+    $section = Utils::get_sanitized_attribute($attributes, 'section');
+    $url = "https://sti-zen.epfl.ch/api/public/projects/unit/" . $section;
+    $items = Utils::zen_api_request($url);
 
-  var_dump("blajefeljflsjfkesfesjflkekefjslksejflksef");
-  var_dump($items);
+    if ($items === NULL) {
+        return Utils::render_user_msg("Error getting project list from ZEN or project list is empty");
+    }
 
-  if ($items === NULL) {
-    return Utils::render_user_msg("Error getting project list from ZEN or project list is empty");
-  }
+    // Sort initially by project title
+    usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectNameZen');
 
-  usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectNameZen');
+    ob_start();
+    ?>
 
-  ob_start();
-  ?>
-  <div id='student-projects-list' class="container">
-    <div class="form-group">
-      <input type="text" id="student-projects-search-input" class="form-control search mb-2"
-        placeholder="<?php _e('Search', 'epfl') ?>" aria-describedby="student-projects-search-input">
-      <button class="btn btn-secondary sort asc" data-sort="title"><?php _e('Sort by project title', 'epfl'); ?></button>
-      <button class="btn btn-secondary sort" data-sort="project-id"><?php _e('Sort by project ID', 'epfl'); ?></button>
-      <button class="btn btn-secondary sort" data-sort="project-date"><?php _e('Sort by date', 'epfl') ?></button>
+    <div id='student-projects-list' class="container" style=" display:flex; flex-direction:column; gap: 50px">
+        <div class="form-group">
+            <input 
+                type="text" 
+                id="student-projects-search-input" 
+                class="form-control search mb-2"
+                placeholder="<?php _e('Search', 'epfl') ?>" 
+                aria-describedby="student-projects-search-input"
+                onkeyup="filterProjects()"
+            >
+            <button class="btn btn-secondary sort asc" onclick="sortProjects('title')"><?php _e('Sort by project title', 'epfl'); ?></button>
+            <button class="btn btn-secondary sort" onclick="sortProjects('id')"><?php _e('Sort by project ID', 'epfl'); ?></button>
+            <button class="btn btn-secondary sort" onclick="sortProjects('date')"><?php _e('Sort by date', 'epfl') ?></button>
+        </div>
+
+        <div class="list" id="projects-list" style="margin-bottom: 50px">
+            <?php foreach ($items as $item): ?>
+                <section class="collapse-container project-item" data-title="<?php echo htmlspecialchars($item['title']); ?>" data-id="<?php echo $item['id']; ?>" data-date="<?php echo substr($item['createdAt'], 0, 10); ?>">
+                    <header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse"
+                        data-target="#project-<?php echo $item['id']; ?>" aria-expanded="false"
+                        aria-controls="project-<?php echo $item['id']; ?>">
+                        <p class="title"><?php echo htmlspecialchars($item['title']); ?></p>
+                        <ul class="project-data list-inline has-sep small text-muted">
+                            <li class="project-id">ID: <?php echo $item['id']; ?></li>
+                            <li class="project-status">Status: <?php echo htmlspecialchars($item['status']); ?></li>
+                            <li class="project-date">Created At: <?php echo substr($item['createdAt'], 0, 10); ?></li>
+                            <?php if (!empty($item['endDate'])): ?>
+                                <li class="project-end-date">End Date: <?php echo substr($item['endDate'], 0, 10); ?></li>
+                            <?php endif; ?>
+                        </ul>
+                    </header>
+
+                    <div class="collapse collapse-item collapse-item-desktop project-description"
+                        id="project-<?php echo $item['id']; ?>">
+                        <p>
+                            <?php echo !empty($item['description']) ? strip_tags($item['description'], '<br><p><strong>') : "No description provided"; ?>
+                        </p>
+
+                        <dl class="definition-list definition-list-grid">
+                            <?php if (!empty($item['projectUrl'])): ?>
+                                <dt>Project URL:</dt>
+                                <dd><a
+                                    href="<?php echo htmlspecialchars($item['projectUrl']); ?>"><?php echo htmlspecialchars($item['projectUrl']); ?></a>
+                                </dd>
+                            <?php endif; ?>
+
+                            <dt>Project Creator:</dt>
+                            <dd>
+                                <?php echo htmlspecialchars($item['creator']['firstName']) . ' ' . htmlspecialchars($item['creator']['lastName']); ?>
+                                (<?php echo htmlspecialchars($item['creator']['email']); ?>)
+                            </dd>
+
+                            <dt>Units Involved:</dt>
+                            <?php foreach ($item['units'] as $unit): ?>
+                                <dd><?php echo htmlspecialchars($unit['name_fr']); ?> (<?php echo htmlspecialchars($unit['acronym']); ?>)</dd>
+                            <?php endforeach; ?>
+
+                            <?php if (!empty($item['tags'])): ?>
+                                <dt>Tags:</dt>
+                                <dd>
+                                    <?php foreach ($item['tags'] as $tag): ?>
+                                        <span style="padding: 2px 5px; margin-right: 5px;">
+                                            <?php echo htmlspecialchars($tag['name']) . ', '; ?>
+                                        </span>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </dd>
+
+                            <dt>Memberships:</dt>
+                            <dd>
+                                <?php foreach ($item['projectMembership'] as $membership): ?>
+                                    <?php echo htmlspecialchars($membership['user']['firstName']) . ' ' . htmlspecialchars($membership['user']['lastName']); ?>
+                                    - Role: <?php foreach ($membership['roles'] as $role) {
+                                        echo htmlspecialchars($role['name']) . ', ';
+                                    } ?>
+                                <?php endforeach; ?>
+                            </dd>
+                        </dl>
+                    </div>
+                </section>
+            <?php endforeach; ?>
+        </div>
     </div>
 
-    <div class="list">
-      <?php foreach ($items as $item): ?>
-        <section class="collapse-container">
-          <header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse"
-            data-target="#project-<?php echo $item['id']; ?>" aria-expanded="false"
-            aria-controls="project-<?php echo $item['id']; ?>">
-            <p class="title"><?php echo htmlspecialchars($item['title']); ?></p>
-            <ul class="project-data list-inline has-sep small text-muted">
-              <li class="project-id">ID: <?php echo $item['id']; ?></li>
-              <li class="project-status">Status: <?php echo htmlspecialchars($item['status']); ?></li>
-              <li class="project-date">Created At: <?php echo substr($item['createdAt'], 0, 10); ?></li>
-              <?php if (!empty($item['endDate'])): ?>
-                <li class="project-end-date">End Date: <?php echo substr($item['endDate'], 0, 10); ?></li>
-              <?php endif; ?>
-            </ul>
-          </header>
+    <script>
+        function filterProjects() {
+            const input = document.getElementById('student-projects-search-input').value.toLowerCase();
+            const projects = document.getElementsByClassName('project-item');
 
-          <div class="collapse collapse-item collapse-item-desktop project-description"
-            id="project-<?php echo $item['id']; ?>">
-            <p>
-              <?php echo !empty($item['description']) ? strip_tags($item['description'], '<br><p><strong>') : "No description provided"; ?>
-            </p>
+            Array.from(projects).forEach((project) => {
+                const title = project.getAttribute('data-title').toLowerCase();
+                if (title.includes(input)) {
+                    project.style.display = '';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
 
-            <dl class="definition-list definition-list-grid">
-              <?php if (!empty($item['projectUrl'])): ?>
-                <dt>Project URL:</dt>
-                <dd><a
-                    href="<?php echo htmlspecialchars($item['projectUrl']); ?>"><?php echo htmlspecialchars($item['projectUrl']); ?></a>
-                </dd>
-              <?php endif; ?>
+        function sortProjects(type) {
+            const projectsList = document.getElementById('projects-list');
+            const projects = Array.from(projectsList.getElementsByClassName('project-item'));
 
-              <dt>Project Creator:</dt>
-              <dd>
-                <?php echo htmlspecialchars($item['creator']['firstName']) . ' ' . htmlspecialchars($item['creator']['lastName']); ?>
-                (<?php echo htmlspecialchars($item['creator']['email']); ?>)
-              </dd>
+            projects.sort((a, b) => {
+                let valueA, valueB;
 
-              <dt>Units Involved:</dt>
-              <?php foreach ($item['units'] as $unit): ?>
-                <dd><?php echo htmlspecialchars($unit['name_fr']); ?> (<?php echo htmlspecialchars($unit['acronym']); ?>)</dd>
-              <?php endforeach; ?>
+                if (type === 'title') {
+                    valueA = a.getAttribute('data-title').toLowerCase();
+                    valueB = b.getAttribute('data-title').toLowerCase();
+                } else if (type === 'id') {
+                    valueA = parseInt(a.getAttribute('data-id'));
+                    valueB = parseInt(b.getAttribute('data-id'));
+                } else if (type === 'date') {
+                    valueA = new Date(a.getAttribute('data-date'));
+                    valueB = new Date(b.getAttribute('data-date'));
+                }
 
-              <?php if (!empty($item['tags'])): ?>
-                <dt>Tags:</dt>
-                <dd>
-                  <?php foreach ($item['tags'] as $tag): ?>
-                    <span style="padding: 2px 5px; margin-right: 5px;">
-                      <?php echo htmlspecialchars($tag['name']) . ', '; ?>
-                    </span>
-                  <?php endforeach; ?>
-                <?php endif; ?>
+                if (valueA < valueB) return -1;
+                if (valueA > valueB) return 1;
+                return 0;
+            });
 
-              </dd>
+            projects.forEach((project) => projectsList.appendChild(project));
+        }
+    </script>
 
-              <dt>Memberships:</dt>
-              <dd>
-                <?php foreach ($item['projectMembership'] as $membership): ?>
-                  <?php echo htmlspecialchars($membership['user']['firstName']) . ' ' . htmlspecialchars($membership['user']['lastName']); ?>
-                  - Role: <?php foreach ($membership['roles'] as $role) {
-                    echo htmlspecialchars($role['name']) . ', ';
-                  } ?>
-                <?php endforeach; ?>
-              </dd>
-            </dl>
-          </div>
-
-        </section>
-      <?php endforeach; ?>
-    </div>
-  </div>
-
-  <?php
-  $content = ob_get_contents();
-  ob_end_clean();
-  return $content;
+    <?php
+    $content = ob_get_contents();
+    ob_end_clean();
+    return $content;
 }
