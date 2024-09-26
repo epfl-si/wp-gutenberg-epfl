@@ -7,5 +7,6 @@ https://sisbdev.epfl.ch/contactforms/create
 https://www.podcastics.com/player
 https://lgg.epfl.ch/publications/2021/Weaving/vis_app/index.html
 https://xzr9mzyjj6yyjv.embednotionpage.com/epfl-prototyping/DB-Ressources-Prototypage-6698b491b71a4db991312c96b0ddef99
+https://www.medicosearch.ch/widget/api/iframe
 
 # Note: please specify full URL, starting with https://
