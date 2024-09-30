@@ -46,8 +46,10 @@ registerBlockType( 'epfl/student-projects', {
         },
         professorScipers: {
             type: 'string',
+        },
+        apiSource:{
+            type: 'string',
         }
-
     }),
     example: getTooltippedExample(),
     supports : {

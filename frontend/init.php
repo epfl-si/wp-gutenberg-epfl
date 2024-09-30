@@ -205,7 +205,6 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/mini-card-panel', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\MiniCardDeck\epfl_mini_card_panel_block',
 		));
-
 	register_block_type( 'epfl/student-projects', array(
 		'render_callback' => 'EPFL\Plugins\Gutenberg\StudentProjects\epfl_student_projects_block',
 		));
