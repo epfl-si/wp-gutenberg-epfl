@@ -74,9 +74,9 @@ function epfl_page_teaser_block( $attributes ) {
         $html .= ob_get_contents();
         ob_end_clean();
         $html .= '<div class="card-body">';
-        $html .= '<div class="card-title">';
-        $html .= '<a href="' . $page_url . '" class="h3">' . $page->post_title . '</a>';
-        $html .= '</div>';
+        $html .= '<h3 class="card-title">';
+        $html .= '<a href="' . $page_url . '">' . $page->post_title . '</a>';
+        $html .= '</h3>';
 
         $excerpt = epfl_excerpt($page);
         if (!empty($excerpt)) {

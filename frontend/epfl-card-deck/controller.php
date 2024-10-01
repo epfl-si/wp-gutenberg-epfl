@@ -52,9 +52,9 @@ function epfl_card_panel_block($attributes, $inner_content)
       <?php endif; /* End if image post */ ?>
       <div class="card-body">
         <?php if ($link): ?>
-        <div class="card-title"><a href="<?php echo $link ?>" class="h3"><?php echo $title ?></a></div>
+        <h3 class="card-title"><a href="<?php echo $link ?>"><?php echo $title ?></a></h3>
         <?php else: ?>
-        <div class="card-title"><div class="h3"><?php echo $title ?></div></div>
+        <h3 class="card-title"><?php echo $title ?></h3>
         <?php endif; ?>
         <?php echo $inner_content ?>
       </div>
