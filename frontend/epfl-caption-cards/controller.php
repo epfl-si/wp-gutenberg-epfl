@@ -28,7 +28,7 @@ function epfl_caption_cards_block( $attributes ) {
     ob_start();
 ?>
     <div class="container-full p-3 p-md-4 p-lg-5 <?php echo ($gray_wrapper) ? 'bg-gray-100' : ''?>">
-        <div class="row">
+        <div class="row justify-content-center align-items-center">
             <?php for($i = 1; $i <= 10; $i++): ?>
             <?php if (!empty($attributes['title'.$i])) : ?>
                 <div class="col-sm-6 col-xl-4">
