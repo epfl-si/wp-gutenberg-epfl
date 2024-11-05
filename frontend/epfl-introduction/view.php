@@ -22,12 +22,12 @@ function epfl_introduction_block( $attributes ) {
     $markup .= '<div class="container">';
     $markup .= '<div class="row">';
     $markup .= '<div class="col-md-8 offset-md-2">';
-    $markup .= '<h2>';
-    $markup .= esc_html(trim($title));
-    $markup .= '</h2>';
-    $markup .= '<p>';
+    if (!empty($title)) {
+        $markup .= '<h2>';
+        $markup .= esc_html(trim($title));
+        $markup .= '</h2>';
+    }
     $markup .= $content;
-    $markup .= '</p>';
     $markup .= '</div>';
     $markup .= '</div>';
     $markup .= '</div>';
