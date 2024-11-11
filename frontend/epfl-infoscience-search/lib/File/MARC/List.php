@@ -93,7 +93,8 @@ class File_MARC_List extends SplDoublyLinkedList
      *
      * @return string returns the tag or code
      */
-    function key()
+		#[\ReturnTypeWillChange]
+		function key()
     {
         if ($this->current() instanceof File_MARC_Field) {
             return $this->current()->getTag();
