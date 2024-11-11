@@ -20,7 +20,8 @@ function epfl_post_highlight_block( $attributes ) {
     $post   = get_post($post["value"]);
 
     // get excerpt
-    $content = reset(explode('<!--more-->', $post->post_content));
+	$array = explode('<!--more-->', $post->post_content);
+	$content = reset($array);
 
     // manage layout
     $classes = '';
