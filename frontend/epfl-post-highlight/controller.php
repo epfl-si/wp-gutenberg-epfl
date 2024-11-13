@@ -17,11 +17,13 @@ function epfl_post_highlight_block( $attributes ) {
     $post   = Utils::get_sanitized_attribute( $attributes, 'post' );
     $post   = json_decode($post, true);
 
-    $post   = get_post($post["value"]);
+	if(!is_null($post)) {
+		$post   = get_post($post["value"]);
 
-    // get excerpt
-	$array = explode('<!--more-->', $post->post_content);
-	$content = reset($array);
+		// get excerpt
+		$array = explode('<!--more-->', $post->post_content);
+		$content = reset($array);
+	}
 
     // manage layout
     $classes = '';
