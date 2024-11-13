@@ -11,8 +11,8 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 function get_video_id( $video_url ) {
     $video_id = "";
     if (!empty($video_url)) {
-		$array = explode("/", $video_url);
-		$video_id = end($array);
+	    $array = explode("/", $video_url);
+	    $video_id = end($array);
     }
     return $video_id;
 }
