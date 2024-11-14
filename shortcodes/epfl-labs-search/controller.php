@@ -17,23 +17,25 @@ function renderLabsSearch($sites, $faculty, $institute, $field) {
     $sitesSorted[] = $sites[$index];
   }
 
-  filter_out_unused_language($sitesSorted);
+	$sites = $sitesSorted;
+
+  filter_out_unused_language($sites);
 
   // are we doing a field of research result ?
   if ( !empty($field)) {
     // Remove all laboratories that are not in the current field of research
-    foreach ($sitesSorted as $key => $site) {
+    foreach ($sites as $key => $site) {
       $tags_in_site = [];
       foreach ($site->tags as $tag) {
         $tags_in_site[] = $tag->name;
       }
       if (!in_array($field, $tags_in_site)) {
-        unset($sitesSorted[$key]);
+        unset($sites[$key]);
       }
     }
   }
-  $combo_list_content = separate_tags_by_type($sitesSorted);
-  if ( empty($sitesSorted) ) {
+  $combo_list_content = separate_tags_by_type($sites);
+  if ( empty($sites) ) {
     // Disallow unknown text in the field var, as it will be shown in first page
     // that's a bad field of research, reset is but keep the empty list
     $field = "";
@@ -41,7 +43,7 @@ function renderLabsSearch($sites, $faculty, $institute, $field) {
     set_query_var('epfl_labs-predefined_field', $field);
   }
 
-  set_query_var('epfl_labs-sites', $sitesSorted);
+  set_query_var('epfl_labs-sites', $sites);
   set_query_var('epfl_labs-predefined_faculty', $faculty);
   set_query_var('epfl_labs-predefined_institute', $institute);
   set_query_var('eplf_labs-combo_list_content', $combo_list_content);
