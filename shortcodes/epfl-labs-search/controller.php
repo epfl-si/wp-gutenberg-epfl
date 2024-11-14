@@ -16,8 +16,7 @@ function renderLabsSearch($sites, $faculty, $institute, $field) {
   foreach ($titles as $index => $title) {
     $sitesSorted[] = $sites[$index];
   }
-
-	$sites = $sitesSorted;
+  $sites = $sitesSorted;
 
   filter_out_unused_language($sites);
 
