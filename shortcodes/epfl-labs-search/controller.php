@@ -9,6 +9,15 @@ function renderLabsSearch($sites, $faculty, $institute, $field) {
   wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
   wp_enqueue_style( 'epfl-labs-search-css', plugins_url('epfl-labs-search.css', __FILE__),false,'1.1','all');
 
+  // because the sites array arrives sorted case sensitively, do a "natural order" to sort case-insensitively.
+  $titles = array_column($sites, 'title');
+  natcasesort($titles);
+  $sitesSorted = [];
+  foreach ($titles as $index => $title) {
+    $sitesSorted[] = $sites[$index];
+  }
+  $sites = $sitesSorted;
+
   filter_out_unused_language($sites);
 
   // are we doing a field of research result ?
