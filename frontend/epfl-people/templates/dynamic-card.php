@@ -1,7 +1,7 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\People;
 
-    function epfl_dynamic_people_card($persons, $from, $columns, $custom_data = "", $filtered_fields = "", $display_options) {
+    function epfl_dynamic_people_card($persons, $from, $columns, $custom_data, $filtered_fields, $display_options) {
 
         $position_label =  __('Position', 'epfl');
 
@@ -33,7 +33,7 @@ namespace EPFL\Plugins\Gutenberg\People;
             $person_email = $person->email;
             $photo_url = epfl_people_get_photo($person);
             if (!$photo_url) {
-                $photo_url = get_template_directory_uri() . '/assets/images/defaults/person-avatar-default-small.png';    
+                $photo_url = get_template_directory_uri() . '/assets/images/defaults/person-avatar-default-small.png';
             }
             $phones     = epfl_people_get_phones($person, ALPHABETICAL_ORDER);
             $function   = epfl_people_get_function($person, $from, ALPHABETICAL_ORDER);
@@ -70,9 +70,9 @@ namespace EPFL\Plugins\Gutenberg\People;
         include(dirname(__FILE__) . '/includes/dynamic-card-part.inc.php');
 
 
-        // Adding class container 
+        // Adding class container
         $markup .= '<div class="container my-3" id="main-people-container"><div id="dyn-filters"></div><div id="dyn-cards"><div></div>';
 
-        return $markup; 
+        return $markup;
     }
 ?>
