@@ -4,6 +4,7 @@ namespace EPFL\Plugins\Gutenberg\Lib;
 
 Class Utils
 {
+
     public static function debug($var) {
         print "<pre>";
         var_dump($var);
@@ -179,6 +180,39 @@ Class Utils
         return false;
     }
 
+    /**
+     * Makes an HTTP GET request to the specified URL with optional headers.
+     * @param string $url The URL to make the request to.
+     * @param array $headers Optional headers to include in the request.
+     * @return mixed The response body, or false on failure.
+     */
+    public static function zen_api_request($url) {
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json'
+        ));
+        curl_setopt($curl, CURLOPT_FRESH_CONNECT, true);
+        curl_setopt($curl, CURLOPT_COOKIESESSION, true);
+        curl_setopt($curl, CURLOPT_AUTOREFERER, true);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0");
+
+        $response = curl_exec($curl);
+        
+        if (!$response) {
+            error_log("API request failed: " . curl_error($curl));  // Log error to PHP error log
+            curl_close($curl);
+            return false;
+        }
+
+        curl_close($curl);
+        $data = json_decode($response, true); 
+
+        return $data;
+    }
 
     /**
      * Sanitize and returns an attribute who's in the given attributes associative array. If not in array,

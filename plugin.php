@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
@@ -20,6 +21,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
+// Load environment variables after WordPress has loaded
+add_action('plugins_loaded', function () {
+    $utils_path = plugin_dir_path(__FILE__) . 'lib/utils.php';
+    if (file_exists($utils_path)) {
+        require_once $utils_path;
+        if (class_exists('EPFL\Plugins\Gutenberg\Lib\Utils')) {
+            \EPFL\Plugins\Gutenberg\Lib\Utils::loadEnv();
+        } else {
+            error_log("Class 'EPFL\Plugins\Gutenberg\Lib\Utils' not found in $utils_path");
+        }
+    } else {
+        error_log("Utils.php file not found at: " . $utils_path);
+    }
+});
 /**
  * Block Initializer.
  */
@@ -113,6 +128,7 @@ function allow_epfl_blocks( $allowed_block_types, $block_editor_context ) {
 
 	return $allowed_block_types;
 }
+
 
 add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\allow_epfl_blocks', 10, 2 );
 
