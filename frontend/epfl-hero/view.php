@@ -23,6 +23,7 @@ function epfl_hero_block( $attributes ) {
     $image_id    = Utils::get_sanitized_attribute( $attributes, 'imageId' );
     $description = Utils::get_sanitized_attribute( $attributes, 'description' );
     $video_url   = Utils::get_sanitized_attribute( $attributes, 'videoUrl' );
+    $cropType    = Utils::get_sanitized_attribute($attributes, 'cropType', 'center' );
 
     $short_vimeo_video_id = get_video_id($video_url);
 
@@ -35,14 +36,34 @@ function epfl_hero_block( $attributes ) {
       $text = wp_kses_post($attributes['text']);
     }
 
-    $image = wp_get_attachment_image(
+    if ($cropType == 'top') {
+      $image = wp_get_attachment_image(
+        $image_id,
+        'thumbnail_16_9_large_80p', // see functions.php
+        '',
+        [
+          'class' => 'img-fluid top-center'
+        ]
+      );
+    } elseif ($cropType == 'bottom') {
+      $image = wp_get_attachment_image(
+        $image_id,
+        'thumbnail_16_9_large_80p', // see functions.php
+        '',
+        [
+          'class' => 'img-fluid bottom-center'
+        ]
+      );
+    } else {
+      $image = wp_get_attachment_image(
         $image_id,
         'thumbnail_16_9_large_80p', // see functions.php
         '',
         [
           'class' => 'img-fluid'
         ]
-    );
+      );
+    }
 
     ob_start();
 ?>
