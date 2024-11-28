@@ -8,6 +8,7 @@ import {
 	TextControl,
 } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
+import { version } from './index';
 
 export default class InspectorControlsStudentProjects extends React.Component {
 	constructor(props) {
@@ -88,6 +89,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
 		return (
 			<InspectorControls>
 				<p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/student-projects-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
+				<p className="wp-block-help">{ version }</p>
 				<PanelBody title={__("API Source")}>
 					<SelectControl
 						label={__("Select API Source")}
