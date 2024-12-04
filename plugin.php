@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
- * Version:         2.40.0
+ * Version:         2.41.0
  * Author:          WordPress EPFL Team
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -237,7 +237,6 @@ add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_e
  * Shortcodes
  */
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-labs-search/epfl-labs-search.php';
-require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-magistrale/epfl-magistrale.php';
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-polylex-search/epfl-polylex-search.php';
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-servicenow-search/epfl-servicenow-search.php';
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-study-plan/epfl-study-plan.php';

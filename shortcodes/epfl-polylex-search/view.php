@@ -122,7 +122,7 @@
                           <?php echo date("d.m.Y", strtotime(esc_html($lex->effectiveDate))); ?>
                         <?php endif; ?>
                     </div>
-                    <?php if (!$lex->isAbrogated): ?>
+                    <?php if (isset($lex->isAbrogated) && !$lex->isAbrogated): ?>
                     <div class="lex-revisionDate col-4">
                         <?php if (esc_html($lex->revisionDate)): ?>
                           <?php _e('Status as of', 'epfl') . ' ' ?>

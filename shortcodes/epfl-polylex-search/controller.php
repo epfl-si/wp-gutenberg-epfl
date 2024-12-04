@@ -56,7 +56,7 @@ function polylex_filter_out_unused_language($lexes) {
       $lex->url = $lex->urlFr;
       unset($lex->urlFr);
       unset($lex->urlEn);
-	  $lex->urlLastCons = $lex->urlLastConsFr;
+	  $lex->urlLastCons = $lex->urlLastConsFr ?? '';
 	  unset($lex->urlLastConsFr);
 	  unset($lex->urlLastConsEn);
       $lex->description = $lex->descriptionFr;
@@ -80,7 +80,7 @@ function polylex_filter_out_unused_language($lexes) {
       $lex->url = $lex->urlEn;
       unset($lex->urlEn);
       unset($lex->urlFr);
-	  $lex->urlLastCons = $lex->urlLastConsEn;
+	  $lex->urlLastCons = $lex->urlLastConsEn ?? '';
 	  unset($lex->urlLastConsFr);
 	  unset($lex->urlLastConsEn);
       $lex->description = $lex->descriptionEn;
