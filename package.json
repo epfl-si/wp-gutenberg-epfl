@@ -45,9 +45,5 @@
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
 		"test:unit": "wp-scripts test-unit-js"
-	},
-	"dependencies": {
-		"build": "^0.1.4",
-		"wp-scripts": "^0.0.1-security"
 	}
 }
