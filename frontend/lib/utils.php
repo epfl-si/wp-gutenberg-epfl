@@ -2,16 +2,42 @@
 
 namespace EPFL\Plugins\Gutenberg\Lib;
 
-use Dotenv\Dotenv;
 Class Utils
 {
-    protected static $dotenv;
+    protected static $env;
 
     public static function loadEnv() {
-        if (is_null(self::$dotenv)) {
-            self::$dotenv = Dotenv::createImmutable(__DIR__ . "/../../");
-            self::$dotenv->load();
+        if (is_null(self::$env)) {
+            self::$env = self::parseEnv(__DIR__ . "/../../.env");
         }
+    }
+    private static function parseEnv($filePath) {
+        if (!file_exists($filePath)) {
+            throw new \Exception("Environment file not found: " . $filePath);
+        }
+
+        $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $env = [];
+
+        foreach ($lines as $line) {
+            if (strpos(trim($line), '#') === 0) {
+                continue;
+            }
+
+            list($key, $value) = explode('=', $line, 2);
+            $key = trim($key);
+            $value = trim($value);
+
+            if (!empty($key)) {
+                $env[$key] = $value;
+            }
+        }
+
+        foreach ($env as $key => $value) {
+            $_ENV[$key] = $value;
+        }
+
+        return $env;
     }
 
     public static function debug($var) {
