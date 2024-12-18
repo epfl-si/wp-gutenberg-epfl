@@ -38,9 +38,9 @@
                 $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em;font-size:2em;">';
                 $markup .= '<meta itemprop="eventStatus" content="https://schema.org/EventCancelled">';
                 if ($event->lang == 'fr') {
-                    $markup .= esc_html($event->academic_calendar_category->fr_label);
+                    $markup .= esc_html($event->academic_calendar_category?->fr_label);
                 } else {
-                    $markup .= esc_html($event->academic_calendar_category->en_label);
+                    $markup .= esc_html($event->academic_calendar_category?->en_label);
                 }
                 $markup .= '</span>';
                 $markup .= '<img src="' . esc_url($visual_url) . '" class="img-fluid"';
@@ -68,9 +68,9 @@
                 $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em;font-size:1em;">';
                 $markup .= '<meta itemprop="eventStatus" content="https://schema.org/EventCancelled">';
                 if ($event->lang == 'fr') {
-                    $markup .= esc_html($event->academic_calendar_category->fr_label);
+                    $markup .= esc_html($event->academic_calendar_category?->fr_label);
                 } else {
-                    $markup .= esc_html($event->academic_calendar_category->en_label);
+                    $markup .= esc_html($event->academic_calendar_category?->en_label);
                 }
                 $markup .= '</span>';
                 if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
