@@ -230,7 +230,7 @@ Class Utils
     public static function get_sanitized_url($attributes, $name, $default="")
     {
         $value = (array_key_exists($name, $attributes))? $attributes[$name]: $default;
-        $sanitized_value = preg_replace_callback('(\'|")', function($x) { return htmlentities($x[0], ENT_QUOTES); }, $value);
+        $sanitized_value = preg_replace_callback('(\'|")', function($x) { return htmlentities($x[0], ENT_QUOTES); }, $value ?? '');
 
         $scheme = wp_parse_url($sanitized_value, PHP_URL_SCHEME);
 

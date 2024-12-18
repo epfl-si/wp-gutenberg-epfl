@@ -47,7 +47,7 @@
 
                 $markup .= '<div class="fullwidth-teaser' . $text_position .'">';
 
-                if ($media_url) {
+                if (isset($media_url)) {
                     $markup .= '<div class="embed-responsive embed-responsive-16by9">';
                     $markup .= '<iframe src="' . $media_url . '" frameborder="1"></iframe>';
                     $markup .= '</div>';
