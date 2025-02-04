@@ -2,6 +2,7 @@
     namespace EPFL\Plugins\Gutenberg\Memento;
 
     function epfl_memento_listing_without_the_first_highlighted_event($results, $memento_name) {
+        $period = "upcoming";  # TODO: should be selectable in the widget
 
         $memento_url = get_memento_url($period, $memento_name);
         $markup = '<div class="container list-group" style="padding-left: 16px">';
@@ -21,9 +22,9 @@
             $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em;font-size:1em;">';
             $markup .= '<meta itemprop="eventStatus" content="https://schema.org/EventCancelled">';
             if ($event->lang == 'fr') {
-                $markup .= esc_html($event->academic_calendar_category->fr_label);
+                $markup .= @esc_html($event->academic_calendar_category->fr_label);
             } else {
-                $markup .= esc_html($event->academic_calendar_category->en_label);
+                $markup .= @esc_html($event->academic_calendar_category->en_label);
             }
             $markup .= '</span>';
             if ($event->canceled === "True" || $event->registration->id == REGISTRATION_SOLD_OUT_ID) {
