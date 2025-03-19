@@ -134,6 +134,8 @@ function epfl_news_block( $attributes ) {
   $category      = Utils::get_sanitized_attribute( $attributes, 'category', 0 );
   $themes        = Utils::get_sanitized_attribute( $attributes, 'themes' );
   $projects      = Utils::get_sanitized_attribute( $attributes, 'sections');
+  $title         = Utils::get_sanitized_attribute( $attributes, 'title');
+
 
   if (epfl_news_check_required_parameters($channel, $lang) == FALSE) {
       return Utils::render_user_msg("News block: Please check required parameters");
@@ -160,6 +162,6 @@ function epfl_news_block( $attributes ) {
       return Utils::render_user_msg("News block: Please check required parameters");
   }
 
-  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang, $text_position, $gray_wrapper);
+  $markup = epfl_news_render($actus->results, $template, $all_news_link, $lang, $text_position, $gray_wrapper, $title);
   return $markup;
 }

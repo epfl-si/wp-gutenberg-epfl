@@ -13,6 +13,7 @@ const {
 const {
     PanelBody,
     PanelRow,
+    TextControl,
     SelectControl,
     RadioControl,
     ToggleControl,
@@ -200,6 +201,13 @@ export default class InspectorControlsNews extends Component {
                               label={__('Wrap with a gray border', 'epfl')}
                               checked={ attributes.grayWrapper }
                               onChange={ () => setAttributes( { grayWrapper: ! attributes.grayWrapper } ) }
+                            />
+                        }
+                        { attributes.template === 'horizontal' &&
+                            <TextControl
+                              value={ attributes.title }
+                              help={ __('You can enter a block title', 'epfl') }
+                              onChange={ title => setAttributes( { title } ) }
                             />
                         }
 						{ ['highlighted_with_1_news', 'highlighted_with_3_news'].includes(attributes.template) &&

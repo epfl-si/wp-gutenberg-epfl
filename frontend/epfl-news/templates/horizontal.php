@@ -2,14 +2,17 @@
     namespace EPFL\Plugins\Gutenberg\News;
 
     // template = 1
-    function epfl_news_horizontal($results, $all_news_link, $lang, $text_position, $gray_wrapper) {
+    function epfl_news_horizontal($results, $all_news_link, $lang, $text_position, $gray_wrapper, $title) {
         $count = 1;
         $url_channel = epfl_news_get_url_channel($results, $lang);
 
         if ($gray_wrapper == TRUE) {
-            $markup = '<div class="container-full overflow-hidden my-3 p-md-4 p-lg-5 bg-gray-100">';
+            $markup = '<div class="container-full overflow-hidden my-3 p-4 p-md-5 bg-gray-100">';
         } else {
             $markup = '<div class="container-full overflow-hidden my-3 pl-5">';
+        }
+        if ($title != "") {
+            $markup .= '<h2 class="h3">' . $title . '</h2>';
         }
         $markup .= '<div class="card-slider-wrapper">';
         $markup .= '<div class="card-slider">';

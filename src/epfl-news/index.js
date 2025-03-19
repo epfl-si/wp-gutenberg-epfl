@@ -30,6 +30,9 @@ registerBlockType(
 			__( 'news' , 'epfl'),
 		],
 		attributes: getTooltippedAttributes({
+			title: {
+				type: 'string',
+			},
 			channel: {
 				type: 'integer',
 				default: 1,
