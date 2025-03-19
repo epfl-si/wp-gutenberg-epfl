@@ -9,13 +9,16 @@ require_once(dirname(__FILE__).'/../lib/utils.php');
 
 function epfl_social_follow_block( $attributes ) {
 
+    $blueskyUrl = Utils::get_sanitized_url( $attributes, 'blueskyUrl' );
     $facebookUrl  = Utils::get_sanitized_url( $attributes, 'facebookUrl' );
-    $twitterUrl   = Utils::get_sanitized_url( $attributes, 'twitterUrl' );
+    $githubUrl  = Utils::get_sanitized_url( $attributes, 'githubUrl' );
+    $gitlabUrl  = Utils::get_sanitized_url( $attributes, 'gitlabUrl' );
     $instagramUrl = Utils::get_sanitized_url( $attributes, 'instagramUrl' );
-    $youtubeUrl   = Utils::get_sanitized_url( $attributes, 'youtubeUrl' );
     $linkedinUrl  = Utils::get_sanitized_url( $attributes, 'linkedinUrl' );
-	$mastodonUrl  = Utils::get_sanitized_url( $attributes, 'mastodon' );
-	$tiktokUrl  = Utils::get_sanitized_url( $attributes, 'tiktok' );
+    $mastodonUrl  = Utils::get_sanitized_url( $attributes, 'mastodon' );
+    $tiktokUrl  = Utils::get_sanitized_url( $attributes, 'tiktok' );
+    $twitterUrl   = Utils::get_sanitized_url( $attributes, 'twitterUrl' );
+    $youtubeUrl   = Utils::get_sanitized_url( $attributes, 'youtubeUrl' );
 
     ob_start();
 ?>
@@ -30,76 +33,106 @@ function epfl_social_follow_block( $attributes ) {
         </p>
 
         <ul class="social-icon-list list-inline">
-          <?php if (!empty($facebookUrl)): ?>
-          <li>
-            <a href="<?php echo $facebookUrl ?>" class="social-icon social-icon-facebook social-icon-discrete" target="_blank" rel="nofollow noopener">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-facebook"></use>
-              </svg>
-              <span class="sr-only"><?php echo __("Follow us on Facebook", "epfl"); ?></span>
-            </a>
-          </li>
+          <?php if (!empty($blueskyUrl)): ?>
+            <li>
+              <a href="<?php echo $blueskyUrl ?>" class="social-icon social-icon-bluesky social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-bluesky"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on Bluesky", "epfl"); ?></span>
+              </a>
+            </li>
           <?php endif; ?>
-          <?php if (!empty($twitterUrl)): ?>
-          <li>
-            <a href="<?php echo $twitterUrl ?>" class="social-icon social-icon-x social-icon-discrete" target="_blank" rel="nofollow noopener">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-x"></use>
-              </svg>
-              <span class="sr-only"><?php echo __("Follow us on X", "epfl"); ?></span>
-            </a>
-          </li>
+          <?php if (!empty($facebookUrl)): ?>
+            <li>
+              <a href="<?php echo $facebookUrl ?>" class="social-icon social-icon-facebook social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-facebook"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on Facebook", "epfl"); ?></span>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if (!empty($githubUrl)): ?>
+            <li>
+              <a href="<?php echo $githubUrl ?>" class="social-icon social-github social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#github"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on GitHub", "epfl"); ?></span>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if (!empty($gitlabUrl)): ?>
+            <li>
+              <a href="<?php echo $gitlabUrl ?>" class="social-icon social-gitlab social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#gitlab"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on GitLab", "epfl"); ?></span>
+              </a>
+            </li>
           <?php endif; ?>
           <?php if (!empty($instagramUrl)): ?>
-          <li>
-            <a href="<?php echo $instagramUrl ?>" class="social-icon social-icon-instagram social-icon-discrete" target="_blank" rel="nofollow noopener">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-instagram"></use>
-              </svg>
-              <span class="sr-only"><?php echo __("Follow us on Instagram", "epfl"); ?></span>
-            </a>
-          </li>
-          <?php endif; ?>
-          <?php if (!empty($youtubeUrl)): ?>
-          <li>
-            <a href="<?php echo $youtubeUrl ?>" class="social-icon social-icon-youtube social-icon-discrete" target="_blank" rel="nofollow noopener">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-youtube"></use>
-              </svg>
-              <span class="sr-only"><?php echo __("Follow us on YouTube", "epfl"); ?></span>
-            </a>
-          </li>
+            <li>
+              <a href="<?php echo $instagramUrl ?>" class="social-icon social-icon-instagram social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-instagram"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on Instagram", "epfl"); ?></span>
+              </a>
+            </li>
           <?php endif; ?>
           <?php if (!empty($linkedinUrl)): ?>
-          <li>
-            <a href="<?php echo $linkedinUrl ?>" class="social-icon social-icon-linkedin social-icon-discrete" target="_blank" rel="nofollow noopener">
-              <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-linkedin"></use>
-              </svg>
-              <span class="sr-only"><?php echo __("Follow us on LinkedIn", "epfl"); ?></span>
-            </a>
-          </li>
+            <li>
+              <a href="<?php echo $linkedinUrl ?>" class="social-icon social-icon-linkedin social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-linkedin"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on LinkedIn", "epfl"); ?></span>
+              </a>
+            </li>
           <?php endif; ?>
-		  <?php if (!empty($mastodonUrl)): ?>
-			<li>
-				<a href="<?php echo $mastodonUrl ?>" class="social-icon social-icon-mastodon social-icon-discrete" target="_blank" rel="nofollow noopener">
-					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-mastodon"></use>
-					</svg>
-					<span class="sr-only"><?php echo __("Follow us on Mastodon", "epfl"); ?></span>
-				</a>
-			</li>
-		  <?php endif; ?>
-		  <?php if (!empty($tiktokUrl)): ?>
-			<li>
-				<a href="<?php echo $tiktokUrl ?>" class="social-icon social-icon-tiktok social-icon-discrete" target="_blank" rel="nofollow noopener">
-					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-tiktok"></use>
-					</svg>
-					<span class="sr-only"><?php echo __("Follow us on TikTok", "epfl"); ?></span>
-				</a>
-			</li>
-		  <?php endif; ?>
+          <?php if (!empty($mastodonUrl)): ?>
+            <li>
+              <a href="<?php echo $mastodonUrl ?>" class="social-icon social-icon-mastodon social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-mastodon"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on Mastodon", "epfl"); ?></span>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if (!empty($tiktokUrl)): ?>
+            <li>
+              <a href="<?php echo $tiktokUrl ?>" class="social-icon social-icon-tiktok social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-tiktok"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on TikTok", "epfl"); ?></span>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if (!empty($youtubeUrl)): ?>
+            <li>
+              <a href="<?php echo $youtubeUrl ?>" class="social-icon social-icon-youtube social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-youtube"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on YouTube", "epfl"); ?></span>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if (!empty($twitterUrl)): ?>
+            <li>
+              <a href="<?php echo $twitterUrl ?>" class="social-icon social-icon-x social-icon-discrete" target="_blank" rel="nofollow noopener">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-x"></use>
+                </svg>
+                <span class="sr-only"><?php echo __("Follow us on X", "epfl"); ?></span>
+              </a>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
 
