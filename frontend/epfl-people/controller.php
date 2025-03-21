@@ -180,6 +180,17 @@ function epfl_people_block( $attributes ) {
         usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
     }
 
+    // copy the first unit in order of 'ordre' as main_unit
+    foreach($persons as $index => $person){
+      $person->main_unit = array_reduce(
+        (array)$person->unites, 
+        function($s, $unit){ 
+            return ($s === NULL || $unit->ordre < $s->ordre) ? $unit : $s;
+        },
+        NULL
+      );
+    }
+
     $markup = epfl_people_render($persons, $from, $columns, $order, $title, $display_options, $custom_data, $filtered_fields);
     return $markup;
 
