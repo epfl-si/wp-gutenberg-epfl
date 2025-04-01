@@ -6,46 +6,47 @@
 
 namespace EPFL\Plugins\Gutenberg;
 
-require_once 'epfl-news/controller.php';
-require_once 'epfl-memento/controller.php';
-require_once 'epfl-cover/view.php';
-require_once 'epfl-toggle/view.php';
-require_once 'epfl-quote/view.php';
-require_once 'epfl-people/controller.php';
+require_once 'epfl-alert/controller.php';
+require_once 'epfl-button/controller.php';
+require_once 'epfl-caption-cards/controller.php';
+require_once 'epfl-card-deck/controller.php';
+require_once 'epfl-carousel/controller.php';
+require_once 'epfl-contact/controller.php';
 require_once 'epfl-courses/controller.php';
-require_once 'epfl-map/view.php';
-require_once 'epfl-introduction/view.php';
-require_once 'epfl-hero/view.php';
-require_once 'epfl-google-forms/controller.php';
-require_once 'epfl-video/controller.php';
-require_once 'epfl-tableau/controller.php';
-require_once 'epfl-scheduler/controller.php';
-require_once 'epfl-page-teaser/controller.php';
+require_once 'epfl-cover/view.php';
 require_once 'epfl-custom-highlight/controller.php';
 require_once 'epfl-custom-teaser/controller.php';
-require_once 'epfl-page-highlight/controller.php';
-require_once 'epfl-post-teaser/controller.php';
-require_once 'epfl-post-highlight/controller.php';
+require_once 'epfl-definition-list/controller.php';
+require_once 'epfl-faq/controller.php';
+require_once 'epfl-gallery/controller.php';
+require_once 'epfl-google-forms/controller.php';
+require_once 'epfl-hero/view.php';
 require_once 'epfl-infoscience-search/controller.php';
+require_once 'epfl-introduction/view.php';
+require_once 'epfl-links-group/controller.php';
+require_once 'epfl-map/view.php';
+require_once 'epfl-memento/controller.php';
+require_once 'epfl-mini-card-deck/controller.php';
+require_once 'epfl-news/controller.php';
+require_once 'epfl-page-highlight/controller.php';
+require_once 'epfl-page-teaser/controller.php';
+require_once 'epfl-pdf-flipbook/view.php';
+require_once 'epfl-people/controller.php';
+require_once 'epfl-post-highlight/controller.php';
+require_once 'epfl-post-teaser/controller.php';
+require_once 'epfl-quote/view.php';
+require_once 'epfl-scheduler/controller.php';
 require_once 'epfl-social-feed/controller.php';
 require_once 'epfl-social-follow/controller.php';
 require_once 'epfl-social-share/controller.php';
-require_once 'epfl-contact/controller.php';
-require_once 'epfl-caption-cards/controller.php';
-require_once 'epfl-card-deck/controller.php';
-require_once 'epfl-mini-card-deck/controller.php';
-require_once 'epfl-definition-list/controller.php';
-require_once 'epfl-links-group/controller.php';
-require_once 'lib/tags.php';
+require_once 'epfl-sponsor/controller.php';
+require_once 'epfl-student-projects/controller.php';
 require_once 'epfl-table-filter/controller.php';
 require_once 'epfl-table/controller.php';
-require_once 'epfl-faq/controller.php';
-require_once 'epfl-button/controller.php';
-require_once 'epfl-gallery/controller.php';
-require_once 'epfl-student-projects/controller.php';
-require_once 'epfl-carousel/controller.php';
-require_once 'epfl-pdf-flipbook/view.php';
-require_once 'epfl-alert/controller.php';
+require_once 'epfl-tableau/controller.php';
+require_once 'epfl-toggle/view.php';
+require_once 'epfl-video/controller.php';
+require_once 'lib/tags.php';
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -171,6 +172,15 @@ function wp_gutenberg_epfl_register_blocks() {
 	register_block_type( 'epfl/card-panel', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\CardDeck\epfl_card_panel_block',
 		));
+
+    register_block_type( 'epfl/sponsor-deck', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\Sponsor\epfl_sponsor_deck_block',
+		));
+
+	register_block_type( 'epfl/sponsor-panel', array(
+			'render_callback' => 'EPFL\Plugins\Gutenberg\Sponsor\epfl_sponsor_panel_block',
+		));
+
 	register_block_type( 'epfl/definition-list', array(
 			'render_callback' => 'EPFL\Plugins\Gutenberg\DefinitionList\epfl_definition_list_block',
 		));
