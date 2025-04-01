@@ -2,13 +2,11 @@
 
 namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
 
-use \EPFL\Plugins\Gutenberg\Lib\Utils;
-
 /**
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
- * Description: provides a gutenberg block to search and dispay results from Infoscience
- * Version: 1.3.0
+ * Description: provides a gutenberg block to search and display results from Infoscience
+ * Version: 2.1.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
@@ -18,10 +16,13 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname( __FILE__) . '/lib');
 
 require_once('utils.php');
+require_once('debug.php');
 require_once('long_term_cache.php');
+require_once('url.php');
 require_once('marc_converter.php');
 require_once('group_by.php');
 require_once('mathjax-config.php');
+require_once('banner.php');
 require_once('render.php');
 
 define(__NAMESPACE__ . "\INFOSCIENCE_SEARCH_URL", "https://infoscience.epfl.ch/search?");
@@ -36,6 +37,8 @@ class InfoscienceUnknownContentException extends \Exception {}  // when we can't
  *
  */
 function epfl_infoscience_search_block( $provided_attributes ) {
+    $current_language = get_language();
+
     # if we got any msg, set it into this banner
     $banner_msgs = [];
 
@@ -62,7 +65,10 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         }
     }
 
+    $has_provided_a_limit_from_ui = array_key_exists('limit', $atts);
+
     $infoscience_search_managed_attributes = array(
+        'serverengine' => 'invenio',
         # Content 1
         'url' => '',
         # or Content 2
@@ -80,6 +86,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'debug' => false,
         'debugdata' => false,
         'debugtemplate' => false,
+        'deactivatecache' => false,
     );
 
     $attributes = shortcode_atts($infoscience_search_managed_attributes, $atts, '');
@@ -97,6 +104,9 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     # Unset element unused in url, with backup first
     $before_unset_attributes = $attributes;
 
+    $server_engine_name = $attributes['serverengine'];
+    unset($attributes['serverengine']);
+
     $format = $attributes['format'];
     unset($attributes['format']);
 
@@ -112,88 +122,28 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     $group_by2 = $attributes['group_by2'];
     unset($attributes['group_by2']);
 
+    $debug = $attributes['debug'];
+    unset($attributes['debug']);
 
-    if ( $attributes['debug']) {
-        $debug_data = $attributes['debug'];  # alias
-        unset($attributes['debug']);
-    } else {
-        $debug_data = $attributes['debugdata'];
-        unset($attributes['debugdata']);
-    }
+    $debug_data = $attributes['debugdata'];
+    unset($attributes['debugdata']);
 
-    $debug_cache = $attributes['debugcache'];
     $debug_template = $attributes['debugtemplate'];
     unset($attributes['debugtemplate']);
 
-    # Url priority :
-    # 1. direct url -> $attributes['url']
-    # 2. url attribute ->
-    # 3. with all the attributes, we built a custom one
-    $url = htmlspecialchars_decode($attributes['url']);
+    $deactivate_cache = $attributes['deactivatecache'];
+    unset($attributes['deactivatecache']);
 
-    if ($url) {
-        $url = trim($url);
-        # assert it is an infoscience one :
-        if (preg_match('#^https?://infoscience.epfl.ch/#i', $url) !== 1) {
-            return Utils::render_user_msg("Infoscience search shortcode: Please check the url");
-        }
-
-        $recid_matches = [];
-        preg_match('#^https?://infoscience.epfl.ch/record/(\d+)/?#i', $url, $recid_matches);
-
-        if (count($recid_matches) >= 2) {
-            # this is direct record url
-            # transform it to a recid search
-            $recid = $recid_matches[1];
-            $url = "https://infoscience.epfl.ch/search?p=recid:'" . $recid . "'";
-        }
-
-        $parts = parse_url($url);
-        $query = proper_parse_str($parts['query']);
-
-        #
-        # override values
-
-        # set the given url to the good format
-        $query['of'] = 'xm';
-
-        # when it is a basket, dont touch the args, only the of one :
-        if (!array_key_exists('bskid', $query) || empty($query['bskid'])) {
-
-            # set default if not already set :
-            if (!array_key_exists('rg', $query) || empty($query['rg'])) {
-                $query['rg'] = '100';
-            }
-
-            #empty or not, the limit attribute has the last word
-            if (!empty($atts['limit'])) {
-                $query['rg'] = $atts['limit'];
-            }
-
-            if (!array_key_exists('sf', $query) || empty($query['sf'])) {
-                $query['sf'] = 'year';
-            }
-
-            if (!array_key_exists('so', $query) || empty($query['so'])) {
-                if (array_key_exists('sort', $atts) && $atts['sort'] === 'asc') {
-                    $query['so'] = 'a';
-                } else {
-                    $query['so'] = 'd';
-                }
-            }
-        }
-
-        # We may use http_build_query($query, null, '&amp;'); when provided urls are overencoded
-        # looks fine at the moment
-        $query = http_build_query($query, null);
-
-        # from foo[1]=bar1&foo[2]=bar2 to foo[]=bar&foo[]=bar2
-        $url = preg_replace('/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $query);
-
-        $url = INFOSCIENCE_SEARCH_URL . urldecode($url);
+    # as the cache is identified with the url too, separate the getter
+    if (empty($server_engine_name) || $server_engine_name == 'invenio') {
+        $url = old_generate_url_from_attributes( $attributes, $unmanaged_attributes, $atts );
     } else {
-        # no direct url were provided, build the custom one ourself
-        $url = epfl_infoscience_search_generate_url_from_attrs($attributes+$unmanaged_attributes);
+        try {
+            $url = generate_url_from_attributes( $attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui );
+        } catch ( \Exception $e ) {
+            $banner_msgs[] = 'Error: ' . $e->getMessage();
+            return get_banners(false, $banner_msgs, $current_language);
+        }
     }
 
     /*
@@ -210,20 +160,46 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         'group_by' => $group_by,
         'group_by2' => $group_by2,
         'sort' => $attributes['sort'],
-        'language' => get_language()
+        'language' => $current_language
     ];
 
     $serialized_attributes = serialize($cache_define_by);
     $md5_id = md5($serialized_attributes);
     $cache_key = 'epfl_infoscience_search_' . $md5_id;
 
-    $long_cache_value = 1 * DAY_IN_SECONDS; // was 1 * WEEK_IN_SECONDS;
-    $short_cache_value = 4 * HOUR_IN_SECONDS;
+    $long_cache_value = 1 * DAY_IN_SECONDS;
+    $short_cache_value = 12 * HOUR_IN_SECONDS;
     // there is the third cache, the db_cache that is unlimited in time
     // see ./long_term_cache.php for details
 
     // Flag which cache we are currently using, to show a banner at the end
     $cache_in_use = null;  // | 'short' | 'long' | 'db'
+
+    /**
+     * Old block - try to fetch what is in the db
+     */
+    // ok, as we have two variants of the block coming here, we may need to crawl different data
+    if (empty($server_engine_name) || $server_engine_name == 'invenio') {  // meaning we have the old block
+        $page = get_page_from_cache_table( $md5_id );  // use whatever is in the long terme cache db
+        // Tell the api timer we're using the cache
+        do_action( 'epfl_stats_webservice_call_duration', $url, 0, true );
+        if ( $page ) {
+            $cache_in_use = 'db';
+        }
+
+        $debug_info_div = '';
+        if ($debug) {
+            $debug_info_div = get_debug_info_div(
+                $cache_define_by,
+                $cache_in_use,
+                $server_engine_name,
+                $debug_data && isset($grouped_by_publications) ? $grouped_by_publications : []
+            );
+        }
+
+        return get_banners(true, $banner_msgs, $current_language) .
+               $debug_info_div . $page;  // stop here, it is enough for the old block
+    }
 
     // As defined by the $short_cache_value, we may need to refresh it.
     // You may wonder why not using the transient timeout system ? Well, as we want
@@ -254,7 +230,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         ( is_admin() && current_user_can( 'edit_pages' ) ) ||
         // short cache need an update
         $isShortCacheExpired ||
-        $debug_cache ||
+        $deactivate_cache ||
         $debug_data ||
         $debug_template
     ) {
@@ -271,8 +247,6 @@ function epfl_infoscience_search_block( $provided_attributes ) {
 
         // define which cache for later banners if any
         $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
-        // save everytime we can the cache into the db
-        save_page_in_cache_table($md5_id, $serialized_attributes, $page);
     } else {
         // no cache for u, time to do the hard work
         // crawl, build and cache the page
@@ -302,37 +276,31 @@ function epfl_infoscience_search_block( $provided_attributes ) {
                 throw new InfoscienceHTTPError( $error_message );
             }
 
-            // no http error, let's continue
             $marc_xml = wp_remote_retrieve_body( $response );
 
             $publications = InfoscienceMarcConverter::convert_marc_to_array( $marc_xml );
 
             $grouped_by_publications = InfoscienceGroupBy::do_group_by( $publications, $group_by, $group_by2, $attributes['sort'] );
 
-            if ( $debug_data ) {
-                $page = RawInfoscienceRender::render( $grouped_by_publications, $url );
-            } else {
-                $page = ClassesInfoscience2018Render::render( $grouped_by_publications,
-                    $url,
-                    $format,
-                    $summary,
-                    $thumbnail,
-                    $debug_template );
+            $page = ClassesInfoscience2018Render::render( $grouped_by_publications,
+                $url,
+                $format,
+                $summary,
+                $thumbnail,
+                $debug_template );
 
-                // wrap the page, and add config as html comment
-                $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export( $before_unset_attributes, true ) . ' //-->';
-                $html_verbose_comments .= '<!-- epfl_infoscience_search used url :' . var_export( $url, true ) . ' //-->';
+            // wrap the page, and add config as html comment
+            $html_verbose_comments = '<!-- epfl_infoscience_search params : ' . var_export( $before_unset_attributes, true ) . ' //-->';
+            $html_verbose_comments .= '<!-- epfl_infoscience_search used url :' . var_export( $url, true ) . ' //-->';
 
-                $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
+            $page = '<div class="infoscienceBox container no-tex2jax_process">' . $html_verbose_comments . $page . '</div>';
 
-                $page .= epfl_infoscience_search_get_mathjax_config();
+            $page .= epfl_infoscience_search_get_mathjax_config();
 
-                // cache the result if we have got some valid data
-                if ( !empty( $publications ) ) {
-                    # cache any valid results
-                    set_transient( $cache_key, $page, $long_cache_value );
-                    save_page_in_cache_table($md5_id, $serialized_attributes, $page);
-                }
+            // cache the result if we have got some valid data
+            if ( !empty( $publications ) ) {
+                # cache any valid results
+                set_transient( $cache_key, $page, $long_cache_value );
             }
         }
             # on error, do something with the error, then start a best effort to find something into caches
@@ -361,17 +329,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
             if ($page !== false) {
                 // Tell the api timer we're using the cache
                 do_action('epfl_stats_webservice_call_duration', $url, 0, true);
-                // save a copy of the render into long term db
-                save_page_in_cache_table($md5_id, $serialized_attributes, $page);
                 $cache_in_use = $isShortCacheExpired ? 'long' : 'short';
-            } else {
-                // take a look in db if cache is over
-                $page = get_page_from_cache_table($md5_id);
-                // Tell the api timer we're using the cache
-                do_action('epfl_stats_webservice_call_duration', $url, 0, true);
-                if ($page) {
-                    $cache_in_use = 'db';
-                }
             }
         }
     }
@@ -379,157 +337,21 @@ function epfl_infoscience_search_block( $provided_attributes ) {
     // check and add banner, if needed
     if ( $cache_in_use == 'long' ) {
         // in case we can not get fresh data, show the ones in cache *if possible*, and add this sorry message
-        $banner_msgs[] = 'This is cached data, the list is certainly obsolete.';
-    } elseif ( $cache_in_use == 'db' ) {
-        $banner_msgs[] = 'This content is currently static. Please go to infoscience.epfl.ch and search for an updated list.';
+        $banner_msgs[] = 'This is cached data, the list may be obsolete.';
     }
 
-    if ( $banner_msgs ) {
-        $banner_msgs = Utils::render_user_msg(
-            "<p> - ".implode('</p><p> - ', $banner_msgs)."</p>"
+    $debug_info_div = '';
+    if ($debug) {
+        $debug_info_div = get_debug_info_div(
+            $cache_define_by,
+            $cache_in_use,
+            $server_engine_name,
+            $debug_data && isset($grouped_by_publications) ? $grouped_by_publications : []
         );
-    } else {
-        $banner_msgs = '';
     }
 
-    return $banner_msgs . $page;
-}
-
-
-/**
- * From any attributes, set them as url parameters for Infoscience
- *
- * @param array $attrs attributes that need to be sent to Infoscience
- *
- * @return string $url the url build
- */
-function epfl_infoscience_search_convert_keys_values($array_to_convert) {
-    $convert_fields = function($value) {
-        return ($value === 'any') ? '' : $value;
-    };
-
-    $convert_operators = function($value) {
-        if ($value === 'and') {
-            return 'a';
-        } elseif ($value === 'or') {
-            return  'o';
-        } elseif ($value === 'and_not') {
-            return  'n';
-        } else {
-            return $value;
-        }
-    };
-
-    $sanitize_text_field = function($value) {
-        return sanitize_text_field($value);
-    };
-
-    $sanitize_pattern_field = function($value) {
-        # find if we have an encoded value, and decode it
-        # this code allow retro-compatibility,
-        # as encoding value was not done before
-        if (preg_match('/%[0-9a-f]{2}/i', $value)) {
-            $value = urldecode($value);
-        }
-        return sanitize_text_field($value);
-    };
-
-    $map = array(
-        'pattern' => ['p1', $sanitize_pattern_field],
-        'field' => ['f1', $convert_fields],
-        'limit' => ['rg', function($value) {
-            return ($value === '') ? '100' : $value;
-        }],
-        'sort' => ['so', function($value) {
-            return ($value === 'asc') ? 'a' : 'd';
-        }],
-        'collection' => ['c', $sanitize_text_field],
-        'pattern2' => ['p2', $sanitize_pattern_field],
-        'field2' => ['f2', $convert_fields],
-        'operator2' => ['op1', $convert_operators],
-        'pattern3' => ['p3', $sanitize_pattern_field],
-        'field3' => ['f3', $convert_fields],
-        'operator3' => ['op2', $convert_operators],
-    );
-
-    $converted_array = array();
-
-    foreach ($array_to_convert as $key => $value) {
-        if (array_key_exists($key, $map)) {
-            # is the convert function defined
-            if (array_key_exists(1, $map[$key]) && $map[$key][1])
-            {
-                $converted_array[$map[$key][0]] = $map[$key][1]($value);
-            } else {
-                $converted_array[$map[$key][0]] = $value;
-            }
-        }
-        else {
-            $converted_array[$key] = $value;
-        }
-    }
-    return $converted_array;
-}
-
-/**
- * From any attributes, set them as url parameters for Infoscience
- *
- * @param array $attrs attributes that need to be sent to Infoscience
- *
- * @return string $url the url build
- */
-function epfl_infoscience_search_generate_url_from_attrs($attrs) {
-    $url = INFOSCIENCE_SEARCH_URL;
-
-    # default parameters may change afterward
-    $default_parameters = array(
-        'ln' => 'en',  #TODO: dynamic language
-        'of' => 'xm',  # template format
-        'sf' => 'year', # year sorting
-    );
-
-    $parameters = epfl_infoscience_search_convert_keys_values($attrs);
-    $parameters = $default_parameters + $parameters;
-
-    $additional_parameters_array = [
-        # remove pendings by setting collection to accepted
-        'c' => 'Infoscience/Published',
-    ];
-
-    foreach($additional_parameters_array as $key => $add_params) {
-        if (array_key_exists($key, $parameters)) {
-            $parameters[$key] = [
-                $parameters[$key],
-                $add_params,
-            ];
-        }
-    }
-
-    $parameters = array_filter($parameters);
-
-    # if we have only one operator set (meaning p1 is set and non p2 or p3)
-    # and field resctriction is "any"
-    # transform it to a non-advanced-search, as it has a better
-    # search engine (mainly the date1->date2 operator)
-    if (!empty($parameters['p1']) &&
-        empty($parameters['p2']) &&
-        empty($parameters['p3'])) {
-
-        // yes there is a tricky tranformation to check (fieldrestriction -> to f1)
-        if (array_key_exists('fieldrestriction', $parameters) &&
-            $parameters['fieldrestriction'] === 'any' &&
-            empty($parameters['f1']) ) {
-            unset($parameters['as1']);
-            unset($parameters['op1']);
-            $parameters['p'] = $parameters['p1'];
-            unset($parameters['p1']);
-        }
-    }
-
-    # sort before build, for the caching system
-    ksort($parameters);
-
-    return INFOSCIENCE_SEARCH_URL . http_build_query($parameters);
+    return get_banners(false, $banner_msgs, $current_language) .
+           $debug_info_div . $page;
 }
 
 add_action( 'init', function() {

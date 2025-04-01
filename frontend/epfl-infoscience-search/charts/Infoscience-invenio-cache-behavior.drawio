@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net" modified="2024-04-29T10:03:19.126Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="Lt_DYPgdbEsbyPOxx70s" version="24.3.0" type="device">
+  <diagram name="Page-1" id="GhY2xR0RYFK56Lw2G0DQ">
+    <mxGraphModel dx="1185" dy="623" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7VcebXijIjff9v6D878x-1" value="Cache Court" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="670" y="180" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-2" value="Cache Long" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="385" y="670" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-3" value="Infoscience on Wordpress -- Les caches avant migration" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="95" y="10" width="665" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-4" target="7VcebXijIjff9v6D878x-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-4" value="Utilisateur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="190" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-7" value="&lt;div&gt;Durée : 4 heures&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mises à jour constantes&lt;/div&gt;&lt;div&gt;Temporaire&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="742" y="187" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-8" value="&lt;div&gt;Durée : 1 jour&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mises à jour constantes&lt;/div&gt;&lt;div&gt;Temporaire&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="455.00000000000006" y="687" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-10" target="7VcebXijIjff9v6D878x-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-10" value="Demande une page avec un block Infoscience" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-17" target="7VcebXijIjff9v6D878x-25">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="335" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-23" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7VcebXijIjff9v6D878x-22">
+          <mxGeometry x="-0.0133" y="1" relative="1" as="geometry">
+            <mxPoint x="19" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-17" target="7VcebXijIjff9v6D878x-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-17" value="Liste en cache &#39;Court&#39; ?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="180" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-25" target="7VcebXijIjff9v6D878x-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-25" value="Téléchargement depuis Infoscience / Invenio" style="rounded=1;whiteSpace=wrap;html=1;spacingBottom=45;" vertex="1" parent="1">
+          <mxGeometry x="280" y="350" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-26" value="Succès ?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="375" y="530" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-34" value="Affichage du cache &#39;Court&#39;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-26" target="7VcebXijIjff9v6D878x-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-37" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7VcebXijIjff9v6D878x-36">
+          <mxGeometry x="-0.0048" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-39" value="Oui" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.549;entryY=1.031;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-26" target="7VcebXijIjff9v6D878x-34">
+          <mxGeometry x="-0.7654" y="10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7VcebXijIjff9v6D878x-26" target="7VcebXijIjff9v6D878x-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="7VcebXijIjff9v6D878x-41" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=1;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="395" y="380" width="40" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

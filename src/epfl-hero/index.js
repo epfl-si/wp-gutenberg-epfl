@@ -6,7 +6,7 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
-const version = "v1.3.0";
+const version = "v1.4.0";
 
 const { __ } = wp.i18n;
 
@@ -26,6 +26,7 @@ const {
     PanelBody,
     TextControl,
     TextareaControl,
+    RadioControl,
 } = wp.components;
 
 const { Fragment } = wp.element;
@@ -56,6 +57,10 @@ registerBlockType( 'epfl/hero', {
     },
     videoUrl: {
       type: 'string',
+    },
+    cropType: {
+      type: 'string',
+      default: 'center',
     }
 	}),
     example: getTooltippedExample(),
@@ -93,6 +98,18 @@ registerBlockType( 'epfl/hero', {
                 <InspectorControls>
                     <p><a className="wp-block-help" href={ __('https://www.epfl.ch/campus/services/website/hero-en/', 'epfl') } target="new">{ __('Online help', 'epfl') } </a></p>
                     <p className="wp-block-help">{ version }</p>
+                    <PanelBody title='Image position'>
+                        <RadioControl
+                            label={ __('Display', 'epfl') }
+                            selected={ attributes.cropType }
+                            options={ [
+                                { label: 'Top', value: 'top' },
+                                { label: 'Center', value: 'center' },
+                                { label: 'Bottom', value: 'bottom' },
+                            ] }
+                            onChange={ ( cropType ) => setAttributes( { cropType } ) }
+                        />
+                    </PanelBody>
                 </InspectorControls>
                 <div className={ className }>
                         <h2 className="epfl-block-title">{ __('EPFL Hero', 'epfl') }</h2>

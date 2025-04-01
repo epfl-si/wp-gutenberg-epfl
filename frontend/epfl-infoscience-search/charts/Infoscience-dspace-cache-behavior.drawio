@@ -1,0 +1,95 @@
+<mxfile host="app.diagrams.net" modified="2024-04-29T10:01:19.267Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" etag="ZNwUcehSBxVlKwEr2f1n" version="24.3.0" type="device">
+  <diagram name="Page-1" id="5e1Qr9iVPsglMR77gqOm">
+    <mxGraphModel dx="2074" dy="1091" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jmcCbvRsbyffRvLeQcus-2" value="Court" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="560" y="510" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-3" value="Long" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="560" y="610" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-4" value="Infoscience on Wordpress -- Les caches après migration" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="1">
+          <mxGeometry x="95" y="10" width="665" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-6" target="jmcCbvRsbyffRvLeQcus-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="240" />
+              <mxPoint x="100" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-6" target="jmcCbvRsbyffRvLeQcus-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-6" value="Utilisateur" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="210" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-7" value="DB" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="560" y="110" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-8" value="&lt;div&gt;Durée : 4 heures&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mises à jour constantes&lt;/div&gt;&lt;div&gt;Temporaire&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="515" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-9" value="&lt;div&gt;Durée : 1 jour&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mises à jour constantes&lt;/div&gt;&lt;div&gt;Temporaire&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="615" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-10" value="&lt;div&gt;Durée : illimitée&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mises à jour stoppée&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="115" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-11" target="jmcCbvRsbyffRvLeQcus-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-11" value="Demande une page avec l&#39;ancien block Infoscience" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-13" target="jmcCbvRsbyffRvLeQcus-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-13" value="Demande une page avec un block Infoscience" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="240" y="411" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-16" target="jmcCbvRsbyffRvLeQcus-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-23" value="Migre" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jmcCbvRsbyffRvLeQcus-21">
+          <mxGeometry x="0.0385" y="3" relative="1" as="geometry">
+            <mxPoint x="27" y="17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-16" value="&lt;div&gt;Administrateur du site&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="200" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-24" value="Nouveau block" style="dashed=0;html=1;rounded=1;strokeColor=#d6b656;fontSize=12;align=center;fontStyle=1;strokeWidth=2;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="310" y="380" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-27" value="Obsolète" style="dashed=0;html=1;rounded=1;strokeColor=#6554C0;fontSize=12;align=center;fontStyle=1;strokeWidth=2;fontColor=#6554C0" vertex="1" parent="1">
+          <mxGeometry x="310" y="185" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-11" target="jmcCbvRsbyffRvLeQcus-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-2" target="jmcCbvRsbyffRvLeQcus-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-35" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=1;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="570" y="416" width="40" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.498;entryY=-0.045;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-35" target="jmcCbvRsbyffRvLeQcus-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-13" target="jmcCbvRsbyffRvLeQcus-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="jmcCbvRsbyffRvLeQcus-13" target="jmcCbvRsbyffRvLeQcus-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="jmcCbvRsbyffRvLeQcus-41" value="Infoscience / DSpace" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="646" y="432" width="160" height="34" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -38,6 +38,23 @@ function render_user_msg($msg) {
 }
 
 /**
+ * Return a user message, with customized options
+ * $type: can be success, info, warning or danger
+ * $is_big: do we want the div to be full sized ?
+ */
+function render_user_msg_custom($msg, $title, $type, $is_big) {
+    $container_class = $is_big ? ' container' : '';
+
+    $html = '<div class="alert alert-' . $type . ' alert-dismissible fade show' . $container_class . '" role="alert">';
+    $html .= '<strong class="pl-1">' . $title .'</strong><p class="pl-1">' . $msg . '</p>';
+    $html .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
+    $html .= '  <span aria-hidden="true">&times;</span>';
+    $html .= '</button>';
+    $html .= '</div>';
+    return $html;
+}
+
+/**
  * See https://www.php.net/manual/en/function.parse-str.php, 1st comment
  * Fix this : parse_str('foo=1&foo=2&foo=3'); -> $foo = array('foo' => '3'); but we want
  * $foo = array('foo' => array('1', '2', '3') );
@@ -73,4 +90,22 @@ function proper_parse_str($str) {
   # return result array
   return $arr;
 }
-?>
+
+/**
+ * Identify the server type with the provided url
+ *
+ * @param $query array  An parse_url returned object like
+ *
+ * @return string  If it is identifiable, it returns 'invenio' or 'dspace'. Otherwise an empty string
+ */
+function find_server_engine_by_url_parameters($query) {
+    if ( !empty($query) ) {
+        if ( isset($query['query']) ) {
+            return 'dspace';
+        } elseif ( isset($query['p']) ) {
+            return 'invenio';
+        }
+    }
+
+    return '';
+}

@@ -28,11 +28,15 @@ function epfl_caption_cards_block( $attributes ) {
     ob_start();
 ?>
     <div class="container-full p-3 p-md-4 p-lg-5 <?php echo ($gray_wrapper) ? 'bg-gray-100' : ''?>">
-        <div class="row">
+        <div class="row justify-content-center align-items-center">
             <?php for($i = 1; $i <= 10; $i++): ?>
             <?php if (!empty($attributes['title'.$i])) : ?>
                 <div class="col-sm-6 col-xl-4">
+                    <?php if (!empty($attributes['link'.$i])): ?>
                 <a href="<?php echo $attributes['link'.$i]; ?>" class="card card-overlay link-trapeze-horizontal"<?php if($attributes['openLinkNewTab'.$i]): ?> target="_blank" <?php endif; ?>>
+                    <?php else: ?>
+                <div class="card card-overlay">
+                    <?php endif; ?>
                     <?php if (!empty($attributes['imageId'.$i])):
                         $image = get_post($attributes['imageId'.$i]);
                     ?>
@@ -48,7 +52,11 @@ function epfl_caption_cards_block( $attributes ) {
                         <strong class="text-padded"><?php echo $attributes['subtitle'.$i]; ?></strong>
                     </p>
                     </div>
+                    <?php if (!empty($attributes['link'.$i])): ?>
                 </a>
+                    <?php else: ?>
+                </div>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
             <?php endfor; ?>

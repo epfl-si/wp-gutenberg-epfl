@@ -162,7 +162,7 @@ Class InfoscienceMarcConverter
         $build_search_url = function ($full_name) {
             $full_name = str_replace(' ', '+', $full_name);
             $full_name = str_replace(',', '+', $full_name);
-            return "https://infoscience.epfl.ch/search?p=" . $full_name;
+            return "https://infoscience.epfl.ch/search?configuration=researchoutputs&query=author_editor:(". $full_name .")" ;
         };
 
         $compute_name = function ($full_name) {

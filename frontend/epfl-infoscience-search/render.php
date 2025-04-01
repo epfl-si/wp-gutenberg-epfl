@@ -115,7 +115,7 @@ Class RawInfoscienceRender extends Infoscience2018Render {
      * @return
      */
     public static function render($publications, $url='', $format="short", $summary=false, $thumbnail=false, $debug=false) {
-        return self::render_url($url) . RawInfoscienceRender::pretty_print($publications);
+        return RawInfoscienceRender::pretty_print($publications);
     }
 }
 ?>

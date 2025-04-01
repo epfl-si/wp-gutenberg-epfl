@@ -98,7 +98,7 @@ abstract Class InfosciencePublication2018Render {
     protected static function render_links($publication) {
         $links_html = '<div class="col-md-2 text-right mt-4 mt-md-0">';
         $links_html .= '  <p class="infoscience_detailed_record_link">';
-        $links_html .= '    <a href="//infoscience.epfl.ch/record/' . esc_html($publication['record_id'][0]) . '" class="btn btn-secondary btn-sm" target="_blank">' . esc_html__('Detailed record', 'epfl') . '</a>';
+        $links_html .= '    <a href="//infoscience.epfl.ch/items/' . esc_html($publication['record_id'][0]) . '" class="btn btn-secondary btn-sm" target="_blank">' . esc_html__('Detailed record', 'epfl') . '</a>';
         $links_html .= '  </p>';
 
         $fulltext = '';

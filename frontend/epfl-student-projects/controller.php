@@ -4,7 +4,8 @@ namespace EPFL\Plugins\Gutenberg\StudentProjects;
 
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
-require_once (dirname(__FILE__) . '/../lib/utils.php');
+require_once(dirname(__FILE__) . '/../lib/utils.php');
+
 
 function get_link($url)
 {
@@ -13,7 +14,12 @@ function get_link($url)
   return '<a href="' . $url . '" target="_blank">' . $url . '</a>';
 }
 
-function sortByProjectName($a, $b)
+function sortByProjectNameIsa($a, $b)
+{
+  return strcmp($a->project->title, $b->project->title);
+}
+
+function sortByProjectNameZen($a, $b)
 {
   return strcmp($a->title, $b->title);
 }
@@ -30,9 +36,12 @@ function handle_isa($attributes)
     return '';
 
   $target_host = 'isa.epfl.ch';
+  //$target_host = 'ditex-web.epfl.ch';
+
   $url = "https://" . $target_host . "/services/v1/projects/" . $section;
 
   $search_params = array();
+
   if ($only_current_projects)
     $search_params[] = 'date-active=' . date("Y-m-d");
   if ($professor_scipers != "") {
@@ -49,7 +58,7 @@ function handle_isa($attributes)
     return Utils::render_user_msg("Error getting project list");
   }
 
-  usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectName');
+  usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectNameIsa');
 
   ob_start();
   ?>
@@ -58,7 +67,6 @@ function handle_isa($attributes)
     <div class="form-group">
       <input type="text" id="student-projects-search-input" class="form-control search mb-2"
         placeholder="<?php _e('Search', 'epfl') ?>" aria-describedby="student-projects-search-input">
-
       <button class="btn btn-secondary sort asc" data-sort="title"><?php _e('Sort by project name', 'epfl') ?></button>
       <button class="btn btn-secondary sort" data-sort="project-id"><?php _e('Sort by project ID', 'epfl') ?></button>
       <button class="btn btn-secondary sort" data-sort="professor1-name"><?php _e('Sort by professor', 'epfl') ?></button>
@@ -181,8 +189,6 @@ function handle_isa($attributes)
   return $content;
 }
 
-
-
 function epfl_student_projects_block($attributes, $inner_content)
 {
 
@@ -192,7 +198,6 @@ function epfl_student_projects_block($attributes, $inner_content)
     case 'zen':
       return handle_zen($attributes);
     case 'isa':
-    default:
       return handle_isa($attributes);
   }
 }
@@ -200,26 +205,35 @@ function epfl_student_projects_block($attributes, $inner_content)
 function handle_zen($attributes)
 {
   $section = Utils::get_sanitized_attribute($attributes, 'section');
-  $url = "https://test-sti-zen.epfl.ch/api/projects/unit/" . $section;
+  $url = "https://sti-zen.epfl.ch/api/public/projects/unit/" . $section;
   $items = Utils::zen_api_request($url);
 
-  if ($items === false) {
-    return Utils::render_user_msg("Error getting project list from ZEN");
+  if ($items === NULL) {
+    return Utils::render_user_msg("Error getting project list from ZEN or project list is empty");
   }
+
+  // Sort initially by project title
+  usort($items, 'EPFL\Plugins\Gutenberg\StudentProjects\sortByProjectNameZen');
 
   ob_start();
   ?>
-  <div id='student-projects-list' class="container">
+
+  <div id='student-projects-list' class="container" style=" display:flex; flex-direction:column; gap: 50px">
     <div class="form-group">
       <input type="text" id="student-projects-search-input" class="form-control search mb-2"
-        placeholder="<?php _e('Search', 'epfl') ?>" aria-describedby="student-projects-search-input">
-      <button class="btn btn-secondary sort asc" data-sort="title"><?php _e('Sort by project title', 'epfl'); ?></button>
-      <button class="btn btn-secondary sort" data-sort="project-id"><?php _e('Sort by project ID', 'epfl'); ?></button>
+        placeholder="<?php _e('Search', 'epfl') ?>" aria-describedby="student-projects-search-input"
+        onkeyup="filterProjects()">
+      <button class="btn btn-secondary sort asc"
+        onclick="sortProjects('title')"><?php _e('Sort by project title', 'epfl'); ?></button>
+      <button class="btn btn-secondary sort"
+        onclick="sortProjects('id')"><?php _e('Sort by project ID', 'epfl'); ?></button>
+      <button class="btn btn-secondary sort" onclick="sortProjects('date')"><?php _e('Sort by date', 'epfl') ?></button>
     </div>
 
-    <div class="list">
+    <div class="list" id="projects-list" style="margin-bottom: 50px">
       <?php foreach ($items as $item): ?>
-        <section class="collapse-container">
+        <section class="collapse-container project-item" data-title="<?php echo htmlspecialchars($item['title']); ?>"
+          data-id="<?php echo $item['id']; ?>" data-date="<?php echo substr($item['createdAt'], 0, 10); ?>">
           <header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse"
             data-target="#project-<?php echo $item['id']; ?>" aria-expanded="false"
             aria-controls="project-<?php echo $item['id']; ?>">
@@ -268,7 +282,6 @@ function handle_zen($attributes)
                     </span>
                   <?php endforeach; ?>
                 <?php endif; ?>
-
               </dd>
 
               <dt>Memberships:</dt>
@@ -282,11 +295,48 @@ function handle_zen($attributes)
               </dd>
             </dl>
           </div>
-
         </section>
       <?php endforeach; ?>
     </div>
   </div>
+
+  <script>
+    function filterProjects() {
+      const input = document.getElementById('student-projects-search-input').value.toLowerCase();
+      const projects = document.getElementsByClassName('project-item');
+
+      Array.from(projects).forEach((project) => {
+        const title = project.getAttribute('data-title').toLowerCase();
+        project.style.display = title.includes(input) ? '' : 'none';
+      });
+    }
+
+    function sortProjects(type) {
+      const projectsList = document.getElementById('projects-list');
+      const projects = Array.from(projectsList.getElementsByClassName('project-item'));
+
+      projects.sort((a, b) => {
+        const getValue = (project) => {
+          switch (type) {
+            case 'title':
+              return project.dataset.title.toLowerCase();
+            case 'id':
+              return parseInt(project.dataset.id);
+            case 'date':
+              return new Date(project.dataset.date);
+          }
+        };
+
+        const valueA = getValue(a);
+        const valueB = getValue(b);
+
+        return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
+      });
+
+      projects.forEach(project => projectsList.appendChild(project));
+
+    }
+  </script>
 
   <?php
   $content = ob_get_contents();
