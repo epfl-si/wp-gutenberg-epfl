@@ -45,7 +45,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
 		if (source === "zen") {
 			if (this.state.zenFetchMode === "sciper" && this.props.attributes.professorScipers) {
 				const sciper = this.props.attributes.professorScipers;
-				const zenApiUrl = `https://test-sti-zen.epfl.ch/api/public/projects/manager/${sciper}`;
+				const zenApiUrl = `https://sti-zen.epfl.ch/api/public/projects/manager/${sciper}`;
 				axios
 					.get(zenApiUrl)
 					.then((response) => {
@@ -69,7 +69,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
 						this.props.setAttributes({ section: filteredAndMappedSections });
 					})
 					.catch((error) => {
-						console.error("Error fetching data from ZEN API:", error);
+						console.error("Error fetching data from the Projects Database (Zen) API", error);
 						this.setState({ sections: [] });
 					});
 			} else if (this.state.zenFetchMode === "section" || this.state.zenFetchMode === "") {
