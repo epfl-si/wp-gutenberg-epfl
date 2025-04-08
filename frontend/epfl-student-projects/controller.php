@@ -210,7 +210,7 @@ function handle_zen($attributes)
 
     if ($zenFetchMode === 'sciper' && !empty($professorScipers)) {
         $sciper = preg_replace('/\s/', '', $professorScipers);
-        $url = "https://test-sti-zen.epfl.ch/api/public/projects/manager/" . $sciper;
+        $url = "https://sti-zen.epfl.ch/api/public/projects/manager/" . $sciper;
     } else if ($zenFetchMode === 'section' && !empty($section)) {
         $url = "https://sti-zen.epfl.ch/api/public/projects/unit/" . $section;
     } else {
