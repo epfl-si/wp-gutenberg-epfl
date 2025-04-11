@@ -201,7 +201,7 @@ Class Utils
         curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0");
 
         $response = curl_exec($curl);
-        
+
         if (!$response) {
             error_log("API request failed: " . curl_error($curl));  // Log error to PHP error log
             curl_close($curl);
@@ -209,7 +209,7 @@ Class Utils
         }
 
         curl_close($curl);
-        $data = json_decode($response, true); 
+        $data = json_decode($response, true);
 
         return $data;
     }
@@ -230,7 +230,11 @@ Class Utils
     public static function get_sanitized_url($attributes, $name, $default="")
     {
         $value = (array_key_exists($name, $attributes))? $attributes[$name]: $default;
-        $sanitized_value = preg_replace_callback('(\'|")', function($x) { return htmlentities($x[0], ENT_QUOTES); }, $value ?? '');
+        $sanitized_value = preg_replace_callback(
+            '(\'|")',
+            function($x) { return htmlentities($x[0], ENT_QUOTES); },
+            $value ?? ''
+        );
 
         $scheme = wp_parse_url($sanitized_value, PHP_URL_SCHEME);
 
