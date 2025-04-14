@@ -8,7 +8,7 @@ import {
 import studentProjectsIcon from './student-projects-icon'
 import InspectorControlsStudentProjects from './inspector'
 
-export const version = "v1.0.3";
+export const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
