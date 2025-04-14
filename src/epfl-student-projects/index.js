@@ -8,7 +8,7 @@ import {
 import studentProjectsIcon from './student-projects-icon'
 import InspectorControlsStudentProjects from './inspector'
 
-export const version = "v1.0.2";
+export const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
@@ -48,6 +48,9 @@ registerBlockType( 'epfl/student-projects', {
             type: 'string',
         },
         apiSource:{
+            type: 'string',
+        },
+        zenFetchMode:{
             type: 'string',
         }
     }),
