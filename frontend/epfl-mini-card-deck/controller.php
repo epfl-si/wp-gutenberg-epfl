@@ -40,7 +40,7 @@ function epfl_mini_card_deck_block($attributes, $inner_content) {
   ob_start();
 ?>
 
-<div class="container-full py-3 px-4<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
+<div class="container py-3 px-4<?php echo ($gray_wrapper) ? ' bg-gray-100' : '' ?>">
   <div class="card-deck mini-cards">
     <h2 class="deck-title text-center"><?php echo $title; ?></h2>
     <?php
