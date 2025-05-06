@@ -35,6 +35,10 @@ add_filter( 'get_site_tags', function ($value) {
       $site = [];
 
       // first, fetch for the id of this site
+      if (!str_ends_with($site_url, '/')) {
+            $site_url .= '/';
+      }
+
       $url_site_to_id = $tag_provider_url . '/sites?site_url=' . rawurlencode($site_url);
       $sites = Utils::get_items($url_site_to_id);
 
