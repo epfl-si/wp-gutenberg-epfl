@@ -29,7 +29,7 @@ require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
 // load .mo file for translation
 function epfl_gutenberg_load_textdomain() {
     $domain = 'epfl';
-	$locale = pll_current_language( 'locale' );
+    $locale = pll_current_language( 'locale' );
     $mo_file = plugin_dir_path( __FILE__ ) . "languages/{$domain}-{$locale}.mo";
 
     if ( file_exists( $mo_file ) ) {
