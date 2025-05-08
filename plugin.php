@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
- * Version:         2.41.1
+ * Version:         2.42.0
  * Author:          WordPress EPFL Team
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -28,10 +28,17 @@ require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
 
 // load .mo file for translation
 function epfl_gutenberg_load_textdomain() {
-	load_plugin_textdomain( 'epfl', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+    $domain = 'epfl';
+	$locale = pll_current_language( 'locale' );
+    $mo_file = plugin_dir_path( __FILE__ ) . "languages/{$domain}-{$locale}.mo";
+
+    if ( file_exists( $mo_file ) ) {
+        unload_textdomain( $domain );
+        $loaded = load_textdomain( $domain, $mo_file );
+    }
 }
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\epfl_gutenberg_load_textdomain' );
+add_action( 'wp', __NAMESPACE__ . '\epfl_gutenberg_load_textdomain', 20 );
 
 # allow to fetch rest api with the lang parameter
 function polylang_json_api_init() {
