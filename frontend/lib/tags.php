@@ -4,7 +4,7 @@ namespace EPFL\Plugins\Gutenberg\Lib\Tags;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 function epfl_fetch_site_tags_order_cmp($a, $b) {
-  $order = ['faculty', 'institute', 'field-of-research'];
+  $order = ['faculty', 'institute', 'doctoral-program', 'field-of-research'];
 
   $a = array_search($a->type, $order);
   $b = array_search($b->type, $order);
