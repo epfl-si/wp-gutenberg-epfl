@@ -168,16 +168,13 @@ function epfl_video_block( $attributes ) {
     - https://vimeo.com/escapev/espace#t=10s
     - https://vimeo.com/174044440
     - https://vimeo.com/174044440#t=10s
+		- https://vimeo.com/1061975811/18f906c3dd
   */
-  else if(preg_match('/vimeo\.com\/[0-9]+/', $url)===1 && preg_match('/\/embed\//', $url)===0)
+  else if(preg_match('/vimeo\.com\/([0-9]+)\/?([0-9a-zA-Z]+)?/', $url, $matches)===1 && preg_match('/\/embed\//', $url)===0)
   {
-    /* Extracting video ID (and rest of string) from URL which is like :
-    https://vimeo.com/174044440
-    https://vimeo.com/174044440#t=10s
-    */
-    $video_id = substr($url, strrpos($url, '/')+1 );
-
-    $url = "https://player.vimeo.com/video/".$video_id;
+		$video_id = $matches[1];
+		$hash= isset($matches[2]) ? "?h=".$matches[2] : "";
+		$url = "https://player.vimeo.com/video/".$video_id.$hash;
   }
   // else if video not [youtube, vimeo, Mediaspace] then
   else {
