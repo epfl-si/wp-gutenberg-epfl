@@ -13,14 +13,14 @@
             $markup .= '</h3></div>';
         }
 
-        foreach($results as $event) {
-            $visual_url = get_visual_url($event, $memento_name);
-            $markup .= '<a href="' . esc_url($event->event_url) . '" class="list-group-item list-group-item-gray list-group-teaser link-trapeze-vertical" itemscope itemtype="http://schema.org/Event">';
-            $markup .= '<div class="list-group-teaser-container">';
-            $markup .= '<div class="list-group-teaser-thumbnail">';
-            $markup .= '<picture class="card-img-top">';
-            $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em;font-size:1em;">';
-            $markup .= '<meta itemprop="eventStatus" content="https://schema.org/EventCancelled">';
+            foreach($results as $event) {
+                $visual_url = get_visual_url($event, $memento_name);
+                $markup .= '<a href="' . esc_url($event->event_url) . '" class="list-group-item list-group-item-gray list-group-teaser link-trapeze-vertical" itemscope itemtype="http://schema.org/Event">';
+                $markup .= '<div class="list-group-teaser-container">';
+                $markup .= '<div class="list-group-teaser-thumbnail">';
+                $markup .= '<picture class="card-img-top">';
+                $markup .= '<span style="position: absolute; color: #FFF;padding: 10px 0 0 10px; line-height: 1.35em;font-size:1em;">';
+                $markup .= '<meta itemprop="eventStatus" content="https://schema.org/EventCancelled">';
             if ($event->lang == 'fr') {
                 $markup .= @esc_html($event->academic_calendar_category->fr_label);
             } else {
