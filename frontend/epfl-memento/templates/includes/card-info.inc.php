@@ -3,8 +3,8 @@ namespace EPFL\Plugins\Gutenberg\Memento;
 
 $start_date = date_format(date_create($event->start_date), 'd.m.Y');
 $end_date   = date_format(date_create($event->end_date), 'd.m.Y');
-$start_time = date_format(date_create($event->start_time), 'H:i');
-$end_time   = date_format(date_create($event->end_time), 'H:i' );
+$start_time = !empty($event->start_time) ? date_format(date_create($event->start_time), 'H:i') : '';
+$end_time   = !empty($event->end_time)   ? date_format(date_create($event->end_time), 'H:i')   : '';
 
 $datastart_date = date_format(date_create($event->start_date), 'Y-m-d') . 'T' . $start_time;
 $dataend_date = date_format(date_create($event->end_date), 'Y-m-d') . 'T' . $end_time;
