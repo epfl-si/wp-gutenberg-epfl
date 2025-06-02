@@ -1,8 +1,8 @@
 <?php
 namespace EPFL\Plugins\Gutenberg\Memento;
 
-$start_date = date_format(date_create($event->start_date), 'd-m-Y');
-$end_date   = date_format(date_create($event->end_date), 'd-m-Y');
+$start_date = date_format(date_create($event->start_date), 'd.m.Y');
+$end_date   = date_format(date_create($event->end_date), 'd.m.Y');
 $start_time = date_format(date_create($event->start_time), 'H:i');
 $end_time   = date_format(date_create($event->end_time), 'H:i' );
 
