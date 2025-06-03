@@ -32,35 +32,34 @@ if ($event->start_date == $event->end_date){
 $markup .= '<p>';
 
 if ($event->speaker !== '') {
-    $markup .= __('With', 'epfl');
-    $markup .= ': <b>' . strip_tags($event->speaker) . '</b>';
+    $markup .= '<b>' . __('Speaker', 'epfl') . ': </b>';
+    $markup .= strip_tags($event->speaker) . '';
     $markup .= '<br>';
 }
 
 if ($event->place_and_room !== '') {
-    $markup .= __('Place and room', 'epfl');
-    $markup .= ': <b><span itemprop="location">' . esc_html($event->place_and_room) . '</span></b>';
-    $markup .= '<br>';
-}
-
+    $markup .= '<b>' . __('Location', 'epfl') . ':</b>';
+    $markup .= ' <svg class="icon feather" aria-hidden="true"><use xlink:href="#map-pin"></use></svg>';
+    $markup .= ' <span itemprop="location">' . esc_html($event->place_and_room) . '</span>';
 if ($event->url_online_room !== '') {
-  $markup .= __('Online', 'epfl');
-  $markup .= ': <b>' . esc_html($event->url_online_room) . '</b>';
+        $markup .= '& <svg class="icon feather" aria-hidden="true"><use xlink:href="#monitor"></use></svg> ';
+        $markup .= 'Online';
+    }
   $markup .= '<br>';
 }
 
 if (get_current_language() == 'fr' and $event->category->fr_label !== ''){
-    $markup .= __('Category', 'epfl') . ': <b>' . esc_html($event->category->fr_label) . '</b>';
+    $markup .='<b>' . __('Category', 'epfl') . ':</b> ' . esc_html($event->category->fr_label);
     $markup .= '<br>';
 } elseif ($event->category->en_label !== '') {
-    $markup .= __('Category', 'epfl') . ': <b>' . esc_html($event->category->en_label) . '</b>';
+    $markup .='<b>' . __('Category', 'epfl') . ':</b> ' . esc_html($event->category->en_label);
     $markup .= '<br>';
 }
 
 if (get_current_language() == 'fr' and $event->vulgarization->fr_label !== ''){
-    $markup .= __('Public cible', 'epfl') . ': <b>' . esc_html($event->vulgarization->fr_label) . '</b>';
+    $markup .= '<b>' . __('Target audience', 'epfl') . ': </b>' . esc_html($event->vulgarization->fr_label);
     $markup .= '<br>';
 } elseif ($event->vulgarization->en_label !== '') {
-    $markup .= __('Target audience', 'epfl') . ': <b>' . esc_html($event->vulgarization->en_label) . '</b>';
+    $markup .= '<b>' . __('Target audience', 'epfl') . ': </b>' . esc_html($event->vulgarization->en_label);
     $markup .= '<br>';
 }
