@@ -50,17 +50,17 @@ if ($event->url_online_room !== '') {
 }
 
 if (get_current_language() == 'fr' and $event->category->fr_label !== ''){
-    $markup .= __('Category', 'epfl') . ': <b>' . esc_html($event->category->fr_label) . '</b>';
+    $markup .='<b>' . __('Category', 'epfl') . ':</b> ' . esc_html($event->category->fr_label);
     $markup .= '<br>';
 } elseif ($event->category->en_label !== '') {
-    $markup .= __('Category', 'epfl') . ': <b>' . esc_html($event->category->en_label) . '</b>';
+    $markup .='<b>' . __('Category', 'epfl') . ':</b> ' . esc_html($event->category->en_label);
     $markup .= '<br>';
 }
 
 if (get_current_language() == 'fr' and $event->vulgarization->fr_label !== ''){
-    $markup .= __('Public cible', 'epfl') . ': <b>' . esc_html($event->vulgarization->fr_label) . '</b>';
+    $markup .= '<b>' . __('Target audience', 'epfl') . ': </b>' . esc_html($event->vulgarization->fr_label);
     $markup .= '<br>';
 } elseif ($event->vulgarization->en_label !== '') {
-    $markup .= __('Target audience', 'epfl') . ': <b>' . esc_html($event->vulgarization->en_label) . '</b>';
+    $markup .= '<b>' . __('Target audience', 'epfl') . ': </b>' . esc_html($event->vulgarization->en_label);
     $markup .= '<br>';
 }
