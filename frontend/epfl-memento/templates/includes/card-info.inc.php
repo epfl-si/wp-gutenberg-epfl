@@ -32,20 +32,19 @@ if ($event->start_date == $event->end_date){
 $markup .= '<p>';
 
 if ($event->speaker !== '') {
-    $markup .= __('With', 'epfl');
-    $markup .= ': <b>' . strip_tags($event->speaker) . '</b>';
+    $markup .= '<b>' . __('Speaker', 'epfl') . ': </b>';
+    $markup .= strip_tags($event->speaker) . '';
     $markup .= '<br>';
 }
 
 if ($event->place_and_room !== '') {
-    $markup .= __('Place and room', 'epfl');
-    $markup .= ': <b><span itemprop="location">' . esc_html($event->place_and_room) . '</span></b>';
-    $markup .= '<br>';
-}
-
+    $markup .= '<b>' . __('Location', 'epfl') . ':</b>';
+    $markup .= ' <svg class="icon feather" aria-hidden="true"><use xlink:href="#map-pin"></use></svg>';
+    $markup .= ' <span itemprop="location">' . esc_html($event->place_and_room) . '</span>';
 if ($event->url_online_room !== '') {
-  $markup .= __('Online', 'epfl');
-  $markup .= ': <b>' . esc_html($event->url_online_room) . '</b>';
+        $markup .= '& <svg class="icon feather" aria-hidden="true"><use xlink:href="#monitor"></use></svg> ';
+        $markup .= 'Online';
+    }
   $markup .= '<br>';
 }
 
