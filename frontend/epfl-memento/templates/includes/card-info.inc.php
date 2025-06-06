@@ -12,7 +12,7 @@ $dataend_date = date_format(date_create($event->end_date), 'Y-m-d') . 'T' . $end
 
 if ($event->start_date == $event->end_date){
     $markup .= '<svg class="icon feather" aria-hidden="true"><use xlink:href="#calendar"></use></svg> ';
-    $markup .= '<span class="card-info-date event-date" itemprop="startDate" content="'. $datastart_date .'">' . esc_html($start_date) . '</span>   &nbsp;';
+    $markup .= '<span class="card-info-date event-date" itemprop="startDate" content="' . $datastart_date . '">' . esc_html($start_date) . '</span>   &nbsp;';
     if (!empty($start_time) && !empty($end_time)){
         $markup .= '<svg class="icon feather" aria-hidden="true"><use xlink:href="#clock"></use></svg> ';
         $markup .= '<span class="event-time">' . esc_html($start_time) . '</span>';
@@ -20,8 +20,8 @@ if ($event->start_date == $event->end_date){
     } 
 } else {
     $markup .= '<svg class="icon feather" aria-hidden="true"><use xlink:href="#calendar"></use></svg> ';
-    $markup .= '<span class="event-time" itemprop="startDate" content="'. $datastart_date .'">' . esc_html($start_date) . '</span>';
-    $markup .= '<span class="card-info-date event-date" itemprop="endDate" content="'. $dataend_date .'">' . esc_html($end_date) . '</span>   &nbsp;';
+    $markup .= '<span class="event-time" itemprop="startDate" content="' . $datastart_date . '">' . esc_html($start_date) . '</span>';
+    $markup .= '<span class="card-info-date event-date" itemprop="endDate" content="' . $dataend_date . '">' . esc_html($end_date) . '</span>   &nbsp;';
     if (!empty($start_time) && !empty($end_time)){
         $markup .= '<svg class="icon feather" aria-hidden="true"><use xlink:href="#clock"></use></svg> ';
         $markup .= '<span>' . esc_html($start_time) . '</span>';
