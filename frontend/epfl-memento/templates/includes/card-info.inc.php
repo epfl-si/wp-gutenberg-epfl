@@ -33,7 +33,7 @@ $markup .= '<p>';
 
 if ($event->speaker !== '') {
     $markup .= '<b>' . __('Speaker', 'epfl') . ': </b>';
-    $markup .= strip_tags($event->speaker) . '';
+    $markup .= strip_tags($event->speaker);
     $markup .= '<br>';
 }
 
