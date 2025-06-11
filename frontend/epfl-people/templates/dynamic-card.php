@@ -41,14 +41,20 @@ namespace EPFL\Plugins\Gutenberg\People;
             $room_url   = epfl_people_get_room_url($room);
             $people_url = epfl_people_get_people_url($person);
 
-            try {
-                $sciper_str = (string) $person_sciper;
-                $this_custom = $jsonObj[$sciper_str];
-                $person_custom = json_encode($this_custom);
-            } catch (Exception $e) {
+            // Check $sciper_str is in $jsonObj
+            if (isset($jsonObj) && array_key_exists((string) $person_sciper, $jsonObj)){
+                try {
+                    $sciper_str = (string) $person_sciper;
+                    $this_custom = $jsonObj[$sciper_str];
+                    $person_custom = json_encode($this_custom);
+                } catch (Exception $e) {
+                    $person_custom = 'undefined';
+                }
+            } else {
                 $person_custom = 'undefined';
             }
-
+            
+        
             $people_data .= "
                 {
                     sciper: '$person_sciper',
