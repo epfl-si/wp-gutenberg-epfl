@@ -10,5 +10,7 @@ https://xzr9mzyjj6yyjv.embednotionpage.com/epfl-prototyping/DB-Ressources-Protot
 https://www.medicosearch.ch/widget/api/iframe
 https://eerl-campaigns.epfl.ch/
 https://vpi-startup-compass.pages.dev/
+https://water-portal-dev.epfl.ch/
+https://water-portal.epfl.ch/
 
 # Note: please specify full URL, starting with https://
