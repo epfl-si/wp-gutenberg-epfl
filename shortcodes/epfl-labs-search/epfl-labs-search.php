@@ -12,7 +12,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 require_once(dirname(__FILE__).'/controller.php');
 require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
 
-define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas.epfl.ch/api/v1/");
+define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://ct8qvsfk-3000.euw.devtunnels.ms/api/v1/");
 
 function process_shortcode($atts) {
     $atts = shortcode_atts( array(
@@ -39,7 +39,7 @@ function process_shortcode($atts) {
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
 
-    $cache_timeout = 15 * MINUTE_IN_SECONDS;
+    $cache_timeout = 60;
     $sites = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_labs_search_list");
 
     ob_start();
