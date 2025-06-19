@@ -26,7 +26,7 @@ function epfl_fetch_site_tags_order_cmp($a, $b) {
 add_filter( 'get_site_tags', function ($value) {
     $site_url = get_site_url();
     $tags = NULL;
-    $cache_timeout = 4 * HOUR_IN_SECONDS;
+    $cache_timeout = 60;
 
     if ( (defined('WP_DEBUG') && WP_DEBUG) || false === ( $tags = get_transient( 'epfl_custom_tags' ) ) ) {
       // this code runs when there is no valid transient set

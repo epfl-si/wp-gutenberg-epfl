@@ -39,7 +39,7 @@ function process_shortcode($atts) {
     # by default get all sites with at least a tag
     $url = LABS_INFO_PROVIDER_URL . 'sites?tagged=true';
 
-    $cache_timeout = 15 * MINUTE_IN_SECONDS;
+    $cache_timeout = 60;
     $sites = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_labs_search_list");
 
     ob_start();
