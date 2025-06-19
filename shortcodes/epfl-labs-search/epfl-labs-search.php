@@ -12,7 +12,7 @@ use \EPFL\Plugins\Gutenberg\Lib\Utils;
 require_once(dirname(__FILE__).'/controller.php');
 require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/utils.php');
 
-define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://wp-veritas-next.epfl.ch/api/v1/");
+define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "http://128.179.210.106:3000/api/v1/");
 
 function process_shortcode($atts) {
     $atts = shortcode_atts( array(
