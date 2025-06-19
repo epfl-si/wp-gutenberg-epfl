@@ -7,7 +7,7 @@ require_once(dirname(dirname(dirname(__FILE__))).'/frontend/lib/language.php');
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 use function EPFL\Plugins\Gutenberg\Lib\Language\get_current_or_default_language;
 
-define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "http://128.179.210.106:3000/api/v1/");
+define(__NAMESPACE__ . "\LABS_INFO_PROVIDER_URL", "https://ct8qvsfk-3000.euw.devtunnels.ms/api/v1/");
 
 
 /**

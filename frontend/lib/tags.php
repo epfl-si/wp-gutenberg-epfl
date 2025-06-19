@@ -31,7 +31,7 @@ add_filter( 'get_site_tags', function ($value) {
     if ( (defined('WP_DEBUG') && WP_DEBUG) || false === ( $tags = get_transient( 'epfl_custom_tags' ) ) ) {
       // this code runs when there is no valid transient set
 
-      $tag_provider_url = 'http://128.179.210.106:3000/api/v1';
+      $tag_provider_url = 'https://ct8qvsfk-3000.euw.devtunnels.ms/api/v1/';
       $site = [];
 
       // first, fetch for the id of this site
