@@ -43,17 +43,29 @@ function is_this_url_allowed( $url ) {
     return false;
 }
 
+
 function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
-    $atts = shortcode_atts( array( 'url' => '' ), $atts );
+    $atts = shortcode_atts(
+        array(
+            'url' => '',
+            'height' => '100%',
+            'width' => '100%',
+        ),
+        $atts
+    );
 
     if ( is_this_url_allowed( $atts['url'] ) ) {
 
+        $url = esc_url( sanitize_text_field( $atts['url'] ) );
+        $height = esc_attr( sanitize_text_field( $atts['height'] ) );
+        $width = esc_attr( sanitize_text_field( $atts['width'] ) );
+
         return sprintf('
-            <div class="my-3 container">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe src="%s" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" frameborder="0" class="embed-responsive-item"></iframe>
+            <div class="my-3 container" style="height: %2$s; width: %3$s">
+                <div class="embed-responsive embed-responsive-16by9 h-100">
+                    <iframe src="%1$s" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" class="embed-responsive-item border-0"></iframe>
                 </div>
-            </div>', esc_url( sanitize_text_field( $atts['url'] ) )
+            </div>', $url, $height, $width
         );
 
     } else {
