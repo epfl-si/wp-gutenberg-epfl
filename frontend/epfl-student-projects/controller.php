@@ -15,12 +15,16 @@ function get_link($url)
 
 function sortByProjectNameIsa($a, $b)
 {
-  return strcmp($a->project->title, $b->project->title);
+  $titleA = isset($a->project->title) ? $a->project->title : '';
+  $titleB = isset($b->project->title) ? $b->project->title : '';
+  return strcmp($titleA, $titleB);
 }
 
 function sortByProjectNameZen($a, $b)
 {
-  return strcmp($a->title, $b->title);
+  $titleA = isset($a['title']) ? $a['title'] : '';
+  $titleB = isset($b['title']) ? $b['title'] : '';
+  return strcmp($titleA, $titleB);
 }
 
 function handle_isa($attributes)

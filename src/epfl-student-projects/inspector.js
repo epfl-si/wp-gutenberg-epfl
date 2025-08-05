@@ -14,9 +14,21 @@ export default class InspectorControlsStudentProjects extends React.Component {
 		super(props);
 		this.state = {
 			sections: [],
-			apiSource: "",
-			zenFetchMode: "",
+			apiSource: props.attributes.apiSource || "",
+			zenFetchMode: props.attributes.zenFetchMode || "",
 		};
+	}
+
+	componentDidMount() {
+		if (this.state.apiSource) {
+			if (this.state.apiSource === "zen" && this.state.zenFetchMode) {
+				setTimeout(() => {
+					this.fetchData(this.state.apiSource);
+				}, 0);
+			} else if (this.state.apiSource === "isa") {
+				this.fetchData(this.state.apiSource);
+			}
+		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -65,8 +77,6 @@ export default class InspectorControlsStudentProjects extends React.Component {
 							sections: filteredAndMappedSections,
 						});
 
-						// Update the block's attributes with the fetched data
-						this.props.setAttributes({ section: filteredAndMappedSections });
 					})
 					.catch((error) => {
 						console.error("Error fetching data from the Projects Database (Zen) API", error);
@@ -92,8 +102,6 @@ export default class InspectorControlsStudentProjects extends React.Component {
 							sections: filteredAndMappedSections,
 						});
 
-						// Update the block's attributes with the fetched data
-						this.props.setAttributes({ section: filteredAndMappedSections });
 					})
 					.catch((error) => {
 						console.error("Error fetching data:", error);
@@ -132,8 +140,6 @@ export default class InspectorControlsStudentProjects extends React.Component {
 						sections: filteredAndMappedSections,
 					});
 
-					// Update the block's attributes with the fetched data
-					this.props.setAttributes({ section: filteredAndMappedSections });
 				})
 				.catch((error) => {
 					console.error("Error fetching data:", error);
@@ -209,13 +215,12 @@ export default class InspectorControlsStudentProjects extends React.Component {
 							help={__("Separated with commas", "epfl")}
 							value={attributes.professorScipers}
 							onChange={(professorScipers) => {
-								console.log('Professor SCIPER input:', professorScipers); // Debugging log
 								setAttributes({ professorScipers });
 								setTimeout(() => {
 									if (this.state.apiSource === "zen" && this.state.zenFetchMode === "sciper") {
 										this.fetchData(this.state.apiSource);
 									}
-								}, 100); // Adding a slight delay to ensure state update
+								}, 100);
 							}}
 						/>
 					</PanelBody>
