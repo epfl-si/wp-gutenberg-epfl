@@ -27,7 +27,7 @@ function epfl_google_forms_block( $attributes ) {
     $url_host = parse_url($url, PHP_URL_HOST);
 
     /* Check that iframe has a Google host as source */
-    if(preg_match('/\.google\.com$/', $url_host) !== 1)
+    if($url_host == null || preg_match('/\.google\.com$/', $url_host) !== 1)
     {
         return Utils::render_user_msg(__("Incorrect URL", "epfl"));
     }

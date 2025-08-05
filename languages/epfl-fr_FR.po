@@ -2164,3 +2164,15 @@ msgstr "Email"
 #: src/epfl-social-share/index.js:97
 msgid "Linkedin"
 msgstr "Linkedin"
+
+msgid "Speaker"
+msgstr "Intervenant·e"
+
+msgid "Target audience"
+msgstr "Public cible"
+
+msgid "Location"
+msgstr "Lieu"
+
+msgid "Online"
+msgstr "En ligne"

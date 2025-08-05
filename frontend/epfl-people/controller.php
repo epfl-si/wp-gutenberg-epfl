@@ -177,7 +177,21 @@ function epfl_people_block( $attributes ) {
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
     } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
         // Sort persons list alphabetically when units, doctoral program or groups
-        usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
+        if (ALPHABETICAL_ORDER === $order) {
+            usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
+        }
+    }
+
+    // copy the first unit in order of 'ordre' as main_unit
+    foreach($persons as $index => $person){
+      if (!isset($person->unites)) continue;
+      $person->main_unit = array_reduce(
+        (array)$person->unites, 
+        function($s, $unit){ 
+            return ($s === NULL || $unit->ordre < $s->ordre) ? $unit : $s;
+        },
+        NULL
+      );
     }
 
     $markup = epfl_people_render($persons, $from, $columns, $order, $title, $display_options, $custom_data, $filtered_fields);

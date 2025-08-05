@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     wp-gutenberg-epfl
  * Description:     EPFL Gutenberg Blocks
- * Version:         2.45.0
+ * Version:         2.46.1
  * Author:          WordPress EPFL Team
  * License:         GPL-2.0-or-later
  * License URI:     https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,20 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
-// Load environment variables after WordPress has loaded
-add_action('plugins_loaded', function () {
-    $utils_path = plugin_dir_path(__FILE__) . 'lib/utils.php';
-    if (file_exists($utils_path)) {
-        require_once $utils_path;
-        if (class_exists('EPFL\Plugins\Gutenberg\Lib\Utils')) {
-            \EPFL\Plugins\Gutenberg\Lib\Utils::loadEnv();
-        } else {
-            error_log("Class 'EPFL\Plugins\Gutenberg\Lib\Utils' not found in $utils_path");
-        }
-    } else {
-        error_log("Utils.php file not found at: " . $utils_path);
-    }
-});
 /**
  * Block Initializer.
  */
@@ -42,10 +28,17 @@ require_once plugin_dir_path( __FILE__ ) . 'frontend/init.php';
 
 // load .mo file for translation
 function epfl_gutenberg_load_textdomain() {
-	load_plugin_textdomain( 'epfl', false, basename( dirname( __FILE__ ) ) . '/languages/' );
+    $domain = 'epfl';
+    $locale = pll_current_language( 'locale' );
+    $mo_file = plugin_dir_path( __FILE__ ) . "languages/{$domain}-{$locale}.mo";
+
+    if ( file_exists( $mo_file ) ) {
+        unload_textdomain( $domain );
+        $loaded = load_textdomain( $domain, $mo_file );
+    }
 }
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\epfl_gutenberg_load_textdomain' );
+add_action( 'wp', __NAMESPACE__ . '\epfl_gutenberg_load_textdomain', 20 );
 
 # allow to fetch rest api with the lang parameter
 function polylang_json_api_init() {
@@ -237,7 +230,6 @@ add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\wp_gutenberg_epfl_e
  * Shortcodes
  */
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-labs-search/epfl-labs-search.php';
-require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-magistrale/epfl-magistrale.php';
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-polylex-search/epfl-polylex-search.php';
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-servicenow-search/epfl-servicenow-search.php';
 require_once plugin_dir_path( __FILE__ ) . 'shortcodes/epfl-study-plan/epfl-study-plan.php';

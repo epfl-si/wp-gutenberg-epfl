@@ -4,7 +4,7 @@ namespace EPFL\Plugins\Gutenberg\Lib\Tags;
 use \EPFL\Plugins\Gutenberg\Lib\Utils;
 
 function epfl_fetch_site_tags_order_cmp($a, $b) {
-  $order = ['faculty', 'institute', 'field-of-research'];
+  $order = ['faculty', 'institute', 'doctoral-program', 'field-of-research'];
 
   $a = array_search($a->type, $order);
   $b = array_search($b->type, $order);
@@ -35,7 +35,10 @@ add_filter( 'get_site_tags', function ($value) {
       $site = [];
 
       // first, fetch for the id of this site
-      $site_url = rtrim($site_url, '/');
+      if (!str_ends_with($site_url, '/')) {
+            $site_url .= '/';
+      }
+
       $url_site_to_id = $tag_provider_url . '/sites?site_url=' . rawurlencode($site_url);
       $sites = Utils::get_items($url_site_to_id);
 

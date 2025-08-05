@@ -145,8 +145,7 @@ registerBlockType( 'epfl/contact', {
                     <label><strong>Information</strong></label>
                     <hr />
                     <RichText
-                        tagName="div"
-                        multiline="p"
+                        tagName="p"
                         placeholder={ __( 'An email ?', 'epfl' ) }
                         value={ attributes.information1 }
                         className="information1"
@@ -154,8 +153,7 @@ registerBlockType( 'epfl/contact', {
                     />
                     <hr />
                     <RichText
-                        tagName="div"
-                        multiline="p"
+                        tagName="p"
                         placeholder={ __( 'A phone number ?', 'epfl' ) }
                         value={ attributes.information2 }
                         className="information2"
@@ -163,8 +161,7 @@ registerBlockType( 'epfl/contact', {
                     />
                     <hr />
                     <RichText
-                        tagName="div"
-                        multiline="p"
+                        tagName="p"
                         placeholder={ __( 'An address ?', 'epfl' ) }
                         value={ attributes.information3 }
                         className="information3"

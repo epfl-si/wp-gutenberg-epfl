@@ -145,7 +145,8 @@ function epfl_news_block( $attributes ) {
       $projects
   );
 
-  $actus = Utils::get_items($url);
+  // $url contains a nonce, so we don't want to cache its content (second argument = 0):
+  $actus = Utils::get_items($url, 0);
 
   if (false === $actus) {
     return Utils::render_user_msg("News block: Error retrieving items");

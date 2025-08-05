@@ -87,25 +87,18 @@ function epfl_people_get_phones($person, $order) {
  */
 function epfl_people_get_function($person, $from, $order) {
     $function = '';
+    $language = get_current_language();
     if (HIERARCHICAL_ORDER == $order) {
-        $language = get_current_language();
         if ($language === 'fr') {
             $function = $person->fonction_fr;
         } else {
             $function = $person->fonction_en;
         }
     } else if (ALPHABETICAL_ORDER == $order) {
-        $nb_units = count((array)$person->unites);
-        foreach($person->unites as $current_unit) {
-            $one_order = (($from == 'groups' || $from == 'doctoral_program' || $from == 'scipers') && $current_unit->ordre  == 1);
-            if ($from == 'units' || $one_order) {
-              $language = get_current_language();
-              if ($language === 'fr') {
-                  $function = $current_unit->fonction_fr;
-              } else {
-                  $function = $current_unit->fonction_en;
-              }
-            }
+        if ($language === 'fr') {
+            $function = $person->main_unit->fonction_fr;
+        } else {
+            $function = $person->main_unit->fonction_en;
         }
     }
     return $function;
@@ -120,12 +113,7 @@ function epfl_people_get_room($person, $from, $order) {
     if (HIERARCHICAL_ORDER == $order) {
         $room = $person->rooms;
     } else if (ALPHABETICAL_ORDER == $order) {
-        foreach($person->unites as $current_unit) {
-            $one_order = (($from == 'groups' || $from == 'doctoral_program' || $from == 'scipers') && $current_unit->ordre  == 1);
-            if ($from == 'units' || $one_order) {
-                $room = $current_unit->rooms;
-            }
-        }
+        $room = $person->main_unit->rooms;
     }
     return $room;
 }
