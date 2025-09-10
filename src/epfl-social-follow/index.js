@@ -6,7 +6,7 @@ import {
     getTooltippedExample,
 } from '../block-utils.js'
 
-const version = "v1.0.0";
+const version = "v1.1.0";
 
 const { __ } = wp.i18n;
 
