@@ -28,7 +28,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'epfl/social-follow', {
 	title: __( 'EPFL Social Follow', 'epfl'),
     description: __(
-        'Links to Facebook, X, LinkedIn, Instagram, YouTube, Mastodon and TikTok accounts',
+        'Links to Facebook, X, LinkedIn, Instagram, YouTube, Mastodon, TikTok, Github, GitLab and Bluesky accounts',
         'epfl'
     ),
 	icon: socialFeedIcon,
@@ -55,6 +55,15 @@ registerBlockType( 'epfl/social-follow', {
 		tiktok: {
 			type: 'url',
 		},
+		github: {
+			type: 'url',
+		},
+        gitlab: {
+			type: 'url',
+		},
+        bluesky: {
+            type: 'url',
+        },
 	}),
     example: getTooltippedExample(),
 	supports : {
@@ -140,6 +149,33 @@ registerBlockType( 'epfl/social-follow', {
 							value={ attributes.tiktok }
 							onChange={ tiktok => setAttributes( { tiktok } ) }
 							help={ __('URL of a TikTok account (eg. https://www.tiktok.com/@epflstudents)', 'epfl') }
+						/>
+					</PanelBody>
+
+					<PanelBody title='Github' initialOpen={false}>
+						<TextControl
+							label={ __('URL','epfl')}
+							value={ attributes.github }
+							onChange={ github => setAttributes( { github } ) }
+							help={ __('URL of a Github account (eg. https://github.com/epfl-si)', 'epfl') }
+						/>
+					</PanelBody>
+
+					<PanelBody title='GitLab' initialOpen={false}>
+						<TextControl
+							label={ __('URL','epfl')}
+							value={ attributes.gitlab }
+							onChange={ gitlab => setAttributes( { gitlab } ) }
+							help={ __('URL of a GitLab account (eg. https://gitlab.epfl.ch/)', 'epfl') }
+						/>
+					</PanelBody>
+
+					<PanelBody title='Bluesky' initialOpen={false}>
+						<TextControl
+							label={ __('URL','epfl')}
+							value={ attributes.bluesky }
+							onChange={ bluesky => setAttributes( { bluesky } ) }
+							help={ __('URL of a Bluesky account (eg. https://bsky.app/)', 'epfl') }
 						/>
 					</PanelBody>
                 </div>
