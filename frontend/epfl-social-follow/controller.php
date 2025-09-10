@@ -16,6 +16,9 @@ function epfl_social_follow_block( $attributes ) {
     $linkedinUrl  = Utils::get_sanitized_url( $attributes, 'linkedinUrl' );
 	$mastodonUrl  = Utils::get_sanitized_url( $attributes, 'mastodon' );
 	$tiktokUrl  = Utils::get_sanitized_url( $attributes, 'tiktok' );
+	$githubUrl  = Utils::get_sanitized_url( $attributes, 'github' );
+	$gitlabUrl  = Utils::get_sanitized_url( $attributes, 'gitlab' );
+	$blueskyUrl  = Utils::get_sanitized_url( $attributes, 'bluesky' );
 
     ob_start();
 ?>
@@ -97,6 +100,36 @@ function epfl_social_follow_block( $attributes ) {
 						<use xlink:href="#icon-tiktok"></use>
 					</svg>
 					<span class="sr-only"><?php echo __("Follow us on TikTok", "epfl"); ?></span>
+				</a>
+			</li>
+		  <?php endif; ?>
+		  <?php if (!empty($githubUrl)): ?>
+			<li>
+				<a href="<?php echo $githubUrl ?>" class="social-icon social-icon-github social-icon-discrete" target="_blank" rel="nofollow noopener">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-github"></use>
+					</svg>
+					<span class="sr-only"><?php echo __("Follow us on GitHub", "epfl"); ?></span>
+				</a>
+			</li>
+		  <?php endif; ?>
+		  <?php if (!empty($gitlabUrl)): ?>
+			<li>
+				<a href="<?php echo $gitlabUrl ?>" class="social-icon social-icon-gitlab social-icon-discrete" target="_blank" rel="nofollow noopener">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-gitlab"></use>
+					</svg>
+					<span class="sr-only"><?php echo __("Follow us on GitLab", "epfl"); ?></span>
+				</a>
+			</li>
+		  <?php endif; ?>
+		  <?php if (!empty($blueskyUrl)): ?>
+			<li>
+				<a href="<?php echo $blueskyUrl ?>" class="social-icon social-icon-bluesky social-icon-discrete" target="_blank" rel="nofollow noopener">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-bluesky"></use>
+					</svg>
+					<span class="sr-only"><?php echo __("Follow us on Bluesky", "epfl"); ?></span>
 				</a>
 			</li>
 		  <?php endif; ?>
