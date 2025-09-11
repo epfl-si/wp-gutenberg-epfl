@@ -247,6 +247,14 @@ export default class InspectorControlsStudentProjects extends React.Component {
 							setAttributes({ onlyCurrentProjects })
 						}
 					/>
+					{this.state.apiSource === "isa" && (
+						<TextControl
+							label={__("Professor(s) sciper(s)", "epfl")}
+							help={__("Separated with commas", "epfl")}
+							value={attributes.professorScipers}
+							onChange={(professorScipers) => setAttributes({ professorScipers })}
+						/>
+					)}
 				</PanelBody>
 			</InspectorControls>
 		);
