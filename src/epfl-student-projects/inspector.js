@@ -135,7 +135,6 @@ export default class InspectorControlsStudentProjects extends React.Component {
 								value: section.code,
 							}));
 					}
-
 					this.setState({
 						sections: filteredAndMappedSections,
 					});
@@ -183,19 +182,20 @@ export default class InspectorControlsStudentProjects extends React.Component {
 							value={this.state.zenFetchMode}
 							options={[
 								{ label: "Select Mode", value: "" },
-								{ label: "By Section", value: "section" },
+								{ label: "By Unit", value: "section" },
 								{ label: "By Professor SCIPER", value: "sciper" },
 							]}
 							onChange={(zenFetchMode) => {
-								this.setState({ zenFetchMode });
-								setAttributes({ zenFetchMode });
-								this.fetchData(this.state.apiSource);
+								this.setState({ zenFetchMode, sections: [] }, () => {
+									setAttributes({ zenFetchMode });
+									this.fetchData(this.state.apiSource);
+								});
 							}}
 						/>
 					</PanelBody>
 				)}
 				{this.state.apiSource === "zen" && this.state.zenFetchMode === "section" && (
-					<PanelBody title={__("Section")}>
+					<PanelBody title={__("Unit")}>
 						<SelectControl
 							value={attributes.section}
 							onChange={(section) => {
@@ -222,6 +222,20 @@ export default class InspectorControlsStudentProjects extends React.Component {
 									}
 								}, 100);
 							}}
+						/>
+					</PanelBody>
+				)}
+				{this.state.apiSource === "isa" && (
+					<PanelBody title={__("Section")}>
+						<SelectControl
+							value={attributes.section}
+							onChange={(section) => {
+								setAttributes({ section });
+							}}
+							options={[
+								{ label: "Please choose", value: "" },
+								...optionsSectionsList,
+							]}
 						/>
 					</PanelBody>
 				)}
