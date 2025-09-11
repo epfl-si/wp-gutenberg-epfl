@@ -107,7 +107,7 @@ function epfl_social_follow_block( $attributes ) {
 			<li>
 				<a href="<?php echo $githubUrl ?>" class="social-icon social-icon-github social-icon-discrete" target="_blank" rel="nofollow noopener">
 					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-github"></use>
+						<use xlink:href="#github"></use>
 					</svg>
 					<span class="sr-only"><?php echo __("Follow us on GitHub", "epfl"); ?></span>
 				</a>
@@ -117,7 +117,7 @@ function epfl_social_follow_block( $attributes ) {
 			<li>
 				<a href="<?php echo $gitlabUrl ?>" class="social-icon social-icon-gitlab social-icon-discrete" target="_blank" rel="nofollow noopener">
 					<svg class="icon" aria-hidden="true">
-						<use xlink:href="#icon-gitlab"></use>
+						<use xlink:href="#gitlab"></use>
 					</svg>
 					<span class="sr-only"><?php echo __("Follow us on GitLab", "epfl"); ?></span>
 				</a>
