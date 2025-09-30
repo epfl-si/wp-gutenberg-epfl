@@ -152,7 +152,7 @@ function epfl_people_block( $attributes ) {
     $url = add_query_arg($parameter, $url);
 
     // retrieve the data in JSON
-    $items = Utils::get_items($url, 1, 15);
+    $items = Utils::get_items($url, 0, 15);
 
     if (false === $items) {
         return Utils::render_user_msg("People block: Error retrieving items");
