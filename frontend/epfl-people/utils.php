@@ -142,5 +142,5 @@ function epfl_people_get_people_url($person) {
         $language = 'en';
     }
 
-    return add_query_arg('lang', $language, "https://people.epfl.ch/" . $slug);
+    return add_query_arg('lang', $language, "https://people-next.epfl.ch/" . $slug);
 }
