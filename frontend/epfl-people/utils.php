@@ -50,7 +50,7 @@ function epfl_people_get_phones($person, $order) {
       $phones = array_filter($person->phones);
     } else if (ALPHABETICAL_ORDER == $order) {
         foreach($person->unites as $current_unit) {
-            $phones = array_merge($phones, array_filter($current_unit->phones));
+            $phones = array_merge($phones, $current_unit->phones ? array_filter($current_unit->phones) : []);
         }
     }
     /* Looping through phone numbers to reformat them to have same format as the one on https://www.local.ch,
