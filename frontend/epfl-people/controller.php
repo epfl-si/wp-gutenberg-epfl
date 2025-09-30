@@ -148,7 +148,7 @@ function epfl_people_block( $attributes ) {
     }
 
     // the web service we use to retrieve the data
-    $url = "https://people.epfl.ch/cgi-bin/wsgetpeople/";
+    $url = "https://people-next.epfl.ch/cgi-bin/wsgetpeople/";
     $url = add_query_arg($parameter, $url);
 
     // retrieve the data in JSON
@@ -186,8 +186,8 @@ function epfl_people_block( $attributes ) {
     foreach($persons as $index => $person){
       if (!isset($person->unites)) continue;
       $person->main_unit = array_reduce(
-        (array)$person->unites, 
-        function($s, $unit){ 
+        (array)$person->unites,
+        function($s, $unit){
             return ($s === NULL || $unit->ordre < $s->ordre) ? $unit : $s;
         },
         NULL
