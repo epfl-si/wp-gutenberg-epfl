@@ -123,18 +123,5 @@ function epfl_people_get_room_url($room) {
  * Get URL people
  */
 function epfl_people_get_people_url($person) {
-
-    $slug = "";
-    if ($person->email) {
-        $slug = str_replace("@epfl.ch", "", $person->email);
-    } else {
-        $slug = $person->sciper;
-    }
-    $language = get_current_or_default_language();
-
-    if ($language == 'de') {
-        $language = 'en';
-    }
-
-    return add_query_arg('lang', $language, "https://people-next.epfl.ch/" . $slug);
+    return $person->people_url;
 }
