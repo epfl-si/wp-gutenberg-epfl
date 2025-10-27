@@ -70,7 +70,7 @@ function epfl_courses_block( $attributes ) {
 
 
     // the web service we use to retrieve the data
-    $url = "https://people-next.epfl.ch/cgi-bin/getCours";
+    $url = "https://people.epfl.ch/cgi-bin/getCours";
     $url = add_query_arg($parameters, $url);
 
     // retrieve the data in JSON
