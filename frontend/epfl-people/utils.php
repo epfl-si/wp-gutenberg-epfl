@@ -38,6 +38,7 @@ function sort_members(&$members)
  * Get person photo
  */
 function epfl_people_get_photo($person) {
+	echo @$person->photo_url;
     return @$person->photo_url ?: @$person->people->photo_url;
 }
 
