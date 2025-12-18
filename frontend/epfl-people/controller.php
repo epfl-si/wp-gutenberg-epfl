@@ -55,6 +55,7 @@ function epfl_people_block( $attributes ) {
     $display_room     = Utils::get_sanitized_attribute( $attributes, 'displayRoom', TRUE );
     $display_email    = Utils::get_sanitized_attribute( $attributes, 'displayEmail', TRUE );
     $display_phone    = Utils::get_sanitized_attribute( $attributes, 'displayPhone', TRUE );
+    $display_gender    = Utils::get_sanitized_attribute( $attributes, 'displayGender', TRUE );
     $display_custom_data    = Utils::get_sanitized_attribute( $attributes, 'displayCustomData', TRUE );
     $title            = Utils::get_sanitized_attribute( $attributes, 'title');
     $custom_data      = Utils::get_sanitized_attribute( $attributes, 'customData' );
