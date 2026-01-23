@@ -18,83 +18,39 @@ window.onload = function() {  // wait that jQuery is loaded
                 'lex-title',
                 {name: 'lex-category-subcategory', attr: 'data-category-subcategory'},
                 'lex-category',
-                // 'lex-subcategory', // multiple span with the same class, this may not work
+                'lex-subcategory',
                 'lex-description',
             ]
         };
 
         var lexList = new List('lexes-list', options);
 
-        $('#select-type').change(function (e) {
-            let filter_on = $(this).val();
-            // reset category and subcategory
-            //$('#select-category').val('all');
-            //$('#select-subcategory').val('all');
+        function applyFilters() {
+            const selectedCategory = $('#select-category').val();
+            const selectedSubcategory = $('#select-subcategory').val();
+            const selectedType = $('#select-type').val();
 
-            if (filter_on === 'all') {
-                lexList.filter();
-            } else {
-                lexList.filter(function(item) {
-                    let type_value = item.values()['lex-type'];
-                    // fix getting values escaped
-                    type_value = $.parseHTML(type_value);
+            lexList.filter(function(item) {
+                const vals = item.values();
 
-                    if (type_value && type_value.length) {
-                        type_value = type_value[0].textContent;
-                        return (type_value == filter_on);
-                    }
-                });
+                const categoryValue = vals['lex-category'];
+                const subcategoriesValue = vals['lex-subcategory'];
+                const typeValue = vals['lex-type'];
+
+                const categoryMask = (selectedCategory === 'all') || (categoryValue === selectedCategory);
+                const subcategoryMask = (selectedSubcategory === 'all') || (subcategoriesValue.indexOf(selectedSubcategory) !== -1);
+                const typeMask = (selectedType === 'all') || (typeValue === selectedType);
+
+                return categoryMask && subcategoryMask && typeMask;
+            });
+        }
+
+        $('#select-category, #select-subcategory, #select-type').on('change', function () {
+            if ($(this).is('#select-category')) {
+                $('#select-subcategory').val('all');
             }
-        });
-
-        $('#select-category').change(function (e) {
-            let filter_on = $(this).val();
-            // reset subcategory and type
-            $('#select-subcategory').val('all');
-            $('#select-type').val('all');
-
-            if (filter_on === 'all') {
-                lexList.filter();
-            } else {
-                lexList.filter(function(item) {
-                    let category_value = item.values()['lex-category'];
-                    // fix getting values escaped
-                    category = $.parseHTML(category_value);
-
-                    if (category && category.length) {
-                        category = category[0].textContent;
-                        return (category == filter_on);
-                    }
-                });
-            }
-        });
-
-        $('#select-subcategory').change(function (e) {
-            let filter_on = $(this).val();
-            // reset category and type
-            $('#select-category').val('all');
-            $('#select-type').val('all');
-
-            if (filter_on === 'all') {
-                lexList.filter();
-            } else {
-                lexList.filter(function(item) {
-                    // here we can not use
-                    let categorySubcategoriesValue = item.values()['lex-category-subcategory'];
-                    let categoryValue = item.values()['lex-category'];
-                    // fix getting values escaped
-                    categorySubcategoriesValue = $.parseHTML(categorySubcategoriesValue);
-                    categoryValue = $.parseHTML(categoryValue);
-
-                    //get only subcategories by removing category from the chained string
-                    let subcategoriesValue = categorySubcategoriesValue[0].data.replace(new RegExp("^" + categoryValue[0].data, 'i'), "");
-
-                    if (subcategoriesValue && subcategoriesValue.length) {
-                        return (subcategoriesValue.indexOf(filter_on) !== -1);
-                    }
-                });
-            }
-        });
+            applyFilters();
+        })
 
         <?php if (!empty($predefined_type)): ?>
         $('#select-type').val('<?php echo $predefined_type; ?>');
