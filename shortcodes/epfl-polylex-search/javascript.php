@@ -1,6 +1,7 @@
 <?php
     namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
 
+    $predefined_type = get_query_var('epfl_lexes-predefined_type');
     $predefined_category = get_query_var('epfl_lexes-predefined_category');
     $predefined_subcategory = get_query_var('epfl_lexes-predefined_subcategory');
     $predefined_search = get_query_var('epfl_lexes-predefined_search');
@@ -12,6 +13,7 @@ window.onload = function() {  // wait that jQuery is loaded
     jQuery(document).ready(function( $ ) {
         var options = {
             valueNames: [
+                'lex-type',
                 'lex-number',
                 'lex-title',
                 {name: 'lex-category-subcategory', attr: 'data-category-subcategory'},
@@ -23,10 +25,33 @@ window.onload = function() {  // wait that jQuery is loaded
 
         var lexList = new List('lexes-list', options);
 
+        $('#select-type').change(function (e) {
+            let filter_on = $(this).val();
+            // reset category and subcategory
+            //$('#select-category').val('all');
+            //$('#select-subcategory').val('all');
+
+            if (filter_on === 'all') {
+                lexList.filter();
+            } else {
+                lexList.filter(function(item) {
+                    let type_value = item.values()['lex-type'];
+                    // fix getting values escaped
+                    type_value = $.parseHTML(type_value);
+
+                    if (type_value && type_value.length) {
+                        type_value = type_value[0].textContent;
+                        return (type_value == filter_on);
+                    }
+                });
+            }
+        });
+
         $('#select-category').change(function (e) {
             let filter_on = $(this).val();
-            // reset subcategory
+            // reset subcategory and type
             $('#select-subcategory').val('all');
+            $('#select-type').val('all');
 
             if (filter_on === 'all') {
                 lexList.filter();
@@ -46,8 +71,9 @@ window.onload = function() {  // wait that jQuery is loaded
 
         $('#select-subcategory').change(function (e) {
             let filter_on = $(this).val();
-            // reset category
+            // reset category and type
             $('#select-category').val('all');
+            $('#select-type').val('all');
 
             if (filter_on === 'all') {
                 lexList.filter();
@@ -70,6 +96,10 @@ window.onload = function() {  // wait that jQuery is loaded
             }
         });
 
+        <?php if (!empty($predefined_type)): ?>
+        $('#select-type').val('<?php echo $predefined_type; ?>');
+        $('#select-type').change();
+        <?php endif; ?>
         <?php if (!empty($predefined_category) && empty($predefined_subcategory)): ?>
         $('#select-category').change();
         <?php endif;?>

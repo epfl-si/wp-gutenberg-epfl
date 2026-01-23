@@ -3,7 +3,7 @@
 /**
 * Plugin Name: EPFL polylex
 * Description: Provide a way to search information about EPFL lexes
-* @version: 1.2
+* @version: 2.0
 * @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
 */
 
@@ -18,6 +18,7 @@ define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/
 
 function process_shortcode($atts) {
     $atts = shortcode_atts( array(
+        'type' => '',
         'category' => '',
         'subcategory' => '',
         'search' => '',
@@ -27,6 +28,11 @@ function process_shortcode($atts) {
     // search can come from the url
     if (isset($_GET['search'])) {
         $atts['search'] = stripslashes($_GET['search']);
+    }
+
+    // type can come from the url
+    if (isset($_GET['type'])) {
+        $atts['type'] = stripslashes($_GET['type']);
     }
 
     // category can come from the url
@@ -40,6 +46,7 @@ function process_shortcode($atts) {
     }
 
     // sanitize what we get
+    $type = strtoupper(sanitize_text_field($atts["type"])) === "DOC" ? "DOC" : "LEX";
     $category = sanitize_text_field($atts["category"]);
     $subcategory = sanitize_text_field($atts["subcategory"]);
     $search = sanitize_text_field($atts["search"]);
@@ -59,7 +66,7 @@ function process_shortcode($atts) {
     ob_start();
 
     try {
-        renderLexSearch($lexes, $category, $subcategory, $search);
+        renderLexSearch($lexes, $type, $category, $subcategory, $search);
         return ob_get_contents();
     } finally {
         ob_end_clean();

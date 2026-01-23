@@ -5,7 +5,7 @@ namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
 /**
  * render the shortcode, mainly a form and his table
  */
-function renderLexSearch($lexes, $category, $subcategory, $search) {
+function renderLexSearch($lexes, $type, $category, $subcategory, $search) {
   wp_enqueue_script( 'lib-listjs', plugins_url('lib/list.min.js', dirname(__FILE__)), ['jquery'], 1.5, false);
   wp_enqueue_style( 'epfl-polylex-search-css', plugins_url('epfl-polylex-search.css', __FILE__),false,'1.1','all');
 
@@ -14,11 +14,13 @@ function renderLexSearch($lexes, $category, $subcategory, $search) {
   $cat_with_sub = tree_categories_with_subcategories($lexes);
 
   set_query_var('epfl_lexes-list', $lexes);
+  set_query_var('epfl_lexes-predefined_type', $type);
   set_query_var('epfl_lexes-predefined_category', $category);
   set_query_var('epfl_lexes-predefined_subcategory', $subcategory);
   set_query_var('epfl_lexes-predefined_search', $search);
 
   set_query_var('epfl_lexes-cat_with_sub_tree', $cat_with_sub);
+	set_query_var('epfl_lexes-types', ["DOC", "LEX"]);
   load_template(dirname(__FILE__). '/view.php');
 }
 
