@@ -192,6 +192,7 @@ msgstr "Lieu et salle"
 
 #: frontend/epfl-memento/templates/includes/card-info.inc.php:33
 #: src/epfl-memento/preview.js:125
+#: src/epfl-social-share/index.js:97
 msgid "Online"
 msgstr "En ligne"
 
@@ -317,6 +318,10 @@ msgstr "Toutes les rubriques"
 msgid "All subsections"
 msgstr "Toutes les sous-rubriques"
 
+#: shortcodes/epfl-polylex-search/view.php:65
+msgid "All types"
+msgstr "Tous les types"
+
 #: shortcodes/epfl-polylex-search/view.php:69
 msgid "Search a number or a keyword"
 msgstr "Chercher un numéro ou un mot-clé"
@@ -324,6 +329,10 @@ msgstr "Chercher un numéro ou un mot-clé"
 #: shortcodes/epfl-polylex-search/view.php:94
 msgid "Section, subsection"
 msgstr "Rubrique, sous-rubrique"
+
+#: shortcodes/epfl-polylex-search/view.php:116
+msgid "Number"
+msgstr "Numéro"
 
 #: shortcodes/epfl-polylex-search/view.php:121
 msgid "Effective on"
@@ -2173,6 +2182,3 @@ msgstr "Public cible"
 
 msgid "Location"
 msgstr "Lieu"
-
-msgid "Online"
-msgstr "En ligne"
