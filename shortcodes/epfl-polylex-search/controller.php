@@ -20,7 +20,7 @@ function renderLexSearch($lexes, $type, $category, $subcategory, $search) {
   set_query_var('epfl_lexes-predefined_search', $search);
 
   set_query_var('epfl_lexes-cat_with_sub_tree', $cat_with_sub);
-	set_query_var('epfl_lexes-types', ["DOC", "LEX"]);
+  set_query_var('epfl_lexes-types', ["DOC", "LEX"]);
   load_template(dirname(__FILE__). '/view.php');
 }
 
