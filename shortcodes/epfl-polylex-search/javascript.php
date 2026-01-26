@@ -77,11 +77,7 @@ window.onload = function() {  // wait that jQuery is loaded
 
             for (const p of params) {
                 const val = document.getElementById(`select-${p}`).value;
-                if (val === 'all') {
-                    url.searchParams.delete(p);
-                } else {
-                    url.searchParams.set(p, val);
-                }
+                url.searchParams.set(p, val);
             }
 
             window.history.pushState({}, '', url);
@@ -97,6 +93,18 @@ window.onload = function() {  // wait that jQuery is loaded
 
         updateSubcategoryOptions();
         applyFilters();
+
+        navigation.addEventListener("navigate", e => {
+            const params = new URL(e.destination.url).searchParams;
+
+            const newSelectedCategory = params.get('category') || "<?php echo $predefined_category ?>" || 'all';
+            $('#select-category').val(newSelectedCategory);
+            updateSubcategoryOptions();
+            $('#select-subcategory').val(params.get('subcategory') || "<?php echo $predefined_subcategory ?>" || 'all');
+            $('#select-type').val(params.get('type') || "<?php echo $predefined_type ?>" || 'all');
+
+            applyFilters();
+        });
 
         $('#select-category, #select-subcategory, #select-type').on('change', function () {
             onFiltersChanged(this);
