@@ -46,7 +46,7 @@ function process_shortcode($atts) {
     }
 
     // sanitize what we get
-    $type = strtoupper(sanitize_text_field($atts["type"])) === "DOC" ? "DOC" : "LEX";
+    $type = sanitize_text_field($atts["type"]);
     $category = sanitize_text_field($atts["category"]);
     $subcategory = sanitize_text_field($atts["subcategory"]);
     $search = sanitize_text_field($atts["search"]);
@@ -62,6 +62,9 @@ function process_shortcode($atts) {
         $url .= '?isAbrogated=0';
 		$lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes");
     }
+
+    // validate what we get (if not validated, set to 'all')
+    $type = strtoupper($type) === "LEX" ? "LEX" : (strtoupper($type) === "DOC" ? "DOC" : '');
 
     ob_start();
 

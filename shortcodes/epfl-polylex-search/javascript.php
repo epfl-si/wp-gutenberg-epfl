@@ -45,23 +45,37 @@ window.onload = function() {  // wait that jQuery is loaded
             });
         }
 
-        $('#select-category, #select-subcategory, #select-type').on('change', function () {
-            if ($(this).is('#select-category')) {
-                $('#select-subcategory').val('all');
+        function updateQueryStringParam() {
+            const url = new URL(window.location.href);
+
+            const params = ['type', 'category', 'subcategory'];
+
+            for (const p of params) {
+                const val = document.getElementById(`select-${p}`).value;
+                if (val === 'all') {
+                    url.searchParams.delete(p);
+                } else {
+                    url.searchParams.set(p, val);
+                }
+            }
+
+            window.history.pushState({}, '', url);
+        }
+
+        function onFiltersChanged(changedElement) {
+            if (changedElement.id === 'select-category') {
+                document.getElementById('select-subcategory').value = 'all';
             }
             applyFilters();
-        })
+            updateQueryStringParam();
+        }
 
-        <?php if (!empty($predefined_type)): ?>
-        $('#select-type').val('<?php echo $predefined_type; ?>');
-        $('#select-type').change();
-        <?php endif; ?>
-        <?php if (!empty($predefined_category) && empty($predefined_subcategory)): ?>
-        $('#select-category').change();
-        <?php endif;?>
-        <?php if (!empty($predefined_subcategory)): ?>
-        $('#select-subcategory').change();
-        <?php endif;?>
+        $('#select-category, #select-subcategory, #select-type').on('change', function () {
+            onFiltersChanged(this);
+        });
+
+        applyFilters();
+
         <?php if (!empty($predefined_search)): ?>
         $('#lexes-search-input').val("<?php echo $predefined_search ?>");
         lexList.search("<?php echo $predefined_search ?>");
