@@ -35,26 +35,6 @@
     }
 
     $subcategory_options .= ' value="all">' . __('All subsections', 'epfl') . '</option>';
-    $all_subcategories = [];
-
-    foreach($combo_list_contents as $categ => $subcategories) {
-        foreach($subcategories as $sub) {
-            if (!in_array($sub, $all_subcategories)) {
-                $all_subcategories[] = $sub;
-            }
-        }
-    }
-
-    sort($all_subcategories);
-    foreach($all_subcategories as $sub) {
-        $subcategory_options .= "<option";
-        if (!empty($predefined_subcategory) && strtoupper($sub) === strtoupper($predefined_subcategory)) {
-            $subcategory_options .= " selected";
-        }
-        $subcategory_options .= ">";
-        $subcategory_options .= $sub;
-        $subcategory_options .= "</option>";
-    }
 
     $type_options = "";
     $type_options .= "<option";
