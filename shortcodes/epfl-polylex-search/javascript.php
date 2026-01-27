@@ -39,8 +39,8 @@ window.onload = function() {  // wait that jQuery is loaded
             if (selectedCategory === 'all') {
                 subcategories = sortedUniqueSubcategories;
             } else {
-                const filtredSubcategories = mapCatSubcat[selectedCategory] || [];
-                subcategories = [...new Set(filtredSubcategories)].sort();
+                const filteredSubcategories = mapCatSubcat[selectedCategory] || [];
+                subcategories = [...new Set(filteredSubcategories)].sort();
             }
 
             subcategories.forEach(sub => {

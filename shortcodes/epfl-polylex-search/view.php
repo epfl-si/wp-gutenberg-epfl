@@ -81,7 +81,7 @@
                         <?php echo $subcategory_options; ?>
                     </select>
                 </div>
-				<div>
+                <div>
                     <select
                         id="select-type"
                         class="epfl-lexes-select custom-select mr-2"
@@ -150,14 +150,14 @@
                     </div>
                     <?php endif; ?>
                 </div>
-				<?php if (esc_html($lex->urlLastCons)): ?>
-					<div class="lex-row-2 flex-row d-md-flex pt-2 pb-2">
-						<div class="col-2"></div>
-						<div class="col lex-urlLastCons">
-							<a class="lex-url" href="<?php echo esc_html($lex->urlLastCons); ?>"><?php _e('Last consultation', 'epfl') ?></a>
-						</div>
-					</div>
-				<?php endif; ?>
+                <?php if (esc_html($lex->urlLastCons)): ?>
+                    <div class="lex-row-2 flex-row d-md-flex pt-2 pb-2">
+                        <div class="col-2"></div>
+                        <div class="col lex-urlLastCons">
+                            <a class="lex-url" href="<?php echo esc_html($lex->urlLastCons); ?>"><?php _e('Last consultation', 'epfl') ?></a>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
             <?php endforeach; ?>
         <?php endif; ?>

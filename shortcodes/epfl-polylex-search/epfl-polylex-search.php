@@ -53,14 +53,14 @@ function process_shortcode($atts) {
     $abrogated = sanitize_text_field($atts["abrogated"]);
 
     $url = LEX_INFO_PROVIDER_URL;
-	$cache_timeout = 15 * MINUTE_IN_SECONDS;
+    $cache_timeout = 15 * MINUTE_IN_SECONDS;
 
     if ($abrogated === "true" || $abrogated === "1") {
         $url .= '?isAbrogated=1';
-		$lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes_abrogated");
+        $lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes_abrogated");
     } else {
         $url .= '?isAbrogated=0';
-		$lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes");
+        $lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes");
     }
 
     // validate what we get (if not validated, set to 'all')
