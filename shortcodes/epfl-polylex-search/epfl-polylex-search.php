@@ -3,7 +3,7 @@
 /**
 * Plugin Name: EPFL polylex
 * Description: Provide a way to search information about EPFL lexes
-* @version: 2.0
+* @version: 2.1
 * @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
 */
 
