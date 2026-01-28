@@ -6,7 +6,7 @@ namespace EPFL\Plugins\Gutenberg\InfoscienceSearch;
  * Plugin Name: EPFL Infoscience search blocks
  * Plugin URI: https://github.com/epfl-idevelop/wp-gutenberg-epfl
  * Description: provides a gutenberg block to search and display results from Infoscience
- * Version: 2.1.0
+ * Version: 2.2.0
  * Author: Julien Delasoie
  * Author URI: https://people.epfl.ch/julien.delasoie?lang=en
  * Contributors:
@@ -142,7 +142,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
             $url = generate_url_from_attributes( $attributes, $unmanaged_attributes, $has_provided_a_limit_from_ui );
         } catch ( \Exception $e ) {
             $banner_msgs[] = 'Error: ' . $e->getMessage();
-            return get_banners(false, $banner_msgs, $current_language);
+            return get_banners($banner_msgs, $current_language);
         }
     }
 
@@ -197,8 +197,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
             );
         }
 
-        return get_banners(true, $banner_msgs, $current_language) .
-               $debug_info_div . $page;  // stop here, it is enough for the old block
+        return $debug_info_div . $page;  // stop here, it is enough for the old block
     }
 
     // As defined by the $short_cache_value, we may need to refresh it.
@@ -350,7 +349,7 @@ function epfl_infoscience_search_block( $provided_attributes ) {
         );
     }
 
-    return get_banners(false, $banner_msgs, $current_language) .
+    return get_banners($banner_msgs, $current_language) .
            $debug_info_div . $page;
 }
 
