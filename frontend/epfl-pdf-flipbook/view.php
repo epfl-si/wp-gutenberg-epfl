@@ -11,9 +11,8 @@ function epfl_pdf_flipbook_block( $attributes ) {
 
     $pdf_id    = Utils::get_sanitized_attribute( $attributes, 'pdfId' );
 
-
     $code = '<div class="container">'.
-            '[flipbook pdf="'.wp_get_attachment_url($pdf_id).'" same_height_as="body" theme="light"]'.
+            '[dflip source="' . wp_get_attachment_url($pdf_id) . '"][/dflip]'.
             '</div>';
     return do_shortcode($code);
 }
