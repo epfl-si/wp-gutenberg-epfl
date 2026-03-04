@@ -68,9 +68,7 @@ function old_generate_url_from_attributes($attributes, $unmanaged_attributes, $o
             }
         }
 
-        # We may use http_build_query($query, null, '&amp;'); when provided urls are overencoded
-        # looks fine at the moment
-        $query = http_build_query( $query, null );
+        $query = http_build_query( $query );
 
         # from foo[1]=bar1&foo[2]=bar2 to foo[]=bar&foo[]=bar2
         $url = preg_replace( '/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $query );
@@ -180,9 +178,7 @@ function generate_url_from_attributes($attributes, $unmanaged_attributes, $has_p
             }
         }
 
-        # We may use http_build_query($query, null, '&amp;'); when provided urls are overencoded
-        # looks fine at the moment
-        $query = http_build_query($query, null);
+        $query = http_build_query( $query );
 
         # from foo[1]=bar1&foo[2]=bar2 to foo[]=bar&foo[]=bar2
         $url = preg_replace('/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $query);
