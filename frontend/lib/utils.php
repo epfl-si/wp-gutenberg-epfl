@@ -204,11 +204,9 @@ Class Utils
 
         if (!$response) {
             error_log("API request failed: " . curl_error($curl));  // Log error to PHP error log
-            curl_close($curl);
             return false;
         }
 
-        curl_close($curl);
         $data = json_decode($response, true);
 
         return $data;

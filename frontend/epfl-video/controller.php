@@ -50,8 +50,6 @@ function epfl_video_get_final_video_url($url)
         // If there's no redirection
         $res = empty(trim($redirect_url))?$url:$redirect_url;
     }
-    // close the resource
-    curl_close( $ch );
 
     /* Caching result for 1 week because it won't change a lot  */
     set_transient($transient_id, $res, 3600*24*7);
