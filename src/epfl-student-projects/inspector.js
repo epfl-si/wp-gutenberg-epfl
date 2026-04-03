@@ -57,7 +57,8 @@ export default class InspectorControlsStudentProjects extends React.Component {
 		if (source === "zen") {
 			if (this.state.zenFetchMode === "sciper" && this.props.attributes.professorScipers) {
 				const sciper = this.props.attributes.professorScipers;
-				const zenApiUrl = `https://sti-zen.epfl.ch/api/public/projects/manager/${sciper}`;
+				const archivedSuffix = this.props.attributes.onlyArchivedProjects ? "/archived" : "";
+				const zenApiUrl = `https://sti-zen.epfl.ch/api/public/projects/manager/${sciper}${archivedSuffix}`;
 				axios
 					.get(zenApiUrl)
 					.then((response) => {
@@ -241,12 +242,33 @@ export default class InspectorControlsStudentProjects extends React.Component {
 				)}
 				<PanelBody title={__("Filters", "epfl")}>
 					<ToggleControl
-						label={__("Only current projects", "epfl")}
+						label={__("Only ongoing projects", "epfl")}
 						checked={attributes.onlyCurrentProjects}
-						onChange={(onlyCurrentProjects) =>
-							setAttributes({ onlyCurrentProjects })
-						}
+						onChange={(onlyCurrentProjects) => {
+							setAttributes({ 
+								onlyCurrentProjects,
+								onlyArchivedProjects: onlyCurrentProjects ? false : attributes.onlyArchivedProjects
+							});
+						}}
 					/>
+					{this.state.apiSource === "zen" && (
+						<ToggleControl
+							label={__("Only archived projects", "epfl")}
+							checked={attributes.onlyArchivedProjects}
+							onChange={(onlyArchivedProjects) => {
+								setAttributes({ 
+									onlyArchivedProjects,
+									onlyCurrentProjects: onlyArchivedProjects ? false : attributes.onlyCurrentProjects
+								});
+								// Refetch data when archived filter changes
+								if (this.state.apiSource === "zen" && this.state.zenFetchMode === "sciper" && this.props.attributes.professorScipers) {
+									setTimeout(() => {
+										this.fetchData(this.state.apiSource);
+									}, 100);
+								}
+							}}
+						/>
+					)}
 					{this.state.apiSource === "isa" && (
 						<TextControl
 							label={__("Professor(s) sciper(s)", "epfl")}
