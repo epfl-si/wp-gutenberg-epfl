@@ -148,9 +148,8 @@ function epfl_people_block( $attributes ) {
     }
 
     // the web service we use to retrieve the data
-    $url = "https://people.epfl.ch/cgi-bin/wsgetpeople/";
+    $url = "https://people-next.epfl.ch/cgi-bin/wsgetpeople/";
     $url = add_query_arg($parameter, $url);
-
     // retrieve the data in JSON
     $items = Utils::get_items($url, 0, 15);
 
