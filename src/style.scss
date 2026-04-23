@@ -73,3 +73,13 @@ $red: orangered;
 .bigger-font-size-table > figure.wp-block-table > table {
   font-size: 100%;
 }
+
+.is-vertical {
+    display: flex !important;
+    justify-content: center;
+    width: 100% !important;
+    aspect-ratio: 9 / 16 !important;
+    padding-bottom: 0 !important;
+    height: auto !important;
+    margin: 0 auto;
+}
