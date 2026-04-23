@@ -74,6 +74,7 @@ registerBlockType( 'epfl/video', {
 								{ label: 'Standard', value: 'standard' },
 								{ label: 'Large', value: 'large' },
 								{ label: 'Full', value: 'full' },
+								{ label: 'Vertical', value: 'vertical'}
 							] }
 							onChange={ ( displayType ) => setAttributes( { displayType } ) }
                         />
