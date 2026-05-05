@@ -188,6 +188,21 @@ Class Utils
      */
     public static function zen_api_request($url) {
 
+        if (!function_exists('curl_init')) {
+            // Fallback for environments without cURL (e.g. wp-now/php-wasm)
+            if (function_exists('wp_remote_get')) {
+                $response = wp_remote_get($url, array('timeout' => 10));
+                if (is_wp_error($response)) {
+                    error_log("API request failed: " . $response->get_error_message());
+                    return false;
+                }
+                $body = wp_remote_retrieve_body($response);
+                return json_decode($body, true);
+            }
+            error_log("API request failed: no cURL or wp_remote_get available");
+            return false;
+        }
+
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

@@ -14,14 +14,17 @@ export default class InspectorControlsStudentProjects extends React.Component {
 		super(props);
 		this.state = {
 			sections: [],
+			schools: [],
 			apiSource: props.attributes.apiSource || "",
 			zenFetchMode: props.attributes.zenFetchMode || "",
+			zenSchool: props.attributes.zenSchool || "",
 		};
 	}
 
 	componentDidMount() {
 		if (this.state.apiSource) {
 			if (this.state.apiSource === "zen" && this.state.zenFetchMode) {
+				this.fetchSchools();
 				setTimeout(() => {
 					this.fetchData(this.state.apiSource);
 				}, 0);
@@ -37,19 +40,48 @@ export default class InspectorControlsStudentProjects extends React.Component {
 			prevState.apiSource !== this.state.apiSource &&
 			this.state.apiSource !== ""
 		) {
+			if (this.state.apiSource === "zen") {
+				this.fetchSchools();
+			}
 			this.fetchData(this.state.apiSource);
 		}
+	}
+
+	fetchSchools() {
+		axios
+			.get("https://sti-zen.epfl.ch/api/public/schools")
+			.then((response) => response.data)
+			.then((data) => {
+				if (!Array.isArray(data)) {
+					throw new TypeError("Expected an array but got " + typeof data);
+				}
+				const schoolOptions = data.map((school) => ({
+					label: school.name || school,
+					value: school.name || school,
+				}));
+				this.setState({ schools: schoolOptions });
+			})
+			.catch((error) => {
+				console.error("Error fetching schools:", error);
+				this.setState({ schools: [] });
+			});
 	}
 	fetchData(source) {
 		const basePath =
 			"wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-sections";
-		const entryPointProjects =
+		let entryPointProjects =
 			(source === "isa") || (source === "zen")
 				? window.location.href.replace(
 						/wp-admin\/.*/,
 						`${basePath}-${source}.php`,
 				  )
 				: null;
+
+		// Append school parameter for ZEN unit fetching
+		if (source === "zen" && this.state.zenSchool) {
+			entryPointProjects += `?school=${encodeURIComponent(this.state.zenSchool)}`;
+		}
+
 		if (entryPointProjects === null && source !== "zen") {
 			return;
 		}
@@ -84,8 +116,11 @@ export default class InspectorControlsStudentProjects extends React.Component {
 						this.setState({ sections: [] });
 					});
 			} else if (this.state.zenFetchMode === "section" || this.state.zenFetchMode === "") {
+				const zenUnitsUrl = this.state.zenSchool
+					? `https://sti-zen.epfl.ch/api/public/schools/${encodeURIComponent(this.state.zenSchool)}/units`
+					: "https://sti-zen.epfl.ch/api/public/projects/units";
 				axios
-					.get(entryPointProjects)
+					.get(zenUnitsUrl)
 					.then((response) => {
 						return response.data;
 					})
@@ -158,6 +193,11 @@ export default class InspectorControlsStudentProjects extends React.Component {
 			value: section.value,
 		}));
 
+		const optionsSchoolsList = this.state.schools.map((school) => ({
+			label: school.label,
+			value: school.value,
+		}));
+
 		return (
 			<InspectorControls>
 				<PanelBody title={__("API Source")}>
@@ -170,8 +210,11 @@ export default class InspectorControlsStudentProjects extends React.Component {
 							{ label: "ZEN", value: "zen" },
 						]}
 						onChange={(apiSource) => {
-							this.setState({ apiSource, zenFetchMode: "" });
-							setAttributes({ apiSource });
+							this.setState({ apiSource, zenFetchMode: "", zenSchool: "", sections: [] });
+							setAttributes({ apiSource, zenSchool: "", section: "" });
+							if (apiSource === "zen") {
+								this.fetchSchools();
+							}
 							this.fetchData(apiSource);
 						}}
 					/>
@@ -187,8 +230,11 @@ export default class InspectorControlsStudentProjects extends React.Component {
 								{ label: "By Professor SCIPER", value: "sciper" },
 							]}
 							onChange={(zenFetchMode) => {
-								this.setState({ zenFetchMode, sections: [] }, () => {
-									setAttributes({ zenFetchMode });
+								this.setState({ zenFetchMode, sections: [], zenSchool: "" }, () => {
+									setAttributes({ zenFetchMode, zenSchool: "", section: "" });
+									if (zenFetchMode === "section") {
+										this.fetchSchools();
+									}
 									this.fetchData(this.state.apiSource);
 								});
 							}}
@@ -196,6 +242,24 @@ export default class InspectorControlsStudentProjects extends React.Component {
 					</PanelBody>
 				)}
 				{this.state.apiSource === "zen" && this.state.zenFetchMode === "section" && (
+					<PanelBody title={__("School")}>
+						<SelectControl
+							label={__("Select School")}
+							value={this.state.zenSchool}
+							options={[
+								{ label: "Please choose a school", value: "" },
+								...optionsSchoolsList,
+							]}
+							onChange={(zenSchool) => {
+								this.setState({ zenSchool, sections: [] }, () => {
+									setAttributes({ zenSchool, section: "" });
+									this.fetchData(this.state.apiSource);
+								});
+							}}
+						/>
+					</PanelBody>
+				)}
+				{this.state.apiSource === "zen" && this.state.zenFetchMode === "section" && this.state.zenSchool && (
 					<PanelBody title={__("Unit")}>
 						<SelectControl
 							value={attributes.section}

@@ -55,6 +55,9 @@ registerBlockType( 'epfl/student-projects', {
         },
         zenFetchMode:{
             type: 'string',
+        },
+        zenSchool:{
+            type: 'string',
         }
     }),
     example: getTooltippedExample(),
@@ -80,6 +83,8 @@ registerBlockType( 'epfl/student-projects', {
         } else if (attributes.apiSource === 'zen') {
             if (!attributes.zenFetchMode || attributes.zenFetchMode === '') {
                 validationError = __('Please select a fetch mode (By Unit or By Professor SCIPER).', 'epfl');
+            } else if (attributes.zenFetchMode === 'section' && (!attributes.zenSchool || attributes.zenSchool === '')) {
+                validationError = __('Please select a school.', 'epfl');
             } else if (attributes.zenFetchMode === 'section' && (!attributes.section || attributes.section === '')) {
                 validationError = __('Please select a unit.', 'epfl');
             } else if (attributes.zenFetchMode === 'sciper' && (!attributes.professorScipers || attributes.professorScipers.trim() === '')) {
