@@ -50,8 +50,6 @@ function epfl_video_get_final_video_url($url)
         // If there's no redirection
         $res = empty(trim($redirect_url))?$url:$redirect_url;
     }
-    // close the resource
-    curl_close( $ch );
 
     /* Caching result for 1 week because it won't change a lot  */
     set_transient($transient_id, $res, 3600*24*7);
@@ -132,34 +130,48 @@ function epfl_video_block( $attributes ) {
         Utils::render_user_msg('You must activate the epfl theme');
     }
 
-    /* Extracting query string */
-    $query = parse_url($url, PHP_URL_QUERY);
+      $video_id = '';
+      $query_args = [];
 
-    parse_str($query, $query_args);
-
-    $video_id = $query_args['v'];
-    /* Removing video ID from query string */
-    unset($query_args['v']);
-
-    /* If we have a time at which to start video */
-    if(array_key_exists('t', $query_args))
+    // Check if it is a YouTube Short.
+    if ( preg_match( '/\/shorts\/([a-zA-Z0-9_-]+)/', $url, $shorts_matches ) )
     {
-        /* When video is embed, the parameters is called 'start' and not 't', so we remove the incorrect one
-        and add the new one. */
-        $query_args['start'] = $query_args['t'];
-        unset($query_args['t']);
+        $video_id = $shorts_matches[1];
+
+        $query_str = parse_url( $url, PHP_URL_QUERY );
+        if ( $query_str )
+        {
+            parse_str( $query_str, $query_args );
+        }
+    }
+    else
+    {
+    	// Standard YouTube URL.
+        $query_str = parse_url( $url, PHP_URL_QUERY );
+        parse_str( $query_str, $query_args );
+        $video_id = isset( $query_args['v'] ) ? $query_args['v'] : '';
+        unset( $query_args['v'] );
     }
 
-    /* We remove existing query string from URL */
-    $url = str_replace('?'.$query, '', $url);
-
-    /* Updating query (without video_id if it was present) to reuse it later */
-    $query = http_build_query($query_args);
-
-    $url = "https://www.youtube.com/embed/".$video_id;
-    if($query != "")
+    if ( empty( $video_id ) )
     {
-        $url .= '?'.$query;
+    	return Utils::render_user_msg( "ID YouTube introuvable" );
+    }
+
+    /* If we have a time at which to start video */
+    if( isset( $query_args['t'] ) )
+    {
+        $query_args['start'] = str_replace( 's', '', $query_args['t'] );
+        unset( $query_args['t'] );
+    }
+
+      // RECONSTRUCTION PROPRE : On ne touche plus à l'ancienne variable $url
+    $clean_query = http_build_query( $query_args );
+    $url = "https://www.youtube.com/embed/" . $video_id;
+
+    if( !empty( $clean_query ) )
+    {
+    	$url .= '?' . $clean_query;
     }
   }
 

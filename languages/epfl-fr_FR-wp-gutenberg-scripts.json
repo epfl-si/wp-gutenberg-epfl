@@ -199,11 +199,17 @@
          "All subsections": [
             "Toutes les sous-rubriques"
          ],
+         "All types": [
+            "Tous les types"
+         ],
          "Search a number or a keyword": [
             "Chercher un numéro ou un mot-clé"
          ],
          "Section, subsection": [
             "Rubrique, sous-rubrique"
+         ],
+         "Number": [
+            "Numéro"
          ],
          "Effective on": [
             "Entrée en vigueur au"

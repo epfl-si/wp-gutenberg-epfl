@@ -32,8 +32,4 @@
         header(trim($header));
     }
 
-    curl_close($curl);
-
     echo $content;
-    
-    

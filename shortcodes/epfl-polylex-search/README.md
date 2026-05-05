@@ -5,7 +5,7 @@ Ce shortcode permet un interfaçage avec l'application [wp-polylex](https://gith
 Fonctionnalités :
 - UI permettant
     -  l'affichage de la liste complète
-    -  navigation par catégorie ou sous catégorie, au travers de boîtes déroulantes
+    -  navigation par type, catégorie ou sous catégorie, au travers de boîtes déroulantes
     -  recherche textuelle de lexes, sur :
         -  le numéro
         -  le titre
@@ -33,6 +33,8 @@ S'il est souhaité de filter la liste affichée à l'utilisateur, deux options s
 En fournissant une URL avec le filtre en paramètre.
 
 Exemples :
+
+https://mon-site.com/page-avec-le-shortcode?type=DOC
 
 https://mon-site.com/page-avec-le-shortcode?category=Gouvernance
 

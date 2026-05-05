@@ -71,18 +71,23 @@ function epfl_video_kaltura_render(
  * Returns HTML code to display browser native video player
  *
  * @param String $url Video URL
- * @param String $display_type Should be'standard', 'large' or 'full'
+ * @param String $display_type Should be'standard', 'large', 'full' or 'vertical'
  */
 function epfl_video_render($url, $display_type) {
     $classes = ['my-3'];
+    $ratio_class = "embed-responsive-16by9";
 
     if($display_type == 'large') $classes[] = "container";
     if($display_type == 'full') $classes[] = "container-full";
+    if( $display_type == 'vertical' ) {
+        $classes[] = "is-vertical";
+        $ratio_class = ""; // On enlève le 16by9 pour laisser le CSS gérer le 9:16
+    }
 
     ob_start();
 ?>
 <div class="<?php echo implode(" ", $classes) ?>">
-    <div class="embed-responsive embed-responsive-16by9">
+    <div class="embed-responsive <?php echo $ratio_class; ?>">
         <iframe src="<?php echo esc_url($url); ?>" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" frameborder="0" class="embed-responsive-item"></iframe>
     </div>
 </div>

@@ -3,7 +3,7 @@
 /**
 * Plugin Name: EPFL polylex
 * Description: Provide a way to search information about EPFL lexes
-* @version: 1.2
+* @version: 2.1
 * @copyright: Copyright (c) 2019 Ecole Polytechnique Federale de Lausanne, Switzerland
 */
 
@@ -18,6 +18,7 @@ define(__NAMESPACE__ . "\LEX_INFO_PROVIDER_URL", "https://polylex-admin.epfl.ch/
 
 function process_shortcode($atts) {
     $atts = shortcode_atts( array(
+        'type' => '',
         'category' => '',
         'subcategory' => '',
         'search' => '',
@@ -27,6 +28,11 @@ function process_shortcode($atts) {
     // search can come from the url
     if (isset($_GET['search'])) {
         $atts['search'] = stripslashes($_GET['search']);
+    }
+
+    // type can come from the url
+    if (isset($_GET['type'])) {
+        $atts['type'] = stripslashes($_GET['type']);
     }
 
     // category can come from the url
@@ -40,26 +46,30 @@ function process_shortcode($atts) {
     }
 
     // sanitize what we get
+    $type = sanitize_text_field($atts["type"]);
     $category = sanitize_text_field($atts["category"]);
     $subcategory = sanitize_text_field($atts["subcategory"]);
     $search = sanitize_text_field($atts["search"]);
     $abrogated = sanitize_text_field($atts["abrogated"]);
 
     $url = LEX_INFO_PROVIDER_URL;
-	$cache_timeout = 15 * MINUTE_IN_SECONDS;
+    $cache_timeout = 15 * MINUTE_IN_SECONDS;
 
     if ($abrogated === "true" || $abrogated === "1") {
         $url .= '?isAbrogated=1';
-		$lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes_abrogated");
+        $lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes_abrogated");
     } else {
         $url .= '?isAbrogated=0';
-		$lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes");
+        $lexes = Utils::get_items_with_fallback($url, $cache_timeout, "epfl_polylex_lexes");
     }
+
+    // validate what we get (if not validated, set to 'all')
+    $type = strtoupper($type) === "LEX" ? "LEX" : (strtoupper($type) === "DOC" ? "DOC" : '');
 
     ob_start();
 
     try {
-        renderLexSearch($lexes, $category, $subcategory, $search);
+        renderLexSearch($lexes, $type, $category, $subcategory, $search);
         return ob_get_contents();
     } finally {
         ob_end_clean();

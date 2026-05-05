@@ -6,7 +6,7 @@ import {
 
 import videoIcon from './video-icon'
 
-const version = "v1.5.0";
+const version = "v1.6.0";
 
 const { __ } = wp.i18n;
 
@@ -74,6 +74,7 @@ registerBlockType( 'epfl/video', {
 								{ label: 'Standard', value: 'standard' },
 								{ label: 'Large', value: 'large' },
 								{ label: 'Full', value: 'full' },
+								{ label: 'Vertical', value: 'vertical'}
 							] }
 							onChange={ ( displayType ) => setAttributes( { displayType } ) }
                         />

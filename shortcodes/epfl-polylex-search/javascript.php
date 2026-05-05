@@ -1,6 +1,7 @@
 <?php
     namespace EPFL\Plugins\Shortcodes\EPFLPolylexSearch;
 
+    $predefined_type = get_query_var('epfl_lexes-predefined_type');
     $predefined_category = get_query_var('epfl_lexes-predefined_category');
     $predefined_subcategory = get_query_var('epfl_lexes-predefined_subcategory');
     $predefined_search = get_query_var('epfl_lexes-predefined_search');
@@ -10,72 +11,105 @@
 <script type='text/javascript'>
 window.onload = function() {  // wait that jQuery is loaded
     jQuery(document).ready(function( $ ) {
+        var mapCatSubcat = <?php echo json_encode($cat_with_sub_tree); ?>;
+        var sortedUniqueSubcategories = [...new Set(Object.values(mapCatSubcat).flat())].sort();
+
         var options = {
             valueNames: [
+                'lex-type',
                 'lex-number',
                 'lex-title',
                 {name: 'lex-category-subcategory', attr: 'data-category-subcategory'},
                 'lex-category',
-                // 'lex-subcategory', // multiple span with the same class, this may not work
+                'lex-subcategory',
                 'lex-description',
             ]
         };
 
         var lexList = new List('lexes-list', options);
 
-        $('#select-category').change(function (e) {
-            let filter_on = $(this).val();
-            // reset subcategory
-            $('#select-subcategory').val('all');
+        function updateSubcategoryOptions() {
+            const selectedCategory = $('#select-category').val();
+            const subcategorySelect = $('#select-subcategory');
+            const selectedSubcategory = <?php echo json_encode($predefined_subcategory); ?>;
 
-            if (filter_on === 'all') {
-                lexList.filter();
+            subcategorySelect.find('option:not([value="all"])').remove();
+
+            let subcategories = [];
+            if (selectedCategory === 'all') {
+                subcategories = sortedUniqueSubcategories;
             } else {
-                lexList.filter(function(item) {
-                    let category_value = item.values()['lex-category'];
-                    // fix getting values escaped
-                    category = $.parseHTML(category_value);
-
-                    if (category && category.length) {
-                        category = category[0].textContent;
-                        return (category == filter_on);
-                    }
-                });
+                const filteredSubcategories = mapCatSubcat[selectedCategory] || [];
+                subcategories = [...new Set(filteredSubcategories)].sort();
             }
+
+            subcategories.forEach(sub => {
+                subcategorySelect.append($('<option>', { value: sub, text: sub }));
+            });
+
+            subcategorySelect.val(subcategories.includes(selectedSubcategory) ? selectedSubcategory : 'all');
+        }
+
+        function applyFilters() {
+            const selectedCategory = $('#select-category').val();
+            const selectedSubcategory = $('#select-subcategory').val();
+            const selectedType = $('#select-type').val();
+
+            lexList.filter(function(item) {
+                const vals = item.values();
+
+                const categoryValue = vals['lex-category'];
+                const subcategoriesValue = vals['lex-subcategory'];
+                const typeValue = vals['lex-type'];
+
+                const categoryMask = (selectedCategory === 'all') || (categoryValue === selectedCategory);
+                const subcategoryMask = (selectedSubcategory === 'all') || (subcategoriesValue.indexOf(selectedSubcategory) !== -1);
+                const typeMask = (selectedType === 'all') || (typeValue === selectedType);
+
+                return categoryMask && subcategoryMask && typeMask;
+            });
+        }
+
+        function updateQueryStringParam() {
+            const url = new URL(window.location.href);
+
+            const params = ['type', 'category', 'subcategory'];
+
+            for (const p of params) {
+                const val = document.getElementById(`select-${p}`).value;
+                url.searchParams.set(p, val);
+            }
+
+            window.history.pushState({}, '', url);
+        }
+
+        function onFiltersChanged(changedElement) {
+            if (changedElement.id === 'select-category') {
+                updateSubcategoryOptions();
+            }
+            applyFilters();
+            updateQueryStringParam();
+        }
+
+        updateSubcategoryOptions();
+        applyFilters();
+
+        navigation.addEventListener("navigate", e => {
+            const params = new URL(e.destination.url).searchParams;
+
+            const newSelectedCategory = params.get('category') || "<?php echo $predefined_category ?>" || 'all';
+            $('#select-category').val(newSelectedCategory);
+            updateSubcategoryOptions();
+            $('#select-subcategory').val(params.get('subcategory') || "<?php echo $predefined_subcategory ?>" || 'all');
+            $('#select-type').val(params.get('type') || "<?php echo $predefined_type ?>" || 'all');
+
+            applyFilters();
         });
 
-        $('#select-subcategory').change(function (e) {
-            let filter_on = $(this).val();
-            // reset category
-            $('#select-category').val('all');
-
-            if (filter_on === 'all') {
-                lexList.filter();
-            } else {
-                lexList.filter(function(item) {
-                    // here we can not use
-                    let categorySubcategoriesValue = item.values()['lex-category-subcategory'];
-                    let categoryValue = item.values()['lex-category'];
-                    // fix getting values escaped
-                    categorySubcategoriesValue = $.parseHTML(categorySubcategoriesValue);
-                    categoryValue = $.parseHTML(categoryValue);
-
-                    //get only subcategories by removing category from the chained string
-                    let subcategoriesValue = categorySubcategoriesValue[0].data.replace(new RegExp("^" + categoryValue[0].data, 'i'), "");
-
-                    if (subcategoriesValue && subcategoriesValue.length) {
-                        return (subcategoriesValue.indexOf(filter_on) !== -1);
-                    }
-                });
-            }
+        $('#select-category, #select-subcategory, #select-type').on('change', function () {
+            onFiltersChanged(this);
         });
 
-        <?php if (!empty($predefined_category) && empty($predefined_subcategory)): ?>
-        $('#select-category').change();
-        <?php endif;?>
-        <?php if (!empty($predefined_subcategory)): ?>
-        $('#select-subcategory').change();
-        <?php endif;?>
         <?php if (!empty($predefined_search)): ?>
         $('#lexes-search-input').val("<?php echo $predefined_search ?>");
         lexList.search("<?php echo $predefined_search ?>");

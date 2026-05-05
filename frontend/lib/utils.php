@@ -204,11 +204,9 @@ Class Utils
 
         if (!$response) {
             error_log("API request failed: " . curl_error($curl));  // Log error to PHP error log
-            curl_close($curl);
             return false;
         }
 
-        curl_close($curl);
         $data = json_decode($response, true);
 
         return $data;
@@ -265,13 +263,21 @@ Class Utils
     }
 
     /**
-     * When you want to render into a var
-     * set $args to get some value for your php file ($path)
-     * https://stackoverflow.com/a/34600568
+     * Render $template_path with params `$params`
+     *
+     * @param $template_path The path of a PHP file to render (using `include()`)
+     *
+     * @param $params Template parameters (the `$params` variable will be in scope
+     *                within said `include()`)
+     *
+     * @return the rendered template as a string
      */
-    public static function render_php($path, array $params=null) {
+    public static function render_php($template_path, array $params) {
+        // Render into $var using `ob_start()` / `ob_get_contents()`,
+        // per https://stackoverflow.com/a/34600568:
         ob_start();
-        include($path);
+        // Note that $params is in scope for code `include`d this way:
+        include($template_path);
         $var = ob_get_contents();
         ob_end_clean();
         return $var;

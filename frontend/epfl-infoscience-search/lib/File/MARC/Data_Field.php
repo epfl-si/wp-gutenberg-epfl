@@ -98,7 +98,7 @@ class File_MARC_Data_Field extends File_MARC_Field
      * @param string $ind1      first indicator
      * @param string $ind2      second indicator
      */
-    function __construct($tag, array $subfields = null, $ind1 = null, $ind2 = null)
+    function __construct($tag, ?array $subfields = null, $ind1 = null, $ind2 = null)
     {
         $this->subfields = new File_MARC_List();
 
