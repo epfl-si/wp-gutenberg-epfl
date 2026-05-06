@@ -35,8 +35,10 @@ function handle_isa($attributes)
   $professor_scipers = Utils::get_sanitized_attribute($attributes, 'professorScipers');
   $professor_scipers = preg_replace('/\s/', '', $professor_scipers);
 
-  if ($section == '')
-    return '';
+  if ($section == '') {
+    // Show validation error if section is empty
+    return Utils::render_user_msg(__("The form was not properly filled. Please select a section.", 'epfl'));
+  }
 
   $target_host = 'isa.epfl.ch';
   //$target_host = 'ditex-web.epfl.ch';
@@ -197,11 +199,18 @@ function epfl_student_projects_block($attributes, $inner_content)
 
   $api_source = Utils::get_sanitized_attribute($attributes, 'apiSource');
 
+  // Validation: Check if API source is selected
+  if (empty($api_source)) {
+    return Utils::render_user_msg(__("The form was not properly filled. Please select an API source.", 'epfl'));
+  }
+
   switch ($api_source) {
     case 'zen':
       return handle_zen($attributes);
     case 'isa':
       return handle_isa($attributes);
+    default:
+      return Utils::render_user_msg(__("The form was not properly filled. Invalid API source selected.", 'epfl'));
   }
 }
 
@@ -210,15 +219,30 @@ function handle_zen($attributes)
     $section = Utils::get_sanitized_attribute($attributes, 'section');
     $zenFetchMode = Utils::get_sanitized_attribute($attributes, 'zenFetchMode');
     $professorScipers = Utils::get_sanitized_attribute($attributes, 'professorScipers');
+    $onlyArchivedProjects = Utils::get_sanitized_attribute($attributes, 'onlyArchivedProjects', '') != '';
 
+    // Validation: Check if form is properly filled
+    if (empty($zenFetchMode)) {
+        return Utils::render_user_msg(__("The form was not properly filled. Please select a fetch mode (By Unit or By Professor SCIPER).", 'epfl'));
+    }
+    
+    if ($zenFetchMode === 'section' && empty($section)) {
+        return Utils::render_user_msg(__("The form was not properly filled. Please select a unit.", 'epfl'));
+    }
+    
+    if ($zenFetchMode === 'sciper' && empty($professorScipers)) {
+        return Utils::render_user_msg(__("The form was not properly filled. Please enter at least one professor SCIPER.", 'epfl'));
+    }
+
+    $archivedSuffix = $onlyArchivedProjects ? '/archived' : '';
 
     if ($zenFetchMode === 'sciper' && !empty($professorScipers)) {
         $sciper = preg_replace('/\s/', '', $professorScipers);
-        $url = "https://sti-zen.epfl.ch/api/public/projects/manager/" . $sciper;
+        $url = "https://sti-zen.epfl.ch/api/public/projects/manager/" . $sciper . $archivedSuffix;
     } else if ($zenFetchMode === 'section' && !empty($section)) {
-        $url = "https://sti-zen.epfl.ch/api/public/projects/unit/" . $section;
+        $url = "https://sti-zen.epfl.ch/api/public/projects/unit/" . $section . $archivedSuffix;
     } else {
-        return Utils::render_user_msg("Invalid fetch mode or missing parameters");
+        return Utils::render_user_msg(__("The form was not properly filled. Invalid fetch mode or missing parameters.", 'epfl'));
     }
 
     $items = Utils::zen_api_request($url);
@@ -256,8 +280,18 @@ function handle_zen($attributes)
                       <li class="project-id">ID: <?php echo $item['id']; ?></li>
                       <li class="project-status">Status: <?php echo htmlspecialchars($item['status']); ?></li>
                       <li class="project-date">Created At: <?php echo substr($item['createdAt'], 0, 10); ?></li>
-                      <?php if (!empty($item['endDate'])): ?>
-                        <li class="project-end-date">End Date: <?php echo substr($item['endDate'], 0, 10); ?></li>
+                      <?php
+                        $levels = array();
+                        if (!empty($item['tags'])) {
+                          foreach ($item['tags'] as $tag) {
+                            if (isset($tag['tagType']['name']) && $tag['tagType']['name'] === 'Level') {
+                              $levels[] = htmlspecialchars($tag['name']);
+                            }
+                          }
+                        }
+                        if (!empty($levels)):
+                      ?>
+                        <li class="project-level">Level: <?php echo implode(', ', $levels); ?></li>
                       <?php endif; ?>
                     </ul>
                   </header>

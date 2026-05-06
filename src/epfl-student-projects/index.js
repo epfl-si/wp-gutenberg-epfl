@@ -44,6 +44,9 @@ registerBlockType( 'epfl/student-projects', {
         onlyCurrentProjects: {
             type: 'boolean',
         },
+        onlyArchivedProjects: {
+            type: 'boolean',
+        },
         professorScipers: {
             type: 'string',
         },
@@ -51,6 +54,9 @@ registerBlockType( 'epfl/student-projects', {
             type: 'string',
         },
         zenFetchMode:{
+            type: 'string',
+        },
+        zenSchool:{
             type: 'string',
         }
     }),
@@ -70,6 +76,26 @@ registerBlockType( 'epfl/student-projects', {
             );
         }
 
+        // Validation: Check if form is properly filled
+        let validationError = null;
+        if (!attributes.apiSource || attributes.apiSource === '') {
+            validationError = __('Please select an API source.', 'epfl');
+        } else if (attributes.apiSource === 'zen') {
+            if (!attributes.zenFetchMode || attributes.zenFetchMode === '') {
+                validationError = __('Please select a fetch mode (By Unit or By Professor SCIPER).', 'epfl');
+            } else if (attributes.zenFetchMode === 'section' && (!attributes.zenSchool || attributes.zenSchool === '')) {
+                validationError = __('Please select a school.', 'epfl');
+            } else if (attributes.zenFetchMode === 'section' && (!attributes.section || attributes.section === '')) {
+                validationError = __('Please select a unit.', 'epfl');
+            } else if (attributes.zenFetchMode === 'sciper' && (!attributes.professorScipers || attributes.professorScipers.trim() === '')) {
+                validationError = __('Please enter at least one professor SCIPER.', 'epfl');
+            }
+        } else if (attributes.apiSource === 'isa') {
+            if (!attributes.section || attributes.section === '') {
+                validationError = __('Please select a section.', 'epfl');
+            }
+        }
+
         return (
             <Fragment>
                 <InspectorControlsStudentProjects { ...{ attributes, setAttributes } } />
@@ -80,6 +106,18 @@ registerBlockType( 'epfl/student-projects', {
 							value={ attributes.title }
 							onChange={ title => setAttributes( { title } ) }
 						/>
+                    {validationError && (
+                        <div style={{ 
+                            padding: '12px', 
+                            marginTop: '12px', 
+                            backgroundColor: '#fff3cd', 
+                            border: '1px solid #ffc107', 
+                            borderRadius: '4px',
+                            color: '#856404'
+                        }}>
+                            <strong>{ __('Warning:', 'epfl') }</strong> {validationError}
+                        </div>
+                    )}
                 </div>
             </Fragment>
         )
