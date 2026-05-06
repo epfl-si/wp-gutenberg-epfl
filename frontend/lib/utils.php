@@ -113,7 +113,7 @@ Class Utils
      * @return decoded JSON data
      *          False in case of an error
      */
-    public static function get_items(string $url, $cache_time_sec=300, $timeout=5, $sslverify=True) {
+    public static function get_items(string $url, $cache_time_sec=300, $timeout=5, $sslverify=True, $heads=array()) {
         /* Generating unique transient ID. We cannot directly use URL (and replace some characters) because we are
         limited to 172 characters for transient identifiers (https://codex.wordpress.org/Transients_API) */
         $transient_id = 'epfl_'.md5($url);
@@ -136,7 +136,8 @@ Class Utils
         }
 
         $start = microtime(true);
-        $response = wp_remote_get($url, array( 'timeout' => $timeout, 'sslverify' => $sslverify ));
+        $response = wp_remote_get($url, array( 'timeout' => $timeout, 'sslverify' => $sslverify, 'headers' => $heads ));
+
         $end = microtime(true);
 
         // Logging call

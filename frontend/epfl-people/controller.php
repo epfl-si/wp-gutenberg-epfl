@@ -147,12 +147,16 @@ function epfl_people_block( $attributes ) {
         }
     }
 
+    // Take authorization token and base url from 12 factor configuration
+    $baseurl = getenv('PEOPLE_BASE_URL');
+    $bearer = getenv('PEOPLE_BEARER_TOKEN');
+
     // the web service we use to retrieve the data
-    $url = "https://people.epfl.ch/cgi-bin/wsgetpeople/";
+    $url = "$baseurl/api/v0/wsgetpeople/";
     $url = add_query_arg($parameter, $url);
 
     // retrieve the data in JSON
-    $items = Utils::get_items($url, 0, 15);
+    $items = Utils::get_items($url, 0, 15, False, Array('Authorization' => "Bearer $bearer"));
 
     if (false === $items) {
         return Utils::render_user_msg("People block: Error retrieving items");
