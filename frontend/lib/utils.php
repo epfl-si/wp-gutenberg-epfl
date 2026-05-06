@@ -137,6 +137,7 @@ Class Utils
 
         $start = microtime(true);
         $response = wp_remote_get($url, array( 'timeout' => $timeout, 'sslverify' => $sslverify, 'headers' => $heads ));
+
         $end = microtime(true);
 
         // Logging call

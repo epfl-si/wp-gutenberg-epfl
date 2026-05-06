@@ -148,8 +148,8 @@ function epfl_people_block( $attributes ) {
     }
 
     // Take authorization token and base url from 12 factor configuration
-    $baseurl = $_SERVER['PEOPLE_BASE_URL'];
-    $bearer = $_SERVER['PEOPLE_BEARER'];
+    $baseurl = getenv('PEOPLE_BASE_URL');
+    $bearer = getenv('PEOPLE_BEARER_TOKEN');
 
     // the web service we use to retrieve the data
     $url = "$baseurl/api/v0/wsgetpeople/";
