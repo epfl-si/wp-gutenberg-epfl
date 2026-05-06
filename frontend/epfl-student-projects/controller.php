@@ -280,8 +280,18 @@ function handle_zen($attributes)
                       <li class="project-id">ID: <?php echo $item['id']; ?></li>
                       <li class="project-status">Status: <?php echo htmlspecialchars($item['status']); ?></li>
                       <li class="project-date">Created At: <?php echo substr($item['createdAt'], 0, 10); ?></li>
-                      <?php if (!empty($item['endDate'])): ?>
-                        <li class="project-end-date">End Date: <?php echo substr($item['endDate'], 0, 10); ?></li>
+                      <?php
+                        $levels = array();
+                        if (!empty($item['tags'])) {
+                          foreach ($item['tags'] as $tag) {
+                            if (isset($tag['tagType']['name']) && $tag['tagType']['name'] === 'Level') {
+                              $levels[] = htmlspecialchars($tag['name']);
+                            }
+                          }
+                        }
+                        if (!empty($levels)):
+                      ?>
+                        <li class="project-level">Level: <?php echo implode(', ', $levels); ?></li>
                       <?php endif; ?>
                     </ul>
                   </header>
