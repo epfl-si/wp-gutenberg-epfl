@@ -1,4 +1,6 @@
 https://cede-webapps.epfl.ch/MOOCsCatalog/
+https://dsi-it-catalog.epfl.ch/
+https://dsi-it-catalog-test.epfl.ch/
 https://edamonitoring.epfl.ch/grafana/d/k1JaxB57k/eda-license-monitor
 https://eerl-campaigns.epfl.ch/
 https://energyhub.epfl.ch
