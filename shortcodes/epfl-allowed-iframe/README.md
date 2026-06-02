@@ -19,11 +19,19 @@ The URL validation is done the following way:
 
 ## Usage example
 
-The following shortcode
+The following shortcode:
 ```
 [epfl_allowed_iframe url='https://menus.epfl.ch/cgi-bin/getMenus?&midisoir=midi']
 ```
-will display the iframe if the whitelist contains the same URL.
+will display the iframe if the URL is present in the whitelist.
+
+### Attributes
+
+The shortcode supports the following attributes:
+- `url`: the iframe `src` URL.
+- `width`: the iframe width (in px, % or "auto"). Defaults to 100%.
+- `height`: the iframe height (in px, % or "auto"). Defaults to 100%.
+- `container_class`: the CSS class applied to the iframe's outer container. Defaults to "container".
 
 
 [allowed_url.txt]: https://github.com/epfl-si/wp-gutenberg-epfl/blob/master/shortcodes/epfl-allowed-iframe/allowed_url.txt

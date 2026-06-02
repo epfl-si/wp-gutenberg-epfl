@@ -50,6 +50,7 @@ function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
             'url' => '',
             'height' => '100%',
             'width' => '100%',
+            'container_class' => 'container',
         ),
         $atts
     );
@@ -59,13 +60,18 @@ function epfl_allowed_iframe_process_shortcode( $atts, $content = null ) {
         $url = esc_url( sanitize_text_field( $atts['url'] ) );
         $height = esc_attr( sanitize_text_field( $atts['height'] ) );
         $width = esc_attr( sanitize_text_field( $atts['width'] ) );
+        $container_class = esc_attr( sanitize_text_field( $atts['container_class'] ) );
+        $container_class = in_array( $container_class,
+                                     // Possible container class values
+                                     ['container', 'container-grid', 'container-full'], true
+                                   ) ? $container_class : 'container';
 
         return sprintf('
-            <div class="my-3 container" style="height: %2$s; width: %3$s">
+            <div class="my-3 %4$s" style="height: %2$s; width: %3$s">
                 <div class="embed-responsive embed-responsive-16by9 h-100">
                     <iframe src="%1$s" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media" class="embed-responsive-item border-0"></iframe>
                 </div>
-            </div>', $url, $height, $width
+            </div>', $url, $height, $width, $container_class
         );
 
     } else {
