@@ -179,12 +179,8 @@ function epfl_people_block( $attributes ) {
         // Respect given order when sciper
         $scipers = array_map('intval', explode(',', $parameter['scipers']));
         $persons = epfl_people_sortArrayByArray($persons, $scipers);
-    } else if ("" !== $units || "" !== $doctoral_program || "" !== $groups) {
-        // Sort persons list alphabetically when units, doctoral program or groups
-        if (ALPHABETICAL_ORDER === $order) {
-            usort($persons, __NAMESPACE__.'\epfl_people_person_compare');
-        }
     }
+    // Otherwise, sorting is handled by People based on the person's name
 
     // copy the first unit in order of 'ordre' as main_unit
     foreach($persons as $index => $person){
