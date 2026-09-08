@@ -48,8 +48,8 @@ const peopleData = [
     if (!item.custom) {
         return item;
     }
-    const customObj = item.custom.reduce(function (obj, item) {
-        obj[item.key] = item.value;
+    const customObj = item.custom.reduce(function (obj, item, index) {
+        obj[item.key] = `\${item.key}_____\${item.value}`;
         return obj;
     }, {});
     return Object.assign({}, item, customObj);
@@ -96,7 +96,7 @@ peoplespace.updateFilters = function () {
 peoplespace.getSingleCheckbox = function (option, id) {
     return `<div class='custom-control custom-checkbox'>
     <input type='checkbox' value='\${option}' id='\${option}' class='custom-control-input' onclick='peoplespace.updateFilters()' name='\${id}' checked>
-    <label class='custom-control-label checkbox-label' for='\${option}'>\${option}</label></div>`
+    <label class='custom-control-label checkbox-label' for='\${option}'>\${option.replace(`\${id}_____`, '')}</label></div>`
 };
 
 peoplespace.checkIfAllCardsShouldBeHidden = function () {
@@ -289,6 +289,10 @@ window.onload = (event) => {peoplespace.initialize();}
 
 ");
 
+// Initialize the $markup variable if is not set
+$markup = $markup ?? '';
+
+// Check the $markup variable is set and is not undefined
 $markup .= preg_replace('/peoplespace/', 'pspc', $payload);
 
 ?>
