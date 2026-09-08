@@ -7,7 +7,7 @@ import {
 import miniCardIcon from './mini-card-icon'
 import './mini-card-panel'
 
-const version = "v1.0.1";
+const version = "v1.0.2";
 
 const { __ } = wp.i18n;
 
