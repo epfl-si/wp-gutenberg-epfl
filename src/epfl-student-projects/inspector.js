@@ -48,8 +48,11 @@ export default class InspectorControlsStudentProjects extends React.Component {
 	}
 
 	fetchSchools() {
+		const basePath =
+			"wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-schools-zen.php";
+		const entryPoint = window.location.href.replace(/wp-admin\/.*/, basePath);
 		axios
-			.get("https://sti-zen.epfl.ch/api/public/schools")
+			.get(entryPoint)
 			.then((response) => response.data)
 			.then((data) => {
 				if (!Array.isArray(data)) {
@@ -77,7 +80,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
 				  )
 				: null;
 
-		// Append school parameter for ZEN unit fetching
+		// Append school parameter for Project Portal unit fetching
 		if (source === "zen" && this.state.zenSchool) {
 			entryPointProjects += `?school=${encodeURIComponent(this.state.zenSchool)}`;
 		}
@@ -89,8 +92,12 @@ export default class InspectorControlsStudentProjects extends React.Component {
 		if (source === "zen") {
 			if (this.state.zenFetchMode === "sciper" && this.props.attributes.professorScipers) {
 				const sciper = this.props.attributes.professorScipers;
-				const archivedSuffix = this.props.attributes.onlyArchivedProjects ? "/archived" : "";
-				const zenApiUrl = `https://sti-zen.epfl.ch/api/public/projects/manager/${sciper}${archivedSuffix}`;
+				const archived = this.props.attributes.onlyArchivedProjects ? "1" : "0";
+				const proxyBase =
+					"wp-content/plugins/wp-gutenberg-epfl/frontend/epfl-student-projects/get-projects-zen.php";
+				const zenApiUrl =
+					window.location.href.replace(/wp-admin\/.*/, proxyBase) +
+					`?sciper=${encodeURIComponent(sciper)}&archived=${archived}`;
 				axios
 					.get(zenApiUrl)
 					.then((response) => {
@@ -112,15 +119,12 @@ export default class InspectorControlsStudentProjects extends React.Component {
 
 					})
 					.catch((error) => {
-						console.error("Error fetching data from the Projects Database (Zen) API", error);
+						console.error("Error fetching data from the Project Portal API", error);
 						this.setState({ sections: [] });
 					});
 			} else if (this.state.zenFetchMode === "section" || this.state.zenFetchMode === "") {
-				const zenUnitsUrl = this.state.zenSchool
-					? `https://sti-zen.epfl.ch/api/public/schools/${encodeURIComponent(this.state.zenSchool)}/units`
-					: "https://sti-zen.epfl.ch/api/public/projects/units";
 				axios
-					.get(zenUnitsUrl)
+					.get(entryPointProjects)
 					.then((response) => {
 						return response.data;
 					})
@@ -207,7 +211,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
 						options={[
 							{ label: "Select API", value: "" },
 							{ label: "ISA", value: "isa" },
-							{ label: "ZEN", value: "zen" },
+							{ label: "Project Portal", value: "zen" },
 						]}
 						onChange={(apiSource) => {
 							this.setState({ apiSource, zenFetchMode: "", zenSchool: "", sections: [] });
@@ -220,7 +224,7 @@ export default class InspectorControlsStudentProjects extends React.Component {
 					/>
 				</PanelBody>
 				{this.state.apiSource === "zen" && (
-					<PanelBody title={__("ZEN Fetch Mode")}>
+					<PanelBody title={__("Project Portal Fetch Mode")}>
 						<SelectControl
 							label={__("Fetch By")}
 							value={this.state.zenFetchMode}

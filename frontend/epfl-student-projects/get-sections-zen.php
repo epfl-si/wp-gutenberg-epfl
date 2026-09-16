@@ -1,24 +1,18 @@
-<?php 
+<?php
+
+use \EPFL\Plugins\Gutenberg\Lib\Utils;
+
+require_once (dirname(__FILE__) . '/../lib/utils.php');
 
 header('Content-Type: application/json');
 
 $school = isset($_GET['school']) ? preg_replace('/[^a-zA-Z0-9_\-]/', '', $_GET['school']) : '';
 
 if ($school !== '') {
-    $url = "https://sti-zen.epfl.ch/api/public/schools/" . urlencode($school) . "/units";
+    $url = "https://project-portal.epfl.ch/api/public/schools/" . urlencode($school) . "/units";
 } else {
-    $url = "https://sti-zen.epfl.ch/api/public/projects/units";
+    $url = "https://project-portal.epfl.ch/api/public/projects/units";
 }
 
-if (function_exists('curl_init')) {
-    require_once (dirname(__FILE__) . '/../lib/utils.php');
-    $response = \EPFL\Plugins\Gutenberg\Lib\Utils::zen_api_request($url);
-    echo json_encode($response);
-} else {
-    $context = stream_context_create(['http' => [
-        'method' => 'GET',
-        'header' => "Content-Type: application/json\r\n"
-    ]]);
-    $response = file_get_contents($url, false, $context);
-    echo $response !== false ? $response : json_encode([]);
-}
+$response = Utils::zen_api_request($url);
+echo json_encode($response);

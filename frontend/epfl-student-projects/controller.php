@@ -217,6 +217,7 @@ function epfl_student_projects_block($attributes, $inner_content)
 function handle_zen($attributes)
 {
     $section = Utils::get_sanitized_attribute($attributes, 'section');
+    $title = Utils::get_sanitized_attribute($attributes, 'title');
     $zenFetchMode = Utils::get_sanitized_attribute($attributes, 'zenFetchMode');
     $professorScipers = Utils::get_sanitized_attribute($attributes, 'professorScipers');
     $onlyArchivedProjects = Utils::get_sanitized_attribute($attributes, 'onlyArchivedProjects', '') != '';
@@ -239,9 +240,9 @@ function handle_zen($attributes)
 
     if ($zenFetchMode === 'sciper' && !empty($professorScipers)) {
         $sciper = preg_replace('/\s/', '', $professorScipers);
-        $url = "https://sti-zen.epfl.ch/api/public/projects/manager/" . $sciper . $archivedSuffix;
+        $url = "https://project-portal.epfl.ch/api/public/projects/manager/" . $sciper . $archivedSuffix;
     } else if ($zenFetchMode === 'section' && !empty($section)) {
-        $url = "https://sti-zen.epfl.ch/api/public/projects/unit/" . $section . $archivedSuffix;
+        $url = "https://project-portal.epfl.ch/api/public/projects/unit/" . $section . $archivedSuffix;
     } else {
         return Utils::render_user_msg(__("The form was not properly filled. Invalid fetch mode or missing parameters.", 'epfl'));
     }
@@ -249,7 +250,7 @@ function handle_zen($attributes)
     $items = Utils::zen_api_request($url);
 
     if ($items === NULL || $items === false || !is_array($items)) {
-        return Utils::render_user_msg("Error getting project list from ZEN or project list is empty");
+        return Utils::render_user_msg("Error getting project list from Project Portal or project list is empty");
     }
 
     // Filter ongoing projects if requested
@@ -277,171 +278,304 @@ function handle_zen($attributes)
     $allLevels = array_keys($allLevels);
     sort($allLevels);
 
+    $instance_id = 'epfl-sp-' . substr(md5(uniqid('', true)), 0, 8);
+
     ob_start();
     ?>
-    <div id='student-projects-list' class="container" style=" display:flex; flex-direction:column; gap: 50px">
-        <div class="form-group">
-            <input type="text" id="student-projects-search-input" class="form-control search mb-2"
-                placeholder="<?php _e('Search', 'epfl') ?>" aria-describedby="student-projects-search-input"
-                onkeyup="filterProjects()">
-            <button class="btn btn-secondary sort asc"
-                onclick="sortProjects('title')"><?php _e('Sort by project title', 'epfl'); ?></button>
-            <button class="btn btn-secondary sort"
-                onclick="sortProjects('id')"><?php _e('Sort by project ID', 'epfl'); ?></button>
-            <button class="btn btn-secondary sort" onclick="sortProjects('date')"><?php _e('Sort by date', 'epfl') ?></button>
-            <?php if (!empty($allLevels)): ?>
-            <div style="margin-top: 8px;">
-                <span class="small text-muted" style="margin-right: 5px;"><?php _e('Filter by level:', 'epfl'); ?></span>
-                <button class="btn btn-sm btn-outline-secondary level-filter-btn active" data-level="all" onclick="filterByLevel('all')"><?php _e('All', 'epfl'); ?></button>
-                <?php foreach ($allLevels as $level): ?>
-                    <button class="btn btn-sm btn-outline-secondary level-filter-btn" data-level="<?php echo htmlspecialchars($level); ?>" onclick="filterByLevel('<?php echo htmlspecialchars($level); ?>')"><?php echo htmlspecialchars($level); ?></button>
-                <?php endforeach; ?>
+    <div class="epfl-student-projects container" id="<?php echo $instance_id; ?>">
+        <style>
+            #<?php echo $instance_id; ?> .epfl-sp-sort,
+            #<?php echo $instance_id; ?> .epfl-sp-level{font-size:.8125rem;font-weight:600;padding:.25rem .75rem;line-height:1.4;background-color:#fff;border:1px solid #d0d0d0;color:#444;box-shadow:none;transition:all .15s ease}
+            #<?php echo $instance_id; ?> .epfl-sp-level{border-radius:50rem;margin:0 .35rem .35rem 0}
+            #<?php echo $instance_id; ?> .epfl-sp-sort:hover,
+            #<?php echo $instance_id; ?> .epfl-sp-level:hover{border-color:#ff0000;color:#ff0000}
+            #<?php echo $instance_id; ?> .epfl-sp-sort.active,
+            #<?php echo $instance_id; ?> .epfl-sp-level.active{background-color:#ff0000;border-color:#ff0000;color:#fff}
+            #<?php echo $instance_id; ?> .epfl-sp-sort.active:hover,
+            #<?php echo $instance_id; ?> .epfl-sp-level.active:hover{color:#fff}
+        </style>
+        <?php if (!empty($title)): ?>
+            <h2 class="text-center mb-1"><?php echo htmlspecialchars($title); ?></h2>
+        <?php endif; ?>
+        <p class="text-center text-muted small mb-4"><?php _e('Showing', 'epfl'); ?> <strong class="epfl-sp-count"><?php echo count($items); ?></strong> <?php _e('projects', 'epfl'); ?></p>
+
+        <div class="form-row align-items-end mb-3">
+            <div class="col-12 col-md-7 form-group mb-2">
+                <label for="<?php echo $instance_id; ?>-search" class="small text-muted mb-1"><?php _e('Search', 'epfl'); ?></label>
+                <input type="text" id="<?php echo $instance_id; ?>-search" class="form-control epfl-sp-search" placeholder="<?php esc_attr_e('Search by title, keyword, supervisor…', 'epfl'); ?>">
             </div>
-            <?php endif; ?>
+            <div class="col-12 col-md-5 form-group mb-2">
+                <span class="small text-muted d-block mb-1"><?php _e('Sort by', 'epfl'); ?></span>
+                <div class="btn-group btn-group-sm" role="group" aria-label="<?php esc_attr_e('Sort projects', 'epfl'); ?>">
+                    <button type="button" class="btn epfl-sp-sort active" data-sort="title"><?php _e('Title', 'epfl'); ?></button>
+                    <button type="button" class="btn epfl-sp-sort" data-sort="id"><?php _e('ID', 'epfl'); ?></button>
+                    <button type="button" class="btn epfl-sp-sort" data-sort="date"><?php _e('Date', 'epfl'); ?></button>
+                </div>
+            </div>
         </div>
 
-        <div class="list" id="projects-list" style="margin-bottom: 50px">
-            <?php foreach ($items as $item): ?>
-                <section class="collapse-container project-item" data-title="<?php echo htmlspecialchars($item['title']); ?>"
-                  data-id="<?php echo $item['id']; ?>" data-date="<?php echo substr($item['createdAt'], 0, 10); ?>"
-                  data-level="<?php
-                    $itemLevels = array();
-                    if (!empty($item['tags'])) {
-                      foreach ($item['tags'] as $tag) {
-                        if (isset($tag['tagType']['name']) && $tag['tagType']['name'] === 'Level') {
-                          $itemLevels[] = htmlspecialchars($tag['name']);
-                        }
-                      }
-                    }
-                    echo implode(',', $itemLevels);
-                  ?>">
-                  <header class="collapse-title collapse-title-desktop collapsed" data-toggle="collapse"
-                    data-target="#project-<?php echo $item['id']; ?>" aria-expanded="false"
-                    aria-controls="project-<?php echo $item['id']; ?>">
-                    <p class="title"><?php echo htmlspecialchars($item['title']); ?></p>
-                    <ul class="project-data list-inline has-sep small text-muted">
-                      <li class="project-id">ID: <?php echo $item['id']; ?></li>
-                      <li class="project-status">Status: <?php echo htmlspecialchars($item['status']); ?></li>
-                      <li class="project-date">Created At: <?php echo substr($item['createdAt'], 0, 10); ?></li>
-                      <?php
-                        $levels = array();
-                        if (!empty($item['tags'])) {
-                          foreach ($item['tags'] as $tag) {
-                            if (isset($tag['tagType']['name']) && $tag['tagType']['name'] === 'Level') {
-                              $levels[] = htmlspecialchars($tag['name']);
-                            }
-                          }
-                        }
-                        if (!empty($levels)):
-                      ?>
-                        <li class="project-level">Level: <?php echo implode(', ', $levels); ?></li>
-                      <?php endif; ?>
-                    </ul>
-                  </header>
-
-                  <div class="collapse collapse-item collapse-item-desktop project-description"
-                    id="project-<?php echo $item['id']; ?>">
-                    <p>
-                      <?php echo !empty($item['description']) ? strip_tags($item['description'], '<br><p><strong>') : "No description provided"; ?>
-                    </p>
-
-                    <dl class="definition-list definition-list-grid">
-                      <?php if (!empty($item['projectUrl'])): ?>
-                        <dt>Project URL:</dt>
-                        <dd><a
-                            href="<?php echo htmlspecialchars($item['projectUrl']); ?>"><?php echo htmlspecialchars($item['projectUrl']); ?></a>
-                        </dd>
-                      <?php endif; ?>
-
-                      <dt>Project Creator:</dt>
-                      <dd>
-                        <?php echo htmlspecialchars($item['creator']['firstName']) . ' ' . htmlspecialchars($item['creator']['lastName']); ?>
-                        (<?php echo htmlspecialchars($item['creator']['email']); ?>)
-                      </dd>
-
-                      <dt>Units Involved:</dt>
-                      <?php foreach ($item['units'] as $unit): ?>
-                        <dd><?php echo htmlspecialchars($unit['name_fr']); ?> (<?php echo htmlspecialchars($unit['acronym']); ?>)</dd>
-                      <?php endforeach; ?>
-
-                      <?php if (!empty($item['tags'])): ?>
-                        <dt>Tags:</dt>
-                        <dd>
-                          <?php foreach ($item['tags'] as $tag): ?>
-                            <span style="padding: 2px 5px; margin-right: 5px;">
-                              <?php echo htmlspecialchars($tag['name']) . ', '; ?>
-                            </span>
-                          <?php endforeach; ?>
-                        <?php endif; ?>
-                      </dd>
-
-                      <dt>Memberships:</dt>
-                      <dd>
-                        <?php foreach ($item['projectMembership'] as $membership): ?>
-                          <?php echo htmlspecialchars($membership['user']['firstName']) . ' ' . htmlspecialchars($membership['user']['lastName']); ?>
-                          - Role: <?php foreach ($membership['roles'] as $role) {
-                            echo htmlspecialchars($role['name']) . ', ';
-                          } ?>
-                        <?php endforeach; ?>
-                      </dd>
-                    </dl>
-                  </div>
-                </section>
+        <?php if (!empty($allLevels)): ?>
+        <div class="mb-4">
+            <span class="small text-muted mr-2"><?php _e('Level', 'epfl'); ?></span>
+            <button type="button" class="btn epfl-sp-level active" data-level="all"><?php _e('All', 'epfl'); ?></button>
+            <?php foreach ($allLevels as $level): ?>
+                <button type="button" class="btn epfl-sp-level" data-level="<?php echo htmlspecialchars($level); ?>"><?php echo htmlspecialchars($level); ?></button>
             <?php endforeach; ?>
+        </div>
+        <?php endif; ?>
+
+        <div class="row epfl-sp-grid">
+            <?php foreach ($items as $item):
+                $itemLevels = array();
+                if (!empty($item['tags'])) {
+                    foreach ($item['tags'] as $tag) {
+                        if (isset($tag['tagType']['name']) && $tag['tagType']['name'] === 'Level') {
+                            $itemLevels[] = $tag['name'];
+                        }
+                    }
+                }
+                $date_raw = substr($item['createdAt'], 0, 10);
+                $date_fmt = !empty($item['createdAt']) ? date_i18n('F j, Y', strtotime($item['createdAt'])) : '';
+                $status = isset($item['status']) ? $item['status'] : '';
+                $cid = $instance_id . '-p-' . (int) $item['id'];
+
+                $search_parts = array($item['title'], $item['id']);
+                $search_parts = array_merge($search_parts, $itemLevels);
+                if (!empty($item['tags'])) { foreach ($item['tags'] as $t) { $search_parts[] = $t['name']; } }
+                if (!empty($item['creator'])) { $search_parts[] = $item['creator']['firstName'] . ' ' . $item['creator']['lastName']; $search_parts[] = $item['creator']['email']; }
+                if (!empty($item['units'])) { foreach ($item['units'] as $u) { $search_parts[] = $u['name_fr']; $search_parts[] = $u['acronym']; } }
+                if (!empty($item['projectMembership'])) { foreach ($item['projectMembership'] as $m) { $search_parts[] = $m['user']['firstName'] . ' ' . $m['user']['lastName']; } }
+                $search_str = strtolower(implode(' ', array_filter($search_parts)));
+
+                $keyword_tags = array();
+                if (!empty($item['tags'])) { foreach ($item['tags'] as $t) { if (!isset($t['tagType']['name']) || $t['tagType']['name'] !== 'Level') { $keyword_tags[] = $t['name']; } } }
+            ?>
+                <div class="col-12 col-md-6 col-lg-4 mb-4 epfl-sp-item"
+                    data-title="<?php echo htmlspecialchars($item['title']); ?>"
+                    data-id="<?php echo (int) $item['id']; ?>"
+                    data-date="<?php echo htmlspecialchars($date_raw); ?>"
+                    data-level="<?php echo htmlspecialchars(implode(',', $itemLevels)); ?>"
+                    data-portal="https://project-portal.epfl.ch/projects/<?php echo (int) $item['id']; ?>"
+                    data-search="<?php echo htmlspecialchars($search_str); ?>">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div class="epfl-sp-badges">
+                                    <?php if ($status !== ''): ?>
+                                        <span class="tag tag-sm <?php echo $status === 'ongoing' ? 'tag-success' : 'tag-secondary'; ?>"><?php echo htmlspecialchars($status); ?></span>
+                                    <?php endif; ?>
+                                    <?php foreach ($itemLevels as $lvl): ?>
+                                        <span class="tag tag-sm tag-primary"><?php echo htmlspecialchars($lvl); ?></span>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+
+                            <h3 class="card-title h5"><?php echo htmlspecialchars($item['title']); ?></h3>
+
+                            <?php
+                                $excerpt = '';
+                                if (!empty($item['description'])) {
+                                    $plain = trim(preg_replace('/\s+/', ' ', html_entity_decode(strip_tags($item['description']), ENT_QUOTES, 'UTF-8')));
+                                    if ($plain !== '') {
+                                        $excerpt = mb_substr($plain, 0, 120);
+                                        if (mb_strlen($plain) > 120) {
+                                            $excerpt = rtrim(mb_substr($excerpt, 0, mb_strrpos($excerpt, ' ') ?: 120)) . '…';
+                                        }
+                                    }
+                                }
+                            ?>
+                            <?php if ($excerpt !== ''): ?>
+                            <p class="small text-muted mb-2 epfl-sp-excerpt"><?php echo htmlspecialchars($excerpt); ?></p>
+                            <?php endif; ?>
+
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <button class="btn btn-outline-primary btn-sm epfl-sp-details" type="button"><?php _e('Details', 'epfl'); ?></button>
+                                <?php if ($date_fmt): ?>
+                                <span class="small text-muted"><?php echo htmlspecialchars($date_fmt); ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <template class="epfl-sp-source">
+                                <div class="mb-3">
+                                    <?php echo !empty($item['description']) ? strip_tags($item['description'], '<br><p><strong><em><ul><ol><li><a><h3><h4>') : '<span class="text-muted font-italic">' . __('No description provided', 'epfl') . '</span>'; ?>
+                                </div>
+
+                                <dl class="definition-list definition-list-grid">
+                                    <dt><?php _e('ID', 'epfl'); ?></dt>
+                                    <dd>#<?php echo (int) $item['id']; ?></dd>
+
+                                    <?php if ($status !== ''): ?>
+                                        <dt><?php _e('Status', 'epfl'); ?></dt>
+                                        <dd><?php echo htmlspecialchars($status); ?></dd>
+                                    <?php endif; ?>
+
+                                    <?php if ($date_fmt): ?>
+                                        <dt><?php _e('Created At', 'epfl'); ?></dt>
+                                        <dd><?php echo htmlspecialchars($date_fmt); ?></dd>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($itemLevels)): ?>
+                                        <dt><?php _e('Level', 'epfl'); ?></dt>
+                                        <dd><?php echo htmlspecialchars(implode(', ', $itemLevels)); ?></dd>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['projectUrl'])): ?>
+                                        <dt><?php _e('Project URL', 'epfl'); ?></dt>
+                                        <dd><a class="link-pretty" href="<?php echo htmlspecialchars($item['projectUrl']); ?>" target="_blank" rel="noopener noreferrer"><?php echo htmlspecialchars($item['projectUrl']); ?></a></dd>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['creator'])): ?>
+                                        <dt><?php _e('Creator', 'epfl'); ?></dt>
+                                        <dd><a class="link-pretty" href="mailto:<?php echo htmlspecialchars($item['creator']['email']); ?>"><?php echo htmlspecialchars($item['creator']['firstName'] . ' ' . $item['creator']['lastName']); ?></a></dd>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['units'])): ?>
+                                        <dt><?php _e('Units', 'epfl'); ?></dt>
+                                        <dd><?php foreach ($item['units'] as $unit): ?><span class="d-block"><strong><?php echo htmlspecialchars($unit['acronym']); ?></strong> &mdash; <?php echo htmlspecialchars($unit['name_fr']); ?></span><?php endforeach; ?></dd>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($item['projectMembership'])): ?>
+                                        <dt><?php _e('Members', 'epfl'); ?></dt>
+                                        <dd><?php foreach ($item['projectMembership'] as $m):
+                                            $roles = array();
+                                            foreach ($m['roles'] as $role) { $roles[] = $role['name']; }
+                                        ?><span class="d-block"><?php echo htmlspecialchars($m['user']['firstName'] . ' ' . $m['user']['lastName']); ?><?php if (!empty($roles)): ?> <span class="tag tag-sm"><?php echo htmlspecialchars(implode(', ', $roles)); ?></span><?php endif; ?></span><?php endforeach; ?></dd>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($keyword_tags)): ?>
+                                        <dt><?php _e('Keywords', 'epfl'); ?></dt>
+                                        <dd><?php foreach ($keyword_tags as $kt): ?><span class="tag tag-sm tag-tertiary"><?php echo htmlspecialchars($kt); ?></span><?php endforeach; ?></dd>
+                                    <?php endif; ?>
+                                </dl>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="alert alert-warning epfl-sp-empty" role="alert" style="display:none;">
+            <?php _e('No projects match your search criteria.', 'epfl'); ?>
+        </div>
+
+        <div class="modal fade epfl-sp-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <div class="epfl-sp-modal-badges mb-1"></div>
+                            <h5 class="modal-title epfl-sp-modal-title"></h5>
+                        </div>
+                        <button type="button" class="close epfl-sp-modal-close" aria-label="<?php esc_attr_e('Close', 'epfl'); ?>"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body epfl-sp-modal-body"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary epfl-sp-modal-close"><?php _e('Close', 'epfl'); ?></button>
+                        <a href="https://project-portal.epfl.ch/" class="btn btn-primary epfl-sp-modal-view" target="_blank" rel="noopener noreferrer"><?php _e('View project', 'epfl'); ?></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        var activeLevelFilter = 'all';
+        (function(){
+            var root = document.getElementById('<?php echo $instance_id; ?>');
+            if (!root) return;
+            var grid = root.querySelector('.epfl-sp-grid');
+            var items = Array.prototype.slice.call(root.querySelectorAll('.epfl-sp-item'));
+            var searchInput = root.querySelector('.epfl-sp-search');
+            var countEl = root.querySelector('.epfl-sp-count');
+            var emptyEl = root.querySelector('.epfl-sp-empty');
+            var sortBtns = Array.prototype.slice.call(root.querySelectorAll('.epfl-sp-sort'));
+            var levelBtns = Array.prototype.slice.call(root.querySelectorAll('.epfl-sp-level'));
+            var activeLevel = 'all';
 
-        function filterProjects() {
-            const input = document.getElementById('student-projects-search-input').value.toLowerCase();
-            const projects = document.getElementsByClassName('project-item');
+            var modal = root.querySelector('.epfl-sp-modal');
+            var modalTitle = modal.querySelector('.epfl-sp-modal-title');
+            var modalBadges = modal.querySelector('.epfl-sp-modal-badges');
+            var modalBody = modal.querySelector('.epfl-sp-modal-body');
+            var modalView = modal.querySelector('.epfl-sp-modal-view');
+            var modalClosers = Array.prototype.slice.call(modal.querySelectorAll('.epfl-sp-modal-close'));
+            var backdrop = null;
+            var lastFocused = null;
 
-            Array.from(projects).forEach((project) => {
-                const title = project.getAttribute('data-title').toLowerCase();
-                const matchesSearch = title.includes(input);
-                const matchesLevel = activeLevelFilter === 'all' || (project.dataset.level && project.dataset.level.split(',').includes(activeLevelFilter));
-                project.style.display = (matchesSearch && matchesLevel) ? '' : 'none';
+            function apply(){
+                var q = (searchInput.value || '').toLowerCase().trim();
+                var visible = 0;
+                items.forEach(function(item){
+                    var matchesSearch = !q || (item.dataset.search || '').indexOf(q) !== -1;
+                    var matchesLevel = activeLevel === 'all' || (item.dataset.level || '').split(',').indexOf(activeLevel) !== -1;
+                    var show = matchesSearch && matchesLevel;
+                    item.style.display = show ? '' : 'none';
+                    if (show) visible++;
+                });
+                if (countEl) countEl.textContent = visible;
+                if (emptyEl) emptyEl.style.display = visible === 0 ? '' : 'none';
+            }
+
+            function sortItems(type){
+                items.slice().sort(function(a, b){
+                    if (type === 'id') return parseInt(a.dataset.id, 10) - parseInt(b.dataset.id, 10);
+                    if (type === 'date') return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    return a.dataset.title.toLowerCase() < b.dataset.title.toLowerCase() ? -1 : 1;
+                }).forEach(function(el){ grid.appendChild(el); });
+            }
+
+            searchInput.addEventListener('input', apply);
+            sortBtns.forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    sortBtns.forEach(function(b){ b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    sortItems(btn.dataset.sort);
+                });
             });
-        }
-
-        function filterByLevel(level) {
-            activeLevelFilter = level;
-            document.querySelectorAll('.level-filter-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-            });
-            document.querySelector('.level-filter-btn[data-level="' + level + '"]').classList.add('active');
-            filterProjects();
-        }
-
-        function sortProjects(type) {
-            const projectsList = document.getElementById('projects-list');
-            const projects = Array.from(projectsList.getElementsByClassName('project-item'));
-
-            projects.sort((a, b) => {
-                const getValue = (project) => {
-                    switch (type) {
-                        case 'title':
-                            return project.dataset.title.toLowerCase();
-                        case 'id':
-                            return parseInt(project.dataset.id);
-                        case 'date':
-                            return new Date(project.dataset.date);
-                    }
-                };
-
-                const valueA = getValue(a);
-                const valueB = getValue(b);
-
-                return valueA < valueB ? -1 : valueA > valueB ? 1 : 0;
+            levelBtns.forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    levelBtns.forEach(function(b){ b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    activeLevel = btn.dataset.level;
+                    apply();
+                });
             });
 
-            projects.forEach(project => projectsList.appendChild(project));
+            function onKey(e){ if (e.key === 'Escape') closeModal(); }
+            function openModal(item){
+                lastFocused = document.activeElement;
+                var tpl = item.querySelector('.epfl-sp-source');
+                modalBody.innerHTML = tpl ? tpl.innerHTML : '';
+                modalTitle.textContent = item.dataset.title || '';
+                var badges = item.querySelector('.epfl-sp-badges');
+                modalBadges.innerHTML = badges ? badges.innerHTML : '';
+                if (modalView && item.dataset.portal) modalView.setAttribute('href', item.dataset.portal);
+                modal.style.display = 'block';
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+                backdrop = document.createElement('div');
+                backdrop.className = 'modal-backdrop fade show';
+                document.body.appendChild(backdrop);
+                backdrop.addEventListener('click', closeModal);
+                document.addEventListener('keydown', onKey);
+                var firstClose = modal.querySelector('.epfl-sp-modal-close');
+                if (firstClose) firstClose.focus();
+            }
+            function closeModal(){
+                modal.style.display = 'none';
+                modal.classList.remove('show');
+                document.body.classList.remove('modal-open');
+                if (backdrop) { backdrop.parentNode && backdrop.parentNode.removeChild(backdrop); backdrop = null; }
+                document.removeEventListener('keydown', onKey);
+                if (lastFocused) lastFocused.focus();
+            }
 
-        }
+            items.forEach(function(item){
+                var btn = item.querySelector('.epfl-sp-details');
+                if (btn) btn.addEventListener('click', function(){ openModal(item); });
+            });
+            modalClosers.forEach(function(c){ c.addEventListener('click', closeModal); });
+
+            apply();
+        })();
     </script>
-
     <?php
     $content = ob_get_contents();
     ob_end_clean();
